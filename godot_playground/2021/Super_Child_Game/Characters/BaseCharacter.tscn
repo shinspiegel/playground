@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Characters/BaseCharacter.gd" type="Script" id=1]
+[ext_resource path="res://Boxes/HurtBox.tscn" type="PackedScene" id=2]
+
+[node name="BaseCharacter" type="KinematicBody2D"]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="Collider" type="CollisionShape2D" parent="."]
+
+[node name="Senses" type="Node2D" parent="."]
+
+[node name="HurtBox" parent="." instance=ExtResource( 2 )]
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="animation_finished"]
+[connection signal="hit" from="HurtBox" to="." method="_on_HurtBox_hit"]
+
+[editable path="HurtBox"]

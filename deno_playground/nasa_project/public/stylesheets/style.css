@@ -1,0 +1,170 @@
+/**
+ * Based on layout from https://adventofcode.com/ 
+ * Full credit to Eric Wastl
+ */
+
+body {
+  background: #001440;
+  color: #d6d6d6;
+  font-family: 'Source Code Pro', monospace;
+  font-size: 15pt;
+  min-width: 60em;
+}
+a { outline:0; }
+main, figure, figcaption { display:block; }
+header, main, footer {
+  -webkit-text-size-adjust: none;
+}
+body {
+  min-height: 100vh;
+  position: relative;
+}
+main {
+  padding-bottom: 2.5rem;
+}
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 2.5rem;
+  font-size: 13pt;
+}
+
+a {
+  text-decoration: none;
+  color: #0088cc;
+}
+a:hover, a:focus {
+  color: #a0c1e6;
+  cursor: pointer;
+}
+h1, h2 {
+  font-size: 1em;
+  font-weight: normal;
+  font-family: 'Space Mono', monospace;
+}
+
+.quiet {
+  opacity: .6;
+}
+
+.form-item {
+  padding: 2px 0px;
+  max-width: 35em;
+}
+
+#sidebar {
+  width: 200px;
+  float: right;
+  margin: 0 15px 2em 2em;
+}
+#sponsor {
+  margin-bottom: 2.5em;
+}
+
+header {
+  white-space: nowrap;
+  cursor: default;
+  z-index: 100;
+  margin-bottom: 2em;
+}
+header h1 {
+  display: inline-block;
+  margin: 0;
+  padding-right: 1em;
+}
+header h1 a, header h1 span {
+  display: inline-block;
+  text-decoration: none;
+  color: #0090e6;
+  text-shadow: 0 0 2px #0090e6, 0 0 5px #0090e6;
+}
+header h1 a:hover, header h1 a:focus {
+  color: #97c0ef;
+  text-shadow: 0 0 2px #97c0ef, 0 0 5px #97c0ef;
+}
+header h1.title-event .title-event-wrap {
+  opacity: .33;
+  white-space: pre;
+}
+header nav {
+  display: inline-block;
+}
+header nav ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: inline-block;
+}
+header nav li {
+  display: inline-block;
+  padding: 0 .6em;
+}
+header nav a {
+  display: inline-block;
+  text-decoration: none;
+  outline: none;
+}
+
+input[type="text"], textarea, select, input[type="date"] {
+  background: transparent;
+  color: inherit;
+  border: 1px solid #666666;
+  background: #17182b;
+  padding: 0 2px;
+  font-family: inherit;
+  font-size: inherit;
+  min-width: 15em;
+  margin: 0;
+}
+
+label {
+  white-space: pre;
+}
+
+.submit {
+  font-weight: bold;
+  padding: 6px 0;
+}
+*::-moz-focus-inner {
+  padding: 0;
+  border: 0
+}
+
+.silver {
+  color: #99b3cc;
+}
+.gold {
+  color: #ffb366;
+}
+.failure {
+  color: #ff0000;
+}
+.success {
+  color: greenyellow;
+}
+.delete {
+  color: #ff0000;
+  font-weight: bold;
+}
+
+.list-item {
+  min-width: 35em;
+  max-width: 60em;
+  min-height: 1.35em;
+  white-space: pre;
+}
+.list-item:hover, .list-item:active {
+  background-color: #1e1e46;
+}
+.list-heading {
+  white-space: pre;
+  padding: 0 0 4px 0;
+}
+.list-item > .delete {
+  cursor: pointer;
+}
+
+.sponsor {
+  margin: 1em 0;
+}

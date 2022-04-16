@@ -1,0 +1,134 @@
+[gd_scene load_steps=30 format=2]
+
+[ext_resource path="res://Scenes/Characters/Character.tscn" type="PackedScene" id=1]
+[ext_resource path="res://gfx/Characters/Slime/slime-hurt-0.png" type="Texture" id=2]
+[ext_resource path="res://gfx/Characters/Slime/slime-hurt-1.png" type="Texture" id=3]
+[ext_resource path="res://gfx/Characters/Slime/slime-hurt-2.png" type="Texture" id=4]
+[ext_resource path="res://gfx/Characters/Slime/slime-hurt-3.png" type="Texture" id=5]
+[ext_resource path="res://gfx/Characters/Slime/slime-die-0.png" type="Texture" id=6]
+[ext_resource path="res://gfx/Characters/Slime/slime-die-1.png" type="Texture" id=7]
+[ext_resource path="res://gfx/Characters/Slime/slime-die-2.png" type="Texture" id=8]
+[ext_resource path="res://gfx/Characters/Slime/slime-die-3.png" type="Texture" id=9]
+[ext_resource path="res://gfx/Characters/Slime/slime-idle-0.png" type="Texture" id=10]
+[ext_resource path="res://gfx/Characters/Slime/slime-idle-1.png" type="Texture" id=11]
+[ext_resource path="res://gfx/Characters/Slime/slime-idle-2.png" type="Texture" id=12]
+[ext_resource path="res://gfx/Characters/Slime/slime-idle-3.png" type="Texture" id=13]
+[ext_resource path="res://gfx/Characters/Slime/slime-attack-0.png" type="Texture" id=14]
+[ext_resource path="res://gfx/Characters/Slime/slime-attack-1.png" type="Texture" id=15]
+[ext_resource path="res://gfx/Characters/Slime/slime-attack-2.png" type="Texture" id=16]
+[ext_resource path="res://gfx/Characters/Slime/slime-attack-3.png" type="Texture" id=17]
+[ext_resource path="res://gfx/Characters/Slime/slime-attack-4.png" type="Texture" id=18]
+[ext_resource path="res://gfx/Characters/Slime/slime-move-0.png" type="Texture" id=19]
+[ext_resource path="res://gfx/Characters/Slime/slime-move-1.png" type="Texture" id=20]
+[ext_resource path="res://gfx/Characters/Slime/slime-move-2.png" type="Texture" id=21]
+[ext_resource path="res://gfx/Characters/Slime/slime-move-3.png" type="Texture" id=22]
+[ext_resource path="res://Scripts/States/Inputs/SlimeInput.gd" type="Script" id=23]
+[ext_resource path="res://Scripts/States/NPC/Chase.gd" type="Script" id=24]
+[ext_resource path="res://Scripts/States/NPC/Watch.gd" type="Script" id=25]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 7, 4 )
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ) ],
+"loop": true,
+"name": "Hurt",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ) ],
+"loop": true,
+"name": "Die",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ) ],
+"loop": true,
+"name": "Idle",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ) ],
+"loop": true,
+"name": "Chase",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ) ],
+"loop": true,
+"name": "Watch",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 8.07694, 5 )
+
+[sub_resource type="CircleShape2D" id=4]
+radius = 40.0
+
+[node name="Slime" instance=ExtResource( 1 )]
+collision_layer = 4
+collision_mask = 2
+SPEED = 20
+MAX_LIFE = 1
+START_STATE_PATH = NodePath("List States/Watch")
+
+[node name="CharacterShape2D" parent="." index="1"]
+position = Vector2( 0, 2 )
+shape = SubResource( 1 )
+
+[node name="AnimatedSprite" parent="." index="2"]
+scale = Vector2( 0.5, 0.5 )
+frames = SubResource( 2 )
+animation = "Idle"
+frame = 3
+playing = true
+flip_h = true
+
+[node name="InputHandler" parent="." index="3"]
+script = ExtResource( 23 )
+
+[node name="List States" parent="." index="4"]
+editor/display_folded = false
+
+[node name="Chase" type="Node2D" parent="List States" index="2"]
+script = ExtResource( 24 )
+
+[node name="DamageArea" type="Area2D" parent="List States/Chase" index="0"]
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="List States/Chase/DamageArea" index="0"]
+visible = false
+position = Vector2( 6, 1 )
+shape = SubResource( 3 )
+
+[node name="DetectionArea" type="Area2D" parent="List States/Chase" index="1"]
+collision_layer = 4
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="List States/Chase/DetectionArea" index="0"]
+visible = false
+shape = SubResource( 4 )
+
+[node name="Timer" type="Timer" parent="List States/Chase" index="2"]
+wait_time = 1.5
+one_shot = true
+
+[node name="Watch" type="Node2D" parent="List States" index="3"]
+editor/display_folded = true
+script = ExtResource( 25 )
+
+[node name="ground_ahead" type="RayCast2D" parent="List States/Watch" index="0"]
+position = Vector2( 10, 0 )
+enabled = true
+exclude_parent = false
+cast_to = Vector2( 0, 10 )
+collision_mask = 2
+collide_with_areas = true
+
+[node name="wall_ahead" type="RayCast2D" parent="List States/Watch" index="1"]
+position = Vector2( 0, 2 )
+enabled = true
+cast_to = Vector2( 10, 0 )
+collision_mask = 2
+collide_with_areas = true
+[connection signal="body_entered" from="List States/Chase/DamageArea" to="List States/Chase" method="_on_DamageArea_body_entered"]
+[connection signal="body_entered" from="List States/Chase/DetectionArea" to="InputHandler" method="_on_DetectionArea_body_entered"]
+[connection signal="body_exited" from="List States/Chase/DetectionArea" to="InputHandler" method="_on_DetectionArea_body_exited"]

@@ -1,0 +1,7 @@
+{
+    "deno.enable": true,
+    "editor.tabSize": 4,
+    "code-runner.executorMap": {
+        "typescript": "deno run -A",
+    }
+}

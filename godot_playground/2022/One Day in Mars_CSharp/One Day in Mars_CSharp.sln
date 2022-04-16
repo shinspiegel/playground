@@ -1,0 +1,19 @@
+﻿Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "One Day in Mars_CSharp", "One Day in Mars_CSharp.csproj", "{D14A2801-89D7-429B-B5C1-38D2E35768E1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+	Debug|Any CPU = Debug|Any CPU
+	ExportDebug|Any CPU = ExportDebug|Any CPU
+	ExportRelease|Any CPU = ExportRelease|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D14A2801-89D7-429B-B5C1-38D2E35768E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D14A2801-89D7-429B-B5C1-38D2E35768E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D14A2801-89D7-429B-B5C1-38D2E35768E1}.ExportDebug|Any CPU.ActiveCfg = ExportDebug|Any CPU
+		{D14A2801-89D7-429B-B5C1-38D2E35768E1}.ExportDebug|Any CPU.Build.0 = ExportDebug|Any CPU
+		{D14A2801-89D7-429B-B5C1-38D2E35768E1}.ExportRelease|Any CPU.ActiveCfg = ExportRelease|Any CPU
+		{D14A2801-89D7-429B-B5C1-38D2E35768E1}.ExportRelease|Any CPU.Build.0 = ExportRelease|Any CPU
+	EndGlobalSection
+EndGlobal

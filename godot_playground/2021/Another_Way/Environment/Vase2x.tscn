@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Environment/Vase1x.tscn" type="PackedScene" id=1]
+
+[node name="Vase2x" type="Node2D"]
+
+[node name="Vase" parent="." instance=ExtResource( 1 )]
+position = Vector2( -4, 0 )
+
+[node name="Vase2" parent="." instance=ExtResource( 1 )]
+position = Vector2( 4, 0 )

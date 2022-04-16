@@ -1,0 +1,391 @@
+[gd_scene load_steps=22 format=2]
+
+[ext_resource path="res://GameUI/Resources/SmallFont.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Screens/BaseScreen/BaseScreen.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Assets/Graphics/Buttons/ButtonsController5.png" type="Texture" id=3]
+[ext_resource path="res://Screens/Components/ScreenAutoFinish/ScreenAutoFinish.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Screens/StoryScreen/StoryScreen.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Assets/Graphics/Buttons/ButtonsController11.png" type="Texture" id=6]
+[ext_resource path="res://Assets/Graphics/Buttons/ButtonsController2.png" type="Texture" id=7]
+[ext_resource path="res://Assets/Graphics/Buttons/ButtonsController12.png" type="Texture" id=8]
+[ext_resource path="res://Assets/Graphics/Buttons/ButtonsController9.png" type="Texture" id=9]
+[ext_resource path="res://Assets/Graphics/Buttons/ButtonsController14.png" type="Texture" id=10]
+[ext_resource path="res://Assets/Graphics/Buttons/ButtonsController4.png" type="Texture" id=11]
+[ext_resource path="res://Assets/Graphics/Buttons/ButtonsController13.png" type="Texture" id=12]
+[ext_resource path="res://Assets/Graphics/Buttons/ButtonsController8.png" type="Texture" id=13]
+[ext_resource path="res://Assets/Graphics/Buttons/ButtonsController16.png" type="Texture" id=14]
+[ext_resource path="res://Assets/Graphics/Buttons/ButtonsController15.png" type="Texture" id=15]
+[ext_resource path="res://Assets/Graphics/Buttons/ButtonsController3.png" type="Texture" id=16]
+[ext_resource path="res://Assets/Graphics/Buttons/ButtonsController18.png" type="Texture" id=17]
+[ext_resource path="res://Assets/Graphics/Buttons/ButtonsController17.png" type="Texture" id=18]
+[ext_resource path="res://Assets/Graphics/Buttons/ButtonsController7.png" type="Texture" id=19]
+[ext_resource path="res://Assets/Graphics/Buttons/ButtonsController19.png" type="Texture" id=20]
+[ext_resource path="res://Assets/Graphics/Buttons/ButtonsController20.png" type="Texture" id=21]
+
+[node name="Tutorial" instance=ExtResource( 2 )]
+
+[node name="ScreenAutoFinish" parent="." index="0" instance=ExtResource( 4 )]
+nextScene = ExtResource( 5 )
+
+[node name="Title" parent="BaseContainer" index="1"]
+text = "How to play?"
+
+[node name="Spacer2" parent="BaseContainer" index="2"]
+margin_bottom = 48.0
+rect_min_size = Vector2( 0, 4 )
+
+[node name="ButtonsContainer" parent="BaseContainer" index="3"]
+margin_top = 52.0
+margin_bottom = 168.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BaseContainer/ButtonsContainer" index="0"]
+margin_top = 10.0
+margin_right = 256.0
+margin_bottom = 106.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="BaseContainer/ButtonsContainer/VBoxContainer" index="0"]
+margin_right = 256.0
+margin_bottom = 16.0
+
+[node name="Label12" type="Label" parent="BaseContainer/ButtonsContainer/VBoxContainer/HBoxContainer" index="0"]
+margin_top = 4.0
+margin_right = 64.0
+margin_bottom = 12.0
+custom_fonts/font = ExtResource( 1 )
+text = "Keyboard"
+
+[node name="Control4" type="Control" parent="BaseContainer/ButtonsContainer/VBoxContainer/HBoxContainer" index="1"]
+margin_left = 68.0
+margin_right = 118.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 50, 16 )
+
+[node name="Label13" type="Label" parent="BaseContainer/ButtonsContainer/VBoxContainer/HBoxContainer" index="2"]
+margin_left = 122.0
+margin_top = 4.0
+margin_right = 256.0
+margin_bottom = 12.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 1 )
+text = "Controller"
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="BaseContainer/ButtonsContainer/VBoxContainer" index="1"]
+margin_top = 20.0
+margin_right = 256.0
+margin_bottom = 36.0
+
+[node name="TextureRect" type="TextureRect" parent="BaseContainer/ButtonsContainer/VBoxContainer/HBoxContainer5" index="0"]
+margin_right = 16.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 16, 16 )
+texture = ExtResource( 3 )
+expand = true
+stretch_mode = 5
+
+[node name="TextureRect4" type="TextureRect" parent="BaseContainer/ButtonsContainer/VBoxContainer/HBoxContainer5" index="1"]
+margin_left = 20.0
+margin_right = 36.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 16, 16 )
+texture = ExtResource( 11 )
+expand = true
+stretch_mode = 5
+
+[node name="Control" type="Control" parent="BaseContainer/ButtonsContainer/VBoxContainer/HBoxContainer5" index="2"]
+margin_left = 40.0
+margin_right = 56.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 16, 16 )
+
+[node name="TextureRect2" type="TextureRect" parent="BaseContainer/ButtonsContainer/VBoxContainer/HBoxContainer5" index="3"]
+margin_left = 60.0
+margin_right = 76.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 16, 16 )
+texture = ExtResource( 6 )
+expand = true
+stretch_mode = 5
+
+[node name="TextureRect3" type="TextureRect" parent="BaseContainer/ButtonsContainer/VBoxContainer/HBoxContainer5" index="4"]
+margin_left = 80.0
+margin_right = 96.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 16, 16 )
+texture = ExtResource( 8 )
+expand = true
+stretch_mode = 5
+
+[node name="Control2" type="Control" parent="BaseContainer/ButtonsContainer/VBoxContainer/HBoxContainer5" index="5"]
+margin_left = 100.0
+margin_right = 116.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 16, 16 )
+
+[node name="TextureRect5" type="TextureRect" parent="BaseContainer/ButtonsContainer/VBoxContainer/HBoxContainer5" index="6"]
+margin_left = 120.0
+margin_right = 136.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 16, 16 )
+texture = ExtResource( 21 )
+expand = true
+stretch_mode = 5
+
+[node name="Control3" type="Control" parent="BaseContainer/ButtonsContainer/VBoxContainer/HBoxContainer5" index="7"]
+margin_left = 140.0
+margin_right = 156.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 16, 16 )
+
+[node name="Label12" type="Label" parent="BaseContainer/ButtonsContainer/VBoxContainer/HBoxContainer5" index="8"]
+margin_left = 160.0
+margin_top = 4.0
+margin_right = 256.0
+margin_bottom = 12.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 1 )
+text = "Movement"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="BaseContainer/ButtonsContainer/VBoxContainer" index="2"]
+margin_top = 40.0
+margin_right = 256.0
+margin_bottom = 56.0
+
+[node name="TextureRect" type="TextureRect" parent="BaseContainer/ButtonsContainer/VBoxContainer/HBoxContainer2" index="0"]
+margin_right = 16.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 16, 16 )
+texture = ExtResource( 7 )
+expand = true
+stretch_mode = 5
+
+[node name="Control2" type="Control" parent="BaseContainer/ButtonsContainer/VBoxContainer/HBoxContainer2" index="1"]
+margin_left = 20.0
+margin_right = 36.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 16, 16 )
+
+[node name="Control3" type="Control" parent="BaseContainer/ButtonsContainer/VBoxContainer/HBoxContainer2" index="2"]
+margin_left = 40.0
+margin_right = 56.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 16, 16 )
+
+[node name="TextureRect2" type="TextureRect" parent="BaseContainer/ButtonsContainer/VBoxContainer/HBoxContainer2" index="3"]
+margin_left = 60.0
+margin_right = 76.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 16, 16 )
+texture = ExtResource( 12 )
+expand = true
+stretch_mode = 5
+
+[node name="TextureRect3" type="TextureRect" parent="BaseContainer/ButtonsContainer/VBoxContainer/HBoxContainer2" index="4"]
+margin_left = 80.0
+margin_right = 96.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 16, 16 )
+texture = ExtResource( 10 )
+expand = true
+stretch_mode = 5
+
+[node name="Control4" type="Control" parent="BaseContainer/ButtonsContainer/VBoxContainer/HBoxContainer2" index="5"]
+margin_left = 100.0
+margin_right = 116.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 16, 16 )
+
+[node name="TextureRect4" type="TextureRect" parent="BaseContainer/ButtonsContainer/VBoxContainer/HBoxContainer2" index="6"]
+margin_left = 120.0
+margin_right = 136.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 16, 16 )
+texture = ExtResource( 9 )
+expand = true
+stretch_mode = 5
+
+[node name="Control5" type="Control" parent="BaseContainer/ButtonsContainer/VBoxContainer/HBoxContainer2" index="7"]
+margin_left = 140.0
+margin_right = 156.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 16, 16 )
+
+[node name="Label13" type="Label" parent="BaseContainer/ButtonsContainer/VBoxContainer/HBoxContainer2" index="8"]
+margin_left = 160.0
+margin_top = 4.0
+margin_right = 256.0
+margin_bottom = 12.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 1 )
+text = "Jump"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="BaseContainer/ButtonsContainer/VBoxContainer" index="3"]
+margin_top = 60.0
+margin_right = 256.0
+margin_bottom = 76.0
+
+[node name="TextureRect" type="TextureRect" parent="BaseContainer/ButtonsContainer/VBoxContainer/HBoxContainer3" index="0"]
+margin_right = 16.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 16, 16 )
+texture = ExtResource( 16 )
+expand = true
+stretch_mode = 5
+
+[node name="Control5" type="Control" parent="BaseContainer/ButtonsContainer/VBoxContainer/HBoxContainer3" index="1"]
+margin_left = 20.0
+margin_right = 36.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 16, 16 )
+
+[node name="Control6" type="Control" parent="BaseContainer/ButtonsContainer/VBoxContainer/HBoxContainer3" index="2"]
+margin_left = 40.0
+margin_right = 56.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 16, 16 )
+
+[node name="TextureRect2" type="TextureRect" parent="BaseContainer/ButtonsContainer/VBoxContainer/HBoxContainer3" index="3"]
+margin_left = 60.0
+margin_right = 76.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 16, 16 )
+texture = ExtResource( 15 )
+expand = true
+stretch_mode = 5
+
+[node name="TextureRect3" type="TextureRect" parent="BaseContainer/ButtonsContainer/VBoxContainer/HBoxContainer3" index="4"]
+margin_left = 80.0
+margin_right = 96.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 16, 16 )
+texture = ExtResource( 14 )
+expand = true
+stretch_mode = 5
+
+[node name="Control7" type="Control" parent="BaseContainer/ButtonsContainer/VBoxContainer/HBoxContainer3" index="5"]
+margin_left = 100.0
+margin_right = 116.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 16, 16 )
+
+[node name="TextureRect4" type="TextureRect" parent="BaseContainer/ButtonsContainer/VBoxContainer/HBoxContainer3" index="6"]
+margin_left = 120.0
+margin_right = 136.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 16, 16 )
+texture = ExtResource( 13 )
+expand = true
+stretch_mode = 5
+
+[node name="Control8" type="Control" parent="BaseContainer/ButtonsContainer/VBoxContainer/HBoxContainer3" index="7"]
+margin_left = 140.0
+margin_right = 156.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 16, 16 )
+
+[node name="Label14" type="Label" parent="BaseContainer/ButtonsContainer/VBoxContainer/HBoxContainer3" index="8"]
+margin_left = 160.0
+margin_top = 4.0
+margin_right = 256.0
+margin_bottom = 12.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 1 )
+text = "Roll"
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="BaseContainer/ButtonsContainer/VBoxContainer" index="4"]
+margin_top = 80.0
+margin_right = 256.0
+margin_bottom = 96.0
+
+[node name="TextureRect2" type="TextureRect" parent="BaseContainer/ButtonsContainer/VBoxContainer/HBoxContainer4" index="0"]
+margin_right = 16.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 16, 16 )
+texture = ExtResource( 17 )
+expand = true
+stretch_mode = 5
+
+[node name="Control8" type="Control" parent="BaseContainer/ButtonsContainer/VBoxContainer/HBoxContainer4" index="1"]
+margin_left = 20.0
+margin_right = 36.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 16, 16 )
+
+[node name="Control9" type="Control" parent="BaseContainer/ButtonsContainer/VBoxContainer/HBoxContainer4" index="2"]
+margin_left = 40.0
+margin_right = 56.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 16, 16 )
+
+[node name="TextureRect" type="TextureRect" parent="BaseContainer/ButtonsContainer/VBoxContainer/HBoxContainer4" index="3"]
+margin_left = 60.0
+margin_right = 76.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 16, 16 )
+texture = ExtResource( 18 )
+expand = true
+stretch_mode = 5
+
+[node name="TextureRect3" type="TextureRect" parent="BaseContainer/ButtonsContainer/VBoxContainer/HBoxContainer4" index="4"]
+margin_left = 80.0
+margin_right = 96.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 16, 16 )
+texture = ExtResource( 20 )
+expand = true
+stretch_mode = 5
+
+[node name="Control10" type="Control" parent="BaseContainer/ButtonsContainer/VBoxContainer/HBoxContainer4" index="5"]
+margin_left = 100.0
+margin_right = 116.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 16, 16 )
+
+[node name="TextureRect4" type="TextureRect" parent="BaseContainer/ButtonsContainer/VBoxContainer/HBoxContainer4" index="6"]
+margin_left = 120.0
+margin_right = 136.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 16, 16 )
+texture = ExtResource( 19 )
+expand = true
+stretch_mode = 5
+
+[node name="Control11" type="Control" parent="BaseContainer/ButtonsContainer/VBoxContainer/HBoxContainer4" index="7"]
+margin_left = 140.0
+margin_right = 156.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 16, 16 )
+
+[node name="Label15" type="Label" parent="BaseContainer/ButtonsContainer/VBoxContainer/HBoxContainer4" index="8"]
+margin_left = 160.0
+margin_top = 4.0
+margin_right = 256.0
+margin_bottom = 12.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 1 )
+text = "Interact"
+
+[node name="BottomLegend" parent="BaseContainer" index="4"]
+margin_top = 172.0
+size_flags_vertical = 1
+
+[node name="Control" type="Control" parent="BaseContainer/BottomLegend" index="0"]
+margin_right = 256.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 0, 40 )
+
+[node name="Label3" parent="BaseContainer/BottomLegend" index="1"]
+visible = false
+margin_top = 56.0
+margin_bottom = 64.0
+
+[node name="Label" type="Label" parent="BaseContainer/BottomLegend" index="2"]
+margin_top = 44.0
+margin_right = 256.0
+margin_bottom = 52.0
+custom_fonts/font = ExtResource( 1 )
+text = "Press any key to continue"
+align = 1

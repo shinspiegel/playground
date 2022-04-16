@@ -1,0 +1,3 @@
+class  Galo
+    forca
+end

@@ -1,0 +1,10 @@
+[
+  { "data": "Abandoned squat", "range": 2 },
+  { "data": "Middle-class home", "range": 6 },
+  { "data": "Upper-class home", "range": 2 },
+  { "data": "Crowded tenement", "range": 5 },
+  { "data": "Orphanage", "range": 2 },
+  { "data": "Hidden slavers' den", "range": 1 },
+  { "data": "Front for a secret cult", "range": 1 },
+  { "data": "Lavish, guarded mansion", "range": 1 }
+]

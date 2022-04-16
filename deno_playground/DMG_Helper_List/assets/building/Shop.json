@@ -1,0 +1,22 @@
+[
+  { "data": "Pawnshop" },
+  { "data": "Herbs/incense" },
+  { "data": "Fruits/vegetables" },
+  { "data": "Dried meats" },
+  { "data": "Pottery" },
+  { "data": "Undertaker" },
+  { "data": "Books" },
+  { "data": "Moneylender" },
+  { "data": "Weapons/armor" },
+  { "data": "Chandler" },
+  { "data": "Smithy" },
+  { "data": "Carpenter" },
+  { "data": "Weaver" },
+  { "data": "Jeweler" },
+  { "data": "Baker" },
+  { "data": "Mapmaker" },
+  { "data": "Tailor" },
+  { "data": "Ropemaker" },
+  { "data": "Mason" },
+  { "data": "Scribe" }
+]

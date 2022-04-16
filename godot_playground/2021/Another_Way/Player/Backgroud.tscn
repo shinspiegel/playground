@@ -1,0 +1,46 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Assets/tiles and background_foreground/bg_2.png" type="Texture" id=1]
+[ext_resource path="res://Assets/tiles and background_foreground/bg_0.png" type="Texture" id=2]
+[ext_resource path="res://Assets/tiles and background_foreground/bg_1.png" type="Texture" id=3]
+
+[node name="Backgroud" type="Node"]
+
+[node name="BackgroudColor" type="CanvasLayer" parent="."]
+layer = -101
+
+[node name="ColorRect" type="ColorRect" parent="BackgroudColor"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.768627, 0.509804, 0.431373, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+offset = Vector2( 120, -60 )
+transform = Transform2D( 1, 0, 0, 1, 120, -60 )
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 0.3, 0.8 )
+motion_offset = Vector2( 120, 0 )
+motion_mirroring = Vector2( 240, 0 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+texture = ExtResource( 2 )
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 0.6, 0.9 )
+motion_offset = Vector2( 120, 0 )
+motion_mirroring = Vector2( 240, 0 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer2"]
+texture = ExtResource( 3 )
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 0.8, 0.95 )
+motion_offset = Vector2( 120, 0 )
+motion_mirroring = Vector2( 240, 0 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer3"]
+texture = ExtResource( 1 )

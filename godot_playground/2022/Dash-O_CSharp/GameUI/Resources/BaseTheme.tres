@@ -1,0 +1,37 @@
+[gd_resource type="Theme" load_steps=9 format=2]
+
+[ext_resource path="res://GameUI/Resources/BaseFont.tres" type="DynamicFont" id=1]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.329412, 0.329412, 0.329412, 1 )
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.129412, 0.129412, 0.129412, 1 )
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.0941176, 0.0941176, 0.0941176, 1 )
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 0.176471, 0.176471, 0.176471, 1 )
+
+[sub_resource type="StyleBoxFlat" id=6]
+bg_color = Color( 0.00784314, 0.145098, 0.270588, 1 )
+
+[sub_resource type="StyleBoxFlat" id=7]
+bg_color = Color( 0.592157, 0.419608, 0.576471, 1 )
+
+[resource]
+default_font = ExtResource( 1 )
+Button/fonts/font = null
+Button/styles/disabled = SubResource( 1 )
+Button/styles/focus = SubResource( 2 )
+Button/styles/hover = SubResource( 3 )
+Button/styles/normal = SubResource( 4 )
+Button/styles/pressed = SubResource( 5 )
+Label/fonts/font = null
+ProgressBar/fonts/font = null
+ProgressBar/styles/bg = SubResource( 6 )
+ProgressBar/styles/fg = SubResource( 7 )

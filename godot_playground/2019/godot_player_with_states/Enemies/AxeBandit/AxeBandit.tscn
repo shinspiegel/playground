@@ -1,0 +1,224 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://Enemies/BaseEnemy/BaseEnemy.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Enemies/AxeBandit/AxeBandit.gd" type="Script" id=2]
+[ext_resource path="res://Prefabs/DamageNumber/DamageNumber.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Enemies/AxeBandit/Sprite/Axe Bandit Attack.png" type="Texture" id=4]
+[ext_resource path="res://Enemies/AxeBandit/Sprite/Axe Bandit.png" type="Texture" id=5]
+[ext_resource path="res://Enemies/AxeBandit/Sprite/axe bandit run.png" type="Texture" id=6]
+[ext_resource path="res://Enemies/BaseEnemy/States/Idle.gd" type="Script" id=7]
+[ext_resource path="res://Enemies/BaseEnemy/States/Knockback.gd" type="Script" id=8]
+[ext_resource path="res://Enemies/BaseEnemy/States/Die.gd" type="Script" id=9]
+[ext_resource path="res://Enemies/BaseEnemy/States/Attack.gd" type="Script" id=10]
+[ext_resource path="res://Enemies/BaseEnemy/States/Patrol.gd" type="Script" id=11]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 9, 12 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "attack"
+length = 0.7
+loop = true
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ ExtResource( 4 ), ExtResource( 4 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 7, 7 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0, 6 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("../AttackBox/CollisionShape2D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.24, 0.33, 0.59, 0.67 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true, false, true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("../AttackBox/CollisionShape2D:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.24, 0.33, 0.59, 0.67 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( 6, -3 ), Vector2( 6, -3 ), Vector2( 6, -3 ), Vector2( 6, -3 ), Vector2( 6, -3 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("../AttackBox/CollisionShape2D:shape:extents")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.24, 0.33, 0.59, 0.67 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( 17, 12 ), Vector2( 17, 12 ), Vector2( 17, 12 ), Vector2( 17, 12 ), Vector2( 17, 12 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0, 5 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ ExtResource( 5 ), ExtResource( 5 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:hframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 6, 6 ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "run"
+length = 0.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ ExtResource( 6 ), ExtResource( 6 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 8, 8 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0, 7 ]
+}
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 17, 12 )
+
+[node name="AxeBandit" index="0" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+damage_number = ExtResource( 3 )
+
+[node name="CollisionShape2D" parent="." index="0"]
+visible = false
+position = Vector2( 0, 4 )
+shape = SubResource( 1 )
+
+[node name="AnimationPlayer" parent="." index="1"]
+root_node = NodePath("../Sprite")
+anims/attack = SubResource( 2 )
+anims/idle = SubResource( 3 )
+anims/run = SubResource( 4 )
+
+[node name="Sprite" parent="." index="2"]
+texture = ExtResource( 4 )
+hframes = 7
+frame = 3
+
+[node name="AttackBox" parent="." index="4"]
+editor/display_folded = true
+
+[node name="CollisionShape2D" parent="AttackBox" index="0"]
+visible = false
+position = Vector2( 6, -3 )
+shape = SubResource( 5 )
+disabled = true
+
+[node name="Idle" parent="StateMachine" index="0"]
+script = ExtResource( 7 )
+
+[node name="Knockback" parent="StateMachine" index="1"]
+script = ExtResource( 8 )
+
+[node name="Die" parent="StateMachine" index="2"]
+script = ExtResource( 9 )
+
+[node name="Attack" type="Node" parent="StateMachine" index="3"]
+script = ExtResource( 10 )
+
+[node name="Patrol" type="Node" parent="StateMachine" index="4"]
+script = ExtResource( 11 )
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

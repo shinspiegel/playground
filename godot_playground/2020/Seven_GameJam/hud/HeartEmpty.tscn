@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Assets/hud elements/no_hearts_hud.png" type="Texture" id=1]
+
+[node name="HeartIcon" type="TextureRect"]
+margin_right = 16.0
+margin_bottom = 16.0
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}

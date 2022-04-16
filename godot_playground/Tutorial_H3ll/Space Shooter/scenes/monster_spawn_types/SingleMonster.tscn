@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scenes/Enemy.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/monster_spawn_types/BaseEnemyHandler.tscn" type="PackedScene" id=2]
+
+[node name="SingleMonster" instance=ExtResource( 2 )]
+
+[node name="Enemy" parent="." index="0" instance=ExtResource( 1 )]

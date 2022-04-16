@@ -1,0 +1,50 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Entities/Shoot/Shoot.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Assets/Sprites/MagicBolt.png" type="Texture" id=2]
+
+[sub_resource type="Animation" id=1]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "Shoot"
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
+
+[node name="PlayerShoot" instance=ExtResource( 1 )]
+collision_layer = 8
+shootDown = false
+
+[node name="Sprite" parent="." index="0"]
+position = Vector2( 0, 2 )
+texture = ExtResource( 2 )
+hframes = 4
+
+[node name="AnimationPlayer" parent="." index="3"]
+autoplay = "Shoot"
+anims/RESET = SubResource( 1 )
+anims/Shoot = SubResource( 2 )

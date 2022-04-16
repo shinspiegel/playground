@@ -1,0 +1,11 @@
+[
+  { "data": "Quiet, low-key bar", "range": 5 },
+  { "data": "Raucous dive", "range": 4 },
+  { "data": "Thieves' guild hangout", "range": 1 },
+  { "data": "Gathering place for a secret society", "range": 1 },
+  { "data": "Upper-class dining club", "range": 2 },
+  { "data": "Gambling den", "range": 2 },
+  { "data": "Caters to specific race or guild", "range": 2 },
+  { "data": "Members-only club", "range": 18 },
+  { "data": "Brothel", "range": 2 }
+]

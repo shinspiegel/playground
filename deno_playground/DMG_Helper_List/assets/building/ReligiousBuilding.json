@@ -1,0 +1,8 @@
+[
+  { "data": "Temple to a good or neutral deity", "range": 10 },
+  { "data": "Temple to a false deity (run by charlatan priests)", "range": 2 },
+  { "data": "Home of ascetics", "range": 1 },
+  { "data": "Abandoned shrine", "range": 2 },
+  { "data": "Library dedicated to religious study", "range": 2 },
+  { "data": "Hidden shrine to a fiend or an evil deity", "range": 2 }
+]

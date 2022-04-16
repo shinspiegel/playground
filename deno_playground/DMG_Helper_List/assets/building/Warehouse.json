@@ -1,0 +1,10 @@
+[
+  { "data": "Empty or abandoned", "range": 4 },
+  { "data": "Heavily guarded, expensive goods", "range": 2 },
+  { "data": "Cheap goods", "range": 3 },
+  { "data": "Bulk goods", "range": 4 },
+  { "data": "Live animals", "range": 1 },
+  { "data": "Weapons/armor", "range": 12 },
+  { "data": "Goods from a distant land", "range": 2 },
+  { "data": "Secret smuggler's den", "range": 1 }
+]

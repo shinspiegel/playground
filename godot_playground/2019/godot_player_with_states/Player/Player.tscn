@@ -1,0 +1,477 @@
+[gd_scene load_steps=25 format=2]
+
+[ext_resource path="res://Player/Player.gd" type="Script" id=1]
+[ext_resource path="res://Prefabs/DamageNumber/DamageNumber.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Player/PlayerAnimatedSprites.tres" type="SpriteFrames" id=3]
+[ext_resource path="res://Prefabs/Managers/HealthManager.gd" type="Script" id=4]
+[ext_resource path="res://Player/PlayerInputsManager.gd" type="Script" id=5]
+[ext_resource path="res://Player/States/Idle.gd" type="Script" id=6]
+[ext_resource path="res://Player/States/Run.gd" type="Script" id=7]
+[ext_resource path="res://Player/States/Jump.gd" type="Script" id=8]
+[ext_resource path="res://Player/States/Falling.gd" type="Script" id=9]
+[ext_resource path="res://Player/States/Sword.gd" type="Script" id=10]
+[ext_resource path="res://Player/States/Bow.gd" type="Script" id=11]
+[ext_resource path="res://Prefabs/Arrow/Arrow.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Player/States/Knockback.gd" type="Script" id=13]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 10, 14 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "bow"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ "bow", "bow" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AnimatedSprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0, 8 ]
+}
+
+[sub_resource type="Animation" id=3]
+length = 0.3
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ "falling", "falling" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AnimatedSprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0, 1 ]
+}
+
+[sub_resource type="Animation" id=4]
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ "idle", "idle" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AnimatedSprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0, 3 ]
+}
+
+[sub_resource type="Animation" id=5]
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0, 3 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AnimatedSprite:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ "jump", "jump" ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "knockback"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ "hurt", "hurt" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AnimatedSprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0, 2 ]
+}
+
+[sub_resource type="Animation" id=7]
+length = 0.5
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ "run", "run" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AnimatedSprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0, 5 ]
+}
+
+[sub_resource type="Animation" id=8]
+length = 0.3
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ "sword1", "sword1" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AnimatedSprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0, 4 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("AttackBox/CollisionShape2D:shape:extents")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.09, 0.16, 0.23, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( 7.15432, 5.55049 ), Vector2( 7.15432, 5.55049 ), Vector2( 34.5604, 20.0441 ), Vector2( 16.641, 11.0844 ), Vector2( 10.5801, 3.96937 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("AttackBox/CollisionShape2D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.09, 0.16, 0.23, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( -11.9223, 12.9231 ), Vector2( -10.8682, 11.342 ), Vector2( 17.5919, -2.0975 ), Vector2( 9.15929, -12.1113 ), Vector2( -0.0639114, -5.25974 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("AttackBox/CollisionShape2D:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.16, 0.23, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true, true ]
+}
+
+[sub_resource type="Animation" id=9]
+length = 0.4
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ "sword2", "sword2" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AnimatedSprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0, 5 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("AttackBox/CollisionShape2D:shape:extents")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.25, 0.33, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( 8.99896, 5.81401 ), Vector2( 36.1415, 20.5711 ), Vector2( 14.5329, 8.44921 ), Vector2( 14.5329, 8.44921 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("AttackBox/CollisionShape2D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.25, 0.33, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( -0.854469, -1.30694 ), Vector2( 8.10521, 3.96345 ), Vector2( -12.4493, 10.5515 ), Vector2( -14.0305, 8.70681 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("AttackBox/CollisionShape2D:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.25, 0.33, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true, true ]
+}
+
+[sub_resource type="Animation" id=10]
+length = 0.4
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ "sword3", "sword3" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AnimatedSprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0, 5 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("AttackBox/CollisionShape2D:shape:extents")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.17, 0.25, 0.33 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( 10.5801, 7.65865 ), Vector2( 48.527, 13.4561 ), Vector2( 15.8505, 8.18569 ), Vector2( 11.6342, 6.60457 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("AttackBox/CollisionShape2D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.17, 0.25, 0.33, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( 0.463127, 3.69994 ), Vector2( -1.11799, 5.54457 ), Vector2( -9.28711, 10.2879 ), Vector2( -16.6657, 6.33514 ), Vector2( -16.1386, 4.4905 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("AttackBox/CollisionShape2D:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.17, 0.25, 0.33, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, false, true, true ]
+}
+
+[sub_resource type="RectangleShape2D" id=11]
+extents = Vector2( 11.6342, 6.60457 )
+
+[node name="Player" type="KinematicBody2D"]
+z_index = 5
+collision_mask = 2
+script = ExtResource( 1 )
+damage_number = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2( -1, 4 )
+shape = SubResource( 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/bow = SubResource( 2 )
+anims/falling = SubResource( 3 )
+anims/idle = SubResource( 4 )
+anims/jump = SubResource( 5 )
+anims/knockback = SubResource( 6 )
+anims/run = SubResource( 7 )
+anims/sword1 = SubResource( 8 )
+anims/sword2 = SubResource( 9 )
+anims/sword3 = SubResource( 10 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = ExtResource( 3 )
+animation = "hurt"
+frame = 2
+
+[node name="GroundChecker" type="Node2D" parent="."]
+editor/display_folded = true
+visible = false
+
+[node name="GroundFront" type="RayCast2D" parent="GroundChecker"]
+position = Vector2( 10, 0 )
+enabled = true
+cast_to = Vector2( 0, 20 )
+collision_mask = 2
+
+[node name="GroundBack" type="RayCast2D" parent="GroundChecker"]
+position = Vector2( -12, 0 )
+enabled = true
+cast_to = Vector2( 0, 20 )
+collision_mask = 2
+
+[node name="AttackBox" type="Area2D" parent="."]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackBox"]
+position = Vector2( -16.1386, 4.4905 )
+shape = SubResource( 11 )
+disabled = true
+
+[node name="CameraPos" type="Position2D" parent="."]
+editor/display_folded = true
+visible = false
+position = Vector2( 80, 0 )
+
+[node name="Camera2D" type="Camera2D" parent="CameraPos"]
+current = true
+smoothing_enabled = true
+smoothing_speed = 3.0
+drag_margin_top = 0.1
+drag_margin_bottom = 0.1
+editor_draw_limits = true
+editor_draw_drag_margin = true
+
+[node name="HealthManager" type="Node" parent="."]
+script = ExtResource( 4 )
+
+[node name="InputsManager" type="Node" parent="."]
+script = ExtResource( 5 )
+
+[node name="StateMachine" type="Node" parent="."]
+
+[node name="Idle" type="Node" parent="StateMachine"]
+script = ExtResource( 6 )
+
+[node name="Run" type="Node" parent="StateMachine"]
+script = ExtResource( 7 )
+
+[node name="Jump" type="Node" parent="StateMachine"]
+script = ExtResource( 8 )
+
+[node name="Falling" type="Node" parent="StateMachine"]
+script = ExtResource( 9 )
+
+[node name="Sword" type="Node" parent="StateMachine"]
+script = ExtResource( 10 )
+
+[node name="Bow" type="Node" parent="StateMachine"]
+script = ExtResource( 11 )
+Arrow = ExtResource( 12 )
+
+[node name="Knockback" type="Node" parent="StateMachine"]
+script = ExtResource( 13 )
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_signal_animation_finished"]
+[connection signal="body_entered" from="AttackBox" to="StateMachine/Sword" method="_on_AttackBox_body_entered"]

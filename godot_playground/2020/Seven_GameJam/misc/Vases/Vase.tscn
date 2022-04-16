@@ -1,0 +1,41 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Misc/Vases/Vase.gd" type="Script" id=1]
+[ext_resource path="res://Effects/BrokenVaseEffect.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Misc/DropItem.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Assets/miscellaneous sprites/vase.png" type="Texture" id=4]
+[ext_resource path="res://Boxes/Hurtbox.tscn" type="PackedScene" id=5]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 5, 4.5 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 6, 5 )
+
+[node name="Vase" type="StaticBody2D"]
+collision_layer = 8
+collision_mask = 0
+script = ExtResource( 1 )
+brokenEffect = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 4 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 3.5 )
+shape = SubResource( 1 )
+
+[node name="DropItem" parent="." instance=ExtResource( 3 )]
+drop_quality = 4
+
+[node name="Hurtbox" parent="." instance=ExtResource( 5 )]
+collision_layer = 4
+
+[node name="HurtArea" parent="Hurtbox" index="0"]
+position = Vector2( 0, 3 )
+shape = SubResource( 2 )
+
+[connection signal="hit" from="Hurtbox" to="DropItem" method="_on_Hurtbox_hit"]
+[connection signal="hit" from="Hurtbox" to="." method="_on_Hurtbox_hit"]
+
+[editable path="Hurtbox"]

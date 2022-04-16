@@ -1,0 +1,93 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://GameUI/Resources/BaseTheme.tres" type="Theme" id=1]
+[ext_resource path="res://Assets/Fonts/prstart.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://Screens/BaseScreen/BaseScreen.cs" type="Script" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 8
+font_data = ExtResource( 2 )
+
+[node name="BaseScreen" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 1 )
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.07, 0.07, 0.07, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BaseContainer" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 32.0
+margin_top = 8.0
+margin_right = -32.0
+margin_bottom = -8.0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Spacer1" type="Control" parent="BaseContainer"]
+margin_right = 256.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 0, 20 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Label" parent="BaseContainer"]
+margin_top = 24.0
+margin_right = 256.0
+margin_bottom = 40.0
+text = "Title"
+align = 1
+
+[node name="Spacer2" type="Control" parent="BaseContainer"]
+margin_top = 44.0
+margin_right = 256.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 0, 20 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ButtonsContainer" type="VBoxContainer" parent="BaseContainer"]
+margin_top = 68.0
+margin_right = 256.0
+margin_bottom = 144.0
+size_flags_vertical = 3
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BottomLegend" type="VBoxContainer" parent="BaseContainer"]
+margin_top = 148.0
+margin_right = 256.0
+margin_bottom = 224.0
+size_flags_vertical = 3
+alignment = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label3" type="Label" parent="BaseContainer/BottomLegend"]
+margin_top = 68.0
+margin_right = 256.0
+margin_bottom = 76.0
+custom_fonts/font = SubResource( 1 )
+text = "Created by ShinSpiegel - 2022"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}

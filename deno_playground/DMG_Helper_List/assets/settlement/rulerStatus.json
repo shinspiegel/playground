@@ -1,0 +1,14 @@
+[
+  { "data": "Respected, fair, and just", "range": 5 },
+  { "data": "Feared tyrant", "range": 3 },
+  { "data": "Weakling manipulated by others" },
+  { "data": "Illegitimate ruler, simmering civil war" },
+  { "data": "Ruled or controlled by a powerful monster" },
+  { "data": "Mysterious, anonymous cabal" },
+  { "data": "Contested leadership, open fighting" },
+  { "data": "Cabal seized power openly" },
+  { "data": "Doltish lout" },
+  { "data": "On deathbed, claimants compete for power" },
+  { "data": "Iron-willed but respected", "range": 2 },
+  { "data": "Religious leader", "range": 2 }
+]

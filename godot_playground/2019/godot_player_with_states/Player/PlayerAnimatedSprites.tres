@@ -1,0 +1,96 @@
+[gd_resource type="SpriteFrames" load_steps=46 format=2]
+
+[ext_resource path="res://Player/Sprites/adventurer-idle-2-00-1.3.png" type="Texture" id=1]
+[ext_resource path="res://Player/Sprites/adventurer-idle-2-01-1.3.png" type="Texture" id=2]
+[ext_resource path="res://Player/Sprites/adventurer-idle-2-02-1.3.png" type="Texture" id=3]
+[ext_resource path="res://Player/Sprites/adventurer-idle-2-03-1.3.png" type="Texture" id=4]
+[ext_resource path="res://Player/Sprites/adventurer-fall-00-1.3.png" type="Texture" id=5]
+[ext_resource path="res://Player/Sprites/adventurer-fall-01-1.3.png" type="Texture" id=6]
+[ext_resource path="res://Player/Sprites/adventurer-attack3-00-1.3.png" type="Texture" id=7]
+[ext_resource path="res://Player/Sprites/adventurer-attack3-01-1.3.png" type="Texture" id=8]
+[ext_resource path="res://Player/Sprites/adventurer-attack3-02-1.3.png" type="Texture" id=9]
+[ext_resource path="res://Player/Sprites/adventurer-attack3-03-1.3.png" type="Texture" id=10]
+[ext_resource path="res://Player/Sprites/adventurer-attack3-04-1.3.png" type="Texture" id=11]
+[ext_resource path="res://Player/Sprites/adventurer-attack3-05-1.3.png" type="Texture" id=12]
+[ext_resource path="res://Player/Sprites/adventurer-attack2-00-1.3.png" type="Texture" id=13]
+[ext_resource path="res://Player/Sprites/adventurer-attack2-01-1.3.png" type="Texture" id=14]
+[ext_resource path="res://Player/Sprites/adventurer-attack2-02-1.3.png" type="Texture" id=15]
+[ext_resource path="res://Player/Sprites/adventurer-attack2-03-1.3.png" type="Texture" id=16]
+[ext_resource path="res://Player/Sprites/adventurer-attack2-04-1.3.png" type="Texture" id=17]
+[ext_resource path="res://Player/Sprites/adventurer-attack2-05-1.3.png" type="Texture" id=18]
+[ext_resource path="res://Player/Sprites/adventurer-bow-00.png" type="Texture" id=19]
+[ext_resource path="res://Player/Sprites/adventurer-bow-01.png" type="Texture" id=20]
+[ext_resource path="res://Player/Sprites/adventurer-bow-02.png" type="Texture" id=21]
+[ext_resource path="res://Player/Sprites/adventurer-bow-03.png" type="Texture" id=22]
+[ext_resource path="res://Player/Sprites/adventurer-bow-04.png" type="Texture" id=23]
+[ext_resource path="res://Player/Sprites/adventurer-bow-05.png" type="Texture" id=24]
+[ext_resource path="res://Player/Sprites/adventurer-bow-06.png" type="Texture" id=25]
+[ext_resource path="res://Player/Sprites/adventurer-bow-07.png" type="Texture" id=26]
+[ext_resource path="res://Player/Sprites/adventurer-bow-08.png" type="Texture" id=27]
+[ext_resource path="res://Player/Sprites/adventurer-attack1-00-1.3.png" type="Texture" id=28]
+[ext_resource path="res://Player/Sprites/adventurer-attack1-01-1.3.png" type="Texture" id=29]
+[ext_resource path="res://Player/Sprites/adventurer-attack1-02-1.3.png" type="Texture" id=30]
+[ext_resource path="res://Player/Sprites/adventurer-attack1-03-1.3.png" type="Texture" id=31]
+[ext_resource path="res://Player/Sprites/adventurer-attack1-04-1.3.png" type="Texture" id=32]
+[ext_resource path="res://Player/Sprites/adventurer-jump-00-1.3.png" type="Texture" id=33]
+[ext_resource path="res://Player/Sprites/adventurer-jump-01-1.3.png" type="Texture" id=34]
+[ext_resource path="res://Player/Sprites/adventurer-jump-02-1.3.png" type="Texture" id=35]
+[ext_resource path="res://Player/Sprites/adventurer-jump-03-1.3.png" type="Texture" id=36]
+[ext_resource path="res://Player/Sprites/adventurer-run3-00.png" type="Texture" id=37]
+[ext_resource path="res://Player/Sprites/adventurer-run3-01.png" type="Texture" id=38]
+[ext_resource path="res://Player/Sprites/adventurer-run3-02.png" type="Texture" id=39]
+[ext_resource path="res://Player/Sprites/adventurer-run3-03.png" type="Texture" id=40]
+[ext_resource path="res://Player/Sprites/adventurer-run3-04.png" type="Texture" id=41]
+[ext_resource path="res://Player/Sprites/adventurer-run3-05.png" type="Texture" id=42]
+[ext_resource path="res://Player/Sprites/adventurer-hurt-00-1.3.png" type="Texture" id=43]
+[ext_resource path="res://Player/Sprites/adventurer-hurt-01-1.3.png" type="Texture" id=44]
+[ext_resource path="res://Player/Sprites/adventurer-hurt-02-1.3.png" type="Texture" id=45]
+
+[resource]
+animations = [ {
+"frames": [ ExtResource( 1 ), ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "idle",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 5 ), ExtResource( 6 ) ],
+"loop": true,
+"name": "falling",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ) ],
+"loop": true,
+"name": "sword3",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ) ],
+"loop": true,
+"name": "sword2",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 24 ), ExtResource( 25 ), ExtResource( 26 ), ExtResource( 27 ) ],
+"loop": true,
+"name": "bow",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 28 ), ExtResource( 29 ), ExtResource( 30 ), ExtResource( 31 ), ExtResource( 32 ) ],
+"loop": true,
+"name": "sword1",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 33 ), ExtResource( 34 ), ExtResource( 35 ), ExtResource( 36 ) ],
+"loop": true,
+"name": "jump",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 37 ), ExtResource( 38 ), ExtResource( 39 ), ExtResource( 40 ), ExtResource( 41 ), ExtResource( 42 ) ],
+"loop": true,
+"name": "run",
+"speed": 8.0
+}, {
+"frames": [ ExtResource( 43 ), ExtResource( 44 ), ExtResource( 45 ) ],
+"loop": true,
+"name": "hurt",
+"speed": 5.0
+} ]
+

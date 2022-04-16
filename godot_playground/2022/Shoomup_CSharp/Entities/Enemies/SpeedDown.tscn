@@ -1,0 +1,35 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Entities/EntityInput/EntityInput.cs" type="Script" id=1]
+[ext_resource path="res://Entities/Enemies/BaseEnemy.tscn" type="PackedScene" id=2]
+
+[sub_resource type="Resource" id=1]
+script = ExtResource( 1 )
+direction = Vector2( 0, 1 )
+shoot = false
+holdFor = 0.3
+
+[sub_resource type="Resource" id=4]
+script = ExtResource( 1 )
+direction = Vector2( 0, 0 )
+shoot = false
+holdFor = 0.3
+
+[sub_resource type="Resource" id=5]
+script = ExtResource( 1 )
+direction = Vector2( 0, 1 )
+shoot = false
+holdFor = 1.0
+
+[sub_resource type="CircleShape2D" id=3]
+radius = 5.0
+
+[node name="SpeedDown" instance=ExtResource( 2 )]
+downSpeed = 80
+listInputs = [ SubResource( 1 ), SubResource( 4 ), SubResource( 5 ) ]
+
+[node name="ShootColdown" parent="." index="0"]
+wait_time = 2.0
+
+[node name="CollisionShape2D" parent="HurtBox" index="0"]
+shape = SubResource( 3 )

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://Entities/Player/Resources/Movement.cs" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+speed = 140
+jumpForce = 240
+gravity = 350
+acceleration = 0.1
+friction = 0.25
+airFriction = 0.025
+facingDirection = 1
+enableFlipOnMove = true
+motion = Vector2( 0, 0 )

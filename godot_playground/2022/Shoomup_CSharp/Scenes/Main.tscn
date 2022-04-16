@@ -1,0 +1,48 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Entities/Player/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/Main.cs" type="Script" id=2]
+[ext_resource path="res://UI/UI.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Entities/Spawner/Spawner.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/Background.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Assets/Audio/backgroundMusic.ogg" type="AudioStream" id=6]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 10, 100 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 10, 100 )
+
+[node name="Main" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="UI" parent="." instance=ExtResource( 3 )]
+
+[node name="Background" parent="." instance=ExtResource( 5 )]
+
+[node name="SideWalls" type="StaticBody2D" parent="."]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SideWalls"]
+position = Vector2( -10, 90 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="SideWalls"]
+position = Vector2( 130, 90 )
+shape = SubResource( 2 )
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 60, 218 )
+
+[node name="StartPlayer" type="Position2D" parent="."]
+position = Vector2( 60, 150 )
+
+[node name="Spawner" parent="." instance=ExtResource( 4 )]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+volume_db = -25.0
+autoplay = true
+
+[connection signal="EntityDied" from="Player" to="." method="OnPlayerDied"]

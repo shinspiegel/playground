@@ -1,0 +1,18 @@
+# Import cache
+ .import/
+ 
+ # Binaries
+ bin/
+ lib/
+ 
+ # Keep files
+ build/html/*
+ !build/html/touch
+ build/linux/*
+ !build/linux/touch
+ build/macos/*
+ !build/macos/touch
+ build/win/*
+ !build/win/touch
+ 
+

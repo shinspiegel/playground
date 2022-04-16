@@ -1,0 +1,46 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://entities/Actor/Actor.tscn" type="PackedScene" id=1]
+[ext_resource path="res://entities/Enemy/Runner_Cityzen.png" type="Texture" id=2]
+[ext_resource path="res://entities/Enemy/Enemy.gd" type="Script" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 5.5, 13 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 30, 20 )
+
+[node name="Runner" instance=ExtResource( 1 )]
+collision_layer = 2
+script = ExtResource( 3 )
+SPEED = 30
+
+[node name="Sprite" parent="." index="0"]
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2( -0.5, 3 )
+shape = SubResource( 1 )
+
+[node name="GroudRay" type="RayCast2D" parent="." index="2"]
+position = Vector2( 5, 16 )
+enabled = true
+cast_to = Vector2( 0, 3 )
+collision_mask = 4
+
+[node name="FrontRay" type="RayCast2D" parent="." index="3"]
+position = Vector2( 5, 5 )
+enabled = true
+cast_to = Vector2( 3, 0 )
+collision_mask = 4
+
+[node name="Vision" type="Area2D" parent="." index="4"]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Vision" index="0"]
+position = Vector2( 35, -4 )
+shape = SubResource( 2 )
+
+[node name="RunCooldown" type="Timer" parent="." index="5"]
+wait_time = 5.0
+one_shot = true

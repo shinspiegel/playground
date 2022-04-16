@@ -1,0 +1,201 @@
+[gd_scene load_steps=22 format=2]
+
+[ext_resource path="res://Entities/Player/States/Move.cs" type="Script" id=1]
+[ext_resource path="res://Entities/Player/Player.cs" type="Script" id=2]
+[ext_resource path="res://Assets/Graphics/MainCharacter.png" type="Texture" id=3]
+[ext_resource path="res://Entities/Player/Input/PlayerInput.cs" type="Script" id=4]
+[ext_resource path="res://Entities/StateManager/StateManager.cs" type="Script" id=5]
+[ext_resource path="res://Entities/Player/States/Idle.cs" type="Script" id=6]
+[ext_resource path="res://Entities/Player/States/WallSlide.cs" type="Script" id=7]
+[ext_resource path="res://Entities/Boxes/HurtBox.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Entities/Player/States/Hit.cs" type="Script" id=9]
+[ext_resource path="res://Entities/Pickable/PickableRange.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Assets/Graphics/optional_gradient.png" type="Texture" id=11]
+[ext_resource path="res://Assets/Sounds/jump.wav" type="AudioStream" id=12]
+[ext_resource path="res://Assets/Sounds/hurt.wav" type="AudioStream" id=13]
+
+[sub_resource type="Animation" id=8]
+resource_name = "Hit"
+length = 0.15
+loop = true
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 10, 11, 12 ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "Idle"
+length = 0.5
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4 ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "Run"
+length = 0.3
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 5, 6, 7 ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "WallSlide"
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 8, 9 ]
+}
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 4, 8 )
+
+[sub_resource type="ParticlesMaterial" id=6]
+emission_shape = 2
+emission_box_extents = Vector3( 2, 8, 1 )
+flag_disable_z = true
+direction = Vector3( -1, -1, 0 )
+gravity = Vector3( 0, -10, 0 )
+initial_velocity = 10.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+color = Color( 1, 0.909804, 0.839216, 1 )
+
+[sub_resource type="RectangleShape2D" id=9]
+extents = Vector2( 5, 9 )
+
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 3, 7.5 )
+
+[node name="Player" type="KinematicBody2D"]
+collision_mask = 20
+script = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 3 )
+hframes = 13
+
+[node name="Light2D" type="Light2D" parent="."]
+texture = ExtResource( 11 )
+texture_scale = 0.5
+energy = 0.5
+shadow_enabled = true
+shadow_filter = 5
+shadow_filter_smooth = 20.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Hit = SubResource( 8 )
+anims/Idle = SubResource( 2 )
+anims/Run = SubResource( 3 )
+anims/WallSlide = SubResource( 5 )
+
+[node name="PlayerInput" type="Node2D" parent="."]
+script = ExtResource( 4 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="CoyoteJumpTimer" type="Timer" parent="."]
+wait_time = 0.15
+one_shot = true
+
+[node name="WallJumpCheck" type="RayCast2D" parent="."]
+position = Vector2( 4, 0 )
+enabled = true
+cast_to = Vector2( 1, 0 )
+collision_mask = 4
+
+[node name="FloorCheck" type="RayCast2D" parent="."]
+position = Vector2( 0, 8 )
+enabled = true
+cast_to = Vector2( 0, 1 )
+collision_mask = 4
+
+[node name="Sounds" type="Node" parent="."]
+
+[node name="AudioJump" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource( 12 )
+
+[node name="AudioHurt" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource( 13 )
+
+[node name="CameraPos" type="Position2D" parent="."]
+position = Vector2( 10, 0 )
+
+[node name="CameraRig" type="RemoteTransform2D" parent="CameraPos"]
+
+[node name="WallPaticles" type="Particles2D" parent="."]
+position = Vector2( 3, 0 )
+emitting = false
+local_coords = false
+process_material = SubResource( 6 )
+
+[node name="PickableRange" parent="." instance=ExtResource( 10 )]
+
+[node name="CollisionShape2D" parent="PickableRange" index="0"]
+shape = SubResource( 9 )
+
+[node name="HurtBox" parent="." instance=ExtResource( 8 )]
+collision_mask = 10
+
+[node name="CollisionShape2D" parent="HurtBox" index="0"]
+position = Vector2( 0, 0.5 )
+shape = SubResource( 7 )
+
+[node name="Coldown" parent="HurtBox" index="1"]
+wait_time = 0.2
+
+[node name="StateManager" type="Node2D" parent="."]
+script = ExtResource( 5 )
+initialStatePath = NodePath("Idle")
+
+[node name="Idle" type="Node2D" parent="StateManager"]
+script = ExtResource( 6 )
+
+[node name="Run" type="Node2D" parent="StateManager"]
+script = ExtResource( 1 )
+
+[node name="WallSlide" type="Node2D" parent="StateManager"]
+script = ExtResource( 7 )
+
+[node name="Hit" type="Node2D" parent="StateManager"]
+script = ExtResource( 9 )
+
+[editable path="PickableRange"]
+[editable path="HurtBox"]

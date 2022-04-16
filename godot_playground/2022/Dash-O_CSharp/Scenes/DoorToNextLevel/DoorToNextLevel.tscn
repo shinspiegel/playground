@@ -1,0 +1,81 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Scenes/Interactable/Interactable.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Assets/Graphics/Buttons/ButtonsController7.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Graphics/Tileset/LevelDoor.png" type="Texture" id=3]
+[ext_resource path="res://Scenes/DoorToNextLevel/DoorToNextLevel.cs" type="Script" id=4]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 24, 24 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "Locked"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "Open"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 2, 3, 4, 5, 6, 7, 8, 9 ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "Unlocked"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 1 ]
+}
+
+[node name="DoorToNextLevel" type="Sprite"]
+texture = ExtResource( 3 )
+hframes = 10
+script = ExtResource( 4 )
+
+[node name="Interactable" parent="." instance=ExtResource( 1 )]
+position = Vector2( 0, -12 )
+
+[node name="CollisionShape2D" parent="Interactable" index="0"]
+position = Vector2( 0, 12 )
+shape = SubResource( 1 )
+
+[node name="Sprite" parent="Interactable" index="1"]
+modulate = Color( 1, 1, 1, 1 )
+position = Vector2( 0, -32 )
+texture = ExtResource( 2 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Locked = SubResource( 2 )
+anims/Open = SubResource( 3 )
+anims/Unlocked = SubResource( 4 )
+
+[editable path="Interactable"]

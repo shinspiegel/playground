@@ -1,0 +1,64 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Characters/Character.gd" type="Script" id=1]
+[ext_resource path="res://Characters/Input/InputHandler.gd" type="Script" id=2]
+[ext_resource path="res://Characters/State/Idle.gd" type="Script" id=3]
+[ext_resource path="res://Characters/StateMachine.gd" type="Script" id=4]
+[ext_resource path="res://Characters/State/Hit.gd" type="Script" id=5]
+[ext_resource path="res://Characters/State/Die.gd" type="Script" id=6]
+[ext_resource path="res://Characters/Boxes/Hurtbox.tscn" type="PackedScene" id=7]
+[ext_resource path="res://hud/ThemeData.tres" type="Theme" id=8]
+[ext_resource path="res://Characters/DebugInfo.gd" type="Script" id=9]
+
+[node name="Character" type="KinematicBody2D"]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource( 1 )
+
+[node name="DebugInfo" type="Label" parent="."]
+margin_left = -100.0
+margin_top = -30.0
+margin_right = 100.0
+margin_bottom = -16.0
+theme = ExtResource( 8 )
+text = "DEBUG"
+align = 1
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Collisor" type="CollisionShape2D" parent="."]
+
+[node name="Sprite" type="Sprite" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="Hurtbox" parent="." instance=ExtResource( 7 )]
+collision_layer = 0
+collision_mask = 0
+
+[node name="InputHandler" type="Node2D" parent="."]
+script = ExtResource( 2 )
+
+[node name="CameraGrip" type="RemoteTransform2D" parent="."]
+
+[node name="StateMachine" type="Node2D" parent="."]
+script = ExtResource( 4 )
+
+[node name="Idle" type="Node2D" parent="StateMachine"]
+script = ExtResource( 3 )
+
+[node name="Hit" type="Node2D" parent="StateMachine"]
+script = ExtResource( 5 )
+
+[node name="Die" type="Node2D" parent="StateMachine"]
+script = ExtResource( 6 )
+
+[connection signal="die" from="." to="StateMachine" method="_on_Character_die"]
+[connection signal="take_hit" from="." to="StateMachine" method="_on_Character_take_hit"]
+[connection signal="animation_finished" from="AnimationPlayer" to="StateMachine" method="_on_AnimationPlayer_animation_finished"]
+[connection signal="hit" from="Hurtbox" to="." method="_on_Hurtbox_hit"]
+[connection signal="state_changed" from="StateMachine" to="DebugInfo" method="_on_StateMachine_state_changed"]
+
+[editable path="Hurtbox"]

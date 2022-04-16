@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Scenes/Pickables/Pickable.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/Pickables/Heart.gd" type="Script" id=2]
+[ext_resource path="res://gfx/interface/HealthHeart.png" type="Texture" id=3]
+
+[sub_resource type="CircleShape2D" id=3]
+radius = 9.22193
+
+[sub_resource type="Animation" id=2]
+resource_name = "FloatingHeart"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5, 2 ),
+"transitions": PoolRealArray( 1, 0.757858, 1.1487, 0.707107, 0.707107 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 5, -3 ), Vector2( 0, -5 ), Vector2( -5, -3 ), Vector2( 0, 0 ) ]
+}
+
+[node name="Heart" index="0" instance=ExtResource( 1 )]
+position = Vector2( -0.221927, -0.110963 )
+script = ExtResource( 2 )
+
+[node name="CollisionShape2D" parent="." index="0"]
+position = Vector2( 0, -3 )
+shape = SubResource( 3 )
+
+[node name="Sprite" parent="." index="1"]
+scale = Vector2( 0.4, 0.4 )
+texture = ExtResource( 3 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="2"]
+autoplay = "FloatingHeart"
+anims/FloatingHeart = SubResource( 2 )

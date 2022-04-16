@@ -1,0 +1,6 @@
+{
+    "imports": {
+        "aleph": "https://deno.land/x/aleph/mod.ts",
+        "react": "https://esm.sh/react"
+    }
+}

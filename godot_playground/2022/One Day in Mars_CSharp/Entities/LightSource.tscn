@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Entities/LightSource.cs" type="Script" id=1]
+[ext_resource path="res://Assets/art/lightSource.png" type="Texture" id=2]
+[ext_resource path="res://Assets/art/Crystal.png" type="Texture" id=3]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 200.0
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 16.0
+
+[node name="LightSource" type="Area2D"]
+collision_layer = 8
+collision_mask = 0
+script = ExtResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource( 1 )
+
+[node name="Light2D" type="Light2D" parent="."]
+scale = Vector2( 6.25, 6.25 )
+texture = ExtResource( 2 )
+color = Color( 0.956863, 0.380392, 0.0901961, 1 )
+energy = 3.56
+shadow_enabled = true
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 3 )
+hframes = 2
+
+[node name="CheckpointDetector" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CheckpointDetector"]
+visible = false
+shape = SubResource( 2 )
+
+[connection signal="body_entered" from="CheckpointDetector" to="." method="OnBodyEntered"]

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://Entities/Player/Resources/StatesList.cs" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+run = "Run"
+idle = "Idle"
+hit = "Hit"
+jump = "Jump"
+falling = "Falling"
+roll = "Roll"
+die = "Die"

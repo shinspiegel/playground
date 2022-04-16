@@ -1,0 +1,24 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  port: 5432
+  host: localhost
+
+development:
+  <<: *default
+  database: youtube_crash_course
+  username: root
+  password: password
+
+test:
+  <<: *default
+  database: youtube_crash_course
+  username: root
+  password: password
+
+production:
+  <<: *default
+  database: youtube_crash_course_production
+  username: youtube_crash_course
+  password: <%= ENV['YOUTUBE_CRASH_COURSE_DATABASE_PASSWORD'] %>

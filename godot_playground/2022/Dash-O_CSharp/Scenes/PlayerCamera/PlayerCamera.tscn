@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Scenes/PlayerCamera/PlayerCamera.cs" type="Script" id=1]
+
+[node name="PlayerCamera2D" type="Camera2D"]
+smoothing_enabled = true
+drag_margin_top = 0.8
+drag_margin_bottom = 0.8
+script = ExtResource( 1 )

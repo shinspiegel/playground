@@ -1,0 +1,76 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://gfx/tileset/TempleTileSet.tres" type="TileSet" id=1]
+[ext_resource path="res://Scenes/Characters/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/Characters/Slime.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Characters/Guardian.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/Characters/EyeMonster.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/Characters/Caster.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scripts/SHOW_FPS_ON_TITLE.gd" type="Script" id=7]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Node2D
+
+onready var Character := get_owner()
+
+func enter():
+	Character.ANIM.play(self.name)
+	Character.motion.y = -150
+
+func exit():
+	return
+
+func state_update(delta):
+	Character.motion.x = 0
+	return
+
+func _on_AnimatedSprite_animation_finished():
+	if Character.current_state.name == \"Hurt\":
+		Character.state_manager(Character.last_state)
+"
+
+[node name="Node2D" type="Node"]
+
+[node name="Ground" type="TileMap" parent="."]
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 16, 16 )
+collision_layer = 2
+collision_mask = 0
+format = 1
+tile_data = PoolIntArray( 65545, 3, 0, 65546, 3, 589826, 65547, 3, 1, 65548, 3, 589825, 65549, 3, 589825, 65550, 3, 589825, 65551, 3, 589826, 65552, 3, 589825, 65553, 3, 2, 196589, 3, 0, 196590, 3, 2, 131072, 3, 0, 131073, 3, 2, 131081, 3, 458755, 131082, 3, 65537, 131083, 3, 327685, 131084, 3, 262148, 131085, 3, 65537, 131086, 3, 65537, 131087, 3, 327686, 131088, 3, 458758, 131089, 3, 524288, 262125, 3, 65536, 262126, 3, 589824, 262127, 3, 1, 262128, 3, 589826, 262129, 3, 589826, 262130, 3, 589826, 262131, 3, 589826, 262132, 3, 589825, 262133, 3, 589826, 262134, 3, 589826, 262135, 3, 1, 262136, 3, 589826, 262137, 3, 1, 262138, 3, 589826, 262139, 3, 589826, 262140, 3, 589826, 262141, 3, 1, 262142, 3, 589825, 262143, 3, 589825, 196608, 3, 589827, 196609, 3, 524288, 196615, 3, 0, 196616, 3, 1, 196617, 3, 589827, 196618, 3, 65537, 196619, 3, 262148, 196620, 3, 327685, 196621, 3, 327685, 196622, 3, 65537, 196623, 3, 262148, 196624, 3, 327686, 196625, 3, 589824, 196626, 3, 589825, 196627, 3, 589825, 196628, 3, 1, 196629, 3, 589825, 196630, 3, 589826, 196631, 3, 1, 196632, 3, 1, 196633, 3, 589826, 196634, 3, 589825, 196635, 3, 1, 196636, 3, 589825, 196637, 3, 1, 196638, 3, 589826, 196639, 3, 589825, 196640, 3, 589826, 196641, 3, 1, 196642, 3, 589826, 196643, 3, 589825, 196644, 3, 1, 196645, 3, 2, 327661, 3, 524291, 327662, 3, 262150, 327663, 3, 262148, 327664, 3, 65537, 327665, 3, 262148, 327666, 3, 65537, 327667, 3, 262150, 327668, 3, 327686, 327669, 3, 262150, 327670, 3, 65537, 327671, 3, 393221, 327672, 3, 65537, 327673, 3, 327686, 327674, 3, 65537, 327675, 3, 65537, 327676, 3, 262150, 327677, 3, 458758, 327678, 3, 262148, 327679, 3, 262148, 262144, 3, 65537, 262145, 3, 589824, 262146, 3, 1, 262147, 3, 589825, 262148, 3, 589825, 262149, 3, 589826, 262150, 3, 589826, 262151, 3, 589827, 262152, 3, 393222, 262153, 3, 458758, 262154, 3, 262149, 262155, 3, 65537, 262156, 3, 393222, 262157, 3, 262148, 262158, 3, 65537, 262159, 3, 262148, 262160, 3, 393221, 262161, 3, 65537, 262162, 3, 262150, 262163, 3, 262148, 262164, 3, 262148, 262165, 3, 393222, 262166, 3, 65537, 262167, 3, 262150, 262168, 3, 262150, 262169, 3, 262148, 262170, 3, 65537, 262171, 3, 327686, 262172, 3, 262148, 262173, 3, 262148, 262174, 3, 327686, 262175, 3, 262148, 262176, 3, 65537, 262177, 3, 458757, 262178, 3, 65537, 262179, 3, 65537, 262180, 3, 262150, 262181, 3, 524288, 393197, 3, 131072, 393198, 3, 131073, 393199, 3, 393218, 393200, 3, 393217, 393201, 3, 131073, 393202, 3, 131073, 393203, 3, 393217, 393204, 3, 393217, 393205, 3, 131073, 393206, 3, 131073, 393207, 3, 393217, 393208, 3, 393218, 393209, 3, 131073, 393210, 3, 131073, 393211, 3, 393218, 393212, 3, 131073, 393213, 3, 131073, 393214, 3, 393217, 393215, 3, 131073, 327680, 3, 131073, 327681, 3, 131073, 327682, 3, 131073, 327683, 3, 131073, 327684, 3, 393217, 327685, 3, 131073, 327686, 3, 393217, 327687, 3, 131073, 327688, 3, 393218, 327689, 3, 393217, 327690, 3, 393218, 327691, 3, 393217, 327692, 3, 393218, 327693, 3, 131073, 327694, 3, 131073, 327695, 3, 131073, 327696, 3, 393218, 327697, 3, 131073, 327698, 3, 393217, 327699, 3, 393218, 327700, 3, 131073, 327701, 3, 131073, 327702, 3, 393218, 327703, 3, 131073, 327704, 3, 393217, 327705, 3, 393218, 327706, 3, 131073, 327707, 3, 393218, 327708, 3, 131073, 327709, 3, 393217, 327710, 3, 131073, 327711, 3, 393218, 327712, 3, 393217, 327713, 3, 393217, 327714, 3, 131073, 327715, 3, 393218, 327716, 3, 393218, 327717, 3, 131074 )
+
+[node name="Player" parent="." instance=ExtResource( 2 )]
+editor/display_folded = true
+position = Vector2( -135.959, 31.8489 )
+
+[node name="AnimatedSprite" parent="Player" index="4"]
+frame = 0
+
+[node name="List States" parent="Player" index="6"]
+editor/display_folded = false
+
+[node name="Hurt" parent="Player/List States" index="1"]
+script = SubResource( 1 )
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="Slime" parent="Enemies" instance=ExtResource( 3 )]
+position = Vector2( 367.607, 29.7669 )
+
+[node name="Guardian" parent="Enemies" instance=ExtResource( 4 )]
+position = Vector2( -21.2243, 30.9769 )
+
+[node name="EyeMonster" parent="Enemies" instance=ExtResource( 5 )]
+position = Vector2( 109.723, -32.0164 )
+
+[node name="EyeMonster2" parent="Enemies" instance=ExtResource( 5 )]
+position = Vector2( 287.99, -45.8521 )
+
+[node name="Caster" parent="Enemies" instance=ExtResource( 6 )]
+position = Vector2( 244.562, -5.72423 )
+
+[node name="SHOW_FPS_ON_TITLE" type="Node" parent="."]
+script = ExtResource( 7 )
+[connection signal="animation_finished" from="Player/AnimatedSprite" to="Player/List States/Hurt" method="_on_AnimatedSprite_animation_finished"]
+
+[editable path="Player"]

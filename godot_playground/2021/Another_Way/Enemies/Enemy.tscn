@@ -1,0 +1,48 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Box/Hitbox.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Box/Hurtbox.tscn" type="PackedScene" id=3]
+
+[node name="Enemy" type="KinematicBody2D"]
+collision_layer = 8
+collision_mask = 2
+
+[node name="Sprite" type="Sprite" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="Collisor" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 1 )
+
+[node name="Hurtbox" parent="." instance=ExtResource( 3 )]
+collision_layer = 8
+collision_mask = 0
+
+[node name="Collisor" parent="Hurtbox" index="0"]
+position = Vector2( 0, 1 )
+
+[node name="InvenciblityTimer" parent="Hurtbox" index="1"]
+wait_time = 0.5
+
+[node name="Hitbox" parent="." instance=ExtResource( 1 )]
+collision_layer = 0
+
+[node name="Senses" type="Node2D" parent="."]
+
+[node name="FrontFloor" type="RayCast2D" parent="Senses"]
+position = Vector2( 7, 9 )
+enabled = true
+cast_to = Vector2( 0, 1 )
+collision_mask = 2
+
+[node name="RearFloor" type="RayCast2D" parent="Senses"]
+position = Vector2( -7, 9 )
+enabled = true
+cast_to = Vector2( 0, 1 )
+collision_mask = 2
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
+[connection signal="hit" from="Hurtbox" to="." method="_on_Hurtbox_hit"]
+
+[editable path="Hurtbox"]
+[editable path="Hitbox"]

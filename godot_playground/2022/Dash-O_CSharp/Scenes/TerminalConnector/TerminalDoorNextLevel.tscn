@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Scenes/TerminalConnector/TerminalConnector.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/DoorToNextLevel/DoorToNextLevel.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/TerminalWithCommands/TerminalWithCommands.tscn" type="PackedScene" id=3]
+
+[node name="TerminalDoorNextLevel" instance=ExtResource( 1 )]
+terminalPath = NodePath("TerminalWithCommands")
+connectionPath = NodePath("DoorToNextLevel")
+callMethod = "Unlock"
+endSignal = ""
+
+[node name="TerminalWithCommands" parent="." index="0" instance=ExtResource( 3 )]
+position = Vector2( -36, -12 )
+
+[node name="DoorToNextLevel" parent="." index="1" instance=ExtResource( 2 )]
+position = Vector2( 48, -24 )

@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Misc/Vases/Vase.tscn" type="PackedScene" id=3]
+
+[node name="TripleVase" type="Node2D"]
+
+[node name="Vase" parent="." instance=ExtResource( 3 )]
+position = Vector2( -8, -8 )
+
+[node name="Vase3" parent="." instance=ExtResource( 3 )]
+position = Vector2( 8, -8 )
+
+[node name="Vase2" parent="." instance=ExtResource( 3 )]
+position = Vector2( 0, -8 )

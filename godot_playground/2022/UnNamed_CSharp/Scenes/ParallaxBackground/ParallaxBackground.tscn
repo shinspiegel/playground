@@ -1,0 +1,58 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scenes/ParallaxBackground/ParallaxBackground.cs" type="Script" id=1]
+[ext_resource path="res://Assets/Graphics/Background.png" type="Texture" id=2]
+
+[node name="ParallaxBackground" type="ParallaxBackground"]
+scroll_base_offset = Vector2( 0, -80 )
+script = ExtResource( 1 )
+deep = 1.0
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.419608, 0.439216, 0.360784, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ParallaxLayer4" type="ParallaxLayer" parent="."]
+motion_scale = Vector2( 1, 1.05 )
+motion_mirroring = Vector2( 256, 0 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxLayer4"]
+texture = ExtResource( 2 )
+centered = false
+vframes = 4
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="."]
+motion_scale = Vector2( 0.3, 1.03 )
+motion_mirroring = Vector2( 256, 0 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxLayer3"]
+texture = ExtResource( 2 )
+centered = false
+vframes = 4
+frame = 1
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="."]
+motion_scale = Vector2( 0.5, 1.01 )
+motion_mirroring = Vector2( 256, 0 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxLayer2"]
+texture = ExtResource( 2 )
+centered = false
+vframes = 4
+frame = 2
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="."]
+motion_scale = Vector2( 0.9, 1 )
+motion_mirroring = Vector2( 256, 0 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxLayer"]
+texture = ExtResource( 2 )
+centered = false
+vframes = 4
+frame = 3

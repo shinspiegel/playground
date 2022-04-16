@@ -1,0 +1,56 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Scenes/Characters/Character.tscn" type="PackedScene" id=1]
+[ext_resource path="res://gfx/Characters/EyeMonster/idle/eye-monster-idle_01.png" type="Texture" id=2]
+[ext_resource path="res://gfx/Characters/EyeMonster/idle/eye-monster-idle_02.png" type="Texture" id=3]
+[ext_resource path="res://gfx/Characters/EyeMonster/idle/eye-monster-idle_03.png" type="Texture" id=4]
+[ext_resource path="res://gfx/Characters/EyeMonster/idle/eye-monster-idle_04.png" type="Texture" id=5]
+[ext_resource path="res://Flyby.gd" type="Script" id=6]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 7, 5 )
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ) ],
+"loop": true,
+"name": "Flyby",
+"speed": 8.0
+} ]
+
+[sub_resource type="CircleShape2D" id=3]
+radius = 9.05539
+
+[node name="EyeMonster" index="0" instance=ExtResource( 1 )]
+collision_layer = 4
+collision_mask = 0
+SPEED = 40
+MAX_LIFE = 1
+GRAVITY = 0
+START_STATE_PATH = NodePath("List States/Flyby")
+
+[node name="CharacterShape2D" parent="." index="1"]
+shape = SubResource( 1 )
+
+[node name="AnimatedSprite" parent="." index="2"]
+position = Vector2( 1, -1 )
+scale = Vector2( 0.15, 0.15 )
+frames = SubResource( 2 )
+animation = "Flyby"
+frame = 2
+playing = true
+flip_h = true
+
+[node name="Flyby" type="Node2D" parent="List States" index="2"]
+script = ExtResource( 6 )
+
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="List States/Flyby" index="0"]
+
+[node name="DamageArea" type="Area2D" parent="List States/Flyby" index="1"]
+editor/display_folded = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="List States/Flyby/DamageArea" index="0"]
+shape = SubResource( 3 )
+[connection signal="screen_entered" from="List States/Flyby/VisibilityNotifier2D" to="List States/Flyby" method="_on_VisibilityNotifier2D_screen_entered"]
+[connection signal="screen_exited" from="List States/Flyby/VisibilityNotifier2D" to="List States/Flyby" method="_on_VisibilityNotifier2D_screen_exited"]
+[connection signal="body_entered" from="List States/Flyby/DamageArea" to="List States/Flyby" method="_on_DamageArea_body_entered"]

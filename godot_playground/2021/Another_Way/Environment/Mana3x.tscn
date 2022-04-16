@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Environment/Mana1x.tscn" type="PackedScene" id=1]
+
+[node name="Mana3x" type="Node2D"]
+
+[node name="Mana1x" parent="." instance=ExtResource( 1 )]
+position = Vector2( -8, 0 )
+
+[node name="Mana1x2" parent="." instance=ExtResource( 1 )]
+startIn = 0.1
+
+[node name="Mana1x3" parent="." instance=ExtResource( 1 )]
+position = Vector2( 8, 0 )
+startIn = 0.2

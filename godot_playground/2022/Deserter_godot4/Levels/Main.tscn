@@ -1,0 +1,95 @@
+[gd_scene load_steps=6 format=3 uid="uid://c7st7w3j3y85j"]
+
+[ext_resource type="PackedScene" uid="uid://c7qj1refkho20" path="res://Entities/Player/Player.tscn" id="2_pfcef"]
+[ext_resource type="Texture2D" uid="uid://bfe2ujltv7tgi" path="res://Assets/Graphics/DesertTileSet.png" id="2_vwroc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v4ges"]
+size = Vector2(366, 20)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fpy0e"]
+texture = ExtResource( "2_vwroc" )
+0:0/0 = 0
+0:0/0/terrain_set = 0
+0:0/0/terrains_peering_bit/bottom_left_corner = 0
+0:0/0/terrains_peering_bit/top_left_corner = 0
+0:0/0/terrains_peering_bit/top_right_corner = 0
+0:1/0 = 0
+0:1/0/terrain_set = 0
+0:1/0/terrains_peering_bit/bottom_left_corner = 0
+0:1/0/terrains_peering_bit/top_left_corner = 0
+0:2/0 = 0
+0:2/0/terrain_set = 0
+0:2/0/terrains_peering_bit/bottom_right_corner = 0
+0:2/0/terrains_peering_bit/bottom_left_corner = 0
+0:2/0/terrains_peering_bit/top_left_corner = 0
+0:3/0 = 0
+0:3/0/terrain_set = 0
+1:0/0 = 0
+1:0/0/terrain_set = 0
+1:0/0/terrains_peering_bit/top_left_corner = 0
+1:0/0/terrains_peering_bit/top_right_corner = 0
+1:1/0 = 0
+1:1/0/terrain_set = 0
+1:2/0 = 0
+1:2/0/terrain_set = 0
+1:2/0/terrains_peering_bit/bottom_right_corner = 0
+1:2/0/terrains_peering_bit/bottom_left_corner = 0
+1:3/0 = 0
+1:3/0/terrain_set = 0
+2:0/0 = 0
+2:0/0/terrain_set = 0
+2:0/0/terrains_peering_bit/bottom_right_corner = 0
+2:0/0/terrains_peering_bit/top_left_corner = 0
+2:0/0/terrains_peering_bit/top_right_corner = 0
+2:1/0 = 0
+2:1/0/terrain_set = 0
+2:1/0/terrains_peering_bit/bottom_right_corner = 0
+2:1/0/terrains_peering_bit/top_right_corner = 0
+2:2/0 = 0
+2:2/0/terrain_set = 0
+2:2/0/terrains_peering_bit/bottom_right_corner = 0
+2:2/0/terrains_peering_bit/bottom_left_corner = 0
+2:2/0/terrains_peering_bit/top_right_corner = 0
+2:3/0 = 0
+2:3/0/terrain_set = 0
+3:0/0 = 0
+3:0/0/terrain_set = 0
+3:1/0 = 0
+3:1/0/terrain_set = 0
+3:2/0 = 0
+3:2/0/terrain_set = 0
+3:3/0 = 0
+3:3/0/terrain_set = 0
+4:0/0 = 0
+4:0/0/terrain_set = 0
+4:1/0 = 0
+4:1/0/terrain_set = 0
+5:0/0 = 0
+5:0/0/terrain_set = 0
+5:1/0 = 0
+5:1/0/terrain_set = 0
+
+[sub_resource type="TileSet" id="TileSet_sy120"]
+terrain_set_0/mode = 1
+terrain_set_0/terrain_0/name = "Terrain 0"
+terrain_set_0/terrain_0/color = Color(0.443137, 0.152941, 0.501961, 1)
+sources/7 = SubResource( "TileSetAtlasSource_fpy0e" )
+
+[node name="Main" type="Node2D"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(113, 134)
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource( "RectangleShape2D_v4ges" )
+
+[node name="Actor" parent="." instance=ExtResource( "2_pfcef" )]
+position = Vector2(103, 30)
+
+[node name="TileMap" type="TileMap" parent="."]
+texture_filter = 1
+tile_set = SubResource( "TileSet_sy120" )
+format = 2

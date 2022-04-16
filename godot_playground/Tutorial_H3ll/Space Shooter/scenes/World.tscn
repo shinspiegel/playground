@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://scenes/Ship.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/EnemySpawner.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/World.gd" type="Script" id=4]
+[ext_resource path="res://fonts/PixelFont.tres" type="DynamicFont" id=5]
+[ext_resource path="res://scenes/Background.tscn" type="PackedScene" id=6]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 40, 96 )
+
+[node name="World" type="Node"]
+script = ExtResource( 4 )
+
+[node name="Background" parent="." instance=ExtResource( 6 )]
+
+[node name="Ship" parent="." instance=ExtResource( 1 )]
+position = Vector2( 16, 88 )
+z_index = 1
+
+[node name="EnemySpawner" parent="." instance=ExtResource( 3 )]
+position = Vector2( 320, 0 )
+
+[node name="Score" type="Label" parent="."]
+anchor_right = 1.0
+margin_bottom = 16.0
+custom_fonts/font = ExtResource( 5 )
+text = "Score: 0"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GameOver" type="Area2D" parent="."]
+position = Vector2( -48, 88 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GameOver"]
+shape = SubResource( 1 )
+
+[connection signal="player_death" from="Ship" to="." method="_on_Ship_player_death"]
+[connection signal="area_entered" from="GameOver" to="." method="_on_Area2D_area_entered"]

@@ -1,0 +1,329 @@
+[gd_scene load_steps=22 format=2]
+
+[ext_resource path="res://Assets/enemies sprites/mushroom/mushroom_hit_anim_strip_3.png" type="Texture" id=1]
+[ext_resource path="res://Characters/Character.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Assets/enemies sprites/mushroom/mushroom_death_anim_strip_6.png" type="Texture" id=3]
+[ext_resource path="res://Assets/enemies sprites/mushroom/mushroom_crushed_anim_strip_6.png" type="Texture" id=4]
+[ext_resource path="res://Characters/Enemies/Wander.gd" type="Script" id=5]
+[ext_resource path="res://Characters/Enemies/MonsterIdle.gd" type="Script" id=6]
+[ext_resource path="res://Assets/enemies sprites/mushroom/mushroom_walk_anim_strip_8.png" type="Texture" id=7]
+[ext_resource path="res://Boxes/Hitbox.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Characters/Enemies/Chase.gd" type="Script" id=9]
+[ext_resource path="res://Characters/Input/MonsterInput.gd" type="Script" id=10]
+[ext_resource path="res://Misc/DropItem.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Characters/Enemies/Mushroom.gd" type="Script" id=12]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 8, 8 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "Chase"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 7 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 8 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7 ]
+}
+
+[sub_resource type="Animation" id=3]
+length = 0.6
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 3 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 6 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5 ]
+}
+
+[sub_resource type="Animation" id=4]
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 3 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2 ]
+}
+
+[sub_resource type="Animation" id=5]
+length = 0.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 4 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 6 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5 ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "Wander"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 7 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 8 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7 ]
+}
+
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 8, 8 )
+
+[sub_resource type="RectangleShape2D" id=8]
+extents = Vector2( 41, 15 )
+
+[sub_resource type="RectangleShape2D" id=9]
+extents = Vector2( 7, 7 )
+
+[node name="Mushroom" instance=ExtResource( 2 )]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource( 12 )
+MAX_HIT_POINTS = 2
+MAX_SPEED = 40
+ACCELERATION = 400
+JUMP_FORCE = 150
+FRICTION = 0.3
+
+[node name="Collisor" parent="." index="1"]
+shape = SubResource( 1 )
+
+[node name="Sprite" parent="." index="2"]
+texture = ExtResource( 7 )
+hframes = 8
+frame = 7
+
+[node name="AnimationPlayer" parent="." index="3"]
+anims/Chase = SubResource( 2 )
+anims/Die = SubResource( 3 )
+anims/Hit = SubResource( 4 )
+anims/Idle = SubResource( 5 )
+anims/Wander = SubResource( 6 )
+
+[node name="Hurtbox" parent="." index="4"]
+collision_layer = 4
+
+[node name="HurtArea" parent="Hurtbox" index="0"]
+shape = SubResource( 7 )
+
+[node name="InputHandler" parent="." index="5"]
+script = ExtResource( 10 )
+
+[node name="PlayerSense" type="Area2D" parent="InputHandler" index="0"]
+collision_layer = 0
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InputHandler/PlayerSense" index="0"]
+position = Vector2( 42, -7 )
+shape = SubResource( 8 )
+
+[node name="Idle" parent="StateMachine" index="0"]
+script = ExtResource( 6 )
+
+[node name="WaitTimer" type="Timer" parent="StateMachine/Idle" index="0"]
+wait_time = 3.0
+one_shot = true
+autostart = true
+
+[node name="Wander" type="Node2D" parent="StateMachine" index="3"]
+script = ExtResource( 5 )
+
+[node name="FrontRay" type="RayCast2D" parent="StateMachine/Wander" index="0"]
+position = Vector2( 8, 0 )
+enabled = true
+cast_to = Vector2( 8, 0 )
+collision_mask = 2
+
+[node name="FloorRay" type="RayCast2D" parent="StateMachine/Wander" index="1"]
+position = Vector2( 12, 8 )
+enabled = true
+cast_to = Vector2( 0, 4 )
+collision_mask = 2
+
+[node name="Timer" type="Timer" parent="StateMachine/Wander" index="2"]
+wait_time = 0.5
+one_shot = true
+autostart = true
+
+[node name="Chase" type="Node2D" parent="StateMachine" index="4"]
+script = ExtResource( 9 )
+MAX_SPEED = 80
+ACCELERATION = 800
+
+[node name="FrontRay" type="RayCast2D" parent="StateMachine/Chase" index="0"]
+position = Vector2( 16, 0 )
+enabled = true
+cast_to = Vector2( 16, 0 )
+collision_mask = 2
+
+[node name="Timer" type="Timer" parent="StateMachine/Chase" index="1"]
+wait_time = 3.0
+one_shot = true
+
+[node name="Hitbox" parent="." index="8" instance=ExtResource( 8 )]
+collision_layer = 0
+
+[node name="HitArea" parent="Hitbox" index="0"]
+position = Vector2( 0, 1 )
+shape = SubResource( 9 )
+
+[node name="DropItem" parent="." index="9" instance=ExtResource( 11 )]
+
+[connection signal="body_entered" from="InputHandler/PlayerSense" to="InputHandler" method="_on_Area2D_body_entered"]
+[connection signal="state_changed" from="StateMachine" to="InputHandler" method="_on_StateMachine_state_changed"]
+[connection signal="state_changed" from="StateMachine" to="DropItem" method="_on_StateMachine_state_changed"]
+[connection signal="timeout" from="StateMachine/Idle/WaitTimer" to="StateMachine/Idle" method="_on_WaitTimer_timeout"]
+[connection signal="timeout" from="StateMachine/Chase/Timer" to="StateMachine/Chase" method="_on_Timer_timeout"]
+
+[editable path="Hurtbox"]
+[editable path="Hitbox"]

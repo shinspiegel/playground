@@ -1,0 +1,18 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: unicesumar_platform_api_development
+
+test:
+  <<: *default
+  database: unicesumar_platform_api_test
+
+production:
+  <<: *default
+  database: unicesumar_platform_api_production
+  username: unicesumar_platform_api
+  password: <%= ENV['UNICESUMAR_PLATFORM_API_DATABASE_PASSWORD'] %>

@@ -1,0 +1,1 @@
+This is a small playground to help some friends with this language. Hopefully we all can forget about this moment for life.

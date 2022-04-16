@@ -1,0 +1,37 @@
+[
+  {
+    "data": {
+      "type": "residence",
+      "description": "Residence (roll once on Residence table)"
+    },
+    "range": 20
+  },
+  {
+    "data": {
+      "type": "religious",
+      "description": "Religious (roll once on Religious Building table)"
+    },
+    "range": 2
+  },
+  {
+    "data": {
+      "type": "tavern",
+      "description": "Tavern (roll once on the Tavern table and twice on the Tavern Name Generator Table)"
+    },
+    "range": 3
+  },
+  {
+    "data": {
+      "type": "warehouse",
+      "description": "Warehouse (roll once on the Warehouse table)"
+    },
+    "range": 2
+  },
+  {
+    "data": {
+      "type": "shop",
+      "description": "Shop (roll once on the Shop table)"
+    },
+    "range": 3
+  }
+]

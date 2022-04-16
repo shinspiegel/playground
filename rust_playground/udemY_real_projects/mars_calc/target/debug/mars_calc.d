@@ -1,0 +1,1 @@
+/home/shin/Documents/Personal/Code/RUST/rust_playground/udemY_real_projects/mars_calc/target/debug/mars_calc: /home/shin/Documents/Personal/Code/RUST/rust_playground/udemY_real_projects/mars_calc/src/main.rs

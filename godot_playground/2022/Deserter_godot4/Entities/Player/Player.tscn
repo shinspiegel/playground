@@ -1,0 +1,97 @@
+[gd_scene load_steps=10 format=3 uid="uid://c7qj1refkho20"]
+
+[ext_resource type="Script" path="res://Entities/Player/Player.gd" id="1_gbbtv"]
+[ext_resource type="Texture2D" uid="uid://cffsc3m088pnx" path="res://Assets/Graphics/MainCharacter.png" id="2_kmouy"]
+[ext_resource type="PackedScene" path="res://Entities/Player/Input/PlayerInput.tscn" id="2_l2i3q"]
+[ext_resource type="PackedScene" uid="uid://dy7c3y3py10b0" path="res://Entities/StateManager/StateManager.tscn" id="4_m0dur"]
+[ext_resource type="Script" path="res://Entities/Player/States/Move.gd" id="5_8wpy3"]
+
+[sub_resource type="Animation" id="Animation_ual2k"]
+resource_name = "Idle"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4]
+}
+
+[sub_resource type="Animation" id="Animation_0swfi"]
+resource_name = "Move"
+length = 0.3
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [5, 6, 7]
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1llas"]
+size = Vector2(8, 16)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_eyq0y"]
+radius = 5.0
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource( "1_gbbtv" )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Idle = SubResource( "Animation_ual2k" )
+anims/Move = SubResource( "Animation_0swfi" )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( "RectangleShape2D_1llas" )
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource( "2_kmouy" )
+hframes = 8
+
+[node name="PlayerInput" parent="." instance=ExtResource( "2_l2i3q" )]
+
+[node name="StateManager" parent="." instance=ExtResource( "4_m0dur" )]
+
+[node name="Move" type="Node2D" parent="StateManager"]
+script = ExtResource( "5_8wpy3" )
+
+[node name="Debug" type="Node2D" parent="."]
+position = Vector2(0, -13)
+scale = Vector2(0.5, 0.5)
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Label" type="Label" parent="Debug"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -11.0
+offset_right = 64.0
+offset_bottom = 12.0
+text = "NONE"
+horizontal_alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(12, 0)
+shape = SubResource( "CircleShape2D_eyq0y" )

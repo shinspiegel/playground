@@ -1,0 +1,13 @@
+version: "3.8"
+
+services:
+    db:
+        container_name: pg
+        image: postgres
+        restart: always
+        environment:
+            POSTGRES_USER: rootuser
+            POSTGRES_PASSWORD: rootpass
+            POSTGRES_DB: unicesumar_study
+        ports:
+            - "5432:5432"

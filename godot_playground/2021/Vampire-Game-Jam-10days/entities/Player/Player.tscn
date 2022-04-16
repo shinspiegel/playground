@@ -1,0 +1,49 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://entities/Actor/Actor.tscn" type="PackedScene" id=1]
+[ext_resource path="res://entities/Player/Player.gd" type="Script" id=2]
+[ext_resource path="res://entities/Player/Player.png" type="Texture" id=3]
+[ext_resource path="res://entities/Player/DrainArea.gd" type="Script" id=4]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 21, 16 )
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 7.5, 15 )
+
+[node name="Player" instance=ExtResource( 1 )]
+collision_layer = 1
+script = ExtResource( 2 )
+HIT_POINT = 5
+SPEED = 200
+JUMP_FORCE = 250
+FRICTION = 0.3
+ACCELERATION = 0.4
+
+[node name="Sprite" parent="." index="0"]
+texture = ExtResource( 3 )
+
+[node name="DrainArea" type="Area2D" parent="." index="2"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource( 4 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DrainArea" index="0"]
+position = Vector2( 27, 0 )
+shape = SubResource( 2 )
+
+[node name="Timer" type="Timer" parent="DrainArea" index="1"]
+one_shot = true
+
+[node name="Camera2D" type="Camera2D" parent="." index="3"]
+current = true
+smoothing_enabled = true
+smoothing_speed = 2.0
+
+[node name="CollisionShape2D" parent="." index="4"]
+position = Vector2( -1.5, 1 )
+shape = SubResource( 1 )
+
+[connection signal="body_entered" from="DrainArea" to="DrainArea" method="_on_DrainArea_body_entered"]
+[connection signal="hit_body" from="DrainArea" to="." method="_on_DrainArea_hit_body"]
+[connection signal="timeout" from="DrainArea/Timer" to="DrainArea" method="_on_Timer_timeout"]

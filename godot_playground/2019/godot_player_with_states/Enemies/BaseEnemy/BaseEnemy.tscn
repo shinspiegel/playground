@@ -1,0 +1,32 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Prefabs/Managers/HealthManager.gd" type="Script" id=1]
+
+[node name="BaseEnemy" type="KinematicBody2D"]
+collision_layer = 4
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="Sprite" type="Sprite" parent="."]
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+
+[node name="AttackBox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackBox"]
+
+[node name="HealthManager" type="Node" parent="."]
+script = ExtResource( 1 )
+maxHealth = 2
+
+[node name="StateMachine" type="Node" parent="."]
+
+[node name="Idle" type="Node" parent="StateMachine"]
+
+[node name="Knockback" type="Node" parent="StateMachine"]
+
+[node name="Die" type="Node" parent="StateMachine"]
+

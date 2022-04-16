@@ -1,0 +1,99 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Hud/HeartIcon.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Hud/Hud.gd" type="Script" id=2]
+[ext_resource path="res://Hud/HeartEmpty.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Hud/ThemeData.tres" type="Theme" id=4]
+[ext_resource path="res://Assets/hud elements/coins_hud.png" type="Texture" id=5]
+[ext_resource path="res://Assets/font/pixel font-7.ttf" type="DynamicFontData" id=6]
+[ext_resource path="res://Assets/hud elements/orbs_hud.png" type="Texture" id=7]
+
+[sub_resource type="DynamicFont" id=1]
+size = 12
+font_data = ExtResource( 6 )
+
+[node name="Hud" type="CanvasLayer"]
+script = ExtResource( 2 )
+HeartIcon = ExtResource( 1 )
+HeartEmpty = ExtResource( 3 )
+
+[node name="Control" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 4.0
+margin_right = -4.0
+margin_bottom = -4.0
+theme = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LifeContainer" type="HBoxContainer" parent="Control"]
+margin_right = 16.0
+margin_bottom = 16.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="HBoxContainer" parent="Control"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -108.0
+margin_bottom = 20.0
+alignment = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="OrbContainer" type="HBoxContainer" parent="Control/VBoxContainer"]
+margin_left = 48.0
+margin_right = 76.0
+margin_bottom = 20.0
+alignment = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Control/VBoxContainer/OrbContainer"]
+margin_right = 15.0
+margin_bottom = 20.0
+theme = ExtResource( 4 )
+custom_fonts/font = SubResource( 1 )
+text = "0"
+
+[node name="TextureRect" type="TextureRect" parent="Control/VBoxContainer/OrbContainer"]
+margin_left = 19.0
+margin_right = 28.0
+margin_bottom = 20.0
+texture = ExtResource( 7 )
+stretch_mode = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CoinContainer" type="HBoxContainer" parent="Control/VBoxContainer"]
+margin_left = 80.0
+margin_right = 108.0
+margin_bottom = 20.0
+alignment = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Control/VBoxContainer/CoinContainer"]
+margin_right = 15.0
+margin_bottom = 20.0
+theme = ExtResource( 4 )
+custom_fonts/font = SubResource( 1 )
+text = "0"
+
+[node name="TextureRect" type="TextureRect" parent="Control/VBoxContainer/CoinContainer"]
+margin_left = 19.0
+margin_right = 28.0
+margin_bottom = 20.0
+texture = ExtResource( 5 )
+stretch_mode = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}

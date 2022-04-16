@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Screens/BaseScreen/BaseScreen.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Screens/Components/ChangeLevelButton/ChangeLevelButton.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Screens/Components/QuitGameButton/QuitGameButton.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Screens/Tutorial/Tutorial.tscn" type="PackedScene" id=4]
+
+[node name="StartGame" instance=ExtResource( 1 )]
+initialSelected = NodePath("BaseContainer/ButtonsContainer/ChangeLevel")
+
+[node name="Title" parent="BaseContainer" index="1"]
+text = "Dash-O!"
+
+[node name="Spacer2" parent="BaseContainer" index="2"]
+margin_bottom = 96.0
+size_flags_vertical = 3
+
+[node name="ButtonsContainer" parent="BaseContainer" index="3"]
+margin_top = 100.0
+margin_bottom = 168.0
+
+[node name="ChangeLevel" parent="BaseContainer/ButtonsContainer" index="0" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 256.0
+margin_bottom = 32.0
+text = "Start Game"
+level = ExtResource( 4 )
+
+[node name="QuitGameButton" parent="BaseContainer/ButtonsContainer" index="1" instance=ExtResource( 3 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 36.0
+margin_right = 256.0
+margin_bottom = 68.0
+
+[node name="BottomLegend" parent="BaseContainer" index="4"]
+margin_top = 172.0
+
+[node name="Label3" parent="BaseContainer/BottomLegend" index="0"]
+margin_top = 44.0
+margin_bottom = 52.0

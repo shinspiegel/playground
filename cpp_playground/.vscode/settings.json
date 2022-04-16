@@ -1,0 +1,9 @@
+{
+  "editor.tabSize": 4,
+  "files.associations": {
+    "iostream": "cpp",
+    "cmath": "cpp",
+    "cstdlib": "cpp",
+    "ctime": "cpp"
+  }
+}

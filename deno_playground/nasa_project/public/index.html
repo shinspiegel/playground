@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <meta charset="utf-8" />
+  <title>NASA Control Center</title>
+  <link href="//fonts.googleapis.com/css2?family=Source+Code+Pro:wght@300&display=swap" rel="stylesheet">
+  <link href="//fonts.googleapis.com/css2?family=Space+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="stylesheets/style.css" />
+  <link rel="shortcut icon" href="images/favicon.png" />
+</head>
+
+<body>
+  <script src="javascripts/script.js"></script>
+  <div id="top-content">
+    <header>
+      <div>
+        <h1 class="title-global"><a onclick="navigate('launch')">NASA Mission Control</a></h1>
+        <nav>
+          <ul>
+            <li><a onclick="navigate('launch')">[New Mission]</a></li>
+            <li><a onclick="navigate('upcoming')">[Upcoming]</a></li>
+            <li><a onclick="navigate('history')">[History]</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div>
+        <h1 class="title-event">
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="title-event-wrap">:N:O:</span><a href="https://deno.land">D:E:N:O</a><span class="title-event-wrap">:</span>
+        </h1>
+      </div>
+    </header>
+
+    <div id="sidebar">
+      <div id="sponsor">
+        <div class="quiet">We are going interstellar! </div>
+        <div class="sponsor">In partnership with SpaceX and Zero to Mastery we are advancing technology to explore planets beyond our solar system.</div>
+      </div>
+    </div>
+
+    <main>
+      <article id="launch">
+        <p>Schedule a mission launch for interstellar travel to one of the Kepler Exoplanets.</p>
+        <p>Only confirmed planets orbiting stars matching the following criteria are available for the earliest scheduled missions:
+          <ul>
+            <li>1 M☉ (Solar Mass) ±10%</li>
+            <li>1 R☉ (Solar Radius) ±10%</li>
+          </ul>
+        </p>
+        <form>
+          <div class="form-item">
+            <label>Launch Date          </label>
+            <input type="date" id="launch-day" max="2030-12-31" />
+          </div>
+          <div class="form-item">
+            <label>Mission Name         </label>
+            <input type="text" id="mission-name" />
+          </div>
+          <div class="form-item">
+            <label>Rocket Type          </label>
+            <input type="text" id="rocket-name" value="ZTM Experimental IS1" disabled />
+          </div>
+          <div class="form-item">
+            <label>Destination Exoplanet</label>
+            <select id="planets-selector"></select>
+          </div>
+          <a class="submit" onclick="submitLaunch()">[Save Mission ✔]</a>
+        </form>
+
+        <p id="launch-success" hidden>Congratulations! Interstellar launch is scheduled.</p>
+      </article>
+
+      <article id="history" hidden>
+        <p>History of tracked mission launches. Includes SpaceX launches starting from the year 2006.</p>
+        <div id="history-list"></div>
+      </article>
+
+      <article id="upcoming" hidden>
+        <p>Upcoming missions including both SpaceX and Zero to Mastery rockets.</p>
+        <p>Warning! Clicking on the <span class="delete">✖</span> aborts the mission.</p>
+        <div id="upcoming-list"></div>
+      </article>
+    </main>
+  </div>
+
+  <footer>
+    <div class="quiet">
+      This is not an official site and is not affiliated with NASA or SpaceX in any way. For educational purposes only.
+    </div>
+  </footer>
+</body>
+
+</html>

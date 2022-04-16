@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Environment/Coin1x.tscn" type="PackedScene" id=1]
+
+[node name="Coin2x" type="Node2D"]
+
+[node name="Coin" parent="." instance=ExtResource( 1 )]
+position = Vector2( 8, 0 )
+
+[node name="Coin2" parent="." instance=ExtResource( 1 )]
+position = Vector2( -8, 0 )
