@@ -1,1 +1,0 @@
-/Users/jeferson_leite_borges/Documents/Study/CODE/RUST/rust_playground/Rust_The_Complete_Guide/Section_2/data_types/target/debug/data_types: /Users/jeferson_leite_borges/Documents/Study/CODE/RUST/rust_playground/Rust_The_Complete_Guide/Section_2/data_types/src/main.rs
