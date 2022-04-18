@@ -10,9 +10,7 @@ func exit():
 
 
 func process(delta:float):
-	player.direction = Input.get_axis("ui_left", "ui_right")
-	
 	player.apply_all(delta)
 	
-	if player.direction:
+	if not player.input.direction == 0.0:
 		stateManager.change_state("Run")

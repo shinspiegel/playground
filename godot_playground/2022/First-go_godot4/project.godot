@@ -20,6 +20,11 @@ _global_script_classes=[{
 "path": "res://Entities/Player/Player.gd"
 }, {
 "base": "Node2D",
+"class": &"PlayerInput",
+"language": &"GDScript",
+"path": "res://Entities/Player/PlayerInput.gd"
+}, {
+"base": "Node2D",
 "class": &"StateManager",
 "language": &"GDScript",
 "path": "res://Entities/Player/StateManager.gd"
@@ -27,6 +32,7 @@ _global_script_classes=[{
 _global_script_class_icons={
 "BaseState": "",
 "Player": "",
+"PlayerInput": "",
 "StateManager": ""
 }
 

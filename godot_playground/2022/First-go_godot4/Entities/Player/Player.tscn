@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://bf6yj2e612l6c"]
+[gd_scene load_steps=12 format=3 uid="uid://bf6yj2e612l6c"]
 
 [ext_resource type="Script" path="res://Entities/Player/Player.gd" id="1_jgoxe"]
 [ext_resource type="Texture2D" uid="uid://db0c0rbedybfh" path="res://Assets/Player.png" id="2_csyvo"]
+[ext_resource type="Script" path="res://Entities/Player/PlayerInput.gd" id="2_nnj14"]
 [ext_resource type="Script" path="res://Entities/Player/StateManager.gd" id="2_xt3ak"]
 [ext_resource type="Script" path="res://Entities/Player/Idle.gd" id="3_f8nrd"]
 [ext_resource type="Script" path="res://Entities/Player/Run.gd" id="4_ips2u"]
@@ -80,6 +81,13 @@ tracks/0/keys = {
 texture_filter = 3
 script = ExtResource( "1_jgoxe" )
 
+[node name="PlayerInput" type="Node2D" parent="."]
+script = ExtResource( "2_nnj14" )
+
+[node name="InputDelay" type="Timer" parent="PlayerInput"]
+wait_time = 0.05
+one_shot = true
+
 [node name="StateManager" type="Node2D" parent="."]
 script = ExtResource( "2_xt3ak" )
 initial_state = NodePath("Idle")
@@ -112,5 +120,5 @@ anims/Run = SubResource( "Animation_xqve5" )
 anims/Shoot = SubResource( "Animation_0fdn2" )
 
 [node name="CoyoteTimer" type="Timer" parent="."]
-wait_time = 0.15
+wait_time = 0.1
 one_shot = true

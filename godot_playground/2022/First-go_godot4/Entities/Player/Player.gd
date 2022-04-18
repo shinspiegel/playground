@@ -14,9 +14,9 @@ const BLOCK_SIZE = 16
 @onready var coyoteTimer: Timer = $CoyoteTimer
 @onready var stateManager: StateManager = $StateManager
 @onready var animationPlayer: AnimationPlayer = $AnimationPlayer
+@onready var input: PlayerInput = $PlayerInput
 
 var can_jump: bool = true
-var direction: float = 0.0
 
 func _ready():
 	coyoteTimer.timeout.connect(on_timeout)
@@ -40,8 +40,8 @@ func apply_all(delta: float):
 	apply_horizontal()
 
 func apply_horizontal() -> void:
-	if direction:
-		velocity.x = direction * speed
+	if input.direction:
+		velocity.x = input.direction * speed
 	else:
 		velocity.x = move_toward(velocity.x, 0, speed)
 
