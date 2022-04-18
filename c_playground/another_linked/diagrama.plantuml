@@ -1,0 +1,50 @@
+@startuml
+!define primary_key(x) <b><color:#b8861b><&key></color> x</b>
+!define foreign_key(x) <color:#aaaaaa><&key></color> x
+!define column(x) <color:#efefef><&media-record></color> x
+!define table(x) entity x << (T, white) >>
+
+skinparam roundcorner 5
+skinparam linetype ortho
+skinparam shadowing false
+skinparam handwritten false
+skinparam class {
+    BackgroundColor white
+    ArrowColor #2688d4
+    BorderColor #2688d4
+}
+
+class Usuario {
+  Lista<Eventos> eventos
+  Grupo grupo
+  DispararNovoEvento()
+}
+
+class Grupo
+
+class Evento {
+  Data data
+  Hora hora
+}
+
+table( usuarios ) {
+  primary_key( id ): INT 
+  foreign_key( grupo_id ): INT
+}
+
+table( grupos ) {
+  primary_key( id ): INT 
+}
+
+table( eventos ) {
+  primary_key( id ): INT 
+  column( data ): DATA
+  column( hora ): HORA
+}
+
+
+usuarios }|-- grupos
+
+
+
+@enduml

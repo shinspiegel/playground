@@ -3,5 +3,6 @@
         "__tuple": "c",
         "array": "c",
         "string.h": "c"
-    }
+    },
+    "editor.tabSize": 4
 }
