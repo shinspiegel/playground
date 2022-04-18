@@ -9,25 +9,13 @@
 config_version=5
 
 _global_script_classes=[{
-"base": "Node2D",
-"class": &"BaseState",
-"language": &"GDScript",
-"path": "res://Entities/Player/BaseState.gd"
-}, {
 "base": "CharacterBody2D",
 "class": &"Player",
 "language": &"GDScript",
 "path": "res://Entities/Player/Player.gd"
-}, {
-"base": "Node2D",
-"class": &"StateManager",
-"language": &"GDScript",
-"path": "res://Entities/Player/StateManager.gd"
 }]
 _global_script_class_icons={
-"BaseState": "",
-"Player": "",
-"StateManager": ""
+"Player": ""
 }
 
 [application]
@@ -36,6 +24,10 @@ config/name="First-go Godot 4"
 run/main_scene="res://Levels/Level1.tscn"
 config/icon="res://icon.png"
 config/features=PackedStringArray("4.0", "Vulkan Clustered")
+
+[autoload]
+
+Const="*res://Constants.gd"
 
 [display]
 
