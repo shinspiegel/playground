@@ -8,10 +8,6 @@ size = Vector2(8, 16)
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource( "1_jgoxe" )
 
-[node name="CoyoteTime" type="Timer" parent="."]
-wait_time = 2.0
-one_shot = true
-
 [node name="Sprite2D" type="Sprite2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -20,3 +16,7 @@ shape = SubResource( "RectangleShape2D_w8yl6" )
 [node name="Polygon2D" type="Polygon2D" parent="."]
 color = Color(0.564706, 0.290196, 1, 1)
 polygon = PackedVector2Array(-4, -8, 4, -8, 4, 8, -4, 8)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.15
+one_shot = true

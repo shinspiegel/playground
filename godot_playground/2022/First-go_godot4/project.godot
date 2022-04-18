@@ -25,10 +25,6 @@ run/main_scene="res://Levels/Level1.tscn"
 config/icon="res://icon.png"
 config/features=PackedStringArray("4.0", "Vulkan Clustered")
 
-[autoload]
-
-Const="*res://Constants.gd"
-
 [display]
 
 window/size/viewport_width=320

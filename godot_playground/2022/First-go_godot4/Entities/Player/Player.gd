@@ -1,18 +1,26 @@
 class_name Player extends CharacterBody2D
 
-@export var max_jump_height: float = Const.PIXEL_BLOCK * 3
-@export var min_jump_height: float = Const.PIXEL_BLOCK * 1
+const BLOCK_SIZE = 16
+
+@export var max_jump_height: float = BLOCK_SIZE * 5
+@export var min_jump_height: float = BLOCK_SIZE * 1
 @export var jump_time_to_peak: float = 0.3
 @export var jump_time_to_descent: float = 0.25
-@export var speed: float = 180
+@export var speed: float = BLOCK_SIZE * 8
 
 @onready var jump_velocity: float = ((2.0 * max_jump_height) / jump_time_to_peak) * -1
 @onready var jump_gravity: float = ((-2.0 * max_jump_height) / (jump_time_to_peak * jump_time_to_peak)) * -1
 @onready var fall_gravity: float = ((-2.0 * max_jump_height) / (jump_time_to_descent * jump_time_to_descent)) * -1
+@onready var coyoteTimer: Timer = $Timer
 
-@onready var coyoteTimer: Timer = $CoyoteTime
+var can_jump: bool = true
+
+func _ready():
+	coyoteTimer.timeout.connect(on_timeout)
+
 
 func _physics_process(delta: float) -> void:
+	apply_coyote_time()
 	apply_gravity(delta)
 	apply_jump()
 	apply_horizontal()
@@ -30,19 +38,27 @@ func apply_horizontal() -> void:
 
 func apply_jump() -> void:
 	if Input.is_action_just_pressed("ui_accept"):
-		if is_on_floor() or coyoteTimer.time_left >= 0:
-			velocity.y = jump_velocity
+		if is_on_floor() or can_jump:
+			can_jump = false
 			coyoteTimer.stop()
+			velocity.y = jump_velocity
 	
 	if Input.is_action_just_released("ui_accept") and velocity.y < min_jump_height:
 		velocity.y = min_jump_height
-		coyoteTimer.stop()
 
 
 func apply_gravity(delta: float) -> void:
-	if not is_on_floor():
+	if not is_on_floor() and not can_jump:
 		var gravity = get_gravity()
 		velocity.y += gravity * delta
+
+
+func apply_coyote_time() -> void:
+	if is_on_floor():
+		can_jump = true
+		coyoteTimer.stop()
+	elif can_jump and coyoteTimer.is_stopped(): 
+		print("start timer")
 		coyoteTimer.start()
 
 
@@ -51,3 +67,8 @@ func get_gravity() -> float:
 		return jump_gravity
 	else:
 		return fall_gravity
+
+
+func on_timeout() -> void:
+	print("Timeout")
+	can_jump = false
