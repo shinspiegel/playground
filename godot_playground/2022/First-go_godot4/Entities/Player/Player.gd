@@ -11,25 +11,35 @@ const BLOCK_SIZE = 16
 @onready var jump_velocity: float = ((2.0 * max_jump_height) / jump_time_to_peak) * -1
 @onready var jump_gravity: float = ((-2.0 * max_jump_height) / (jump_time_to_peak * jump_time_to_peak)) * -1
 @onready var fall_gravity: float = ((-2.0 * max_jump_height) / (jump_time_to_descent * jump_time_to_descent)) * -1
-@onready var coyoteTimer: Timer = $Timer
+@onready var coyoteTimer: Timer = $CoyoteTimer
+@onready var stateManager: StateManager = $StateManager
+@onready var animationPlayer: AnimationPlayer = $AnimationPlayer
 
 var can_jump: bool = true
+var direction: float = 0.0
 
 func _ready():
 	coyoteTimer.timeout.connect(on_timeout)
-
+	stateManager.init()
 
 func _physics_process(delta: float) -> void:
+	stateManager.process(delta)
+#	var direction = Input.get_axis("ui_left", "ui_right")
+	
+#	apply_coyote_time()
+#	apply_gravity(delta)
+#	apply_jump()
+#	apply_horizontal()
+	
+	move_and_slide()
+
+func apply_all(delta: float):
 	apply_coyote_time()
 	apply_gravity(delta)
 	apply_jump()
 	apply_horizontal()
-	
-	move_and_slide()
-
 
 func apply_horizontal() -> void:
-	var direction = Input.get_axis("ui_left", "ui_right")
 	if direction:
 		velocity.x = direction * speed
 	else:
@@ -58,7 +68,6 @@ func apply_coyote_time() -> void:
 		can_jump = true
 		coyoteTimer.stop()
 	elif can_jump and coyoteTimer.is_stopped(): 
-		print("start timer")
 		coyoteTimer.start()
 
 
@@ -70,5 +79,4 @@ func get_gravity() -> float:
 
 
 func on_timeout() -> void:
-	print("Timeout")
 	can_jump = false
