@@ -2,10 +2,10 @@ class_name Player extends CharacterBody2D
 
 const BLOCK_SIZE = 16
 
-@export var max_jump_height: float = BLOCK_SIZE * 5
+@export var max_jump_height: float = BLOCK_SIZE * 3
 @export var min_jump_height: float = BLOCK_SIZE * 1
-@export var jump_time_to_peak: float = 0.3
-@export var jump_time_to_descent: float = 0.25
+@export var jump_time_to_peak: float = 0.4
+@export var jump_time_to_descent: float = 0.3
 @export var speed: float = BLOCK_SIZE * 8
 
 @onready var jump_velocity: float = ((2.0 * max_jump_height) / jump_time_to_peak) * -1
@@ -17,6 +17,8 @@ const BLOCK_SIZE = 16
 @onready var input: PlayerInput = $PlayerInput
 
 var can_jump: bool = true
+var flip_direction: int = 1
+
 
 func _ready():
 	coyoteTimer.timeout.connect(on_timeout)
@@ -24,16 +26,22 @@ func _ready():
 
 func _physics_process(delta: float) -> void:
 	stateManager.process(delta)
-#	var direction = Input.get_axis("ui_left", "ui_right")
-	
-#	apply_coyote_time()
-#	apply_gravity(delta)
-#	apply_jump()
-#	apply_horizontal()
-	
+	apply_flip_scale()
 	move_and_slide()
 
-func apply_all(delta: float):
+func apply_flip_scale():
+	var value = velocity.x
+	
+	if value != 0:
+		if value > 0 and flip_direction == -1:
+			scale.x *= -1
+			flip_direction = 1
+		if value < 0 and flip_direction == 1:
+			scale.x *= -1
+			flip_direction = -1
+
+
+func apply_all(delta: float) -> void:
 	apply_coyote_time()
 	apply_gravity(delta)
 	apply_jump()

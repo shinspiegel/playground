@@ -1,12 +1,11 @@
 extends BaseState
 
 func enter():
-	print("Entered: ", name)
 	player.animationPlayer.play(name)
 
 
 func exit():
-	print("Exited: ", name)
+	pass
 
 
 func process(delta:float):

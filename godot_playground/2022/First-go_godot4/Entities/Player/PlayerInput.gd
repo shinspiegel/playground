@@ -6,6 +6,7 @@ var direction: float = 0.0
 var jump_press: bool = false
 var jump_release: bool = false
 
+
 func _ready():
 	inputTimer.timeout.connect(reset)
 
