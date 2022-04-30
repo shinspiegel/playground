@@ -12,3 +12,5 @@ func exit():
 func process(delta:float):
 	pass
 
+func check_for_new_state(delta: float):
+	pass

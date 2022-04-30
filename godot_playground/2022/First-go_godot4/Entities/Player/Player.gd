@@ -2,11 +2,12 @@ class_name Player extends CharacterBody2D
 
 const BLOCK_SIZE = 16
 
-@export var max_jump_height: float = BLOCK_SIZE * 3
-@export var min_jump_height: float = BLOCK_SIZE * 1
+@export var max_jump_height: float = BLOCK_SIZE * 2.2
+@export var min_jump_height: float = BLOCK_SIZE * 1.1
 @export var jump_time_to_peak: float = 0.4
 @export var jump_time_to_descent: float = 0.3
 @export var speed: float = BLOCK_SIZE * 8
+
 
 @onready var jump_velocity: float = ((2.0 * max_jump_height) / jump_time_to_peak) * -1
 @onready var jump_gravity: float = ((-2.0 * max_jump_height) / (jump_time_to_peak * jump_time_to_peak)) * -1
@@ -15,6 +16,7 @@ const BLOCK_SIZE = 16
 @onready var stateManager: StateManager = $StateManager
 @onready var animationPlayer: AnimationPlayer = $AnimationPlayer
 @onready var input: PlayerInput = $PlayerInput
+
 
 var can_jump: bool = true
 var flip_direction: int = 1
@@ -26,6 +28,7 @@ func _ready():
 
 func _physics_process(delta: float) -> void:
 	stateManager.process(delta)
+	
 	apply_flip_scale()
 	move_and_slide()
 

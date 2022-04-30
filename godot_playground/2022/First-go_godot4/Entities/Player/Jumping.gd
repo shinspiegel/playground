@@ -1,6 +1,5 @@
 extends BaseState
 
-
 func enter():
 	player.animationPlayer.play(name)
 
@@ -10,13 +9,12 @@ func exit():
 
 
 func check_for_new_state(delta: float):
-	if player.velocity.y < 0:
-		stateManager.change_state("Jump")
-		return
-	
-	if not player.input.direction == 0.0:
-		stateManager.change_state("Run")
-		return
+	if player.is_on_floor():
+		if not player.velocity.x == 0:
+			stateManager.change_state("Run")
+			return
+		
+		stateManager.change_state("Idle")
 
 
 func process(delta:float):

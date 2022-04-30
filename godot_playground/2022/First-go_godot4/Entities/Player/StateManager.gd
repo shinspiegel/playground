@@ -4,7 +4,7 @@ class_name StateManager extends Node2D
 @export var player_path: NodePath
 
 var state_list = {}
-var currentState: BaseState
+var current_state: BaseState
 var player: Player
 
 
@@ -15,17 +15,18 @@ func init() -> void:
 
 
 func process(delta:float) -> void:
-	if not currentState == null:
-		currentState.process(delta)
+	if not current_state == null:
+		current_state.process(delta)
+		current_state.check_for_new_state(delta)
 
 
 func change_state(state: String) -> void:
 	if state_list.has(state):
-		if not currentState == null:
-			currentState.exit()
+		if not current_state == null:
+			current_state.exit()
 		
-		currentState = state_list[state]
-		currentState.enter()
+		current_state = state_list[state]
+		current_state.enter()
 
 
 func _get_all_nodes():
