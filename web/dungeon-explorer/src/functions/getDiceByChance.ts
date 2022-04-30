@@ -1,9 +1,9 @@
 import type { CanBeRolled, Identifiable } from '../types';
 
-export function getDiceByChance<T extends unknown & CanBeRolled & Identifiable>(
+export const getDiceByChance = <T extends unknown & CanBeRolled & Identifiable>(
 	list: T[],
 	item: T
-): string {
+): string => {
 	const sorted = [...list].sort((a, b) => b.chance - a.chance);
 	const indexItem = sorted.findIndex((i) => i.id === item.id);
 	const startResult = sorted.slice(0, indexItem).reduce((p, c) => p + c.chance, 1);
@@ -14,4 +14,4 @@ export function getDiceByChance<T extends unknown & CanBeRolled & Identifiable>(
 	}
 
 	return `${startResult}-${endResult}`;
-}
+};

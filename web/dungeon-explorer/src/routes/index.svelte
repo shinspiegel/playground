@@ -1,6 +1,6 @@
 <script lang="ts">
-	import Info from '../lib/components/Info.svelte';
-	import Treasure from '../lib/components/Treasure.svelte';
+	import Info from '../components/Info.svelte';
+	import Treasure from '../components/Treasure.svelte';
 	import type { CanBeRolled, Dungeon, Identifiable } from '../types';
 
 	const dungeon: Dungeon = {

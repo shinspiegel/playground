@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { Treasure } from '../types';
 	import { getDiceByChance } from '../functions/getDiceByChance';
-	import { sortListByChance } from '../functions/sortListByChance.ts';
+	import { sortListByChance } from '../functions/sortListByChance';
 
 	export let title: string;
 	export let list: Treasure[];
