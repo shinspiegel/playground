@@ -1,6 +1,9 @@
 <h2>
   <%= @article.title %>
 </h2>
+<small>
+  <%= @article.user.username %>
+</small>
 
 <%= simple_format(@article.description) %>
 <%= link_to "Edit", edit_article_path(@article) %>
