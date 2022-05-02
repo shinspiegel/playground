@@ -1,29 +1,24 @@
-<div class="container">
-  <div class="row justify-content-center">
-    <div class="col-10">
-      <%= render 'shared/errors' %>
-      <%= form_with(model: @article, class: "shadow p-3 mb-3 bg-info rounded", local: true) do |f| %>
-        <div class="form-group row">
-          <%= f.label :title, class: "col-2 col-form-label text-light" %>
-          <div class="col-10">
-            <%= f.text_field :title, class: "form-control shadow rounded", placeholder: "Title of article" %>
-          </div>
-        </div>
 
-        <div class="form-group row">
-          <%= f.label :description, class: "col-2 col-form-label text-light" %>
-          <div class="col-10"> 
-            <%= f.text_area :description, rows: 10, class: "form-control shadow rounded", placeholder: "Description of article" %>
-          </div>
-        </div>
-
-        <div class="form-group row justify-content-center">
-          <%= f.submit class: "btn btn-outline-light btn-lg" %>
-        </div>
-      <% end %>
-    </div>
-    <div class="mb-3">
-      <%= link_to '[ Cancel and return to articles listing ]', articles_path, class: "text-info" %>
-    </div>
+<%= form_with model: @article do |form| %>
+  <div>
+    <%= form.label :title %>
+    <%= form.text_field :title, placeholder: "Title of article" %>
   </div>
-</div>
+
+  <% @article.errors.full_messages_for(:title).each do |msg| %>
+    <%= msg %>
+  <% end %>
+
+  <div>
+    <%= form.label :description %>
+    <%= form.text_area :description, rows: 10, placeholder: "Description of article" %>
+  </div>
+  
+  <% @article.errors.full_messages_for(:description).each do |msg| %>
+    <%= msg %>
+  <% end %>
+
+  <%= form.submit %>
+<% end %>
+
+<%= link_to "Cancel and return to articles listing", articles_path %>
