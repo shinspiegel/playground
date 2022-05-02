@@ -1,0 +1,30 @@
+<%= form_with model: @user do |form| %>
+  <div>
+    <%= form.label :username %>
+    <%= form.text_field :username %>
+  </div>
+
+  <% @user.errors.full_messages_for(:username).each do |msg| %>
+    <%= msg %>
+  <% end %>
+
+  <div>
+    <%= form.label :email %>
+    <%= form.email_field :email %>
+  </div>
+  
+  <% @user.errors.full_messages_for(:email).each do |msg| %>
+    <%= msg %>
+  <% end %>
+
+  <div>
+    <%= form.label :password %>
+    <%= form.password_field :password %>
+  </div>
+  
+  <% @user.errors.full_messages_for(:password).each do |msg| %>
+    <%= msg %>
+  <% end %>
+
+  <%= form.submit "Sign up" %>
+<% end %>
