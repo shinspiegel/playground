@@ -26,5 +26,5 @@
     <%= msg %>
   <% end %>
 
-  <%= form.submit "Sign up" %>
+  <%= form.submit(@user.new_record? ? "Sign up" : "Update account") %>
 <% end %>
