@@ -1,0 +1,9 @@
+<%= will_paginate @users %>
+<% @users.each do |user| %>
+  <h1><%= user.username %></h1>
+  <p><%= user.articles.count %> articles created</p>
+
+  <div>
+    <%= link_to "View", user_path(user) %>
+  </div>
+<% end %>

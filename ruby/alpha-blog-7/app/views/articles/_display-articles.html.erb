@@ -1,0 +1,9 @@
+<%= will_paginate list %>
+
+<% list.each do |article| %>
+  <h4><%= link_to article.title, article_path(article) %></h4>
+  <p><%= truncate(article.description, length: 100) %></p>
+  <%= link_to "View", article_path(article) %>
+  <%= link_to "Edit", edit_article_path(article) %>
+  <%= link_to "Delete", article_path(article), method: :delete, data: { confirm: "Are you sure?" } %>
+<% end %>
