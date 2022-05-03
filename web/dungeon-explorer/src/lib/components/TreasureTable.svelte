@@ -3,11 +3,9 @@
 	import { getDiceByChance } from '../functions/getDiceByChance';
 	import { sortListByChance } from '../functions/sortListByChance';
 
-	export let title: string;
 	export let list: Treasure[];
 </script>
 
-<h3>{title}</h3>
 <table>
 	<thead>
 		<td>Roll</td>
