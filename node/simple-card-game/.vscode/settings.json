@@ -1,7 +1,16 @@
 {
   "cSpell.words": [
-    "nestjs"
+    "nestjs",
+    "typeorm"
   ],
   "prettier.tabWidth": 2,
-  "editor.tabSize": 2
+  "editor.tabSize": 2,
+  "sqltools.connections": [
+    {
+      "previewLimit": 50,
+      "driver": "SQLite",
+      "database": "${workspaceFolder:simple-card-game}/database.sqlite",
+      "name": "Experimento"
+    }
+  ]
 }
