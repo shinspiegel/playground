@@ -1,4 +1,11 @@
-import { Column, Entity, PrimaryGeneratedColumn, BaseEntity } from 'typeorm';
+import { UserEntity } from 'src/users/entities/user.entity';
+import {
+  Column,
+  Entity,
+  PrimaryGeneratedColumn,
+  BaseEntity,
+  ManyToOne,
+} from 'typeorm';
 
 @Entity()
 export class TaskEntity extends BaseEntity {
@@ -10,6 +17,9 @@ export class TaskEntity extends BaseEntity {
 
   @Column()
   status: TaskStatus;
+
+  @ManyToOne((_type) => UserEntity, (user) => user.tasks, { eager: false })
+  user: UserEntity;
 
   static firstById(id: string) {
     return this.createQueryBuilder('task_entity')
