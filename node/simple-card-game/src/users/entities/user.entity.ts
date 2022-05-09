@@ -8,7 +8,7 @@ import {
   OneToMany,
 } from 'typeorm';
 import { CreateUserDto } from '../dto/create-user.dto';
-import { TaskEntity } from 'src/tasks/entities/task.entity';
+import { TaskEntity } from '../../tasks/entities/task.entity';
 
 @Entity()
 export class UserEntity extends BaseEntity {

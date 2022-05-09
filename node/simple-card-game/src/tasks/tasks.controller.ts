@@ -11,8 +11,8 @@ import {
   UseGuards,
 } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
-import { GetUser } from 'src/auth/decorators/get-users.decorator';
-import { UserEntity } from 'src/users/entities/user.entity';
+import { GetUser } from '../auth/decorators/get-users.decorator';
+import { UserEntity } from '../users/entities/user.entity';
 import { CreateTaskDto } from './dto/CreateTaskDto';
 import { GetTaskFilterDto } from './dto/GetTaskFilterDto';
 import { UpdateStatusTaskDto } from './dto/UpdateStatusTaskDto';

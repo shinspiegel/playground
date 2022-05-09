@@ -1,7 +1,7 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { TaskEntity, TaskModel, TaskStatus } from './entities/task.entity';
 import { GetTaskFilterDto } from './dto/GetTaskFilterDto';
-import { UserEntity } from 'src/users/entities/user.entity';
+import { UserEntity } from '../users/entities/user.entity';
 
 @Injectable()
 export class TasksService {
