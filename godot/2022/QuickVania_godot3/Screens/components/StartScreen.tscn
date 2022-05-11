@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Screens/components/Screen.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Screens/components/BaseButton.tscn" type="PackedScene" id=4]
+
+[node name="Screen" instance=ExtResource( 3 )]
+
+[node name="Label" parent="VBoxContainer" index="0"]
+text = "Quick Vania"
+
+[node name="ButtonsArea" parent="VBoxContainer" index="2"]
+margin_bottom = 103.0
+
+[node name="StartGame" parent="VBoxContainer/ButtonsArea" index="0" instance=ExtResource( 4 )]
+text = "Start Game"
+
+[node name="Options" parent="VBoxContainer/ButtonsArea" index="1" instance=ExtResource( 4 )]
+margin_top = 19.0
+margin_bottom = 34.0
+text = "Options"
+
+[node name="Quit" parent="VBoxContainer/ButtonsArea" index="2" instance=ExtResource( 4 )]
+margin_top = 38.0
+margin_bottom = 53.0
+text = "Quit"
+
+[node name="ExtendSpacer" parent="VBoxContainer" index="3"]
+margin_top = 107.0

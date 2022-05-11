@@ -9,7 +9,12 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "Node2D",
+"base": "Button",
+"class": "ButtonExtra",
+"language": "GDScript",
+"path": "res://Screens/components/BaseButton.gd"
+}, {
+"base": "CanvasLayer",
 "class": "GameManager",
 "language": "GDScript",
 "path": "res://Game/GameManager.gd"
@@ -20,6 +25,7 @@ _global_script_classes=[ {
 "path": "res://Game/LevelManager.gd"
 } ]
 _global_script_class_icons={
+"ButtonExtra": "",
 "GameManager": "",
 "LevelManager": ""
 }
@@ -27,6 +33,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Quick Vania Godot 3"
+run/main_scene="res://Game/GameManager.tscn"
 config/icon="res://icon.png"
 
 [display]

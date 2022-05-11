@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Screens/components/BaseButton.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Screens/components/Screen.tscn" type="PackedScene" id=2]
+
+[node name="Screen" instance=ExtResource( 2 )]
+
+[node name="Label" parent="VBoxContainer" index="0"]
+text = "Thank you for playing!"
+
+[node name="ButtonsArea" parent="VBoxContainer" index="2"]
+margin_bottom = 84.0
+
+[node name="PlayAgain" parent="VBoxContainer/ButtonsArea" index="0" instance=ExtResource( 1 )]
+text = "Play Again?"
+
+[node name="Quit" parent="VBoxContainer/ButtonsArea" index="1" instance=ExtResource( 1 )]
+margin_top = 19.0
+margin_bottom = 34.0
+text = "Quit"
+
+[node name="ExtendSpacer" parent="VBoxContainer" index="3"]
+margin_top = 88.0
