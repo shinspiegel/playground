@@ -1,8 +1,8 @@
 class_name ScreenManager extends Control
 
-onready var startScreen = $Start
-onready var optionScreen = $Options
-onready var quitScreen = $Quit
+onready var startScreen: Screen = $Start
+onready var optionScreen: Screen = $Options
+onready var quitScreen: Screen = $Quit
 
 onready var screens = {
 	"startScreen": startScreen,
@@ -35,6 +35,7 @@ func switch_to_quit() -> void:
 func switch_to(selectedScreen: String) -> void:
 	turn_off_all()
 	screens[selectedScreen].visible = true
+	screens[selectedScreen].default_focus()
 
 
 func turn_off_all() -> void:
