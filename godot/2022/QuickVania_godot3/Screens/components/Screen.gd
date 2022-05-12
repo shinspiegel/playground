@@ -1,6 +1,6 @@
 extends Control
 
-# signal button_pressed(button_name)
+signal button_with_detail_pressed(button_name)
 
 export(NodePath) var initialSelection
 
@@ -17,10 +17,8 @@ func _ready() -> void:
 
 	for button in buttonsArea.get_children():
 		if button is ButtonExtra:
-			button.connect("button_with_info_pressed", self, "pressed_button")
+			button.connect("button_with_info_pressed", self, "on_button_with_detail_pressed")
 
 
-func pressed_button(button_name):
-	# Create the match statement per button type here!
-	print("aaaa", button_name)
-	pass
+func on_button_with_detail_pressed(button_name):
+	emit_signal("button_with_detail_pressed", button_name)
