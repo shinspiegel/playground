@@ -1,0 +1,9 @@
+[gd_scene format=2]
+
+[node name="Slider" type="HSlider"]
+margin_top = 38.0
+margin_right = 100.0
+margin_bottom = 53.0
+rect_min_size = Vector2( 0, 15 )
+max_value = 10.0
+value = 5.0
