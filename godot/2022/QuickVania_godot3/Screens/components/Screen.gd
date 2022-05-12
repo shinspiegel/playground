@@ -8,9 +8,20 @@ onready var buttonsArea = $MarginContainer/VBoxContainer/ButtonsArea
 
 
 func _ready() -> void:
+	connect_all_buttons()
+
+
+func connect_all_buttons() -> void:
 	for button in buttonsArea.get_children():
 		if button is ButtonExtra:
-			button.connect("button_with_info_pressed", self, "on_button_with_detail_pressed")
+			connect_button(button)
+
+
+func connect_button(button: ButtonExtra) -> void:
+	var con = button.connect("button_with_info_pressed", self, "on_button_with_detail_pressed")
+
+	if con != OK:
+		print_debug("INFO:: Failed to connect")
 
 
 func default_focus() -> void:

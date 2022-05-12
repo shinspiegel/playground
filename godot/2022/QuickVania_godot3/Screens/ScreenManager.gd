@@ -15,7 +15,11 @@ func _ready() -> void:
 	turn_off_all()
 
 	for screen in screens:
-		screens[screen].connect("button_with_detail_pressed", self, "on_screen_button_pressed")
+		var item = screens[screen]
+		var con = item.connect("button_with_detail_pressed", self, "on_screen_button_pressed")
+
+		if con != OK:
+			print_debug("INFO:: Failed to connect.")
 
 	switch_to_start()
 
