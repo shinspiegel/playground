@@ -1,7 +1,12 @@
-[gd_scene format=2]
+[gd_scene load_steps=2 format=2]
 
-[node name="CheckButton" type="CheckButton"]
+[ext_resource path="res://Screens/components/BaseCheckButton.gd" type="Script" id=1]
+
+[node name="BaseCheckButton" type="CheckButton"]
 margin_right = 76.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 0, 15 )
-text = "Enable Music"
+pressed = true
+text = "Sample On"
+script = ExtResource( 1 )
+initial_text = "Sample"

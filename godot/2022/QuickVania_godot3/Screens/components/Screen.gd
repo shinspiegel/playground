@@ -1,6 +1,7 @@
 class_name Screen extends Control
 
 signal button_with_detail_pressed(button_name)
+signal toggle_checked(button_name, value)
 
 export(NodePath) var initialSelection
 
@@ -12,12 +13,21 @@ func _ready() -> void:
 
 
 func connect_all_buttons() -> void:
-	for button in buttonsArea.get_children():
-		if button is ButtonExtra:
-			connect_button(button)
+	for item in buttonsArea.get_children():
+		if item is ButtonExtra:
+			connect_extra_button(item)
+		if item is CheckButton:
+			connect_check_button(item)
 
 
-func connect_button(button: ButtonExtra) -> void:
+func connect_check_button(button: CheckButton) -> void:
+	var con = button.connect("toggle_with_name", self, "on_toggle_pressed")
+
+	if con != OK:
+		print_debug("INFO:: Failed to connect")
+
+
+func connect_extra_button(button: ButtonExtra) -> void:
 	var con = button.connect("button_with_info_pressed", self, "on_button_with_detail_pressed")
 
 	if con != OK:
@@ -33,5 +43,9 @@ func default_focus() -> void:
 		buttonsArea.get_children()[0].grab_focus()
 
 
-func on_button_with_detail_pressed(button_name):
+func on_toggle_pressed(toggle_name: String, value: bool) -> void:
+	emit_signal("toggle_checked", toggle_name, value)
+
+
+func on_button_with_detail_pressed(button_name: String) -> void:
 	emit_signal("button_with_detail_pressed", button_name)

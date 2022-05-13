@@ -16,7 +16,13 @@ func _ready() -> void:
 
 	for screen in screens:
 		var item = screens[screen]
-		var con = item.connect("button_with_detail_pressed", self, "on_screen_button_pressed")
+		var con
+		con = item.connect("button_with_detail_pressed", self, "on_screen_button_pressed")
+
+		if con != OK:
+			print_debug("INFO:: Failed to connect.")
+
+		con = item.connect("toggle_checked", self, "on_screen_toggle_changed")
 
 		if con != OK:
 			print_debug("INFO:: Failed to connect.")
@@ -47,6 +53,16 @@ func turn_off_all() -> void:
 		screens[screen].visible = false
 
 
+func on_screen_toggle_changed(toggle_name: String, value: bool) -> void:
+	match toggle_name:
+		"CheckMusic":
+			print_debug("Put music on: ", value)
+		"CheckSound:":
+			print_debug("Put sound on: ", value)
+		_:
+			print_debug("INFO:: failed to find checkbutton ", toggle_name)
+
+
 func on_screen_button_pressed(button_name: String) -> void:
 	match button_name:
 		"StartGame", "PlayAgain":
@@ -65,4 +81,4 @@ func on_screen_button_pressed(button_name: String) -> void:
 		"Back":
 			switch_to_start()
 		_:
-			print("INFO:: ", button_name)
+			print("INFO:: failed to find the button name ", button_name)
