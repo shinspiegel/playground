@@ -1,0 +1,7 @@
+[gd_scene format=2]
+
+[node name="CheckButton" type="CheckButton"]
+margin_right = 76.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 0, 15 )
+text = "Enable Music"
