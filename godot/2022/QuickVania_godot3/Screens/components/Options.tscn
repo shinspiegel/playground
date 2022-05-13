@@ -19,6 +19,7 @@ margin_right = 100.0
 margin_bottom = 15.0
 shortcut_in_tooltip = false
 text = "Musics"
+flat = true
 align = 1
 initial_text = "Music"
 
@@ -28,6 +29,7 @@ margin_right = 100.0
 margin_bottom = 34.0
 shortcut_in_tooltip = false
 text = "Sound"
+flat = true
 align = 1
 initial_text = "Sound"
 
