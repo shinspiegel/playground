@@ -12,8 +12,8 @@ anchor_bottom = 1.0
 theme = ExtResource( 5 )
 script = ExtResource( 2 )
 
-[node name="Start" parent="." instance=ExtResource( 1 )]
+[node name="Quit" parent="." instance=ExtResource( 3 )]
 
 [node name="Options" parent="." instance=ExtResource( 4 )]
 
-[node name="Quit" parent="." instance=ExtResource( 3 )]
+[node name="Start" parent="." instance=ExtResource( 1 )]

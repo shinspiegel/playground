@@ -2,7 +2,7 @@ class_name GameManager extends CanvasLayer
 
 
 func start_game():
-	print("Starting the game")
+	Helper.get_level_manager().switch_to("TestLevel")
 
 
 func exit_game():
