@@ -3,6 +3,7 @@ class_name ScreenManager extends Control
 export(NodePath) var start_screen_path
 export(NodePath) var option_screen_path
 export(NodePath) var quit_screen_path
+export(NodePath) var pause_menu_path
 
 onready var screens = {}
 
@@ -12,6 +13,7 @@ func _ready() -> void:
 		"start_screen": get_node(start_screen_path),
 		"option_screen": get_node(option_screen_path),
 		"quit_screen": get_node(quit_screen_path),
+		"pause_menu": get_node(pause_menu_path),
 	}
 
 	turn_off_all()
@@ -44,6 +46,16 @@ func switch_to_quit() -> void:
 	switch_to("quit_screen")
 
 
+func open_pause_menu() -> void:
+	Helper.get_level_manager().stop_interaction()
+	switch_to("pause_menu")
+
+
+func close_pause_menu() -> void:
+	Helper.get_level_manager().start_interation()
+	turn_off_all()
+
+
 func switch_to(selectedScreen: String) -> void:
 	turn_off_all()
 	screens[selectedScreen].visible = true
@@ -74,13 +86,16 @@ func on_screen_button_pressed(button_name: String) -> void:
 		"Options":
 			switch_to_options()
 
-		"Quit":
+		"QuitGame":
 			Helper.get_game_manager().exit_game()
 
 		"BaseButton", "BaseButton1", "BaseButton2":
 			print("Some random shit")
 
-		"Back":
+		"BackToGame":
+			close_pause_menu()
+
+		"BackToStart", " MainMenu":
 			switch_to_start()
 		_:
 			print("INFO:: failed to find the button name ", button_name)

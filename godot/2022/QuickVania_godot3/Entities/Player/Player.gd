@@ -24,8 +24,8 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float):
-	if Input.is_action_just_pressed("ui_cancel"):
-		stats.take_damage(1)
+	if Input.is_action_just_pressed("pause_game"):
+		Helper.get_screen_manager().open_pause_menu()
 
 	get_input()
 	velocity.y += gravity * delta

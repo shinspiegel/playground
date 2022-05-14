@@ -3,7 +3,7 @@
 [ext_resource path="res://Screens/resources/title_font.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Screens/resources/small_text.tres" type="DynamicFont" id=2]
 [ext_resource path="res://Screens/assets/Minecraftia-Regular.ttf" type="DynamicFontData" id=3]
-[ext_resource path="res://Screens/components/Screen.gd" type="Script" id=4]
+[ext_resource path="res://Screens/screenOptions/Screen.gd" type="Script" id=4]
 
 [sub_resource type="StyleBoxFlat" id=4]
 bg_color = Color( 0.05, 0.05, 0.05, 1 )
