@@ -1,17 +1,19 @@
 class_name ScreenManager extends Control
 
-onready var startScreen: Screen = $Start
-onready var optionScreen: Screen = $Options
-onready var quitScreen: Screen = $Quit
+export(NodePath) var start_screen_path
+export(NodePath) var option_screen_path
+export(NodePath) var quit_screen_path
 
-onready var screens = {
-	"startScreen": startScreen,
-	"optionScreen": optionScreen,
-	"quitScreen": quitScreen,
-}
+onready var screens = {}
 
 
 func _ready() -> void:
+	screens = {
+		"start_screen": get_node(start_screen_path),
+		"option_screen": get_node(option_screen_path),
+		"quit_screen": get_node(quit_screen_path),
+	}
+
 	turn_off_all()
 
 	for screen in screens:
@@ -31,15 +33,15 @@ func _ready() -> void:
 
 
 func switch_to_start() -> void:
-	switch_to("startScreen")
+	switch_to("start_screen")
 
 
 func switch_to_options() -> void:
-	switch_to("optionScreen")
+	switch_to("option_screen")
 
 
 func switch_to_quit() -> void:
-	switch_to("quitScreen")
+	switch_to("quit_screen")
 
 
 func switch_to(selectedScreen: String) -> void:

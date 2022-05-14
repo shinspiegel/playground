@@ -1,5 +1,9 @@
 extends Node
 
+var GameManager = preload("res://Game/GameManager.gd")
+var LevelManager = preload("res://Game/LevelManager.gd")
+var ScreenManager = preload("res://Screens/ScreenManager.gd")
+
 var game_manager: GameManager
 var level_manager: LevelManager
 var screen_manager: ScreenManager

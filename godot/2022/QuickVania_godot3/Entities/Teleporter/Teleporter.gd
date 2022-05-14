@@ -1,6 +1,7 @@
 extends Area2D
 
 export var area: String
+export(int) var area_position: int = 0
 
 
 func _ready() -> void:
@@ -12,4 +13,4 @@ func _ready() -> void:
 
 func on_player_entered(body: Node):
 	if body is Player:
-		Helper.get_level_manager().switch_to(area)
+		Helper.get_level_manager().switch_to(area, area_position)

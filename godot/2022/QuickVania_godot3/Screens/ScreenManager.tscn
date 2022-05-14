@@ -11,6 +11,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 theme = ExtResource( 5 )
 script = ExtResource( 2 )
+start_screen_path = NodePath("Start")
+option_screen_path = NodePath("Options")
+quit_screen_path = NodePath("Quit")
 
 [node name="Quit" parent="." instance=ExtResource( 3 )]
 

@@ -1,5 +1,7 @@
 class_name LevelManager extends Node2D
 
+export(PackedScene) var player_scene
+
 var maps = {
 	"TestLevel": "res://Level/TestLevel.tscn",
 	"TestLevel1": "res://Level/TestLevel1.tscn",
@@ -7,7 +9,7 @@ var maps = {
 }
 
 
-func switch_to(area: String) -> void:
+func switch_to(area: String, position: int) -> void:
 	var next_area_path: String = maps[area]
 	var loaded_area: PackedScene = load(next_area_path)
 
@@ -16,9 +18,9 @@ func switch_to(area: String) -> void:
 
 	var next_area: Level = loaded_area.instance()
 
-	next_area.stop_interactions()
-	next_area.add_player_to_position()
-
 	add_child(next_area)
+
+	next_area.stop_interactions()
+	next_area.add_player_to_position(position)
 
 	next_area.start_interactions()
