@@ -1,4 +1,9 @@
-class_name GameManager extends CanvasLayer
+class_name GameManager extends Node2D
+
+
+func _ready() -> void:
+	Helper.get_screen_manager().switch_to_start()
+	# Helper.get_level_manager().switch_to("TestLevel", 0)
 
 
 func start_game():

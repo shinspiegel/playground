@@ -9,12 +9,18 @@ export(float, 0, 1.0) var friction = 0.1
 export(float, 0, 1.0) var acceleration = 0.25
 
 onready var label: Label = $Label
+
 onready var stats: PlayerStats = load("res://Entities/Player/PlayerStats.tres")
 
 var velocity = Vector2.ZERO
 
 
 func _ready() -> void:
+	var camera = Camera2D.new()
+	camera.clear_current()
+	camera.make_current()
+	add_child(camera)
+
 	var con = stats.connect("health_changed", self, "on_health_changed")
 
 	if con != OK:

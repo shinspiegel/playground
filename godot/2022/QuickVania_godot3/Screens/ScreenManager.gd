@@ -31,8 +31,6 @@ func _ready() -> void:
 		if con != OK:
 			print_debug("INFO:: Failed to connect.")
 
-	switch_to_start()
-
 
 func switch_to_start() -> void:
 	switch_to("start_screen")

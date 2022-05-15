@@ -23,5 +23,5 @@ func get_level_manager() -> LevelManager:
 
 func get_screen_manager() -> ScreenManager:
 	if screen_manager == null:
-		screen_manager = get_tree().root.get_node("GameManager/ScreenManager")
+		screen_manager = get_tree().root.get_node("GameManager/CanvasLayer/ScreenManager")
 	return screen_manager

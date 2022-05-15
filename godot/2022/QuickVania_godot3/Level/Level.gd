@@ -1,8 +1,8 @@
 class_name Level extends Node2D
 
-onready var entry_point_list = $EntryPoint
+export(PackedScene) var player_scene
 
-var player_scene = preload("res://Entities/Player/Player.tscn")
+onready var entry_point_list = $EntryPoint
 
 
 func add_player_to_position(index: int) -> void:
