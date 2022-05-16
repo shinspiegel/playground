@@ -7,10 +7,9 @@ export(int) var jump_speed = -200
 export(int) var gravity = 400
 export(float, 0, 1.0) var friction = 0.1
 export(float, 0, 1.0) var acceleration = 0.25
+export(Resource) var stats
 
 onready var label: Label = $Label
-
-onready var stats: PlayerStats = load("res://Entities/Player/PlayerStats.tres")
 
 var velocity = Vector2.ZERO
 
@@ -21,16 +20,20 @@ func _ready() -> void:
 	camera.make_current()
 	add_child(camera)
 
-	var con = stats.connect("health_changed", self, "on_health_changed")
+	var con = stats.hit_points_resource.connect("changed_detailed", self, "on_health_changed")
 
 	if con != OK:
 		print_debug("INFO:: Failed to connect")
 
-	on_health_changed(stats.current_value, stats.max_value)
+	if stats.hit_points == 0:
+		stats.hit_points_resource.set_to_max()
+
+	stats.hit_points_resource.emit_signals()
 
 
 func _physics_process(delta: float):
 	if Input.is_action_just_pressed("pause_game"):
+		stats.hurt(1)
 		Manager.screen.open_pause_menu()
 
 	get_input()
@@ -57,5 +60,5 @@ func get_input():
 		velocity.x = lerp(velocity.x, 0, friction)
 
 
-func on_health_changed(value: int, max_value: int) -> void:
+func on_health_changed(value: int, _min_value: int, max_value: int) -> void:
 	label.text = String(value) + "/" + String(max_value)

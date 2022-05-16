@@ -1,26 +1,17 @@
-extends Resource
-class_name PlayerStats
+class_name PlayerStats extends Resource
 
-signal health_changed(current, maximum)
+export(Resource) var hit_points_resource
 
-export(int) var max_value = 10
-
-var current_value = max_value
+var hit_points: int setget , get_hit_points
 
 
-func _init() -> void:
-	emit_signal("health_changed", current_value, max_value)
+func get_hit_points() -> int:
+	return hit_points_resource.current
 
 
-func reset():
-	heal(max_value)
+func hurt(amount = 1):
+	hit_points_resource.reduce(amount)
 
 
-func take_damage(amount):
-	current_value = max(0, current_value - amount)
-	emit_signal("health_changed", current_value, max_value)
-
-
-func heal(amount):
-	current_value = min(max_value, current_value + amount)
-	emit_signal("health_changed", current_value, max_value)
+func heal(amount = 1):
+	hit_points_resource.increase(amount)
