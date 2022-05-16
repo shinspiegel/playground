@@ -1,7 +1,5 @@
 class_name Player extends KinematicBody2D
 
-const InputKeys = {LEFT = "move_left", RIGHT = "move_right", JUMP = "jump"}
-
 export(int) var speed = 100
 export(int) var jump_speed = -200
 export(int) var gravity = 400
@@ -32,7 +30,7 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float):
-	if Input.is_action_just_pressed("pause_game"):
+	if Input.is_action_just_pressed(KeysMap.PAUSE_GAME):
 		stats.hurt(1)
 		Manager.screen.open_pause_menu()
 
@@ -40,7 +38,7 @@ func _physics_process(delta: float):
 	velocity.y += gravity * delta
 	velocity = move_and_slide(velocity, Vector2.UP)
 
-	if Input.is_action_just_pressed(InputKeys.JUMP):
+	if Input.is_action_just_pressed(KeysMap.JUMP):
 		if is_on_floor():
 			velocity.y = jump_speed
 
@@ -48,10 +46,10 @@ func _physics_process(delta: float):
 func get_input():
 	var dir = 0
 
-	if Input.is_action_pressed(InputKeys.RIGHT):
+	if Input.is_action_pressed(KeysMap.RIGHT):
 		dir += 1
 
-	if Input.is_action_pressed(InputKeys.LEFT):
+	if Input.is_action_pressed(KeysMap.LEFT):
 		dir -= 1
 
 	if dir != 0:

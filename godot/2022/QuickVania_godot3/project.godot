@@ -75,6 +75,7 @@ config/icon="res://icon.png"
 [autoload]
 
 Manager="*res://Globals/Manager.gd"
+KeysMap="*res://Globals/KeysMap.gd"
 
 [display]
 
