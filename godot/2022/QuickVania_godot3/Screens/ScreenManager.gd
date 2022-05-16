@@ -45,12 +45,12 @@ func switch_to_quit() -> void:
 
 
 func open_pause_menu() -> void:
-	Helper.get_level_manager().stop_interaction()
+	Manager.level.stop_interaction()
 	switch_to("pause_menu")
 
 
 func close_pause_menu() -> void:
-	Helper.get_level_manager().start_interation()
+	Manager.level.start_interation()
 	turn_off_all()
 
 
@@ -79,13 +79,13 @@ func on_screen_button_pressed(button_name: String) -> void:
 	match button_name:
 		"StartGame", "PlayAgain":
 			turn_off_all()
-			Helper.get_game_manager().start_game()
+			Manager.game.start_game()
 
 		"Options":
 			switch_to_options()
 
 		"QuitGame":
-			Helper.get_game_manager().exit_game()
+			Manager.game.exit_game()
 
 		"BaseButton", "BaseButton1", "BaseButton2":
 			print("Some random shit")

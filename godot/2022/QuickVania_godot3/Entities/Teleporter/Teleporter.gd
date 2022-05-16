@@ -13,4 +13,4 @@ func _ready() -> void:
 
 func on_player_entered(body: Node):
 	if body is Player:
-		Helper.get_level_manager().switch_to(area, area_position)
+		Manager.level.switch_to(area, area_position)
