@@ -39,6 +39,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Entities/Player/Player.gd"
 }, {
+"base": "Node",
+"class": "PlayerInput",
+"language": "GDScript",
+"path": "res://Entities/Player/PlayerInput.gd"
+}, {
 "base": "Resource",
 "class": "PlayerStats",
 "language": "GDScript",
@@ -61,6 +66,7 @@ _global_script_class_icons={
 "Level": "",
 "LevelManager": "",
 "Player": "",
+"PlayerInput": "",
 "PlayerStats": "",
 "Screen": "",
 "ScreenManager": ""

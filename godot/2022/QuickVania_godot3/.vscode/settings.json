@@ -4,5 +4,6 @@
 	"editor.tabSize": 4,
 	"editor.insertSpaces": false,
 	"editor.detectIndentation": false,
-	"godot_tools.editor_path": "/usr/local/bin/godot"
+	"godot_tools.editor_path": "/usr/local/bin/godot",
+	"gdscript_formatter.line_size": 180
 }

@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Entities/Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://Screens/resources/regular_font.tres" type="DynamicFont" id=2]
 [ext_resource path="res://Entities/Player/PlayerStats.tres" type="Resource" id=3]
+[ext_resource path="res://Entities/Player/PlayerInput.gd" type="Script" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 4, 8 )
@@ -24,6 +25,14 @@ custom_fonts/font = ExtResource( 2 )
 text = "99"
 align = 1
 valign = 1
+
+[node name="PlayerInput" type="Node" parent="."]
+script = ExtResource( 4 )
+
+[node name="InputColddown" type="Timer" parent="PlayerInput"]
+wait_time = 0.1
+
+[node name="CoyoteTimer" type="Timer" parent="."]
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
 color = Color( 0.87451, 0.239216, 0.654902, 1 )
