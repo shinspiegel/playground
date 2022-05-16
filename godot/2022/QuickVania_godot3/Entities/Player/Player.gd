@@ -113,7 +113,6 @@ func setup_camera() -> void:
 
 func setup_player_stats() -> void:
 	var con = stats.hit_points_resource.connect("changed_detailed", self, "on_health_changed")
-
 	if con != OK:
 		print_debug("INFO:: Failed to connect")
 
