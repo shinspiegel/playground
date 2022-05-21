@@ -9,6 +9,4 @@ script = ExtResource( 1 )
 
 [node name="LevelManager" parent="." instance=ExtResource( 3 )]
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="ScreenManager" parent="CanvasLayer" instance=ExtResource( 4 )]
+[node name="ScreenManager" parent="." instance=ExtResource( 4 )]

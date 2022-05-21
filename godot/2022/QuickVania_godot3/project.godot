@@ -54,7 +54,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Screens/screenOptions/Screen.gd"
 }, {
-"base": "Control",
+"base": "CanvasLayer",
 "class": "ScreenManager",
 "language": "GDScript",
 "path": "res://Screens/ScreenManager.gd"
