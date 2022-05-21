@@ -26,7 +26,7 @@ area_position = 1
 
 [node name="Label" type="Label" parent="." index="4"]
 margin_left = 110.0
-margin_top = 21.0
+margin_top = 118.0
 margin_right = 187.0
-margin_bottom = 35.0
+margin_bottom = 132.0
 text = "Test Level 1"
