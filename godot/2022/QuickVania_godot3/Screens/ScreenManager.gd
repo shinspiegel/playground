@@ -1,4 +1,4 @@
-class_name ScreenManager extends Control
+class_name ScreenManager extends CanvasLayer
 
 export(NodePath) var start_screen_path
 export(NodePath) var option_screen_path

@@ -22,7 +22,6 @@ var velocity = Vector2.ZERO
 
 
 func _ready() -> void:
-	setup_camera()
 	setup_player_stats()
 	setup_coyote_timer()
 
@@ -104,10 +103,17 @@ func on_health_changed(value: int, _min_value: int, max_value: int) -> void:
 	label.text = String(value) + "/" + String(max_value)
 
 
-func setup_camera() -> void:
+func add_camera(top: int, bottom: int, left: int, right: int) -> void:
 	var camera = Camera2D.new()
+
 	camera.clear_current()
 	camera.make_current()
+
+	camera.set_limit(MARGIN_TOP, top)
+	camera.set_limit(MARGIN_BOTTOM, bottom)
+	camera.set_limit(MARGIN_LEFT, left)
+	camera.set_limit(MARGIN_RIGHT, right)
+
 	add_child(camera)
 
 
