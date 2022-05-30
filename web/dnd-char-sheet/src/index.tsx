@@ -1,7 +1,5 @@
-/* @refresh reload */
 import { render } from 'solid-js/web';
+import './index.scss';
+import { Sheet } from './pages';
 
-import './index.css';
-import App from './App';
-
-render(() => <App />, document.getElementById('root') as HTMLElement);
+render(() => <Sheet />, document.getElementById('root') as HTMLElement);
