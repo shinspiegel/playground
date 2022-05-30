@@ -1,9 +1,9 @@
 import { render } from 'solid-testing-library';
-import { Sheet } from './index';
+import { BasicInfo } from './index';
 
-describe('pages/Sheet', () => {
+describe('components/BasicInfo', () => {
   it('Should render without any props', async () => {
-    const { container } = render(() => <Sheet />);
+    const { container } = render(() => <BasicInfo />);
     expect(container.children.length).toBeGreaterThan(0);
   });
 });

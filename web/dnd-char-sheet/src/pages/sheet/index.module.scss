@@ -1,2 +1,50 @@
 .container {
+  background: red;
+  height: 100vh;
+
+  display: grid;
+  grid-template-areas:
+    'basicInfo basicInfo combatStats traits'
+    'profBonus savingThrow combatStats traits'
+    'baseStats savingThrow attacks traits'
+    'baseStats skills attacks traits';
+
+  grid-template-columns: 8fr 8fr 10fr 8fr;
+  grid-template-rows: 2fr 2fr 2fr 10fr;
+
+  > * {
+    border: 1px solid black;
+  }
+}
+
+.basicInfo {
+  grid-area: basicInfo;
+}
+
+.combatStats {
+  grid-area: combatStats;
+}
+
+.traits {
+  grid-area: traits;
+}
+
+.profBonus {
+  grid-area: profBonus;
+}
+
+.savingThrow {
+  grid-area: savingThrow;
+}
+
+.baseStats {
+  grid-area: baseStats;
+}
+
+.attacks {
+  grid-area: attacks;
+}
+
+.skills {
+  grid-area: skills;
 }
