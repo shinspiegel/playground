@@ -1,0 +1,3 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+cd ./web/dnd-char-sheet && npx lint-staged

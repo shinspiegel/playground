@@ -1,4 +1,4 @@
-import { render, screen } from 'solid-testing-library';
+import { render } from 'solid-testing-library';
 import App from './App';
 
 describe('Basic testing', () => {
