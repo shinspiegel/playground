@@ -1,5 +1,6 @@
 import type { Component } from 'solid-js';
 import { BasicInfo, ProficiencyBonus, Stats } from '../../components';
+import { SavingThrows } from '../../components/SavingThrows';
 import styles from './index.module.scss';
 
 export const Sheet: Component = () => (
@@ -16,9 +17,12 @@ export const Sheet: Component = () => (
       <ProficiencyBonus />
     </div>
 
+    <div class={styles.savingThrow}>
+      <SavingThrows />
+    </div>
+
     <div class={styles.combatStats}>combatStats</div>
     <div class={styles.traits}>traits</div>
-    <div class={styles.savingThrow}>savingThrow</div>
     <div class={styles.attacks}>attacks</div>
     <div class={styles.skills}>skills</div>
   </main>
