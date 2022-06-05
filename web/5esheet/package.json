@@ -1,47 +1,47 @@
 {
-	"name": "5esheet",
-	"version": "0.0.1",
-	"scripts": {
-		"dev": "svelte-kit dev",
-		"build": "svelte-kit build",
-		"package": "svelte-kit package",
-		"preview": "svelte-kit preview",
-		"test": "playwright test",
-		"check": "svelte-check --tsconfig ./tsconfig.json",
-		"check:watch": "svelte-check --tsconfig ./tsconfig.json --watch",
-		"lint": "eslint .",
-		"format": "prettier --write --plugin-search-dir=. .",
-		"prepare": "cd ../../ && husky install ./web/5esheet/.husky"
-	},
-	"lint-staged": {
-		"*.{md}": [
-			"prettier --write --plugin-search-dir=. ."
-		],
-		"*.{svelte,ts}": [
-			"svelte-check --tsconfig ./tsconfig.json",
-			"prettier --write --plugin-search-dir=. .",
-			"eslint .",
-			"svelte-kit build"
-		]
-	},
-	"devDependencies": {
-		"@playwright/test": "^1.21.0",
-		"@sveltejs/adapter-auto": "next",
-		"@sveltejs/kit": "next",
-		"@typescript-eslint/eslint-plugin": "^5.10.1",
-		"@typescript-eslint/parser": "^5.10.1",
-		"eslint": "^8.12.0",
-		"eslint-config-prettier": "^8.3.0",
-		"eslint-plugin-svelte3": "^4.0.0",
-		"husky": "^8.0.1",
-		"lint-staged": "^13.0.0",
-		"prettier": "^2.6.2",
-		"prettier-plugin-svelte": "^2.7.0",
-		"svelte": "^3.44.0",
-		"svelte-check": "^2.2.6",
-		"svelte-preprocess": "^4.10.1",
-		"tslib": "^2.3.1",
-		"typescript": "~4.6.2"
-	},
-	"type": "module"
+  "name": "5esheet",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "svelte-kit dev",
+    "build": "svelte-kit build",
+    "package": "svelte-kit package",
+    "preview": "svelte-kit preview",
+    "test": "playwright test",
+    "check": "svelte-check --tsconfig ./tsconfig.json",
+    "check:watch": "svelte-check --tsconfig ./tsconfig.json --watch",
+    "lint": "eslint .",
+    "format": "prettier --write --plugin-search-dir=. .",
+    "prepare": "cd ../../ && husky install ./web/5esheet/.husky"
+  },
+  "lint-staged": {
+    "*.md": [
+      "prettier --write --plugin-search-dir=. ."
+    ],
+    "*.{svelte,ts}": [
+      "svelte-check --tsconfig ./tsconfig.json",
+      "prettier --write --plugin-search-dir=. .",
+      "eslint .",
+      "svelte-kit build"
+    ]
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.21.0",
+    "@sveltejs/adapter-auto": "next",
+    "@sveltejs/kit": "next",
+    "@typescript-eslint/eslint-plugin": "^5.10.1",
+    "@typescript-eslint/parser": "^5.10.1",
+    "eslint": "^8.12.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-svelte3": "^4.0.0",
+    "husky": "^8.0.1",
+    "lint-staged": "^13.0.0",
+    "prettier": "^2.6.2",
+    "prettier-plugin-svelte": "^2.7.0",
+    "svelte": "^3.44.0",
+    "svelte-check": "^2.2.6",
+    "svelte-preprocess": "^4.10.1",
+    "tslib": "^2.3.1",
+    "typescript": "~4.6.2"
+  },
+  "type": "module"
 }
