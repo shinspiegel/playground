@@ -17,7 +17,7 @@
     "*.md": [
       "prettier --write --plugin-search-dir=. ."
     ],
-    "*.{svelte,ts}": [
+    "*.{svelte,ts,js}": [
       "svelte-check --tsconfig ./tsconfig.json",
       "prettier --write --plugin-search-dir=. .",
       "eslint .",
