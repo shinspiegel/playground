@@ -3,12 +3,15 @@ import { randomIntFromInterval } from "../randomNumbers/randomIntFromInverval.ts
 
 type OptionWithValue = TableOption & { value: number };
 
-export function randomItemFrom(table: Table, value: number): TableOption {
+type RandomItemFrom = { item: TableOption; random: number };
+
+export function randomItemFrom(table: Table, random?: number): RandomItemFrom {
   const max = table.options.reduce((prev, curr) => curr.weight + prev, 0);
+  let tableRandomValue = randomIntFromInterval({ max });
   const options: OptionWithValue[] = [];
 
-  if (value > max) {
-    value = randomIntFromInterval({ max });
+  if (random && random < max) {
+    tableRandomValue = random;
   }
 
   const sortedOptions = [...table.options].sort((a, b) => b.weight - a.weight);
@@ -21,7 +24,12 @@ export function randomItemFrom(table: Table, value: number): TableOption {
     }
   });
 
-  const { value: _, ...item } = options.find((item) => value <= item.value) as OptionWithValue;
+  const { value: _, ...item } = options.find(
+    (item) => tableRandomValue <= item.value
+  ) as OptionWithValue;
 
-  return item;
+  return {
+    item,
+    random: tableRandomValue,
+  };
 }

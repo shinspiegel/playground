@@ -1,4 +1,5 @@
-import { raceRelation } from "./tables/tables.ts";
-import { randomItemFrom } from "./tables/randomItemFrom.ts";
+import { randomRace } from "./randomGenerator/randomRace.ts";
+import { totalWeightFrom } from "./tables/totalWeightFrom.ts";
+import { races } from "./tables/racesTable.ts";
 
-console.log(randomItemFrom(raceRelation, 5));
+console.log(randomRace());
