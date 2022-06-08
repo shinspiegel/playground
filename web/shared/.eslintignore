@@ -1,0 +1,7 @@
+dist
+.storybook
+node_modules
+*.stories.tsx
+*.story.tsx
+*.test.tsx
+*.test.ts
