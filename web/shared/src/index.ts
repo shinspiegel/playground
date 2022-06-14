@@ -1,2 +1,2 @@
-export * from "./components/Button";
-export * from "./hooks/useCount";
+export * from "./components";
+export * from "./hooks";
