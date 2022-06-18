@@ -13,22 +13,11 @@
   "scripts": {
     "build": "rollup -c",
     "lint": "eslint src",
-    "format": "prettier src --write",
+    "format": "prettier src --write && npx postcss --no-map --replace ./src/**/*.scss",
     "test": "jest",
+    "test:watch": "jest --watch",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook",
-    "prepare": "cd ../../ && husky install ./web/shared/.husky"
-  },
-  "lint-staged": {
-    "*.md": [
-      "npm run format"
-    ],
-    "*.{ts,js,tsx,jsx}": [
-      "npm run format",
-      "npm run lint",
-      "npm run build",
-      "npm run test"
-    ]
+    "build-storybook": "build-storybook"
   },
   "peerDependencies": {
     "react": ">=16.0.0"
@@ -66,6 +55,9 @@
     "identity-obj-proxy": "^3.0.0",
     "jest": "^28.1.1",
     "jest-environment-jsdom": "^28.1.1",
+    "postcss": "^8.4.14",
+    "postcss-cli": "^9.1.0",
+    "postcss-sorting": "^7.0.1",
     "prettier": "^2.6.2",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
