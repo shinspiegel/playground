@@ -17,7 +17,7 @@ export const StatItem: React.FC<StatItemProps> = ({
     <div>{stat.name}</div>
 
     <div>
-      <input value={stat.value} onChange={onValueChange} />
+      <input type="number" value={stat.value} onChange={onValueChange} />
       <input
         type="range"
         min="0"
@@ -28,7 +28,7 @@ export const StatItem: React.FC<StatItemProps> = ({
     </div>
 
     <div>
-      <input value={stat.mod} onChange={onModChange} />
+      <input type="number" value={stat.mod} onChange={onModChange} />
       <input
         type="range"
         min="-5"

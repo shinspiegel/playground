@@ -1,9 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { statsSlice } from "./slices/statsSlice";
+import { statsSlice, infoSlice } from "./slices";
 
 export const store = configureStore({
   reducer: {
     [statsSlice.name]: statsSlice.reducer,
+    [infoSlice.name]: infoSlice.reducer,
   },
 });
 

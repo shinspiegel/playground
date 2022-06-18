@@ -1,7 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { statToMod } from "../../functions";
 import { modToStat } from "../../functions/modToStat";
-import { RootState } from "../store";
 
 export type StatsState = {
   list: Stat[];

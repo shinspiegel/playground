@@ -14,8 +14,8 @@ describe("pages/index", () => {
     );
 
     const list = [
+      // "Info",
       // "Stats",
-      "Info",
       "Proficiency Bonus",
       "Saves",
       "Skills",
