@@ -5,8 +5,9 @@ import { render } from "@testing-library/react";
 import { StatItem } from "./index";
 
 describe("pages/index", () => {
-  test("Should have the list of items", () => {
+  test("Should render without any props", () => {
     const { container } = render(<StatItem />);
+
     expect(container.children.length).not.toBe(0);
   });
 });
