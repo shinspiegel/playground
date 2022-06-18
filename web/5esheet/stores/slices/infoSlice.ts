@@ -8,6 +8,7 @@ export type InfoSlice = {
   player: string;
   level: number;
   experience: number;
+  proficiency: number;
 };
 
 const initialState: InfoSlice = {
@@ -17,6 +18,7 @@ const initialState: InfoSlice = {
   player: "Shin",
   level: 1,
   experience: 0,
+  proficiency: 2,
 };
 
 export type UpdateTextFromOps = {
@@ -32,6 +34,10 @@ export const infoSlice = createSlice({
       state[action.payload.property] = action.payload.value;
     },
 
+    updateProf: (state, action: PayloadAction<number>) => {
+      state.proficiency = action.payload;
+    },
+
     updateLevel: (state, action: PayloadAction<number>) => {
       state.level = action.payload;
 
@@ -39,6 +45,7 @@ export const infoSlice = createSlice({
 
       if (level) {
         state.experience = level.experience;
+        state.proficiency = level.prof;
       }
     },
 
@@ -49,10 +56,11 @@ export const infoSlice = createSlice({
 
       if (level) {
         state.level = level.level;
+        state.proficiency = level.prof;
       }
     },
   },
 });
 
-export const { updateTextFrom, updateExperience, updateLevel } =
+export const { updateTextFrom, updateExperience, updateLevel, updateProf } =
   infoSlice.actions;

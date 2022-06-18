@@ -25,14 +25,14 @@ export const StatList: React.FC<StatListProps> = ({
               onStatUpdate({
                 name: stat.name,
                 type: "value",
-                value: Number(e.target.value),
+                value: e.target.valueAsNumber,
               })
             }
             onModChange={(e) =>
               onStatUpdate({
                 name: stat.name,
                 type: "mod",
-                value: Number(e.target.value),
+                value: e.target.valueAsNumber,
               })
             }
           />

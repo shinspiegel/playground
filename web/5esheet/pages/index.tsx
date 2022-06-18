@@ -1,6 +1,7 @@
 import type { NextPage } from "next";
 import { Head } from "../components/Head";
 import { Info, InfoProps } from "../components/Info";
+import { ProficiencyBonus } from "../components/Proficiency";
 import { StatList, StatListProps } from "../components/StatsList";
 import {
   updateState,
@@ -9,6 +10,7 @@ import {
   updateTextFrom,
   updateExperience,
   updateLevel,
+  updateProf,
 } from "../stores";
 import styles from "./index.module.scss";
 
@@ -26,6 +28,8 @@ const Home: NextPage = () => {
   const stats = useAppSelector((s) => s.stats.list);
   const onStatUpdate: StatListProps["onStatUpdate"] = (opt) =>
     dispatch(updateState(opt));
+
+  const onProfChange = (prof: number) => dispatch(updateProf(prof));
 
   return (
     <>
@@ -45,7 +49,13 @@ const Home: NextPage = () => {
 
         <hr />
 
-        <div>Proficiency Bonus</div>
+        <ProficiencyBonus
+          proficiency={info.proficiency}
+          onProfChange={onProfChange}
+        />
+
+        <hr />
+
         <div>Saves</div>
         <div>Skills</div>
         <div>Proficiencies</div>

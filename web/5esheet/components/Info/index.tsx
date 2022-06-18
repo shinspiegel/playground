@@ -60,7 +60,7 @@ export const Info: React.FC<InfoProps> = ({
         <input
           type="number"
           value={info.level}
-          onChange={(e) => onLevelChange(Number(e.target.value))}
+          onChange={(e) => onLevelChange(e.target.valueAsNumber)}
         />
       </label>
     </div>
@@ -72,7 +72,7 @@ export const Info: React.FC<InfoProps> = ({
           type="number"
           step="25"
           value={info.experience}
-          onChange={(e) => onExperienceChange(Number(e.target.value))}
+          onChange={(e) => onExperienceChange(e.target.valueAsNumber)}
         />
       </label>
     </div>
