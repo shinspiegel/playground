@@ -15,7 +15,27 @@ export const StatItem: React.FC<StatItemProps> = ({
 }) => (
   <div className={cn.container}>
     <div>{stat.name}</div>
-    <input value={stat.value} onChange={onValueChange} />
-    <input value={stat.mod} onChange={onModChange} />
+
+    <div>
+      <input value={stat.value} onChange={onValueChange} />
+      <input
+        type="range"
+        min="0"
+        max="20"
+        value={stat.value}
+        onChange={onValueChange}
+      />
+    </div>
+
+    <div>
+      <input value={stat.mod} onChange={onModChange} />
+      <input
+        type="range"
+        min="-5"
+        max="5"
+        value={stat.mod}
+        onChange={onModChange}
+      />
+    </div>
   </div>
 );
