@@ -3,6 +3,7 @@ import { Head } from "../components/Head";
 import { Info, InfoProps } from "../components/Info";
 import { ProficiencyBonus } from "../components/Proficiency";
 import { SavesList, SavesListProps } from "../components/SavesList";
+import { SkillList, SkillListProps } from "../components/SkillsList";
 import { StatList, StatListProps } from "../components/StatsList";
 import {
   updateStatValue,
@@ -13,6 +14,7 @@ import {
   updateLevel,
   updateProf,
   setStatSave,
+  changeSkillProf,
 } from "../stores";
 import styles from "./index.module.scss";
 
@@ -20,8 +22,9 @@ type OnTextChange = InfoProps["onTextChange"];
 type OnExpChange = InfoProps["onExperienceChange"];
 type OnLevelChange = InfoProps["onLevelChange"];
 type OnStatUpdate = StatListProps["onStatUpdate"];
-type OnProfChange = (prof: number) => void;
+type OnProfBonusChange = (prof: number) => void;
 type OnToggleSaveProf = SavesListProps["onToggle"];
+type OnProfSkillChange = SkillListProps["onProfChange"];
 
 const Home: NextPage = () => {
   const dispatch = useAppDispatch();
@@ -34,9 +37,14 @@ const Home: NextPage = () => {
   const stats = useAppSelector((s) => s.stats.list);
   const onStatUpdate: OnStatUpdate = (opt) => dispatch(updateStatValue(opt));
 
-  const onProfChange: OnProfChange = (prof) => dispatch(updateProf(prof));
+  const OnProfBonusChange: OnProfBonusChange = (prof) =>
+    dispatch(updateProf(prof));
 
   const onToggle: OnToggleSaveProf = (opt) => dispatch(setStatSave(opt));
+
+  const skills = useAppSelector((s) => s.skills.list);
+  const onProfSkillChange: OnProfSkillChange = (opt) =>
+    dispatch(changeSkillProf(opt));
 
   return (
     <>
@@ -58,7 +66,7 @@ const Home: NextPage = () => {
 
         <ProficiencyBonus
           proficiency={info.proficiency}
-          onProfChange={onProfChange}
+          onProfChange={OnProfBonusChange}
         />
 
         <hr />
@@ -71,7 +79,15 @@ const Home: NextPage = () => {
 
         <hr />
 
-        <div>Skills</div>
+        <SkillList
+          skills={skills}
+          stats={stats}
+          profBonus={info.proficiency}
+          onProfChange={onProfSkillChange}
+        />
+
+        <hr />
+
         <div>Proficiencies</div>
         <div>Combat</div>
         <div>Weapons</div>

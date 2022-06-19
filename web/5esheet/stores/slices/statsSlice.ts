@@ -15,6 +15,16 @@ export type Stat = {
   isProf?: boolean;
 };
 
+type Updater<Type, Value> = {
+  name: string;
+  type: Type;
+  value: Value;
+};
+
+export type UpdateStateOpt = Updater<keyof Pick<Stat, "value" | "mod">, number>;
+
+export type SetStatSave = Updater<keyof Pick<Stat, "isProf">, boolean>;
+
 const initialState: StatsState = {
   list: [
     {
@@ -32,16 +42,6 @@ const initialState: StatsState = {
     { name: "Charisma", short: "CHA", value: 18, mod: 4, weight: 5 },
   ],
 };
-
-type Updater<Type, Value> = {
-  name: string;
-  type: Type;
-  value: Value;
-};
-
-export type UpdateStateOpt = Updater<keyof Pick<Stat, "value" | "mod">, number>;
-
-export type SetStatSave = Updater<keyof Pick<Stat, "isProf">, boolean>;
 
 export const statsSlice = createSlice({
   name: "stats",

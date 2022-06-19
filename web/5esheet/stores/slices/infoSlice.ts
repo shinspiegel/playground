@@ -11,6 +11,11 @@ export type InfoSlice = {
   proficiency: number;
 };
 
+export type UpdateTextFromOps = {
+  property: keyof Pick<InfoSlice, "class" | "name" | "player" | "race">;
+  value: string;
+};
+
 const initialState: InfoSlice = {
   name: "Dwarfo",
   race: "Dwarf",
@@ -19,11 +24,6 @@ const initialState: InfoSlice = {
   level: 1,
   experience: 0,
   proficiency: 2,
-};
-
-export type UpdateTextFromOps = {
-  property: keyof Pick<InfoSlice, "class" | "name" | "player" | "race">;
-  value: string;
 };
 
 export const infoSlice = createSlice({

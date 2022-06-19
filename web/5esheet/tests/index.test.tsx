@@ -18,7 +18,7 @@ describe("pages/index", () => {
       // "Stats",
       // "Proficiency Bonus",
       // "Saves",
-      "Skills",
+      // "Skills",
       "Proficiencies",
       "Combat",
       "Weapons",
