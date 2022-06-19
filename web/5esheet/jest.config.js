@@ -8,7 +8,6 @@ const customJestConfig = {
   modulePathIgnorePatterns: [
     "<rootDir>/dist/",
     "<rootDir>/.next/",
-    "<rootDir>/tests/",
     "<rootDir>/stores",
   ],
   moduleDirectories: ["node_modules", "<rootDir>/"],

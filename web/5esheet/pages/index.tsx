@@ -2,34 +2,41 @@ import type { NextPage } from "next";
 import { Head } from "../components/Head";
 import { Info, InfoProps } from "../components/Info";
 import { ProficiencyBonus } from "../components/Proficiency";
+import { SavesList, SavesListProps } from "../components/SavesList";
 import { StatList, StatListProps } from "../components/StatsList";
 import {
-  updateState,
+  updateStatValue,
   useAppDispatch,
   useAppSelector,
   updateTextFrom,
   updateExperience,
   updateLevel,
   updateProf,
+  setStatSave,
 } from "../stores";
 import styles from "./index.module.scss";
+
+type OnTextChange = InfoProps["onTextChange"];
+type OnExpChange = InfoProps["onExperienceChange"];
+type OnLevelChange = InfoProps["onLevelChange"];
+type OnStatUpdate = StatListProps["onStatUpdate"];
+type OnProfChange = (prof: number) => void;
+type OnToggleSaveProf = SavesListProps["onToggle"];
 
 const Home: NextPage = () => {
   const dispatch = useAppDispatch();
 
   const info = useAppSelector((s) => s.info);
-  const onTextChange: InfoProps["onTextChange"] = (opt) =>
-    dispatch(updateTextFrom(opt));
-  const onExperienceChange: InfoProps["onExperienceChange"] = (exp) =>
-    dispatch(updateExperience(exp));
-  const onLevelChange: InfoProps["onLevelChange"] = (lvl) =>
-    dispatch(updateLevel(lvl));
+  const onTextChange: OnTextChange = (opt) => dispatch(updateTextFrom(opt));
+  const onExpChange: OnExpChange = (exp) => dispatch(updateExperience(exp));
+  const onLevelChange: OnLevelChange = (lvl) => dispatch(updateLevel(lvl));
 
   const stats = useAppSelector((s) => s.stats.list);
-  const onStatUpdate: StatListProps["onStatUpdate"] = (opt) =>
-    dispatch(updateState(opt));
+  const onStatUpdate: OnStatUpdate = (opt) => dispatch(updateStatValue(opt));
 
-  const onProfChange = (prof: number) => dispatch(updateProf(prof));
+  const onProfChange: OnProfChange = (prof) => dispatch(updateProf(prof));
+
+  const onToggle: OnToggleSaveProf = (opt) => dispatch(setStatSave(opt));
 
   return (
     <>
@@ -40,7 +47,7 @@ const Home: NextPage = () => {
           info={info}
           onTextChange={onTextChange}
           onLevelChange={onLevelChange}
-          onExperienceChange={onExperienceChange}
+          onExperienceChange={onExpChange}
         />
 
         <hr />
@@ -56,7 +63,14 @@ const Home: NextPage = () => {
 
         <hr />
 
-        <div>Saves</div>
+        <SavesList
+          list={stats}
+          profBonus={info.proficiency}
+          onToggle={onToggle}
+        />
+
+        <hr />
+
         <div>Skills</div>
         <div>Proficiencies</div>
         <div>Combat</div>

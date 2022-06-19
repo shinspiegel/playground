@@ -12,31 +12,29 @@ export interface StatListProps {
 export const StatList: React.FC<StatListProps> = ({
   list = [],
   onStatUpdate = () => {},
-}) => {
-  return (
-    <div data-area="stats" className={cn.container}>
-      {[...list]
-        .sort((a, b) => a.weight - b.weight)
-        .map((stat) => (
-          <StatItem
-            key={stat.name}
-            stat={stat}
-            onValueChange={(e) =>
-              onStatUpdate({
-                name: stat.name,
-                type: "value",
-                value: e.target.valueAsNumber,
-              })
-            }
-            onModChange={(e) =>
-              onStatUpdate({
-                name: stat.name,
-                type: "mod",
-                value: e.target.valueAsNumber,
-              })
-            }
-          />
-        ))}
-    </div>
-  );
-};
+}) => (
+  <div className={cn.container}>
+    {[...list]
+      .sort((a, b) => a.weight - b.weight)
+      .map((stat) => (
+        <StatItem
+          key={stat.name}
+          stat={stat}
+          onValueChange={(e) =>
+            onStatUpdate({
+              name: stat.name,
+              type: "value",
+              value: e.target.valueAsNumber,
+            })
+          }
+          onModChange={(e) =>
+            onStatUpdate({
+              name: stat.name,
+              type: "mod",
+              value: e.target.valueAsNumber,
+            })
+          }
+        />
+      ))}
+  </div>
+);

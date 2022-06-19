@@ -16,8 +16,8 @@ describe("pages/index", () => {
     const list = [
       // "Info",
       // "Stats",
-      "Proficiency Bonus",
-      "Saves",
+      // "Proficiency Bonus",
+      // "Saves",
       "Skills",
       "Proficiencies",
       "Combat",
