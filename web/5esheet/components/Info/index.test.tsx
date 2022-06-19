@@ -3,7 +3,7 @@ import "@testing-library/jest-dom";
 import { render } from "@testing-library/react";
 import { Info } from "./index";
 
-describe("pages/index", () => {
+describe("components/Info", () => {
   test("Should render without any props", () => {
     const { container } = render(<Info />);
 
