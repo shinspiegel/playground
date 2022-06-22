@@ -19,7 +19,7 @@ describe("pages/index", () => {
       // "Proficiency Bonus",
       // "Saves",
       // "Skills",
-      "Proficiencies",
+      // "Proficiencies",
       "Combat",
       "Weapons",
       "Traits",

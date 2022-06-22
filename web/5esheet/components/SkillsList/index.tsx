@@ -1,4 +1,4 @@
-import { addValueToSkillList } from "../../functions";
+import { addValueFromShortStat } from "../../functions";
 import { Skill, skillsSlice, Stat } from "../../stores";
 import { SkillItem, SkillItemProps } from "../SkillItem";
 import cn from "./index.module.scss";
@@ -17,7 +17,7 @@ export const SkillList: React.FC<SkillListProps> = ({
   onProfChange = () => {},
 }) => {
   const orderedSkills = [...skills].sort((a, b) => a.name.localeCompare(b.name));
-  const list = addValueToSkillList({ skills: orderedSkills, stats, profBonus });
+  const list = addValueFromShortStat({ list: orderedSkills, stats, profBonus });
 
   return (
     <div className={cn.container}>

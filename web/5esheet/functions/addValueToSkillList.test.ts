@@ -1,14 +1,14 @@
-import { addValueToSkillList } from "./addValueToSkillList";
+import { addValueFromShortStat } from "./addValueFromShortStat";
 
-describe("functions/addValueToSkillList", () => {
+describe("functions/addValueFromShortStat", () => {
   test("Should add the proficiency to the skill", () => {
     const profBonus = 2;
     const testSkill = { name: "Test Skill", short: "TST", profMultiplier: 1 };
     const testStat = { name: "Test Stat", short: "TST", value: 12, mod: 1, weight: 0, isProf: false };
 
-    const list = addValueToSkillList({
+    const list = addValueFromShortStat({
       profBonus,
-      skills: [testSkill],
+      list: [testSkill],
       stats: [testStat],
     });
 
@@ -19,9 +19,9 @@ describe("functions/addValueToSkillList", () => {
     const profBonus = 2;
     const testSkill = { name: "Test Skill", short: "TST", profMultiplier: 0 };
 
-    const list = addValueToSkillList({
+    const list = addValueFromShortStat({
       profBonus,
-      skills: [testSkill],
+      list: [testSkill],
       stats: [],
     });
 

@@ -34,7 +34,7 @@ export const infoSlice = createSlice({
       state[action.payload.property] = action.payload.value;
     },
 
-    updateProf: (state, action: PayloadAction<number>) => {
+    updateProfBonus: (state, action: PayloadAction<number>) => {
       state.proficiency = action.payload;
     },
 
@@ -62,5 +62,4 @@ export const infoSlice = createSlice({
   },
 });
 
-export const { updateTextFrom, updateExperience, updateLevel, updateProf } =
-  infoSlice.actions;
+export const { updateTextFrom, updateExperience, updateLevel, updateProfBonus } = infoSlice.actions;

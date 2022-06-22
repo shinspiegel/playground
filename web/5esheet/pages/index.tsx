@@ -1,6 +1,7 @@
 import type { NextPage } from "next";
 import { Head } from "../components/Head";
 import { Info, InfoProps } from "../components/Info";
+import { ProficienciesList, ProficienciesListProps } from "../components/ProficienciesList";
 import { ProficiencyBonus } from "../components/Proficiency";
 import { SavesList, SavesListProps } from "../components/SavesList";
 import { SkillList, SkillListProps } from "../components/SkillsList";
@@ -12,9 +13,11 @@ import {
   updateTextFrom,
   updateExperience,
   updateLevel,
-  updateProf,
+  updateProfBonus,
   setStatSave,
   changeSkillProf,
+  addProf,
+  removeProfByName,
 } from "../stores";
 import styles from "./index.module.scss";
 
@@ -25,6 +28,8 @@ type OnStatUpdate = StatListProps["onStatUpdate"];
 type OnProfBonusChange = (prof: number) => void;
 type OnToggleSaveProf = SavesListProps["onToggle"];
 type OnProfSkillChange = SkillListProps["onProfChange"];
+type OnAddProf = ProficienciesListProps["onAdd"];
+type onRemoveProf = ProficienciesListProps["onRemove"];
 
 const Home: NextPage = () => {
   const dispatch = useAppDispatch();
@@ -37,26 +42,23 @@ const Home: NextPage = () => {
   const stats = useAppSelector((s) => s.stats.list);
   const onStatUpdate: OnStatUpdate = (opt) => dispatch(updateStatValue(opt));
 
-  const OnProfBonusChange: OnProfBonusChange = (prof) =>
-    dispatch(updateProf(prof));
+  const OnProfBonusChange: OnProfBonusChange = (prof) => dispatch(updateProfBonus(prof));
 
   const onToggle: OnToggleSaveProf = (opt) => dispatch(setStatSave(opt));
 
   const skills = useAppSelector((s) => s.skills.list);
-  const onProfSkillChange: OnProfSkillChange = (opt) =>
-    dispatch(changeSkillProf(opt));
+  const onProfSkillChange: OnProfSkillChange = (opt) => dispatch(changeSkillProf(opt));
+
+  const proficienciesList = useAppSelector((s) => s.proficiencies.list);
+  const onAddProf: OnAddProf = (opt) => dispatch(addProf(opt));
+  const onRemoveProf: onRemoveProf = (name) => dispatch(removeProfByName(name));
 
   return (
     <>
       <Head />
 
       <main>
-        <Info
-          info={info}
-          onTextChange={onTextChange}
-          onLevelChange={onLevelChange}
-          onExperienceChange={onExpChange}
-        />
+        <Info info={info} onTextChange={onTextChange} onLevelChange={onLevelChange} onExperienceChange={onExpChange} />
 
         <hr />
 
@@ -64,31 +66,28 @@ const Home: NextPage = () => {
 
         <hr />
 
-        <ProficiencyBonus
-          proficiency={info.proficiency}
-          onProfChange={OnProfBonusChange}
-        />
+        <ProficiencyBonus proficiency={info.proficiency} onProfChange={OnProfBonusChange} />
 
         <hr />
 
-        <SavesList
-          list={stats}
-          profBonus={info.proficiency}
-          onToggle={onToggle}
-        />
+        <SavesList list={stats} profBonus={info.proficiency} onToggle={onToggle} />
 
         <hr />
 
-        <SkillList
-          skills={skills}
+        <SkillList skills={skills} stats={stats} profBonus={info.proficiency} onProfChange={onProfSkillChange} />
+
+        <hr />
+
+        <ProficienciesList
           stats={stats}
+          proficiencies={proficienciesList}
           profBonus={info.proficiency}
-          onProfChange={onProfSkillChange}
+          onAdd={onAddProf}
+          onRemove={onRemoveProf}
         />
 
         <hr />
 
-        <div>Proficiencies</div>
         <div>Combat</div>
         <div>Weapons</div>
         <div>Traits</div>
