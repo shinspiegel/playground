@@ -1,4 +1,5 @@
 import type { NextPage } from "next";
+import { CombatData } from "../components/CombatData";
 import { Head } from "../components/Head";
 import { Info, InfoProps } from "../components/Info";
 import { ProficienciesList, ProficienciesListProps } from "../components/ProficienciesList";
@@ -53,6 +54,8 @@ const Home: NextPage = () => {
   const onAddProf: OnAddProf = (opt) => dispatch(addProf(opt));
   const onRemoveProf: onRemoveProf = (name) => dispatch(removeProfByName(name));
 
+  const combatData = useAppSelector((s) => s.combatData);
+
   return (
     <>
       <Head />
@@ -88,7 +91,10 @@ const Home: NextPage = () => {
 
         <hr />
 
-        <div>Combat</div>
+        <CombatData combatData={combatData} />
+
+        <hr />
+
         <div>Weapons</div>
         <div>Traits</div>
       </main>

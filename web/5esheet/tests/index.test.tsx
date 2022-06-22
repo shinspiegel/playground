@@ -20,7 +20,7 @@ describe("pages/index", () => {
       // "Saves",
       // "Skills",
       // "Proficiencies",
-      "Combat",
+      // "Combat",
       "Weapons",
       "Traits",
     ];
