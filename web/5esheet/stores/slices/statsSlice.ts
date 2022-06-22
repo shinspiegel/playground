@@ -15,16 +15,6 @@ export type Stat = {
   isProf?: boolean;
 };
 
-type Updater<Type, Value> = {
-  name: string;
-  type: Type;
-  value: Value;
-};
-
-export type UpdateStateOpt = Updater<keyof Pick<Stat, "value" | "mod">, number>;
-
-export type SetStatSave = Updater<keyof Pick<Stat, "isProf">, boolean>;
-
 const initialState: StatsState = {
   list: statsChart,
 };
@@ -33,23 +23,34 @@ export const statsSlice = createSlice({
   name: "stats",
   initialState,
   reducers: {
-    updateStatValue: (state, action: PayloadAction<UpdateStateOpt>) => {
+    changeValueFor: (
+      state,
+      action: PayloadAction<{ name: string; value: number }>
+    ) => {
       const stat = state.list.find((f) => f.name === action.payload.name);
 
       if (stat) {
-        if (action.payload.type === "value") {
-          stat.value = action.payload.value;
-          stat.mod = statToMod(action.payload.value);
-        }
-
-        if (action.payload.type === "mod") {
-          stat.value = modToStat(action.payload.value);
-          stat.mod = action.payload.value;
-        }
+        stat.value = action.payload.value;
+        stat.mod = statToMod(action.payload.value);
       }
     },
 
-    setStatSave: (state, action: PayloadAction<SetStatSave>) => {
+    changeModFor: (
+      state,
+      action: PayloadAction<{ name: string; value: number }>
+    ) => {
+      const stat = state.list.find((f) => f.name === action.payload.name);
+
+      if (stat) {
+        stat.value = modToStat(action.payload.value);
+        stat.mod = action.payload.value;
+      }
+    },
+
+    setSaveProficiencyFor: (
+      state,
+      action: PayloadAction<{ name: string; value: boolean }>
+    ) => {
       const stat = state.list.find((f) => f.name === action.payload.name);
 
       if (stat) {
@@ -58,5 +59,3 @@ export const statsSlice = createSlice({
     },
   },
 });
-
-export const { updateStatValue, setStatSave } = statsSlice.actions;

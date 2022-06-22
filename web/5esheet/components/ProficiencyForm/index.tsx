@@ -1,16 +1,20 @@
 import React, { useState } from "react";
-import { Proficiency, Stat } from "../../stores";
+import {
+  proficienciesSlice,
+  useAppDispatch,
+  useAppSelector,
+} from "../../stores";
+
 import cn from "./index.module.scss";
 
-export interface ProficiencyFormProps {
-  stats: Stat[];
-  onAddProf: ({ name, profMultiplier, short: stat }: Proficiency) => void;
-}
+export const ProficiencyForm: React.FC = () => {
+  const dispatch = useAppDispatch();
+  const stats = useAppSelector((s) => s.stats.list);
+  const { addProf } = proficienciesSlice.actions;
 
-export const ProficiencyForm: React.FC<ProficiencyFormProps> = ({ onAddProf = () => {}, stats = [] as Stat[] }) => {
   const [name, setName] = useState("");
   const [profMultiplier, setProfMultiplier] = useState(0);
-  const [stat, setStat] = useState("none");
+  const [short, setShort] = useState("none");
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -19,17 +23,17 @@ export const ProficiencyForm: React.FC<ProficiencyFormProps> = ({ onAddProf = ()
       return;
     }
 
-    const hasStat = stat !== "none";
+    const hasStat = short !== "none";
 
     if (hasStat) {
-      onAddProf({ name, profMultiplier, short: stat });
+      dispatch(addProf({ name, profMultiplier, short }));
     } else {
-      onAddProf({ name });
+      dispatch(addProf({ name }));
     }
 
     setName("");
     setProfMultiplier(0);
-    setStat("none");
+    setShort("none");
   };
 
   const profLevelList = [
@@ -46,7 +50,11 @@ export const ProficiencyForm: React.FC<ProficiencyFormProps> = ({ onAddProf = ()
         <input value={name} onChange={(e) => setName(e.target.value)} />
       </label>
 
-      <select name="stat" onChange={(e) => setStat(e.target.value)} value={stat}>
+      <select
+        name="stat"
+        onChange={(e) => setShort(e.target.value)}
+        value={short}
+      >
         <option value="none">None</option>
 
         {stats.map((s) => (
@@ -58,14 +66,14 @@ export const ProficiencyForm: React.FC<ProficiencyFormProps> = ({ onAddProf = ()
         <option value="custom">Custom</option>
       </select>
 
-      {stat === "custom" ? (
+      {short === "custom" ? (
         <label>
           <span>Influenced by stat: </span>
-          <input value={stat} onChange={(e) => setStat(e.target.value)} />
+          <input value={short} onChange={(e) => setShort(e.target.value)} />
         </label>
       ) : null}
 
-      {stat !== "none" ? (
+      {short !== "none" ? (
         <>
           {profLevelList.map((p) => (
             <label key={p.level}>

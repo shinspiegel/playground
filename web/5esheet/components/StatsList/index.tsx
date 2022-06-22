@@ -1,40 +1,38 @@
-import { Stat, UpdateStateOpt } from "../../stores/slices/statsSlice";
+import { useAppDispatch, useAppSelector } from "../../stores";
+import { statsSlice } from "../../stores/slices/statsSlice";
 import { StatItem } from "../StatItem";
 import cn from "./index.module.scss";
 
-export type OnStatUpdateOpt = UpdateStateOpt;
+export const StatList: React.FC = ({}) => {
+  const dispatch = useAppDispatch();
+  const list = useAppSelector((s) => s.stats.list);
+  const orderedList = [...list].sort((a, b) => a.weight - b.weight);
+  const { changeModFor, changeValueFor } = statsSlice.actions;
 
-export interface StatListProps {
-  list: Stat[];
-  onStatUpdate: ({ name, type, value }: OnStatUpdateOpt) => void;
-}
-
-export const StatList: React.FC<StatListProps> = ({
-  list = [],
-  onStatUpdate = () => {},
-}) => (
-  <div className={cn.container}>
-    {[...list]
-      .sort((a, b) => a.weight - b.weight)
-      .map((stat) => (
+  return (
+    <div className={cn.container}>
+      {orderedList.map((stat) => (
         <StatItem
           key={stat.name}
           stat={stat}
           onValueChange={(e) =>
-            onStatUpdate({
-              name: stat.name,
-              type: "value",
-              value: e.target.valueAsNumber,
-            })
+            dispatch(
+              changeValueFor({
+                name: stat.name,
+                value: e.target.valueAsNumber,
+              })
+            )
           }
           onModChange={(e) =>
-            onStatUpdate({
-              name: stat.name,
-              type: "mod",
-              value: e.target.valueAsNumber,
-            })
+            dispatch(
+              changeModFor({
+                name: stat.name,
+                value: e.target.valueAsNumber,
+              })
+            )
           }
         />
       ))}
-  </div>
-);
+    </div>
+  );
+};

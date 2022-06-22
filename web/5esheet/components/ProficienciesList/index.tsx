@@ -1,35 +1,35 @@
-import React, { useState } from "react";
+import React from "react";
 import { addValueFromShortStat } from "../../functions";
-import { Proficiency, Stat } from "../../stores";
+import {
+  proficienciesSlice,
+  Proficiency,
+  Stat,
+  useAppDispatch,
+  useAppSelector,
+} from "../../stores";
 import { ProficiencyForm } from "../ProficiencyForm";
 import { ProficiencyItem } from "../ProficiencyItem";
-
 import cn from "./index.module.scss";
 
-export interface ProficienciesListProps {
-  proficiencies: Proficiency[];
-  profBonus: number;
-  stats: Stat[];
-  onAdd: ({ name, profMultiplier, short: stat }: Proficiency) => void;
-  onRemove: (name: string) => void;
-}
-
-export const ProficienciesList: React.FC<ProficienciesListProps> = ({
-  proficiencies = [],
-  stats = [],
-  profBonus = 0,
-  onAdd = () => {},
-  onRemove = () => {},
-}) => {
-  const orderedProfs = [...proficiencies].sort((a, b) => a.name.localeCompare(b.name));
+export const ProficienciesList: React.FC = () => {
+  const dispatch = useAppDispatch();
+  const stats = useAppSelector((s) => s.stats.list);
+  const profBonus = useAppSelector((s) => s.info.proficiency);
+  const profs = useAppSelector((s) => s.proficiencies.list);
+  const orderedProfs = [...profs].sort((a, b) => a.name.localeCompare(b.name));
   const list = addValueFromShortStat({ list: orderedProfs, stats, profBonus });
+  const { removeProfByName } = proficienciesSlice.actions;
 
   return (
     <div className={cn.container}>
-      <ProficiencyForm onAddProf={onAdd} stats={stats} />
+      <ProficiencyForm />
 
       {list.map((p) => (
-        <ProficiencyItem key={p.name} proficiency={p} onRemove={() => onRemove(p.name)} />
+        <ProficiencyItem
+          key={p.name}
+          proficiency={p}
+          onRemove={() => dispatch(removeProfByName(p.name))}
+        />
       ))}
     </div>
   );

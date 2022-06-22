@@ -31,4 +31,3 @@ export const skillsSlice = createSlice({
   },
 });
 
-export const { changeSkillProf } = skillsSlice.actions;

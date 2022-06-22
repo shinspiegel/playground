@@ -1,80 +1,66 @@
 import React from "react";
-import { InfoSlice, UpdateTextFromOps } from "../../stores";
+import { infoSlice, useAppDispatch, useAppSelector } from "../../stores";
 import cn from "./index.module.scss";
 
-type OnInfoChangeOpt = UpdateTextFromOps;
+export const Info: React.FC = () => {
+  const dispatch = useAppDispatch();
+  const { dndClass, experience, level, name, player, race } = useAppSelector(
+    (s) => s.info
+  );
+  const { setDndClass, setExperience, setLevel, setName, setPlayer, setRace } =
+    infoSlice.actions;
 
-export interface InfoProps {
-  info: InfoSlice;
-  onTextChange: ({ property, value }: OnInfoChangeOpt) => void;
-  onLevelChange: (level: number) => void;
-  onExperienceChange: (experience: number) => void;
-}
-
-export const Info: React.FC<InfoProps> = ({
-  info = {},
-  onTextChange = () => {},
-  onLevelChange = () => {},
-  onExperienceChange = () => {},
-}) => (
-  <div className={cn.container}>
-    <div>
+  return (
+    <div className={cn.container}>
       <label>
         <span>Character Name</span>
         <input
-          value={info.name}
-          onChange={(e) =>
-            onTextChange({ property: "name", value: e.target.value })
-          }
+          value={name}
+          onChange={(e) => dispatch(setName(e.target.value))}
         />
       </label>
-    </div>
 
-    <div>
-      <label>
-        <span>Race</span>
-        <input
-          value={info.race}
-          onChange={(e) =>
-            onTextChange({ property: "race", value: e.target.value })
-          }
-        />
-      </label>
-    </div>
-
-    <div>
       <label>
         <span>Class</span>
         <input
-          value={info.class}
-          onChange={(e) =>
-            onTextChange({ property: "class", value: e.target.value })
-          }
+          value={dndClass}
+          onChange={(e) => dispatch(setDndClass(e.target.value))}
         />
       </label>
-    </div>
 
-    <div>
+      <label>
+        <span>Race</span>
+        <input
+          value={race}
+          onChange={(e) => dispatch(setRace(e.target.value))}
+        />
+      </label>
+
+      <label>
+        <span>Player</span>
+        <input
+          value={player}
+          onChange={(e) => dispatch(setPlayer(e.target.value))}
+        />
+      </label>
+
       <label>
         <span>Level</span>
         <input
           type="number"
-          value={info.level}
-          onChange={(e) => onLevelChange(e.target.valueAsNumber)}
+          value={level}
+          onChange={(e) => dispatch(setLevel(e.target.valueAsNumber))}
         />
       </label>
-    </div>
 
-    <div>
       <label>
         <span>Experience</span>
         <input
           type="number"
-          step="25"
-          value={info.experience}
-          onChange={(e) => onExperienceChange(e.target.valueAsNumber)}
+          value={experience}
+          onChange={(e) => dispatch(setExperience(e.target.valueAsNumber))}
         />
       </label>
     </div>
-  </div>
-);
+  );
+};

@@ -17,6 +17,11 @@ export type DeathSaving = {
   fail: number;
 };
 
+export type SetPropertyOpt = {
+  property: keyof CombatDataState;
+  value: number | string;
+};
+
 const initialState: CombatDataState = {
   maxHitPoints: 10,
   currentHitPoints: 5,
@@ -34,11 +39,15 @@ export const combatDataSlice = createSlice({
   name: "combatData",
   initialState,
   reducers: {
-    setMaxHP: (state, action: PayloadAction<number>) => {
+    setMaxHitPoints: (state, action: PayloadAction<number>) => {
       state.maxHitPoints = action.payload;
+
+      if (state.currentHitPoints > action.payload) {
+        state.currentHitPoints = action.payload;
+      }
     },
 
-    setHP: (state, action: PayloadAction<number>) => {
+    setCurrentHitPoints: (state, action: PayloadAction<number>) => {
       let hitPoints = action.payload;
 
       if (hitPoints > state.maxHitPoints) {
@@ -52,11 +61,11 @@ export const combatDataSlice = createSlice({
       state.currentHitPoints = hitPoints;
     },
 
-    setTempHP: (state, action: PayloadAction<number>) => {
+    setTemporaryHitPoints: (state, action: PayloadAction<number>) => {
       state.temporaryHitPoints = action.payload;
     },
 
-    setHitDice: (state, action: PayloadAction<string>) => {
+    setHitDices: (state, action: PayloadAction<string>) => {
       state.hitDices = action.payload;
     },
 
@@ -72,15 +81,20 @@ export const combatDataSlice = createSlice({
       state.deathSaving = action.payload;
     },
   },
+
   extraReducers: (builder) => {
-    builder.addCase(statsSlice.actions.updateStatValue, (state, action) => {
-      if (action.payload.name === "Dexterity") {
-        const statMod = statToMod(action.payload.value);
-        state.initiative = statMod;
-      }
-    });
+    builder
+      .addCase(statsSlice.actions.changeValueFor, (state, action) => {
+        if (action.payload.name === "Dexterity") {
+          const statMod = statToMod(action.payload.value);
+          state.initiative = statMod;
+        }
+      })
+      .addCase(statsSlice.actions.changeModFor, (state, action) => {
+        if (action.payload.name === "Dexterity") {
+          const statMod = action.payload.value;
+          state.initiative = statMod;
+        }
+      });
   },
 });
-
-export const { setDeathSavingThrow, setHP, setHitDice, setInitiative, setMaxHP, setSpeed, setTempHP } =
-  combatDataSlice.actions;

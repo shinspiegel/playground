@@ -36,5 +36,3 @@ export const proficienciesSlice = createSlice({
     },
   },
 });
-
-export const { addProf, removeProfByName, updateProf } = proficienciesSlice.actions;

@@ -4,22 +4,17 @@ import { levelChart } from "../charts";
 export type InfoSlice = {
   name: string;
   race: string;
-  class: string;
+  dndClass: string;
   player: string;
   level: number;
   experience: number;
   proficiency: number;
 };
 
-export type UpdateTextFromOps = {
-  property: keyof Pick<InfoSlice, "class" | "name" | "player" | "race">;
-  value: string;
-};
-
 const initialState: InfoSlice = {
   name: "Dwarfo",
   race: "Dwarf",
-  class: "Fighter",
+  dndClass: "Fighter",
   player: "Shin",
   level: 1,
   experience: 0,
@@ -30,15 +25,23 @@ export const infoSlice = createSlice({
   name: "info",
   initialState,
   reducers: {
-    updateTextFrom: (state, action: PayloadAction<UpdateTextFromOps>) => {
-      state[action.payload.property] = action.payload.value;
+    setName: (state, action: PayloadAction<string>) => {
+      state.name = action.payload;
     },
 
-    updateProfBonus: (state, action: PayloadAction<number>) => {
-      state.proficiency = action.payload;
+    setRace: (state, action: PayloadAction<string>) => {
+      state.race = action.payload;
     },
 
-    updateLevel: (state, action: PayloadAction<number>) => {
+    setDndClass: (state, action: PayloadAction<string>) => {
+      state.dndClass = action.payload;
+    },
+
+    setPlayer: (state, action: PayloadAction<string>) => {
+      state.player = action.payload;
+    },
+
+    setLevel: (state, action: PayloadAction<number>) => {
       state.level = action.payload;
 
       const level = levelChart.find((l) => l.level === action.payload);
@@ -49,7 +52,7 @@ export const infoSlice = createSlice({
       }
     },
 
-    updateExperience: (state, action: PayloadAction<number>) => {
+    setExperience: (state, action: PayloadAction<number>) => {
       state.experience = action.payload;
 
       const level = levelChart.find((l) => l.experience === action.payload);
@@ -59,7 +62,9 @@ export const infoSlice = createSlice({
         state.proficiency = level.prof;
       }
     },
+
+    setProficiency: (state, action: PayloadAction<number>) => {
+      state.proficiency = action.payload;
+    },
   },
 });
-
-export const { updateTextFrom, updateExperience, updateLevel, updateProfBonus } = infoSlice.actions;
