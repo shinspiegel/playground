@@ -21,7 +21,7 @@ describe("pages/index", () => {
       // "Skills",
       // "Proficiencies",
       // "Combat",
-      "Weapons",
+      // "Weapons",
       "Traits",
     ];
 
