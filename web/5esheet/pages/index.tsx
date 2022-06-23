@@ -7,6 +7,7 @@ import { ProficiencyBonus } from "../components/Proficiency";
 import { SavesList, SavesListProps } from "../components/SavesList";
 import { SkillList, SkillListProps } from "../components/SkillsList";
 import { StatList, StatListProps } from "../components/StatsList";
+import { WeaponList } from "../components/WeaponList";
 import {
   updateStatValue,
   useAppDispatch,
@@ -94,8 +95,8 @@ const Home: NextPage = () => {
         <CombatData combatData={combatData} />
 
         <hr />
-
-        <div>Weapons</div>
+        <WeaponList />
+        <hr />
         <div>Traits</div>
       </main>
     </>
