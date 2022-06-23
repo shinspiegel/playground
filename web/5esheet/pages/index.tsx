@@ -7,6 +7,7 @@ import { ProficiencyBonus } from "../components/Proficiency";
 import { SavesList } from "../components/SavesList";
 import { SkillList } from "../components/SkillsList";
 import { StatList } from "../components/StatsList";
+import { TraitsList } from "../components/TraitsList";
 import { WeaponList } from "../components/WeaponList";
 import styles from "./index.module.scss";
 
@@ -31,7 +32,7 @@ const Home: NextPage = () => (
       <hr />
       <WeaponList />
       <hr />
-      <div>Traits</div>
+      <TraitsList />
     </main>
   </>
 );

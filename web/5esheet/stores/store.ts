@@ -1,5 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { statsSlice, infoSlice, skillsSlice, proficienciesSlice, combatDataSlice, weaponSlice } from "./slices";
+import {
+  statsSlice,
+  infoSlice,
+  skillsSlice,
+  proficienciesSlice,
+  combatDataSlice,
+  weaponSlice,
+  traitsSlice,
+} from "./slices";
 
 export const store = configureStore({
   reducer: {
@@ -9,6 +17,7 @@ export const store = configureStore({
     [proficienciesSlice.name]: proficienciesSlice.reducer,
     [combatDataSlice.name]: combatDataSlice.reducer,
     [weaponSlice.name]: weaponSlice.reducer,
+    [traitsSlice.name]: traitsSlice.reducer,
   },
 });
 
