@@ -14,8 +14,16 @@
 html {
   font-size: 62.5%;
   font-family: Arial, Helvetica, sans-serif;
+  min-height: 100vh;
+  min-width: 100%;
 }
 
 body {
   font-size: 1.6rem;
+  min-height: 100vh;
+  min-width: 100%;
+}
+
+#__next {
+  min-height: 100vh;
 }

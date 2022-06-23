@@ -1,1 +1,58 @@
+.container {
+  height: 100%;
+  background-color: red;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-rows: 100px 100px 200px minmax(0, auto) minmax(0, 1fr);
+  grid-template-areas:
+    "info       info       combat         traits"
+    "profBonus  saves      weapons        traits"
+    "stats      skills     weapons        traits"
+    "stats      skills     weapons        traits"
+    "stats      skills     proficiencies  traits";
+}
 
+.info {
+  grid-area: info;
+  background: lightblue;
+}
+
+.stats {
+  grid-area: stats;
+  background: lightcoral;
+}
+
+.profBonus {
+  grid-area: profBonus;
+  background: lightgray;
+}
+
+.saves {
+  grid-area: saves;
+  background: lightpink;
+}
+
+.skills {
+  grid-area: skills;
+  background: lightsalmon;
+}
+
+.proficiencies {
+  grid-area: proficiencies;
+  background: lightseagreen;
+}
+
+.combat {
+  grid-area: combat;
+  background: lightskyblue;
+}
+
+.weapons {
+  grid-area: weapons;
+  background: lightsteelblue;
+}
+
+.traits {
+  grid-area: traits;
+  background: lightyellow;
+}

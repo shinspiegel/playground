@@ -15,24 +15,42 @@ const Home: NextPage = () => (
   <>
     <Head />
 
-    <main>
-      <Info />
-      <hr />
-      <StatList />
-      <hr />
-      <ProficiencyBonus />
-      <hr />
-      <SavesList />
-      <hr />
-      <SkillList />
-      <hr />
-      <ProficienciesList />
-      <hr />
-      <CombatData />
-      <hr />
-      <WeaponList />
-      <hr />
-      <TraitsList />
+    <main className={styles.container}>
+      <div className={styles.info}>
+        <Info />
+      </div>
+
+      <div className={styles.stats}>
+        <StatList />
+      </div>
+
+      <div className={styles.profBonus}>
+        <ProficiencyBonus />
+      </div>
+
+      <div className={styles.saves}>
+        <SavesList />
+      </div>
+
+      <div className={styles.skills}>
+        <SkillList />
+      </div>
+
+      <div className={styles.proficiencies}>
+        <ProficienciesList />
+      </div>
+
+      <div className={styles.combat}>
+        <CombatData />
+      </div>
+
+      <div className={styles.weapons}>
+        <WeaponList />
+      </div>
+
+      <div className={styles.traits}>
+        <TraitsList />
+      </div>
     </main>
   </>
 );
