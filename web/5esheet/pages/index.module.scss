@@ -1,15 +1,14 @@
 .container {
-  height: 100%;
+  height: 100vh;
   background-color: red;
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  grid-template-rows: 100px 100px 200px minmax(0, auto) minmax(0, 1fr);
+  grid-template-rows: 100px 100px 1fr 200px;
   grid-template-areas:
-    "info       info       combat         traits"
-    "profBonus  saves      weapons        traits"
+    "info       info       combat         proficiencies"
+    "profBonus  saves      weapons        proficiencies"
     "stats      skills     weapons        traits"
-    "stats      skills     weapons        traits"
-    "stats      skills     proficiencies  traits";
+    "stats      skills     weapons        traits";
 }
 
 .info {
