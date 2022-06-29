@@ -1,0 +1,9 @@
+.next
+coverage
+node_modules
+.eslint.json
+jest.config.js
+tsconfig.json
+tsconfig.tsbuildinfo
+yarn.lock
+next.config.js
