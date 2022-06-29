@@ -3,9 +3,9 @@ import { statToMod } from "../../functions";
 import { statsSlice } from "./statsSlice";
 
 export type CombatDataState = {
-  maxHitPoints: number;
-  currentHitPoints: number;
-  temporaryHitPoints: number;
+  maxHp: number;
+  currentHp: number;
+  tempHp: number;
   hitDices: string;
   speed: string;
   initiative: number;
@@ -23,9 +23,9 @@ export type SetPropertyOpt = {
 };
 
 const initialState: CombatDataState = {
-  maxHitPoints: 10,
-  currentHitPoints: 5,
-  temporaryHitPoints: 3,
+  maxHp: 10,
+  currentHp: 5,
+  tempHp: 3,
   hitDices: "1d10",
   speed: "30ft.",
   initiative: 2,
@@ -39,30 +39,30 @@ export const combatDataSlice = createSlice({
   name: "combatData",
   initialState,
   reducers: {
-    setMaxHitPoints: (state, action: PayloadAction<number>) => {
-      state.maxHitPoints = action.payload;
+    setMaxHp: (state, action: PayloadAction<number>) => {
+      state.maxHp = action.payload;
 
-      if (state.currentHitPoints > action.payload) {
-        state.currentHitPoints = action.payload;
+      if (state.currentHp > action.payload) {
+        state.currentHp = action.payload;
       }
     },
 
-    setCurrentHitPoints: (state, action: PayloadAction<number>) => {
+    setCurrentHp: (state, action: PayloadAction<number>) => {
       let hitPoints = action.payload;
 
-      if (hitPoints > state.maxHitPoints) {
-        hitPoints = state.maxHitPoints;
+      if (hitPoints > state.maxHp) {
+        hitPoints = state.maxHp;
       }
 
       if (hitPoints < 0) {
         hitPoints = 0;
       }
 
-      state.currentHitPoints = hitPoints;
+      state.currentHp = hitPoints;
     },
 
-    setTemporaryHitPoints: (state, action: PayloadAction<number>) => {
-      state.temporaryHitPoints = action.payload;
+    setTempHp: (state, action: PayloadAction<number>) => {
+      state.tempHp = action.payload;
     },
 
     setHitDices: (state, action: PayloadAction<string>) => {
@@ -77,7 +77,7 @@ export const combatDataSlice = createSlice({
       state.initiative = action.payload;
     },
 
-    setDeathSavingThrow: (state, action: PayloadAction<DeathSaving>) => {
+    setDeathSaving: (state, action: PayloadAction<DeathSaving>) => {
       state.deathSaving = action.payload;
     },
   },

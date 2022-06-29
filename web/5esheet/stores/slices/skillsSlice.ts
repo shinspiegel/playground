@@ -11,7 +11,7 @@ export type Skill = {
   profMultiplier: number;
 };
 
-type ChangeSkillProf = { name: string; value: number };
+export type ChangeSkillProf = { name: string; value: number };
 
 const initialState: SkillsState = {
   list: skillChart.map((s) => ({ ...s, profMultiplier: 0 })),
@@ -30,4 +30,3 @@ export const skillsSlice = createSlice({
     },
   },
 });
-

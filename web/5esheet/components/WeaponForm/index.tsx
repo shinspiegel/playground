@@ -1,12 +1,13 @@
 import { useState } from "react";
-import { useAppDispatch, useAppSelector, Weapon, weaponSlice, WeaponState } from "../../stores";
+import { Stat, useAppDispatch, useAppSelector, Weapon, weaponSlice, WeaponState } from "../../stores";
 import cn from "./index.module.scss";
 
-export const WeaponForm: React.FC = () => {
-  const dispatch = useAppDispatch();
-  const stats = useAppSelector((s) => s.stats.list);
-  const { add } = weaponSlice.actions;
+export interface WeaponFormProps {
+  onAdd: (weapon: Weapon) => void;
+  stats: Stat[];
+}
 
+export const WeaponForm: React.FC<WeaponFormProps> = ({ onAdd = () => {}, stats = [] }) => {
   const [name, setName] = useState("Name");
   const [damageDice, setDamageDice] = useState("1d6");
   const [short, setShort] = useState("STR");
@@ -17,7 +18,7 @@ export const WeaponForm: React.FC = () => {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    dispatch(add({ name, damageDice, short, bonus, isProf, range }));
+    onAdd({ name, damageDice, short, bonus, isProf, range });
 
     setName("");
     setDamageDice("1d6");

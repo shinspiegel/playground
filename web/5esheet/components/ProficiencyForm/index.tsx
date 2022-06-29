@@ -1,17 +1,13 @@
 import React, { useState } from "react";
-import {
-  proficienciesSlice,
-  useAppDispatch,
-  useAppSelector,
-} from "../../stores";
-
+import { Proficiency, Stat } from "../../stores";
 import cn from "./index.module.scss";
 
-export const ProficiencyForm: React.FC = () => {
-  const dispatch = useAppDispatch();
-  const stats = useAppSelector((s) => s.stats.list);
-  const { addProf } = proficienciesSlice.actions;
+export interface ProficiencyFormProps {
+  stats: Stat[];
+  onAdd: ({ name, profMultiplier, short }: Partial<Proficiency>) => void;
+}
 
+export const ProficiencyForm: React.FC<ProficiencyFormProps> = ({ stats = [], onAdd = () => {} }) => {
   const [name, setName] = useState("");
   const [profMultiplier, setProfMultiplier] = useState(0);
   const [short, setShort] = useState("none");
@@ -19,17 +15,7 @@ export const ProficiencyForm: React.FC = () => {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    if (!name || name === "") {
-      return;
-    }
-
-    const hasStat = short !== "none";
-
-    if (hasStat) {
-      dispatch(addProf({ name, profMultiplier, short }));
-    } else {
-      dispatch(addProf({ name }));
-    }
+    onAdd({ name, profMultiplier, short });
 
     setName("");
     setProfMultiplier(0);
@@ -50,11 +36,7 @@ export const ProficiencyForm: React.FC = () => {
         <input value={name} onChange={(e) => setName(e.target.value)} />
       </label>
 
-      <select
-        name="stat"
-        onChange={(e) => setShort(e.target.value)}
-        value={short}
-      >
+      <select name="stat" onChange={(e) => setShort(e.target.value)} value={short}>
         <option value="none">None</option>
 
         {stats.map((s) => (

@@ -23,10 +23,7 @@ export const statsSlice = createSlice({
   name: "stats",
   initialState,
   reducers: {
-    changeValueFor: (
-      state,
-      action: PayloadAction<{ name: string; value: number }>
-    ) => {
+    changeValueFor: (state, action: PayloadAction<{ name: string; value: number }>) => {
       const stat = state.list.find((f) => f.name === action.payload.name);
 
       if (stat) {
@@ -35,10 +32,7 @@ export const statsSlice = createSlice({
       }
     },
 
-    changeModFor: (
-      state,
-      action: PayloadAction<{ name: string; value: number }>
-    ) => {
+    changeModFor: (state, action: PayloadAction<{ name: string; value: number }>) => {
       const stat = state.list.find((f) => f.name === action.payload.name);
 
       if (stat) {
@@ -47,10 +41,7 @@ export const statsSlice = createSlice({
       }
     },
 
-    setSaveProficiencyFor: (
-      state,
-      action: PayloadAction<{ name: string; value: boolean }>
-    ) => {
+    setSaveProficiencyFor: (state, action: PayloadAction<{ name: string; value: boolean }>) => {
       const stat = state.list.find((f) => f.name === action.payload.name);
 
       if (stat) {
