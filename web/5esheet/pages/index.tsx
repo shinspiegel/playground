@@ -11,6 +11,7 @@ import {
   TraitsList,
   WeaponList,
 } from "../components";
+import { ScrollableViewport } from "../components/ScrollableViewport";
 import {
   useCombatData,
   useInfo,
@@ -45,7 +46,9 @@ const Home: NextPage = () => {
         </div>
 
         <div className={styles.stats}>
-          <StatList stats={stats} onValueChange={onValueChange} onModChange={onModChange} />
+          <ScrollableViewport vertical>
+            <StatList stats={stats} onValueChange={onValueChange} onModChange={onModChange} />
+          </ScrollableViewport>
         </div>
 
         <div className={styles.profBonus}>
@@ -57,7 +60,9 @@ const Home: NextPage = () => {
         </div>
 
         <div className={styles.skills}>
-          <SkillList skills={skills} onChange={onSkillChange} />
+          <ScrollableViewport vertical>
+            <SkillList skills={skills} onChange={onSkillChange} />
+          </ScrollableViewport>
         </div>
 
         <div className={styles.proficiencies}>

@@ -1,0 +1,27 @@
+.container {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+
+  &::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: black;
+  }
+
+  &.vertical {
+    overflow-y: scroll;
+  }
+
+  &.horizontal {
+    overflow-x: scroll;
+  }
+}
