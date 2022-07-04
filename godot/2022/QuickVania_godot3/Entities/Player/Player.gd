@@ -12,21 +12,29 @@ export(float) var speed: float = BLOCK_SIZE * 10
 onready var jump_velocity: float = ((2.0 * max_jump_height) / jump_time_to_peak) * -1
 onready var jump_gravity: float = ((-2.0 * max_jump_height) / (jump_time_to_peak * jump_time_to_peak)) * -1
 onready var fall_gravity: float = ((-2.0 * max_jump_height) / (jump_time_to_descent * jump_time_to_descent)) * -1
-onready var coyoteTimer: Timer = $CoyoteTimer
+onready var coyote_timer: Timer = $CoyoteTimer
 onready var input: PlayerInput = $PlayerInput
 onready var label: Label = $Label
+onready var ground_front: RayCast2D = $GroundSensor/GroundFront
+onready var ground_back: RayCast2D = $GroundSensor/GroundBack
 
-var can_jump: bool = true
-var flip_direction: int = 1
-var velocity = Vector2.ZERO
+export var coyote_time_active = false
+export var flip_direction: int = 1
+export var velocity = Vector2.ZERO
+
+### SHOULD DELETE
+export var TIME_LEFT = 0.0
+export var TIME_ACTIVE = false
 
 
 func _ready() -> void:
 	setup_player_stats()
-	setup_coyote_timer()
 
 
 func _physics_process(delta: float) -> void:
+	TIME_LEFT = coyote_timer.time_left
+	TIME_ACTIVE = coyote_time_active
+
 	if Input.is_action_just_pressed(KeysMap.PAUSE_GAME):
 		stats.hurt(1)
 		Manager.screen.open_pause_menu()
@@ -50,7 +58,6 @@ func apply_flip_scale():
 
 
 func apply_all(delta: float) -> void:
-	apply_coyote_time()
 	apply_gravity(delta)
 	apply_jump()
 	apply_horizontal()
@@ -64,28 +71,21 @@ func apply_horizontal() -> void:
 
 
 func apply_jump() -> void:
-	if Input.is_action_just_pressed("ui_accept"):
-		if is_on_floor() or can_jump:
-			can_jump = false
-			coyoteTimer.stop()
+	if input.jump_press:
+		if is_on_floor():
 			velocity.y = jump_velocity
 
-	if Input.is_action_just_released("ui_accept") and velocity.y < min_jump_height:
+	if input.jump_release and velocity.y < min_jump_height:
 		velocity.y = min_jump_height
 
 
 func apply_gravity(delta: float) -> void:
-	if not is_on_floor() and not can_jump:
-		var gravity = get_gravity()
-		velocity.y += gravity * delta
+	if not is_on_floor() and coyote_timer.time_left <= 0:
+		velocity.y += get_gravity() * delta
 
-
-func apply_coyote_time() -> void:
-	if is_on_floor():
-		can_jump = true
-		coyoteTimer.stop()
-	elif can_jump and coyoteTimer.is_stopped():
-		coyoteTimer.start()
+		if not coyote_time_active:
+			coyote_time_active = true
+			coyote_timer.start()
 
 
 func get_gravity() -> float:
@@ -93,10 +93,6 @@ func get_gravity() -> float:
 		return jump_gravity
 	else:
 		return fall_gravity
-
-
-func on_coyote_timeout() -> void:
-	can_jump = false
 
 
 func on_health_changed(value: int, _min_value: int, max_value: int) -> void:
@@ -128,7 +124,7 @@ func setup_player_stats() -> void:
 	stats.hit_points_resource.emit_signals()
 
 
-func setup_coyote_timer() -> void:
-	var con = coyoteTimer.connect("timeout", self, "on_coyote_timeout")
-	if not con == OK:
-		print_debug("INFO:: Failed to connect")
+func is_on_floor() -> bool:
+	if ground_front.is_colliding() or ground_back.is_colliding():
+		return true
+	return false
