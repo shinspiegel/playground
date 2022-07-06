@@ -1,6 +1,4 @@
 import React from "react";
-import { UseStatList } from "../../hooks/useStatList";
-import { useAppDispatch, useAppSelector } from "../../stores";
 import { Stat, statsSlice } from "../../stores/slices/statsSlice";
 import { StatItem } from "../StatItem";
 import cn from "./index.module.scss";

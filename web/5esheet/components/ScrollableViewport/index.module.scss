@@ -1,12 +1,11 @@
 .container {
   height: 100%;
   width: 100%;
-  overflow: hidden;
 
   &::-webkit-scrollbar {
-    width: 4px;
-    height: 4px;
     background: transparent;
+    height: 4px;
+    width: 4px;
   }
 
   &::-webkit-scrollbar-track {

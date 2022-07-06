@@ -1,2 +1,77 @@
+.cleanInputArrow {
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  &[type="number"] {
+    -moz-appearance: textfield;
+  }
+}
+
+.shadow {
+  box-shadow: 0rem 4px 0rem black;
+}
+
 .container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0.5rem 0.5rem 3rem 0.5rem;
+  position: relative;
+}
+
+.title {
+  color: black;
+  font-size: 1.4rem;
+  letter-spacing: 1px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.stat {
+  background: white;
+  border: 2px solid black;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  max-width: 100px;
+  padding: 1rem;
+  position: relative;
+  @extend .shadow;
+}
+
+.statInput {
+  background: none;
+  border: none;
+  font-size: 3rem;
+  text-align: center;
+  width: 100%;
+  @extend .cleanInputArrow;
+}
+
+.mod {
+  background: white;
+  border: 2px solid black;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  left: 50%;
+  max-width: 70px;
+  padding: 0.5rem;
+  position: absolute;
+  top: 60%;
+  transform: translateX(-50%);
+  @extend .shadow;
+}
+
+.modInput {
+  background: none;
+  border: none;
+  font-size: 2rem;
+  text-align: center;
+  width: 100%;
+  @extend .cleanInputArrow;
 }

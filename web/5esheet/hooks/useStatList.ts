@@ -13,24 +13,20 @@ export const useStatList = (): UseStatList => {
   const { changeModFor, changeValueFor } = statsSlice.actions;
 
   const onValueChange: UseStatList["onValueChange"] = (e) => {
-    if (e.target.name && e.target.valueAsNumber) {
-      dispatch(
-        changeValueFor({
-          name: e.target.name,
-          value: e.target.valueAsNumber,
-        })
-      );
+    const value = e.target.valueAsNumber || 0;
+    const name = e.target.name;
+
+    if (name) {
+      dispatch(changeValueFor({ name, value }));
     }
   };
 
   const onModChange: UseStatList["onValueChange"] = (e) => {
-    if (e.target.name && e.target.valueAsNumber) {
-      dispatch(
-        changeModFor({
-          name: e.target.name,
-          value: e.target.valueAsNumber,
-        })
-      );
+    const value = e.target.valueAsNumber || 0;
+    const name = e.target.name;
+
+    if (name) {
+      dispatch(changeModFor({ name, value }));
     }
   };
 

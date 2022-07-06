@@ -8,18 +8,28 @@ export interface StatItemProps {
   onModChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-export const StatItem: React.FC<StatItemProps> = ({ stat = {}, onValueChange = () => {}, onModChange = () => {} }) => (
+export const StatItem: React.FC<StatItemProps> = ({
+  stat = {} as Stat,
+  onValueChange = () => {},
+  onModChange = () => {},
+}) => (
   <div className={cn.container}>
-    <div>{stat.name}</div>
+    <div className={cn.title}>{stat.name}</div>
 
-    <div>
-      <input name={stat.name} type="number" value={stat.value} onChange={onValueChange} />
-      <input name={stat.name} type="range" min="0" max="20" step="1" value={stat.value} onChange={onValueChange} />
+    <div className={cn.stat}>
+      <input
+        className={cn.statInput}
+        name={stat.name}
+        min="0"
+        step="1"
+        type="number"
+        value={stat.value}
+        onChange={onValueChange}
+      />
     </div>
 
-    <div>
-      <input name={stat.name} type="number" value={stat.mod} onChange={onModChange} />
-      <input name={stat.name} type="range" min="-5" max="5" step="1" value={stat.mod} onChange={onModChange} />
+    <div className={cn.mod}>
+      <input className={cn.modInput} name={stat.name} type="number" value={stat.mod} onChange={onModChange} />
     </div>
   </div>
 );
