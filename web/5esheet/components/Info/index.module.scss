@@ -1,2 +1,51 @@
 .container {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, auto));
+  grid-template-rows: repeat(2, minmax(0, auto));
+  grid-template-areas:
+    "name name  name   level"
+    "race class player experience";
+}
+
+.name {
+  grid-area: name;
+  display: flex;
+  flex-direction: column-reverse;
+
+  span {
+    font-size: 12px;
+    text-align: center;
+  }
+
+  input {
+    font-size: 20px;
+    background: none;
+    border: none;
+    height: 100%;
+    text-align: center;
+    text-decoration: underline 1px ;
+    text-decoration-skip: 10px;
+  }
+}
+
+.level {
+  grid-area: level;
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.race {
+  grid-area: race;
+}
+
+.class {
+  grid-area: class;
+}
+
+.player {
+  grid-area: player;
+}
+
+.experience {
+  grid-area: experience;
 }
