@@ -1,9 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Entities/Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://Screens/resources/regular_font.tres" type="DynamicFont" id=2]
 [ext_resource path="res://Entities/Player/PlayerStats.tres" type="Resource" id=3]
 [ext_resource path="res://Entities/Player/PlayerInput.gd" type="Script" id=4]
+[ext_resource path="res://Entities/Player/StateManager/StateManager.gd" type="Script" id=5]
+[ext_resource path="res://Entities/Player/StateManager/BaseState.gd" type="Script" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 4, 7 )
@@ -30,11 +32,10 @@ valign = 1
 [node name="PlayerInput" type="Node" parent="."]
 script = ExtResource( 4 )
 
-[node name="InputColddown" type="Timer" parent="PlayerInput"]
-wait_time = 0.1
-
 [node name="CoyoteTimer" type="Timer" parent="."]
-wait_time = 0.1
+wait_time = 3.0
+one_shot = true
+autostart = true
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
 color = Color( 0.87451, 0.239216, 0.654902, 1 )
@@ -42,3 +43,24 @@ polygon = PoolVector2Array( -4, -7, 4, -7, 4, 7, -4, 7 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
+
+[node name="GroundSensor" type="Node2D" parent="."]
+
+[node name="GroundFront" type="RayCast2D" parent="GroundSensor"]
+position = Vector2( 4, 7 )
+enabled = true
+cast_to = Vector2( 0, 1 )
+collision_mask = 2
+
+[node name="GroundBack" type="RayCast2D" parent="GroundSensor"]
+position = Vector2( -4, 7 )
+enabled = true
+cast_to = Vector2( 0, 1 )
+collision_mask = 2
+
+[node name="StateManager" type="Node2D" parent="."]
+script = ExtResource( 5 )
+initial_state = NodePath("Idle")
+
+[node name="Idle" type="Node2D" parent="StateManager"]
+script = ExtResource( 6 )

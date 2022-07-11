@@ -11,3 +11,4 @@ func start_game():
 
 func exit_game():
 	get_tree().quit()
+

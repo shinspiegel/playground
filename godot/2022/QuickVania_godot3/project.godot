@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Node2D",
+"class": "BaseState",
+"language": "GDScript",
+"path": "res://Entities/Player/StateManager/BaseState.gd"
+}, {
 "base": "Button",
 "class": "ButtonExtra",
 "language": "GDScript",
@@ -58,8 +63,14 @@ _global_script_classes=[ {
 "class": "ScreenManager",
 "language": "GDScript",
 "path": "res://Screens/ScreenManager.gd"
+}, {
+"base": "Node2D",
+"class": "StateManager",
+"language": "GDScript",
+"path": "res://Entities/Player/StateManager/StateManager.gd"
 } ]
 _global_script_class_icons={
+"BaseState": "",
 "ButtonExtra": "",
 "GameManager": "",
 "IntCounter": "",
@@ -69,7 +80,8 @@ _global_script_class_icons={
 "PlayerInput": "",
 "PlayerStats": "",
 "Screen": "",
-"ScreenManager": ""
+"ScreenManager": "",
+"StateManager": ""
 }
 
 [application]
