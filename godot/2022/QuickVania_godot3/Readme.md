@@ -7,19 +7,20 @@ I do plan to convert this game to the Godot 4 when release.
 # To-do List
 
 - [ ] Player
-  - [ ] Refine the player controller
-  - [ ] Real coyote-time
+  - [x] Refine the player controller
+  - [x] Real coyote-time
   - [ ] Jump buffer
-  - [ ] State machine
+  - [x] State machine
   - [ ] State controller
     - [ ] Create states
-      - [ ] Base state (extend for enemies?)
+      - [x] Base state (extend for enemies?)
       - [ ] Non-controlled (for menu)
-      - [ ] Idle
-      - [ ] Move
-      - [ ] Falling
-      - [ ] Jumping
+      - [x] Idle
+      - [x] Move
+      - [x] Falling
+      - [x] Jumping
       - [ ] Rolling / Evade
+- [ ] Player mini-map
 - [ ] Define the game
   - [ ] Story
   - [ ] Theme
