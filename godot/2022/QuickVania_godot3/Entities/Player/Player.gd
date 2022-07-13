@@ -1,11 +1,5 @@
 class_name Player extends KinematicBody2D
 
-### SHOULD DELETE
-export var AAA_TIME_LEFT = 0.0
-export var AAA_TIME_ACTIVE = false
-
-### END SHOULD DELETE
-
 const BLOCK_SIZE = 16
 
 export(Resource) var stats
@@ -22,10 +16,12 @@ onready var state_manager: StateManager = $StateManager
 onready var coyote_timer: Timer = $CoyoteTimer
 onready var input: PlayerInput = $PlayerInput
 onready var label: Label = $Label
+onready var state_label: Label = $StateLabel
 onready var ground_front: RayCast2D = $GroundSensor/GroundFront
 onready var ground_back: RayCast2D = $GroundSensor/GroundBack
+onready var jump_buffer_front: RayCast2D = $JumpBuffer/JumpBufferFront
+onready var jump_buffer_back: RayCast2D = $JumpBuffer/JumpBufferBack
 
-export var coyote_time_active = false
 export var flip_direction: int = 1
 export var velocity = Vector2.ZERO
 
@@ -35,17 +31,11 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
-	AAA_TIME_LEFT = coyote_timer.time_left
-	AAA_TIME_ACTIVE = coyote_time_active
-
 	if Input.is_action_just_pressed(KeysMap.PAUSE_GAME):
 		stats.hurt(1)
 		Manager.screen.open_pause_menu()
 
 	state_manager.apply(delta)
-	# apply_gravity(delta)
-	# apply_jump()
-	# apply_horizontal()
 
 	apply_flip_scale()
 	velocity = move_and_slide(velocity, Vector2.UP)
@@ -80,12 +70,8 @@ func apply_jump() -> void:
 
 
 func apply_gravity(delta: float) -> void:
-	if not is_on_floor() and coyote_timer.time_left <= 0:
+	if not is_on_floor():
 		velocity.y += get_gravity() * delta
-
-		if not coyote_time_active:
-			coyote_time_active = true
-			coyote_timer.start()
 
 
 func get_gravity() -> float:
@@ -109,17 +95,32 @@ func add_camera(top: int, bottom: int, left: int, right: int) -> void:
 	add_child(camera)
 
 
+func change_state(state: String) -> void:
+	state_manager.change_state(state)
+
+
+## OVERRIDE CLASS METHODS
+
+func is_jump_buffer() -> bool:
+	if jump_buffer_front.is_colliding() or jump_buffer_back.is_colliding():
+		return true
+	return false
+
+
 func is_on_floor() -> bool:
 	if ground_front.is_colliding() or ground_back.is_colliding():
 		return true
 	return false
 
 
-func change_state(state: String) -> void:
-	state_manager.change_state(state)
+## SIGNAL METHODS
 
 
-### SETUP
+func on_health_changed(value: int, _min_value: int, max_value: int) -> void:
+	label.text = String(value) + "/" + String(max_value)
+
+
+## SETUP METHODS
 
 
 func setup_player_stats() -> void:
@@ -131,10 +132,3 @@ func setup_player_stats() -> void:
 		stats.hit_points_resource.set_to_max()
 
 	stats.hit_points_resource.emit_signals()
-
-
-### SIGNAL HANDLING
-
-
-func on_health_changed(value: int, _min_value: int, max_value: int) -> void:
-	label.text = String(value) + "/" + String(max_value)

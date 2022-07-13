@@ -1,6 +1,6 @@
 class_name BaseState extends Node2D
 
-export var debug: bool = true
+export var debug: bool = false
 
 var target = null
 
@@ -23,3 +23,8 @@ func exit() -> void:
 func process(delta: float) -> void:
 	if debug:
 		print("INFO:: State process [%s] on delta [%s]" % [name, delta])
+
+
+func check_change_state() -> void:
+	if debug:
+		print("INFO:: Check if should change state in [%s]" % [name])

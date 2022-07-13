@@ -1,21 +1,22 @@
 extends BaseState
 
 
-func _ready() -> void:
-	if debug:
-		print("INFO:: State ready [%s]" % [name])
-
-
 func enter() -> void:
-	if debug:
-		print("INFO:: State entered [%s]" % [name])
+	if target is Player:
+		target.velocity = Vector2.ZERO
 
 
-func exit() -> void:
-	if debug:
-		print("INFO:: State exited [%s]" % [name])
+func process(_delta: float) -> void:
+	check_change_state()
 
 
-func process(delta: float) -> void:
-	if debug:
-		print("INFO:: State process [%s] on delta [%s]" % [name, delta])
+func check_change_state() -> void:
+	if target is Player:
+		if not target.input.direction == 0:
+			target.change_state("Move")
+
+		if target.is_on_floor() and target.input.jump_press:
+			target.change_state("Jump")
+
+		if not target.is_on_floor():
+			target.change_state("Falling")

@@ -12,7 +12,7 @@ _global_script_classes=[ {
 "base": "Node2D",
 "class": "BaseState",
 "language": "GDScript",
-"path": "res://Entities/Player/StateManager/BaseState.gd"
+"path": "res://Entities/StateManager/BaseState.gd"
 }, {
 "base": "Button",
 "class": "ButtonExtra",
@@ -67,7 +67,7 @@ _global_script_classes=[ {
 "base": "Node2D",
 "class": "StateManager",
 "language": "GDScript",
-"path": "res://Entities/Player/StateManager/StateManager.gd"
+"path": "res://Entities/StateManager/StateManager.gd"
 } ]
 _global_script_class_icons={
 "BaseState": "",
