@@ -4,8 +4,11 @@
 [ext_resource path="res://Screens/resources/regular_font.tres" type="DynamicFont" id=2]
 [ext_resource path="res://Entities/Player/PlayerStats.tres" type="Resource" id=3]
 [ext_resource path="res://Entities/Player/PlayerInput.gd" type="Script" id=4]
-[ext_resource path="res://Entities/Player/StateManager/StateManager.gd" type="Script" id=5]
-[ext_resource path="res://Entities/Player/StateManager/BaseState.gd" type="Script" id=6]
+[ext_resource path="res://Entities/StateManager/StateManager.gd" type="Script" id=5]
+[ext_resource path="res://Entities/Player/States/Idle.gd" type="Script" id=7]
+[ext_resource path="res://Entities/Player/States/Move.gd" type="Script" id=8]
+[ext_resource path="res://Entities/Player/States/Jumping.gd" type="Script" id=9]
+[ext_resource path="res://Entities/Player/States/Falling.gd" type="Script" id=10]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 4, 7 )
@@ -16,6 +19,20 @@ script = ExtResource( 1 )
 stats = ExtResource( 3 )
 
 [node name="Label" type="Label" parent="."]
+margin_left = -20.0
+margin_top = -25.0
+margin_right = 20.0
+margin_bottom = -11.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 12
+size_flags_vertical = 12
+custom_fonts/font = ExtResource( 2 )
+text = "99"
+align = 1
+valign = 1
+
+[node name="StateDebugger" type="Label" parent="."]
 margin_left = -20.0
 margin_top = -25.0
 margin_right = 20.0
@@ -63,4 +80,13 @@ script = ExtResource( 5 )
 initial_state = NodePath("Idle")
 
 [node name="Idle" type="Node2D" parent="StateManager"]
-script = ExtResource( 6 )
+script = ExtResource( 7 )
+
+[node name="Move" type="Node2D" parent="StateManager"]
+script = ExtResource( 8 )
+
+[node name="Jumping" type="Node2D" parent="StateManager"]
+script = ExtResource( 9 )
+
+[node name="Falling" type="Node2D" parent="StateManager"]
+script = ExtResource( 10 )

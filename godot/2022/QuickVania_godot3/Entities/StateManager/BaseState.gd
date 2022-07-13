@@ -2,7 +2,7 @@ class_name BaseState extends Node2D
 
 export var debug: bool = true
 
-var player = null
+var target = null
 
 
 func _ready() -> void:
