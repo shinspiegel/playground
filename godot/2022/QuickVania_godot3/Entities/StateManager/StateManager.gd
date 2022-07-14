@@ -1,12 +1,15 @@
 class_name StateManager extends Node2D
 
+signal state_changed_to(new_state)
+
+export var max_history_lengh: int = 3
 export var initial_path: NodePath
 export var target_path: NodePath
 
 var target = null
 var states = {}
 var current_state: BaseState = null
-var last_state: BaseState = null
+var state_history = []
 
 
 func _ready() -> void:
@@ -26,7 +29,7 @@ func change_state(state_name: String) -> void:
 		return
 
 	if not current_state == null:
-		last_state = current_state
+		add_state_history(current_state.name)
 		current_state.exit()
 
 	current_state = null
@@ -34,14 +37,23 @@ func change_state(state_name: String) -> void:
 	if not states[state_name] == null:
 		current_state = states[state_name]
 		current_state.enter()
-
-		## TODO: Remove after testing
-		if not target == null and not target.state_label == null:
-			target.state_label.text = state_name
-		## --- Ended
+		emit_signal("state_changed_to", state_name)
 
 	else:
 		print_debug("WARN:: Failed to load state %s" % [state_name])
+
+
+func add_state_history(state_name: String) -> void:
+	state_history.push_front(state_name)
+
+	if state_history.count() > max_history_lengh:
+		state_history.pop_back()
+
+
+func get_last_state() -> String:
+	if state_history.count() > 0:
+		return state_history[0]
+	return ""
 
 
 ## SIGNAL METHODS

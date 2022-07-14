@@ -28,6 +28,7 @@ export var velocity = Vector2.ZERO
 
 func _ready() -> void:
 	setup_player_stats()
+	setup_state_manager()
 
 
 func _physics_process(delta: float) -> void:
@@ -99,12 +100,13 @@ func change_state(state: String) -> void:
 	state_manager.change_state(state)
 
 
-## OVERRIDE CLASS METHODS
-
 func is_jump_buffer() -> bool:
 	if jump_buffer_front.is_colliding() or jump_buffer_back.is_colliding():
 		return true
 	return false
+
+
+## OVERRIDE CLASS METHODS
 
 
 func is_on_floor() -> bool:
@@ -120,15 +122,25 @@ func on_health_changed(value: int, _min_value: int, max_value: int) -> void:
 	label.text = String(value) + "/" + String(max_value)
 
 
+func on_state_change(new_state: String) -> void:
+	state_label.text = new_state
+
+
 ## SETUP METHODS
 
 
 func setup_player_stats() -> void:
 	var con = stats.hit_points_resource.connect("changed_detailed", self, "on_health_changed")
-	if con != OK:
+	if not con == OK:
 		print_debug("INFO:: Failed to connect")
 
 	if stats.hit_points == 0:
 		stats.hit_points_resource.set_to_max()
 
 	stats.hit_points_resource.emit_signals()
+
+
+func setup_state_manager() -> void:
+	var con = state_manager.connect("state_changed_to", self, "on_state_change")
+	if not con == OK:
+		print_debug("Failed to connect the change state on state manager")
