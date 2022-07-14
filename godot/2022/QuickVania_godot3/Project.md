@@ -9,13 +9,16 @@
   - [x] State Manager
   - [ ] Player State
     - [x] Base state (extend for enemies?)
-    - [ ] Non-controlled (for menu)
+    - [ ] Non-controlled (for menu)?
     - [x] Idle
     - [x] Move
     - [x] Falling
     - [x] Jumping
-    - [ ] Rolling / Evade
+		- [ ] Attack
+		- [ ] Chain attack?
+    - [ ] Rolling / Evade?
   - [ ] PowerUps (as resource?)
+		- [x] Created initial resource
     - [ ] Double Jump?
     - [ ] Strong with ammo?
     - [ ] Charge?

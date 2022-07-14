@@ -3,6 +3,7 @@ class_name Player extends KinematicBody2D
 const BLOCK_SIZE = 16
 
 export(Resource) var stats
+export(Resource) var power_ups
 export(float) var max_jump_height: float = BLOCK_SIZE * 3
 export(float) var min_jump_height: float = BLOCK_SIZE * 2
 export(float) var jump_time_to_peak: float = 0.45
