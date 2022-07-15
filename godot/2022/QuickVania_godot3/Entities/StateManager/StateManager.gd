@@ -48,12 +48,12 @@ func change_state(state_name: String) -> void:
 func add_state_history(state_name: String) -> void:
 	state_history.push_front(state_name)
 
-	if state_history.count() > max_history_lengh:
+	if state_history.size() > max_history_lengh:
 		state_history.pop_back()
 
 
 func get_last_state() -> String:
-	if state_history.count() > 0:
+	if state_history.size() > 0:
 		return state_history[0]
 	return ""
 

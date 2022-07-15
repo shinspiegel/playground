@@ -20,8 +20,7 @@ onready var label: Label = $Label
 onready var state_label: Label = $StateLabel
 onready var ground_front: RayCast2D = $GroundSensor/GroundFront
 onready var ground_back: RayCast2D = $GroundSensor/GroundBack
-onready var jump_buffer_front: RayCast2D = $JumpBuffer/JumpBufferFront
-onready var jump_buffer_back: RayCast2D = $JumpBuffer/JumpBufferBack
+onready var jump_buffer: RayCast2D = $GroundSensor/JumpBuffer
 
 export var flip_direction: int = 1
 export var velocity = Vector2.ZERO
@@ -102,7 +101,7 @@ func change_state(state: String) -> void:
 
 
 func is_jump_buffer() -> bool:
-	if jump_buffer_front.is_colliding() or jump_buffer_back.is_colliding():
+	if jump_buffer.is_colliding():
 		return true
 	return false
 
@@ -142,6 +141,6 @@ func setup_player_stats() -> void:
 
 
 func setup_state_manager() -> void:
-	var con = state_manager.connect("state_changed_to", self, "on_state_change")
+	var con = state_manager.connect("state_entered", self, "on_state_change")
 	if not con == OK:
 		print_debug("Failed to connect the change state on state manager")

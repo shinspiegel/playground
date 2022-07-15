@@ -24,7 +24,10 @@ func process(delta: float) -> void:
 
 func check_change_state() -> void:
 	if target is Player:
-		if (target.is_on_floor() or target.coyote_timer.time_left > 0) and target.input.jump_press:
+		var is_grounded = target.is_on_floor() or target.coyote_timer.time_left > 0
+		var is_jump_buffed = not target.is_on_floor() and target.is_jump_buffer()
+
+		if (is_grounded or is_jump_buffed) and target.input.jump_press:
 			target.change_state("Jump")
 
 		if target.is_on_floor():

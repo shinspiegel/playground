@@ -2,7 +2,7 @@
 
 - [ ] **Player**
   - [x] Refine the player controller
-    - [ ] Jump buffer
+    - [x] Jump buffer
     - [x] Real coyote-time
   - [ ] Player mini-map
   - [x] State machine
