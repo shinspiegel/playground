@@ -6,9 +6,8 @@ func _ready() -> void:
 
 
 func start_game():
-	Manager.level.switch_to("TestLevel", 0)
+	Manager.level.switch_to(Areas.TestLevel0, 0)
 
 
 func exit_game():
 	get_tree().quit()
-

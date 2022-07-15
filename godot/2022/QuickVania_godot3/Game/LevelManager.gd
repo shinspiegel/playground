@@ -1,11 +1,11 @@
 class_name LevelManager extends Node2D
 
-var current_area: Level
+var current_area = null
 
 var maps = {
-	"TestLevel": "res://Level/TestLevel.tscn",
-	"TestLevel1": "res://Level/TestLevel1.tscn",
-	"TestLevel2": "res://Level/TestLevel2.tscn",
+	Areas.TestLevel0: "res://Level/AreaOne/TestLevel0.tscn",
+	Areas.TestLevel1: "res://Level/AreaOne/TestLevel1.tscn",
+	Areas.TestLevel2: "res://Level/AreaOne/TestLevel2.tscn",
 }
 
 

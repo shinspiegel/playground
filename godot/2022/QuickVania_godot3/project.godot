@@ -29,10 +29,10 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Resources/IntCounter.gd"
 }, {
-"base": "Node2D",
+"base": "Reference",
 "class": "Level",
 "language": "GDScript",
-"path": "res://Level/Level.gd"
+"path": "res://Level/BaseLevel/Level.gd"
 }, {
 "base": "Node2D",
 "class": "LevelManager",
@@ -100,6 +100,7 @@ config/icon="res://icon.png"
 
 Manager="*res://Globals/Manager.gd"
 KeysMap="*res://Globals/KeysMap.gd"
+Areas="*res://Globals/Areas.gd"
 
 [display]
 

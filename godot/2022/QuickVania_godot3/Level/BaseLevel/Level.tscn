@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Tilemaps/TileMap_32x32.tres" type="TileSet" id=1]
+[ext_resource path="res://Level/BaseLevel/Level.gd" type="Script" id=2]
+[ext_resource path="res://Entities/RoomArea/RoomArea.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Entities/Player/Player.tscn" type="PackedScene" id=4]
+
+[node name="Level" type="Node2D"]
+script = ExtResource( 2 )
+player_scene = ExtResource( 4 )
+
+[node name="TileMaps" type="Node2D" parent="."]
+scale = Vector2( 0.5, 0.5 )
+
+[node name="Ground" type="TileMap" parent="TileMaps"]
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 32, 32 )
+cell_quadrant_size = 32
+collision_layer = 2
+collision_mask = 0
+format = 1
+
+[node name="EntryPoint" type="Node2D" parent="."]
+
+[node name="Entry1" type="Position2D" parent="EntryPoint"]
+position = Vector2( 20, 20 )
+__meta__ = {
+"_gizmo_extents_": 8.0
+}
+
+[node name="MapLimit" type="Node2D" parent="."]
+
+[node name="TopLeft" type="Position2D" parent="MapLimit"]
+
+[node name="BottomRight" type="Position2D" parent="MapLimit"]
+position = Vector2( 320, 192 )
+
+[node name="RoomAreas" type="Node2D" parent="."]
+
+[node name="RoomArea" parent="RoomAreas" instance=ExtResource( 3 )]
