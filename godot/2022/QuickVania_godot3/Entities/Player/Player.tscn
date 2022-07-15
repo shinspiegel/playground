@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Entities/Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://Entities/Player/Stats/PowerUps.tres" type="Resource" id=2]
@@ -8,10 +8,172 @@
 [ext_resource path="res://Entities/Player/States/Jump.gd" type="Script" id=6]
 [ext_resource path="res://Entities/Player/States/Idle.gd" type="Script" id=7]
 [ext_resource path="res://Entities/Player/States/Move.gd" type="Script" id=8]
+[ext_resource path="res://Screens/resources/Theme.tres" type="Theme" id=9]
 [ext_resource path="res://Entities/Player/States/Falling.gd" type="Script" id=10]
+[ext_resource path="res://Entities/Player/Assets/PlayerSprite.png" type="Texture" id=11]
+
+[sub_resource type="Animation" id=4]
+resource_name = "Falling"
+length = 0.9
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0.423529, 0.0862745, 0.27451, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 11 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8 ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "Idle"
+length = 0.9
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 11 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8 ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "Jump"
+length = 0.9
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0.929412, 0.619608, 0.290196, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 11 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8 ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "Move"
+length = 0.9
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0.247059, 0.611765, 0.752941, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 11 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8 ]
+}
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 4, 7 )
+extents = Vector2( 4, 8 )
 
 [node name="Player" type="KinematicBody2D"]
 collision_mask = 10
@@ -26,6 +188,7 @@ margin_right = 20.0
 margin_bottom = -11.0
 size_flags_horizontal = 12
 size_flags_vertical = 12
+theme = ExtResource( 9 )
 text = "99"
 align = 1
 valign = 1
@@ -40,6 +203,7 @@ grow_vertical = 2
 rect_pivot_offset = Vector2( 24, 25 )
 size_flags_horizontal = 12
 size_flags_vertical = 12
+theme = ExtResource( 9 )
 text = "STATE"
 align = 1
 valign = 1
@@ -47,34 +211,41 @@ valign = 1
 [node name="PlayerInput" type="Node" parent="."]
 script = ExtResource( 4 )
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Falling = SubResource( 4 )
+anims/Idle = SubResource( 3 )
+anims/Jump = SubResource( 5 )
+anims/Move = SubResource( 6 )
+
+[node name="Sprite" type="Sprite" parent="."]
+self_modulate = Color( 0.929412, 0.619608, 0.290196, 1 )
+texture = ExtResource( 11 )
+hframes = 9
+
 [node name="CoyoteTimer" type="Timer" parent="."]
 wait_time = 0.1
 one_shot = true
 autostart = true
 
-[node name="Polygon2D" type="Polygon2D" parent="."]
-color = Color( 0.87451, 0.239216, 0.654902, 1 )
-polygon = PoolVector2Array( -4, -7, 4, -7, 4, 7, -4, 7 )
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
 
 [node name="GroundSensor" type="Node2D" parent="."]
+position = Vector2( 0, 8 )
 
 [node name="JumpBuffer" type="RayCast2D" parent="GroundSensor"]
-position = Vector2( 0, 7 )
 enabled = true
 cast_to = Vector2( 0, 8 )
 collision_mask = 2
 
 [node name="GroundFront" type="RayCast2D" parent="GroundSensor"]
-position = Vector2( 4, 7 )
+position = Vector2( 4, 0 )
 enabled = true
 cast_to = Vector2( 0, 1 )
 collision_mask = 2
 
 [node name="GroundBack" type="RayCast2D" parent="GroundSensor"]
-position = Vector2( -4, 7 )
+position = Vector2( -4, 0 )
 enabled = true
 cast_to = Vector2( 0, 1 )
 collision_mask = 2

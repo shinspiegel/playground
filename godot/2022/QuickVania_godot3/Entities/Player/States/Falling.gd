@@ -3,6 +3,8 @@ extends BaseState
 
 func enter() -> void:
 	if target is Player:
+		target.change_animation(name) 
+
 		if not target.state_manager.get_last_state() == "Jump":
 			target.coyote_timer.start()
 

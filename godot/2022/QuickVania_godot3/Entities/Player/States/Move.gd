@@ -1,6 +1,11 @@
 extends BaseState
 
 
+func enter() -> void:
+	if target is Player:
+		target.change_animation(name)
+
+
 func process(_delta: float) -> void:
 	check_change_state()
 

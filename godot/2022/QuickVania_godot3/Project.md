@@ -5,6 +5,7 @@
     - [x] Jump buffer
     - [x] Real coyote-time
   - [ ] Player mini-map
+  - [x] Add basic animation
   - [x] State machine
   - [x] State Manager
   - [ ] Player State
@@ -14,11 +15,11 @@
     - [x] Move
     - [x] Falling
     - [x] Jumping
-		- [ ] Attack
-		- [ ] Chain attack?
+    - [ ] Attack
+    - [ ] Chain attack?
     - [ ] Rolling / Evade?
   - [ ] PowerUps (as resource?)
-		- [x] Created initial resource
+    - [x] Created initial resource
     - [ ] Double Jump?
     - [ ] Strong with ammo?
     - [ ] Charge?
@@ -60,10 +61,10 @@
     - [ ] One music per area
     - [ ] One music for the game start screen
     - [ ] One for the player death
-		- [ ] One for the boss fight
+    - [ ] One for the boss fight
     - [ ] One for the endgame
   - [ ] **Sound**
-		- [ ] Sound for everything
+    - [ ] Sound for everything
 
 ## Game Design Elements
 

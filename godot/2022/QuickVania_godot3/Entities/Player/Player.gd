@@ -21,6 +21,7 @@ onready var state_label: Label = $StateLabel
 onready var ground_front: RayCast2D = $GroundSensor/GroundFront
 onready var ground_back: RayCast2D = $GroundSensor/GroundBack
 onready var jump_buffer: RayCast2D = $GroundSensor/JumpBuffer
+onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 export var flip_direction: int = 1
 export var velocity = Vector2.ZERO
@@ -98,6 +99,11 @@ func add_camera(top: int, bottom: int, left: int, right: int) -> void:
 
 func change_state(state: String) -> void:
 	state_manager.change_state(state)
+
+
+func change_animation(anim: String) -> void:
+	if not animation_player == null and animation_player.has_animation(anim):
+		animation_player.play(anim)
 
 
 func is_jump_buffer() -> bool:

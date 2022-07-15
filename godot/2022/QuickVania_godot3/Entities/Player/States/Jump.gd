@@ -3,6 +3,7 @@ extends BaseState
 
 func enter() -> void:
 	if target is Player:
+		target.change_animation(name)
 		target.velocity.y = target.jump_velocity
 
 
