@@ -48,6 +48,7 @@ valign = 1
 script = ExtResource( 4 )
 
 [node name="CoyoteTimer" type="Timer" parent="."]
+wait_time = 0.1
 one_shot = true
 autostart = true
 
@@ -59,6 +60,12 @@ polygon = PoolVector2Array( -4, -7, 4, -7, 4, 7, -4, 7 )
 shape = SubResource( 1 )
 
 [node name="GroundSensor" type="Node2D" parent="."]
+
+[node name="JumpBuffer" type="RayCast2D" parent="GroundSensor"]
+position = Vector2( 0, 7 )
+enabled = true
+cast_to = Vector2( 0, 8 )
+collision_mask = 2
 
 [node name="GroundFront" type="RayCast2D" parent="GroundSensor"]
 position = Vector2( 4, 7 )
