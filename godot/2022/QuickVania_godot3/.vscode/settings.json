@@ -1,7 +1,6 @@
 {
 	"[markdown]": {
 		"editor.defaultFormatter": "esbenp.prettier-vscode",
-		"editor.useTabStops": false,
 		"editor.tabSize": 2
 	},
 	"editor.useTabStops": true,

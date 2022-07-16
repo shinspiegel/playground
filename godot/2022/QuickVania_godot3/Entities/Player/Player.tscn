@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Entities/Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://Entities/Player/Stats/PowerUps.tres" type="Resource" id=2]
@@ -11,10 +11,53 @@
 [ext_resource path="res://Screens/resources/Theme.tres" type="Theme" id=9]
 [ext_resource path="res://Entities/Player/States/Falling.gd" type="Script" id=10]
 [ext_resource path="res://Entities/Player/Assets/PlayerSprite.png" type="Texture" id=11]
+[ext_resource path="res://Entities/Player/States/Attack.gd" type="Script" id=12]
+[ext_resource path="res://Entities/Boxes/HurtBox.tscn" type="PackedScene" id=13]
+
+[sub_resource type="Animation" id=7]
+resource_name = "Attack"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0.945098, 0.0431373, 0.0431373, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 11 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
 
 [sub_resource type="Animation" id=4]
 resource_name = "Falling"
 length = 0.9
+loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:self_modulate")
 tracks/0/interp = 1
@@ -55,6 +98,7 @@ tracks/2/keys = {
 [sub_resource type="Animation" id=3]
 resource_name = "Idle"
 length = 0.9
+loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:self_modulate")
 tracks/0/interp = 1
@@ -95,6 +139,7 @@ tracks/2/keys = {
 [sub_resource type="Animation" id=5]
 resource_name = "Jump"
 length = 0.9
+loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:self_modulate")
 tracks/0/interp = 1
@@ -135,6 +180,7 @@ tracks/2/keys = {
 [sub_resource type="Animation" id=6]
 resource_name = "Move"
 length = 0.9
+loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:self_modulate")
 tracks/0/interp = 1
@@ -175,6 +221,9 @@ tracks/2/keys = {
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 4, 7.5 )
 
+[sub_resource type="RectangleShape2D" id=8]
+extents = Vector2( 3, 6.5 )
+
 [node name="Player" type="KinematicBody2D"]
 collision_mask = 10
 script = ExtResource( 1 )
@@ -212,15 +261,17 @@ valign = 1
 script = ExtResource( 4 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Attack = SubResource( 7 )
 anims/Falling = SubResource( 4 )
 anims/Idle = SubResource( 3 )
 anims/Jump = SubResource( 5 )
 anims/Move = SubResource( 6 )
 
 [node name="Sprite" type="Sprite" parent="."]
-self_modulate = Color( 0.929412, 0.619608, 0.290196, 1 )
+self_modulate = Color( 0.945098, 0.0431373, 0.0431373, 1 )
 texture = ExtResource( 11 )
 hframes = 9
+frame = 3
 
 [node name="CoyoteTimer" type="Timer" parent="."]
 wait_time = 0.1
@@ -230,6 +281,12 @@ autostart = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 0.5 )
 shape = SubResource( 1 )
+
+[node name="HurtBox" parent="." instance=ExtResource( 13 )]
+
+[node name="CollisionShape2D" parent="HurtBox" index="0"]
+position = Vector2( 0, 0.5 )
+shape = SubResource( 8 )
 
 [node name="GroundSensor" type="Node2D" parent="."]
 position = Vector2( 0, 8 )
@@ -256,6 +313,9 @@ script = ExtResource( 5 )
 initial_path = NodePath("Idle")
 target_path = NodePath("..")
 
+[node name="Attack" type="Node2D" parent="StateManager"]
+script = ExtResource( 12 )
+
 [node name="Idle" type="Node2D" parent="StateManager"]
 script = ExtResource( 7 )
 
@@ -267,3 +327,5 @@ script = ExtResource( 6 )
 
 [node name="Falling" type="Node2D" parent="StateManager"]
 script = ExtResource( 10 )
+
+[editable path="HurtBox"]

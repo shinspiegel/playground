@@ -1,32 +1,3 @@
-# Basic game-flow
-
-- [ ] **Player**
-  - [x] Refine the player controller
-    - [x] Jump buffer
-    - [x] Real coyote-time
-  - [ ] Player mini-map
-  - [x] Add basic animation
-  - [x] State machine
-  - [x] State Manager
-  - [ ] Player State
-    - [x] Base state (extend for enemies?)
-    - [ ] Non-controlled (for menu)?
-    - [x] Idle
-    - [x] Move
-    - [x] Falling
-    - [x] Jumping
-    - [ ] Attack
-    - [ ] Chain attack?
-    - [ ] Rolling / Evade?
-  - [ ] PowerUps (as resource?)
-    - [x] Created initial resource
-    - [ ] Double Jump?
-    - [ ] Strong with ammo?
-    - [ ] Charge?
-    - [ ] Upper?
-    - [ ] Dash?
-    - [ ] Parry/Deflect?
-
 # Game Design Elements
 
 - [ ] [Game Design](#Game-Design)
@@ -56,7 +27,7 @@
     - [ ] Tileset (one per area)
     - [ ] Player
     - [ ] Enemies (one per enemy)
-    - [ ] Boss
+    - [ ] Boss (Cheater? Cheated? @VAMPIRE itself?)
   - [ ] **Music**
     - [ ] One music per area
     - [ ] One music for the game start screen
@@ -65,6 +36,38 @@
     - [ ] One for the endgame
   - [ ] **Sound**
     - [ ] Sound for everything
+
+# Other Game Elements
+
+- [ ] HitBox / HurtBox
+- [x] State Manager
+
+# Player
+
+- [ ] **Player**
+  - [x] Refine the player controller
+    - [x] Jump buffer
+    - [x] Real coyote-time
+  - [ ] ~~Player mini-map~~
+  - [x] Add basic animation
+  - [ ] Player State
+    - [x] Base state (extend for enemies?)
+    - [x] Idle
+    - [x] Move
+    - [x] Falling
+    - [x] Jump
+    - [ ] Attack
+  - [ ] PowerUps (as resource?)
+    - [x] Created initial resource
+    - [ ] Double-Jump
+      - "Reach tall jar in the kitchen"
+      - Reach higher platforms
+    - [ ] Charge Attack
+      - "Strong hug"
+      - Breaking walls
+    - [ ] Unblockable Attack (with anno, "hearts")
+      - "Kiss"
+      - Kill some enemies
 
 ## Game Design Elements
 
@@ -76,15 +79,36 @@ Section dedicated to elaborate and create the elements for the game project.
 
 #### Story
 
-TODO: Define
+- @NAME was a small kid and fell in love with a vampire.
+- @VAMPIRE broke up with @NAME and told him that will only date him if he became a monster
+- @NAME need to find the PowerUP to become a monster and date @VAMPIRE
+- The PowerUps comes from connection between the @NAME and @VAMPIRE
+- The final boss is the @VAMPIRE, she had cheated @NAME and she is the monster
+- the @NAME will never be the monster, he will never be able to cheat
+
+- **Scenes**
+  - Intro scene (the break up)
+  - Reach tall jar in the kitchen (powerup / doublejump)
+  - Strong hug (powerup / charge)
+  - Kiss (powerup / unblockable)
+  - Cheating scene (defeat boss)
+  - Open talking (Ending scene)
 
 #### Theme
 
-TODO: Define
+- Love
+- Cheating / Being cheated
+- Soulmate
+  - PowerUp comes from link between soul
 
 #### Topics to explore
 
-TODO: Define
+- Depression
+  - Low life with small depressive phrases
+  - How to deal with the depression?
+- Find strength through overcome challenge
+  - Hit on enemies create small bubble message with encouragement
+  - PowerUp scenes?
 
 ### Level Design
 

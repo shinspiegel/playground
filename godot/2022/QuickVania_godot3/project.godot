@@ -24,6 +24,16 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Game/GameManager.gd"
 }, {
+"base": "Area2D",
+"class": "HitBox",
+"language": "GDScript",
+"path": "res://Entities/Boxes/HitBox.gd"
+}, {
+"base": "Area2D",
+"class": "HurtBox",
+"language": "GDScript",
+"path": "res://Entities/Boxes/HurtBox.gd"
+}, {
 "base": "Resource",
 "class": "IntCounter",
 "language": "GDScript",
@@ -78,6 +88,8 @@ _global_script_class_icons={
 "BaseState": "",
 "ButtonExtra": "",
 "GameManager": "",
+"HitBox": "",
+"HurtBox": "",
 "IntCounter": "",
 "Level": "",
 "LevelManager": "",
