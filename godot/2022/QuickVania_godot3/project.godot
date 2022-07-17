@@ -39,7 +39,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Resources/IntCounter.gd"
 }, {
-"base": "Reference",
+"base": "Node2D",
 "class": "Level",
 "language": "GDScript",
 "path": "res://Level/BaseLevel/Level.gd"

@@ -6,9 +6,9 @@ onready var shape: CollisionShape2D = $CollisionShape2D
 
 
 func _ready() -> void:
-	var con = connect("body_entered", self, "on_body_enter")
+	var con = connect("area_entered", self, "on_area_enter")
 	if not con == OK:
-		print_debug("INFO:: Failed to connect")
+		print_debug("INFO:: Failed to connect hurt [%s]" % [name])
 
 
 func enable() -> void:
@@ -26,7 +26,7 @@ func set_shape_disabled(value: bool) -> void:
 ## SIGNAL METHODS
 
 
-func on_body_enter(body) -> void:
+func on_area_enter(body) -> void:
 	if body is HitBox:
 		emit_signal("hit_received", body)
 

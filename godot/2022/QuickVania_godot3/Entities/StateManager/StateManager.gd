@@ -29,6 +29,9 @@ func change_state(state_name: String) -> void:
 	if state_name == null:
 		return
 
+	if not current_state == null and current_state.name == state_name:
+		return
+
 	if not current_state == null:
 		add_state_history(current_state.name)
 		emit_signal("state_exited", current_state.name)

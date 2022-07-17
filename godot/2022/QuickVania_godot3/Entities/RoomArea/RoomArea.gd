@@ -8,9 +8,8 @@ export(int) var map_global_position_y
 
 func _ready() -> void:
 	var con = connect("body_entered", self, "on_player_entered")
-
 	if con != OK:
-		print_debug("INFO:: Failed to connect")
+		print_debug("INFO:: Failed to connect [%s]" % [name])
 
 
 func on_player_entered(body: Node) -> void:

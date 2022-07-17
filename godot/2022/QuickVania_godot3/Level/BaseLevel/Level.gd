@@ -14,7 +14,7 @@ func add_player_to_position(index: int) -> void:
 	var list = entry_point_list.get_children()
 
 	if index >= list.size():
-		print_debug("INFO:: Teleport position out of bounds")
+		print_debug("INFO:: Teleport out of bounds, set default to '0'. [%s]" % [name])
 		index = 0
 
 	var player = player_scene.instance()

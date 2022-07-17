@@ -24,12 +24,12 @@ func _ready() -> void:
 		con = item.connect("button_with_detail_pressed", self, "on_screen_button_pressed")
 
 		if con != OK:
-			print_debug("INFO:: Failed to connect.")
+			print_debug("INFO:: Failed to connect [%s]" % [name])
 
 		con = item.connect("toggle_checked", self, "on_screen_toggle_changed")
 
 		if con != OK:
-			print_debug("INFO:: Failed to connect.")
+			print_debug("INFO:: Failed to connect [%s]" % [name])
 
 
 func switch_to_start() -> void:

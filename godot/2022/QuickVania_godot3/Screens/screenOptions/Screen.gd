@@ -24,14 +24,14 @@ func connect_check_button(button: CheckButton) -> void:
 	var con = button.connect("toggle_with_name", self, "on_toggle_pressed")
 
 	if con != OK:
-		print_debug("INFO:: Failed to connect")
+		print_debug("INFO:: Failed to connect [%s]" % [name])
 
 
 func connect_extra_button(button: ButtonExtra) -> void:
 	var con = button.connect("button_with_info_pressed", self, "on_button_with_detail_pressed")
 
 	if con != OK:
-		print_debug("INFO:: Failed to connect")
+		print_debug("INFO:: Failed to connect [%s]" % [name])
 
 
 func default_focus() -> void:

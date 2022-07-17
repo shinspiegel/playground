@@ -9,6 +9,9 @@ export(float) var min_jump_height: float = BLOCK_SIZE * 2
 export(float) var jump_time_to_peak: float = 0.45
 export(float) var jump_time_to_descent: float = 0.35
 export(float) var speed: float = BLOCK_SIZE * 10
+export var flip_direction: int = 1
+export var velocity = Vector2.ZERO
+export var is_flip_active = true
 
 onready var jump_velocity: float = ((2.0 * max_jump_height) / jump_time_to_peak) * -1
 onready var jump_gravity: float = ((-2.0 * max_jump_height) / (jump_time_to_peak * jump_time_to_peak)) * -1
@@ -23,9 +26,6 @@ onready var ground_back: RayCast2D = $GroundSensor/GroundBack
 onready var jump_buffer: RayCast2D = $GroundSensor/JumpBuffer
 onready var animation_player: AnimationPlayer = $AnimationPlayer
 onready var hurt_box: HurtBox = $HurtBox
-
-export var flip_direction: int = 1
-export var velocity = Vector2.ZERO
 
 
 func _ready() -> void:
@@ -46,15 +46,16 @@ func _physics_process(delta: float) -> void:
 
 
 func apply_flip_scale():
-	var value = velocity.x
+	if is_flip_active:
+		var value = velocity.x
 
-	if value != 0:
-		if value > 0 and flip_direction == -1:
-			scale.x *= -1
-			flip_direction = 1
-		if value < 0 and flip_direction == 1:
-			scale.x *= -1
-			flip_direction = -1
+		if value != 0:
+			if value > 0 and flip_direction == -1:
+				scale.x *= -1
+				flip_direction = 1
+			if value < 0 and flip_direction == 1:
+				scale.x *= -1
+				flip_direction = -1
 
 
 func apply_horizontal() -> void:
@@ -134,8 +135,8 @@ func on_state_change(new_state: String) -> void:
 	state_label.text = new_state
 
 
-func on_receive_hit(hit_box: HitBox) -> void:
-	print("Received damage from", hit_box.name)
+func on_receive_hit(_hit_box: HitBox) -> void:
+	change_state("Hit")
 
 
 ## SETUP METHODS
@@ -144,7 +145,7 @@ func on_receive_hit(hit_box: HitBox) -> void:
 func setup_player_stats() -> void:
 	var con = stats.hit_points_resource.connect("changed_detailed", self, "on_health_changed")
 	if not con == OK:
-		print("INFO:: Failed to connect [%s]" % [stats.hit_points_resource.name])
+		print_debug("INFO:: Failed to connect [%s]" % [stats.hit_points_resource.name])
 
 	if stats.hit_points == 0:
 		stats.hit_points_resource.set_to_max()
@@ -155,10 +156,10 @@ func setup_player_stats() -> void:
 func setup_state_manager() -> void:
 	var con = state_manager.connect("state_entered", self, "on_state_change")
 	if not con == OK:
-		print("INFO:: Failed to connect [%s]" % [state_manager.name])
+		print_debug("INFO:: Failed to connect [%s]" % [state_manager.name])
 
 
 func setup_hurt_box() -> void:
 	var con = hurt_box.connect("hit_received", self, "on_receive_hit")
 	if not con == OK:
-		print("INFO:: Failed to connect [%s]" % [hurt_box.name])
+		print_debug("INFO:: Failed to connect [%s]" % [hurt_box.name])

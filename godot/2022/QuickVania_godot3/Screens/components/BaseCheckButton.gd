@@ -24,9 +24,8 @@ func get_append() -> String:
 
 func connect_toggle() -> void:
 	var con = connect("toggled", self, "on_toggle_with_name")
-
 	if con != OK:
-		print_debug("INFO:: Failed to connect toggle")
+		print_debug("INFO:: Failed to connect [%s]" % [name])
 
 
 func on_toggle_with_name(value: bool) -> void:
