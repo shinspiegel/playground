@@ -56,18 +56,12 @@
     - [x] Move
     - [x] Falling
     - [x] Jump
-    - [ ] Attack
+    - [x] Attack
   - [ ] PowerUps (as resource?)
     - [x] Created initial resource
-    - [ ] Double-Jump
-      - "Reach tall jar in the kitchen"
-      - Reach higher platforms
+    - [x] Double-Jump
     - [ ] Charge Attack
-      - "Strong hug"
-      - Breaking walls
     - [ ] Unblockable Attack (with anno, "hearts")
-      - "Kiss"
-      - Kill some enemies
 
 ## Game Design Elements
 
@@ -108,7 +102,7 @@ Section dedicated to elaborate and create the elements for the game project.
   - How to deal with the depression?
 - Find strength through overcome challenge
   - Hit on enemies create small bubble message with encouragement
-  - PowerUp scenes?
+  - Every power up will have a small scene to give a moral boost
 
 ### Level Design
 

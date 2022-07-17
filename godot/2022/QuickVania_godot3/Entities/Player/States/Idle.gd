@@ -5,6 +5,7 @@ func enter() -> void:
 	if target is Player:
 		target.change_animation(name)
 		target.velocity = Vector2.ZERO
+		target.power_ups.is_doulbe_jump_used = false
 
 
 func process(_delta: float) -> void:

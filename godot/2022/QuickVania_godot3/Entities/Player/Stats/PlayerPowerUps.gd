@@ -2,14 +2,12 @@ class_name PlayerPowerUps extends Resource
 
 export(Resource) var ammo_resource
 
-var ammo: int setget , get_ammo
+export var is_double_jump_active: bool = true
+export var is_charge_attack_active: bool = true
+export var is_unblockable_active: bool = true
 
-var is_double_jump_active: bool = false
-var is_strong_attack_active: bool = false
-var is_charge_attack_active: bool = false
-var is_upper_attack_active: bool = false
-var is_dash_active: bool = false
-var is_parry_active: bool = false
+var ammo: int setget , get_ammo
+var is_doulbe_jump_used: bool = false
 
 
 func get_ammo() -> int:

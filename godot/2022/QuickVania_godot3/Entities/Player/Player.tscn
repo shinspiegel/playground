@@ -1,7 +1,7 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://Entities/Player/Player.gd" type="Script" id=1]
-[ext_resource path="res://Entities/Player/Stats/PowerUps.tres" type="Resource" id=2]
+[ext_resource path="res://Entities/Player/Stats/PlayerPowerUps.tres" type="Resource" id=2]
 [ext_resource path="res://Entities/Player/Stats/PlayerStats.tres" type="Resource" id=3]
 [ext_resource path="res://Entities/Player/Input/PlayerInput.gd" type="Script" id=4]
 [ext_resource path="res://Entities/StateManager/StateManager.gd" type="Script" id=5]
@@ -15,6 +15,7 @@
 [ext_resource path="res://Entities/Boxes/HitBox.tscn" type="PackedScene" id=14]
 [ext_resource path="res://Entities/Player/States/Hit.gd" type="Script" id=15]
 [ext_resource path="res://Entities/Player/Assets/Player.png" type="Texture" id=16]
+[ext_resource path="res://Entities/Player/States/DoubleJump.gd" type="Script" id=17]
 
 [sub_resource type="Animation" id=7]
 resource_name = "Attack"
@@ -224,7 +225,6 @@ stats = ExtResource( 3 )
 power_ups = ExtResource( 2 )
 
 [node name="Label" type="Label" parent="."]
-visible = false
 margin_left = -20.0
 margin_top = -25.0
 margin_right = 20.0
@@ -237,7 +237,6 @@ align = 1
 valign = 1
 
 [node name="StateLabel" type="Label" parent="."]
-visible = false
 margin_left = -20.0
 margin_top = -37.0
 margin_right = 20.0
@@ -277,7 +276,6 @@ position = Vector2( 0.5, 1.5 )
 shape = SubResource( 1 )
 
 [node name="HitBox" parent="." instance=ExtResource( 14 )]
-visible = false
 position = Vector2( 20, 1 )
 collision_mask = 4
 
@@ -286,7 +284,6 @@ shape = SubResource( 9 )
 disabled = true
 
 [node name="HurtBox" parent="." instance=ExtResource( 13 )]
-visible = false
 position = Vector2( 0, 1 )
 collision_layer = 1
 
@@ -333,6 +330,9 @@ script = ExtResource( 8 )
 
 [node name="Jump" type="Node2D" parent="StateManager"]
 script = ExtResource( 6 )
+
+[node name="DoubleJump" type="Node2D" parent="StateManager"]
+script = ExtResource( 17 )
 
 [node name="Falling" type="Node2D" parent="StateManager"]
 script = ExtResource( 10 )

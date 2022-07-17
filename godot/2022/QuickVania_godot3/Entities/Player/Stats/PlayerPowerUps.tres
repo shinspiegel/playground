@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://Entities/Player/Stats/PlayerPowerUps.gd" type="Script" id=1]
+[ext_resource path="res://Entities/Player/Stats/AmmoCounter.tres" type="Resource" id=2]
+
+[resource]
+script = ExtResource( 1 )
+ammo_resource = ExtResource( 2 )
+is_double_jump_active = true
+is_charge_attack_active = true
+is_unblockable_active = true

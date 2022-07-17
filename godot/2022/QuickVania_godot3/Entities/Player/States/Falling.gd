@@ -29,6 +29,11 @@ func check_change_state() -> void:
 		var is_grounded = target.is_on_floor() or target.coyote_timer.time_left > 0
 		var is_jump_buffed = not target.is_on_floor() and target.is_jump_buffer()
 
+		if target.power_ups.is_double_jump_active:
+			if target.input.jump_press and not target.power_ups.is_doulbe_jump_used:
+				target.change_state("DoubleJump")
+				return
+
 		if (is_grounded or is_jump_buffed) and target.input.jump_press:
 			target.change_state("Jump")
 			return

@@ -4,6 +4,7 @@ extends BaseState
 func enter() -> void:
 	if target is Player:
 		target.change_animation(name)
+		target.power_ups.is_doulbe_jump_used = true
 		target.velocity.y = target.jump_velocity
 
 
