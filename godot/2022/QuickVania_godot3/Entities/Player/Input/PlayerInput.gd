@@ -7,7 +7,7 @@ export var attack: bool = false
 
 
 func _process(_delta: float) -> void:
-	reset_all()
+	reset_bools()
 
 	if Input.is_action_just_pressed(KeysMap.JUMP):
 		jump_press = true
@@ -18,12 +18,10 @@ func _process(_delta: float) -> void:
 	if Input.is_action_pressed(KeysMap.ATTACK):
 		attack = true
 
-	if not Input.get_axis(KeysMap.LEFT, KeysMap.RIGHT) == 0.0:
-		direction = Input.get_axis(KeysMap.LEFT, KeysMap.RIGHT)
+	direction = Input.get_axis(KeysMap.LEFT, KeysMap.RIGHT)
 
 
-func reset_all() -> void:
-	direction = 0.0
+func reset_bools() -> void:
 	jump_press = false
 	jump_release = false
 	attack = false

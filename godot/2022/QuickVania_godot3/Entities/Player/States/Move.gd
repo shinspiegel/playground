@@ -15,10 +15,6 @@ func process(_delta: float) -> void:
 
 func check_change_state() -> void:
 	if target is Player:
-		if target.velocity.x == 0.0 and target.input.direction == 0.0:
-			target.change_state("Idle")
-			return
-
 		if target.is_on_floor():
 			if target.input.jump_press:
 				target.change_state("Jump")
@@ -30,4 +26,9 @@ func check_change_state() -> void:
 
 		else:
 			target.change_state("Falling")
+			return
+
+		if target.input.direction == 0.0:
+			print("Trigger to Idle")
+			target.change_state("Idle")
 			return
