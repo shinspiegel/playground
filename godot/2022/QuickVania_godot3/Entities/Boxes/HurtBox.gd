@@ -1,6 +1,6 @@
 class_name HurtBox extends Area2D
 
-signal hit(hit_box)
+signal hit_received(hit_box)
 
 onready var shape: CollisionShape2D = $CollisionShape2D
 
@@ -28,6 +28,6 @@ func set_shape_disabled(value: bool) -> void:
 
 func on_body_enter(body) -> void:
 	if body is HitBox:
-		emit_signal("hit", body)
+		emit_signal("hit_received", body)
 
 ## SETUP METHODS

@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Entities/Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://Entities/Player/Stats/PowerUps.tres" type="Resource" id=2]
@@ -13,6 +13,7 @@
 [ext_resource path="res://Entities/Player/Assets/PlayerSprite.png" type="Texture" id=11]
 [ext_resource path="res://Entities/Player/States/Attack.gd" type="Script" id=12]
 [ext_resource path="res://Entities/Boxes/HurtBox.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Entities/Boxes/HitBox.tscn" type="PackedScene" id=14]
 
 [sub_resource type="Animation" id=7]
 resource_name = "Attack"
@@ -52,6 +53,26 @@ tracks/2/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 0, 1, 2, 3 ]
+}
+tracks/3/type = "method"
+tracks/3/path = NodePath("HitBox")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.1, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "disable"
+}, {
+"args": [  ],
+"method": "enable"
+}, {
+"args": [  ],
+"method": "disable"
+} ]
 }
 
 [sub_resource type="Animation" id=4]
@@ -221,6 +242,9 @@ tracks/2/keys = {
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 4, 7.5 )
 
+[sub_resource type="RectangleShape2D" id=9]
+extents = Vector2( 10, 6.5 )
+
 [sub_resource type="RectangleShape2D" id=8]
 extents = Vector2( 3, 6.5 )
 
@@ -271,7 +295,7 @@ anims/Move = SubResource( 6 )
 self_modulate = Color( 0.945098, 0.0431373, 0.0431373, 1 )
 texture = ExtResource( 11 )
 hframes = 9
-frame = 3
+frame = 1
 
 [node name="CoyoteTimer" type="Timer" parent="."]
 wait_time = 0.1
@@ -281,6 +305,13 @@ autostart = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 0.5 )
 shape = SubResource( 1 )
+
+[node name="HitBox" parent="." instance=ExtResource( 14 )]
+
+[node name="CollisionShape2D" parent="HitBox" index="0"]
+position = Vector2( 13, 0.5 )
+shape = SubResource( 9 )
+disabled = true
 
 [node name="HurtBox" parent="." instance=ExtResource( 13 )]
 
@@ -328,4 +359,5 @@ script = ExtResource( 6 )
 [node name="Falling" type="Node2D" parent="StateManager"]
 script = ExtResource( 10 )
 
+[editable path="HitBox"]
 [editable path="HurtBox"]

@@ -3,7 +3,7 @@ extends BaseState
 
 func enter() -> void:
 	if target is Player:
-		target.change_animation(name) 
+		target.change_animation(name)
 
 		if not target.state_manager.get_last_state() == "Jump":
 			target.coyote_timer.start()
@@ -31,10 +31,13 @@ func check_change_state() -> void:
 
 		if (is_grounded or is_jump_buffed) and target.input.jump_press:
 			target.change_state("Jump")
+			return
 
 		if target.is_on_floor():
 			if target.input.direction == 0:
 				target.change_state("Idle")
+				return
 
 			if not target.input.direction == 0:
 				target.change_state("Move")
+				return

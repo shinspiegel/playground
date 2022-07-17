@@ -22,3 +22,4 @@ func check_change_state() -> void:
 	if target is Player:
 		if target.velocity.y > 0:
 			target.change_state("Falling")
+			return

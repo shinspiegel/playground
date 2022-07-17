@@ -15,9 +15,17 @@ func check_change_state() -> void:
 	if target is Player:
 		if not target.input.direction == 0:
 			target.change_state("Move")
+			return
 
-		if target.is_on_floor() and target.input.jump_press:
-			target.change_state("Jump")
+		if target.is_on_floor():
+			if target.input.jump_press:
+				target.change_state("Jump")
+				return
 
-		if not target.is_on_floor():
+			if target.input.attack:
+				target.change_state("Attack")
+				return
+
+		else:
 			target.change_state("Falling")
+			return
