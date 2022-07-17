@@ -29,6 +29,5 @@ func check_change_state() -> void:
 			return
 
 		if target.input.direction == 0.0:
-			print("Trigger to Idle")
 			target.change_state("Idle")
 			return

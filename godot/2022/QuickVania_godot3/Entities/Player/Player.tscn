@@ -10,11 +10,11 @@
 [ext_resource path="res://Entities/Player/States/Move.gd" type="Script" id=8]
 [ext_resource path="res://Screens/resources/Theme.tres" type="Theme" id=9]
 [ext_resource path="res://Entities/Player/States/Falling.gd" type="Script" id=10]
-[ext_resource path="res://Entities/Player/Assets/PlayerSprite.png" type="Texture" id=11]
 [ext_resource path="res://Entities/Player/States/Attack.gd" type="Script" id=12]
 [ext_resource path="res://Entities/Boxes/HurtBox.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Entities/Boxes/HitBox.tscn" type="PackedScene" id=14]
 [ext_resource path="res://Entities/Player/States/Hit.gd" type="Script" id=15]
+[ext_resource path="res://Entities/Player/Assets/Player.png" type="Texture" id=16]
 
 [sub_resource type="Animation" id=7]
 resource_name = "Attack"
@@ -32,7 +32,7 @@ tracks/0/keys = {
 "values": [ Color( 0.945098, 0.0431373, 0.0431373, 1 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Sprite:texture")
+tracks/1/path = NodePath("Sprite:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -41,27 +41,15 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ ExtResource( 11 ) ]
+"values": [ 0 ]
 }
-tracks/2/type = "value"
-tracks/2/path = NodePath("Sprite:frame")
+tracks/2/type = "method"
+tracks/2/path = NodePath("HitBox")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 0, 1, 2, 3 ]
-}
-tracks/3/type = "method"
-tracks/3/path = NodePath("HitBox")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
 "times": PoolRealArray( 0, 0.1, 0.4 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "values": [ {
@@ -93,7 +81,7 @@ tracks/0/keys = {
 "values": [ Color( 0.423529, 0.0862745, 0.27451, 1 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Sprite:texture")
+tracks/1/path = NodePath("Sprite:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -102,19 +90,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ ExtResource( 11 ) ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("Sprite:frame")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8 ]
+"values": [ 0 ]
 }
 
 [sub_resource type="Animation" id=10]
@@ -133,7 +109,7 @@ tracks/0/keys = {
 "values": [ Color( 0.921569, 0.0941176, 0.541176, 1 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Sprite:texture")
+tracks/1/path = NodePath("Sprite:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -142,19 +118,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ ExtResource( 11 ) ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("Sprite:frame")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0, 0.1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ 0, 1 ]
+"values": [ 0 ]
 }
 
 [sub_resource type="Animation" id=3]
@@ -174,7 +138,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 1 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Sprite:texture")
+tracks/1/path = NodePath("Sprite:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -183,19 +147,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ ExtResource( 11 ) ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("Sprite:frame")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8 ]
+"values": [ 0 ]
 }
 
 [sub_resource type="Animation" id=5]
@@ -215,7 +167,7 @@ tracks/0/keys = {
 "values": [ Color( 0.929412, 0.619608, 0.290196, 1 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Sprite:texture")
+tracks/1/path = NodePath("Sprite:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -224,19 +176,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ ExtResource( 11 ) ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("Sprite:frame")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8 ]
+"values": [ 0 ]
 }
 
 [sub_resource type="Animation" id=6]
@@ -256,7 +196,7 @@ tracks/0/keys = {
 "values": [ Color( 0.247059, 0.611765, 0.752941, 1 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Sprite:texture")
+tracks/1/path = NodePath("Sprite:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -265,29 +205,17 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ ExtResource( 11 ) ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("Sprite:frame")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8 ]
+"values": [ 0 ]
 }
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 4, 7.5 )
+extents = Vector2( 4.5, 14.5 )
 
 [sub_resource type="RectangleShape2D" id=9]
-extents = Vector2( 10, 6.5 )
+extents = Vector2( 15, 14 )
 
 [sub_resource type="RectangleShape2D" id=8]
-extents = Vector2( 3, 6.5 )
+extents = Vector2( 4.5, 14.5 )
 
 [node name="Player" type="KinematicBody2D"]
 collision_mask = 10
@@ -296,6 +224,7 @@ stats = ExtResource( 3 )
 power_ups = ExtResource( 2 )
 
 [node name="Label" type="Label" parent="."]
+visible = false
 margin_left = -20.0
 margin_top = -25.0
 margin_right = 20.0
@@ -308,6 +237,7 @@ align = 1
 valign = 1
 
 [node name="StateLabel" type="Label" parent="."]
+visible = false
 margin_left = -20.0
 margin_top = -37.0
 margin_right = 20.0
@@ -334,9 +264,8 @@ anims/Jump = SubResource( 5 )
 anims/Move = SubResource( 6 )
 
 [node name="Sprite" type="Sprite" parent="."]
-self_modulate = Color( 0.921569, 0.0941176, 0.541176, 1 )
-texture = ExtResource( 11 )
-hframes = 9
+self_modulate = Color( 0.247059, 0.611765, 0.752941, 1 )
+texture = ExtResource( 16 )
 
 [node name="CoyoteTimer" type="Timer" parent="."]
 wait_time = 0.1
@@ -344,26 +273,32 @@ one_shot = true
 autostart = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0, 0.5 )
+position = Vector2( 0.5, 1.5 )
 shape = SubResource( 1 )
 
 [node name="HitBox" parent="." instance=ExtResource( 14 )]
+visible = false
+position = Vector2( 20, 1 )
 collision_mask = 4
 
 [node name="CollisionShape2D" parent="HitBox" index="0"]
-position = Vector2( 13, 0.5 )
 shape = SubResource( 9 )
 disabled = true
 
 [node name="HurtBox" parent="." instance=ExtResource( 13 )]
+visible = false
+position = Vector2( 0, 1 )
 collision_layer = 1
 
 [node name="CollisionShape2D" parent="HurtBox" index="0"]
-position = Vector2( 0, 0.5 )
+position = Vector2( 0.5, 0.5 )
 shape = SubResource( 8 )
 
 [node name="GroundSensor" type="Node2D" parent="."]
-position = Vector2( 0, 8 )
+position = Vector2( 0, 16 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="JumpBuffer" type="RayCast2D" parent="GroundSensor"]
 enabled = true

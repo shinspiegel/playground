@@ -3,7 +3,7 @@
 [ext_resource path="res://Entities/Teleporter/Teleporter.gd" type="Script" id=1]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 4, 8 )
+extents = Vector2( 8, 16 )
 
 [node name="Teleporter" type="Area2D"]
 script = ExtResource( 1 )
@@ -13,4 +13,4 @@ shape = SubResource( 1 )
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
 color = Color( 0.945098, 0.560784, 0.278431, 1 )
-polygon = PoolVector2Array( -2, -8, -2, 8, 2, 8, 2, -8 )
+polygon = PoolVector2Array( -4, -16, 4, -16, 4, 16, -4, 16 )

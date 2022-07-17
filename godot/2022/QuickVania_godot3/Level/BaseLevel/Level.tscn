@@ -20,12 +20,16 @@ collision_layer = 2
 collision_mask = 0
 format = 1
 
+[node name="RoomAreas" type="Node2D" parent="."]
+
+[node name="RoomArea" parent="RoomAreas" instance=ExtResource( 3 )]
+
 [node name="EntryPoint" type="Node2D" parent="."]
 
 [node name="Entry1" type="Position2D" parent="EntryPoint"]
 position = Vector2( 20, 20 )
 __meta__ = {
-"_gizmo_extents_": 8.0
+"_gizmo_extents_": 16.0
 }
 
 [node name="MapLimit" type="Node2D" parent="."]
@@ -34,7 +38,3 @@ __meta__ = {
 
 [node name="BottomRight" type="Position2D" parent="MapLimit"]
 position = Vector2( 320, 192 )
-
-[node name="RoomAreas" type="Node2D" parent="."]
-
-[node name="RoomArea" parent="RoomAreas" instance=ExtResource( 3 )]
