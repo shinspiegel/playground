@@ -1,7 +1,7 @@
 [gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://Entities/Player/Player.gd" type="Script" id=1]
-[ext_resource path="res://Entities/Player/Stats/PlayerPowerUps.tres" type="Resource" id=2]
+[ext_resource path="res://Entities/Player/PowerUps/PlayerPowerUps.tres" type="Resource" id=2]
 [ext_resource path="res://Entities/Player/Stats/PlayerStats.tres" type="Resource" id=3]
 [ext_resource path="res://Entities/Player/Input/PlayerInput.gd" type="Script" id=4]
 [ext_resource path="res://Entities/StateManager/StateManager.gd" type="Script" id=5]

@@ -59,10 +59,10 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Entities/Player/Input/PlayerInput.gd"
 }, {
-"base": "Resource",
+"base": "Reference",
 "class": "PlayerPowerUps",
 "language": "GDScript",
-"path": "res://Entities/Player/Stats/PlayerPowerUps.gd"
+"path": "res://Entities/Player/PowerUps/PlayerPowerUps.gd"
 }, {
 "base": "Resource",
 "class": "PlayerStats",
