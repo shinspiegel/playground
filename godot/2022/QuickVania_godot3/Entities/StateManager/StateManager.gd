@@ -56,9 +56,17 @@ func add_state_history(state_name: String) -> void:
 
 
 func get_last_state() -> String:
+	var last_state = "Idle"
+
 	if state_history.size() > 0:
-		return state_history[0]
-	return ""
+		var reversed_list = state_history.duplicate(true)
+		reversed_list.invert()
+
+		for item in reversed_list:
+			if not item == "Hit":
+				last_state = item
+
+	return last_state
 
 
 ## SIGNAL METHODS

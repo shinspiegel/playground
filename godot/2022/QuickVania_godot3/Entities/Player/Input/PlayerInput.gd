@@ -6,6 +6,7 @@ export var jump_release: bool = false
 export var attack: bool = false
 export var charge_release: bool = false
 export var charge_attack: bool = false
+export var dash: bool = false
 
 onready var timer: Timer = $HoldToStartChargeTimer
 
@@ -19,6 +20,7 @@ func _process(_delta: float) -> void:
 	jump_release = false
 	attack = false
 	charge_release = false
+	dash = false
 
 	if Input.is_action_just_pressed(KeysMap.JUMP):
 		jump_press = true
@@ -34,6 +36,9 @@ func _process(_delta: float) -> void:
 		charge_release = true
 		charge_attack = false
 		timer.stop()
+
+	if Input.is_action_pressed(KeysMap.DASH):
+		dash = true
 
 	direction = Input.get_axis(KeysMap.LEFT, KeysMap.RIGHT)
 

@@ -34,6 +34,10 @@ func check_change_state() -> void:
 				target.change_state("DoubleJump")
 				return
 
+		if target.input.dash and target.power_ups.is_dash_active and target.can_dash:
+			target.change_state("Dash")
+			return
+
 		if (is_grounded or is_jump_buffed) and target.input.jump_press:
 			target.change_state("Jump")
 			return

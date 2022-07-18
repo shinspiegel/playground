@@ -24,3 +24,7 @@ func check_change_state() -> void:
 		if target.velocity.y >= 0:
 			target.change_state("Falling")
 			return
+
+		if target.input.dash and target.power_ups.is_dash_active and target.can_dash:
+			target.change_state("Dash")
+			return

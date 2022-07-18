@@ -4,7 +4,7 @@ export(Resource) var ammo_resource
 
 export var is_double_jump_active: bool = true
 export var is_charge_attack_active: bool = true
-export var is_unblockable_active: bool = true
+export var is_dash_active: bool = true
 
 var ammo: int setget , get_ammo
 var is_doulbe_jump_used: bool = false

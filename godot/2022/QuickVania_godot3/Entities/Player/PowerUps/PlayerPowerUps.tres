@@ -8,4 +8,4 @@ script = ExtResource( 1 )
 ammo_resource = ExtResource( 2 )
 is_double_jump_active = true
 is_charge_attack_active = true
-is_unblockable_active = true
+is_dash_active = true

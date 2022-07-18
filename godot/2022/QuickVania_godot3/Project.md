@@ -46,23 +46,24 @@
 # Player
 
 - [ ] **Player**
-  - [x] Refine the player controller
+  - [ ] Refine the player controller
     - [x] Jump buffer
     - [x] Real coyote-time
+    - [ ] Fix dash + double-jump + jump glitch
   - [ ] ~~Player mini-map~~
   - [x] Add basic animation
-  - [ ] Player State
+  - [x] Player State
     - [x] Base state (extend for enemies?)
     - [x] Idle
     - [x] Move
     - [x] Falling
     - [x] Jump
     - [x] Attack
-  - [ ] PowerUps (as resource?)
+  - [x] PowerUps (as resource?)
     - [x] Created initial resource
     - [x] Double-Jump
     - [x] Charge Attack (break blocks)
-    - [ ] Unblockable Attack (dash + attack)
+    - [x] Unblockable Attack (dash + attack)
 
 ## Game Design Elements
 

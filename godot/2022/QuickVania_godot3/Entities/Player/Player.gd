@@ -12,6 +12,7 @@ export(float) var speed: float = BLOCK_SIZE * 10
 export var flip_direction: int = 1
 export var velocity = Vector2.ZERO
 export var is_flip_active = true
+export var can_dash = true
 
 onready var jump_velocity: float = ((2.0 * max_jump_height) / jump_time_to_peak) * -1
 onready var jump_gravity: float = ((-2.0 * max_jump_height) / (jump_time_to_peak * jump_time_to_peak)) * -1
@@ -19,6 +20,7 @@ onready var fall_gravity: float = ((-2.0 * max_jump_height) / (jump_time_to_desc
 onready var state_manager: StateManager = $StateManager
 onready var coyote_timer: Timer = $Timers/CoyoteTimer
 onready var charge_attack_timer: Timer = $Timers/ChargeAttackTimer
+onready var dash_coldown: Timer = $Timers/DashColdown
 onready var input: PlayerInput = $PlayerInput
 onready var label: Label = $Label
 onready var state_label: Label = $StateLabel
@@ -33,6 +35,7 @@ func _ready() -> void:
 	setup_player_stats()
 	setup_state_manager()
 	setup_hurt_box()
+	setup_dash_coldown()
 
 
 func _physics_process(delta: float) -> void:
@@ -59,9 +62,14 @@ func apply_flip_scale():
 				flip_direction = -1
 
 
-func apply_horizontal(ratio: float = 1.0) -> void:
-	if input.direction:
-		velocity.x = input.direction * (speed * ratio)
+func apply_horizontal(ratio: float = 1.0, override_input = null) -> void:
+	var dir = input.direction
+
+	if not override_input == null:
+		dir = override_input
+
+	if not dir == 0.0:
+		velocity.x = dir * (speed * ratio)
 	else:
 		velocity.x = move_toward(velocity.x, 0, speed * ratio)
 
@@ -140,6 +148,10 @@ func on_receive_hit(_hit_box: HitBox) -> void:
 	change_state("Hit")
 
 
+func on_dash_timeout() -> void:
+	can_dash = true
+
+
 ## SETUP METHODS
 
 
@@ -164,3 +176,9 @@ func setup_hurt_box() -> void:
 	var con = hurt_box.connect("hit_received", self, "on_receive_hit")
 	if not con == OK:
 		print_debug("INFO:: Failed to connect [%s]" % [hurt_box.name])
+
+
+func setup_dash_coldown() -> void:
+	var con = dash_coldown.connect("timeout", self, "on_dash_timeout")
+	if not con == OK:
+		print_debug("INFO:: Failed to connect [%s]" % [dash_coldown.name])
