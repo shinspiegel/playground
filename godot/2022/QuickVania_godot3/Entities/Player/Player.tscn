@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://Entities/Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://Entities/Player/PowerUps/PlayerPowerUps.tres" type="Resource" id=2]
@@ -10,12 +10,14 @@
 [ext_resource path="res://Entities/Player/States/Move.gd" type="Script" id=8]
 [ext_resource path="res://Screens/resources/Theme.tres" type="Theme" id=9]
 [ext_resource path="res://Entities/Player/States/Falling.gd" type="Script" id=10]
+[ext_resource path="res://Entities/Player/States/ReleaseCharge.gd" type="Script" id=11]
 [ext_resource path="res://Entities/Player/States/Attack.gd" type="Script" id=12]
 [ext_resource path="res://Entities/Boxes/HurtBox.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Entities/Boxes/HitBox.tscn" type="PackedScene" id=14]
 [ext_resource path="res://Entities/Player/States/Hit.gd" type="Script" id=15]
 [ext_resource path="res://Entities/Player/Assets/Player.png" type="Texture" id=16]
 [ext_resource path="res://Entities/Player/States/DoubleJump.gd" type="Script" id=17]
+[ext_resource path="res://Entities/Player/States/ChargingAttack.gd" type="Script" id=18]
 
 [sub_resource type="Animation" id=7]
 resource_name = "Attack"
@@ -63,6 +65,93 @@ tracks/2/keys = {
 "args": [  ],
 "method": "disable"
 } ]
+}
+
+[sub_resource type="Animation" id=11]
+resource_name = "ChargingAttack"
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0.886275, 0.0627451, 0.913725, 1 ), Color( 0.950843, 0.882385, 0.953125, 1 ), Color( 0.886275, 0.0627451, 0.913725, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=14]
+resource_name = "ChargingAttackCompleted"
+length = 0.2
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0.886275, 0.0627451, 0.913725, 1 ), Color( 0.950843, 0.882385, 0.953125, 1 ), Color( 0.886275, 0.0627451, 0.913725, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=12]
+resource_name = "DoubleJump"
+length = 0.9
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0.929412, 0.619608, 0.290196, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
 }
 
 [sub_resource type="Animation" id=4]
@@ -209,6 +298,54 @@ tracks/1/keys = {
 "values": [ 0 ]
 }
 
+[sub_resource type="Animation" id=13]
+resource_name = "ReleaseCharge"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 0, 0, 1 ), Color( 0.945098, 0.0431373, 0.0431373, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath("HitBox")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "disable"
+}, {
+"args": [  ],
+"method": "enable"
+}, {
+"args": [  ],
+"method": "disable"
+} ]
+}
+
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 4.5, 14.5 )
 
@@ -254,22 +391,35 @@ valign = 1
 [node name="PlayerInput" type="Node" parent="."]
 script = ExtResource( 4 )
 
+[node name="HoldToStartChargeTimer" type="Timer" parent="PlayerInput"]
+wait_time = 0.5
+one_shot = true
+
+[node name="Timers" type="Node" parent="."]
+
+[node name="ChargeAttackTimer" type="Timer" parent="Timers"]
+wait_time = 2.0
+one_shot = true
+
+[node name="CoyoteTimer" type="Timer" parent="Timers"]
+wait_time = 0.1
+one_shot = true
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Attack = SubResource( 7 )
+anims/ChargingAttack = SubResource( 11 )
+anims/ChargingAttackCompleted = SubResource( 14 )
+anims/DoubleJump = SubResource( 12 )
 anims/Falling = SubResource( 4 )
 anims/Hit = SubResource( 10 )
 anims/Idle = SubResource( 3 )
 anims/Jump = SubResource( 5 )
 anims/Move = SubResource( 6 )
+anims/ReleaseCharge = SubResource( 13 )
 
 [node name="Sprite" type="Sprite" parent="."]
-self_modulate = Color( 0.247059, 0.611765, 0.752941, 1 )
+self_modulate = Color( 0.945098, 0.0431373, 0.0431373, 1 )
 texture = ExtResource( 16 )
-
-[node name="CoyoteTimer" type="Timer" parent="."]
-wait_time = 0.1
-one_shot = true
-autostart = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0.5, 1.5 )
@@ -321,6 +471,12 @@ target_path = NodePath("..")
 
 [node name="Attack" type="Node2D" parent="StateManager"]
 script = ExtResource( 12 )
+
+[node name="ChargingAttack" type="Node2D" parent="StateManager"]
+script = ExtResource( 18 )
+
+[node name="ReleaseCharge" type="Node2D" parent="StateManager"]
+script = ExtResource( 11 )
 
 [node name="Idle" type="Node2D" parent="StateManager"]
 script = ExtResource( 7 )

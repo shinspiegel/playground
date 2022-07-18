@@ -13,8 +13,7 @@ func exit() -> void:
 
 
 func process(_delta: float) -> void:
-	if target is Player:
-		target.velocity.x = move_toward(target.velocity.x, 0, 10)
+	pass
 
 
 ## SIGNAL METHODS
@@ -23,7 +22,6 @@ func process(_delta: float) -> void:
 func on_animation_finished(animation_name) -> void:
 	if target is Player:
 		if animation_name == name:
-			var last_state = target.state_manager.get_last_state()
-			target.change_state(last_state)
+			target.change_state("Idle")
 
 ## SETUP METHODS

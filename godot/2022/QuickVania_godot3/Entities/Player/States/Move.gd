@@ -17,6 +17,11 @@ func process(_delta: float) -> void:
 func check_change_state() -> void:
 	if target is Player:
 		if target.is_on_floor():
+			if target.power_ups.is_charge_attack_active:
+				if target.input.charge_attack:
+					target.change_state("ChargingAttack")
+					return
+
 			if target.input.jump_press:
 				target.change_state("Jump")
 				return

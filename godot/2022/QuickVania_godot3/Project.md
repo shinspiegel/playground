@@ -4,6 +4,7 @@
   - [ ] [Story](#Story)
   - [ ] [Theme](#Theme)
   - [ ] [Topics to explore](#Topics-to-explore)
+- [ ] [Player](#Player)
 - [ ] [Level Design](#Level-Design) (up to 3 areas)
   - [ ] Ground?
   - [ ] Cavern?
@@ -60,8 +61,8 @@
   - [ ] PowerUps (as resource?)
     - [x] Created initial resource
     - [x] Double-Jump
-    - [ ] Charge Attack
-    - [ ] Unblockable Attack (with anno, "hearts")
+    - [x] Charge Attack (break blocks)
+    - [ ] Unblockable Attack (dash + attack)
 
 ## Game Design Elements
 

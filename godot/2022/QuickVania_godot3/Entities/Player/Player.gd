@@ -17,7 +17,8 @@ onready var jump_velocity: float = ((2.0 * max_jump_height) / jump_time_to_peak)
 onready var jump_gravity: float = ((-2.0 * max_jump_height) / (jump_time_to_peak * jump_time_to_peak)) * -1
 onready var fall_gravity: float = ((-2.0 * max_jump_height) / (jump_time_to_descent * jump_time_to_descent)) * -1
 onready var state_manager: StateManager = $StateManager
-onready var coyote_timer: Timer = $CoyoteTimer
+onready var coyote_timer: Timer = $Timers/CoyoteTimer
+onready var charge_attack_timer: Timer = $Timers/ChargeAttackTimer
 onready var input: PlayerInput = $PlayerInput
 onready var label: Label = $Label
 onready var state_label: Label = $StateLabel
@@ -58,11 +59,11 @@ func apply_flip_scale():
 				flip_direction = -1
 
 
-func apply_horizontal() -> void:
+func apply_horizontal(ratio: float = 1.0) -> void:
 	if input.direction:
-		velocity.x = input.direction * speed
+		velocity.x = input.direction * (speed * ratio)
 	else:
-		velocity.x = move_toward(velocity.x, 0, speed)
+		velocity.x = move_toward(velocity.x, 0, speed * ratio)
 
 
 func apply_jump() -> void:
