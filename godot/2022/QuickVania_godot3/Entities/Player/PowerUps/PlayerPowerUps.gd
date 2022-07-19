@@ -8,6 +8,7 @@ export var is_dash_active: bool = true
 
 var ammo: int setget , get_ammo
 var is_doulbe_jump_used: bool = false
+var is_dash_used: bool = false
 
 
 func get_ammo() -> int:

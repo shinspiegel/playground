@@ -12,7 +12,6 @@ export(float) var speed: float = BLOCK_SIZE * 10
 export var flip_direction: int = 1
 export var velocity = Vector2.ZERO
 export var is_flip_active = true
-export var can_dash = true
 
 onready var jump_velocity: float = ((2.0 * max_jump_height) / jump_time_to_peak) * -1
 onready var jump_gravity: float = ((-2.0 * max_jump_height) / (jump_time_to_peak * jump_time_to_peak)) * -1
@@ -35,7 +34,6 @@ func _ready() -> void:
 	setup_player_stats()
 	setup_state_manager()
 	setup_hurt_box()
-	setup_dash_coldown()
 
 
 func _physics_process(delta: float) -> void:
@@ -45,7 +43,7 @@ func _physics_process(delta: float) -> void:
 
 	state_manager.apply(delta)
 
-	check_reset_dash()
+	check_reset_powerups()
 	apply_flip_scale()
 	velocity = move_and_slide(velocity, Vector2.UP)
 
@@ -125,10 +123,76 @@ func is_jump_buffer() -> bool:
 	return false
 
 
-func check_reset_dash() -> void:
-	if not can_dash:
+func check_reset_powerups() -> void:
+	if power_ups.is_dash_used:
 		if is_on_floor() and dash_coldown.time_left <= 0:
-			can_dash = true
+			power_ups.is_dash_used = false
+
+	if power_ups.is_doulbe_jump_used:
+		if is_on_floor():
+			power_ups.is_doulbe_jump_used = false
+
+
+## Should methods
+
+
+func attempt_to_idle() -> bool:
+	if is_on_floor() and input.direction == 0.0:
+		change_state("Idle")
+		return true
+	return false
+
+
+func attempt_to_move() -> bool:
+	if is_on_floor() and not input.direction == 0.0:
+		change_state("Move")
+		return true
+	return false
+
+
+func attempt_to_fall() -> bool:
+	if not is_on_floor():
+		change_state("Falling")
+		return true
+	return false
+
+
+func attempt_to_attack() -> bool:
+	if is_on_floor() and input.attack:
+		change_state("Attack")
+		return true
+	return false
+
+
+func attempt_to_charge_attack() -> bool:
+	if is_on_floor() and input.charge_attack and power_ups.is_charge_attack_active:
+		change_state("ChargingAttack")
+		return true
+	return false
+
+
+func attempt_to_jump() -> bool:
+	var is_grounded = is_on_floor() or coyote_timer.time_left > 0
+	var is_jump_buffed = not is_on_floor() and is_jump_buffer()
+
+	if (is_grounded or is_jump_buffed) and input.jump_press:
+		change_state("Jump")
+		return true
+	return false
+
+
+func attempt_to_double_jump() -> bool:
+	if power_ups.is_double_jump_active and input.jump_press and not power_ups.is_doulbe_jump_used:
+		change_state("DoubleJump")
+		return true
+	return false
+
+
+func attempt_to_dash() -> bool:
+	if input.dash and power_ups.is_dash_active and not power_ups.is_dash_used:
+		change_state("Dash")
+		return true
+	return false
 
 
 ## OVERRIDE CLASS METHODS
@@ -155,11 +219,6 @@ func on_receive_hit(_hit_box: HitBox) -> void:
 	change_state("Hit")
 
 
-func on_dash_timeout() -> void:
-	if is_on_floor():
-		can_dash = true
-
-
 ## SETUP METHODS
 
 
@@ -184,9 +243,3 @@ func setup_hurt_box() -> void:
 	var con = hurt_box.connect("hit_received", self, "on_receive_hit")
 	if not con == OK:
 		print_debug("INFO:: Failed to connect [%s]" % [hurt_box.name])
-
-
-func setup_dash_coldown() -> void:
-	var con = dash_coldown.connect("timeout", self, "on_dash_timeout")
-	if not con == OK:
-		print_debug("INFO:: Failed to connect [%s]" % [dash_coldown.name])

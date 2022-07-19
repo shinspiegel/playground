@@ -40,7 +40,7 @@
 
 # Other Game Elements
 
-- [ ] HitBox / HurtBox
+- [x] HitBox / HurtBox
 - [x] State Manager
 
 # Player
@@ -49,7 +49,8 @@
   - [ ] Refine the player controller
     - [x] Jump buffer
     - [x] Real coyote-time
-    - [ ] Fix dash + double-jump + jump glitch
+    - [x] Fix dash + double-jump + jump glitch
+    - [x] Cleaned code for checking how to change state
   - [ ] ~~Player mini-map~~
   - [x] Add basic animation
   - [x] Player State
