@@ -26,27 +26,17 @@ func process(delta: float) -> void:
 
 func check_change_state() -> void:
 	if target is Player:
-		var is_grounded = target.is_on_floor() or target.coyote_timer.time_left > 0
-		var is_jump_buffed = not target.is_on_floor() and target.is_jump_buffer()
-
-		if target.power_ups.is_double_jump_active:
-			if target.input.jump_press and not target.power_ups.is_doulbe_jump_used:
-				target.change_state("DoubleJump")
-				return
-
-		if target.input.dash and target.power_ups.is_dash_active and target.can_dash:
-			target.change_state("Dash")
+		if target.should_double_jump():
 			return
 
-		if (is_grounded or is_jump_buffed) and target.input.jump_press:
-			target.change_state("Jump")
+		if target.should_dash():
 			return
 
-		if target.is_on_floor():
-			if target.input.direction == 0:
-				target.change_state("Idle")
-				return
+		if target.should_jump():
+			return
 
-			if not target.input.direction == 0:
-				target.change_state("Move")
-				return
+		if target.should_idle():
+			return
+
+		if target.should_move():
+			return

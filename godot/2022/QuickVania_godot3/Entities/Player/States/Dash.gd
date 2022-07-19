@@ -6,7 +6,7 @@ func enter() -> void:
 		target.change_animation(name)
 		target.velocity.y = 0.0
 		target.dash_coldown.start()
-		target.can_dash = false
+		target.power_ups.is_dash_used = true
 
 		var con = target.animation_player.connect("animation_finished", self, "on_animation_finished")
 		if not con == OK:
@@ -23,11 +23,6 @@ func process(_delta: float) -> void:
 
 	if target is Player:
 		target.apply_horizontal(1.5, target.flip_direction)
-
-
-func check_change_state() -> void:
-	if target is Player:
-		pass
 
 
 ## SIGNAL METHODS
