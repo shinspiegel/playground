@@ -17,12 +17,15 @@ func check_change_state() -> void:
 		if not target.input.direction == 0:
 			target.change_state("Move")
 
+		var should_charge_attack = target.input.charge_attack and target.power_ups.is_charge_attack_active
+		var should_dash = target.input.dash and target.power_ups.is_dash_active and target.can_dash
+
 		if target.is_on_floor():
-			if target.input.charge_attack and target.power_ups.is_charge_attack_active:
+			if should_charge_attack:
 				target.change_state("ChargingAttack")
 				return
 
-			if target.input.dash and target.power_ups.is_dash_active and target.can_dash:
+			if should_dash:
 				target.change_state("Dash")
 				return
 

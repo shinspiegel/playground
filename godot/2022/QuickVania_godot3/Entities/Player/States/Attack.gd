@@ -23,7 +23,6 @@ func process(_delta: float) -> void:
 func on_animation_finished(animation_name) -> void:
 	if target is Player:
 		if animation_name == name:
-			var last_state = target.state_manager.get_last_state()
-			target.change_state(last_state)
+			target.change_state("Idle")
 
 ## SETUP METHODS

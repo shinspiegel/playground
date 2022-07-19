@@ -45,6 +45,7 @@ func _physics_process(delta: float) -> void:
 
 	state_manager.apply(delta)
 
+	check_reset_dash()
 	apply_flip_scale()
 	velocity = move_and_slide(velocity, Vector2.UP)
 
@@ -124,6 +125,12 @@ func is_jump_buffer() -> bool:
 	return false
 
 
+func check_reset_dash() -> void:
+	if not can_dash:
+		if is_on_floor() and dash_coldown.time_left <= 0:
+			can_dash = true
+
+
 ## OVERRIDE CLASS METHODS
 
 
@@ -149,7 +156,8 @@ func on_receive_hit(_hit_box: HitBox) -> void:
 
 
 func on_dash_timeout() -> void:
-	can_dash = true
+	if is_on_floor():
+		can_dash = true
 
 
 ## SETUP METHODS
