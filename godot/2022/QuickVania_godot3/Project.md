@@ -4,13 +4,16 @@
   - [ ] [Story](#Story)
   - [ ] [Theme](#Theme)
   - [ ] [Topics to explore](#Topics-to-explore)
-- [ ] [Player](#Player)
+- [x] [Player](#Player)
 - [ ] [Level Design](#Level-Design) (up to 3 areas)
-  - [ ] Ground?
-  - [ ] Cavern?
-  - [ ] Tower/Castle?
-  - [ ] Ocean/Marine?
-  - [ ] Sky/Flying?
+  - [x] Base Level scene
+  - [x] Room Area
+  - [ ] Levels
+    - [ ] Bedroom (own house)
+    - [ ] Kitchen (double-jump)
+    - [ ] Outdoor Park (charge/breakable)
+    - [ ] Grocery shop (dash)
+    - [ ] Dark Castle
 - [ ] [Enemy Design](#Enemy-Design) (up to 5 + boss)
   - [ ] Basic
   - [ ] Strong (elite)
@@ -20,33 +23,53 @@
   - [ ] Trust and back (feint attack?)
   - [ ] Healer
   - [ ] Boss
+- [ ] Other Entities
+  - [x] HitBox / HurtBox
 
 # Assets to create
 
 - [ ] **Game Assets**
   - [ ] **Graphics**
     - [ ] Tileset (one per area)
+      - [ ] Bedroom (own house)
+      - [ ] Kitchen (double-jump)
+      - [ ] Outdoor Park (charge/breakable)
+      - [ ] Grocery shop (dash)
+      - [ ] Dark Castle
     - [ ] Player
     - [ ] Enemies (one per enemy)
-    - [ ] Boss (Cheater? Cheated? @VAMPIRE itself?)
+    - [ ] Boss
   - [ ] **Music**
     - [ ] One music per area
+      - [ ] Bedroom (own house)
+      - [ ] Kitchen (double-jump)
+      - [ ] Outdoor Park (charge/breakable)
+      - [ ] Grocery shop (dash)
+      - [ ] Dark Castle
     - [ ] One music for the game start screen
     - [ ] One for the player death
     - [ ] One for the boss fight
     - [ ] One for the endgame
   - [ ] **Sound**
     - [ ] Sound for everything
+      - [ ] Player
+        - [ ] One per state?
+        - [ ] Death?
+        - [ ] Extra sounds
 
-# Other Game Elements
+# Managers
 
-- [x] HitBox / HurtBox
-- [x] State Manager
+- [ ] **Managers**
+  - [x] Game Manager
+  - [x] Level Manager
+  - [x] Screen Manager
+  - [x] State Manager
+  - [ ] Bubble Message Manager
 
 # Player
 
-- [ ] **Player**
-  - [ ] Refine the player controller
+- [x] **Player**
+  - [x] Refine the player controller
     - [x] Jump buffer
     - [x] Real coyote-time
     - [x] Fix dash + double-jump + jump glitch
@@ -76,7 +99,7 @@ Section dedicated to elaborate and create the elements for the game project.
 
 #### Story
 
-- @NAME was a small kid and fell in love with a vampire.
+- @NAME was a small boy and fell in love with a vampire.
 - @VAMPIRE broke up with @NAME and told him that will only date him if he became a monster
 - @NAME need to find the PowerUP to become a monster and date @VAMPIRE
 - The PowerUps comes from connection between the @NAME and @VAMPIRE
@@ -86,9 +109,9 @@ Section dedicated to elaborate and create the elements for the game project.
 - **Scenes**
   - Intro scene (the break up)
   - Reach tall jar in the kitchen (powerup / doublejump)
-  - Strong hug (powerup / charge)
-  - Kiss (powerup / unblockable)
-  - Cheating scene (defeat boss)
+  - Strong hug after death of mother in the park (powerup / charge)
+  - Kiss in the grocery shop to protect him from ex-girl (powerup / dash to avoid)
+  - Cheating scene with shadow guy (defeat boss)
   - Open talking (Ending scene)
 
 #### Theme
@@ -109,13 +132,18 @@ Section dedicated to elaborate and create the elements for the game project.
 
 ### Level Design
 
-What levels should create?
-How they are connected?
-What is the big map to develop?
+- [ ] Intro level, inside house (scene)
+  - Blob enemy
+- [ ] Kitchen theme (double-jump)
+- [ ] Outdoors park (breakable object)
+- [ ] Grocery shop (dash)
+- [ ] Dark castle
 
 ### Enemy Design
 
 Which enemies should be used?
+
+- [ ] Pink/Heart Blob enemy (explode in hearts after death)
 
 - basic
 - Strong (elite)
