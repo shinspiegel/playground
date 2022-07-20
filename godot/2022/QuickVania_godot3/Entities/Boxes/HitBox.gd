@@ -1,5 +1,7 @@
 class_name HitBox extends Area2D
 
+export(Resource) var damage = Damage.new()
+
 onready var shape: CollisionShape2D = $CollisionShape2D
 
 
