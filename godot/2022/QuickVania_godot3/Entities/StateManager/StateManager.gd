@@ -48,6 +48,10 @@ func change_state(state_name: String) -> void:
 		print_debug("WARN:: Failed to load state %s" % [state_name])
 
 
+func send_message(id: String, message) -> void:
+	current_state.receive_message(id, message)
+
+
 func add_state_history(state_name: String) -> void:
 	state_history.push_front(state_name)
 

@@ -21,3 +21,7 @@ func process(_delta: float) -> void:
 
 func check_change_state() -> void:
 	pass
+
+
+func receive_message(_id: String, _message) -> void:
+	pass
