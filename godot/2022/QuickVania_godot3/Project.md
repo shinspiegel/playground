@@ -15,14 +15,22 @@
     - [ ] Grocery shop (dash)
     - [ ] Dark Castle
 - [ ] [Enemy Design](#Enemy-Design) (up to 5 + boss)
-  - [ ] Basic
-  - [ ] Strong (elite)
-  - [ ] Flying enemy
-  - [ ] Defender
-  - [ ] Self-destroy
-  - [ ] Trust and back (feint attack?)
-  - [ ] Healer
-  - [ ] Boss
+  - [ ] Enemies
+    - [ ] Base enemy scene
+    - [ ] Pink/Heart blob
+    - [ ] Flog-like
+    - [ ] Fire blob
+    - [ ] Handsome shade-guy
+    - [ ] Strong shade-guy
+    - [ ] Floating head
+  - [ ] Hazards
+    - [ ] Ground spikes
+      - [ ] Heart version
+      - [ ] Black version
+    - [ ] Trapdoor platform
+    - [ ] Moving platform
+    - [ ] Breakable wall
+  - [ ] Boss @VAMPIRE shade
 - [ ] Other Entities
   - [x] HitBox / HurtBox
 
@@ -99,12 +107,12 @@ Section dedicated to elaborate and create the elements for the game project.
 
 #### Story
 
-- @NAME was a small boy and fell in love with a vampire.
-- @VAMPIRE broke up with @NAME and told him that will only date him if he became a monster
-- @NAME need to find the PowerUP to become a monster and date @VAMPIRE
-- The PowerUps comes from connection between the @NAME and @VAMPIRE
-- The final boss is the @VAMPIRE, she had cheated @NAME and she is the monster
-- the @NAME will never be the monster, he will never be able to cheat
+- @HERO was a small boy and fell in love with a vampire.
+- @VAMPIRE broke up with @HERO and told him that will only date him if he became a monster
+- @HERO need to find the PowerUP to become a monster and date @VAMPIRE
+- The PowerUps comes from connection between the @HERO and @VAMPIRE
+- The final boss is the @VAMPIRE, she had cheated @HERO and she is the monster
+- the @HERO will never be the monster, he will never be able to cheat
 
 - **Scenes**
   - Intro scene (the break up)
@@ -133,26 +141,80 @@ Section dedicated to elaborate and create the elements for the game project.
 ### Level Design
 
 - [ ] Intro level, inside house (scene)
-  - Blob enemy
+  - Heart Blob enemy
+  - Spikes
+  - Trapdoor platform
 - [ ] Kitchen theme (double-jump)
+  - Blob enemy
+  - Frog-like enemy
 - [ ] Outdoors park (breakable object)
+  - Fire Blob enemy
+  - holes in the ground (death pit)
+  - Moving platform
+  - Breakable walls
 - [ ] Grocery shop (dash)
+  - Handsome shade-guy
+  - Breakable walls
+  - Moving platform
 - [ ] Dark castle
+  - Strong shade-guy with protection
+  - Floating @VAMPIRE heads pushing back
+  - breakable walls
+  - moving platforms
+  - holes in the ground (death pit)
+- [ ] Boss arena
+  - Boss fight
 
 ### Enemy Design
 
 Which enemies should be used?
 
-- [ ] Pink/Heart Blob enemy (explode in hearts after death)
-
-- basic
-- Strong (elite)
-- Flying enemy
-- Defender
-- Self-destroy
-- Trust and back (feint attack?)
-- Healer
-
-What is the basic pattern and idea behind the boss fight?
-
-- Use the aggression system?
+- [ ] **Pink/Heart Blob** enemy
+  - Explode in hearts
+  - One-hit kill
+- [ ] **Ground spikes** (heart themed)
+  - easy to avoid
+  - heart themed
+  - heart with spike?
+  - should hint the cheating from @VAMPIRE after get hit from this
+- [ ] **Trapdoor platform**
+  - with timer or open and fall
+  - move, not break
+  - should hint cheating from @VAMPIRE after falling
+- [ ] **Frog-like** enemy
+  - heart themed
+  - jump with the player
+  - two-hit kill
+- [ ] **Fire Blob** enemy
+  - leave fire on the ground
+  - one-hit kill
+  - trails or heat and pain
+- [ ] **Moving platform**
+  - make customizable path for the platform
+  - hard to reach messages
+- [ ] **Breakable wall**
+  - one-charge to break
+  - immune to normal attacks
+  - need to fit all the tiles
+  - should add on other maps to extra rewards
+  - "I need to find out what is beyond this wall"
+  - message to encourage discovery
+- [ ] **Handsome shade-guy**
+  - five-hit or one-charge to kill
+  - they should have happy bubble messages
+  - should hint the cheating from @VAMPIRE
+- [ ] **Strong shade-guy**
+  - should have some kind of protection
+  - shout insults ("You are not for her!", "she deservers better!")
+  - five-hit, three-dash or one-charge to kill
+- [ ] **Floating @VAMPIRE head**
+  - Move and accelerate towards the @HERO
+  - Scream "go away", "you should be better"
+  - one-hit kill
+  - one-dash kill
+- [ ] **Boss @VAMPIRE in shade-form**
+  - ten-hit, eight-dash or three-charge to kill
+  - at least five pattern attacks
+    - one attack to evade with the dash
+    - one strong attack to heavy hit and telegraph
+    - quick, low recovery attack
