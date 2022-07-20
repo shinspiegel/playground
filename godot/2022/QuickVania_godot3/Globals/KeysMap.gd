@@ -8,4 +8,4 @@ const DASH = "dash"
 
 const PAUSE_GAME = "pause_game"
 
-const CANCEL = "ui-cancel"
+const CANCEL = "ui_cancel"
