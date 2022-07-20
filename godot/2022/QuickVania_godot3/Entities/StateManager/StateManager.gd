@@ -89,3 +89,5 @@ func setup_states() -> void:
 
 	if not get_node(initial_path) == null:
 		change_state(get_node(initial_path).name)
+	elif get_child_count() > 0:
+		change_state(get_children()[0].name)
