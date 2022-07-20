@@ -25,7 +25,7 @@ func check_change_state() -> void:
 		if target.attempt_to_dash():
 			return
 
-		if target.attempt_to_charge_attack():
+		if target.attempt_to_attack():
 			return
 
 		if target.attempt_to_charge_attack():
