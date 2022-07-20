@@ -11,7 +11,7 @@ func enter() -> void:
 
 func exit() -> void:
 	if target is Player:
-		target.coyote_timer.stop()
+		target.coyote_timer.start(0)
 
 
 func process(delta: float) -> void:
