@@ -6,4 +6,4 @@
 script = ExtResource( 1 )
 max_value = 10
 min_value = 0
-initial_value = 0
+current = 0
