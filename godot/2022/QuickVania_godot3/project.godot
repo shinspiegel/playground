@@ -24,6 +24,16 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Screens/components/BaseButton.gd"
 }, {
+"base": "Resource",
+"class": "Damage",
+"language": "GDScript",
+"path": "res://Resources/Damage.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "Enemy",
+"language": "GDScript",
+"path": "res://Entities/Enemies/Enemy.gd"
+}, {
 "base": "Node2D",
 "class": "GameManager",
 "language": "GDScript",
@@ -72,7 +82,7 @@ _global_script_classes=[ {
 "base": "Resource",
 "class": "PlayerStats",
 "language": "GDScript",
-"path": "res://Entities/Player/Stats/PlayerStats.gd"
+"path": "res://Entities/Player/Resources/PlayerStats.gd"
 }, {
 "base": "Control",
 "class": "Screen",
@@ -93,6 +103,8 @@ _global_script_class_icons={
 "BaseState": "",
 "BubbleMessagManager": "",
 "ButtonExtra": "",
+"Damage": "",
+"Enemy": "",
 "GameManager": "",
 "HitBox": "",
 "HurtBox": "",

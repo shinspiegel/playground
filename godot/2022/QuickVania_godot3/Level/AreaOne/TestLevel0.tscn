@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Entities/Teleporter/Teleporter.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Level/BaseLevel/Level.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Entities/Enemies/PinkBlob.tscn" type="PackedScene" id=3]
 
 [node name="TestLevel" instance=ExtResource( 2 )]
 
@@ -27,3 +28,6 @@ margin_top = 178.0
 margin_right = 215.0
 margin_bottom = 192.0
 text = "TEST_LEVEL=[0,0]"
+
+[node name="PinkBlob" parent="." index="6" instance=ExtResource( 3 )]
+position = Vector2( 219, 129 )

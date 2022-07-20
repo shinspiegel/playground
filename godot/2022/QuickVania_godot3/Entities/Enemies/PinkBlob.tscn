@@ -1,0 +1,135 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://Entities/Enemies/Enemy.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Entities/Player/Assets/Player.png" type="Texture" id=2]
+[ext_resource path="res://Entities/Enemies/States/Idle.gd" type="Script" id=3]
+[ext_resource path="res://Entities/Enemies/States/Die.gd" type="Script" id=4]
+[ext_resource path="res://Entities/Enemies/States/Hit.gd" type="Script" id=5]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 4.5, 14.5 )
+
+[sub_resource type="Animation" id=5]
+resource_name = "Die"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "queue_free"
+} ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "Hit"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 0, 0, 1 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "Idle"
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.67451 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 8, 15.5 )
+
+[node name="PinkBlob" instance=ExtResource( 1 )]
+hit_points = 10
+
+[node name="Sprite" parent="." index="0"]
+modulate = Color( 1, 0, 1, 0.541176 )
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2( 0.5, 1.5 )
+shape = SubResource( 1 )
+
+[node name="AnimationPlayer" parent="." index="3"]
+anims/Die = SubResource( 5 )
+anims/Hit = SubResource( 3 )
+anims/Idle = SubResource( 4 )
+anims/RESET = SubResource( 6 )
+
+[node name="CollisionShape2D" parent="HurtBox" index="0"]
+position = Vector2( 0, 0.5 )
+shape = SubResource( 2 )
+
+[node name="Idle" parent="StateManager" index="0"]
+script = ExtResource( 3 )
+
+[node name="Hit" parent="StateManager" index="1"]
+script = ExtResource( 5 )
+
+[node name="Die" parent="StateManager" index="2"]
+script = ExtResource( 4 )
+
+[editable path="HurtBox"]
