@@ -22,6 +22,7 @@ func process(_delta: float) -> void:
 	check_change_state()
 
 	if target is Player:
+		target.velocity.y = 0
 		target.apply_horizontal(1.5, target.flip_direction)
 
 
