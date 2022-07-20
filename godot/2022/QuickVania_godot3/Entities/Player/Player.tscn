@@ -440,13 +440,11 @@ colors = PoolColorArray( 1, 1, 1, 0.196078, 1, 1, 1, 0 )
 [node name="Player" type="KinematicBody2D"]
 collision_mask = 10
 script = ExtResource( 1 )
-__meta__ = {
-"_edit_group_": true
-}
 stats = ExtResource( 3 )
 power_ups = ExtResource( 2 )
 
 [node name="Label" type="Label" parent="."]
+visible = false
 margin_left = -20.0
 margin_top = -25.0
 margin_right = 20.0
@@ -459,6 +457,7 @@ align = 1
 valign = 1
 
 [node name="StateLabel" type="Label" parent="."]
+visible = false
 margin_left = -20.0
 margin_top = -37.0
 margin_right = 20.0
@@ -472,6 +471,9 @@ theme = ExtResource( 9 )
 text = "STATE"
 align = 1
 valign = 1
+
+[node name="MessagePos" type="Position2D" parent="."]
+position = Vector2( 0, -23 )
 
 [node name="PlayerInput" type="Node" parent="."]
 script = ExtResource( 4 )

@@ -34,6 +34,15 @@
 - [ ] Other Entities
   - [x] HitBox / HurtBox
 
+# Managers
+
+- [x] **Managers**
+  - [x] Game Manager
+  - [x] Level Manager
+  - [x] Screen Manager
+  - [x] State Manager
+  - [x] Bubble Message Manager
+
 # Assets to create
 
 - [ ] **Game Assets**
@@ -65,15 +74,6 @@
         - [ ] Death?
         - [ ] Extra sounds
 
-# Managers
-
-- [ ] **Managers**
-  - [x] Game Manager
-  - [x] Level Manager
-  - [x] Screen Manager
-  - [x] State Manager
-  - [ ] Bubble Message Manager
-
 # Player
 
 - [x] **Player**
@@ -84,6 +84,7 @@
     - [x] Cleaned code for checking how to change state
   - [ ] ~~Player mini-map~~
   - [x] Add basic animation
+	- [x] Speak message bubble
   - [x] Player State
     - [x] Base state (extend for enemies?)
     - [x] Idle

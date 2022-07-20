@@ -28,6 +28,7 @@ onready var ground_back: RayCast2D = $GroundSensor/GroundBack
 onready var jump_buffer: RayCast2D = $GroundSensor/JumpBuffer
 onready var animation_player: AnimationPlayer = $AnimationPlayer
 onready var hurt_box: HurtBox = $HurtBox
+onready var message_pos: Position2D = $MessagePos
 
 
 func _ready() -> void:
@@ -38,8 +39,8 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed(KeysMap.PAUSE_GAME):
-		stats.hurt(1)
-		Manager.screen.open_pause_menu()
+		speak("Something")
+		pass
 
 	state_manager.apply(delta)
 
@@ -133,7 +134,11 @@ func check_reset_powerups() -> void:
 			power_ups.is_doulbe_jump_used = false
 
 
-## Should methods
+func speak(message: String) -> void:
+	Manager.bubble.display_message_at(message, message_pos.global_position)
+
+
+## Attempt to change state methods
 
 
 func attempt_to_idle() -> bool:
