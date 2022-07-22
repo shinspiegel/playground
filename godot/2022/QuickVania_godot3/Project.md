@@ -16,8 +16,8 @@
     - [ ] Dark Castle
 - [ ] [Enemy Design](#Enemy-Design) (up to 5 + boss)
   - [ ] Enemies
-    - [ ] Base enemy scene
-    - [ ] Pink/Heart blob
+    - [x] Base enemy scene
+    - [x] Pink/Heart blob
     - [ ] Flog-like
     - [ ] Fire blob
     - [ ] Handsome shade-guy
