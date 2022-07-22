@@ -1,5 +1,13 @@
 extends BaseState
 
+export(NodePath) var state_after_hit_path
+
+var state_after: Node2D
+
+
+func _ready() -> void:
+	setup_nodes()
+
 
 func enter() -> void:
 	if target is Enemy:
@@ -45,7 +53,14 @@ func receive_message(id: String, message) -> void:
 func on_animation_finished(animation_name: String) -> void:
 	if target is Enemy:
 		if animation_name == name:
-			var last_state = target.state_manager.get_last_state()
-			target.state_manager.change_state(last_state)
+			if state_after == null:
+				target.state_manager.change_state(target.state_manager.get_last_state())
+			else:
+				target.state_manager.change_state(state_after.name)
+
 
 ## SETUP METHODS
+
+
+func setup_nodes() -> void:
+	state_after = get_node(state_after_hit_path)

@@ -14,10 +14,12 @@ onready var animation_player: AnimationPlayer = $AnimationPlayer
 onready var hurt_box: HurtBox = $HurtBox
 onready var state_manager: StateManager = $StateManager
 onready var message_pos: Position2D = $MessagePos
+onready var debug_text: Label = $DEBUG_TEXT
 
 
 func _ready() -> void:
 	setup_hurt_box()
+	setup_debug()
 
 
 func _physics_process(delta: float) -> void:
@@ -25,7 +27,6 @@ func _physics_process(delta: float) -> void:
 	check_change_state()
 
 	if Input.is_action_pressed(KeysMap.CANCEL):
-		print("hurt monster")
 		hurt(1)
 
 	apply_flip_scale()
@@ -55,7 +56,6 @@ func apply_horizontal(diretion: float = 0.0, ratio: float = 1.0) -> void:
 		velocity.x = diretion * (speed * ratio)
 	else:
 		velocity.x = move_toward(velocity.x, 0, speed * ratio)
-		print(move_toward(velocity.x, 0, speed * ratio))
 
 
 func apply_jump(amount = null) -> void:
@@ -95,6 +95,10 @@ func on_receive_hit(hit_box: HitBox) -> void:
 	state_manager.send_message("damage_hit_box", hit_box)
 
 
+func on_state_change(state: String) -> void:
+	debug_text.text = state
+
+
 ## SETUP METHODS
 
 
@@ -102,3 +106,8 @@ func setup_hurt_box() -> void:
 	var con = hurt_box.connect("hit_received", self, "on_receive_hit")
 	if not con == OK:
 		print_debug("INFO:: Failed to connect [%s]" % [hurt_box.name])
+
+
+func setup_debug() -> void:
+	debug_text.text = "Initial"
+	var _con = state_manager.connect("state_entered", self, "on_state_change")
