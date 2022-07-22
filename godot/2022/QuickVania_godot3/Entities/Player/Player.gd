@@ -29,6 +29,7 @@ onready var jump_buffer: RayCast2D = $GroundSensor/JumpBuffer
 onready var animation_player: AnimationPlayer = $AnimationPlayer
 onready var hurt_box: HurtBox = $HurtBox
 onready var message_pos: Position2D = $MessagePos
+onready var text_to_voice: TextToVoice = $TextToVoice
 
 
 func _ready() -> void:
@@ -39,6 +40,7 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed(KeysMap.PAUSE_GAME):
+		text_to_voice.play_string("Something", 2)
 		speak("Something")
 		pass
 
