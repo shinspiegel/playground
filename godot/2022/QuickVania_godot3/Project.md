@@ -7,6 +7,7 @@
 - [x] [Player](#Player)
 - [ ] [Level Design](#Level-Design) (up to 3 areas)
   - [x] Base Level scene
+	- [ ] Make a transition between scenes
   - [x] Room Area
   - [ ] Levels
     - [ ] Bedroom (own house)
@@ -33,6 +34,7 @@
   - [ ] Boss @VAMPIRE shade
 - [ ] Other Entities
   - [x] HitBox / HurtBox
+	- [x] Voice to Text
 
 # Managers
 

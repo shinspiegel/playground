@@ -8,7 +8,7 @@ signal finished_phrase
 
 export(float) var base_pitch := 3.5
 
-onready var extra_sounds = {"male_voice": $Voices/BaseVoice, "original_voice": $Voices/OriginalVoice}
+onready var voices = $Voices
 
 var sounds = {}
 var remaining_sounds := []
@@ -21,7 +21,7 @@ func _ready():
 
 
 func play_string(in_string: String, pitch: float, voice = "male_voice"):
-	sounds = extra_sounds[voice].sounds
+	sounds = voices.get_voice_for(voice)
 
 	base_pitch = pitch
 	parse_input_string(in_string)
