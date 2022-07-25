@@ -6,41 +6,11 @@ const INFLECTION_SHIFT := 0.4
 signal characters_sounded(characters)
 signal finished_phrase
 
-export(float, 2.5, 4.5) var base_pitch := 3.5
+export(float) var base_pitch := 3.5
 
-const sounds = {
-	"a": preload("res://Entities/TextToVoice/Sounds/a.wav"),
-	"b": preload("res://Entities/TextToVoice/Sounds/b.wav"),
-	"c": preload("res://Entities/TextToVoice/Sounds/c.wav"),
-	"d": preload("res://Entities/TextToVoice/Sounds/d.wav"),
-	"e": preload("res://Entities/TextToVoice/Sounds/e.wav"),
-	"f": preload("res://Entities/TextToVoice/Sounds/f.wav"),
-	"g": preload("res://Entities/TextToVoice/Sounds/g.wav"),
-	"h": preload("res://Entities/TextToVoice/Sounds/h.wav"),
-	"i": preload("res://Entities/TextToVoice/Sounds/i.wav"),
-	"j": preload("res://Entities/TextToVoice/Sounds/j.wav"),
-	"k": preload("res://Entities/TextToVoice/Sounds/k.wav"),
-	"l": preload("res://Entities/TextToVoice/Sounds/l.wav"),
-	"m": preload("res://Entities/TextToVoice/Sounds/m.wav"),
-	"n": preload("res://Entities/TextToVoice/Sounds/n.wav"),
-	"o": preload("res://Entities/TextToVoice/Sounds/o.wav"),
-	"p": preload("res://Entities/TextToVoice/Sounds/p.wav"),
-	"q": preload("res://Entities/TextToVoice/Sounds/q.wav"),
-	"r": preload("res://Entities/TextToVoice/Sounds/r.wav"),
-	"s": preload("res://Entities/TextToVoice/Sounds/s.wav"),
-	"t": preload("res://Entities/TextToVoice/Sounds/t.wav"),
-	"u": preload("res://Entities/TextToVoice/Sounds/u.wav"),
-	"v": preload("res://Entities/TextToVoice/Sounds/v.wav"),
-	"w": preload("res://Entities/TextToVoice/Sounds/w.wav"),
-	"x": preload("res://Entities/TextToVoice/Sounds/x.wav"),
-	"y": preload("res://Entities/TextToVoice/Sounds/y.wav"),
-	"z": preload("res://Entities/TextToVoice/Sounds/z.wav"),
-	"th": preload("res://Entities/TextToVoice/Sounds/th.wav"),
-	"sh": preload("res://Entities/TextToVoice/Sounds/sh.wav"),
-	" ": preload("res://Entities/TextToVoice/Sounds/blank.wav"),
-	".": preload("res://Entities/TextToVoice/Sounds/longblank.wav")
-}
+onready var extra_sounds = {"male_voice": $Voices/BaseVoice, "original_voice": $Voices/OriginalVoice}
 
+var sounds = {}
 var remaining_sounds := []
 
 
@@ -50,7 +20,9 @@ func _ready():
 		print_debug("INFO:: Failed to connect hurt [%s]" % [name])
 
 
-func play_string(in_string: String, pitch: float = 3.5):
+func play_string(in_string: String, pitch: float, voice = "male_voice"):
+	sounds = extra_sounds[voice].sounds
+
 	base_pitch = pitch
 	parse_input_string(in_string)
 	play_next_sound()
@@ -70,7 +42,13 @@ func play_next_sound():
 		return
 
 	var sound: AudioStreamSample = sounds[next_symbol.sound]
-	pitch_scale = base_pitch + (PITCH_MULTIPLIER_RANGE * randf()) + (INFLECTION_SHIFT if next_symbol.inflective else 0.0)
+	var random_noise_pitch = PITCH_MULTIPLIER_RANGE * randf()
+	var inflaction_pitch = 0.0
+
+	if next_symbol.inflective:
+		inflaction_pitch = INFLECTION_SHIFT
+
+	pitch_scale = base_pitch + random_noise_pitch + inflaction_pitch
 	stream = sound
 	play()
 

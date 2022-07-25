@@ -11,4 +11,7 @@
 	"godot_tools.editor_path": "/usr/local/bin/godot",
 	"gdscript_formatter.line_size": 180,
 	"python.pythonPath": "/usr/local/bin/python3",
+	"files.exclude": {
+		"**/*.import": true,
+	},
 }

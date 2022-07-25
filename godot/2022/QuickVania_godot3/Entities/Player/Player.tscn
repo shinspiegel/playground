@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=2]
+[gd_scene load_steps=38 format=2]
 
 [ext_resource path="res://Entities/Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://Entities/Player/PowerUps/PlayerPowerUps.tres" type="Resource" id=2]
@@ -20,7 +20,6 @@
 [ext_resource path="res://Entities/Player/States/ChargingAttack.gd" type="Script" id=18]
 [ext_resource path="res://Entities/Player/States/Dash.gd" type="Script" id=19]
 [ext_resource path="res://Entities/Player/Resources/BasicAttack.tres" type="Resource" id=20]
-[ext_resource path="res://Entities/TextToVoice/TextToVoice.tscn" type="PackedScene" id=21]
 
 [sub_resource type="Animation" id=7]
 resource_name = "Attack"
@@ -474,9 +473,6 @@ valign = 1
 
 [node name="MessagePos" type="Position2D" parent="."]
 position = Vector2( 0, -23 )
-
-[node name="TextToVoice" parent="." instance=ExtResource( 21 )]
-volume_db = -10.0
 
 [node name="PlayerInput" type="Node" parent="."]
 script = ExtResource( 4 )
