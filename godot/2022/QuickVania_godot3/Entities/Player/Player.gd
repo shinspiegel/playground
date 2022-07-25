@@ -135,7 +135,7 @@ func check_reset_powerups() -> void:
 
 
 func speak(message: String) -> void:
-	Manager.bubble.display_message_at(message, message_pos.global_position)
+	Manager.bubble.display_message_at(message, message_pos.global_position, "monster_voice")
 
 
 ## Attempt to change state methods

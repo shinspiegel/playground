@@ -29,6 +29,6 @@ const sounds = {
 	"z": preload("res://Entities/TextToVoice/Voices/BaseVoice/0_e.wav"),
 	"th": preload("res://Entities/TextToVoice/Voices/BaseVoice/0_f.wav"),
 	"sh": preload("res://Entities/TextToVoice/Voices/BaseVoice/0_g.wav"),
-	" ": preload("res://Entities/TextToVoice/Voices/BaseVoice/blank.wav"),
-	".": preload("res://Entities/TextToVoice/Voices/BaseVoice/longblank.wav")
+	" ": preload("res://Entities/TextToVoice/Voices/BlankVoice/blank.wav"),
+	".": preload("res://Entities/TextToVoice/Voices/BlankVoice/longblank.wav")
 }

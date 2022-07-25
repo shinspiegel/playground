@@ -1,19 +1,19 @@
 extends Node
 
-onready var male_voice = $Voices/MaleVoice
-onready var female_voice = $Voices/FemaleVoice
-onready var monster_voice = $Voices/MonsterVoice
+onready var male_voice = $MaleVoice
+onready var female_voice = $FemaleVoice
+onready var monster_voice = $MonsterVoice
 
 
 func get_voice_for(voice: String):
-	var voice = male_voice
+	var sounds = male_voice
 
 	match voice:
 		"male_voice":
-			voice = male_voice
+			sounds = male_voice.sounds
 		"female_voice":
-			voice = female_voice
+			sounds = female_voice.sounds
 		"monster_voice":
-			voice = monster_voice
+			sounds = monster_voice.sounds
 
-	return voice
+	return sounds
