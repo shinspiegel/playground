@@ -7,7 +7,8 @@
 - [x] [Player](#Player)
 - [ ] [Level Design](#Level-Design) (up to 3 areas)
   - [x] Base Level scene
-	- [ ] Make a transition between scenes
+  - [ ] Reset scene on player death? Game over?
+  - [ ] Make a transition between scenes
   - [x] Room Area
   - [ ] Levels
     - [ ] Bedroom (own house)
@@ -34,7 +35,7 @@
   - [ ] Boss @VAMPIRE shade
 - [ ] Other Entities
   - [x] HitBox / HurtBox
-	- [x] Voice to Text
+  - [x] Voice to Text
 
 # Managers
 
@@ -79,6 +80,7 @@
 # Player
 
 - [x] **Player**
+  - [x] Player receive damage
   - [x] Refine the player controller
     - [x] Jump buffer
     - [x] Real coyote-time
@@ -86,7 +88,7 @@
     - [x] Cleaned code for checking how to change state
   - [ ] ~~Player mini-map~~
   - [x] Add basic animation
-	- [x] Speak message bubble
+  - [x] Speak message bubble
   - [x] Player State
     - [x] Base state (extend for enemies?)
     - [x] Idle

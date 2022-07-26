@@ -26,9 +26,6 @@ func _physics_process(delta: float) -> void:
 	state_manager.apply(delta)
 	check_change_state()
 
-	if Input.is_action_pressed(KeysMap.CANCEL):
-		hurt(1)
-
 	apply_flip_scale()
 	velocity = move_and_slide(velocity, Vector2.UP)
 

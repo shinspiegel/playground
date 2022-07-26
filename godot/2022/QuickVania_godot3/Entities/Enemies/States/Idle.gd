@@ -26,7 +26,6 @@ func process(delta: float) -> void:
 
 
 func on_timeout() -> void:
-	print("Timeout")
 	if target is Enemy:
 		target.state_manager.change_state("Wander")
 

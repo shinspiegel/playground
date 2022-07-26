@@ -74,6 +74,10 @@ func apply_horizontal(ratio: float = 1.0, override_input = null) -> void:
 		velocity.x = move_toward(velocity.x, 0, speed * ratio)
 
 
+func apply_vertical(power: float) -> void:
+	velocity.y = power * -1
+
+
 func apply_jump() -> void:
 	if input.jump_press:
 		if is_on_floor():
@@ -132,6 +136,14 @@ func check_reset_powerups() -> void:
 	if power_ups.is_doulbe_jump_used:
 		if is_on_floor():
 			power_ups.is_doulbe_jump_used = false
+
+
+func hurt(damage: int = 1) -> void:
+	stats.hit_points -= damage
+
+	if stats.hit_points <= 0:
+		# TODO: How should I proceed with the player death
+		print_debug("Player DIED")
 
 
 func speak(message: String) -> void:
@@ -220,8 +232,9 @@ func on_state_change(new_state: String) -> void:
 	state_label.text = new_state
 
 
-func on_receive_hit(_hit_box: HitBox) -> void:
+func on_receive_hit(hit_box: HitBox) -> void:
 	change_state("Hit")
+	state_manager.send_message("damage_hit_box", hit_box)
 
 
 ## SETUP METHODS
