@@ -11,6 +11,14 @@ func start_interation() -> void:
 	get_tree().paused = false
 
 
+func switch_to(destination: String, position: int = 0) -> void:
+	if destination in Areas.maps:
+		swith_to_level_at(destination, position)
+
+	if destination in Areas.scenes:
+		switch_to_scene_at(destination)
+
+
 func swith_to_level_at(area: String, position: int) -> void:
 	current_area = null
 
