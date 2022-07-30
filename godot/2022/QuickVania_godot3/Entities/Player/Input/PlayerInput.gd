@@ -1,5 +1,6 @@
 class_name PlayerInput extends Node
 
+export var input_active: bool = true
 export var direction: float = 0.0
 export var jump_press: bool = false
 export var jump_release: bool = false
@@ -16,6 +17,9 @@ func _ready() -> void:
 
 
 func _process(_delta: float) -> void:
+	if not input_active:
+		return
+
 	jump_press = false
 	jump_release = false
 	attack = false
@@ -46,7 +50,7 @@ func _process(_delta: float) -> void:
 ## SIGNAL METHODS
 
 
-func on_time_out() -> void:
+func on_charge_timeout() -> void:
 	charge_attack = true
 
 
@@ -54,6 +58,6 @@ func on_time_out() -> void:
 
 
 func setup_timer() -> void:
-	var con = timer.connect("timeout", self, "on_time_out")
+	var con = timer.connect("timeout", self, "on_charge_timeout")
 	if not con == OK:
 		print_debug("INFO:: Failed to connect hurt [%s]" % [timer.name])
