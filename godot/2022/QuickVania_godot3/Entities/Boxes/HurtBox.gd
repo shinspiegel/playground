@@ -8,7 +8,7 @@ onready var shape: CollisionShape2D = $CollisionShape2D
 func _ready() -> void:
 	var con = connect("area_entered", self, "on_area_enter")
 	if not con == OK:
-		print_debug("INFO:: Failed to connect hurt [%s]" % [name])
+		print_debug("INFO:: Failed to connect [%s]" % [name])
 
 
 func enable() -> void:

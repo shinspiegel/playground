@@ -17,7 +17,7 @@ var remaining_sounds := []
 func _ready():
 	var con = connect("finished", self, "play_next_sound")
 	if not con == OK:
-		print_debug("INFO:: Failed to connect hurt [%s]" % [name])
+		print_debug("INFO:: Failed to connect [%s]" % [name])
 
 
 func play_string(in_string: String, pitch: float, voice = "male_voice"):

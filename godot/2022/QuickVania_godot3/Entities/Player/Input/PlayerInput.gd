@@ -60,4 +60,4 @@ func on_charge_timeout() -> void:
 func setup_timer() -> void:
 	var con = timer.connect("timeout", self, "on_charge_timeout")
 	if not con == OK:
-		print_debug("INFO:: Failed to connect hurt [%s]" % [timer.name])
+		print_debug("INFO:: Failed to connect [%s]" % [timer.name])

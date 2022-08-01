@@ -38,8 +38,8 @@ func setup() -> void:
 
 	con = text_to_voice.connect("finished_phrase", self, "on_finish_phrase")
 	if not con == OK:
-		print_debug("INFO:: Failed to connect hurt [%s]" % [animation_player.name])
+		print_debug("INFO:: Failed to connect [%s]" % [animation_player.name])
 
 	con = animation_player.connect("animation_finished", self, "on_animation_finish")
 	if not con == OK:
-		print_debug("INFO:: Failed to connect hurt [%s]" % [animation_player.name])
+		print_debug("INFO:: Failed to connect [%s]" % [animation_player.name])

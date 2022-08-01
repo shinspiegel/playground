@@ -39,4 +39,4 @@ func setup_nodes() -> void:
 
 		var con = timer.connect("timeout", self, "on_timeout")
 		if not con == OK:
-			print_debug("INFO:: Failed to connect hurt [%s]" % [name])
+			print_debug("INFO:: Failed to connect [%s]" % [name])
