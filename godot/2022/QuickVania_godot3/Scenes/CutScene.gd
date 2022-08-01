@@ -45,13 +45,30 @@ func move_actor(actor: Node2D, direction: Vector2, duration: float = 1.0) -> voi
 	emit_signal("cut_scene_steped")
 
 
+func set_move_actor(actor: Node2D, direction: Vector2, duration: float = 1.0) -> void:
+	var origin = actor.global_position
+	var destination = origin + direction
+
+	tweeen.interpolate_property(
+		actor, "global_position", origin, destination, duration, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT
+	)
+
+
+func apply_move_actor() -> void:
+	tweeen.start()
+	yield(tweeen, "tween_all_completed")
+	emit_signal("cut_scene_steped")
+
+
 func wait_time(duration: float = 1.0) -> void:
 	yield(get_tree().create_timer(duration), "timeout")
 	emit_signal("cut_scene_steped")
 
 
-func speak(actor: Node2D, message: String, voice: String = "male_voice") -> void:
-	Manager.bubble.display_message_at(message, actor.global_position, voice)
+func speak_for(
+	actor: Node2D, message: String, voice: String = "male_voice", position_adjustment: Vector2 = Vector2(0, -20)
+) -> void:
+	Manager.bubble.display_message_at(message, actor.global_position + position_adjustment, voice)
 	emit_signal("cut_scene_steped")
 
 
