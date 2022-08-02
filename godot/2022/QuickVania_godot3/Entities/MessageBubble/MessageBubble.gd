@@ -42,7 +42,7 @@ func speak(text: String, wait: bool = true, volume: float = 0.0, voice = "male_v
 
 
 func update_control_size(height: int) -> void:
-	control.rect_position = Vector2(-(120 / 2), -(height / 2))
+	control.rect_position = Vector2(-(120 / 2), -(float(height) / 2))
 	control.rect_size = Vector2(120, height)
 
 
@@ -53,7 +53,7 @@ func calculate_block_height(text: String) -> int:
 		var bb_code = piece.get_string()
 		text = text.replace(bb_code, "")
 
-	var lines = text.length() / CHAR_PER_LINE
+	var lines = int(text.length() / float(CHAR_PER_LINE))
 
 	return lines * HEIGHT
 

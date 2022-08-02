@@ -147,6 +147,7 @@ func hurt(damage: int = 1) -> void:
 
 
 func speak(message: String) -> void:
+	#warning-ignore: RETURN_VALUE_DISCARDED
 	Manager.bubble.display_message_at(message, message_pos.global_position, "monster_voice")
 
 
