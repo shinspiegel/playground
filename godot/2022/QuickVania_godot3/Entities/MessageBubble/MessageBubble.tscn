@@ -1,8 +1,17 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Screens/resources/Theme.tres" type="Theme" id=1]
 [ext_resource path="res://Entities/MessageBubble/MessageBubble.gd" type="Script" id=2]
 [ext_resource path="res://Entities/TextToVoice/TextToVoice.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Entities/MessageBubble/Assets/MessageBubble_0.png" type="Texture" id=4]
+[ext_resource path="res://Entities/MessageBubble/Resources/Ghost.gd" type="Script" id=5]
+[ext_resource path="res://Entities/MessageBubble/Resources/Pulse.gd" type="Script" id=6]
+
+[sub_resource type="RichTextEffect" id=4]
+script = ExtResource( 5 )
+
+[sub_resource type="RichTextEffect" id=5]
+script = ExtResource( 6 )
 
 [sub_resource type="Animation" id=2]
 length = 0.001
@@ -30,21 +39,33 @@ tracks/1/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ) ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath("Position2D/Control/NinePatchRect/CenterContainer/RichTextLabel:percent_visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 1.0 ]
+}
 
-[sub_resource type="Animation" id=1]
-resource_name = "animate"
-length = 2.0
+[sub_resource type="Animation" id=3]
+resource_name = "fade_in"
+length = 0.5
 tracks/0/type = "value"
-tracks/0/path = NodePath("Position2D:position")
-tracks/0/interp = 1
+tracks/0/path = NodePath("Position2D/Control/NinePatchRect/CenterContainer/RichTextLabel:percent_visible")
+tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 1.9 ),
-"transitions": PoolRealArray( 3, -2 ),
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 0, 0 ), Vector2( 0, -20 ) ]
+"values": [ 0.0, 1.0 ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath(".:modulate")
@@ -53,7 +74,34 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 1, 2 ),
+"times": PoolRealArray( 0, 0.2, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=1]
+resource_name = "fade_out"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Position2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.9 ),
+"transitions": PoolRealArray( 3, -2 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, -20 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2, 1 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
@@ -64,24 +112,56 @@ script = ExtResource( 2 )
 
 [node name="Position2D" type="Position2D" parent="."]
 
-[node name="Label" type="Label" parent="Position2D"]
+[node name="Control" type="Control" parent="Position2D"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -33.0
-margin_top = -7.0
-margin_right = 33.0
-margin_bottom = 7.0
+margin_left = -60.0
+margin_top = -10.0
+margin_right = 60.0
+margin_bottom = 10.0
+rect_min_size = Vector2( 90, 20 )
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Position2D/Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+rect_min_size = Vector2( 120, 20 )
+texture = ExtResource( 4 )
+region_rect = Rect2( 0, 0, 120, 40 )
+patch_margin_left = 23
+patch_margin_top = 13
+patch_margin_right = 21
+patch_margin_bottom = 13
+
+[node name="CenterContainer" type="CenterContainer" parent="Position2D/Control/NinePatchRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_min_size = Vector2( 120, 20 )
 theme = ExtResource( 1 )
-text = "Test Message"
-align = 1
-valign = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Position2D/Control/NinePatchRect/CenterContainer"]
+margin_left = 3.0
+margin_right = 117.0
+margin_bottom = 27.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_min_size = Vector2( 114, 0 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+bbcode_enabled = true
+bbcode_text = "[ghost freq=5 span=0.5]Yeah, it's not working anymore[/ghost]"
+text = "Yeah, it's not working anymore"
+fit_content_height = true
+scroll_active = false
+custom_effects = [ SubResource( 4 ), SubResource( 5 ) ]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 2 )
-anims/animate = SubResource( 1 )
+anims/fade_in = SubResource( 3 )
+anims/fade_out = SubResource( 1 )
 
 [node name="TextToVoice" parent="." instance=ExtResource( 3 )]
