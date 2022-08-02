@@ -123,6 +123,11 @@ _global_script_classes=[ {
 "class": "TextToVoice",
 "language": "GDScript",
 "path": "res://Entities/TextToVoice/TextToVoice.gd"
+}, {
+"base": "CanvasLayer",
+"class": "TransitionManager",
+"language": "GDScript",
+"path": "res://Game/TransitionManager.gd"
 } ]
 _global_script_class_icons={
 "BaseState": "",
@@ -147,7 +152,8 @@ _global_script_class_icons={
 "Screen": "",
 "ScreenManager": "",
 "StateManager": "",
-"TextToVoice": ""
+"TextToVoice": "",
+"TransitionManager": ""
 }
 
 [application]
