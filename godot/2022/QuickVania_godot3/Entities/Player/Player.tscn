@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=2]
+[gd_scene load_steps=43 format=2]
 
 [ext_resource path="res://Entities/Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://Entities/Player/PowerUps/PlayerPowerUps.tres" type="Resource" id=2]
@@ -20,42 +20,35 @@
 [ext_resource path="res://Entities/Player/States/ChargingAttack.gd" type="Script" id=18]
 [ext_resource path="res://Entities/Player/States/Dash.gd" type="Script" id=19]
 [ext_resource path="res://Entities/Player/Resources/BasicAttack.tres" type="Resource" id=20]
+[ext_resource path="res://Entities/Player/Assets/Sparkling2.png" type="Texture" id=21]
+[ext_resource path="res://Entities/Player/Assets/Sparkling1.png" type="Texture" id=22]
+[ext_resource path="res://Entities/Player/Assets/Sparkling3.png" type="Texture" id=23]
+[ext_resource path="res://Entities/Player/Assets/Sparkling4.png" type="Texture" id=24]
 
 [sub_resource type="Animation" id=7]
 resource_name = "Attack"
-length = 0.4
+length = 0.35
+step = 0.05
 tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:self_modulate")
+tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Color( 0.929412, 0.321569, 0.109804, 1 ) ]
+"times": PoolRealArray( 0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 9, 10, 11, 12, 13, 14, 15 ]
 }
-tracks/1/type = "value"
-tracks/1/path = NodePath("Sprite:frame")
+tracks/1/type = "method"
+tracks/1/path = NodePath("HitBoxes/AttackHitBox")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ 0 ]
-}
-tracks/2/type = "method"
-tracks/2/path = NodePath("HitBox")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0, 0.1, 0.4 ),
+"times": PoolRealArray( 0, 0.05, 0.25 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "values": [ {
 "args": [  ],
@@ -71,67 +64,40 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id=11]
 resource_name = "ChargingAttack"
-length = 0.4
-loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:self_modulate")
+tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2, 0.4 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ Color( 0.886275, 0.0627451, 0.913725, 1 ), Color( 0.950843, 0.882385, 0.953125, 1 ), Color( 0.886275, 0.0627451, 0.913725, 1 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Sprite:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 0.15, 0.3, 0.45, 0.6, 0.75 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 0 ]
+"values": [ 16, 17, 18, 19, 20, 21 ]
 }
 
 [sub_resource type="Animation" id=14]
 resource_name = "ChargingAttackCompleted"
-length = 0.2
+length = 0.4
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:self_modulate")
+tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ Color( 0.886275, 0.0627451, 0.913725, 1 ), Color( 0.950843, 0.882385, 0.953125, 1 ), Color( 0.886275, 0.0627451, 0.913725, 1 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Sprite:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 0 ]
+"values": [ 22, 23, 24, 25 ]
 }
 
 [sub_resource type="Animation" id=15]
 resource_name = "Dash"
-length = 0.6
 tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:self_modulate")
+tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -139,29 +105,17 @@ tracks/0/enabled = true
 tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Color( 0.596078, 0.929412, 0.109804, 1 ) ]
+"update": 1,
+"values": [ 27 ]
 }
-tracks/1/type = "value"
-tracks/1/path = NodePath("Sprite:frame")
+tracks/1/type = "method"
+tracks/1/path = NodePath("HitBoxes/AttackHitBox")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ 0 ]
-}
-tracks/2/type = "method"
-tracks/2/path = NodePath("HitBox")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0, 0.1, 0.6 ),
+"times": PoolRealArray( 0, 0.1, 1 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "values": [ {
 "args": [  ],
@@ -174,14 +128,14 @@ tracks/2/keys = {
 "method": "disable"
 } ]
 }
-tracks/3/type = "value"
-tracks/3/path = NodePath("CPUParticles2D:emitting")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0, 0.6 ),
+tracks/2/type = "value"
+tracks/2/path = NodePath("CPUParticles2D:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ true, false ]
@@ -189,10 +143,10 @@ tracks/3/keys = {
 
 [sub_resource type="Animation" id=12]
 resource_name = "DoubleJump"
-length = 0.9
+length = 0.1
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:self_modulate")
+tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -200,28 +154,16 @@ tracks/0/enabled = true
 tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Color( 0.929412, 0.619608, 0.290196, 1 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Sprite:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ 0 ]
+"values": [ 5 ]
 }
 
 [sub_resource type="Animation" id=4]
 resource_name = "Falling"
-length = 0.9
+length = 0.1
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:self_modulate")
+tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -229,73 +171,37 @@ tracks/0/enabled = true
 tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Color( 0.423529, 0.0862745, 0.27451, 1 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Sprite:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ 0 ]
+"values": [ 6 ]
 }
 
 [sub_resource type="Animation" id=10]
 resource_name = "Hit"
-length = 0.2
+length = 0.4
 tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:self_modulate")
+tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Color( 0.921569, 0.0941176, 0.541176, 1 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Sprite:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 0 ]
+"values": [ 7, 8, 7, 8 ]
 }
 
 [sub_resource type="Animation" id=3]
 resource_name = "Idle"
-length = 0.9
+length = 0.1
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:self_modulate")
+tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 1 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Sprite:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
@@ -304,10 +210,10 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id=5]
 resource_name = "Jump"
-length = 0.9
+length = 0.1
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:self_modulate")
+tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -315,49 +221,25 @@ tracks/0/enabled = true
 tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Color( 0.929412, 0.619608, 0.290196, 1 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Sprite:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ 0 ]
+"values": [ 5 ]
 }
 
 [sub_resource type="Animation" id=6]
 resource_name = "Move"
-length = 0.9
+length = 0.4
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:self_modulate")
+tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Color( 0.247059, 0.611765, 0.752941, 1 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Sprite:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 0 ]
+"values": [ 1, 2, 3, 4 ]
 }
 
 [sub_resource type="Animation" id=16]
@@ -374,22 +256,6 @@ tracks/0/keys = {
 "update": 0,
 "values": [ false ]
 }
-
-[sub_resource type="Animation" id=13]
-resource_name = "ReleaseCharge"
-length = 0.4
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:self_modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.3, 0.4 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 0, 0, 1 ), Color( 0.945098, 0.0431373, 0.0431373, 1 ), Color( 1, 1, 1, 1 ) ]
-}
 tracks/1/type = "value"
 tracks/1/path = NodePath("Sprite:frame")
 tracks/1/interp = 1
@@ -399,16 +265,32 @@ tracks/1/enabled = true
 tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ 0 ]
+"update": 0,
+"values": [ 9 ]
 }
-tracks/2/type = "method"
-tracks/2/path = NodePath("HitBox")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
+
+[sub_resource type="Animation" id=13]
+resource_name = "ReleaseCharge"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 25, 26 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("HitBoxes/AttackHitBox")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
 "times": PoolRealArray( 0, 0.1, 0.4 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "values": [ {
@@ -427,16 +309,27 @@ tracks/2/keys = {
 extents = Vector2( 4.5, 14.5 )
 
 [sub_resource type="RectangleShape2D" id=9]
-extents = Vector2( 15, 14 )
+extents = Vector2( 12, 11 )
+
+[sub_resource type="RectangleShape2D" id=18]
+extents = Vector2( 6, 14.5 )
 
 [sub_resource type="RectangleShape2D" id=8]
 extents = Vector2( 4.5, 14.5 )
 
+[sub_resource type="AnimatedTexture" id=19]
+frames = 4
+fps = 8.0
+frame_0/texture = ExtResource( 22 )
+frame_1/texture = ExtResource( 21 )
+frame_1/delay_sec = 0.0
+frame_2/texture = ExtResource( 23 )
+frame_2/delay_sec = 0.0
+frame_3/texture = ExtResource( 24 )
+frame_3/delay_sec = 0.0
+
 [sub_resource type="Curve" id=17]
 _data = [ Vector2( 0, 0.518182 ), 0.0, 1.23333, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
-
-[sub_resource type="Gradient" id=18]
-colors = PoolColorArray( 1, 1, 1, 0.196078, 1, 1, 1, 0 )
 
 [node name="Player" type="KinematicBody2D"]
 collision_mask = 10
@@ -509,21 +402,35 @@ anims/RESET = SubResource( 16 )
 anims/ReleaseCharge = SubResource( 13 )
 
 [node name="Sprite" type="Sprite" parent="."]
-self_modulate = Color( 0.596078, 0.929412, 0.109804, 1 )
 texture = ExtResource( 16 )
+hframes = 5
+vframes = 6
+frame = 9
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0.5, 1.5 )
 shape = SubResource( 1 )
 
-[node name="HitBox" parent="." instance=ExtResource( 14 )]
+[node name="HitBoxes" type="Node2D" parent="."]
+
+[node name="AttackHitBox" parent="HitBoxes" instance=ExtResource( 14 )]
 position = Vector2( 5, 1 )
 collision_mask = 4
 damage = ExtResource( 20 )
 
-[node name="CollisionShape2D" parent="HitBox" index="0"]
-position = Vector2( 15, 0 )
+[node name="CollisionShape2D" parent="HitBoxes/AttackHitBox" index="0"]
+position = Vector2( 4, 0 )
 shape = SubResource( 9 )
+disabled = true
+
+[node name="DashHitBox2" parent="HitBoxes" instance=ExtResource( 14 )]
+position = Vector2( 5, 1 )
+collision_mask = 4
+damage = ExtResource( 20 )
+
+[node name="CollisionShape2D" parent="HitBoxes/DashHitBox2" index="0"]
+position = Vector2( -2, 0.5 )
+shape = SubResource( 18 )
 disabled = true
 
 [node name="HurtBox" parent="." instance=ExtResource( 13 )]
@@ -539,13 +446,16 @@ emitting = false
 amount = 20
 lifetime = 0.5
 local_coords = false
-texture = ExtResource( 16 )
+texture = SubResource( 19 )
+emission_shape = 2
+emission_rect_extents = Vector2( 8, 16 )
 direction = Vector2( 0, 0 )
-gravity = Vector2( 0, 0 )
-radial_accel = -100.0
-scale_amount = 2.0
+spread = 0.0
+gravity = Vector2( 0, -10 )
+linear_accel = 10.0
+linear_accel_random = 1.0
+scale_amount = 0.3
 scale_amount_curve = SubResource( 17 )
-color_ramp = SubResource( 18 )
 
 [node name="GroundSensor" type="Node2D" parent="."]
 position = Vector2( 0, 16 )
@@ -608,5 +518,6 @@ script = ExtResource( 10 )
 [node name="Hit" type="Node2D" parent="StateManager"]
 script = ExtResource( 15 )
 
-[editable path="HitBox"]
+[editable path="HitBoxes/AttackHitBox"]
+[editable path="HitBoxes/DashHitBox2"]
 [editable path="HurtBox"]

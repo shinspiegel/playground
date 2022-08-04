@@ -29,6 +29,7 @@ onready var jump_buffer: RayCast2D = $GroundSensor/JumpBuffer
 onready var animation_player: AnimationPlayer = $AnimationPlayer
 onready var hurt_box: HurtBox = $HurtBox
 onready var message_pos: Position2D = $MessagePos
+onready var cpu_particles: CPUParticles2D = $CPUParticles2D
 
 
 func _ready() -> void:
