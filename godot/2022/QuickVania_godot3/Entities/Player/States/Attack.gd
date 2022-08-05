@@ -12,9 +12,10 @@ func exit() -> void:
 		target.animation_player.disconnect("animation_finished", self, "on_animation_finished")
 
 
-func process(_delta: float) -> void:
+func process(delta: float) -> void:
 	if target is Player:
 		target.velocity.x = move_toward(target.velocity.x, 0, 10)
+		target.apply_gravity(delta)
 
 
 ## SIGNAL METHODS

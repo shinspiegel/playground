@@ -7,6 +7,8 @@ func enter() -> void:
 		target.velocity.y = 0.0
 		target.dash_coldown.start()
 		target.power_ups.is_dash_used = true
+		target.cpu_particles.set_emitting(true)
+		target.hurt_box.disable()
 
 		var con = target.animation_player.connect("animation_finished", self, "on_animation_finished")
 		if not con == OK:
@@ -16,6 +18,8 @@ func enter() -> void:
 func exit() -> void:
 	if target is Player:
 		target.animation_player.disconnect("animation_finished", self, "on_animation_finished")
+		target.cpu_particles.set_emitting(false)
+		target.hurt_box.enable()
 
 
 func process(_delta: float) -> void:
