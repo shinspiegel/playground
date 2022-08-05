@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://Tilemaps/TileMap_32x32.tres" type="TileSet" id=1]
+[ext_resource path="res://Level/Assets/Tilemap.tres" type="TileSet" id=1]
 [ext_resource path="res://Level/BaseLevel/Level.gd" type="Script" id=2]
 [ext_resource path="res://Entities/RoomArea/RoomArea.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Entities/Player/Player.tscn" type="PackedScene" id=4]

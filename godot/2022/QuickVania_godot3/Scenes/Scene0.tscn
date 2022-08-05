@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://Tilemaps/TileMap_32x32.tres" type="TileSet" id=1]
+[ext_resource path="res://Level/Assets/Tilemap.tres" type="TileSet" id=1]
 [ext_resource path="res://Entities/Player/Assets/Player.png" type="Texture" id=2]
 [ext_resource path="res://Scenes/Scene0.gd" type="Script" id=3]
 [ext_resource path="res://Entities/Vampire/Assets/Vampire.png" type="Texture" id=4]
