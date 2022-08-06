@@ -147,11 +147,9 @@ Section dedicated to elaborate and create the elements for the game project.
 
 - [ ] Intro level, inside house (scene)
   - Heart Blob enemy
+  - Frog-like enemy
   - Spikes
   - Trapdoor platform
-- [ ] Kitchen theme (double-jump)
-  - Blob enemy
-  - Frog-like enemy
 - [ ] Outdoors park (breakable object)
   - Fire Blob enemy
   - holes in the ground (death pit)
