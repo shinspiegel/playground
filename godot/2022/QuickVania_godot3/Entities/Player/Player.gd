@@ -76,7 +76,7 @@ func apply_horizontal(ratio: float = 1.0, override_input = null) -> void:
 
 
 func apply_vertical(power: float) -> void:
-	velocity.y = power * -1
+	velocity.y = abs(power) * -1
 
 
 func apply_jump() -> void:
