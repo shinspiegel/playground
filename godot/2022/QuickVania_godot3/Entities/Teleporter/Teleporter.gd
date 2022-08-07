@@ -1,6 +1,6 @@
 extends Area2D
 
-export var area: String
+export(String) var area: String
 export(int) var area_position: int = 0
 
 
