@@ -6,7 +6,7 @@ func _ready() -> void:
 
 
 func start_game():
-	Manager.level.switch_to(Areas.TestLevel0)
+	Manager.level.switch_to(Areas.Tutorial_0)
 	pass
 
 

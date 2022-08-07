@@ -38,3 +38,9 @@ __meta__ = {
 
 [node name="BottomRight" type="Position2D" parent="MapLimit"]
 position = Vector2( 320, 192 )
+
+[node name="Hazards" type="Node2D" parent="."]
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="Teleports" type="Node2D" parent="."]
