@@ -91,6 +91,10 @@ func zoom_camera(amount: float, duration: float = 1.0) -> void:
 	tweeen.interpolate_property(camera, "zoom", origin, final, duration, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 
 
+func end_scene() -> void:
+	SignalBus.emit_signal("cut_scene_ended")
+
+
 ## OVERRIDE CLASS METHODS
 
 ## SIGNAL METHODS

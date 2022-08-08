@@ -1,8 +1,5 @@
 class_name TransitionManager extends CanvasLayer
 
-signal blacked
-signal cleaned
-
 onready var animation_player = $AnimationPlayer
 onready var rect: ColorRect = $ColorRect
 
@@ -16,10 +13,10 @@ func transition() -> void:
 	animation_player.play("Fade_in")
 	yield(animation_player, "animation_finished")
 
-	emit_signal("blacked")
+	SignalBus.emit_signal("transition_blacked")
 
 	animation_player.play("Fade_out")
 	yield(animation_player, "animation_finished")
 
-	emit_signal("cleaned")
+	SignalBus.emit_signal("transition_cleaned")
 	rect.visible = false

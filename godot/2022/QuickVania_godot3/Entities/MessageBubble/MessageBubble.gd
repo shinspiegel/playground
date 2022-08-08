@@ -87,7 +87,7 @@ func setup() -> void:
 	visible = false
 	var con
 
-	con = text_to_voice.connect("finished_phrase", self, "on_finish_phrase")
+	con = SignalBus.connect("voice_ended", self, "on_finish_phrase")
 	if not con == OK:
 		print_debug("INFO:: Failed to connect [%s]" % [animation_player.name])
 

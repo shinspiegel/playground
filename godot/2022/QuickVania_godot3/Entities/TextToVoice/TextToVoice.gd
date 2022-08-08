@@ -31,6 +31,7 @@ func play_string(in_string: String, pitch: float, voice = "male_voice"):
 func play_next_sound():
 	if len(remaining_sounds) == 0:
 		emit_signal("finished_phrase")
+		SignalBus.emit_signal("voice_ended")
 		return
 
 	var next_symbol = remaining_sounds.pop_front()

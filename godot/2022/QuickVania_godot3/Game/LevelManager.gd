@@ -13,7 +13,7 @@ func start_interation() -> void:
 
 func switch_to(destination: String, position: int = 0) -> void:
 	Manager.transition.transition()
-	yield(Manager.transition, "blacked")
+	yield(SignalBus, "transition_blacked")
 
 	if destination in Areas.maps:
 		swith_to_level_at(destination, position)
