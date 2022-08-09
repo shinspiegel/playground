@@ -3,6 +3,11 @@ class_name PlayerStats extends Resource
 export(Resource) var hit_points_resource
 
 var hit_points: int setget , get_hit_points
+var max_hit_points: int setget , get_max_hit_points
+
+
+func get_max_hit_points() -> int:
+	return hit_points_resource.max_value
 
 
 func get_hit_points() -> int:

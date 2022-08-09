@@ -140,11 +140,11 @@ func check_reset_powerups() -> void:
 
 
 func hurt(damage: int = 1) -> void:
-	stats.hit_points -= damage
+	stats.hit_points.hurt(damage)
+	SignalBus.emit_signal("player_damaged", stats.hit_points, stats.max_hit_points)
 
 	if stats.hit_points <= 0:
-		# TODO: How should I proceed with the player death
-		print_debug("Player DIED")
+		SignalBus.emit_signal("player_died")
 
 
 func speak(message: String) -> void:

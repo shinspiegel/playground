@@ -42,3 +42,4 @@ area_position = 1
 [node name="Teleporter2" parent="Teleports" index="1" instance=ExtResource( 3 )]
 position = Vector2( 160, 384 )
 rotation = 1.5708
+area = "TheLongHall_0"
