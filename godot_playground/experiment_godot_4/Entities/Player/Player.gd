@@ -1,0 +1,143 @@
+class_name Player extends CharacterBody2D
+
+const BLOCK_SIZE = 16
+const JUMP_VELOCITY = -400.0
+const SPEED: float = BLOCK_SIZE * 10.0
+const MAX_JUMP_HEIGHT: float = BLOCK_SIZE * 3
+const MIN_JUMP_HEIGHT: float = BLOCK_SIZE * 2
+const JUMP_TIME_TO_PEAK: float = 0.45
+const JUMP_TIME_TO_DESCENT: float = 0.35
+
+
+@onready var jump_power: float = ((2.0 * MAX_JUMP_HEIGHT) / JUMP_TIME_TO_PEAK) * -1
+@onready var jump_gravity: float = ((-2.0 * MAX_JUMP_HEIGHT) / (JUMP_TIME_TO_PEAK * JUMP_TIME_TO_PEAK)) * -1
+@onready var fall_gravity: float = ((-2.0 * MAX_JUMP_HEIGHT) / (JUMP_TIME_TO_DESCENT * JUMP_TIME_TO_DESCENT)) * -1
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var state_manager: StateManager = $StateManager
+
+
+var flip = { "is_active": true, "direction": 1 }
+var input = { "direction": 0.0, "jump": false }
+
+
+func _ready() -> void:
+	setup_player_stats()
+	setup_hurt_box()
+	setup_initial_animation()
+
+
+func _physics_process(delta: float) -> void:
+	reset_input()
+	check_input()
+	
+	state_manager.apply(delta)
+	
+	check_flip()
+	check_change_state()
+	
+	move_and_slide()
+
+
+func apply_horizontal(direction: float, speed: float = SPEED, ratio: float = 1.0 ) -> void:
+	if not direction == 0.0:
+		velocity.x = direction * (speed * ratio)
+	else:
+		velocity.x = move_toward(velocity.x, 0, speed * ratio)
+
+
+func apply_vertical(power: float, ratio: float = 1.0) -> void:
+	velocity.y = (abs(power) * -1) * ratio
+
+
+func apply_gravity(delta: float) -> void:
+	if not is_on_floor():
+		velocity.y += get_gravity() * delta
+
+
+func get_gravity() -> float:
+	if velocity.y < 0.0:
+		return jump_gravity
+	else:
+		return fall_gravity
+
+
+func check_change_state() -> void:
+	var is_input_zero = input.direction == 0.0
+	var is_velocity_zero = velocity.x == 0.0
+	var is_jump_press = input.jump
+	var is_grounded = is_on_floor()
+	
+	if is_jump_press: 
+		print("JUMP PRESSED ON THE STATE CHANGE")
+	
+	if state_manager.current_state.name == "Idle":
+		if not is_input_zero:
+			return change_state("Move")
+		if is_jump_press and is_grounded:
+			return change_state("Jump")
+	
+	if state_manager.current_state.name == "Move":
+		if is_jump_press and is_grounded: 
+			return change_state("Jump")
+		if is_input_zero and is_velocity_zero:
+			return change_state("Idle")
+	
+	if state_manager.current_state.name == "Jump":
+		if not is_input_zero and is_grounded:
+			return change_state("Move")
+		if is_input_zero and is_velocity_zero and is_grounded:
+			return change_state("Idle")
+
+
+func change_state(state: String) -> void:
+	state_manager.change_state(state)
+
+
+func change_animation(anim: String) -> void:
+	if not animation_player == null and animation_player.has_animation(anim):
+		animation_player.play(anim)
+
+
+func check_flip() -> void:
+	if flip.is_active:
+		var value = velocity.x
+	
+		if value != 0:
+			if value > 0 and flip.direction == -1:
+				scale.x *= -1
+				flip.direction = 1
+			if value < 0 and flip.direction == 1:
+				scale.x *= -1
+				flip.direction = -1
+
+
+func check_input() -> void:
+	if Input.is_action_pressed(Constants.KEYS.jump):
+		input.jump = true
+	
+	input.direction = Input.get_axis(
+		Constants.KEYS.left, 
+		Constants.KEYS.right
+	)
+
+
+func reset_input() -> void:
+	input.diretion = 0.0
+	input.jump = false
+
+
+# SETUP METHODS
+
+
+func setup_player_stats() -> void:
+	# TODO: Create player stats resource
+	pass
+
+
+func setup_hurt_box() -> void:
+	# TODO: Create hurtbox entity
+	pass
+
+
+func setup_initial_animation() -> void:
+	animation_player.play("Idle")

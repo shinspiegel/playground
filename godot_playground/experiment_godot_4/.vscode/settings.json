@@ -1,0 +1,17 @@
+{
+  "[markdown]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.tabSize": 2
+  },
+  "editor.useTabStops": true,
+  "prettier.useTabs": true,
+  "editor.tabSize": 4,
+  "editor.insertSpaces": false,
+  "editor.detectIndentation": false,
+  "godot_tools.editor_path": "/usr/local/bin/godot",
+  "gdscript_formatter.line_size": 120,
+  "python.pythonPath": "/usr/local/bin/python3",
+  "files.exclude": {
+    "**/*.import": true,
+  },
+}
