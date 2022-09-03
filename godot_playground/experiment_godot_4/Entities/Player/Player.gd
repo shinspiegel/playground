@@ -14,6 +14,8 @@ const JUMP_TIME_TO_DESCENT: float = 0.35
 @onready var fall_gravity: float = ((-2.0 * MAX_JUMP_HEIGHT) / (JUMP_TIME_TO_DESCENT * JUMP_TIME_TO_DESCENT)) * -1
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var state_manager: StateManager = $StateManager
+@onready var coyote_timer: Timer = $Timers/CoyoteTimer
+@onready var jump_buffer_ray: RayCast2D = $Sensor/JumpBuffer
 
 
 var flip = { "is_active": true, "direction": 1 }
@@ -62,13 +64,12 @@ func get_gravity() -> float:
 
 
 func check_change_state() -> void:
-	var is_input_zero = input.direction == 0.0
-	var is_velocity_zero = velocity.x == 0.0
-	var is_jump_press = input.jump
-	var is_grounded = is_on_floor()
-	
-	if is_jump_press: 
-		print("JUMP PRESSED ON THE STATE CHANGE")
+	var is_input_zero: bool = input.direction == 0.0
+	var is_velocity_zero: bool = velocity.x == 0.0
+	var is_jump_press: bool = input.jump
+	var is_grounded: bool = is_on_floor()
+	var is_falling: bool = velocity.y > 0
+	var is_jump_buffer: bool = jump_buffer_ray.is_colliding()
 	
 	if state_manager.current_state.name == "Idle":
 		if not is_input_zero:
@@ -77,16 +78,30 @@ func check_change_state() -> void:
 			return change_state("Jump")
 	
 	if state_manager.current_state.name == "Move":
+		if not is_grounded:
+			return change_state("Falling")
 		if is_jump_press and is_grounded: 
 			return change_state("Jump")
 		if is_input_zero and is_velocity_zero:
 			return change_state("Idle")
 	
 	if state_manager.current_state.name == "Jump":
+		if is_falling:
+			return change_state("Falling")
 		if not is_input_zero and is_grounded:
 			return change_state("Move")
 		if is_input_zero and is_velocity_zero and is_grounded:
 			return change_state("Idle")
+	
+	if state_manager.current_state.name == "Falling":
+		if not is_grounded and coyote_timer.time_left > 0.0 and is_jump_press:
+			return change_state("Jump")
+		if is_jump_buffer and is_jump_press:
+			return change_state("Jump")
+		if is_input_zero and is_grounded:
+			return change_state("Idle")
+		if not is_input_zero and is_grounded:
+			return change_state("Move")
 
 
 func change_state(state: String) -> void:
@@ -94,8 +109,9 @@ func change_state(state: String) -> void:
 
 
 func change_animation(anim: String) -> void:
-	if not animation_player == null and animation_player.has_animation(anim):
-		animation_player.play(anim)
+	if not animation_player == null:
+		if animation_player.has_animation(anim) and not animation_player.current_animation == anim:
+			animation_player.play(anim)
 
 
 func check_flip() -> void:

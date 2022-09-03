@@ -1,10 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://cfpdq48gxgdem"]
+[gd_scene load_steps=5 format=3 uid="uid://cfpdq48gxgdem"]
 
 [ext_resource type="PackedScene" uid="uid://bgftcfhbs2meo" path="res://Entities/Player/Player.tscn" id="1_0y1q6"]
 [ext_resource type="Script" path="res://Level.gd" id="1_dlwcx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uofiu"]
 size = Vector2(336, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jdk4w"]
+size = Vector2(130, 24)
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_dlwcx")
@@ -13,15 +16,16 @@ script = ExtResource("1_dlwcx")
 collision_layer = 2
 collision_mask = 0
 
-[node name="Polygon2D" type="Polygon2D" parent="StaticBody2D"]
-polygon = PackedVector2Array(-8, 136, 328, 136, 328, 176, -8, 176)
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(160, 156)
 shape = SubResource("RectangleShape2D_uofiu")
 
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(263, 124)
+shape = SubResource("RectangleShape2D_jdk4w")
+
 [node name="Player" parent="." instance=ExtResource("1_0y1q6")]
-position = Vector2(144, 120)
+position = Vector2(216, 96)
 
 [node name="Label" type="Label" parent="."]
 offset_right = 64.0

@@ -40,7 +40,7 @@ func change_state(state_name: String) -> void:
 	
 	current_state = null
 	
-	if not states[state_name] == null:
+	if states.has(state_name):
 		current_state = states[state_name]
 		current_state.enter()
 		state_exited.emit(current_state.name)
@@ -62,15 +62,17 @@ func add_state_history(state_name: String) -> void:
 
 
 func get_last_state() -> String:
-	var last_state = "Idle"
+	var last_state: String
+	
+	if not initial_path.is_empty():
+		last_state = get_node(initial_path).name
+	elif get_child_count() > 0:
+		last_state = get_children()[0].name
+	else:
+		print_debug("WARN:: Failed to load default state for last_state")
 	
 	if state_history.size() > 0:
-		var reversed_list = state_history.duplicate(true)
-		reversed_list.invert()
-	
-		for item in reversed_list:
-			if not item == "Hit":
-				last_state = item
+		last_state = state_history[0]
 	
 	return last_state
 
