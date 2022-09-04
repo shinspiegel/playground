@@ -26,9 +26,8 @@ var input = { "direction": 0.0, "jump": false }
 
 
 func _ready() -> void:
-	setup_player_stats()
-	setup_hurt_box()
-	setup_initial_animation()
+	hurt_box.hit_received.connect(on_receive_hit)
+	animation_player.play("Idle")
 
 
 func _physics_process(delta: float) -> void:
@@ -142,25 +141,13 @@ func check_input() -> void:
 	)
 
 
-# SETUP METHODS
-
-
-func setup_player_stats() -> void:
-	# TODO: Create player stats resource
-	pass
-
-
-func setup_hurt_box() -> void:
-	hurt_box.hit_received.connect(func (hit: HitBox):
-		var is_inv_timeout = invencible_timer.time_left <= 0.0
-		var is_not_hit = not state_manager.current_state.name == "Hit"
-		
-		if is_inv_timeout and is_not_hit:
-			invencible_timer.start()
-			change_state("Hit")
-			state_manager.send_message("hit", hit)
-	)
-
-
-func setup_initial_animation() -> void:
-	animation_player.play("Idle")
+func on_receive_hit(hit: HitBox):
+	var is_inv_timeout = invencible_timer.time_left <= 0.0
+	var is_not_hit = not state_manager.current_state.name == "Hit"
+	
+	if is_inv_timeout and is_not_hit:
+		invencible_timer.start()
+		stats.hurt(hit.damage.amount)
+		SignalBus.player_hp_changed.emit(stats.hit_points, stats.max_hit_points)
+		change_state("Hit")
+		state_manager.send_message("hit", hit)

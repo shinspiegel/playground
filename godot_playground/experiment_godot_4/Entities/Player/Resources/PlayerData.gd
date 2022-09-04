@@ -4,6 +4,14 @@ class_name PlayerData extends Resource
 @export var hit_points: int = 5: set = set_hit_points
 
 
+func hurt(amount: int) -> void:
+	set_hit_points(-amount)
+
+
+func heal(amount: int) -> void:
+	set_hit_points(amount)
+
+
 func set_hit_points(val: int) -> void:
 	if val + hit_points <= 0:
 		SignalBus.player_hp_changed.emit(0)
@@ -14,4 +22,4 @@ func set_hit_points(val: int) -> void:
 		hit_points = max_hit_points
 	
 	else: 
-		hit_points = val
+		hit_points += val

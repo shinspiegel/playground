@@ -49,7 +49,6 @@ func change_state(state_name: String) -> void:
 		print_debug("WARN:: Failed to load state %s" % [state_name])
 
 
-
 func send_message(id: String, message) -> void:
 	current_state.receive_message(id, message)
 
