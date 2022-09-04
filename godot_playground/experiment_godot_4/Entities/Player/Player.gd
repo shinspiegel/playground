@@ -29,7 +29,6 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
-	reset_input()
 	check_input()
 	
 	state_manager.apply(delta)
@@ -80,7 +79,7 @@ func check_change_state() -> void:
 	if state_manager.current_state.name == "Move":
 		if not is_grounded:
 			return change_state("Falling")
-		if is_jump_press and is_grounded: 
+		if is_jump_press and is_grounded:
 			return change_state("Jump")
 		if is_input_zero and is_velocity_zero:
 			return change_state("Idle")
@@ -128,18 +127,16 @@ func check_flip() -> void:
 
 
 func check_input() -> void:
-	if Input.is_action_pressed(Constants.KEYS.jump):
+	input.diretion = 0.0
+	input.jump = false
+	
+	if Input.is_action_just_pressed(Constants.KEYS.jump):
 		input.jump = true
 	
 	input.direction = Input.get_axis(
-		Constants.KEYS.left, 
+		Constants.KEYS.left,
 		Constants.KEYS.right
 	)
-
-
-func reset_input() -> void:
-	input.diretion = 0.0
-	input.jump = false
 
 
 # SETUP METHODS
