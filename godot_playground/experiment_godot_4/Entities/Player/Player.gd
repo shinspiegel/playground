@@ -8,13 +8,16 @@ const MIN_JUMP_HEIGHT: float = BLOCK_SIZE * 2
 const JUMP_TIME_TO_PEAK: float = 0.45
 const JUMP_TIME_TO_DESCENT: float = 0.35
 
+@export var stats: Resource
 
 @onready var jump_power: float = ((2.0 * MAX_JUMP_HEIGHT) / JUMP_TIME_TO_PEAK) * -1
 @onready var jump_gravity: float = ((-2.0 * MAX_JUMP_HEIGHT) / (JUMP_TIME_TO_PEAK * JUMP_TIME_TO_PEAK)) * -1
 @onready var fall_gravity: float = ((-2.0 * MAX_JUMP_HEIGHT) / (JUMP_TIME_TO_DESCENT * JUMP_TIME_TO_DESCENT)) * -1
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var state_manager: StateManager = $StateManager
+@onready var hurt_box: HurtBox = $HurtBox
 @onready var coyote_timer: Timer = $Timers/CoyoteTimer
+@onready var invencible_timer: Timer = $Timers/InvencibleTimer
 @onready var jump_buffer_ray: RayCast2D = $Sensor/JumpBuffer
 
 
@@ -148,8 +151,15 @@ func setup_player_stats() -> void:
 
 
 func setup_hurt_box() -> void:
-	# TODO: Create hurtbox entity
-	pass
+	hurt_box.hit_received.connect(func (hit: HitBox):
+		var is_inv_timeout = invencible_timer.time_left <= 0.0
+		var is_not_hit = not state_manager.current_state.name == "Hit"
+		
+		if is_inv_timeout and is_not_hit:
+			invencible_timer.start()
+			change_state("Hit")
+			state_manager.send_message("hit", hit)
+	)
 
 
 func setup_initial_animation() -> void:

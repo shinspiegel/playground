@@ -7,7 +7,8 @@ func enter() -> void:
 		
 		var last_state = target.state_manager.get_last_state()
 		
-		if not last_state == "Jump":
+		var ignore_coyote_states = ["Jump", "Hit"]
+		if not ignore_coyote_states.has(last_state):
 			target.coyote_timer.start()
 
 

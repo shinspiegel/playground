@@ -1,12 +1,14 @@
-[gd_scene load_steps=15 format=3 uid="uid://bgftcfhbs2meo"]
+[gd_scene load_steps=18 format=3 uid="uid://bgftcfhbs2meo"]
 
 [ext_resource type="Script" path="res://Entities/Player/Player.gd" id="1_2g0ju"]
 [ext_resource type="Texture2D" uid="uid://18pt8pi3yk2b" path="res://Entities/Player/Assets/Player.png" id="1_tq2ic"]
+[ext_resource type="PackedScene" uid="uid://d2hte1d3lg16j" path="res://Entities/Hit and HurtBox/HurtBox.tscn" id="3_apwrn"]
 [ext_resource type="PackedScene" uid="uid://c8j2todepjq0u" path="res://Entities/StateManager/StateManager.tscn" id="3_jkd63"]
 [ext_resource type="Script" path="res://Entities/Player/States/Idle.gd" id="4_t65ck"]
 [ext_resource type="Script" path="res://Entities/Player/States/Move.gd" id="5_x0xk3"]
 [ext_resource type="Script" path="res://Entities/Player/States/Jump.gd" id="6_oqbk4"]
 [ext_resource type="Script" path="res://Entities/Player/States/Falling.gd" id="7_faaxl"]
+[ext_resource type="Script" path="res://Entities/Player/States/Hit.gd" id="8_8bhai"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sjw5r"]
 size = Vector2(9, 28)
@@ -25,6 +27,22 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [5]
+}
+
+[sub_resource type="Animation" id="Animation_ypilr"]
+resource_name = "Hit"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [7, 8, 7, 8]
 }
 
 [sub_resource type="Animation" id="Animation_sj56x"]
@@ -76,40 +94,29 @@ tracks/0/keys = {
 "values": [1, 2, 3, 4, 3]
 }
 
-[sub_resource type="Animation" id="Animation_kwfcv"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [1]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_h5qf5"]
 _data = {
 "Falling": SubResource("Animation_tmqa7"),
+"Hit": SubResource("Animation_ypilr"),
 "Idle": SubResource("Animation_sj56x"),
 "Jump": SubResource("Animation_ik5sf"),
-"Move": SubResource("Animation_41msd"),
-"RESET": SubResource("Animation_kwfcv")
+"Move": SubResource("Animation_41msd")
 }
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s8vjs"]
+size = Vector2(9, 28)
 
 [node name="Player" type="CharacterBody2D"]
 texture_filter = 1
 collision_mask = 2
+safe_margin = 0.1
 script = ExtResource("1_2g0ju")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_tq2ic")
 hframes = 5
 vframes = 6
-frame = 1
+frame = 7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, 2)
@@ -120,9 +127,19 @@ libraries = {
 "": SubResource("AnimationLibrary_h5qf5")
 }
 
+[node name="HurtBox" parent="." instance=ExtResource("3_apwrn")]
+
+[node name="CollisionShape2d" parent="HurtBox" index="0"]
+position = Vector2(0.5, 2)
+shape = SubResource("RectangleShape2D_s8vjs")
+
 [node name="Timers" type="Node" parent="."]
 
 [node name="CoyoteTimer" type="Timer" parent="Timers"]
+wait_time = 0.15
+one_shot = true
+
+[node name="InvencibleTimer" type="Timer" parent="Timers"]
 one_shot = true
 
 [node name="Sensor" type="Node2D" parent="."]
@@ -147,3 +164,8 @@ script = ExtResource("6_oqbk4")
 
 [node name="Falling" type="Node2D" parent="StateManager"]
 script = ExtResource("7_faaxl")
+
+[node name="Hit" type="Node2D" parent="StateManager"]
+script = ExtResource("8_8bhai")
+
+[editable path="HurtBox"]
