@@ -8,5 +8,5 @@ func enter() -> void:
 
 func process(delta: float) -> void:
 	if target is Player:
-		target.apply_horizontal(target.input.direction, target.SPEED, 0.7)
+		target.apply_horizontal(target.input.direction, target.speed, 0.7)
 		target.apply_gravity(delta)

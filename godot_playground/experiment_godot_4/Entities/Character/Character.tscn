@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://tl75ygyq2rbu"]
+
+[ext_resource type="Script" path="res://Entities/Character/Character.gd" id="1_7g1yt"]
+[ext_resource type="PackedScene" uid="uid://d2hte1d3lg16j" path="res://Entities/Hit and HurtBox/HurtBox.tscn" id="1_fvt6i"]
+[ext_resource type="PackedScene" uid="uid://c8j2todepjq0u" path="res://Entities/StateManager/StateManager.tscn" id="2_21wc8"]
+
+[node name="CharacterBase" type="CharacterBody2D"]
+script = ExtResource("1_7g1yt")
+
+[node name="Sprite2d" type="Sprite2D" parent="."]
+
+[node name="CollisionShape2d" type="CollisionShape2D" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="HurtBox" parent="." instance=ExtResource("1_fvt6i")]
+
+[node name="Timers" type="Node" parent="."]
+
+[node name="Sensors" type="Node2D" parent="."]
+
+[node name="StateManager" parent="." instance=ExtResource("2_21wc8")]
+
+[editable path="HurtBox"]

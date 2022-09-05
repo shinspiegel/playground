@@ -1,7 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://cfpdq48gxgdem"]
+[gd_scene load_steps=7 format=3 uid="uid://bisiwu68an72u"]
 
-[ext_resource type="PackedScene" uid="uid://bgftcfhbs2meo" path="res://Entities/Player/Player.tscn" id="1_0y1q6"]
 [ext_resource type="Script" path="res://Level.gd" id="1_dlwcx"]
+[ext_resource type="PackedScene" uid="uid://dw1tr0i1ol72p" path="res://Entities/Player/Player.tscn" id="3_4yghp"]
 [ext_resource type="PackedScene" uid="uid://chq14to8mqflu" path="res://Entities/Hit and HurtBox/HitBox.tscn" id="3_sjefp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uofiu"]
@@ -28,9 +28,6 @@ shape = SubResource("RectangleShape2D_uofiu")
 position = Vector2(263, 124)
 shape = SubResource("RectangleShape2D_jdk4w")
 
-[node name="Player" parent="." instance=ExtResource("1_0y1q6")]
-position = Vector2(216, 96)
-
 [node name="Label" type="Label" parent="."]
 offset_left = 8.0
 offset_top = 8.0
@@ -45,5 +42,8 @@ position = Vector2(264, 96)
 [node name="CollisionShape2d" parent="HitBox" index="0"]
 position = Vector2(0, 8)
 shape = SubResource("RectangleShape2D_syapb")
+
+[node name="Player" parent="." instance=ExtResource("3_4yghp")]
+position = Vector2(16, 120)
 
 [editable path="HitBox"]

@@ -12,9 +12,9 @@ func _ready() -> void:
 	update_label()
 
 
-func player_hp_changed(val, max) -> void:
+func player_hp_changed(val, max_hp) -> void:
 	curr_hp = val
-	curr_max = max
+	curr_max = max_hp
 	update_label()
 
 

@@ -21,7 +21,7 @@ func process(delta: float) -> void:
 	if target is Player:
 		update_animation()
 		
-		target.apply_horizontal(target.input.direction, target.SPEED, 0.7)
+		target.apply_horizontal(target.input.direction, target.speed, 0.7)
 		
 		if target.coyote_timer.time_left == 0.0:
 			target.apply_gravity(delta)
