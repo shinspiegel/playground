@@ -1,0 +1,95 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+_global_script_classes=[{
+"base": "Node2D",
+"class": &"BaseState",
+"language": &"GDScript",
+"path": "res://Entities/StateManager/BaseState.gd"
+}, {
+"base": "CharacterBody2D",
+"class": &"Character",
+"language": &"GDScript",
+"path": "res://Entities/Character/Character.gd"
+}, {
+"base": "Resource",
+"class": &"Damage",
+"language": &"GDScript",
+"path": "res://Resources/Damage.gd"
+}, {
+"base": "Area2D",
+"class": &"HitBox",
+"language": &"GDScript",
+"path": "res://Entities/Hit and HurtBox/HitBox.gd"
+}, {
+"base": "Area2D",
+"class": &"HurtBox",
+"language": &"GDScript",
+"path": "res://Entities/Hit and HurtBox/HurtBox.gd"
+}, {
+"base": "Character",
+"class": &"Player",
+"language": &"GDScript",
+"path": "res://Entities/Player/Player.gd"
+}, {
+"base": "CharacterBody2D",
+"class": &"Player1",
+"language": &"GDScript",
+"path": "res://Entities/Player/Assets/LegacyPlayer.gd"
+}, {
+"base": "Resource",
+"class": &"PlayerData",
+"language": &"GDScript",
+"path": "res://Entities/Player/Resources/PlayerData.gd"
+}, {
+"base": "Node2D",
+"class": &"StateManager",
+"language": &"GDScript",
+"path": "res://Entities/StateManager/StateManager.gd"
+}]
+_global_script_class_icons={
+"BaseState": "",
+"Character": "",
+"Damage": "",
+"HitBox": "",
+"HurtBox": "",
+"Player": "",
+"Player1": "",
+"PlayerData": "",
+"StateManager": ""
+}
+
+[application]
+
+config/name="experiment_godot_4"
+run/main_scene="res://Level.tscn"
+config/features=PackedStringArray("4.0", "Vulkan Clustered")
+config/icon="res://icon.png"
+
+[autoload]
+
+SignalBus="*res://Globals/SignalBus.gd"
+Constants="*res://Globals/Constants.gd"
+
+[display]
+
+window/size/viewport_width=320
+window/size/viewport_height=160
+window/size/resizable=false
+window/size/window_width_override=1280
+window/size/window_height_override=640
+window/stretch/mode="viewport"
+
+[layer_names]
+
+2d_physics/layer_1="Player"
+2d_physics/layer_2="Level"
+2d_physics/layer_3="Enemies"
+2d_physics/layer_4="Hazards"

@@ -1,0 +1,49 @@
+[gd_scene load_steps=7 format=3 uid="uid://bisiwu68an72u"]
+
+[ext_resource type="Script" path="res://Level.gd" id="1_dlwcx"]
+[ext_resource type="PackedScene" uid="uid://dw1tr0i1ol72p" path="res://Entities/Player/Player.tscn" id="3_4yghp"]
+[ext_resource type="PackedScene" uid="uid://chq14to8mqflu" path="res://Entities/Hit and HurtBox/HitBox.tscn" id="3_sjefp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uofiu"]
+size = Vector2(336, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jdk4w"]
+size = Vector2(130, 24)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_syapb"]
+size = Vector2(16, 16)
+
+[node name="Level" type="Node2D"]
+script = ExtResource("1_dlwcx")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(160, 156)
+shape = SubResource("RectangleShape2D_uofiu")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(263, 124)
+shape = SubResource("RectangleShape2D_jdk4w")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 72.0
+offset_bottom = 40.0
+text = "STATE:
+"
+
+[node name="HitBox" parent="." instance=ExtResource("3_sjefp")]
+position = Vector2(264, 96)
+
+[node name="CollisionShape2d" parent="HitBox" index="0"]
+position = Vector2(0, 8)
+shape = SubResource("RectangleShape2D_syapb")
+
+[node name="Player" parent="." instance=ExtResource("3_4yghp")]
+position = Vector2(16, 120)
+
+[editable path="HitBox"]
