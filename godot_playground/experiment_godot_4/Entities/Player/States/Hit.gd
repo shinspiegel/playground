@@ -2,6 +2,7 @@ extends BaseState
 
 signal thing
 
+
 func enter() -> void:
 	if target is Player:
 		target.change_animation(name)
@@ -24,14 +25,16 @@ func process(delta: float) -> void:
 func receive_message(id: String, message) -> void:
 	if target is Player:
 		match id:
-			"hit": if message is HitBox: apply_hit(message)
+			"hit":
+				if message is HitBox:
+					apply_hit(message)
 
 
 func apply_hit(hit: HitBox) -> void:
 	if target is Player:
 		var diff = hit.global_position.x - target.global_position.x
 		var direction = clampi(diff, -1, 1) * -1
-		
+
 		target.apply_horizontal(direction, hit.damage.power.x)
 		target.apply_vertical(hit.damage.power.y)
 

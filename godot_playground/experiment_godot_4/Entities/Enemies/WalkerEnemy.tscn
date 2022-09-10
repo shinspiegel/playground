@@ -1,0 +1,125 @@
+[gd_scene load_steps=12 format=3 uid="uid://b3g210uivkiyg"]
+
+[ext_resource type="PackedScene" uid="uid://tl75ygyq2rbu" path="res://Entities/Character/Character.tscn" id="1_0ghur"]
+[ext_resource type="Script" path="res://Entities/Enemies/WalkerEnemy.gd" id="2_m1p3r"]
+[ext_resource type="Texture2D" uid="uid://18pt8pi3yk2b" path="res://Entities/Player/Assets/Player.png" id="2_vkx1e"]
+[ext_resource type="Script" path="res://Entities/Enemies/States/Idle.gd" id="4_ql78v"]
+[ext_resource type="Script" path="res://Entities/Enemies/States/Wander.gd" id="5_k32gv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dlxb7"]
+size = Vector2(9, 28)
+
+[sub_resource type="Animation" id="Animation_jkk1m"]
+resource_name = "Idle"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2d:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_03kxr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2d:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_s2jcm"]
+resource_name = "Wander"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2d:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [1, 2, 3, 4]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_trv7m"]
+_data = {
+"Idle": SubResource("Animation_jkk1m"),
+"RESET": SubResource("Animation_03kxr"),
+"Wander": SubResource("Animation_s2jcm")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s170b"]
+size = Vector2(9, 28)
+
+[node name="WalkerEnemy" instance=ExtResource("1_0ghur")]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("2_m1p3r")
+hit_points = 5
+
+[node name="Sprite2d" parent="." index="0"]
+texture = ExtResource("2_vkx1e")
+hframes = 5
+vframes = 6
+
+[node name="CollisionShape2d" parent="." index="1"]
+position = Vector2(0.5, 2)
+shape = SubResource("RectangleShape2D_dlxb7")
+
+[node name="AnimationPlayer" parent="." index="2"]
+libraries = {
+"": SubResource("AnimationLibrary_trv7m")
+}
+
+[node name="CollisionShape2d" parent="HurtBox" index="0"]
+position = Vector2(0.5, 2)
+shape = SubResource("RectangleShape2D_s170b")
+
+[node name="IdleLimitTime" type="Timer" parent="Timers" index="0"]
+one_shot = true
+
+[node name="WanderTime" type="Timer" parent="Timers" index="1"]
+
+[node name="FrontFloor" type="RayCast2D" parent="Sensors" index="0"]
+position = Vector2(5, 16)
+target_position = Vector2(0, 10)
+collision_mask = 2
+collide_with_areas = true
+
+[node name="FrontWall" type="RayCast2D" parent="Sensors" index="1"]
+position = Vector2(5, 8)
+target_position = Vector2(10, 0)
+collision_mask = 2
+
+[node name="StateManager" parent="." index="6"]
+max_history_lengh = 0
+initial_path = NodePath("Idle")
+target_path = NodePath("..")
+
+[node name="Idle" type="Node2D" parent="StateManager" index="0"]
+script = ExtResource("4_ql78v")
+idle_timer_path = NodePath("../../Timers/IdleLimitTime")
+
+[node name="Wander" type="Node2D" parent="StateManager" index="1"]
+script = ExtResource("5_k32gv")
+front_floor_path = NodePath("../../Sensors/FrontFloor")
+front_wall_path = NodePath("../../Sensors/FrontWall")
+state_after_collide_path = NodePath("../Idle")
+
+[editable path="HurtBox"]

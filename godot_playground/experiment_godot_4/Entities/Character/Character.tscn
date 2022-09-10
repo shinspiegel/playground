@@ -5,6 +5,9 @@
 [ext_resource type="PackedScene" uid="uid://c8j2todepjq0u" path="res://Entities/StateManager/StateManager.tscn" id="2_21wc8"]
 
 [node name="CharacterBase" type="CharacterBody2D"]
+texture_filter = 3
+collision_layer = 0
+collision_mask = 0
 script = ExtResource("1_7g1yt")
 
 [node name="Sprite2d" type="Sprite2D" parent="."]

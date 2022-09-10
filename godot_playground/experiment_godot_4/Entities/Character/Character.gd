@@ -21,13 +21,10 @@ var flip = { "is_active": true, "direction": 1 }
 
 func _physics_process(delta: float) -> void:
 	check_input()
-	
 	state_manager.apply(delta)
-	
 	check_flip()
-	check_change_state()
-	
 	move_and_slide()
+	check_change_state()
 
 
 func apply_horizontal(direction: float, override_speed: float = speed, ratio: float = 1.0 ) -> void:
