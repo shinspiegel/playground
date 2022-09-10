@@ -23,6 +23,11 @@ func check_change_state() -> void:
 		pass
 	
 	if current_state == "Wander":
-		if not front_floor_ray.is_colliding() or front_wall_ray.is_colliding():
-			print("Will change to idle")
+		if is_raycast_colliding():
 			change_state("Idle") 
+
+
+func is_raycast_colliding() -> bool:
+	if not front_floor_ray.is_colliding() or front_wall_ray.is_colliding():
+		return true
+	return false

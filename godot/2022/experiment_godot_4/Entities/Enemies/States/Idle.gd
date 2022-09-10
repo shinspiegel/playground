@@ -16,3 +16,8 @@ func enter() -> void:
 		target.change_animation(name)
 		target.velocity = Vector2.ZERO
 		idle_timer.start()
+
+
+func process(delta: float) -> void:
+	if target is Character:
+		target.apply_gravity(delta)

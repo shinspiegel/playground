@@ -32,7 +32,6 @@ func process(delta:float) -> void:
 	if target is Character:
 		if should_turn():
 			direction *= -1
-		print("Direction: ", direction)
 		target.apply_gravity(delta)
 		target.apply_horizontal(direction)
 
