@@ -11,10 +11,7 @@ extends Character
 func _ready() -> void:
 	idle_timer.timeout.connect(func(): change_state("Wander"))
 	wander_timer.timeout.connect(func(): change_state("Idle"))
-
-
-func check_input() -> void:
-	pass
+	hurt_box.hit_received.connect(on_reaceive_damage)
 
 
 func check_change_state() -> void:
@@ -26,3 +23,7 @@ func check_change_state() -> void:
 	if current_state == "Wander":
 		if not front_floor_ray.is_colliding() or front_wall_ray.is_colliding():
 			change_state("Idle")
+
+
+func on_reaceive_damage() -> void: 
+	pass
