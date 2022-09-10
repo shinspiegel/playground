@@ -25,5 +25,16 @@ func check_change_state() -> void:
 			change_state("Idle")
 
 
-func on_reaceive_damage() -> void: 
-	pass
+func hurt(damage: int) -> void:
+	if hit_points - damage <= 0:
+		hit_points = 0
+	else:
+		hit_points -= damage
+
+
+func on_reaceive_damage(hit: HitBox) -> void:
+	hurt(hit.damage.amount)
+	change_state("Hit")
+	state_manager.send_message("hit", hit)
+
+ 
