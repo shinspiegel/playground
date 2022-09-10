@@ -24,6 +24,11 @@ _global_script_classes=[{
 "language": &"GDScript",
 "path": "res://Resources/Damage.gd"
 }, {
+"base": "Character",
+"class": &"Enemy",
+"language": &"GDScript",
+"path": "res://Entities/Enemies/Enemy.gd"
+}, {
 "base": "Area2D",
 "class": &"HitBox",
 "language": &"GDScript",
@@ -53,6 +58,7 @@ _global_script_class_icons={
 "BaseState": "",
 "Character": "",
 "Damage": "",
+"Enemy": "",
 "HitBox": "",
 "HurtBox": "",
 "Player": "",

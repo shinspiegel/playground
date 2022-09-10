@@ -1,6 +1,4 @@
-extends Character
-
-@export var hit_points: int = 5
+extends Enemy
 
 @onready var idle_timer: Timer = $Timers/IdleLimitTime
 @onready var wander_timer: Timer = $Timers/WanderTime
@@ -9,9 +7,13 @@ extends Character
 
 
 func _ready() -> void:
+	super()
 	idle_timer.timeout.connect(func(): change_state("Wander"))
 	wander_timer.timeout.connect(func(): change_state("Idle"))
-	hurt_box.hit_received.connect(on_reaceive_damage)
+
+
+func check_input() -> void:
+	pass
 
 
 func check_change_state() -> void:
@@ -22,19 +24,5 @@ func check_change_state() -> void:
 	
 	if current_state == "Wander":
 		if not front_floor_ray.is_colliding() or front_wall_ray.is_colliding():
-			change_state("Idle")
-
-
-func hurt(damage: int) -> void:
-	if hit_points - damage <= 0:
-		hit_points = 0
-	else:
-		hit_points -= damage
-
-
-func on_reaceive_damage(hit: HitBox) -> void:
-	hurt(hit.damage.amount)
-	change_state("Hit")
-	state_manager.send_message("hit", hit)
-
- 
+			print("Will change to idle")
+			change_state("Idle") 
