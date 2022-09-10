@@ -1,4 +1,4 @@
-class_name Player1 extends CharacterBody2D
+extends CharacterBody2D
 
 const BLOCK_SIZE = 16
 const JUMP_VELOCITY = -400.0

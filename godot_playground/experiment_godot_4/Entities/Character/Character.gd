@@ -54,6 +54,7 @@ func get_gravity() -> float:
 
 
 func check_change_state() -> void:
+	print_debug("WARN:: Change state method is required to be implemented")
 	pass
 
 
@@ -81,4 +82,5 @@ func check_flip() -> void:
 
 
 func check_input() -> void:
+	print_debug("WARN:: Check input is required to be implemented")
 	pass

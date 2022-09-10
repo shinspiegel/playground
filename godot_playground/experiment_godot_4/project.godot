@@ -39,11 +39,6 @@ _global_script_classes=[{
 "language": &"GDScript",
 "path": "res://Entities/Player/Player.gd"
 }, {
-"base": "CharacterBody2D",
-"class": &"Player1",
-"language": &"GDScript",
-"path": "res://Entities/Player/Assets/LegacyPlayer.gd"
-}, {
 "base": "Resource",
 "class": &"PlayerData",
 "language": &"GDScript",
@@ -61,7 +56,6 @@ _global_script_class_icons={
 "HitBox": "",
 "HurtBox": "",
 "Player": "",
-"Player1": "",
 "PlayerData": "",
 "StateManager": ""
 }
