@@ -1,0 +1,35 @@
+name: Checks
+
+on: [push, pull_request]
+
+jobs:
+  checks:
+    name: Checks
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout sources
+        uses: actions/checkout@v2
+
+      - name: Install stable toolchain
+        uses: actions-rs/toolchain@v1
+        with:
+          profile: minimal
+          toolchain: stable
+          override: true
+
+      - name: Install stable deno
+        uses: denoland/setup-deno@v1
+        with:
+          deno-version: v1.x
+
+      - name: Run check
+        run: deno task check
+
+      - name: Run test:doc
+        run: deno task test:doc
+
+      - name: Run fmt
+        run: deno task fmt:check
+
+      - name: Run lint
+        run: deno task lint

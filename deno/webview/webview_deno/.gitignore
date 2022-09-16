@@ -1,0 +1,16 @@
+# ide
+.idea
+.vscode
+
+# plugin cache
+.deno_plugins/
+WebView2Loader.dll
+
+# webview build
+script/Microsoft*
+script/nuget.exe
+nuget.exe
+build/
+
+# MacOS
+.DS_Store
