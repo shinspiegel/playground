@@ -1,1 +1,0 @@
-deno compile -Ar -o app --unstable mod.ts
