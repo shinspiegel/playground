@@ -69,7 +69,7 @@ _global_script_class_icons={
 [application]
 
 config/name="experiment_godot_4"
-run/main_scene="res://levels/level.tscn"
+run/main_scene="res://entities/game_manager/game_manager.tscn"
 config/features=PackedStringArray("4.0", "Vulkan Clustered")
 config/icon="res://icon.png"
 
