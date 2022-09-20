@@ -12,47 +12,47 @@ _global_script_classes=[{
 "base": "Node2D",
 "class": &"BaseState",
 "language": &"GDScript",
-"path": "res://Entities/StateManager/BaseState.gd"
+"path": "res://entities/state_manager/base_state.gd"
 }, {
 "base": "CharacterBody2D",
 "class": &"Character",
 "language": &"GDScript",
-"path": "res://Entities/Character/Character.gd"
+"path": "res://entities/character/character.gd"
 }, {
 "base": "Resource",
 "class": &"Damage",
 "language": &"GDScript",
-"path": "res://Resources/Damage.gd"
+"path": "res://resources/damage.gd"
 }, {
 "base": "Character",
 "class": &"Enemy",
 "language": &"GDScript",
-"path": "res://Entities/Enemies/Enemy.gd"
+"path": "res://entities/enemies/enemy.gd"
 }, {
 "base": "Area2D",
 "class": &"HitBox",
 "language": &"GDScript",
-"path": "res://Entities/Hit and HurtBox/HitBox.gd"
+"path": "res://entities/boxes/hit_box.gd"
 }, {
 "base": "Area2D",
 "class": &"HurtBox",
 "language": &"GDScript",
-"path": "res://Entities/Hit and HurtBox/HurtBox.gd"
+"path": "res://entities/boxes/hurt_box.gd"
 }, {
 "base": "Character",
 "class": &"Player",
 "language": &"GDScript",
-"path": "res://Entities/Player/Player.gd"
+"path": "res://entities/player/player.gd"
 }, {
 "base": "Resource",
 "class": &"PlayerData",
 "language": &"GDScript",
-"path": "res://Entities/Player/Resources/PlayerData.gd"
+"path": "res://entities/player/resources/player_data.gd"
 }, {
 "base": "Node2D",
 "class": &"StateManager",
 "language": &"GDScript",
-"path": "res://Entities/StateManager/StateManager.gd"
+"path": "res://entities/state_manager/state_manager.gd"
 }]
 _global_script_class_icons={
 "BaseState": "",
@@ -69,20 +69,19 @@ _global_script_class_icons={
 [application]
 
 config/name="experiment_godot_4"
-run/main_scene="res://Level.tscn"
+run/main_scene="res://levels/level.tscn"
 config/features=PackedStringArray("4.0", "Vulkan Clustered")
 config/icon="res://icon.png"
 
 [autoload]
 
-SignalBus="*res://Globals/SignalBus.gd"
-Constants="*res://Globals/Constants.gd"
+SignalBus="*res://globals/signal_bus.gd"
+Constants="*res://globals/constants.gd"
 
 [display]
 
 window/size/viewport_width=320
 window/size/viewport_height=160
-window/size/resizable=false
 window/size/window_width_override=1280
 window/size/window_height_override=640
 window/stretch/mode="viewport"

@@ -1,9 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://bisiwu68an72u"]
+[gd_scene load_steps=8 format=3]
 
-[ext_resource type="Script" path="res://Level.gd" id="1_dlwcx"]
-[ext_resource type="PackedScene" uid="uid://dw1tr0i1ol72p" path="res://Entities/Player/Player.tscn" id="3_4yghp"]
-[ext_resource type="PackedScene" uid="uid://chq14to8mqflu" path="res://Entities/Hit and HurtBox/HitBox.tscn" id="3_sjefp"]
-[ext_resource type="PackedScene" uid="uid://b3g210uivkiyg" path="res://Entities/Enemies/WalkerEnemy.tscn" id="4_j6u10"]
+[ext_resource type="Script" path="res://levels/level.gd" id="1_dlwcx"]
+[ext_resource type="PackedScene" path="res://entities/player/player.tscn" id="3_4yghp"]
+[ext_resource type="PackedScene" path="res://entities/boxes/hit_box.tscn" id="3_sjefp"]
+[ext_resource type="PackedScene" path="res://entities/enemies/walker_enemy.tscn" id="4_j6u10"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uofiu"]
 size = Vector2(336, 40)
@@ -49,6 +49,6 @@ position = Vector2(16, 120)
 collision_layer = 1
 
 [node name="WalkerEnemy" parent="." instance=ExtResource("4_j6u10")]
-position = Vector2(211, 84)
+position = Vector2(213, 85)
 
 [editable path="HitBox"]

@@ -1,10 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://b3g210uivkiyg"]
+[gd_scene load_steps=12 format=3]
 
-[ext_resource type="PackedScene" uid="uid://tl75ygyq2rbu" path="res://Entities/Character/Character.tscn" id="1_0ghur"]
-[ext_resource type="Script" path="res://Entities/Enemies/WalkerEnemy.gd" id="2_m1p3r"]
-[ext_resource type="Texture2D" uid="uid://18pt8pi3yk2b" path="res://Entities/Player/Assets/Player.png" id="2_vkx1e"]
-[ext_resource type="Script" path="res://Entities/Enemies/States/Idle.gd" id="4_ql78v"]
-[ext_resource type="Script" path="res://Entities/Enemies/States/Wander.gd" id="5_k32gv"]
+[ext_resource type="PackedScene" path="res://entities/character/character.tscn" id="1_0ghur"]
+[ext_resource type="Script" path="res://entities/enemies/walker_enemy.gd" id="2_m1p3r"]
+[ext_resource type="Texture2D" uid="uid://dwhp2ku4nagp" path="res://entities/player/assets/Player.png" id="2_vkx1e"]
+[ext_resource type="Script" path="res://entities/enemies/states/idle.gd" id="4_ql78v"]
+[ext_resource type="Script" path="res://entities/enemies/states/wander.gd" id="5_k32gv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dlxb7"]
 size = Vector2(9, 28)

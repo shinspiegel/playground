@@ -40,8 +40,8 @@ _global_script_class_icons={
 
 config/name="First-go Godot 4"
 run/main_scene="res://Levels/Level1.tscn"
-config/icon="res://icon.png"
 config/features=PackedStringArray("4.0", "Vulkan Clustered")
+config/icon="res://icon.png"
 
 [display]
 
