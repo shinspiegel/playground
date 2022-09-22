@@ -11,4 +11,4 @@ signal state_exited_for(target, state)
 
 
 # Level Change signals
-signal switch_to(target, position)
+signal switch_to(target_scene, position)
