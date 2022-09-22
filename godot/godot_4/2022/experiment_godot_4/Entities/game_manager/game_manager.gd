@@ -5,6 +5,7 @@ class_name GameManager extends Node2D
 @onready var levels = $Levels
 @onready var screens = $Screens
 
+var current_scene
 
 func _ready() -> void:
 	SignalBus.switch_to.connect(switch_to)
@@ -15,20 +16,20 @@ func switch_to(packed_scene: PackedScene, position: int = 0) -> void:
 	var scene = packed_scene.instantiate()
 	
 	if scene is BaseLevel:
-		clear_nodes()
+		__clear_nodes()
 		levels.add_child(scene)
 		scene.spawn_player_at(position)
 	
 	elif scene is BaseScreen:
-		clear_nodes()
+		__clear_nodes()
 		screens.add_child(scene)
 	
 	else:
 		print_debug("ERROR:: Failed to switch scene")
 
+# PRIVATE
 
-
-func clear_nodes() -> void:
+func __clear_nodes() -> void:
 	for level in levels.get_children():
 		level.queue_free()
 	

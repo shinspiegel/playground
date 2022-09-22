@@ -1,6 +1,5 @@
 class_name Player extends Character
 
-
 @export var stats: Resource
 
 @onready var coyote_timer: Timer = $Timers/CoyoteTimer
@@ -14,9 +13,9 @@ var input = { "direction": 0.0, "jump": false }
 func _ready() -> void:
 	hurt_box.hit_received.connect(on_receive_hit)
 	animation_player.play("Idle")
-	await get_tree().root.ready
 	SignalBus.player_hp_changed.emit(stats.hit_points, stats.max_hit_points)
 	SignalBus.state_entered_for.emit(self, state_manager.current_state.name)
+
 
 
 func check_change_state() -> void:

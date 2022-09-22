@@ -1,6 +1,5 @@
 extends Node
 
-
 const KEYS = {
 	"left": "ui_left", 
 	"right": "ui_right", 

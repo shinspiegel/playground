@@ -1,4 +1,4 @@
-class_name GameUI extends CanvasLayer
+class_name GameInterface extends CanvasLayer
 
 @onready var hp_label: Label = $MarginContainer/VBoxContainer/HP
 @onready var state_label: Label = $MarginContainer/VBoxContainer/State
