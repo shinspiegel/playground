@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://gx8hbqmuudsx"]
+[gd_scene load_steps=9 format=3 uid="uid://gx8hbqmuudsx"]
 
 [ext_resource type="Script" path="res://levels/base_level.gd" id="1_lg6ow"]
+[ext_resource type="PackedScene" uid="uid://dk7qh44ecdahp" path="res://entities/game_ui/game_ui.tscn" id="2_kfmop"]
 [ext_resource type="PackedScene" path="res://entities/player/player.tscn" id="3_4yghp"]
 [ext_resource type="PackedScene" path="res://entities/boxes/hit_box.tscn" id="3_sjefp"]
 [ext_resource type="PackedScene" path="res://entities/enemies/walker_enemy.tscn" id="4_j6u10"]
@@ -16,6 +17,15 @@ size = Vector2(16, 16)
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_lg6ow")
+player_scene = ExtResource("3_4yghp")
+
+[node name="GameUI" parent="." instance=ExtResource("2_kfmop")]
+
+[node name="SpawnPoints" type="Node2D" parent="."]
+
+[node name="Position_0" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(12, 120)
+gizmo_extents = 16.0
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 collision_layer = 2
@@ -29,24 +39,12 @@ shape = SubResource("RectangleShape2D_uofiu")
 position = Vector2(156, 124)
 shape = SubResource("RectangleShape2D_jdk4w")
 
-[node name="Label" type="Label" parent="."]
-offset_left = 8.0
-offset_top = 8.0
-offset_right = 72.0
-offset_bottom = 40.0
-text = "STATE:
-"
-
 [node name="HitBox" parent="." instance=ExtResource("3_sjefp")]
 position = Vector2(264, 96)
 
 [node name="CollisionShape2d" parent="HitBox" index="0"]
 position = Vector2(34, 32)
 shape = SubResource("RectangleShape2D_syapb")
-
-[node name="Player" parent="." instance=ExtResource("3_4yghp")]
-position = Vector2(16, 120)
-collision_layer = 1
 
 [node name="WalkerEnemy" parent="." instance=ExtResource("4_j6u10")]
 position = Vector2(213, 85)

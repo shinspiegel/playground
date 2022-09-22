@@ -1,29 +1,24 @@
 class_name BaseLevel extends Node2D
 
-@onready var label: Label = $Label
+@export var player_scene: PackedScene
 
-var curr_state := "NONE"
-var curr_hp := 99
-var curr_max := 99
+var spawn_points: Array[Marker2D] = []
+
 
 func _ready() -> void:
-	SignalBus.state_entered_for.connect(state_entered)
-	SignalBus.player_hp_changed.connect(player_hp_changed)
-	update_label()
+	setup_spawn_positions()
 
 
-func player_hp_changed(val, max_hp) -> void:
-	curr_hp = val
-	curr_max = max_hp
-	update_label()
+func spawn_player_at(position: int = 0):
+	if position >= spawn_points.size():
+		position = 0
+	
+	var player: Player = player_scene.instantiate()
+	add_child(player)
+	player.global_position = spawn_points[position].global_position
 
 
-func state_entered(target: Node2D, state: String) -> void:
-	if target is Player:
-		curr_state = state
-		update_label()
-
-
-func update_label() -> void:
-	label.text = """STATE: %s
-HP: %s/%s""" % [curr_state, curr_hp, curr_max]
+func setup_spawn_positions():
+	for point in $SpawnPoints.get_children():
+		if point is Marker2D:
+			spawn_points.append(point)

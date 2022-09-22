@@ -1,4 +1,6 @@
-extends Node2D
+class_name GameManager extends Node2D
+
+@export var initial_scene: PackedScene
 
 @onready var levels = $Levels
 @onready var screens = $Screens
@@ -6,6 +8,7 @@ extends Node2D
 
 func _ready() -> void:
 	SignalBus.switch_to.connect(switch_to)
+	switch_to(initial_scene)
 
 
 func switch_to(packed_scene: PackedScene, position: int = 0) -> void:
@@ -14,6 +17,7 @@ func switch_to(packed_scene: PackedScene, position: int = 0) -> void:
 	if scene is BaseLevel:
 		clear_nodes()
 		levels.add_child(scene)
+		scene.spawn_player_at(position)
 	
 	elif scene is BaseScreen:
 		clear_nodes()

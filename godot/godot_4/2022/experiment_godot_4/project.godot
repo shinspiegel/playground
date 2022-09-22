@@ -39,6 +39,16 @@ _global_script_classes=[{
 "language": &"GDScript",
 "path": "res://entities/enemies/enemy.gd"
 }, {
+"base": "Node2D",
+"class": &"GameManager",
+"language": &"GDScript",
+"path": "res://entities/game_manager/game_manager.gd"
+}, {
+"base": "CanvasLayer",
+"class": &"GameUI",
+"language": &"GDScript",
+"path": "res://entities/game_ui/game_ui.gd"
+}, {
 "base": "Area2D",
 "class": &"HitBox",
 "language": &"GDScript",
@@ -71,6 +81,8 @@ _global_script_class_icons={
 "Character": "",
 "Damage": "",
 "Enemy": "",
+"GameManager": "",
+"GameUI": "",
 "HitBox": "",
 "HurtBox": "",
 "Player": "",

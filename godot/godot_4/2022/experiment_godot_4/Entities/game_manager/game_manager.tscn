@@ -5,9 +5,8 @@
 
 [node name="GameManager" type="Node2D"]
 script = ExtResource("1_q8kdl")
+initial_scene = ExtResource("2_p1abw")
 
 [node name="Levels" type="Node2D" parent="."]
 
 [node name="Screens" type="CanvasLayer" parent="."]
-
-[node name="StartScreen" parent="Screens" instance=ExtResource("2_p1abw")]
