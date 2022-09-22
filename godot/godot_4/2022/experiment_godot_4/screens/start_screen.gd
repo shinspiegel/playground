@@ -1,7 +1,7 @@
-extends Control
+extends BaseScreen
 
-var start_button: Button = %Start
-var quit_button: Button = %Quit
+@onready var start_button: Button = %Start
+@onready var quit_button: Button = %Quit
 
 
 func _ready():
@@ -15,7 +15,7 @@ func _exit_tree():
 
 
 func start_press():
-	SignalBus.switch_to.emit(Constants.LEVELS.level_1, 0)
+	SignalBus.switch_to.emit(Constants.LEVELS.level_1)
 
 
 func quit_press():

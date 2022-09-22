@@ -1,4 +1,4 @@
-extends Node2D
+class_name BaseLevel extends Node2D
 
 @onready var label: Label = $Label
 

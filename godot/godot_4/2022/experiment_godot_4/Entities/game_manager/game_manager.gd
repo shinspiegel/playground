@@ -4,24 +4,24 @@ extends Node2D
 @onready var screens = $Screens
 
 
-
-
 func _ready() -> void:
 	SignalBus.switch_to.connect(switch_to)
 
 
-func switch_to(target: String, position: int = 0) -> void:
-	if Constants.LEVELS.has(target):
-		clear_nodes()
-		levels.add_child(Constants.LEVELS[target].instantiate())
-		# TODO: Add logic to spawn player
+func switch_to(packed_scene: PackedScene, position: int = 0) -> void:
+	var scene = packed_scene.instantiate()
 	
-	elif Constants.SCREENS.has(target):
+	if scene is BaseLevel:
 		clear_nodes()
-		screens.add_child(Constants.SCREENS[target].instantiate())
+		levels.add_child(scene)
+	
+	elif scene is BaseScreen:
+		clear_nodes()
+		screens.add_child(scene)
 	
 	else:
-		print_debug("ERROR:: Failed to locate target [%s]" % [target])
+		print_debug("ERROR:: Failed to switch scene")
+
 
 
 func clear_nodes() -> void:
