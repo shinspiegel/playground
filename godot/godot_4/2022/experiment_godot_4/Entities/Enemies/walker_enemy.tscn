@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" path="res://entities/character/character.tscn" id="1_0ghur"]
 [ext_resource type="Script" path="res://entities/enemies/walker_enemy.gd" id="2_m1p3r"]
-[ext_resource type="Texture2D" uid="uid://dwhp2ku4nagp" path="res://entities/player/assets/Player.png" id="2_vkx1e"]
+[ext_resource type="Texture2D" path="res://assets/graphics/player/Player.png" id="2_vkx1e"]
 [ext_resource type="Script" path="res://entities/enemies/states/idle.gd" id="4_ql78v"]
 [ext_resource type="Script" path="res://entities/enemies/states/wander.gd" id="5_k32gv"]
 

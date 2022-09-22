@@ -13,6 +13,10 @@ const KEYS = {
 }
 
 
+var MUSICS = {
+	"test_music": load("res://assets/music/song18.ogg")
+}
+
 var SCREENS = {
 	"start_screen": load("res://screens/start_screen.tscn"),
 }

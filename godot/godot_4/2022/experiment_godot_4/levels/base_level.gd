@@ -3,6 +3,7 @@ class_name BaseLevel extends Node2D
 @export var player_scene: PackedScene
 @export var level_width: int = 1
 @export var level_height: int = 1
+@export var music: String = "test_music"
 
 @onready var level_camera: Camera2D = $LevelAreaLimit/LevelCamera
 @onready var camera_top_left: Marker2D = $LevelAreaLimit/TopLeft
@@ -23,6 +24,11 @@ func _ready() -> void:
 	level_camera.limit_left = int(camera_top_left.global_position.x)
 	level_camera.limit_bottom = int(camera_bottom_right.global_position.y)
 	level_camera.limit_right = int(camera_bottom_right.global_position.x)
+	
+	if Constants.MUSICS.has(music):
+		SignalBus.play_background_music.emit(Constants.MUSICS[music])
+	else:
+		print_debug("WARN:: Failed to find music to the level")
 
 
 func spawn_player_at(spawn_position: int = 0):

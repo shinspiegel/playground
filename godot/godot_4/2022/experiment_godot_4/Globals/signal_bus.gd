@@ -10,5 +10,6 @@ signal state_entered_for(target, state)
 signal state_exited_for(target, state)
 
 
-# Level Change signals
+# Level signals
 signal switch_to(target_scene, position)
+signal play_background_music(music_name, volume_adjust)

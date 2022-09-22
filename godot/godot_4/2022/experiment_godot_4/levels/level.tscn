@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://levels/base_level.gd" id="1_lg6ow"]
 [ext_resource type="PackedScene" uid="uid://dk7qh44ecdahp" path="res://entities/game_ui/game_ui.tscn" id="2_kfmop"]
-[ext_resource type="PackedScene" uid="uid://dcpyvljxj2k77" path="res://entities/player/player.tscn" id="3_4yghp"]
+[ext_resource type="PackedScene" path="res://entities/player/player.tscn" id="3_4yghp"]
 [ext_resource type="PackedScene" path="res://entities/boxes/hit_box.tscn" id="3_sjefp"]
 [ext_resource type="PackedScene" path="res://entities/enemies/walker_enemy.tscn" id="4_j6u10"]
 

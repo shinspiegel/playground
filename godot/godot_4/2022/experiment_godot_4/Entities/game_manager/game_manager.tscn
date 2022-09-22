@@ -10,3 +10,5 @@ initial_scene = ExtResource("2_p1abw")
 [node name="Levels" type="Node2D" parent="."]
 
 [node name="Screens" type="CanvasLayer" parent="."]
+
+[node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
