@@ -1,7 +1,7 @@
 extends Node
 
 
-const SCREEN_SIZE = {
+const LEVEL_SIZE = {
 	"height": 160,
 	"width": 320,
 }

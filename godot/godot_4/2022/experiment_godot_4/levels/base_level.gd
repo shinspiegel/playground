@@ -16,8 +16,8 @@ func _ready() -> void:
 		if point is Marker2D:
 			spawn_points.append(point)
 	
-	camera_bottom_right.global_position.x = Constants.SCREEN_SIZE.width * level_width
-	camera_bottom_right.global_position.y = Constants.SCREEN_SIZE.height * level_height
+	camera_bottom_right.global_position.x = Constants.LEVEL_SIZE.width * level_width
+	camera_bottom_right.global_position.y = Constants.LEVEL_SIZE.height * level_height
 	
 	level_camera.limit_top = int(camera_top_left.global_position.y)
 	level_camera.limit_left = int(camera_top_left.global_position.x)
