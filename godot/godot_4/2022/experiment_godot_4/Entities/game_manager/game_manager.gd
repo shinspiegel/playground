@@ -12,13 +12,13 @@ func _ready() -> void:
 	switch_to(initial_scene)
 
 
-func switch_to(packed_scene: PackedScene, position: int = 0) -> void:
+func switch_to(packed_scene: PackedScene, spawn_index: int = 0) -> void:
 	var scene = packed_scene.instantiate()
 	
 	if scene is BaseLevel:
 		__clear_nodes()
 		levels.add_child(scene)
-		scene.spawn_player_at(position)
+		scene.spawn_player_at(spawn_index)
 	
 	elif scene is BaseScreen:
 		__clear_nodes()

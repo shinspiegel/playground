@@ -5,6 +5,7 @@ extends BaseScreen
 
 
 func _ready():
+	start_button.grab_focus()
 	start_button.pressed.connect(start_press)
 	quit_button.pressed.connect(quit_press)
 

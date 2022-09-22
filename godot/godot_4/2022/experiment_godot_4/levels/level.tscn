@@ -2,12 +2,12 @@
 
 [ext_resource type="Script" path="res://levels/base_level.gd" id="1_lg6ow"]
 [ext_resource type="PackedScene" uid="uid://dk7qh44ecdahp" path="res://entities/game_ui/game_ui.tscn" id="2_kfmop"]
-[ext_resource type="PackedScene" path="res://entities/player/player.tscn" id="3_4yghp"]
+[ext_resource type="PackedScene" uid="uid://dcpyvljxj2k77" path="res://entities/player/player.tscn" id="3_4yghp"]
 [ext_resource type="PackedScene" path="res://entities/boxes/hit_box.tscn" id="3_sjefp"]
 [ext_resource type="PackedScene" path="res://entities/enemies/walker_enemy.tscn" id="4_j6u10"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uofiu"]
-size = Vector2(336, 40)
+size = Vector2(320, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jdk4w"]
 size = Vector2(130, 24)
@@ -21,6 +21,16 @@ player_scene = ExtResource("3_4yghp")
 
 [node name="GameUI" parent="." instance=ExtResource("2_kfmop")]
 
+[node name="LevelAreaLimit" type="Node2D" parent="."]
+
+[node name="LevelCamera" type="Camera2D" parent="LevelAreaLimit"]
+current = true
+
+[node name="TopLeft" type="Marker2D" parent="LevelAreaLimit"]
+
+[node name="BottomRight" type="Marker2D" parent="LevelAreaLimit"]
+position = Vector2(320, 160)
+
 [node name="SpawnPoints" type="Node2D" parent="."]
 
 [node name="Position_0" type="Marker2D" parent="SpawnPoints"]
@@ -32,11 +42,15 @@ collision_layer = 2
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(160, 156)
+position = Vector2(160, 149)
+shape = SubResource("RectangleShape2D_uofiu")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(480, 149)
 shape = SubResource("RectangleShape2D_uofiu")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(156, 124)
+position = Vector2(156, 127)
 shape = SubResource("RectangleShape2D_jdk4w")
 
 [node name="HitBox" parent="." instance=ExtResource("3_sjefp")]
@@ -47,6 +61,6 @@ position = Vector2(34, 32)
 shape = SubResource("RectangleShape2D_syapb")
 
 [node name="WalkerEnemy" parent="." instance=ExtResource("4_j6u10")]
-position = Vector2(213, 85)
+position = Vector2(213, 88)
 
 [editable path="HitBox"]

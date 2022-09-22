@@ -3,7 +3,7 @@ class_name Character extends CharacterBody2D
 const BLOCK_SIZE = 16
 
 @export var speed: float = BLOCK_SIZE * 10.0
-@export var jump_velocity: int = -400.0
+@export var jump_velocity: float = -400.0
 @export var jump_max_height: float = BLOCK_SIZE * 3
 @export var jump_min_heith: float = BLOCK_SIZE * 2
 @export var jump_time_to_peak: float = 0.45

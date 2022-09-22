@@ -6,6 +6,7 @@ class_name Player extends Character
 @onready var invencible_timer: Timer = $Timers/InvencibilityTimer
 @onready var jump_buffer_back_ray: RayCast2D = $Sensors/JumpBufferBack
 @onready var jump_buffer_front_ray: RayCast2D = $Sensors/JumpBufferFront
+@onready var remote_transform: RemoteTransform2D = $CameraTransform
 
 var input = { "direction": 0.0, "jump": false }
 
@@ -15,7 +16,6 @@ func _ready() -> void:
 	animation_player.play("Idle")
 	SignalBus.player_hp_changed.emit(stats.hit_points, stats.max_hit_points)
 	SignalBus.state_entered_for.emit(self, state_manager.current_state.name)
-
 
 
 func check_change_state() -> void:
@@ -72,7 +72,7 @@ func check_input() -> void:
 	)
 
 
-func on_receive_hit(hit: HitBox):
+func on_receive_hit(hit: HitBox) -> void:
 	var is_inv_timeout = invencible_timer.time_left <= 0.0
 	var is_not_hit = not state_manager.current_state.name == "Hit"
 	
@@ -85,3 +85,7 @@ func on_receive_hit(hit: HitBox):
 		
 		if stats.hit_points <= 0:
 			SignalBus.player_died.emit()
+
+
+func set_camera_on_remote(camera: Camera2D) -> void:
+	remote_transform.set_remote_node(camera.get_path())

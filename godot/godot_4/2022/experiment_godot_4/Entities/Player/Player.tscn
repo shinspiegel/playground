@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3]
+[gd_scene load_steps=19 format=3 uid="uid://dcpyvljxj2k77"]
 
 [ext_resource type="PackedScene" path="res://entities/character/character.tscn" id="1_l0p38"]
 [ext_resource type="Texture2D" uid="uid://dwhp2ku4nagp" path="res://entities/player/assets/Player.png" id="2_8a5j7"]
@@ -123,7 +123,6 @@ _data = {
 size = Vector2(9, 28)
 
 [node name="Player" instance=ExtResource("1_l0p38")]
-texture_filter = 3
 collision_mask = 2
 script = ExtResource("2_d6x48")
 stats = ExtResource("3_d5n0e")
@@ -141,6 +140,8 @@ shape = SubResource("RectangleShape2D_dexg5")
 libraries = {
 "": SubResource("AnimationLibrary_7akhy")
 }
+
+[node name="CameraTransform" type="RemoteTransform2D" parent="." index="3"]
 
 [node name="CollisionShape2d" parent="HurtBox" index="0"]
 position = Vector2(0.5, 2)
