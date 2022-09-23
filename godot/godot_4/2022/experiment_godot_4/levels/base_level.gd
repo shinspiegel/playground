@@ -28,7 +28,7 @@ func _ready() -> void:
 	if Constants.MUSICS.has(music):
 		SignalBus.play_background_music.emit(Constants.MUSICS[music])
 	else:
-		print_debug("WARN:: Failed to find music to the level")
+		print_debug("WARN:: Failed to find music to level")
 
 
 func spawn_player_at(spawn_position: int = 0):

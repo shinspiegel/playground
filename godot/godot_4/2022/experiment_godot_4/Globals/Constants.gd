@@ -14,7 +14,8 @@ const KEYS = {
 
 
 var MUSICS = {
-	"test_music": load("res://assets/music/song18.ogg")
+	"test_music": load("res://assets/music/song18.ogg"),
+	"start": load("res://assets/music/b423b42.wav"),
 }
 
 var SCREENS = {
