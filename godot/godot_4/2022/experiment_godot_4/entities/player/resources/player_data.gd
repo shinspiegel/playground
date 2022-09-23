@@ -23,3 +23,7 @@ func set_hit_points(val: int) -> void:
 	
 	else: 
 		hit_points += val
+
+func reset() -> void:
+	max_hit_points = 5
+	hit_points = 5

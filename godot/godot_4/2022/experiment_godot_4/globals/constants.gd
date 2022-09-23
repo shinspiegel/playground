@@ -20,6 +20,7 @@ var MUSICS = {
 var SCREENS = {
 	"start": load("res://screens/start.tscn"),
 	"options": load("res://screens/options.tscn"),
+	"game_over": load("res://screens/game_over.tscn"),
 }
 
 

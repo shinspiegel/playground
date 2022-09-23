@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3]
+[gd_scene load_steps=4 format=3 uid="uid://d2sg0iqr1swvc"]
 
-[ext_resource type="Theme" path="res://resources/base_theme.tres" id="1_nnl17"]
+[ext_resource type="Theme" uid="uid://bdh577l5x72ff" path="res://resources/base_theme.tres" id="1_nnl17"]
 [ext_resource type="Script" path="res://screens/start.gd" id="2_daabj"]
+[ext_resource type="Resource" path="res://entities/player/resources/player_data.tres" id="3_jhk2h"]
 
 [node name="StartScreen" type="Control"]
 layout_mode = 3
@@ -12,8 +13,10 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_nnl17")
 script = ExtResource("2_daabj")
+player_data = ExtResource("3_jhk2h")
 
 [node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -22,6 +25,7 @@ grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
 anchors_preset = 13
 anchor_left = 0.5
 anchor_right = 0.5
@@ -36,6 +40,7 @@ theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
 offset_left = 10.0
 offset_top = 10.0
 offset_right = 130.0
@@ -44,6 +49,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Label2" type="Label" parent="MarginContainer/VBoxContainer2"]
+layout_mode = 2
 offset_right = 120.0
 offset_bottom = 17.0
 text = "Some Text"
@@ -52,6 +58,7 @@ vertical_alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer2"]
 custom_minimum_size = Vector2i(120, 0)
+layout_mode = 2
 offset_top = 21.0
 offset_right = 120.0
 offset_bottom = 95.0
@@ -61,12 +68,14 @@ alignment = 1
 
 [node name="Start" type="Button" parent="MarginContainer/VBoxContainer2/VBoxContainer"]
 unique_name_in_owner = true
+layout_mode = 2
 offset_right = 120.0
 offset_bottom = 22.0
 text = "Start"
 
 [node name="Options" type="Button" parent="MarginContainer/VBoxContainer2/VBoxContainer"]
 unique_name_in_owner = true
+layout_mode = 2
 offset_top = 26.0
 offset_right = 120.0
 offset_bottom = 48.0
@@ -74,13 +83,14 @@ text = "Options"
 
 [node name="Quit" type="Button" parent="MarginContainer/VBoxContainer2/VBoxContainer"]
 unique_name_in_owner = true
+layout_mode = 2
 offset_top = 52.0
 offset_right = 120.0
 offset_bottom = 74.0
 text = "Quit"
 
 [node name="Control" type="Control" parent="MarginContainer/VBoxContainer2"]
-layout_mode = 3
+layout_mode = 2
 anchors_preset = 0
 offset_top = 99.0
 offset_right = 120.0
@@ -88,6 +98,7 @@ offset_bottom = 119.0
 size_flags_vertical = 3
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer2"]
+layout_mode = 2
 offset_top = 123.0
 offset_right = 120.0
 offset_bottom = 140.0

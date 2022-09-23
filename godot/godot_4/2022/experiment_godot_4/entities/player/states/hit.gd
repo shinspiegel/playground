@@ -1,7 +1,5 @@
 extends BaseState
 
-signal thing
-
 
 func enter() -> void:
 	if target is Player:

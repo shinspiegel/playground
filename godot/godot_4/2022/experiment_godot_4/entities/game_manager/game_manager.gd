@@ -12,6 +12,7 @@ class_name GameManager extends Node2D
 func _ready() -> void:
 	SignalBus.switch_to.connect(switch_to)
 	SignalBus.play_background_music.connect(play_background_music)
+	SignalBus.player_died.connect(func(): switch_to(Constants.SCREENS.game_over))
 	
 	background_music_player.set_volume_db(-80)
 	

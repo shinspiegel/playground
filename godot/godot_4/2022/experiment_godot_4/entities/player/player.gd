@@ -8,7 +8,11 @@ class_name Player extends Character
 @onready var jump_buffer_front_ray: RayCast2D = $Sensors/JumpBufferFront
 @onready var remote_transform: RemoteTransform2D = $CameraTransform
 
-var input = { "direction": 0.0, "jump": false }
+var input = {
+	"direction": 0.0, 
+	"jump": false, 
+	"is_enabled": true, 
+}
 
 
 func _ready() -> void:
@@ -63,13 +67,14 @@ func check_input() -> void:
 	input.diretion = 0.0
 	input.jump = false
 	
-	if Input.is_action_just_pressed(Constants.KEYS.jump):
-		input.jump = true
-	
-	input.direction = Input.get_axis(
-		Constants.KEYS.left,
-		Constants.KEYS.right
-	)
+	if input.is_enabled: 
+		if Input.is_action_just_pressed(Constants.KEYS.jump):
+			input.jump = true
+		
+		input.direction = Input.get_axis(
+			Constants.KEYS.left,
+			Constants.KEYS.right
+		)
 
 
 func on_receive_hit(hit: HitBox) -> void:
@@ -80,11 +85,12 @@ func on_receive_hit(hit: HitBox) -> void:
 		invencible_timer.start()
 		stats.hurt(hit.damage.amount)
 		SignalBus.player_hp_changed.emit(stats.hit_points, stats.max_hit_points)
-		change_state("Hit")
-		state_manager.send_message("hit", hit)
 		
 		if stats.hit_points <= 0:
-			SignalBus.player_died.emit()
+			change_state("Die")
+		else:
+			change_state("Hit")
+			state_manager.send_message("hit", hit)
 
 
 func set_camera_on_remote(camera: Camera2D) -> void:

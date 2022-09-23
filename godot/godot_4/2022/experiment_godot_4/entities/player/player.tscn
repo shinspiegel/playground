@@ -1,13 +1,14 @@
-[gd_scene load_steps=19 format=3]
+[gd_scene load_steps=21 format=3 uid="uid://kpkwge26ey3y"]
 
 [ext_resource type="PackedScene" path="res://entities/character/character.tscn" id="1_l0p38"]
-[ext_resource type="Texture2D" uid="uid://dwhp2ku4nagp" path="res://assets/graphics/player/Player.png" id="2_8a5j7"]
+[ext_resource type="Texture2D" uid="uid://l5fss6mtebpy" path="res://assets/graphics/player/Player.png" id="2_8a5j7"]
 [ext_resource type="Script" path="res://entities/player/player.gd" id="2_d6x48"]
 [ext_resource type="Resource" path="res://entities/player/resources/player_data.tres" id="3_d5n0e"]
 [ext_resource type="Script" path="res://entities/player/states/idle.gd" id="4_87y4g"]
 [ext_resource type="Script" path="res://entities/player/states/move.gd" id="5_sajx7"]
 [ext_resource type="Script" path="res://entities/player/states/jump.gd" id="6_vjwbe"]
 [ext_resource type="Script" path="res://entities/player/states/falling.gd" id="7_4nng7"]
+[ext_resource type="Script" path="res://entities/player/states/die.gd" id="7_m6ikd"]
 [ext_resource type="Script" path="res://entities/player/states/hit.gd" id="8_r5j0r"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dexg5"]
@@ -109,8 +110,25 @@ tracks/0/keys = {
 "values": [0]
 }
 
+[sub_resource type="Animation" id="Animation_nvndf"]
+resource_name = "Die"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2d:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [9, 11, 12, 13, 14, 15]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7akhy"]
 _data = {
+"Die": SubResource("Animation_nvndf"),
 "Falling": SubResource("Animation_a6iet"),
 "Hit": SubResource("Animation_4jmql"),
 "Idle": SubResource("Animation_n1yp4"),
@@ -123,6 +141,7 @@ _data = {
 size = Vector2(9, 28)
 
 [node name="Player" instance=ExtResource("1_l0p38")]
+collision_layer = 1
 collision_mask = 2
 script = ExtResource("2_d6x48")
 stats = ExtResource("3_d5n0e")
@@ -142,6 +161,9 @@ libraries = {
 }
 
 [node name="CameraTransform" type="RemoteTransform2D" parent="." index="3"]
+
+[node name="HurtBox" parent="." index="4"]
+collision_mask = 12
 
 [node name="CollisionShape2d" parent="HurtBox" index="0"]
 position = Vector2(0.5, 2)
@@ -171,13 +193,16 @@ script = ExtResource("4_87y4g")
 [node name="Move" type="Node2D" parent="StateManager" index="1"]
 script = ExtResource("5_sajx7")
 
-[node name="Jump" type="Node2D" parent="StateManager" index="2"]
+[node name="Die" type="Node2D" parent="StateManager" index="2"]
+script = ExtResource("7_m6ikd")
+
+[node name="Jump" type="Node2D" parent="StateManager" index="3"]
 script = ExtResource("6_vjwbe")
 
-[node name="Falling" type="Node2D" parent="StateManager" index="3"]
+[node name="Falling" type="Node2D" parent="StateManager" index="4"]
 script = ExtResource("7_4nng7")
 
-[node name="Hit" type="Node2D" parent="StateManager" index="4"]
+[node name="Hit" type="Node2D" parent="StateManager" index="5"]
 script = ExtResource("8_r5j0r")
 
 [editable path="HurtBox"]

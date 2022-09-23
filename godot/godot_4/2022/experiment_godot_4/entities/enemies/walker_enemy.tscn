@@ -1,9 +1,11 @@
-[gd_scene load_steps=12 format=3]
+[gd_scene load_steps=15 format=3 uid="uid://cwrqhkfymv740"]
 
 [ext_resource type="PackedScene" path="res://entities/character/character.tscn" id="1_0ghur"]
 [ext_resource type="Script" path="res://entities/enemies/walker_enemy.gd" id="2_m1p3r"]
-[ext_resource type="Texture2D" path="res://assets/graphics/player/Player.png" id="2_vkx1e"]
+[ext_resource type="Texture2D" uid="uid://l5fss6mtebpy" path="res://assets/graphics/player/Player.png" id="2_vkx1e"]
+[ext_resource type="PackedScene" uid="uid://d0rlydy3oytk6" path="res://entities/boxes/hit_box.tscn" id="4_iwdqq"]
 [ext_resource type="Script" path="res://entities/enemies/states/idle.gd" id="4_ql78v"]
+[ext_resource type="Resource" uid="uid://c5jckbfjuoae6" path="res://entities/enemies/resources/walker_damage.tres" id="5_et3j8"]
 [ext_resource type="Script" path="res://entities/enemies/states/wander.gd" id="5_k32gv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dlxb7"]
@@ -67,6 +69,9 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s170b"]
 size = Vector2(9, 28)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_btcpw"]
+size = Vector2(7, 27)
+
 [node name="WalkerEnemy" instance=ExtResource("1_0ghur")]
 collision_layer = 4
 collision_mask = 2
@@ -87,9 +92,20 @@ libraries = {
 "": SubResource("AnimationLibrary_trv7m")
 }
 
+[node name="HurtBox" parent="." index="3"]
+collision_mask = 9
+
 [node name="CollisionShape2d" parent="HurtBox" index="0"]
 position = Vector2(0.5, 2)
 shape = SubResource("RectangleShape2D_s170b")
+
+[node name="HitBox" parent="." index="4" instance=ExtResource("4_iwdqq")]
+collision_layer = 4
+damage = ExtResource("5_et3j8")
+
+[node name="CollisionShape2d" parent="HitBox" index="0"]
+position = Vector2(0.5, 2.5)
+shape = SubResource("RectangleShape2D_btcpw")
 
 [node name="IdleLimitTime" type="Timer" parent="Timers" index="0"]
 wait_time = 5.0
@@ -108,7 +124,7 @@ position = Vector2(5, 8)
 target_position = Vector2(10, 0)
 collision_mask = 2
 
-[node name="StateManager" parent="." index="6"]
+[node name="StateManager" parent="." index="7"]
 max_history_lengh = 0
 initial_path = NodePath("Idle")
 target_path = NodePath("..")
@@ -124,3 +140,4 @@ front_wall_path = NodePath("../../Sensors/FrontWall")
 state_after_collide_path = NodePath("../Idle")
 
 [editable path="HurtBox"]
+[editable path="HitBox"]

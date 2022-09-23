@@ -1,0 +1,87 @@
+[gd_scene load_steps=3 format=3 uid="uid://bbfidmvesvd4m"]
+
+[ext_resource type="Theme" uid="uid://bdh577l5x72ff" path="res://resources/base_theme.tres" id="1_nnl17"]
+[ext_resource type="Script" path="res://screens/game_over.gd" id="2_og7g0"]
+
+[node name="StartScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_nnl17")
+script = ExtResource("2_og7g0")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -70.0
+offset_right = 70.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer"]
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 130.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer2"]
+offset_right = 120.0
+offset_bottom = 17.0
+text = "Game Over"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control" type="Control" parent="MarginContainer/VBoxContainer2"]
+layout_mode = 3
+anchors_preset = 0
+offset_top = 21.0
+offset_right = 120.0
+offset_bottom = 42.0
+size_flags_vertical = 3
+
+[node name="Label3" type="Label" parent="MarginContainer/VBoxContainer2"]
+offset_top = 46.0
+offset_right = 120.0
+offset_bottom = 63.0
+text = "Thank you for playing!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control3" type="Control" parent="MarginContainer/VBoxContainer2"]
+layout_mode = 3
+anchors_preset = 0
+offset_top = 67.0
+offset_right = 120.0
+offset_bottom = 88.0
+size_flags_vertical = 3
+
+[node name="PlayAgain" type="Button" parent="MarginContainer/VBoxContainer2"]
+offset_top = 92.0
+offset_right = 120.0
+offset_bottom = 114.0
+text = "Play again"
+
+[node name="Quit" type="Button" parent="MarginContainer/VBoxContainer2"]
+offset_top = 118.0
+offset_right = 120.0
+offset_bottom = 140.0
+text = "Quit"
