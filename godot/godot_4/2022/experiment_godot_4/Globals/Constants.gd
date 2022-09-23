@@ -1,6 +1,5 @@
 extends Node
 
-
 const LEVEL_SIZE = {
 	"height": 160,
 	"width": 320,
@@ -19,7 +18,8 @@ var MUSICS = {
 }
 
 var SCREENS = {
-	"start_screen": load("res://screens/start_screen.tscn"),
+	"start": load("res://screens/start.tscn"),
+	"options": load("res://screens/options.tscn"),
 }
 
 

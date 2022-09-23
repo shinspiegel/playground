@@ -1,5 +1,6 @@
 class_name GameManager extends Node2D
 
+@export var game_data: Resource
 @export var initial_scene: PackedScene
 
 @onready var levels: Node2D = $Levels
@@ -60,7 +61,7 @@ func play_background_music(music_stream: AudioStream, volume_adjust: float = 0.0
 		if not background_music_player.is_playing():
 			background_music_player.play()
 		
-		tween.tween_property(background_music_player, "volume_db", volume_adjust, fade_time)
+		tween.tween_property(background_music_player, "volume_db", game_data.music_volume + volume_adjust, fade_time)
 		tween.play()
 
 
