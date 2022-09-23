@@ -1,6 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://bw1ib5suy5h3n"]
+[gd_scene load_steps=3 format=3]
 
-[ext_resource type="Theme" uid="uid://bdh577l5x72ff" path="res://resources/base_theme.tres" id="1_nnl17"]
+[ext_resource type="Theme" path="res://resources/base_theme.tres" id="1_nnl17"]
 [ext_resource type="Script" path="res://screens/start.gd" id="2_daabj"]
 
 [node name="StartScreen" type="Control"]

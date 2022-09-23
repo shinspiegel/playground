@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://dk7qh44ecdahp"]
+[gd_scene load_steps=3 format=3 uid="uid://dk7qh44ecdahp"]
 
 [ext_resource type="Script" path="res://entities/game_ui/game_ui.gd" id="1_pth3c"]
+[ext_resource type="Theme" uid="uid://bdh577l5x72ff" path="res://resources/base_theme.tres" id="2_mvvvf"]
 
 [node name="GameUI" type="CanvasLayer"]
 script = ExtResource("1_pth3c")
@@ -11,6 +12,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("2_mvvvf")
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
@@ -21,16 +23,16 @@ offset_left = 10.0
 offset_top = 10.0
 offset_right = 310.0
 offset_bottom = 150.0
+theme_override_constants/separation = 0
 
 [node name="HP" type="Label" parent="MarginContainer/VBoxContainer"]
 offset_right = 300.0
-offset_bottom = 26.0
-text = "STATE:
-"
+offset_bottom = 17.0
+text = "HP"
 
 [node name="State" type="Label" parent="MarginContainer/VBoxContainer"]
-offset_top = 30.0
+offset_top = 17.0
 offset_right = 300.0
-offset_bottom = 56.0
+offset_bottom = 34.0
 text = "STATE:
 "

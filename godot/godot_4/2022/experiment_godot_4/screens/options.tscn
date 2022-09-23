@@ -1,8 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://cuxg51nlnen64"]
+[gd_scene load_steps=4 format=3]
 
 [ext_resource type="Theme" uid="uid://bdh577l5x72ff" path="res://resources/base_theme.tres" id="1_nnl17"]
 [ext_resource type="Script" path="res://screens/options.gd" id="2_rcn6h"]
-[ext_resource type="Resource" uid="uid://s7jdke18576o" path="res://entities/game_manager/resources/game_data.tres" id="3_xeee6"]
+[ext_resource type="Resource" path="res://entities/game_manager/resources/game_data.tres" id="3_xeee6"]
 
 [node name="OptionsScreen" type="Control"]
 layout_mode = 3
