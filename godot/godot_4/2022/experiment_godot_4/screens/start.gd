@@ -15,3 +15,4 @@ func _ready() -> void:
 	SignalBus.play_background_music.emit(Constants.MUSICS.start)
 	
 	player_data.reset()
+
