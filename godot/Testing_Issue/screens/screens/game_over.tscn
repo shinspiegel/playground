@@ -1,0 +1,70 @@
+[gd_scene load_steps=4 format=3 uid="uid://cvvl34svkp818"]
+
+[ext_resource type="PackedScene" uid="uid://df2c8g0ibrfav" path="res://screens/base_screen.tscn" id="1_hbow6"]
+[ext_resource type="Script" path="res://screens/screens/game_over.gd" id="2_og7g0"]
+[ext_resource type="FontFile" uid="uid://dbt6fx3ojcjhs" path="res://screens/resources/Dogica_Bold_Font.tres" id="3_5y704"]
+
+[node name="GameOver" instance=ExtResource("1_hbow6")]
+script = ExtResource("2_og7g0")
+
+[node name="ColorRect" parent="." index="0"]
+layout_mode = 3
+
+[node name="TextureRect" parent="." index="1"]
+layout_mode = 3
+
+[node name="MarginContainer" parent="." index="2"]
+layout_mode = 3
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer" index="0"]
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 186.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer2" index="0"]
+offset_right = 176.0
+offset_bottom = 10.0
+text = "Game Over"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control" type="Control" parent="MarginContainer/VBoxContainer2" index="1"]
+layout_mode = 3
+anchors_preset = 0
+offset_top = 14.0
+offset_right = 176.0
+offset_bottom = 49.0
+size_flags_vertical = 3
+
+[node name="Label3" type="Label" parent="MarginContainer/VBoxContainer2" index="2"]
+offset_top = 53.0
+offset_right = 176.0
+offset_bottom = 63.0
+theme_override_fonts/font = ExtResource("3_5y704")
+text = "Thank you for playing!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control3" type="Control" parent="MarginContainer/VBoxContainer2" index="3"]
+layout_mode = 3
+anchors_preset = 0
+offset_top = 67.0
+offset_right = 176.0
+offset_bottom = 102.0
+size_flags_vertical = 3
+
+[node name="PlayAgain" type="Button" parent="MarginContainer/VBoxContainer2" index="4"]
+offset_top = 106.0
+offset_right = 176.0
+offset_bottom = 121.0
+theme_override_fonts/font = ExtResource("3_5y704")
+text = "Play again"
+
+[node name="Quit" type="Button" parent="MarginContainer/VBoxContainer2" index="5"]
+offset_top = 125.0
+offset_right = 176.0
+offset_bottom = 140.0
+text = "Quit"

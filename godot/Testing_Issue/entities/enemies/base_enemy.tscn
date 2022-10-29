@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=3 uid="uid://c5wcjc75vv5ma"]
+
+[ext_resource type="PackedScene" path="res://entities/character/character.tscn" id="1_tu4xi"]
+[ext_resource type="Script" path="res://entities/enemies/enemy.gd" id="2_rgnyp"]
+[ext_resource type="Script" path="res://entities/enemies/states/idle.gd" id="3_q3ncg"]
+[ext_resource type="Script" path="res://entities/enemies/states/hit.gd" id="4_ugt8x"]
+[ext_resource type="Script" path="res://entities/enemies/states/die.gd" id="5_ra8an"]
+
+[node name="BaseEnemy" instance=ExtResource("1_tu4xi")]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("2_rgnyp")
+hit_points = 5
+
+[node name="HurtBox" parent="." index="3"]
+collision_mask = 9
+
+[node name="Idle" type="Node2D" parent="StateManager" index="0"]
+script = ExtResource("3_q3ncg")
+
+[node name="Hit" type="Node2D" parent="StateManager" index="1"]
+script = ExtResource("4_ugt8x")
+
+[node name="Die" type="Node2D" parent="StateManager" index="2"]
+script = ExtResource("5_ra8an")
+
+[editable path="HurtBox"]

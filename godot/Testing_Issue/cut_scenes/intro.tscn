@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://bn88luddxd5vu"]
+
+[ext_resource type="PackedScene" uid="uid://daf7udt8xoj1i" path="res://cut_scenes/cut_scene.tscn" id="1_iat8u"]
+
+[node name="Intro" instance=ExtResource("1_iat8u")]

@@ -1,0 +1,230 @@
+[gd_scene load_steps=16 format=3 uid="uid://bdqt6ebkigh88"]
+
+[ext_resource type="PackedScene" uid="uid://c5wcjc75vv5ma" path="res://entities/enemies/base_enemy.tscn" id="1_kje35"]
+[ext_resource type="Script" path="res://entities/enemies/walker_enemy.gd" id="2_xe2mu"]
+[ext_resource type="Texture2D" uid="uid://2kwjgwk1yeia" path="res://assets/graphics/mock.png" id="3_ddkvt"]
+[ext_resource type="PackedScene" uid="uid://d0rlydy3oytk6" path="res://entities/boxes/hit_box.tscn" id="4_iwdqq"]
+[ext_resource type="Theme" uid="uid://bdh577l5x72ff" path="res://resources/base_theme/base_theme.tres" id="5_4y281"]
+[ext_resource type="Script" path="res://entities/enemies/states/wander.gd" id="5_xwk45"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_moc2y"]
+size = Vector2(8, 16)
+
+[sub_resource type="Animation" id="Animation_uur0w"]
+resource_name = "Die"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2d:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DEBUG_LABEL:text")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["Die"]
+}
+
+[sub_resource type="Animation" id="Animation_mph6d"]
+resource_name = "Hit"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2d:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DEBUG_LABEL:text")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["Hit"]
+}
+
+[sub_resource type="Animation" id="Animation_axj3q"]
+resource_name = "Idle"
+length = 0.9
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2d:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DEBUG_LABEL:text")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["Id"]
+}
+
+[sub_resource type="Animation" id="Animation_0edsa"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2d:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DEBUG_LABEL:text")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["Id"]
+}
+
+[sub_resource type="Animation" id="Animation_pefgo"]
+resource_name = "Wander"
+length = 0.9
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2d:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DEBUG_LABEL:text")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["Wan"]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5w8qj"]
+_data = {
+"Die": SubResource("Animation_uur0w"),
+"Hit": SubResource("Animation_mph6d"),
+"Idle": SubResource("Animation_axj3q"),
+"RESET": SubResource("Animation_0edsa"),
+"Wander": SubResource("Animation_pefgo")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6lm6t"]
+size = Vector2(10, 17)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6sn7c"]
+size = Vector2(6, 14)
+
+[node name="WalkerEnemy" instance=ExtResource("1_kje35")]
+script = ExtResource("2_xe2mu")
+
+[node name="DEBUG_LABEL" type="Label" parent="." index="0"]
+offset_left = -20.0
+offset_top = -27.0
+offset_right = 20.0
+offset_bottom = -17.0
+theme = ExtResource("5_4y281")
+theme_override_font_sizes/font_size = 6
+text = "Id"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Sprite2d" parent="." index="1"]
+position = Vector2(0, -8)
+texture = ExtResource("3_ddkvt")
+hframes = 9
+
+[node name="CollisionShape2d" parent="." index="2"]
+position = Vector2(0, -8)
+shape = SubResource("RectangleShape2D_moc2y")
+
+[node name="AnimationPlayer" parent="." index="3"]
+libraries = {
+"": SubResource("AnimationLibrary_5w8qj")
+}
+
+[node name="CollisionShape2d" parent="HurtBox" index="0"]
+position = Vector2(0, -8.5)
+shape = SubResource("RectangleShape2D_6lm6t")
+
+[node name="HitBox" parent="." index="5" instance=ExtResource("4_iwdqq")]
+collision_layer = 4
+
+[node name="CollisionShape2d" parent="HitBox" index="0"]
+position = Vector2(0, -8)
+shape = SubResource("RectangleShape2D_6sn7c")
+
+[node name="IdleLimitTime" type="Timer" parent="Timers" index="0"]
+wait_time = 5.0
+one_shot = true
+
+[node name="WanderTime" type="Timer" parent="Timers" index="1"]
+one_shot = true
+
+[node name="FrontFloor" type="RayCast2D" parent="Sensors" index="0"]
+position = Vector2(4, 0)
+target_position = Vector2(0, 10)
+collision_mask = 2
+collide_with_areas = true
+
+[node name="FrontWall" type="RayCast2D" parent="Sensors" index="1"]
+position = Vector2(4, -4)
+target_position = Vector2(10, 0)
+collision_mask = 2
+
+[node name="Wander" type="Node2D" parent="StateManager" index="3"]
+script = ExtResource("5_xwk45")
+
+[editable path="HurtBox"]
+[editable path="HitBox"]

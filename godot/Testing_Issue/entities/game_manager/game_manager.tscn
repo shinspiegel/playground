@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://b6vkrsux0y6yv"]
+
+[ext_resource type="Script" path="res://entities/game_manager/game_manager.gd" id="1_4udx8"]
+[ext_resource type="Resource" uid="uid://s7jdke18576o" path="res://entities/game_manager/resources/game_data.tres" id="2_n7a12"]
+[ext_resource type="PackedScene" uid="uid://c6bn0o7io4nn" path="res://screens/screens/start.tscn" id="3_jjdav"]
+[ext_resource type="PackedScene" uid="uid://cb3sgo8ksheeo" path="res://entities/text_to_speech/text_to_speech.tscn" id="4_0s0m1"]
+[ext_resource type="PackedScene" uid="uid://nvq306a543gg" path="res://entities/background_music/background_music.tscn" id="5_sducc"]
+
+[node name="GameManager" type="Node2D"]
+script = ExtResource("1_4udx8")
+game_data = ExtResource("2_n7a12")
+initial_scene = ExtResource("3_jjdav")
+
+[node name="Levels" type="Node2D" parent="."]
+
+[node name="Screens" type="CanvasLayer" parent="."]
+
+[node name="OverlayGroup" type="CanvasLayer" parent="."]
+
+[node name="OverlayMask" type="Control" parent="OverlayGroup"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="OverlayGroup/OverlayMask"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="TextToSpeech" parent="." instance=ExtResource("4_0s0m1")]
+
+[node name="BackgroundMusic" parent="." instance=ExtResource("5_sducc")]

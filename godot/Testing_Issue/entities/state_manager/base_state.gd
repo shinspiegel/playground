@@ -1,0 +1,23 @@
+class_name BaseState extends Node2D
+
+var target = null
+
+
+func _ready() -> void:
+	pass
+
+
+func enter() -> void:
+	pass
+
+
+func exit() -> void:
+	pass
+
+
+func process(_delta: float) -> void:
+	pass
+
+
+func receive_message(_id: String, _message) -> void:
+	pass

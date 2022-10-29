@@ -1,0 +1,110 @@
+[gd_scene load_steps=4 format=3 uid="uid://c2b267f57wa1s"]
+
+[ext_resource type="PackedScene" path="res://screens/base_screen.tscn" id="1_gt8qs"]
+[ext_resource type="Script" path="res://screens/screens/options.gd" id="2_h2stp"]
+[ext_resource type="Resource" uid="uid://s7jdke18576o" path="res://entities/game_manager/resources/game_data.tres" id="3_xeee6"]
+
+[node name="Options" instance=ExtResource("1_gt8qs")]
+script = ExtResource("2_h2stp")
+game_data = ExtResource("3_xeee6")
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer" index="0"]
+layout_mode = 2
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 130.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer2" index="0"]
+layout_mode = 2
+offset_right = 120.0
+offset_bottom = 10.0
+text = "Options
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control2" type="Control" parent="MarginContainer/VBoxContainer2" index="1"]
+custom_minimum_size = Vector2i(0, 10)
+layout_mode = 2
+anchors_preset = 0
+offset_top = 14.0
+offset_right = 120.0
+offset_bottom = 24.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer2" index="2"]
+custom_minimum_size = Vector2i(120, 0)
+layout_mode = 2
+offset_top = 28.0
+offset_right = 120.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer2/VBoxContainer" index="0"]
+layout_mode = 2
+offset_right = 120.0
+offset_bottom = 16.0
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer2/VBoxContainer/HBoxContainer" index="0"]
+custom_minimum_size = Vector2i(40, 0)
+layout_mode = 2
+offset_top = 3.0
+offset_right = 40.0
+offset_bottom = 13.0
+text = "Sound"
+
+[node name="SoundSlider" type="HSlider" parent="MarginContainer/VBoxContainer2/VBoxContainer/HBoxContainer" index="1"]
+layout_mode = 2
+offset_left = 44.0
+offset_right = 120.0
+offset_bottom = 16.0
+size_flags_horizontal = 3
+min_value = 0.001
+max_value = 1.0
+step = 0.1
+value = 0.001
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer2/VBoxContainer" index="1"]
+layout_mode = 2
+offset_top = 20.0
+offset_right = 120.0
+offset_bottom = 36.0
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer2/VBoxContainer/HBoxContainer2" index="0"]
+custom_minimum_size = Vector2i(40, 0)
+layout_mode = 2
+offset_top = 3.0
+offset_right = 40.0
+offset_bottom = 13.0
+text = "Music"
+
+[node name="MusicSlider" type="HSlider" parent="MarginContainer/VBoxContainer2/VBoxContainer/HBoxContainer2" index="1"]
+layout_mode = 2
+offset_left = 44.0
+offset_right = 120.0
+offset_bottom = 16.0
+size_flags_horizontal = 3
+min_value = 0.001
+max_value = 1.0
+step = 0.1
+value = 0.001
+
+[node name="Control" type="Control" parent="MarginContainer/VBoxContainer2" index="3"]
+layout_mode = 2
+anchors_preset = 0
+offset_top = 68.0
+offset_right = 120.0
+offset_bottom = 121.0
+size_flags_vertical = 3
+
+[node name="Back" type="Button" parent="MarginContainer/VBoxContainer2" index="4"]
+unique_name_in_owner = true
+layout_mode = 2
+offset_top = 125.0
+offset_right = 120.0
+offset_bottom = 140.0
+text = "Back"

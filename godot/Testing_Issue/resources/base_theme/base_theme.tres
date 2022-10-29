@@ -1,0 +1,55 @@
+[gd_resource type="Theme" load_steps=8 format=3 uid="uid://bdh577l5x72ff"]
+
+[ext_resource type="FontFile" uid="uid://bkoq2ixdv6rcd" path="res://assets/fonts/dogica.ttf" id="1_6cpuu"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7p0di"]
+bg_color = Color(0.103744, 0.103744, 0.103744, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.103744, 0.103744, 0.103744, 1)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0sxxm"]
+bg_color = Color(0.0352941, 0.0352941, 0.0352941, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.0352941, 0.0352941, 0.0352941, 1)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yym6i"]
+bg_color = Color(0.00820202, 0.00820203, 0.00820202, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.00820202, 0.00820203, 0.00820202, 1)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gh3ot"]
+bg_color = Color(0.103744, 0.103744, 0.103744, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wfi5l"]
+bg_color = Color(0.190762, 0.190762, 0.190762, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_40g0l"]
+bg_color = Color(0.00820202, 0.00820203, 0.00820202, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.00820202, 0.00820203, 0.00820202, 1)
+anti_aliasing = false
+
+[resource]
+default_font = ExtResource("1_6cpuu")
+default_font_size = 8
+Button/styles/focus = SubResource("StyleBoxFlat_7p0di")
+Button/styles/hover = SubResource("StyleBoxFlat_0sxxm")
+Button/styles/normal = SubResource("StyleBoxFlat_yym6i")
+HSlider/styles/grabber_area = SubResource("StyleBoxFlat_gh3ot")
+HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_wfi5l")
+HSlider/styles/slider = SubResource("StyleBoxFlat_40g0l")

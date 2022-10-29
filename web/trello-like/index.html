@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="./src/main.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite + TS</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="column" name="backlog">
+        <h1 class="column-title">Backlog</h1>
+        <div class="draggable-list" name="backlog"></div>
+        <form name="backlog">
+          <input class="column-input" />
+        </form>
+      </div>
+
+      <div class="column" name="progress">
+        <h1 class="column-title">In Progress</h1>
+        <div class="draggable-list" name="progress"></div>
+        <form name="progress">
+          <input class="column-input" name="backlog" />
+        </form>
+      </div>
+
+      <div class="column" name="done">
+        <h1 class="column-title">Done</h1>
+        <div class="draggable-list" name="done"></div>
+        <form name="done">
+          <input class="column-input" name="backlog" />
+        </form>
+      </div>
+    </div>
+
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

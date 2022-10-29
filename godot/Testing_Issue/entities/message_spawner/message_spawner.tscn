@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://b3qtpvlabtd63"]
+
+[ext_resource type="Script" path="res://entities/message_spawner/message_spawner.gd" id="1_k26gk"]
+[ext_resource type="PackedScene" uid="uid://bkp60n7vvcemg" path="res://entities/message_bubble/message_bubble.tscn" id="2_qcht0"]
+
+[node name="MessageSpawner" type="Node"]
+script = ExtResource("1_k26gk")
+message_scene = ExtResource("2_qcht0")

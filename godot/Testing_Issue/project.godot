@@ -1,0 +1,159 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+_global_script_classes=[{
+"base": "Node2D",
+"class": &"BaseLevel",
+"language": &"GDScript",
+"path": "res://levels/base_level.gd"
+}, {
+"base": "Control",
+"class": &"BaseScreen",
+"language": &"GDScript",
+"path": "res://screens/base_screen.gd"
+}, {
+"base": "Node2D",
+"class": &"BaseState",
+"language": &"GDScript",
+"path": "res://entities/state_manager/base_state.gd"
+}, {
+"base": "CharacterBody2D",
+"class": &"Character",
+"language": &"GDScript",
+"path": "res://entities/character/character.gd"
+}, {
+"base": "Node2D",
+"class": &"CutScene",
+"language": &"GDScript",
+"path": "res://cut_scenes/cut_scene.gd"
+}, {
+"base": "Resource",
+"class": &"Damage",
+"language": &"GDScript",
+"path": "res://resources/damage/damage.gd"
+}, {
+"base": "Character",
+"class": &"Enemy",
+"language": &"GDScript",
+"path": "res://entities/enemies/enemy.gd"
+}, {
+"base": "Resource",
+"class": &"GameData",
+"language": &"GDScript",
+"path": "res://entities/game_manager/resources/game_data.gd"
+}, {
+"base": "CanvasLayer",
+"class": &"GameInterface",
+"language": &"GDScript",
+"path": "res://entities/game_ui/game_ui.gd"
+}, {
+"base": "Node2D",
+"class": &"GameManager",
+"language": &"GDScript",
+"path": "res://entities/game_manager/game_manager.gd"
+}, {
+"base": "Area2D",
+"class": &"HitBox",
+"language": &"GDScript",
+"path": "res://entities/boxes/hit_box.gd"
+}, {
+"base": "Area2D",
+"class": &"HurtBox",
+"language": &"GDScript",
+"path": "res://entities/boxes/hurt_box.gd"
+}, {
+"base": "Node2D",
+"class": &"MessageBubble",
+"language": &"GDScript",
+"path": "res://entities/message_bubble/message_bubble.gd"
+}, {
+"base": "Node",
+"class": &"MessageSpawner",
+"language": &"GDScript",
+"path": "res://entities/message_spawner/message_spawner.gd"
+}, {
+"base": "Character",
+"class": &"Player",
+"language": &"GDScript",
+"path": "res://entities/player/player.gd"
+}, {
+"base": "Resource",
+"class": &"PlayerData",
+"language": &"GDScript",
+"path": "res://entities/player/resources/player_data.gd"
+}, {
+"base": "Resource",
+"class": &"PlayerInput",
+"language": &"GDScript",
+"path": "res://entities/player/resources/player_input.gd"
+}, {
+"base": "Node2D",
+"class": &"StateManager",
+"language": &"GDScript",
+"path": "res://entities/state_manager/state_manager.gd"
+}, {
+"base": "AudioStreamPlayer",
+"class": &"TextToSpeech",
+"language": &"GDScript",
+"path": "res://entities/text_to_speech/text_to_speech.gd"
+}]
+_global_script_class_icons={
+"BaseLevel": "",
+"BaseScreen": "",
+"BaseState": "",
+"Character": "",
+"CutScene": "",
+"Damage": "",
+"Enemy": "",
+"GameData": "",
+"GameInterface": "",
+"GameManager": "",
+"HitBox": "",
+"HurtBox": "",
+"MessageBubble": "",
+"MessageSpawner": "",
+"Player": "",
+"PlayerData": "",
+"PlayerInput": "",
+"StateManager": "",
+"TextToSpeech": ""
+}
+
+[application]
+
+config/name="Until the end of it"
+config/description="I'll love yout until the end of it!"
+run/main_scene="res://entities/game_manager/game_manager.tscn"
+config/features=PackedStringArray("4.0", "Mobile")
+config/icon="res://icon.png"
+
+[autoload]
+
+SignalBus="*res://globals/signal_bus.gd"
+Constants="*res://globals/constants.gd"
+
+[display]
+
+window/size/viewport_width=320
+window/size/viewport_height=160
+window/size/window_width_override=1280
+window/size/window_height_override=640
+window/stretch/mode="viewport"
+
+[layer_names]
+
+2d_physics/layer_1="Player"
+2d_physics/layer_2="Level"
+2d_physics/layer_3="Enemies"
+2d_physics/layer_4="Hazards"
+
+[rendering]
+
+renderer/rendering_method="mobile"
