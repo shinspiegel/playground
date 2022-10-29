@@ -52,10 +52,6 @@ public class App implements ActionListener {
         appFrame.setVisible(true);
     }
 
-    public static void main(String args[]) {
-        new App();
-    }
-
     public void actionPerformed(ActionEvent e) {
         Integer number = Integer.parseInt(e.getActionCommand());
         Integer index = number - 1;
