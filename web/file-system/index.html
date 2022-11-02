@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.15.0/Sortable.min.js"
+      integrity="sha512-Eezs+g9Lq4TCCq0wae01s9PuNWzHYoCMkE97e2qdkYthpI0pzC3UGB03lgEHn2XM85hDOUF6qgqqszs+iXU4UA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <title>Project Organizer</title>
+    <style>
+      :root {
+        --background: #1f1f1f;
+        --background-off: #2b2b2b;
+        --card: #363636;
+        --card-tint: #494949;
+        --text: #e1e1e1;
+        --danger: #e33f11;
+      }
+
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        font-size: 62.5%;
+        font-family: Arial, Helvetica, sans-serif;
+        height: 100vh;
+        width: 100vw;
+      }
+
+      body {
+        padding: 3rem;
+        color: var(--text);
+        background: var(--background);
+        height: 100%;
+        font-size: 1.6rem;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: auto minmax(0, 1fr) auto;
+        gap: 1rem;
+        grid-template-areas:
+          "title title title"
+          "todo doing done";
+      }
+
+      h1 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+        grid-area: title;
+      }
+
+      h1 > button {
+        color: var(--text);
+        font-size: 2rem;
+        font-weight: 100;
+        background: transparent;
+        border: 1px solid var(--text);
+        border-radius: 99999rem;
+        padding: 0 2rem;
+        min-width: 8rem;
+        transition: all ease 0.3s;
+      }
+
+      h1 > button:hover {
+        background: var(--text);
+        color: var(--background);
+      }
+
+      .column {
+        padding: 1rem;
+        background-color: var(--background-off);
+        border-radius: 4px;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .column > h2 {
+        text-align: center;
+        border-bottom: 2px solid var(--background);
+        padding-bottom: 0.5rem;
+        margin-bottom: 1rem;
+        text-transform: uppercase;
+        font-size: 2rem;
+        font-weight: 100;
+        letter-spacing: 3px;
+      }
+
+      .column > ul {
+        flex: 1;
+      }
+
+      .column[name="todo"] {
+        grid-area: todo;
+      }
+
+      .column[name="doing"] {
+        grid-area: doing;
+      }
+
+      .column[name="done"] {
+        grid-area: done;
+      }
+
+      .column[name="done"] ul li > span {
+        text-decoration: line-through;
+      }
+
+      .column ul {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        overflow-y: scroll;
+        gap: 1rem;
+      }
+
+      .column ul li {
+        padding: 1rem 2rem;
+        background: var(--card);
+        display: flex;
+        transition: all ease 0.3s;
+      }
+
+      .column ul li:hover {
+        background: var(--card-tint);
+      }
+
+      .column ul li > span {
+        flex: 1;
+        pointer-events: none;
+      }
+
+      .column ul li > button {
+        height: 100%;
+        padding: 0 1rem;
+        background: transparent;
+        border: none;
+        color: vat(--text);
+        font-size: 2rem;
+        transition: all ease 0.3s;
+      }
+
+      .column ul li > button:hover {
+        background: var(--danger);
+      }
+
+      .column > form {
+        padding: 0.5rem 1rem;
+      }
+
+      .column > form label {
+        color: var(--card-tint);
+        transition: all ease 0.3s;
+      }
+
+      .column form label:has(input:focus) {
+        color: var(--text);
+      }
+
+      .column > form label input {
+        outline: none;
+        padding: 0.5rem 1rem;
+        background: transparent;
+        border: 1px solid var(--card-tint);
+        color: var(--text);
+        border-radius: 9999rem;
+        transition: all ease 0.3s;
+      }
+
+      .column form label input:focus {
+        border: 1px solid var(--text);
+      }
+    </style>
+  </head>
+  <body>
+    <h1>
+      <span>Project Todo</span>
+      <button class="load-file">Load File</button>
+      <button class="save-file">Save</button>
+    </h1>
+
+    <div class="column" name="todo">
+      <h2>Todo</h2>
+      <ul class="list" name="todo"></ul>
+      <form class="form" name="todo">
+        <label>
+          <span>Add</span>
+          <input />
+        </label>
+      </form>
+    </div>
+
+    <div class="column" name="doing">
+      <h2>Doing</h2>
+      <ul class="list" name="doing"></ul>
+      <form class="form" name="doing">
+        <label>
+          <span>Add</span>
+          <input />
+        </label>
+      </form>
+    </div>
+
+    <div class="column" name="done">
+      <h2>Done</h2>
+      <ul class="list" name="done"></ul>
+      <form class="form" name="done">
+        <label>
+          <span>Add</span>
+          <input />
+        </label>
+      </form>
+    </div>
+
+    <script type="module" defer>
+      /**
+       * @typedef {Object} Todo
+       * @property {string[]} Todo.todo
+       * @property {string[]} Todo.doing
+       * @property {string[]} Todo.done
+       */
+
+      /* @type {FileSystemFileHandle} */
+      let fileHandle;
+
+      /**
+       * Elements that needs to be used.
+       */
+      const lists = document.querySelectorAll(".list");
+      const forms = document.querySelectorAll(".form");
+
+      /**
+       * This will collect the data
+       * @returns {Todo}
+       */
+      function collectColumnData() {
+        const todo = [...lists[0].children].map((i) => i.children[0].innerHTML);
+        const doing = [...lists[1].children].map((i) => i.children[0].innerHTML);
+        const done = [...lists[2].children].map((i) => i.children[0].innerHTML);
+
+        return { todo, doing, done };
+      }
+
+      /**
+       * Uses a Todo object to update all the lists
+       * @param {Todo}
+       */
+      function updateNodes({ todo = [], doing = [], done = [] }) {
+        const nodes = [todo, doing, done];
+
+        lists.forEach((list, index) => {
+          list.innerHTML = "";
+
+          nodes[index].forEach((text) => createItemNode({ text, parent: lists[index] }));
+        });
+      }
+
+      /**
+       * @param {object} options
+       * @param {string} options.text
+       * @param {Element} options.parent
+       */
+      function createItemNode({ text, parent }) {
+        const li = document.createElement("li");
+        const span = document.createElement("span");
+        const button = document.createElement("button");
+
+        span.innerHTML = text;
+
+        button.innerHTML = "&times;";
+        button.onclick = () => onDelete({ text, column: parent.getAttribute("name") });
+
+        li.appendChild(span);
+        li.appendChild(button);
+        parent.appendChild(li);
+      }
+
+      /**
+       * @param {object} options
+       * @param {string} options.text
+       * @param {string} options.column
+       */
+      function onDelete({ text, column }) {
+        const columns = collectColumnData();
+
+        if (column in columns) {
+          columns[column] = columns[column].filter((item) => item !== text);
+        }
+
+        updateNodes(columns);
+        saveFile();
+      }
+
+      /**
+       * Call back after moving items.
+       * This will update the nodes, and save on the file.
+       */
+      function onSelectionEnd() {
+        updateNodes(collectColumnData());
+        saveFile();
+      }
+
+      /**
+       * This will open a file picker to get the file.
+       * @returns {FileSystemFileHandle}
+       */
+      async function defineFileHandler() {
+        if (!fileHandle) {
+          [fileHandle] = await window.showOpenFilePicker();
+        }
+      }
+
+      /**
+       * Function to load the file and update the nodes on the list.
+       */
+      async function loadFile() {
+        const pickerOpts = {
+          types: [{ description: "Json", accept: { "application/json": [".json"] } }],
+          excludeAcceptAllOption: true,
+          multiple: false,
+        };
+
+        if (!fileHandle) {
+          [fileHandle] = await window.showOpenFilePicker(pickerOpts);
+        }
+
+        const file = await fileHandle.getFile();
+        const content = await file.text();
+        const fileData = JSON.parse(content);
+
+        const todosData = { todo: [], doing: [], done: [] };
+
+        ["todo", "doing", "done"].forEach((item) => {
+          if (item in fileData) {
+            todosData[item] = fileData[item];
+          }
+        });
+
+        updateNodes(todosData);
+        saveFile();
+      }
+
+      /**
+       * This will save the file with the current content.
+       */
+      async function saveFile() {
+        if (!fileHandle) {
+          loadFile();
+        }
+
+        const file = await fileHandle.getFile();
+
+        const writable = await fileHandle.createWritable();
+        await writable.write(JSON.stringify(collectColumnData(), null, 2));
+        await writable.close();
+      }
+
+      /**
+       * form submit handler
+       */
+      function onSubmitForm(e) {
+        e.preventDefault();
+
+        const input = e.target[0];
+        const type = e.target.name;
+
+        const columns = collectColumnData();
+
+        if (type in columns) {
+          columns[type].push(input.value);
+          input.value = "";
+        }
+
+        updateNodes(columns);
+        saveFile();
+      }
+
+      lists.forEach((list) => new Sortable(list, { group: "shared", animation: 150, onEnd: onSelectionEnd }));
+
+      forms.forEach((form) => (form.onsubmit = onSubmitForm));
+
+      document.querySelector(".save-file").onclick = saveFile;
+      document.querySelector(".load-file").onclick = loadFile;
+    </script>
+  </body>
+</html>
