@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://twitch_helper.gd" id="1_yahgl"]
+
+[node name="TwitchHelper" type="Node"]
+script = ExtResource("1_yahgl")
+enabled = false
+
+[node name="HTTPRequest" type="HTTPRequest" parent="."]
+
+[node name="@@20081" type="Timer" parent="HTTPRequest"]
+one_shot = true

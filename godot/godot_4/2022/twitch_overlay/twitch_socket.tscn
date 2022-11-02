@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://twitch_socket.gd" id="1_anbdn"]
+
+[node name="TwitchSocket" type="Node"]
+script = ExtResource("1_anbdn")
+auth_string = "oauth:uga15c8lruldsxcu01sf2guj8v2su4"
+channel_name = "#demi_greyt"

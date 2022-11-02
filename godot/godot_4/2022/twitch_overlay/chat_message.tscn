@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://d1vb05wtfltsi"]
+
+[ext_resource type="Script" path="res://chat_message.gd" id="1_phtes"]
+
+[node name="ChatMessage" type="HBoxContainer"]
+offset_right = 266.0
+offset_bottom = 69.0
+size_flags_vertical = 0
+script = ExtResource("1_phtes")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 2
+offset_right = 266.0
+offset_bottom = 69.0
+size_flags_horizontal = 3
+text = "This is a veru long message that will create something on the other side"
+fit_content_height = true
+scroll_active = false
+autowrap_mode = 2
