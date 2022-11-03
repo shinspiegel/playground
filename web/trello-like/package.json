@@ -8,12 +8,21 @@
     "build": "tsc && vite build",
     "preview": "vite preview"
   },
-  "devDependencies": {
-    "@types/sortablejs": "^1.15.0",
-    "typescript": "^4.6.4",
-    "vite": "^3.1.0"
-  },
   "dependencies": {
+    "@reduxjs/toolkit": "^1.8.6",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-redux": "^8.0.4",
+    "react-sortablejs": "^6.1.4",
+    "sass": "^1.55.0",
     "sortablejs": "^1.15.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.22",
+    "@types/react-dom": "^18.0.7",
+    "@types/sortablejs": "^1.15.0",
+    "@vitejs/plugin-react": "^2.2.0",
+    "typescript": "^4.6.4",
+    "vite": "^3.2.0"
   }
 }
