@@ -8,6 +8,22 @@
 
 config_version=5
 
+_global_script_classes=[{
+"base": "Node2D",
+"class": &"BaseState",
+"language": &"GDScript",
+"path": "res://entities/state_manager/base_state.gd"
+}, {
+"base": "Node2D",
+"class": &"StateManager",
+"language": &"GDScript",
+"path": "res://entities/state_manager/state_manager.gd"
+}]
+_global_script_class_icons={
+"BaseState": "",
+"StateManager": ""
+}
+
 [application]
 
 config/name="Not Mega Man"
