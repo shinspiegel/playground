@@ -8,3 +8,5 @@ const INPUT_KEYS = {
 	"attack": "attack",
 	"jump": "jump",
 }
+
+const BLOCK_SIZE = 16
