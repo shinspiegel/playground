@@ -9,4 +9,4 @@ const INPUT_KEYS = {
 	"jump": "jump",
 }
 
-const BLOCK_SIZE = 16
+const BLOCK_SIZE = 32
