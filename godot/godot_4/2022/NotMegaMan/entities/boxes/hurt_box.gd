@@ -6,7 +6,8 @@ signal hit_received(hit_box)
 
 
 func _ready() -> void:
-	area_entered.connect(on_area_enter)
+	if not area_entered.connect(on_area_enter) == OK:
+		print_debug("WARN:: Failed to connect area entered")
 
 
 func enable() -> void:
