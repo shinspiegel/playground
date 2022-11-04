@@ -62,14 +62,14 @@ func get_last_state() -> String:
 	var last_state: String
 	var initial_state = __get_initial_state()
 	
-	if not initial_state == null:
+	if state_history.size() > 0:
+		last_state = state_history[0]
+	
+	elif not initial_state == null:
 		last_state = get_node(initial_path).name
 	
 	elif __get_states_children().size() > 0:
 		last_state = __get_states_children()[0].name
-	
-	elif state_history.size() > 0:
-		last_state = state_history[0]
 	
 	else:
 		print_debug("WARN:: Failed to load the last state")
