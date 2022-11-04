@@ -110,7 +110,8 @@ func __setup_states() -> void:
 	for state in __get_states_children():
 		states[state.name] = state
 		state.target = target
-		state.state_finished.connect(change_state)
+		if not state.state_finished.connect(change_state) == OK:
+			print_debug("WARN:: Failed to connect state finished on [%s]" % [state.name])
 	
 	var initial_state = __get_initial_state()
 	
