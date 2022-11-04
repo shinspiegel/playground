@@ -14,6 +14,26 @@ _global_script_classes=[{
 "language": &"GDScript",
 "path": "res://entities/state_manager/base_state.gd"
 }, {
+"base": "CharacterBody2D",
+"class": &"Character",
+"language": &"GDScript",
+"path": "res://entities/character/character.gd"
+}, {
+"base": "Resource",
+"class": &"Damage",
+"language": &"GDScript",
+"path": "res://resources/damage/damage.gd"
+}, {
+"base": "Area2D",
+"class": &"HitBox",
+"language": &"GDScript",
+"path": "res://entities/boxes/hit_box.gd"
+}, {
+"base": "Area2D",
+"class": &"HurtBox",
+"language": &"GDScript",
+"path": "res://entities/boxes/hurt_box.gd"
+}, {
 "base": "Node2D",
 "class": &"StateManager",
 "language": &"GDScript",
@@ -21,6 +41,10 @@ _global_script_classes=[{
 }]
 _global_script_class_icons={
 "BaseState": "",
+"Character": "",
+"Damage": "",
+"HitBox": "",
+"HurtBox": "",
 "StateManager": ""
 }
 
