@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://ccvtdrte4ayid"]
+
+[ext_resource type="Script" path="res://entities/player/resources/player_input.gd" id="1_illhw"]
+
+[resource]
+script = ExtResource("1_illhw")
+is_enabled = true
+direction = 0.0
+jump = false
+jump_released = false
+attack = false

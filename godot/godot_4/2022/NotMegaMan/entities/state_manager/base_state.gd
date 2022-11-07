@@ -21,5 +21,5 @@ func process(_delta: float) -> void:
 	pass
 
 
-func receive_message(_id: String, _message) -> void:
+func receive_message(_id: String, _message = null) -> void:
 	pass

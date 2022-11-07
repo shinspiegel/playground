@@ -4,8 +4,8 @@ class Flip:
 	var is_active: bool = true
 	var direction: int = 1
 
-@export var speed_multiplier: float = 8
-@export var jump_max_multiplier: float = 3.0
+@export var speed_multiplier: float = 8.0
+@export var jump_max_multiplier: float = 5.0
 @export var jump_min_multiplier: float = 1.1
 @export var jump_time_to_peak: float = 0.55
 @export var jump_time_to_decend: float = 0.45

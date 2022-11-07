@@ -1,0 +1,87 @@
+[gd_scene load_steps=10 format=3 uid="uid://cngn4bpllm50t"]
+
+[ext_resource type="Texture2D" uid="uid://clpojteokwhjp" path="res://entities/player/assets/player-shoot.png" id="1_fkka1"]
+[ext_resource type="Script" path="res://entities/player/player_shoot.gd" id="1_fxpmu"]
+[ext_resource type="PackedScene" uid="uid://d0rlydy3oytk6" path="res://entities/boxes/hit_box.tscn" id="3_fcaxw"]
+[ext_resource type="Resource" uid="uid://dfk7gciyajkfu" path="res://entities/player/resources/player_attack_damage.tres" id="4_bh3ht"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_e5skl"]
+radius = 3.0
+height = 14.0
+
+[sub_resource type="Animation" id="Animation_2w863"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_2aci5"]
+resource_name = "anim"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nn66x"]
+_data = {
+"RESET": SubResource("Animation_2w863"),
+"anim": SubResource("Animation_2aci5")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ni7lg"]
+radius = 4.0
+height = 18.0
+
+[node name="PlayerShoot" type="RigidBody2D"]
+collision_layer = 0
+collision_mask = 0
+gravity_scale = 0.0
+linear_velocity = Vector2(600, 0)
+script = ExtResource("1_fxpmu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_e5skl")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(1, 1.19209e-07)
+scale = Vector2(0.4, 0.2)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_fkka1")
+hframes = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "anim"
+libraries = {
+"": SubResource("AnimationLibrary_nn66x")
+}
+
+[node name="HitBox" parent="." instance=ExtResource("3_fcaxw")]
+damage = ExtResource("4_bh3ht")
+
+[node name="CollisionShape2d" parent="HitBox" index="0"]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_ni7lg")
+
+[editable path="HitBox"]

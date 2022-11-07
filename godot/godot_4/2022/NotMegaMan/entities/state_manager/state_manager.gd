@@ -16,6 +16,7 @@ var state_history = []
 func _ready() -> void:
 	__setup_target()
 	__setup_states()
+	__load_initial_state()
 
 
 func apply_state(delta: float) -> void:
@@ -47,7 +48,7 @@ func change_state(state_name: String) -> void:
 		print_debug("WARN:: Failed to load state %s" % [state_name])
 
 
-func send_message(id: String, message) -> void:
+func send_message(id: String, message = null) -> void:
 	current_state.receive_message(id, message)
 
 
@@ -110,9 +111,13 @@ func __setup_states() -> void:
 	for state in __get_states_children():
 		states[state.name] = state
 		state.target = target
+		
 		if not state.state_finished.connect(change_state) == OK:
 			print_debug("WARN:: Failed to connect state finished on [%s]" % [state.name])
-	
+
+
+
+func __load_initial_state() -> void:
 	var initial_state = __get_initial_state()
 	
 	if not initial_state == null:

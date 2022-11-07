@@ -34,6 +34,26 @@ _global_script_classes=[{
 "language": &"GDScript",
 "path": "res://entities/boxes/hurt_box.gd"
 }, {
+"base": "Character",
+"class": &"Player",
+"language": &"GDScript",
+"path": "res://entities/player/player.gd"
+}, {
+"base": "Resource",
+"class": &"PlayerData",
+"language": &"GDScript",
+"path": "res://entities/player/resources/player_data.gd"
+}, {
+"base": "Resource",
+"class": &"PlayerInput",
+"language": &"GDScript",
+"path": "res://entities/player/resources/player_input.gd"
+}, {
+"base": "RigidBody2D",
+"class": &"PlayerShot",
+"language": &"GDScript",
+"path": "res://entities/player/player_shoot.gd"
+}, {
 "base": "Node2D",
 "class": &"StateManager",
 "language": &"GDScript",
@@ -45,6 +65,10 @@ _global_script_class_icons={
 "Damage": "",
 "HitBox": "",
 "HurtBox": "",
+"Player": "",
+"PlayerData": "",
+"PlayerInput": "",
+"PlayerShot": "",
 "StateManager": ""
 }
 
@@ -127,3 +151,9 @@ attack={
 2d_physics/layer_2="Enemies"
 2d_physics/layer_3="Level"
 2d_physics/layer_4="Hazards"
+
+[rendering]
+
+textures/default_filters/use_nearest_mipmap_filter=true
+2d/snap/snap_2d_transforms_to_pixel=true
+2d/snap/snap_2d_vertices_to_pixel=true

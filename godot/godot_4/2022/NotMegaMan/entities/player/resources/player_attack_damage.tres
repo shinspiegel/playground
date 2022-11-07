@@ -1,0 +1,8 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://dfk7gciyajkfu"]
+
+[ext_resource type="Script" path="res://resources/damage/damage.gd" id="1_b3s6r"]
+
+[resource]
+script = ExtResource("1_b3s6r")
+amount = 1
+power = Vector2(50, 50)
