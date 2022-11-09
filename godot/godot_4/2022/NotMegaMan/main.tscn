@@ -1,3 +1,18 @@
-[gd_scene format=3 uid="uid://clrnf764b0e2k"]
+[gd_scene load_steps=5 format=3 uid="uid://clrnf764b0e2k"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_h38b3"]
+[ext_resource type="PackedScene" uid="uid://cwdkfbbno5cj7" path="res://levels/base_level.tscn" id="2_bxxbj"]
+[ext_resource type="PackedScene" uid="uid://cno07b4gxoqp4" path="res://entities/sfx_player/sfx_player.tscn" id="3_7565g"]
+[ext_resource type="PackedScene" uid="uid://d65mdunuoavv" path="res://entities/music_player/music_player.tscn" id="4_niu62"]
 
 [node name="Main" type="Node2D"]
+script = ExtResource("1_h38b3")
+initial_scene = ExtResource("2_bxxbj")
+
+[node name="CurrentScreen" type="CanvasLayer" parent="."]
+
+[node name="CurrentLevel" type="Node2D" parent="."]
+
+[node name="MusicPlayer" parent="." instance=ExtResource("4_niu62")]
+
+[node name="SFXPlayer" parent="." instance=ExtResource("3_7565g")]
