@@ -4,3 +4,4 @@ signal player_hp_changed(hp, max_hp)
 
 
 signal sfx(stream, volume_adjust_db)
+signal music(stream, volume_adjust_db)
