@@ -24,7 +24,8 @@ func _ready() -> void:
 	if not camera_path.is_empty():
 		set_camera_on_remote(get_node(camera_path))
 
-# Need to check the coyote time on this one
+
+# Override base character to use coyote timer
 func _physics_process(delta: float) -> void:
 	check_input()
 	
@@ -143,6 +144,10 @@ func on_receive_hit(hit: HitBox) -> void:
 		else:
 			change_state("Hit")
 			state_manager.send_message("hit", hit)
+
+
+func kill() -> void:
+	change_state("Die")
 
 
 func set_camera_on_remote(camera: Camera2D) -> void:

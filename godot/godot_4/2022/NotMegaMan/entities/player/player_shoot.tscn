@@ -6,8 +6,8 @@
 [ext_resource type="Resource" uid="uid://dfk7gciyajkfu" path="res://entities/player/resources/player_attack_damage.tres" id="4_bh3ht"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_e5skl"]
-radius = 3.0
-height = 14.0
+radius = 2.0
+height = 10.0
 
 [sub_resource type="Animation" id="Animation_2w863"]
 length = 0.001
@@ -51,11 +51,9 @@ _data = {
 radius = 4.0
 height = 18.0
 
-[node name="PlayerShoot" type="RigidBody2D"]
+[node name="PlayerShoot" type="CharacterBody2D"]
 collision_layer = 0
 collision_mask = 0
-gravity_scale = 0.0
-linear_velocity = Vector2(600, 0)
 script = ExtResource("1_fxpmu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
