@@ -7,6 +7,6 @@ extends BaseScreen
 
 func _ready() -> void:
 	super()
-	start.pressed.connect(func(): SignalBus.switch_to.emit(Constants.LEVELS.base))
+	start.pressed.connect(func(): SignalBus.switch_to.emit(Constants.SCREENS.select))
 	options.pressed.connect(func(): SignalBus.switch_to.emit(Constants.SCREENS.options))
 	quit.pressed.connect(func(): get_tree().quit())

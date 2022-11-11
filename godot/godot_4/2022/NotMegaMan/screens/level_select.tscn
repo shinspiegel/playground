@@ -1,0 +1,81 @@
+[gd_scene load_steps=3 format=3 uid="uid://cloi26fs3wpdx"]
+
+[ext_resource type="PackedScene" uid="uid://cwg52bvco3h68" path="res://screens/base_screen.tscn" id="1_ki5rh"]
+[ext_resource type="Script" path="res://screens/level_select.gd" id="2_dlpja"]
+
+[node name="LevelSelect" instance=ExtResource("1_ki5rh")]
+script = ExtResource("2_dlpja")
+initial_focus = NodePath("MarginContainer/VBoxContainer/HBoxContainer/Button")
+
+[node name="ColorRect" parent="." index="0"]
+layout_mode = 1
+
+[node name="TextureRect" parent="." index="1"]
+layout_mode = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="." index="2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" index="0"]
+layout_mode = 2
+offset_left = 10.0
+offset_top = 20.0
+offset_right = 630.0
+offset_bottom = 300.0
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer" index="0"]
+layout_mode = 2
+offset_right = 620.0
+offset_bottom = 26.0
+text = "Who hunt next?"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control" type="Control" parent="MarginContainer/VBoxContainer" index="1"]
+layout_mode = 2
+anchors_preset = 0
+offset_top = 30.0
+offset_right = 620.0
+offset_bottom = 111.0
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer" index="2"]
+layout_mode = 2
+offset_top = 115.0
+offset_right = 620.0
+offset_bottom = 195.0
+size_flags_vertical = 4
+alignment = 1
+
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer" index="0"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+offset_left = 228.0
+offset_right = 308.0
+offset_bottom = 80.0
+text = "Opt A"
+
+[node name="Button2" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer" index="1"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+offset_left = 312.0
+offset_right = 392.0
+offset_bottom = 80.0
+text = "Opt B"
+
+[node name="Control2" type="Control" parent="MarginContainer/VBoxContainer" index="3"]
+layout_mode = 2
+anchors_preset = 0
+offset_top = 199.0
+offset_right = 620.0
+offset_bottom = 280.0
+size_flags_vertical = 3
