@@ -44,10 +44,10 @@ func on_player_enter(body: Node2D) -> void:
 #		tween.tween_property(camera, "limit_right", end_pos_x, duration)
 #		tween.tween_property(camera, "limit_bottom", end_pox_y, duration)
 		
-		camera.limit_left = start_pos_x
-		camera.limit_top = start_pos_y
-		camera.limit_right = end_pos_x
-		camera.limit_bottom = end_pox_y
+		camera.limit_left = int(start_pos_x)
+		camera.limit_top = int(start_pos_y)
+		camera.limit_right = int(end_pos_x)
+		camera.limit_bottom = int(end_pox_y)
 
 
 func on_player_exited(body: Node2D) -> void:

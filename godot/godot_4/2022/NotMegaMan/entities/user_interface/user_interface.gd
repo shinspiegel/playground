@@ -24,8 +24,8 @@ func state_change(update_state) -> void:
 
 func update_label() -> void:
 	var states = ""
-	for state in player.state_manager.state_history:
-		states += state
+	for stateHis in player.state_manager.state_history:
+		states += stateHis
 		states += ", "
 	
 	
