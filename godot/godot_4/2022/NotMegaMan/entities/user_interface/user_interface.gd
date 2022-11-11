@@ -23,11 +23,15 @@ func state_change(update_state) -> void:
 
 
 func update_label() -> void:
-	label.text = "STATE: %s \n[%s,%s,%s] \nHP: %s/%s" % [
+	var states = ""
+	for state in player.state_manager.state_history:
+		states += state
+		states += ", "
+	
+	
+	label.text = "STATE: %s \n[%s] \nHP: %s/%s" % [
 		state,
-		player.state_manager.state_history[0] if player.state_manager.state_history.size() >= 1 else "NONE_0",
-		player.state_manager.state_history[1] if player.state_manager.state_history.size() >= 2 else "NONE_1",
-		player.state_manager.state_history[2] if player.state_manager.state_history.size() >= 3 else "NONE_2",
+		states,
 		hp,
 		hp_max,
 	]
