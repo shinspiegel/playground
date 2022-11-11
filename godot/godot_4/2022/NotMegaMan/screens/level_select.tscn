@@ -7,12 +7,6 @@
 script = ExtResource("2_dlpja")
 initial_focus = NodePath("MarginContainer/VBoxContainer/HBoxContainer/Button")
 
-[node name="ColorRect" parent="." index="0"]
-layout_mode = 1
-
-[node name="TextureRect" parent="." index="1"]
-layout_mode = 1
-
 [node name="MarginContainer" type="MarginContainer" parent="." index="2"]
 layout_mode = 1
 anchors_preset = 15

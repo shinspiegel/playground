@@ -19,6 +19,6 @@ var SCREENS = {
 
 var LEVELS = {
 	"base": load("res://levels/base_level.tscn"),
-	"mining": load("res://levels/base_level.tscn"),
+	"mining": load("res://levels/mining_level.tscn"),
 	"laboratory": load("res://levels/base_level.tscn"),
 }
