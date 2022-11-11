@@ -208,8 +208,15 @@ script = ExtResource("2_d6x48")
 stats = ExtResource("3_d5n0e")
 input = ExtResource("4_wjquf")
 player_shoot = ExtResource("5_2dpo7")
+camera_path = null
+speed_multiplier = 10.0
+jump_time_to_peak = 0.35
+jump_time_to_decend = 0.3
 
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="." index="0"]
+[node name="CameraArm" type="Marker2D" parent="." index="0"]
+position = Vector2(80, -12)
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="CameraArm" index="0"]
 
 [node name="Sprite2d" parent="." index="1"]
 position = Vector2(-1, -19)

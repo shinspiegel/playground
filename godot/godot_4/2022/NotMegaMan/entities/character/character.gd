@@ -4,8 +4,8 @@ class Flip:
 	var is_active: bool = true
 	var direction: int = 1
 
-@export var speed_multiplier: float = 8.0
-@export var jump_max_multiplier: float = 5.0
+@export var speed_multiplier: float = 10
+@export var jump_max_multiplier: float = 4.0
 @export var jump_min_multiplier: float = 1.1
 @export var jump_time_to_peak: float = 0.55
 @export var jump_time_to_decend: float = 0.45
@@ -14,14 +14,16 @@ class Flip:
 @onready var state_manager: StateManager = $StateManager
 @onready var hurt_box: HurtBox = $HurtBox
 
-var jump_max_height: float = Constants.BLOCK_SIZE * jump_max_multiplier
-var jump_min_heigth: float = Constants.BLOCK_SIZE * jump_min_multiplier
-var jump_power: float = (2.0 * jump_max_height) / jump_time_to_peak
 
-var speed: float = Constants.BLOCK_SIZE * speed_multiplier
+@onready var jump_max_height: float = Constants.BLOCK_SIZE * jump_max_multiplier
+@onready var jump_min_heigth: float = Constants.BLOCK_SIZE * jump_min_multiplier
+@onready var jump_power: float = (2.0 * jump_max_height) / jump_time_to_peak
+@onready var speed: float = Constants.BLOCK_SIZE * speed_multiplier
+@onready var gravity_fall: float = ((-2.0 * jump_max_height) / (jump_time_to_decend * jump_time_to_decend)) * -1
+@onready var gravity_jumping: float = ((-2.0 * jump_max_height) / (jump_time_to_peak * jump_time_to_peak)) * -1
 
-var gravity_fall: float = ((-2.0 * jump_max_height) / (jump_time_to_decend * jump_time_to_decend)) * -1
-var gravity_jumping: float = ((-2.0 * jump_max_height) / (jump_time_to_peak * jump_time_to_peak)) * -1
+
+
 
 var flip = Flip.new()
 
@@ -30,7 +32,6 @@ func _physics_process(delta: float) -> void:
 	check_input()
 	state_manager.apply_state(delta)
 	check_flip()
-	@warning_ignore(return_value_discarded)
 	move_and_slide()
 	check_change_state()
 
@@ -47,8 +48,7 @@ func apply_vertical(power: float = jump_power, ratio: float = 1.0) -> void:
 
 
 func apply_gravity(delta: float) -> void:
-	if not is_on_floor():
-		velocity.y += get_gravity() * delta
+	velocity.y += get_gravity() * delta
 
 
 func get_gravity() -> float:

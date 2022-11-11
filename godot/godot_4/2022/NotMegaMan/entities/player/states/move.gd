@@ -9,4 +9,4 @@ func enter() -> void:
 func process(delta: float) -> void:
 	if target is Player:
 		target.apply_horizontal(target.input.direction)
-		target.apply_gravity(delta)
+#		target.apply_gravity(delta)
