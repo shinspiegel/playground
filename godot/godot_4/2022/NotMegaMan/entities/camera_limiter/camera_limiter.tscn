@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://entities/camera_limiter/camera_limiter.gd" id="1_tvl27"]
+
+[node name="CameraLimiter" type="Area2D"]
+script = ExtResource("1_tvl27")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
