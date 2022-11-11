@@ -13,6 +13,7 @@ func _ready():
 	visible_notifier.screen_exited.connect(func (): queue_free())
 	sprite.flip_h = not diretion == 1
 
+
 func _physics_process(delta: float) -> void:
 	velocity.x = speed * diretion
 	move_and_slide()
