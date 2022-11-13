@@ -5,9 +5,9 @@
 [ext_resource type="Resource" uid="uid://dtbaljwmtxu2g" path="res://entities/player/resources/player_data.tres" id="3_d5n0e"]
 [ext_resource type="Script" path="res://entities/player/states/idle.gd" id="4_87y4g"]
 [ext_resource type="Resource" uid="uid://ccvtdrte4ayid" path="res://entities/player/resources/player_input.tres" id="4_wjquf"]
-[ext_resource type="Texture2D" uid="uid://dhglmv3jrjeib" path="res://entities/player/assets/player.png" id="5_1xjjr"]
 [ext_resource type="PackedScene" uid="uid://cngn4bpllm50t" path="res://entities/player/player_shoot.tscn" id="5_2dpo7"]
 [ext_resource type="Script" path="res://entities/player/states/move.gd" id="5_sajx7"]
+[ext_resource type="Texture2D" uid="uid://dmlnha5u43tmx" path="res://entities/player/assets/Player3.png" id="6_rb63i"]
 [ext_resource type="Script" path="res://entities/player/states/jump.gd" id="6_vjwbe"]
 [ext_resource type="Script" path="res://entities/player/states/attack.gd" id="7_0ohyu"]
 [ext_resource type="Script" path="res://entities/player/states/falling.gd" id="7_4nng7"]
@@ -17,12 +17,11 @@
 [ext_resource type="Script" path="res://entities/player/states/jump_and_shot.gd" id="13_eeu22"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dexg5"]
-size = Vector2(14, 28)
+size = Vector2(13, 23)
 
 [sub_resource type="Animation" id="Animation_0p7ik"]
 resource_name = "Attack"
-length = 0.2
-step = 0.05
+length = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -30,15 +29,15 @@ tracks/0/path = NodePath("Sprite2d:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.1, 0.15),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [17, 18, 19, 20]
+"values": [9]
 }
 
 [sub_resource type="Animation" id="Animation_nvndf"]
 resource_name = "Die"
-length = 0.3
+length = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -46,10 +45,10 @@ tracks/0/path = NodePath("Sprite2d:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [23, 24, 25]
+"values": [8]
 }
 
 [sub_resource type="Animation" id="Animation_a6iet"]
@@ -65,12 +64,12 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [22]
+"values": [10]
 }
 
 [sub_resource type="Animation" id="Animation_4jmql"]
 resource_name = "Hit"
-length = 0.3
+length = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -78,15 +77,15 @@ tracks/0/path = NodePath("Sprite2d:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [23, 24, 25]
+"values": [8]
 }
 
 [sub_resource type="Animation" id="Animation_n1yp4"]
 resource_name = "Idle"
-length = 1.2
+length = 0.2
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -95,10 +94,10 @@ tracks/0/path = NodePath("Sprite2d:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [26, 27, 28, 29, 30, 31]
+"values": [8]
 }
 
 [sub_resource type="Animation" id="Animation_kurrp"]
@@ -114,12 +113,12 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [21]
+"values": [10]
 }
 
 [sub_resource type="Animation" id="Animation_y6vy7"]
 resource_name = "JumpAndShot"
-length = 0.2
+length = 0.1
 step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -128,15 +127,15 @@ tracks/0/path = NodePath("Sprite2d:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.1, 0.15),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [17, 18, 19, 20]
+"values": [10]
 }
 
 [sub_resource type="Animation" id="Animation_r23kb"]
 resource_name = "Move"
-length = 0.6
+length = 0.4
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -145,15 +144,15 @@ tracks/0/path = NodePath("Sprite2d:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [32, 33, 34, 35, 36, 37]
+"values": [0, 1, 2, 3]
 }
 
 [sub_resource type="Animation" id="Animation_7l055"]
 resource_name = "MoveAndShot"
-length = 0.5
+length = 0.4
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -162,10 +161,10 @@ tracks/0/path = NodePath("Sprite2d:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [38, 39, 40, 41, 42]
+"values": [4, 5, 6, 7]
 }
 
 [sub_resource type="Animation" id="Animation_efu5q"]
@@ -198,7 +197,7 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f5y5u"]
-size = Vector2(11, 27)
+size = Vector2(9, 22)
 
 [node name="Player" instance=ExtResource("1_l0p38")]
 position = Vector2(1, 0)
@@ -219,14 +218,14 @@ position = Vector2(80, -12)
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="CameraArm" index="0"]
 
 [node name="Sprite2d" parent="." index="1"]
-position = Vector2(-1, -19)
-texture = ExtResource("5_1xjjr")
+position = Vector2(-1, -16)
+texture = ExtResource("6_rb63i")
 hframes = 5
-vframes = 9
-frame = 27
+vframes = 3
+frame = 8
 
 [node name="CollisionShape2d" parent="." index="2"]
-position = Vector2(-1, -15)
+position = Vector2(-1.5, -11.5)
 shape = SubResource("RectangleShape2D_dexg5")
 
 [node name="AnimationPlayer" parent="." index="3"]
@@ -238,7 +237,7 @@ libraries = {
 collision_mask = 12
 
 [node name="CollisionShape2d" parent="HurtBox" index="0"]
-position = Vector2(-0.5, -13.5)
+position = Vector2(-1.5, -11)
 shape = SubResource("RectangleShape2D_f5y5u")
 
 [node name="InvencibilityTimer" type="Timer" parent="Timers" index="0"]
@@ -250,27 +249,28 @@ wait_time = 0.15
 one_shot = true
 
 [node name="ShotColdDown" type="Timer" parent="Timers" index="2"]
-wait_time = 0.3
+wait_time = 0.2
 one_shot = true
 
 [node name="Markers" type="Node2D" parent="." index="6"]
 
 [node name="ShootPosition" type="Marker2D" parent="Markers" index="0"]
-position = Vector2(14, -16)
+position = Vector2(11, -14)
 
 [node name="JumpBufferFront" type="RayCast2D" parent="Sensors" index="0"]
-position = Vector2(5, 0)
+position = Vector2(4, 0)
 target_position = Vector2(0, 10)
 collision_mask = 4
 hit_from_inside = true
 
 [node name="JumpBufferBack" type="RayCast2D" parent="Sensors" index="1"]
-position = Vector2(-7, 0)
+position = Vector2(-8, 0)
 target_position = Vector2(0, 10)
 collision_mask = 4
 hit_from_inside = true
 
 [node name="StateManager" parent="." index="8"]
+max_history_lengh = 5
 initial_path = NodePath("Idle")
 target_path = NodePath("..")
 

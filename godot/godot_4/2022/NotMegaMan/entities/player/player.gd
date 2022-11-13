@@ -89,17 +89,19 @@ func check_change_state() -> void:
 		"Attack":
 			if is_attack:
 				state_manager.send_message("queue_shot")
-			if not is_input_zero and is_shot_colddown_zero:
-				return change_state("Move")
-			if not is_input_zero and not is_shot_colddown_zero:
-				return change_state("MoveAndShot")
+			if is_shot_colddown_zero:
+				if is_input_zero:
+					return change_state("Idle")
+				else:
+					return change_state("Move")
 		"MoveAndShot":
 			if is_attack:
 				state_manager.send_message("queue_shot")
-			if not is_input_zero and is_shot_colddown_zero:
-				return change_state("Move")
-			if is_input_zero and not is_shot_colddown_zero:
-				return change_state("Idle")
+			if is_shot_colddown_zero:
+				if is_input_zero:
+					return change_state("Idle")
+				else:
+					return change_state("Move")
 		"Move":
 			if not is_grounded:
 				return change_state("Falling")

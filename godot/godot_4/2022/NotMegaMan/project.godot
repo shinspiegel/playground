@@ -132,9 +132,11 @@ gdscript/warnings/return_value_discarded=0
 
 window/size/viewport_width=640
 window/size/viewport_height=320
+window/size/resizable=false
 window/size/window_width_override=1280
 window/size/window_height_override=640
-window/stretch/mode="viewport"
+window/dpi/allow_hidpi=false
+window/stretch/mode="canvas_items"
 
 [input]
 
@@ -238,5 +240,8 @@ attack={
 [rendering]
 
 textures/default_filters/use_nearest_mipmap_filter=true
+textures/decals/filter=0
+textures/light_projectors/filter=0
 2d/snap/snap_2d_transforms_to_pixel=true
 2d/snap/snap_2d_vertices_to_pixel=true
+textures/canvas_textures/default_texture_filter=0
