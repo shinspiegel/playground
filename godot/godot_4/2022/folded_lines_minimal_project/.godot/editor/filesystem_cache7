@@ -1,0 +1,7 @@
+0b7126e0c6e86d3ec295a72f5aa6e0bd
+::res://::1669134212
+icon.svg::CompressedTexture2D::2617988172861807898::1669029401::1669035869::1::::<><>::
+::res://addons/::1669031511
+::res://addons/testing/::1669036546
+plugin.cfg::TextFile::-1::1669029883::0::1::::<><>::
+testing.gd::GDScript::-1::1669036546::0::1::::<>EditorPlugin<>::
