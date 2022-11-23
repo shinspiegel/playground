@@ -6,5 +6,8 @@
 
 import { start } from "$fresh/server.ts";
 import manifest from "./fresh.gen.ts";
+import { db } from "./database/sqlite.ts";
+
+console.log(db)
 
 await start(manifest);
