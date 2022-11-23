@@ -1,0 +1,13 @@
+{
+  "tasks": {
+    "dev": "deno run -A --watch=static/,routes/ dev.ts",
+    "start": "deno run -A main.ts",
+    "build-docker": "docker build --build-arg GIT_REVISION=$(git rev-parse HEAD) -t my-fresh-app .",
+    "run-docker": "docker run -t -i -p 80:8000 fresh-app"
+  },
+  "importMap": "./import_map.json",
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "jsxImportSource": "preact"
+  }
+}
