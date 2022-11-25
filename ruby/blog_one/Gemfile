@@ -20,6 +20,8 @@ end
 
 group :development do
   gem "web-console"
+  gem "rubocop"
+  gem "reek"
 end
 
 group :test do
