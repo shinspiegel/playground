@@ -124,10 +124,6 @@ SignalBus="*res://singleton/signal_bus.gd"
 Constants="*res://singleton/constants.gd"
 Utils="*res://singleton/utils.gd"
 
-[debug]
-
-gdscript/warnings/return_value_discarded=0
-
 [display]
 
 window/size/viewport_width=640

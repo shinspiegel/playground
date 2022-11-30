@@ -1,5 +1,9 @@
 {
+  "[prisma]": { "editor.defaultFormatter": "Prisma.prisma" },
   "deno.enable": true,
   "deno.lint": true,
-  "editor.defaultFormatter": "denoland.vscode-deno"
+  "editor.defaultFormatter": "denoland.vscode-deno",
+  "cSpell.words": [
+    "denodb"
+  ]
 }
