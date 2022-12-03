@@ -1,0 +1,6 @@
+{
+  "files.watcherExclude": {
+    "**/target": true
+  },
+  "metals.javaHome": "/opt/homebrew/Cellar/openjdk@11/11.0.16.1_1/libexec/openjdk.jdk/Contents/Home"
+}
