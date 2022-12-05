@@ -232,3 +232,7 @@
 2022.12.03 11:50:36 INFO  time: Connected to build server in 8.65s[0m
 2022.12.03 11:50:36 INFO  Connected to Build server: Bloop v1.5.4[0m
 2022.12.03 11:50:42 INFO  time: indexed workspace in 5.74s[0m
+2022.12.03 11:57:28 INFO  shutting down Metals[0m
+2022.12.03 11:57:28 INFO  Shut down connection with build server.[0m
+2022.12.03 11:57:28 INFO  Shut down connection with build server.[0m
+2022.12.03 11:57:28 INFO  Shut down connection with build server.[0m
