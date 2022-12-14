@@ -1,0 +1,9 @@
+{
+  "imports": {
+    "/": "./",
+    "./": "./",
+    "oak/": "https://deno.land/x/oak/",
+    "std/": "https://deno.land/std@0.160.0/",
+    "postgres/": "https://deno.land/x/postgres@v0.17.0/"
+  }
+}

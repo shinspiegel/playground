@@ -1,7 +1,6 @@
-import { _format } from "https://deno.land/std@0.160.0/path/_util.ts";
-import { Client } from "https://deno.land/x/postgres@v0.17.0/mod.ts";
-import { QueryArguments, QueryArrayResult } from "https://deno.land/x/postgres@v0.17.0/query/query.ts";
-import { IModel } from "../Models/Model.ts";
+import { Client } from "postgres/mod.ts";
+import { QueryArguments, QueryArrayResult } from "postgres/query/query.ts";
+import { IModel } from "/Models/Model.ts";
 
 const client: Client = new Client({
   user: "postgres",

@@ -1,5 +1,5 @@
-import { Book } from "../Models/Book.ts";
-import { Repository } from "./Repository.ts";
+import { Book } from "/Models/Book.ts";
+import { Repository } from "/Repository/Repository.ts";
 
 export class BookRepository extends Repository<Book> {
   constructor() {

@@ -1,7 +1,7 @@
-import { RouterContext } from "https://deno.land/x/oak/mod.ts";
-import { Controller } from "../Controllers/Controller.ts";
-import { Book } from "../Models/Book.ts";
-import { BookRepository } from "../Repository/BookRepository.ts";
+import { RouterContext } from "oak/mod.ts";
+import { Controller } from "/Controllers/Controller.ts";
+import { Book } from "/Models/Book.ts";
+import { BookRepository } from "/Repository/BookRepository.ts";
 
 export class BookController extends Controller<Book> {
   constructor() {

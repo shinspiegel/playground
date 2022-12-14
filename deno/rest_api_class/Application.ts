@@ -1,4 +1,4 @@
-import { Application } from "https://deno.land/x/oak/mod.ts";
+import { Application } from "oak/mod.ts";
 import { router } from "./Router.ts";
 
 export const app = new Application();

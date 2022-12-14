@@ -1,5 +1,5 @@
-import { IModel } from "../Models/Model.ts";
-import { IRepository } from "../Repository/Repository.ts";
+import { IModel } from "/Models/Model.ts";
+import { IRepository } from "/Repository/Repository.ts";
 
 export abstract class Controller<MODEL extends IModel> {
   protected repo: IRepository<MODEL>;

@@ -1,4 +1,4 @@
-import { IModel } from "./Model.ts";
+import { IModel } from "/Models/Model.ts";
 
 export class BookError extends Error {
   constructor(msg: string) {
