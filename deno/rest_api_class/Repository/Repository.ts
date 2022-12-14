@@ -1,20 +1,14 @@
 import { Client } from "postgres/mod.ts";
 import { QueryArguments, QueryArrayResult } from "postgres/query/query.ts";
-import { RepositoryError } from "./Repository.errors.ts";
+import {
+  RepositoryError,
+  RepositoryInvalidEntry,
+  RepositoryMissingIdError,
+  RepositoryNoEntryCreatedError,
+} from "./Repository.errors.ts";
+import { IRepository } from "./Repository.interface.ts";
 import { client } from "/Database/client.ts";
 import { IModel } from "/Models/Model.ts";
-
-export interface IRepository<MODEL extends IModel> {
-  createTable(): Promise<void>;
-  seed(): Promise<void>;
-  migrate(): Promise<void>;
-  query<ROW extends Array<unknown>>(query: string, params?: QueryArguments): Promise<QueryArrayResult<ROW>>;
-  insertOne(entry: Partial<MODEL>): Promise<MODEL>;
-  getAll(): Promise<MODEL[]>;
-  getOneBy(entry: Partial<MODEL>): Promise<MODEL>;
-  updateOne(entry: Partial<MODEL>): Promise<MODEL>;
-  deleteOne(entry: Partial<MODEL>): Promise<MODEL>;
-}
 
 export abstract class Repository<MODEL extends IModel> implements IRepository<MODEL> {
   abstract createTable(): Promise<void>;
@@ -47,7 +41,21 @@ export abstract class Repository<MODEL extends IModel> implements IRepository<MO
     return new this.model().fromRow(row) as MODEL;
   }
 
+  private validateEntry(entry: Partial<MODEL>) {
+    if (Object.keys(entry).length <= 0) {
+      throw new RepositoryInvalidEntry();
+    }
+  }
+
+  private validateEntryForId(entry: Partial<MODEL>) {
+    if (!entry.id) {
+      throw new RepositoryMissingIdError();
+    }
+  }
+
   async insertOne(entry: Partial<MODEL>): Promise<MODEL> {
+    this.validateEntry(entry);
+
     const keys = Object.keys(entry);
     const values = Object.values(entry);
     const query = `
@@ -72,6 +80,8 @@ export abstract class Repository<MODEL extends IModel> implements IRepository<MO
   }
 
   async getOneBy(entry: Partial<MODEL>): Promise<MODEL> {
+    this.validateEntry(entry);
+
     const keys = Object.keys(entry);
     const values = Object.values(entry);
     const query = `
@@ -82,16 +92,15 @@ export abstract class Repository<MODEL extends IModel> implements IRepository<MO
     const response = await this.query(query, values);
 
     if (response.rows.length <= 0) {
-      throw new RepositoryError(`No entry created on ${this.tableName}`);
+      throw new RepositoryNoEntryCreatedError(this.tableName);
     }
 
     return this.convertRowToModel(response.rows[0]);
   }
 
-  async updateOne(entry: Partial<MODEL>): Promise<MODEL> {
-    if (!entry.id) {
-      throw new RepositoryError("Missing 'id' property on partial");
-    }
+  async updateById(entry: Partial<MODEL>): Promise<MODEL> {
+    this.validateEntry(entry);
+    this.validateEntryForId(entry);
 
     const id = entry.id;
     delete entry.id;
@@ -110,16 +119,15 @@ export abstract class Repository<MODEL extends IModel> implements IRepository<MO
     const response = await this.query(query, [id, ...values]);
 
     if (response.rows.length <= 0) {
-      throw new RepositoryError(`No entry created on ${this.tableName}`);
+      throw new RepositoryNoEntryCreatedError(this.tableName);
     }
 
     return this.convertRowToModel(response.rows[0]);
   }
 
-  async deleteOne(entry: Partial<MODEL>): Promise<MODEL> {
-    if (!entry.id) {
-      throw new RepositoryError("Missing 'id' property on partial");
-    }
+  async deleteById(entry: Partial<MODEL>): Promise<MODEL> {
+    this.validateEntry(entry);
+    this.validateEntryForId(entry);
 
     const query = `
       DELETE FROM ${this.tableName}
@@ -130,7 +138,7 @@ export abstract class Repository<MODEL extends IModel> implements IRepository<MO
     const response = await this.query(query, [entry.id]);
 
     if (response.rows.length <= 0) {
-      throw new RepositoryError(`No entry created on ${this.tableName}`);
+      throw new RepositoryNoEntryCreatedError(this.tableName);
     }
 
     return this.convertRowToModel(response.rows[0]);
