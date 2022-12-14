@@ -1,3 +1,7 @@
 import { app } from "./Application.ts";
+import { Env } from "./Env/env.ts";
 
-await app.listen({ port: 8000 });
+const env = new Env();
+
+console.log(`Running on port [${env.PORT}]`);
+await app.listen({ port: env.PORT });

@@ -1,10 +1,5 @@
+import { BookError } from "./Book.errors.ts";
 import { IModel } from "/Models/Model.ts";
-
-export class BookError extends Error {
-  constructor(msg: string) {
-    super(msg);
-  }
-}
 
 export class Book implements IModel {
   public id?: number;

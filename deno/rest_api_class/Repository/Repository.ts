@@ -1,20 +1,8 @@
 import { Client } from "postgres/mod.ts";
 import { QueryArguments, QueryArrayResult } from "postgres/query/query.ts";
+import { RepositoryError } from "./Repository.errors.ts";
+import { client } from "/Database/client.ts";
 import { IModel } from "/Models/Model.ts";
-
-const client: Client = new Client({
-  user: "postgres",
-  password: "postgres",
-  database: "postgres",
-  hostname: "localhost",
-  port: 5432,
-});
-
-export class RepositoryError extends Error {
-  constructor(msg: string) {
-    super(msg);
-  }
-}
 
 export interface IRepository<MODEL extends IModel> {
   createTable(): Promise<void>;

@@ -1,6 +1,8 @@
 import { Application } from "oak/mod.ts";
-import { router } from "./Router.ts";
+import { AppRoutes } from "/Router/AppRoutes.ts";
 
 export const app = new Application();
-app.use(router.routes());
-app.use(router.allowedMethods());
+const appRoutes = new AppRoutes();
+
+app.use(appRoutes.getRoutes());
+app.use(appRoutes.allowedMethods());
