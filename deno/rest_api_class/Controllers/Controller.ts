@@ -1,10 +1,10 @@
-import { Model } from "../Models/Model.ts";
-import { Repository } from "../Repository/Repository.ts";
+import { IModel } from "../Models/Model.ts";
+import { IRepository } from "../Repository/Repository.ts";
 
-export class Controller<T extends Model, REPO extends Repository<T>> {
-  protected repo: REPO;
+export abstract class Controller<MODEL extends IModel> {
+  protected repo: IRepository<MODEL>;
 
-  constructor(repo: REPO) {
+  constructor(repo: IRepository<MODEL>) {
     this.repo = repo;
   }
 }

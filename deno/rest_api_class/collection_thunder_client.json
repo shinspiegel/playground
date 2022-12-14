@@ -1,0 +1,28 @@
+{
+  "client": "Thunder Client",
+  "collectionName": "DenoTesting",
+  "dateExported": "2022-12-14T17:10:24.423Z",
+  "version": "1.1",
+  "folders": [],
+  "requests": [
+    {
+      "_id": "63d7426c-e4c5-4586-8e6d-7b4c482dc09c",
+      "colId": "a1fcb58c-4e1a-4720-a2d5-b38dcde0debd",
+      "containerId": "",
+      "name": "root",
+      "url": "{{HOST}}:{{PORT}}/book/2",
+      "method": "PUT",
+      "sortNum": 20000,
+      "created": "2022-12-03T11:15:40.243Z",
+      "modified": "2022-12-03T15:12:44.273Z",
+      "headers": [],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"id\": 3,\n  \"name\": \"two\",\n  \"isbn\": \"value\"\n}",
+        "form": []
+      },
+      "tests": []
+    }
+  ]
+}

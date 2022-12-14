@@ -3,7 +3,7 @@ import { Controller } from "../Controllers/Controller.ts";
 import { Book } from "../Models/Book.ts";
 import { BookRepository } from "../Repository/BookRepository.ts";
 
-export class BookController extends Controller<Book, BookRepository> {
+export class BookController extends Controller<Book> {
   constructor() {
     super(new BookRepository());
   }
