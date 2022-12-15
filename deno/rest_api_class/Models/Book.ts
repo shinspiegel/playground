@@ -1,4 +1,4 @@
-import { BookError } from "./Book.errors.ts";
+import { BookError } from "/Models/Book.errors.ts";
 import { IModel } from "/Models/Model.ts";
 
 export class Book implements IModel {

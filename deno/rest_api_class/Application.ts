@@ -1,8 +1,26 @@
-import { Application } from "oak/mod.ts";
+import { Application as OakApp } from "oak/mod.ts";
+import { Env } from "/Env/Env.ts";
 import { AppRoutes } from "/Router/AppRoutes.ts";
 
-export const app = new Application();
-const appRoutes = new AppRoutes();
+export class Application {
+  private app: OakApp;
+  private appRoutes: AppRoutes;
 
-app.use(appRoutes.getRoutes());
-app.use(appRoutes.allowedMethods());
+  constructor() {
+    this.app = new OakApp();
+    this.appRoutes = new AppRoutes();
+
+    this.app.use(this.appRoutes.getRoutes());
+    this.app.use(this.appRoutes.allowedMethods());
+  }
+
+  public getApp() {
+    return this.app;
+  }
+
+  public async listem() {
+    const env = new Env();
+    console.log(`Running on port [${env.PORT}]`);
+    await this.app.listen({ port: env.PORT });
+  }
+}

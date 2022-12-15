@@ -5,8 +5,8 @@ import {
   RepositoryInvalidEntry,
   RepositoryMissingIdError,
   RepositoryNoEntryCreatedError,
-} from "./Repository.errors.ts";
-import { IRepository } from "./Repository.interface.ts";
+} from "/Repository/Repository.errors.ts";
+import { IRepository } from "/Repository/Repository.interface.ts";
 import { client } from "/Database/client.ts";
 import { IModel } from "/Models/Model.ts";
 

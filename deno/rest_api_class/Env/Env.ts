@@ -1,5 +1,5 @@
 import { config } from "std/dotenv/mod.ts";
-import { FailedToReadEnvError, NaNEnvError } from "./Env.errors.ts";
+import { FailedToReadEnvError, NaNEnvError } from "/Env/Env.errors.ts";
 
 const configData = await config();
 
@@ -33,7 +33,7 @@ export class Env {
   }
 
   private get(env: string) {
-    const value = configData[env];
+    const value = configData[env] || Deno.env.get(env);
 
     if (!value) {
       throw new FailedToReadEnvError(env);
