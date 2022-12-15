@@ -11,14 +11,11 @@ export class AppRoutes {
 
   private book() {
     const bookController = new BookController();
-
-    console.log("Creating book routes");
-
     this.router.get("/book", bookController.getAll);
-    this.router.get("/book/:id", bookController.getBook);
-    this.router.post("/book", bookController.newBook);
-    this.router.put("/book/:id", bookController.updateBook);
-    this.router.delete("/book/:id", bookController.deleteBook);
+    this.router.get("/book/:id", bookController.getOne);
+    this.router.post("/book", bookController.newOne);
+    this.router.put("/book/:id", bookController.updateOne);
+    this.router.delete("/book/:id", bookController.deleteOne);
   }
 
   public getRoutes() {

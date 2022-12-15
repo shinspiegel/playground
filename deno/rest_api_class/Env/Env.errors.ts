@@ -12,6 +12,8 @@ export class FailedToReadEnvError extends EnvError {
 
 export class NaNEnvError extends EnvError {
   constructor(env: string) {
-    super(`Environment variable is not a number. Please set as a number for: [${env}]`);
+    super(
+      `Environment variable is not a number. Please set as a number for: [${env}]`,
+    );
   }
 }

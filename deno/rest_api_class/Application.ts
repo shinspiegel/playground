@@ -18,7 +18,7 @@ export class Application {
     return this.app;
   }
 
-  public async listem() {
+  public async listen() {
     const env = new Env();
     console.log(`Running on port [${env.PORT}]`);
     await this.app.listen({ port: env.PORT });

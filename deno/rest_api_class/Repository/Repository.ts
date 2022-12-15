@@ -8,9 +8,10 @@ import {
 } from "/Repository/Repository.errors.ts";
 import { IRepository } from "/Repository/Repository.interface.ts";
 import { client } from "/Database/client.ts";
-import { IModel } from "/Models/Model.ts";
+import { IModel } from "/Models/Model.interface.ts";
 
-export abstract class Repository<MODEL extends IModel> implements IRepository<MODEL> {
+export abstract class Repository<MODEL extends IModel>
+  implements IRepository<MODEL> {
   abstract createTable(): Promise<void>;
   abstract seed(): Promise<void>;
   abstract migrate(): Promise<void>;
@@ -19,7 +20,11 @@ export abstract class Repository<MODEL extends IModel> implements IRepository<MO
   private database: Client;
   private model: new () => MODEL;
 
-  constructor(tableName: string, model: new () => MODEL, database: Client = client) {
+  constructor(
+    tableName: string,
+    model: new () => MODEL,
+    database: Client = client,
+  ) {
     this.tableName = tableName;
     this.database = database;
     this.model = model;
@@ -33,12 +38,15 @@ export abstract class Repository<MODEL extends IModel> implements IRepository<MO
     }); // HATE THIS!
   }
 
-  async query<ROW extends Array<unknown>>(query: string, params?: QueryArguments): Promise<QueryArrayResult<ROW>> {
+  async query<ROW extends Array<unknown>>(
+    query: string,
+    params?: QueryArguments,
+  ): Promise<QueryArrayResult<ROW>> {
     return await this.database.queryArray(query, params);
   }
 
   private convertRowToModel(row: unknown): MODEL {
-    return new this.model().fromRow(row) as MODEL;
+    return new this.model().build(row) as MODEL;
   }
 
   private validateEntry(entry: Partial<MODEL>) {
@@ -105,7 +113,9 @@ export abstract class Repository<MODEL extends IModel> implements IRepository<MO
     const id = entry.id;
     delete entry.id;
 
-    const entries = Object.entries(entry).sort((a, b) => String(a[0]).localeCompare(String(b[0])));
+    const entries = Object.entries(entry).sort((a, b) =>
+      String(a[0]).localeCompare(String(b[0]))
+    );
     const keys = entries.map(([key]) => key);
     const values = entries.map(([_, value]) => value);
 
