@@ -1,9 +1,10 @@
 import { Client } from "postgres/mod.ts";
-import { QueryArguments, QueryArrayResult } from "postgres/query/query.ts";
+import { QueryArguments, QueryObjectResult } from "postgres/query/query.ts";
 import {
   RepositoryError,
+  RepositoryInvalidDataEntry,
   RepositoryInvalidEntry,
-  RepositoryMissingIdError,
+  RepositoryMappedFailedError,
   RepositoryNoEntryCreatedError,
   RepositoryNoEntryDeletedError,
   RepositoryNoEntryUpdatedError,
@@ -36,27 +37,45 @@ export abstract class Repository<MODEL extends IModel> implements IRepository<MO
     }); // HATE THIS!
   }
 
-  async query<ROW extends Array<unknown>>(query: string, params?: QueryArguments): Promise<QueryArrayResult<ROW>> {
-    Logger.log(query);
-    Logger.log(params);
-    return await this.database.queryArray(query, params);
+  public async query<ROW extends Array<unknown>>(
+    query: string,
+    params?: QueryArguments
+  ): Promise<QueryObjectResult<ROW>> {
+    Logger.debug(query, params);
+    return await this.database.queryObject(query, params);
   }
 
-  private convertRowToModel(row: unknown): MODEL {
-    return new this.model().build(row) as MODEL;
+  private toModel(row: unknown): MODEL {
+    if (!row || typeof row !== "object") {
+      throw new RepositoryInvalidDataEntry();
+    }
+
+    const model = new this.model();
+
+    Object.keys(row).forEach((key) => {
+      if (!Object.keys(model).includes(key)) {
+        throw new RepositoryMappedFailedError();
+      }
+
+      // Will add the property inside the object.
+      // deno-lint-ignore ban-ts-comment
+      //@ts-ignore
+      model[key] = row[key];
+    });
+
+    Logger.debug(model);
+    return model;
   }
 
-  private convertListRowToModel(rows: unknown[]): MODEL[] {
+  private listToModel(rows: unknown[]): MODEL[] {
     if (!rows || !Array.isArray(rows)) {
       throw new RepositoryInvalidEntry();
     }
 
-    return rows.map((row) => this.convertRowToModel(row));
+    return rows.map((row) => this.toModel(row));
   }
 
   async insertOne(entry: Partial<MODEL>): Promise<MODEL> {
-    new this.model().validate(entry);
-
     const keys = Object.keys(entry);
     const values = Object.values(entry);
     const query = `
@@ -71,17 +90,25 @@ export abstract class Repository<MODEL extends IModel> implements IRepository<MO
       throw new RepositoryError(`No entry created on ${this.tableName}`);
     }
 
-    return this.convertRowToModel(response.rows[0]);
+    return this.toModel(response.rows[0]);
   }
 
   async getAll(): Promise<MODEL[]> {
     const query = `SELECT * FROM ${this.tableName}`;
     const response = await this.query(query);
-    return this.convertListRowToModel(response.rows);
+    return this.listToModel(response.rows);
   }
 
   async getOneBy(entry: Partial<MODEL>): Promise<MODEL> {
-    new this.model().validate(entry);
+    Object.keys(entry).forEach((key) => {
+      // deno-lint-ignore ban-ts-comment
+      //@ts-ignore
+      if (entry[key] === undefined) {
+        // deno-lint-ignore ban-ts-comment
+        //@ts-ignore
+        delete entry[key];
+      }
+    });
 
     const keys = Object.keys(entry);
     const values = Object.values(entry);
@@ -96,12 +123,10 @@ export abstract class Repository<MODEL extends IModel> implements IRepository<MO
       throw new RepositoryNoEntryCreatedError(this.tableName);
     }
 
-    return this.convertRowToModel(response.rows[0]);
+    return this.toModel(response.rows[0]);
   }
 
   async updateById(entry: Partial<MODEL>): Promise<MODEL> {
-    new this.model().validateForId(entry).validate(entry);
-
     const id = entry.id;
     delete entry.id;
 
@@ -122,12 +147,10 @@ export abstract class Repository<MODEL extends IModel> implements IRepository<MO
       throw new RepositoryNoEntryUpdatedError(this.tableName);
     }
 
-    return this.convertRowToModel(response.rows[0]);
+    return this.toModel(response.rows[0]);
   }
 
   async deleteById(entry: Partial<MODEL>): Promise<MODEL> {
-    new this.model().validateForId(entry);
-
     const query = `
       DELETE FROM ${this.tableName}
       WHERE id = $1
@@ -140,6 +163,6 @@ export abstract class Repository<MODEL extends IModel> implements IRepository<MO
       throw new RepositoryNoEntryDeletedError(this.tableName);
     }
 
-    return this.convertRowToModel(response.rows[0]);
+    return this.toModel(response.rows[0]);
   }
 }

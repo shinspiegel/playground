@@ -39,3 +39,9 @@ export class RepositoryInvalidDataEntry extends RepositoryError {
     super("Invalid database response");
   }
 }
+
+export class RepositoryMappedFailedError extends RepositoryError {
+  constructor() {
+    super("Failed to map data from the row into the model");
+  }
+}

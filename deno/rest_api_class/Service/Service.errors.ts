@@ -4,7 +4,7 @@ export class ServiceError extends Error {
   }
 }
 
-export class ServiceIdNotNumber extends ServiceError {
+export class ServiceIdNotNumberError extends ServiceError {
   constructor() {
     super("Id param is not a number");
   }

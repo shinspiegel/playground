@@ -1,8 +1,6 @@
-import { Model } from "/Models/Model.ts";
-
-export class Book extends Model {
-  public databaseIndexes: string[] = ["id", "name", "isbn"];
-
+import { IModel } from "/Models/Model.interface.ts";
+export class Book implements IModel {
+  public id?: number;
   public name?: string;
   public isbn?: string;
 }
