@@ -7,13 +7,13 @@ export class BookRepository extends Repository<Book> {
   }
 
   async createTable(): Promise<void> {
-    // await this.query(`DROP TABLE IF EXISTS ${this.tableName}`);
+    await this.query(`DROP TABLE IF EXISTS ${this.tableName}`);
 
     await this.query(`
       CREATE TABLE IF NOT EXISTS ${this.tableName} (
         id SERIAL PRIMARY KEY,
-        name TEXT,
-        isbn TEXT
+        name TEXT NOT NULL,
+        isbn TEXT NOT NULL
       )
   `);
   }
