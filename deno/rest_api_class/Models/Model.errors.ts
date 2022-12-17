@@ -10,6 +10,12 @@ export class ModelInvalidRowError extends ModelError {
   }
 }
 
+export class ModelNonExistingIdError extends ModelError {
+  constructor() {
+    super("Invalid or non-existent id on model");
+  }
+}
+
 export class ModelNonExistingIndexesError extends ModelError {
   constructor() {
     super("Model indexes was not find. Please add model indexes for database parse.");

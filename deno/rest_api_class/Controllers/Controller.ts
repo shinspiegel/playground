@@ -1,27 +1,29 @@
+import { PostgresError } from "postgres/mod.ts";
 import { RouterContext } from "oak/mod.ts";
 import { Status } from "std/http/http_status.ts";
 import { ModelError } from "../Models/Model.errors.ts";
 import { IModel } from "../Models/Model.interface.ts";
 import { RepositoryError } from "/Repository/Repository.errors.ts";
-import { IService } from "/Service/Service.ts";
+import { IService } from "/Service/Service.interface.ts";
+import { Logger } from "../Logger/Logger.ts";
 
 export class Controller<MODEL extends IModel> {
   private service: IService<MODEL>;
-  private model: new () => MODEL;
 
-  constructor(service: IService<MODEL>, model: new () => MODEL) {
+  constructor(service: IService<MODEL>) {
     this.service = service;
-    this.model = model;
   }
-
-  validateBody = (body: unknown) => {
-    const model = new this.model();
-    model.validate(body);
-  };
 
   // deno-lint-ignore no-explicit-any
   raiseError = (context: RouterContext<any>, error: unknown) => {
-    if (error instanceof ModelError || error instanceof RepositoryError || error instanceof SyntaxError) {
+    Logger.log(error);
+
+    if (
+      error instanceof ModelError ||
+      error instanceof RepositoryError ||
+      error instanceof SyntaxError ||
+      error instanceof PostgresError
+    ) {
       context.response.status = Status.BadRequest;
       context.response.body = error.message;
       return;
@@ -41,7 +43,6 @@ export class Controller<MODEL extends IModel> {
   newOne = async (context: RouterContext<any>) => {
     try {
       const body = await context.request.body().value;
-      this.validateBody(body);
       const book = await this.service.create(body);
       context.response.status = Status.Created;
       context.response.body = JSON.stringify(book);
@@ -64,7 +65,7 @@ export class Controller<MODEL extends IModel> {
   // deno-lint-ignore no-explicit-any
   getOne = async (context: RouterContext<any>) => {
     try {
-      const books = await this.service.getOne(await context.request.body().value);
+      const books = await this.service.getById(context.params.id);
       context.response.status = Status.OK;
       context.response.body = JSON.stringify(books);
     } catch (error) {
@@ -75,7 +76,8 @@ export class Controller<MODEL extends IModel> {
   // deno-lint-ignore no-explicit-any
   updateOne = async (context: RouterContext<any>) => {
     try {
-      const books = await this.service.update(await context.request.body().value);
+      const body = await context.request.body().value;
+      const books = await this.service.update(context.params.id, body);
       context.response.status = Status.OK;
       context.response.body = JSON.stringify(books);
     } catch (error) {
@@ -86,7 +88,7 @@ export class Controller<MODEL extends IModel> {
   // deno-lint-ignore no-explicit-any
   deleteOne = async (context: RouterContext<any>) => {
     try {
-      const books = await this.service.delete(await context.request.body().value);
+      const books = await this.service.deleteById(context.params.id);
       context.response.status = Status.OK;
       context.response.body = JSON.stringify(books);
     } catch (error) {

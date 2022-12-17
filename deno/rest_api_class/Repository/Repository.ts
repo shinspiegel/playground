@@ -5,13 +5,15 @@ import {
   RepositoryInvalidEntry,
   RepositoryMissingIdError,
   RepositoryNoEntryCreatedError,
+  RepositoryNoEntryDeletedError,
+  RepositoryNoEntryUpdatedError,
 } from "/Repository/Repository.errors.ts";
 import { IRepository } from "/Repository/Repository.interface.ts";
 import { client } from "/Database/client.ts";
 import { IModel } from "/Models/Model.interface.ts";
+import { Logger } from "../Logger/Logger.ts";
 
-export abstract class Repository<MODEL extends IModel>
-  implements IRepository<MODEL> {
+export abstract class Repository<MODEL extends IModel> implements IRepository<MODEL> {
   abstract createTable(): Promise<void>;
   abstract seed(): Promise<void>;
   abstract migrate(): Promise<void>;
@@ -20,11 +22,7 @@ export abstract class Repository<MODEL extends IModel>
   private database: Client;
   private model: new () => MODEL;
 
-  constructor(
-    tableName: string,
-    model: new () => MODEL,
-    database: Client = client,
-  ) {
+  constructor(tableName: string, model: new () => MODEL, database: Client = client) {
     this.tableName = tableName;
     this.database = database;
     this.model = model;
@@ -38,10 +36,9 @@ export abstract class Repository<MODEL extends IModel>
     }); // HATE THIS!
   }
 
-  async query<ROW extends Array<unknown>>(
-    query: string,
-    params?: QueryArguments,
-  ): Promise<QueryArrayResult<ROW>> {
+  async query<ROW extends Array<unknown>>(query: string, params?: QueryArguments): Promise<QueryArrayResult<ROW>> {
+    Logger.log(query);
+    Logger.log(params);
     return await this.database.queryArray(query, params);
   }
 
@@ -49,20 +46,16 @@ export abstract class Repository<MODEL extends IModel>
     return new this.model().build(row) as MODEL;
   }
 
-  private validateEntry(entry: Partial<MODEL>) {
-    if (Object.keys(entry).length <= 0) {
+  private convertListRowToModel(rows: unknown[]): MODEL[] {
+    if (!rows || !Array.isArray(rows)) {
       throw new RepositoryInvalidEntry();
     }
-  }
 
-  private validateEntryForId(entry: Partial<MODEL>) {
-    if (!entry.id) {
-      throw new RepositoryMissingIdError();
-    }
+    return rows.map((row) => this.convertRowToModel(row));
   }
 
   async insertOne(entry: Partial<MODEL>): Promise<MODEL> {
-    this.validateEntry(entry);
+    new this.model().validate(entry);
 
     const keys = Object.keys(entry);
     const values = Object.values(entry);
@@ -84,11 +77,11 @@ export abstract class Repository<MODEL extends IModel>
   async getAll(): Promise<MODEL[]> {
     const query = `SELECT * FROM ${this.tableName}`;
     const response = await this.query(query);
-    return response.rows.map((row) => this.convertRowToModel(row));
+    return this.convertListRowToModel(response.rows);
   }
 
   async getOneBy(entry: Partial<MODEL>): Promise<MODEL> {
-    this.validateEntry(entry);
+    new this.model().validate(entry);
 
     const keys = Object.keys(entry);
     const values = Object.values(entry);
@@ -107,15 +100,12 @@ export abstract class Repository<MODEL extends IModel>
   }
 
   async updateById(entry: Partial<MODEL>): Promise<MODEL> {
-    this.validateEntry(entry);
-    this.validateEntryForId(entry);
+    new this.model().validateForId(entry).validate(entry);
 
     const id = entry.id;
     delete entry.id;
 
-    const entries = Object.entries(entry).sort((a, b) =>
-      String(a[0]).localeCompare(String(b[0]))
-    );
+    const entries = Object.entries(entry).sort((a, b) => String(a[0]).localeCompare(String(b[0])));
     const keys = entries.map(([key]) => key);
     const values = entries.map(([_, value]) => value);
 
@@ -129,15 +119,14 @@ export abstract class Repository<MODEL extends IModel>
     const response = await this.query(query, [id, ...values]);
 
     if (response.rows.length <= 0) {
-      throw new RepositoryNoEntryCreatedError(this.tableName);
+      throw new RepositoryNoEntryUpdatedError(this.tableName);
     }
 
     return this.convertRowToModel(response.rows[0]);
   }
 
   async deleteById(entry: Partial<MODEL>): Promise<MODEL> {
-    this.validateEntry(entry);
-    this.validateEntryForId(entry);
+    new this.model().validateForId(entry);
 
     const query = `
       DELETE FROM ${this.tableName}
@@ -148,7 +137,7 @@ export abstract class Repository<MODEL extends IModel>
     const response = await this.query(query, [entry.id]);
 
     if (response.rows.length <= 0) {
-      throw new RepositoryNoEntryCreatedError(this.tableName);
+      throw new RepositoryNoEntryDeletedError(this.tableName);
     }
 
     return this.convertRowToModel(response.rows[0]);

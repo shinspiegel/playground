@@ -4,6 +4,6 @@ import { Service } from "/Service/Service.ts";
 
 export class BookService extends Service<Book> {
   constructor() {
-    super(new BookRepository());
+    super(new BookRepository(), Book);
   }
 }

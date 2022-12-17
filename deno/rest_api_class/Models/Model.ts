@@ -3,6 +3,7 @@ import {
   ModelInvalidBodyError,
   ModelInvalidBodyKey,
   ModelInvalidRowError,
+  ModelNonExistingIdError,
   ModelNonExistingIndexesError,
 } from "/Models/Model.errors.ts";
 
@@ -10,8 +11,20 @@ export abstract class Model implements IModel {
   public databaseIndexes?: string[] = ["id"];
   public id?: number | undefined;
 
-  public validate(body: unknown) {
-    if (!this.databaseIndexes) {
+  public validateForId(body: unknown) {
+    if (!body || typeof body !== "object") {
+      throw new ModelInvalidBodyError();
+    }
+
+    if (!Object.prototype.hasOwnProperty.call(body, "id")) {
+      throw new ModelNonExistingIdError();
+    }
+
+    return this;
+  }
+
+  public validate(body: unknown, fields: string[] | undefined = this.databaseIndexes) {
+    if (!fields) {
       throw new ModelNonExistingIndexesError();
     }
 
@@ -20,17 +33,24 @@ export abstract class Model implements IModel {
     }
 
     const errors: string[] = [];
+
+    if ("databaseIndexes" in body) {
+      delete body.databaseIndexes;
+    }
+
     const bodyKeys = Object.keys(body);
 
     bodyKeys.forEach((key) => {
-      if (!this.databaseIndexes?.includes(key)) {
+      if (!fields.includes(key)) {
         errors.push(key);
       }
     });
 
     if (errors.length > 0) {
-      throw new ModelInvalidBodyKey(errors, this.databaseIndexes);
+      throw new ModelInvalidBodyKey(errors, fields);
     }
+
+    return this;
   }
 
   public build(row: unknown): Model {
