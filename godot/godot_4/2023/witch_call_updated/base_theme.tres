@@ -1,0 +1,7 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://bu0v5taq2t0qp"]
+
+[ext_resource type="FontFile" uid="uid://cyao71lsf6j5p" path="res://assets/fonts/prstart.ttf" id="1_u3wef"]
+
+[resource]
+default_font = ExtResource("1_u3wef")
+default_font_size = 16

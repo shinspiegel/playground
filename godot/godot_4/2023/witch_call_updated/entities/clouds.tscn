@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://d4lkqj7ds6hem"]
+
+[ext_resource type="Texture2D" uid="uid://c0k0haachur5i" path="res://assets/graphics/Clouds.png" id="1_q2x1v"]
+[ext_resource type="Script" path="res://entities/clouds.gd" id="2_rvess"]
+
+[node name="Clouds" type="Sprite2D"]
+position = Vector2(-32, -32)
+scale = Vector2(2, 2)
+texture = ExtResource("1_q2x1v")
+centered = false
+hframes = 5
+script = ExtResource("2_rvess")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+rect = Rect2(-10, -10, 52, 52)

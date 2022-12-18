@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://dujtibhtgpn03"]
+
+[ext_resource type="PackedScene" uid="uid://daykxnlrr7a8g" path="res://menus/main_menu.tscn" id="1_1swxq"]
+[ext_resource type="PackedScene" uid="uid://1bt7tqi54mj" path="res://menus/options.tscn" id="2_i6gm2"]
+[ext_resource type="PackedScene" uid="uid://lulr7aa2qg0a" path="res://entities/cloud_spawner.tscn" id="3_n611v"]
+
+[node name="Main" type="Node2D"]
+texture_filter = 3
+
+[node name="Menus" type="CanvasLayer" parent="."]
+
+[node name="MainMenu" parent="Menus" instance=ExtResource("1_1swxq")]
+visible = false
+
+[node name="Options" parent="Menus" instance=ExtResource("2_i6gm2")]
+visible = false
+
+[node name="Game" type="Node2D" parent="."]
+
+[node name="CloudSpawner" parent="Game" instance=ExtResource("3_n611v")]
+position = Vector2(2.08165e-12, -12)
+
+[node name="BackgroundColor" type="CanvasLayer" parent="Game"]
+layer = -1
+
+[node name="ColorRect" type="ColorRect" parent="Game/BackgroundColor"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.109804, 0.141176, 0.360784, 1)
+metadata/_edit_lock_ = true

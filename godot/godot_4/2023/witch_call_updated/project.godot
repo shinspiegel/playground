@@ -10,16 +10,17 @@ config_version=5
 
 [application]
 
-config/name="My Alchemist Store"
+config/name="Witch Call Updated"
 run/main_scene="res://main.tscn"
 config/features=PackedStringArray("4.0", "Mobile")
-boot_splash/image="res://icon.svg"
 config/icon="res://icon.svg"
 
 [display]
 
-window/size/viewport_width=1170
-window/size/viewport_height=2532
+window/size/viewport_width=360
+window/size/viewport_height=620
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
 
 [rendering]
 
