@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://dujtibhtgpn03"]
+[gd_scene load_steps=5 format=3 uid="uid://dujtibhtgpn03"]
 
 [ext_resource type="PackedScene" uid="uid://daykxnlrr7a8g" path="res://menus/main_menu.tscn" id="1_1swxq"]
 [ext_resource type="PackedScene" uid="uid://1bt7tqi54mj" path="res://menus/options.tscn" id="2_i6gm2"]
 [ext_resource type="PackedScene" uid="uid://lulr7aa2qg0a" path="res://entities/cloud_spawner.tscn" id="3_n611v"]
+[ext_resource type="PackedScene" uid="uid://d4lkqj7ds6hem" path="res://entities/clouds.tscn" id="4_ogw1c"]
 
 [node name="Main" type="Node2D"]
 texture_filter = 3
@@ -19,6 +20,33 @@ visible = false
 
 [node name="CloudSpawner" parent="Game" instance=ExtResource("3_n611v")]
 position = Vector2(2.08165e-12, -12)
+
+[node name="Clouds" parent="Game/CloudSpawner" instance=ExtResource("4_ogw1c")]
+position = Vector2(27, 45)
+
+[node name="Clouds2" parent="Game/CloudSpawner" instance=ExtResource("4_ogw1c")]
+position = Vector2(182, 85)
+
+[node name="Clouds9" parent="Game/CloudSpawner" instance=ExtResource("4_ogw1c")]
+position = Vector2(277, 31)
+
+[node name="Clouds3" parent="Game/CloudSpawner" instance=ExtResource("4_ogw1c")]
+position = Vector2(101, 164)
+
+[node name="Clouds4" parent="Game/CloudSpawner" instance=ExtResource("4_ogw1c")]
+position = Vector2(241, 259)
+
+[node name="Clouds5" parent="Game/CloudSpawner" instance=ExtResource("4_ogw1c")]
+position = Vector2(15, 406)
+
+[node name="Clouds6" parent="Game/CloudSpawner" instance=ExtResource("4_ogw1c")]
+position = Vector2(212, 439)
+
+[node name="Clouds7" parent="Game/CloudSpawner" instance=ExtResource("4_ogw1c")]
+position = Vector2(89, 533)
+
+[node name="Clouds8" parent="Game/CloudSpawner" instance=ExtResource("4_ogw1c")]
+position = Vector2(265, 554)
 
 [node name="BackgroundColor" type="CanvasLayer" parent="Game"]
 layer = -1
