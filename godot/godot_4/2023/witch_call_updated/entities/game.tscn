@@ -4,18 +4,16 @@
 [ext_resource type="Script" path="res://entities/game.gd" id="1_fb5xa"]
 [ext_resource type="PackedScene" uid="uid://die2giuomg3ym" path="res://entities/starting_clouds.tscn" id="2_e0r5h"]
 [ext_resource type="PackedScene" uid="uid://clxp380txlm3j" path="res://entities/player.tscn" id="2_q7pr1"]
-[ext_resource type="Script" path="res://resources/run_data.gd" id="3_0kpwy"]
+[ext_resource type="Resource" uid="uid://bg4o2fwqrw7vq" path="res://resources/run_data.tres" id="3_bu72u"]
 [ext_resource type="PackedScene" uid="uid://ggkvdeyyo6v0" path="res://entities/hud.tscn" id="5_getyl"]
 
-[sub_resource type="Resource" id="Resource_j5uei"]
-script = ExtResource("3_0kpwy")
-level = 0
-score = 0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nwkjv"]
+size = Vector2(64, 768)
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_fb5xa")
 player_scene = ExtResource("2_q7pr1")
-run_data = SubResource("Resource_j5uei")
+run_data = ExtResource("3_bu72u")
 
 [node name="CloudSpawner" parent="." instance=ExtResource("1_cnf1g")]
 position = Vector2(2.08165e-12, -12)
@@ -25,5 +23,15 @@ position = Vector2(2.08165e-12, -12)
 [node name="StartPlayerPos" type="Marker2D" parent="."]
 position = Vector2(180, 540)
 gizmo_extents = 24.0
+
+[node name="Wall" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall"]
+position = Vector2(-32, 320)
+shape = SubResource("RectangleShape2D_nwkjv")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Wall"]
+position = Vector2(392, 320)
+shape = SubResource("RectangleShape2D_nwkjv")
 
 [node name="HUD" parent="." instance=ExtResource("5_getyl")]

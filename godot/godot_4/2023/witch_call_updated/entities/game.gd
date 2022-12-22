@@ -17,7 +17,7 @@ func start_game() -> void:
 	set_start_position()
 	spawn_player()
 	hud.show()
-	run_data = RunData.new()
+	run_data.reset()
 	
 	# Reset all the game data
 	# - Reset monster spawner?
