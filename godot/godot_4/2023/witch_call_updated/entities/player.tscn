@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://clxp380txlm3j"]
+
+[ext_resource type="Texture2D" uid="uid://djpgcdf7nsw20" path="res://assets/graphics/Witch.png" id="1_hko6d"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pbcte"]
+radius = 17.0
+
+[node name="Player" type="Area2D"]
+texture_filter = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -6)
+shape = SubResource("CircleShape2D_pbcte")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("1_hko6d")
+hframes = 4

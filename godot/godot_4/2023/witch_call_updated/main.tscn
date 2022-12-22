@@ -1,57 +1,23 @@
-[gd_scene load_steps=5 format=3 uid="uid://dujtibhtgpn03"]
+[gd_scene load_steps=5 format=3 uid="uid://dqpeajalcuijc"]
 
-[ext_resource type="PackedScene" uid="uid://daykxnlrr7a8g" path="res://menus/main_menu.tscn" id="1_1swxq"]
-[ext_resource type="PackedScene" uid="uid://1bt7tqi54mj" path="res://menus/options.tscn" id="2_i6gm2"]
-[ext_resource type="PackedScene" uid="uid://lulr7aa2qg0a" path="res://entities/cloud_spawner.tscn" id="3_n611v"]
-[ext_resource type="PackedScene" uid="uid://d4lkqj7ds6hem" path="res://entities/clouds.tscn" id="4_ogw1c"]
+[ext_resource type="Script" path="res://main.gd" id="1_ahs37"]
+[ext_resource type="Resource" uid="uid://dt6soudindf7k" path="res://resources/general_game_data.tres" id="2_jkpjl"]
+[ext_resource type="PackedScene" uid="uid://dxlvwsl2xwhe6" path="res://menus/menus.tscn" id="2_uebvo"]
+[ext_resource type="PackedScene" uid="uid://y1ydikw6mk7w" path="res://entities/game.tscn" id="4_7tmw5"]
 
 [node name="Main" type="Node2D"]
 texture_filter = 3
+script = ExtResource("1_ahs37")
+game_data = ExtResource("2_jkpjl")
 
-[node name="Menus" type="CanvasLayer" parent="."]
+[node name="Menus" parent="." instance=ExtResource("2_uebvo")]
 
-[node name="MainMenu" parent="Menus" instance=ExtResource("1_1swxq")]
-visible = false
+[node name="Game" parent="." instance=ExtResource("4_7tmw5")]
 
-[node name="Options" parent="Menus" instance=ExtResource("2_i6gm2")]
-visible = false
-
-[node name="Game" type="Node2D" parent="."]
-
-[node name="CloudSpawner" parent="Game" instance=ExtResource("3_n611v")]
-position = Vector2(2.08165e-12, -12)
-
-[node name="Clouds" parent="Game/CloudSpawner" instance=ExtResource("4_ogw1c")]
-position = Vector2(27, 45)
-
-[node name="Clouds2" parent="Game/CloudSpawner" instance=ExtResource("4_ogw1c")]
-position = Vector2(182, 85)
-
-[node name="Clouds9" parent="Game/CloudSpawner" instance=ExtResource("4_ogw1c")]
-position = Vector2(277, 31)
-
-[node name="Clouds3" parent="Game/CloudSpawner" instance=ExtResource("4_ogw1c")]
-position = Vector2(101, 164)
-
-[node name="Clouds4" parent="Game/CloudSpawner" instance=ExtResource("4_ogw1c")]
-position = Vector2(241, 259)
-
-[node name="Clouds5" parent="Game/CloudSpawner" instance=ExtResource("4_ogw1c")]
-position = Vector2(15, 406)
-
-[node name="Clouds6" parent="Game/CloudSpawner" instance=ExtResource("4_ogw1c")]
-position = Vector2(212, 439)
-
-[node name="Clouds7" parent="Game/CloudSpawner" instance=ExtResource("4_ogw1c")]
-position = Vector2(89, 533)
-
-[node name="Clouds8" parent="Game/CloudSpawner" instance=ExtResource("4_ogw1c")]
-position = Vector2(265, 554)
-
-[node name="BackgroundColor" type="CanvasLayer" parent="Game"]
+[node name="BackgroundColor" type="CanvasLayer" parent="."]
 layer = -1
 
-[node name="ColorRect" type="ColorRect" parent="Game/BackgroundColor"]
+[node name="ColorRect" type="ColorRect" parent="BackgroundColor"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -59,3 +25,6 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.109804, 0.141176, 0.360784, 1)
 metadata/_edit_lock_ = true
+
+[editable path="Menus"]
+[editable path="Game"]

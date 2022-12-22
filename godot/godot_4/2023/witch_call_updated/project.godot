@@ -8,6 +8,34 @@
 
 config_version=5
 
+_global_script_classes=[{
+"base": "Node2D",
+"class": &"Game",
+"language": &"GDScript",
+"path": "res://entities/game.gd"
+}, {
+"base": "Resource",
+"class": &"GeneralGameData",
+"language": &"GDScript",
+"path": "res://resources/general_game_data.gd"
+}, {
+"base": "CanvasLayer",
+"class": &"Menus",
+"language": &"GDScript",
+"path": "res://menus/menus.gd"
+}, {
+"base": "Resource",
+"class": &"RunData",
+"language": &"GDScript",
+"path": "res://resources/run_data.gd"
+}]
+_global_script_class_icons={
+"Game": "",
+"GeneralGameData": "",
+"Menus": "",
+"RunData": ""
+}
+
 [application]
 
 config/name="Witch Call Updated"
@@ -15,10 +43,16 @@ run/main_scene="res://main.tscn"
 config/features=PackedStringArray("4.0", "Mobile")
 config/icon="res://icon.svg"
 
+[autoload]
+
+SignalBus="*res://globals/signal_bus.gd"
+
 [display]
 
 window/size/viewport_width=360
 window/size/viewport_height=620
+window/size/window_width_override=720
+window/size/window_height_override=1240
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 

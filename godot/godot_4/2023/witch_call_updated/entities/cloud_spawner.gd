@@ -1,25 +1,23 @@
 extends Node2D
 
 @export var cloud_scene: PackedScene
-@export var size = Vector2i.ZERO
 @export var min_amount: int = 1
 @export var max_amount: int = 5
 
 @onready var delay: Timer = $Delay
 
-
 func _ready() -> void:
-	get_tree().root.size_changed.connect(size_changed)
-	delay.timeout.connect(spawn_clouds)
-	size_changed()
+	delay.timeout.connect(on_time_out)
 
 
-func size_changed(): 
-	size = DisplayServer.window_get_size(0)
-
-
-func spawn_clouds():
+func on_time_out() -> void:
 	for n in randi_range(min_amount, max_amount):
-		var instance: Node2D = cloud_scene.instantiate()
-		add_child(instance)
-		instance.global_position.x = randi_range(0, size.x)
+		spawn_cloud()
+
+
+func spawn_cloud():
+	var instance: Node2D = cloud_scene.instantiate()
+	var pos_x = randi_range(0, ProjectSettings.get_setting("display/window/size/viewport_width"))
+	add_child(instance)
+	instance.global_position.x = pos_x
+

@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://dxlvwsl2xwhe6"]
+
+[ext_resource type="Script" path="res://menus/menus.gd" id="1_nj0b1"]
+[ext_resource type="PackedScene" uid="uid://daykxnlrr7a8g" path="res://menus/main_menu.tscn" id="2_pv0v3"]
+[ext_resource type="PackedScene" uid="uid://1bt7tqi54mj" path="res://menus/options.tscn" id="3_ephve"]
+
+[node name="Menus" type="CanvasLayer"]
+script = ExtResource("1_nj0b1")
+
+[node name="MainMenu" parent="." instance=ExtResource("2_pv0v3")]
+visible = false
+
+[node name="Options" parent="." instance=ExtResource("3_ephve")]
+visible = false

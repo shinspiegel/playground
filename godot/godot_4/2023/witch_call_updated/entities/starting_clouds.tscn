@@ -1,0 +1,43 @@
+[gd_scene load_steps=2 format=3 uid="uid://die2giuomg3ym"]
+
+[ext_resource type="PackedScene" uid="uid://d4lkqj7ds6hem" path="res://entities/clouds.tscn" id="1_rbe4h"]
+
+[node name="StartingClouds" type="Node2D"]
+position = Vector2(27, 33)
+scale = Vector2(2, 2)
+
+[node name="Clouds" parent="." instance=ExtResource("1_rbe4h")]
+position = Vector2(0, 0)
+scale = Vector2(1, 1)
+
+[node name="Clouds2" parent="." instance=ExtResource("1_rbe4h")]
+position = Vector2(77.5, 20)
+scale = Vector2(1, 1)
+
+[node name="Clouds9" parent="." instance=ExtResource("1_rbe4h")]
+position = Vector2(125, -7)
+scale = Vector2(1, 1)
+
+[node name="Clouds3" parent="." instance=ExtResource("1_rbe4h")]
+position = Vector2(37, 59.5)
+scale = Vector2(1, 1)
+
+[node name="Clouds4" parent="." instance=ExtResource("1_rbe4h")]
+position = Vector2(107, 107)
+scale = Vector2(1, 1)
+
+[node name="Clouds5" parent="." instance=ExtResource("1_rbe4h")]
+position = Vector2(-6, 180.5)
+scale = Vector2(1, 1)
+
+[node name="Clouds6" parent="." instance=ExtResource("1_rbe4h")]
+position = Vector2(92.5, 197)
+scale = Vector2(1, 1)
+
+[node name="Clouds7" parent="." instance=ExtResource("1_rbe4h")]
+position = Vector2(31, 244)
+scale = Vector2(1, 1)
+
+[node name="Clouds8" parent="." instance=ExtResource("1_rbe4h")]
+position = Vector2(119, 254.5)
+scale = Vector2(1, 1)
