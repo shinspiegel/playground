@@ -1,6 +1,7 @@
 class_name TwitchSocket extends Node
 
 signal receved_message_from(from, text)
+signal package_received(package)
 signal connecction_authed()
 signal connection_started()
 signal connection_closed()
@@ -23,7 +24,7 @@ func _ready():
 		regex.compile(":(.*)\\!.*@.*\\.tmi\\.twitch\\.tv (.*) #(.*) :(.*)")
 
 
-func _process(delta):
+func _process(_delta: float):
 	if enabled:
 		socket.poll()
 		state = socket.get_ready_state()
@@ -39,7 +40,9 @@ func _process(delta):
 func receive_packages() -> void:
 	if state == WebSocketPeer.STATE_OPEN:
 		while socket.get_available_packet_count():
-			parse_package(socket.get_packet().get_string_from_utf8())
+			var package = socket.get_packet().get_string_from_utf8()
+			package_received.emit(package)
+			parse_package(package)
 	
 	elif state == WebSocketPeer.STATE_CLOSING:
 		print_debug("ERROR:: Closing socket")
@@ -53,6 +56,7 @@ func receive_packages() -> void:
 
 
 func parse_package(package: String) -> void:
+	print("INFO:: ", package)
 	var list = regex.search_all(package)
 	
 	for block in list:
@@ -71,5 +75,5 @@ func auth() -> void:
 		socket.send_text("NICK %s \n" % [user_name])
 		socket.send_text("JOIN %s \n" % [channel_name])
 		connecction_authed.emit()
-	
+		
 		is_auth = true

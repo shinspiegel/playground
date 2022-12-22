@@ -12,7 +12,6 @@ script = ExtResource("1_crrwx")
 chat_message_scene = ExtResource("1_fw2ps")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
-layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -24,7 +23,6 @@ theme_override_constants/margin_right = 12
 theme_override_constants/margin_bottom = 12
 
 [node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer"]
-layout_mode = 2
 offset_left = 12.0
 offset_top = 12.0
 offset_right = 278.0
@@ -34,11 +32,9 @@ grow_vertical = 2
 follow_focus = true
 
 [node name="ChatList" type="VBoxContainer" parent="MarginContainer/ScrollContainer"]
-layout_mode = 2
 offset_right = 266.0
 offset_bottom = 696.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="ChatMessage" parent="MarginContainer/ScrollContainer/ChatList" instance=ExtResource("1_fw2ps")]
-layout_mode = 2

@@ -9,7 +9,6 @@ size_flags_vertical = 0
 script = ExtResource("1_phtes")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
-layout_mode = 2
 offset_right = 266.0
 offset_bottom = 69.0
 size_flags_horizontal = 3

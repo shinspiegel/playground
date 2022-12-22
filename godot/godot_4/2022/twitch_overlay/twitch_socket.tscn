@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3]
+[gd_scene load_steps=2 format=3 uid="uid://c6d8j5b1lx6th"]
 
 [ext_resource type="Script" path="res://twitch_socket.gd" id="1_anbdn"]
 

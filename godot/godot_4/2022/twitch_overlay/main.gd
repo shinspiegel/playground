@@ -15,7 +15,14 @@ var rand_messages: Array[String] = [
 
 func _ready():
 	get_tree().get_root().set_transparent_background(true)
+#	ts.package_received.connect(save_package_on_text)
 #	ts.receved_message_from.connect(cc.add_chat_message)
+
+func save_package_on_text(package) -> void:
+	var path = "/Users/jeferson_leite_borges/Documents/save_game.txt"
+	var file = FileAccess.open(path, FileAccess.READ_WRITE)
+	file.seek_end()
+	file.store_string(package)
 
 #func _process(delta) -> void:
 #	if not is_trigger:

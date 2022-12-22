@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bf5baxqlh0gjd"]
+
+[ext_resource type="Script" path="res://twitch_pub_sub.gd" id="1_yjoj1"]
+
+[node name="TwitchPubSub" type="Node"]
+script = ExtResource("1_yjoj1")
+
+[node name="HTTPRequest" type="HTTPRequest" parent="."]
