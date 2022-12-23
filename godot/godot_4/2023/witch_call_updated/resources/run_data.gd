@@ -12,6 +12,12 @@ class_name RunData extends Resource
 @export var score: int = 0
 
 
+func _init() -> void:
+	# Can connect on the signal bus from here
+	# SignalBus is a singleton and is created before this one
+	reset()
+
+
 func reset() -> void:
 	level = 0
 	score = 0

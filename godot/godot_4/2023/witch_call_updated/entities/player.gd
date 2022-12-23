@@ -49,5 +49,6 @@ func check_direction_keys() -> void:
 func check_shoot_keys() -> void:
 	shoot = Input.is_action_pressed("shot")
 
+
 func passive_restore_mana(delta: float) -> void:
 	run_data.restore_mana(delta * run_data.mana_recovery_rate)
