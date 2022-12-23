@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://clxp380txlm3j"]
+[gd_scene load_steps=9 format=3 uid="uid://clxp380txlm3j"]
 
 [ext_resource type="Script" path="res://entities/player.gd" id="1_2eh8r"]
 [ext_resource type="Texture2D" uid="uid://djpgcdf7nsw20" path="res://assets/graphics/Witch.png" id="1_hko6d"]
 [ext_resource type="Resource" uid="uid://bg4o2fwqrw7vq" path="res://resources/run_data.tres" id="2_kpnlj"]
+[ext_resource type="PackedScene" uid="uid://25jupj2nmeu6" path="res://entities/player_shoot.tscn" id="3_upp1j"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pbcte"]
 radius = 18.0
@@ -49,6 +50,7 @@ _data = {
 texture_filter = 3
 script = ExtResource("1_2eh8r")
 run_data = ExtResource("2_kpnlj")
+shoot_scene = ExtResource("3_upp1j")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -6)
@@ -66,3 +68,9 @@ libraries = {
 }
 
 [node name="ShootColddown" type="Timer" parent="."]
+wait_time = 0.3
+one_shot = true
+
+[node name="ShootPos" type="Marker2D" parent="."]
+position = Vector2(0, -34)
+gizmo_extents = 20.0
