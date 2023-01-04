@@ -5,6 +5,7 @@ class_name Game extends Node2D
 
 @onready var start_pos: Marker2D = $StartPlayerPos
 @onready var hud: CanvasLayer = $HUD
+@onready var monster_spawner: MonsterSpawner = $MonsterSpawner
 
 
 func _ready() -> void:

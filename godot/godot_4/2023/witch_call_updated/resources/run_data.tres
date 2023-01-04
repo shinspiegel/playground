@@ -4,5 +4,11 @@
 
 [resource]
 script = ExtResource("1_77ryh")
+mana_bar = 100.0
+max_mana_var = 100.0
+mana_recovery_rate = 5.0
+initial_recovery_rate = 5.0
+hearts = 3
+max_hearts = 3
 level = 0
 score = 0

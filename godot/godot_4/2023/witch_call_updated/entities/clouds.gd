@@ -9,7 +9,7 @@ extends Sprite2D
 
 func _ready() -> void:
 	var layer = randi_range(0,3)
-	var selected_frame = randi_range(0, 4)
+	selected_frame = randi_range(0, 4)
 	
 	speed += randi_range(-10, 10)
 	frame = selected_frame

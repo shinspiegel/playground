@@ -37,9 +37,9 @@ func apply_shoot() -> void:
 		run_data.consume_mana(shoot_mana_cost)
 		shoot_colddown.start()
 		
-		var shoot = shoot_scene.instantiate()
-		get_parent().add_child(shoot)
-		shoot.global_position = shoot_pos.global_position
+		var shoot_node = shoot_scene.instantiate()
+		get_parent().add_child(shoot_node)
+		shoot_node.global_position = shoot_pos.global_position
 
 
 func check_direction_keys() -> void:

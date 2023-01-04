@@ -11,7 +11,7 @@ func _ready() -> void:
 		options[node.name] = node
 	
 	hide_all()
-	
+
 
 func show_menu(menu: String) -> void:
 	hide_all()
