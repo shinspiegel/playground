@@ -1,9 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://clxp380txlm3j"]
+[gd_scene load_steps=11 format=3 uid="uid://clxp380txlm3j"]
 
 [ext_resource type="Script" path="res://entities/player.gd" id="1_2eh8r"]
-[ext_resource type="Texture2D" uid="uid://djpgcdf7nsw20" path="res://assets/graphics/Witch.png" id="1_hko6d"]
 [ext_resource type="Resource" uid="uid://bg4o2fwqrw7vq" path="res://resources/run_data.tres" id="2_kpnlj"]
 [ext_resource type="PackedScene" uid="uid://25jupj2nmeu6" path="res://entities/player_shoot.tscn" id="3_upp1j"]
+[ext_resource type="Texture2D" uid="uid://dfhb12alxg0e0" path="res://assets/graphics/witch_dani_art.png" id="4_4rcsf"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pbcte"]
 radius = 18.0
@@ -37,13 +37,49 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
+"values": [8, 9, 10, 11]
+}
+
+[sub_resource type="Animation" id="Animation_u4cfn"]
+resource_name = "left"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [4, 5, 6, 7]
+}
+
+[sub_resource type="Animation" id="Animation_45unv"]
+resource_name = "right"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
 "values": [0, 1, 2, 3]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_3dsq4"]
 _data = {
 "RESET": SubResource("Animation_ablmo"),
-"fly": SubResource("Animation_y8uid")
+"fly": SubResource("Animation_y8uid"),
+"left": SubResource("Animation_u4cfn"),
+"right": SubResource("Animation_45unv")
 }
 
 [node name="Player" type="CharacterBody2D"]
@@ -52,14 +88,15 @@ script = ExtResource("1_2eh8r")
 run_data = ExtResource("2_kpnlj")
 shoot_scene = ExtResource("3_upp1j")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -6)
-shape = SubResource("CircleShape2D_pbcte")
-
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(2, 2)
-texture = ExtResource("1_hko6d")
+texture = ExtResource("4_4rcsf")
 hframes = 4
+vframes = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -2)
+shape = SubResource("CircleShape2D_pbcte")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "fly"

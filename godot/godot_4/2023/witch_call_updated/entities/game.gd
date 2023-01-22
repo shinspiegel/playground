@@ -2,10 +2,12 @@ class_name Game extends Node2D
 
 @export var player_scene: PackedScene
 @export var run_data: RunData
+@export var waves_list: Array[Wave]
 
 @onready var start_pos: Marker2D = $StartPlayerPos
 @onready var hud: CanvasLayer = $HUD
 @onready var monster_spawner: MonsterSpawner = $MonsterSpawner
+@onready var wave_timer: Timer = $WaveTimer
 
 
 func _ready() -> void:

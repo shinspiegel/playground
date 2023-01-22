@@ -8,52 +8,6 @@
 
 config_version=5
 
-_global_script_classes=[{
-"base": "Node2D",
-"class": &"Game",
-"language": &"GDScript",
-"path": "res://entities/game.gd"
-}, {
-"base": "Resource",
-"class": &"GeneralGameData",
-"language": &"GDScript",
-"path": "res://resources/general_game_data.gd"
-}, {
-"base": "CanvasLayer",
-"class": &"Menus",
-"language": &"GDScript",
-"path": "res://menus/menus.gd"
-}, {
-"base": "Node2D",
-"class": &"MonsterSpawner",
-"language": &"GDScript",
-"path": "res://entities/monster_spawner.gd"
-}, {
-"base": "Area2D",
-"class": &"PlayerShoot",
-"language": &"GDScript",
-"path": "res://entities/player_shoot.gd"
-}, {
-"base": "Resource",
-"class": &"RunData",
-"language": &"GDScript",
-"path": "res://resources/run_data.gd"
-}, {
-"base": "CharacterBody2D",
-"class": &"Witch",
-"language": &"GDScript",
-"path": "res://entities/player.gd"
-}]
-_global_script_class_icons={
-"Game": "",
-"GeneralGameData": "",
-"Menus": "",
-"MonsterSpawner": "",
-"PlayerShoot": "",
-"RunData": "",
-"Witch": ""
-}
-
 [application]
 
 config/name="Witch Call Updated"
@@ -72,6 +26,10 @@ window/size/viewport_height=620
 window/size/window_width_override=720
 window/size/window_height_override=1240
 window/stretch/mode="canvas_items"
+
+[editor]
+
+export/convert_text_resources_to_binary=true
 
 [input]
 
