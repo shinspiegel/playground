@@ -1,0 +1,5 @@
+{
+  "imports": {
+    "@testing-library/react/": "npm:@testing-library/react"
+  }
+}
