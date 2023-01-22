@@ -1,12 +1,102 @@
-[gd_scene load_steps=2 format=3 uid="uid://bw4rf0iv2httw"]
+[gd_scene load_steps=10 format=3 uid="uid://bw4rf0iv2httw"]
 
-[ext_resource type="Texture2D" uid="uid://cvnwgpqh0x8hi" path="res://assets/graphics/Pumpkin.png" id="1_dtp34"]
+[ext_resource type="Script" path="res://entities/monster.gd" id="1_fkee2"]
+[ext_resource type="Texture2D" uid="uid://cvnwgpqh0x8hi" path="res://assets/graphics/Pumpkin.png" id="2_4ai04"]
+[ext_resource type="Theme" uid="uid://bu0v5taq2t0qp" path="res://base_theme.tres" id="2_78yme"]
+[ext_resource type="Texture2D" uid="uid://fhqd8jbcrp36" path="res://assets/graphics/HealthBar.png" id="3_5i7yq"]
+[ext_resource type="PackedScene" uid="uid://coxjj0qrvwtm8" path="res://entities/hurt_box.tscn" id="3_c04h6"]
+
+[sub_resource type="Animation" id="Animation_w2bfb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_ap7ne"]
+resource_name = "falling"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kfhxb"]
+_data = {
+"RESET": SubResource("Animation_w2bfb"),
+"falling": SubResource("Animation_ap7ne")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ymcf7"]
+size = Vector2(72, 39)
 
 [node name="Monster" type="Node2D"]
+script = ExtResource("1_fkee2")
+
+[node name="Control" type="Control" parent="."]
+custom_minimum_size = Vector2(60, 4)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -30.0
+offset_top = -32.0
+offset_right = 30.0
+offset_bottom = -28.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_78yme")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+value = 50.0
+texture_under = ExtResource("3_5i7yq")
+texture_progress = ExtResource("3_5i7yq")
+tint_under = Color(0.14902, 0.0156863, 0.00392157, 1)
+tint_progress = Color(0.74902, 0.156863, 0.0509804, 1)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 3
 scale = Vector2(2, 2)
-texture = ExtResource("1_dtp34")
+texture = ExtResource("2_4ai04")
 hframes = 4
 vframes = 3
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+rect = Rect2(-50, -50, 100, 100)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "falling"
+libraries = {
+"": SubResource("AnimationLibrary_kfhxb")
+}
+
+[node name="HurtBox" parent="." instance=ExtResource("3_c04h6")]
+
+[node name="CollisionShape2D" parent="HurtBox" index="0"]
+position = Vector2(0, 7.5)
+shape = SubResource("RectangleShape2D_ymcf7")
+
+[editable path="HurtBox"]

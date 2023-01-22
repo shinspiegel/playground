@@ -1,7 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://25jupj2nmeu6"]
+[gd_scene load_steps=10 format=3 uid="uid://25jupj2nmeu6"]
 
 [ext_resource type="Script" path="res://entities/player_shoot.gd" id="1_cki5t"]
-[ext_resource type="Texture2D" uid="uid://bgpxsm4no800o" path="res://assets/graphics/MagicBolt.png" id="1_sj28a"]
+[ext_resource type="Texture2D" uid="uid://bgpxsm4no800o" path="res://assets/graphics/MagicBolt.png" id="2_pqu02"]
+[ext_resource type="PackedScene" uid="uid://d4so2xyw7tpj" path="res://entities/hit_box.tscn" id="3_kkpiu"]
+[ext_resource type="Resource" uid="uid://c4s5ybii03l5" path="res://entities/player_shoot_damage.tres" id="4_jiegm"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_omdx1"]
 radius = 11.0
@@ -44,13 +46,16 @@ _data = {
 "anim": SubResource("Animation_46clv")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4oy0b"]
+size = Vector2(16, 24)
+
 [node name="PlayerShoot" type="Area2D"]
 script = ExtResource("1_cki5t")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 3
 scale = Vector2(2, 2)
-texture = ExtResource("1_sj28a")
+texture = ExtResource("2_pqu02")
 hframes = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -65,3 +70,12 @@ libraries = {
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 rect = Rect2(-20, -20, 40, 40)
+
+[node name="HitBox" parent="." instance=ExtResource("3_kkpiu")]
+damage = ExtResource("4_jiegm")
+
+[node name="CollisionShape2D" parent="HitBox" index="0"]
+position = Vector2(-0.000590543, -8.88599e-09)
+shape = SubResource("RectangleShape2D_4oy0b")
+
+[editable path="HitBox"]

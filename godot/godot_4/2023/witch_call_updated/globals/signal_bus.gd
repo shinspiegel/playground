@@ -18,3 +18,4 @@ signal player_died()
 
 # Run Signals
 signal spawn_monster_at(monster: PackedScene, lane: int)
+signal monster_die(monster: MonsterBase)

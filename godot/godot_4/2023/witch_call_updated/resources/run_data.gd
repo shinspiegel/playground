@@ -15,6 +15,7 @@ class_name RunData extends Resource
 func _init() -> void:
 	# Can connect on the signal bus from here
 	# SignalBus is a singleton and is created before this one
+	SignalBus.monster_die.connect(monster_killed)
 	reset()
 
 
@@ -61,3 +62,8 @@ func consume_mana(value: float) -> void:
 
 func restore_mana(value: float) -> void:
 	change_mana(value)
+
+
+func monster_killed(monster: MonsterBase) -> void:
+	score += monster.score + level
+	SignalBus.score_changed_to.emit(score)
