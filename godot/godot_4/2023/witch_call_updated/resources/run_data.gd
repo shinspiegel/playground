@@ -32,6 +32,18 @@ func reset() -> void:
 	SignalBus.life_changed_to.emit(hearts)
 
 
+func change_level(value: int) -> void:
+	if level + value <= 0:
+		level = 0
+		return
+	
+	level += value
+
+
+func increase_level(value: int = 1) -> void:
+	change_level(value)
+
+
 func change_mana(value: float) -> void:
 	if mana_bar + value > max_mana_var:
 		mana_bar = max_mana_var

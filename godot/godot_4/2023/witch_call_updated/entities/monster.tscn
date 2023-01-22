@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://bw4rf0iv2httw"]
+
+[ext_resource type="Texture2D" uid="uid://cvnwgpqh0x8hi" path="res://assets/graphics/Pumpkin.png" id="1_dtp34"]
+
+[node name="Monster" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 3
+scale = Vector2(2, 2)
+texture = ExtResource("1_dtp34")
+hframes = 4
+vframes = 3

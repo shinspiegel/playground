@@ -14,3 +14,7 @@ signal start_game()
 signal mana_changed_to(value: float)
 signal life_changed_to(value: int)
 signal score_changed_to(value: int)
+signal player_died()
+
+# Run Signals
+signal spawn_monster_at(monster: PackedScene, lane: int)
