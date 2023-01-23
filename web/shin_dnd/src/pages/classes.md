@@ -1,0 +1,53 @@
+---
+layout: "../layouts/Layout.astro"
+title: "Shin D&D - Classes"
+---
+
+# Classes
+
+- Alchemist
+  - Create throwable potions
+- Barbarian
+  - Rage
+- Bard
+  - Buff allies
+  - Mana caster
+- Champion
+  - Renamed paladin
+  - Slot caster
+- Cleric
+  - Slot caster
+  - Armored healer
+- Convoker
+  - Summoner multiple allies
+  - Mana caster
+- Druid
+  - Slot caster
+  - Nature spells
+- Fighter
+  - Weapon master
+- Inventor
+  - Create gadgets to give bonus (time-based items)
+- Investigator
+  - Search, locate, information
+- Monk
+  - Fist fighter
+- Oracle
+  - Mana caster
+  - Unarmored healer
+- Ranger
+  - Beast companion fighter
+- Sorcerer
+  - Arcane spells
+  - Mana caster
+- Swashbuckler
+  - Specialist in a single weapon (sword?)
+- Thief
+  - Pickpocket / traps disable?
+  - Sneak attack
+- Warlock
+  - Slot caster
+  - Borrowed spells
+- Wizard
+  - Arcane spells
+  - Slot caster
