@@ -72,6 +72,8 @@ libraries = {
 rect = Rect2(-20, -20, 40, 40)
 
 [node name="HitBox" parent="." instance=ExtResource("3_kkpiu")]
+collision_layer = 4
+collision_mask = 2
 damage = ExtResource("4_jiegm")
 
 [node name="CollisionShape2D" parent="HitBox" index="0"]

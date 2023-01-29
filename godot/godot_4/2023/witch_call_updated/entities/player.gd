@@ -10,7 +10,13 @@ class_name Witch extends CharacterBody2D
 @onready var shoot_colddown: Timer = $ShootColddown
 @onready var shoot_pos: Marker2D = $ShootPos
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var invencibility_coldown: Timer = $InvencibilityColdown
+@onready var hurt_box: HurtBox = $HurtBox
 
+
+func _ready() -> void:
+	hurt_box.hit_received.connect(on_receive_hit)
+	invencibility_coldown.timeout.connect(on_invencibility_timeout)
 
 func _process(delta: float) -> void:
 	passive_restore_mana(delta)
@@ -63,3 +69,14 @@ func check_shoot_keys() -> void:
 
 func passive_restore_mana(delta: float) -> void:
 	run_data.restore_mana(delta * run_data.mana_recovery_rate)
+
+
+func on_invencibility_timeout() -> void:
+	set_modulate(Color(1,1,1,1))
+
+
+func on_receive_hit(hit: HitBox) -> void:
+	if invencibility_coldown.is_stopped():
+		run_data.reduce_life(hit.get_damage_amount())
+		invencibility_coldown.start()
+		set_modulate(Color(1,1,1,0.2))

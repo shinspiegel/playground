@@ -67,3 +67,22 @@ func restore_mana(value: float) -> void:
 func monster_killed(monster: MonsterBase) -> void:
 	score += monster.score + level
 	SignalBus.score_changed_to.emit(score)
+
+
+func reduce_life(amount: int) -> void:
+	hearts -= amount
+	
+	if hearts <= 0:
+		hearts = 0
+		SignalBus.player_died.emit()
+	
+	SignalBus.life_changed_to.emit(hearts)
+
+
+func increase_life(amount: int) -> void:
+	hearts += amount
+	
+	if hearts >= max_hearts:
+		hearts = max_hearts
+	
+	SignalBus.life_changed_to.emit(hearts)

@@ -29,7 +29,7 @@ size = Vector2(64, 768)
 script = ExtResource("1_fb5xa")
 player_scene = ExtResource("2_q7pr1")
 run_data = ExtResource("3_bu72u")
-waves_list = [SubResource("Resource_p35ic"), SubResource("Resource_w34e3")]
+waves_list = [SubResource("Resource_p35ic"), SubResource("Resource_w34e3"), SubResource("Resource_w34e3"), SubResource("Resource_w34e3"), SubResource("Resource_w34e3")]
 
 [node name="WaveTimer" type="Timer" parent="."]
 one_shot = true
@@ -47,6 +47,8 @@ position = Vector2(180, 540)
 gizmo_extents = 24.0
 
 [node name="Wall" type="StaticBody2D" parent="."]
+collision_layer = 16
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Wall"]
 position = Vector2(-32, 320)

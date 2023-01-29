@@ -1,10 +1,12 @@
-[gd_scene load_steps=10 format=3 uid="uid://bw4rf0iv2httw"]
+[gd_scene load_steps=14 format=3 uid="uid://bw4rf0iv2httw"]
 
 [ext_resource type="Script" path="res://entities/monster.gd" id="1_fkee2"]
 [ext_resource type="Texture2D" uid="uid://cvnwgpqh0x8hi" path="res://assets/graphics/Pumpkin.png" id="2_4ai04"]
 [ext_resource type="Theme" uid="uid://bu0v5taq2t0qp" path="res://base_theme.tres" id="2_78yme"]
 [ext_resource type="Texture2D" uid="uid://fhqd8jbcrp36" path="res://assets/graphics/HealthBar.png" id="3_5i7yq"]
 [ext_resource type="PackedScene" uid="uid://coxjj0qrvwtm8" path="res://entities/hurt_box.tscn" id="3_c04h6"]
+[ext_resource type="PackedScene" uid="uid://d4so2xyw7tpj" path="res://entities/hit_box.tscn" id="6_kb7xv"]
+[ext_resource type="Script" path="res://resources/damage.gd" id="7_8ikq1"]
 
 [sub_resource type="Animation" id="Animation_w2bfb"]
 length = 0.001
@@ -46,6 +48,14 @@ _data = {
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ymcf7"]
 size = Vector2(72, 39)
+
+[sub_resource type="Resource" id="Resource_whay1"]
+script = ExtResource("7_8ikq1")
+amount = 1
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_k2liw"]
+radius = 17.0
+height = 64.0
 
 [node name="Monster" type="Node2D"]
 script = ExtResource("1_fkee2")
@@ -94,9 +104,22 @@ libraries = {
 }
 
 [node name="HurtBox" parent="." instance=ExtResource("3_c04h6")]
+collision_layer = 2
+collision_mask = 4
 
 [node name="CollisionShape2D" parent="HurtBox" index="0"]
 position = Vector2(0, 7.5)
 shape = SubResource("RectangleShape2D_ymcf7")
 
+[node name="HitBox" parent="." instance=ExtResource("6_kb7xv")]
+collision_layer = 2
+collision_mask = 1
+damage = SubResource("Resource_whay1")
+
+[node name="CollisionShape2D" parent="HitBox" index="0"]
+position = Vector2(0.00413381, 7)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_k2liw")
+
 [editable path="HurtBox"]
+[editable path="HitBox"]

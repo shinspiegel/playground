@@ -24,3 +24,7 @@ func set_shape_disabled(value: bool) -> void:
 func on_area_enter(hurt_box: Area2D) -> void:
 	if hurt_box is HurtBox:
 		hit.emit(hurt_box)
+
+
+func get_damage_amount() -> int:
+	return damage.amount

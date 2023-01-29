@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://clxp380txlm3j"]
+[gd_scene load_steps=13 format=3 uid="uid://clxp380txlm3j"]
 
 [ext_resource type="Script" path="res://entities/player.gd" id="1_2eh8r"]
 [ext_resource type="Resource" uid="uid://bg4o2fwqrw7vq" path="res://resources/run_data.tres" id="2_kpnlj"]
 [ext_resource type="PackedScene" uid="uid://25jupj2nmeu6" path="res://entities/player_shoot.tscn" id="3_upp1j"]
 [ext_resource type="Texture2D" uid="uid://dfhb12alxg0e0" path="res://assets/graphics/witch_dani_art.png" id="4_cgtqx"]
+[ext_resource type="PackedScene" uid="uid://coxjj0qrvwtm8" path="res://entities/hurt_box.tscn" id="5_mdhrp"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pbcte"]
 radius = 18.0
@@ -82,8 +83,12 @@ _data = {
 "right": SubResource("Animation_45unv")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ihijd"]
+size = Vector2(32, 39)
+
 [node name="Player" type="CharacterBody2D"]
 texture_filter = 3
+collision_mask = 16
 script = ExtResource("1_2eh8r")
 run_data = ExtResource("2_kpnlj")
 shoot_scene = ExtResource("3_upp1j")
@@ -111,3 +116,17 @@ one_shot = true
 [node name="ShootPos" type="Marker2D" parent="."]
 position = Vector2(0, -34)
 gizmo_extents = 20.0
+
+[node name="InvencibilityColdown" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="HurtBox" parent="." instance=ExtResource("5_mdhrp")]
+collision_layer = 1
+collision_mask = 34
+
+[node name="CollisionShape2D" parent="HurtBox" index="0"]
+position = Vector2(0, -4.5)
+shape = SubResource("RectangleShape2D_ihijd")
+
+[editable path="HurtBox"]
