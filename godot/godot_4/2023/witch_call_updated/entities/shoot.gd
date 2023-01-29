@@ -2,6 +2,7 @@ class_name PlayerShoot extends Area2D
 
 
 @export var speed: float = 120
+@export var down: bool = false
 
 @onready var notifier: VisibleOnScreenNotifier2D = $VisibleOnScreenNotifier2D
 @onready var hit_box: HitBox = $HitBox
@@ -13,4 +14,9 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
-	position.y -= delta * speed
+	var amount = delta * speed
+	
+	if down: 
+		amount *= -1
+	
+	position.y += amount

@@ -1,10 +1,27 @@
-[gd_scene load_steps=2 format=3 uid="uid://dfmw4neesexi3"]
+[gd_scene load_steps=6 format=3 uid="uid://dfmw4neesexi3"]
 
 [ext_resource type="PackedScene" uid="uid://c773s0wrn86ss" path="res://waves/monsters/monster.tscn" id="1_khojn"]
+[ext_resource type="Script" path="res://waves/monsters/monster_action.gd" id="2_v5lpe"]
+
+[sub_resource type="Resource" id="Resource_gecxt"]
+script = ExtResource("2_v5lpe")
+duration = 0.5
+type = 0
+
+[sub_resource type="Resource" id="Resource_c88b8"]
+script = ExtResource("2_v5lpe")
+duration = 2.0
+type = 1
+
+[sub_resource type="Resource" id="Resource_0ip6v"]
+script = ExtResource("2_v5lpe")
+duration = 0.0
+type = 0
 
 [node name="SpeedMonster" instance=ExtResource("1_khojn")]
 hit_points = 1
 speed = 200.0
+monster_actions = [SubResource("Resource_gecxt"), SubResource("Resource_c88b8"), SubResource("Resource_0ip6v")]
 
 [editable path="HurtBox"]
 [editable path="HitBox"]

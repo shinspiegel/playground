@@ -1,10 +1,10 @@
 class_name TankShield extends Node2D
 
 @export var max_shield_energy: int = 3
-@export var shield_energy: int = 3
 
 @onready var hurt_box: HurtBox = $HurtBox
 
+var shield_energy: int = 3
 var color_blue = Color8(43, 129, 227)
 var color_red = Color8(237, 26, 107)
 

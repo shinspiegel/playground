@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://entities/player.gd" id="1_2eh8r"]
 [ext_resource type="Resource" uid="uid://bg4o2fwqrw7vq" path="res://resources/run_data.tres" id="2_kpnlj"]
-[ext_resource type="PackedScene" uid="uid://25jupj2nmeu6" path="res://entities/player_shoot.tscn" id="3_upp1j"]
+[ext_resource type="PackedScene" uid="uid://dego4p5lc03ll" path="res://entities/shoot_player.tscn" id="3_vn1ff"]
 [ext_resource type="Texture2D" uid="uid://dfhb12alxg0e0" path="res://assets/graphics/witch_dani_art.png" id="4_cgtqx"]
 [ext_resource type="PackedScene" uid="uid://coxjj0qrvwtm8" path="res://entities/hurt_box.tscn" id="5_mdhrp"]
 
@@ -91,7 +91,7 @@ texture_filter = 3
 collision_mask = 16
 script = ExtResource("1_2eh8r")
 run_data = ExtResource("2_kpnlj")
-shoot_scene = ExtResource("3_upp1j")
+shoot_scene = ExtResource("3_vn1ff")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(2, 2)

@@ -1,7 +1,7 @@
 class_name HurtBox extends Area2D
 
 signal hit_received(hit_box: HitBox)
-@onready var shape: CollisionShape2D = $CollisionShape2d
+@onready var shape: CollisionShape2D = $CollisionShape2D
 
 
 func _ready() -> void:

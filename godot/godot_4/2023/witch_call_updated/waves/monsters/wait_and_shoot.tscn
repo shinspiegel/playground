@@ -1,8 +1,37 @@
-[gd_scene load_steps=2 format=3 uid="uid://bldq1e0pimcyh"]
+[gd_scene load_steps=9 format=3 uid="uid://bldq1e0pimcyh"]
 
 [ext_resource type="PackedScene" uid="uid://c773s0wrn86ss" path="res://waves/monsters/monster.tscn" id="1_34c2m"]
+[ext_resource type="PackedScene" uid="uid://bh5tn2ljga43q" path="res://entities/monster_shoot_spawner.tscn" id="2_i3dro"]
+[ext_resource type="Script" path="res://waves/monsters/wait_and_shoot.gd" id="2_khkx8"]
+[ext_resource type="Script" path="res://waves/monsters/monster_action.gd" id="3_wdkin"]
+
+[sub_resource type="Resource" id="Resource_wodjn"]
+script = ExtResource("3_wdkin")
+duration = 0.3
+type = 0
+
+[sub_resource type="Resource" id="Resource_vxdmw"]
+script = ExtResource("3_wdkin")
+duration = 0.5
+type = 1
+
+[sub_resource type="Resource" id="Resource_u3t74"]
+script = ExtResource("3_wdkin")
+duration = 5.0
+type = 2
+
+[sub_resource type="Resource" id="Resource_jnclg"]
+script = ExtResource("3_wdkin")
+duration = 0.0
+type = 0
 
 [node name="WaitAndShoot" instance=ExtResource("1_34c2m")]
+script = ExtResource("2_khkx8")
+monster_actions = [SubResource("Resource_wodjn"), SubResource("Resource_vxdmw"), SubResource("Resource_u3t74"), SubResource("Resource_jnclg")]
+
+[node name="MonsterShootSpawner" parent="." index="7" instance=ExtResource("2_i3dro")]
+position = Vector2(0, 32)
+shoot_amount = 3
 
 [editable path="HurtBox"]
 [editable path="HitBox"]

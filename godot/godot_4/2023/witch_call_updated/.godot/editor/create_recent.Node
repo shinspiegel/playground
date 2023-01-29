@@ -1,8 +1,8 @@
 AnimationPlayer
+Timer
 Sprite2D
 Node2D
 Marker2D
-Timer
 VBoxContainer
 MarginContainer
 Control

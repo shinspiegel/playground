@@ -2,7 +2,7 @@ class_name HitBox extends Area2D
 
 signal hit(hurt_box: HurtBox)
 @export var damage: Damage = Damage.new()
-@onready var shape: CollisionShape2D = $CollisionShape2d
+@onready var shape: CollisionShape2D = $CollisionShape2D
 
 
 func _ready() -> void:

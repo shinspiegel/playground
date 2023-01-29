@@ -1,13 +1,32 @@
-[gd_scene load_steps=3 format=3 uid="uid://ycbee6imw2rw"]
+[gd_scene load_steps=7 format=3 uid="uid://ycbee6imw2rw"]
 
 [ext_resource type="PackedScene" uid="uid://c773s0wrn86ss" path="res://waves/monsters/monster.tscn" id="1_ancd7"]
 [ext_resource type="PackedScene" uid="uid://irv1wioog2sf" path="res://entities/tank_shield.tscn" id="2_0icmm"]
+[ext_resource type="Script" path="res://waves/monsters/monster_action.gd" id="2_f3u55"]
+
+[sub_resource type="Resource" id="Resource_n054r"]
+script = ExtResource("2_f3u55")
+duration = 0.5
+type = 0
+
+[sub_resource type="Resource" id="Resource_s6nvt"]
+script = ExtResource("2_f3u55")
+duration = 2.0
+type = 1
+
+[sub_resource type="Resource" id="Resource_uo3u6"]
+script = ExtResource("2_f3u55")
+duration = 0.0
+type = 0
 
 [node name="TankMonster" instance=ExtResource("1_ancd7")]
 hit_points = 3
+speed = 70.0
+monster_actions = [SubResource("Resource_n054r"), SubResource("Resource_s6nvt"), SubResource("Resource_uo3u6")]
 
-[node name="TankShield" parent="." index="6" instance=ExtResource("2_0icmm")]
+[node name="TankShield" parent="." index="7" instance=ExtResource("2_0icmm")]
 position = Vector2(0, 40)
+max_shield_energy = 5
 
 [editable path="HurtBox"]
 [editable path="HitBox"]

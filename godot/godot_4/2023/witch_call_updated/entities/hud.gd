@@ -21,7 +21,7 @@ func on_mana_change(value: float) -> void:
 	mana_bar.value = value
 
 
-func on_life_change(value: int) -> void:
+func on_life_change(_value: int) -> void:
 	for child in heart_container.get_children():
 		child.queue_free()
 	

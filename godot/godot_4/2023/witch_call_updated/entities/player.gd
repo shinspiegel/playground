@@ -59,7 +59,6 @@ func apply_shoot() -> void:
 		get_parent().add_child(shoot_node)
 		shoot_node.global_position = shoot_pos.global_position
 
-
 func check_direction_keys() -> void:
 	direction = Input.get_axis("left", "right")
 

@@ -1,12 +1,18 @@
-[gd_scene load_steps=14 format=3 uid="uid://c773s0wrn86ss"]
+[gd_scene load_steps=16 format=3 uid="uid://c773s0wrn86ss"]
 
 [ext_resource type="Script" path="res://waves/monsters/monster.gd" id="1_ec7e5"]
 [ext_resource type="Theme" uid="uid://bu0v5taq2t0qp" path="res://base_theme.tres" id="2_kl2h7"]
+[ext_resource type="Script" path="res://waves/monsters/monster_action.gd" id="2_ssmym"]
 [ext_resource type="Texture2D" uid="uid://fhqd8jbcrp36" path="res://assets/graphics/HealthBar.png" id="3_78i1b"]
 [ext_resource type="Texture2D" uid="uid://cvnwgpqh0x8hi" path="res://assets/graphics/Pumpkin.png" id="4_6xs41"]
 [ext_resource type="PackedScene" uid="uid://coxjj0qrvwtm8" path="res://entities/hurt_box.tscn" id="5_314ql"]
 [ext_resource type="PackedScene" uid="uid://d4so2xyw7tpj" path="res://entities/hit_box.tscn" id="6_cinnp"]
 [ext_resource type="Script" path="res://resources/damage.gd" id="7_asj7q"]
+
+[sub_resource type="Resource" id="Resource_6xtnv"]
+script = ExtResource("2_ssmym")
+duration = 0.0
+type = 0
 
 [sub_resource type="Animation" id="Animation_w2bfb"]
 length = 0.001
@@ -59,6 +65,7 @@ height = 64.0
 
 [node name="Monster" type="Node2D"]
 script = ExtResource("1_ec7e5")
+monster_actions = [SubResource("Resource_6xtnv")]
 
 [node name="Control" type="Control" parent="."]
 custom_minimum_size = Vector2(60, 4)
@@ -102,6 +109,9 @@ autoplay = "falling"
 libraries = {
 "": SubResource("AnimationLibrary_kfhxb")
 }
+
+[node name="ActionDuration" type="Timer" parent="."]
+one_shot = true
 
 [node name="HurtBox" parent="." instance=ExtResource("5_314ql")]
 collision_layer = 2

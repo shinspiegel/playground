@@ -17,7 +17,6 @@ func show_menu(menu: String) -> void:
 	hide_all()
 	if options.has(menu):
 		options[menu].show()
-		options[menu].grab_focus()
 	else:
 		print_debug("Failed to display meny [%s]" % [menu])
 
