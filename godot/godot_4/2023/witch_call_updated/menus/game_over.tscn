@@ -1,17 +1,20 @@
-[gd_scene load_steps=3 format=3 uid="uid://daykxnlrr7a8g"]
+[gd_scene load_steps=4 format=3 uid="uid://fdvnonf0vv8j"]
 
-[ext_resource type="Theme" uid="uid://bu0v5taq2t0qp" path="res://base_theme.tres" id="1_iw73a"]
-[ext_resource type="Script" path="res://menus/main_menu.gd" id="2_6l1gb"]
+[ext_resource type="Theme" uid="uid://bu0v5taq2t0qp" path="res://base_theme.tres" id="1_d23hg"]
+[ext_resource type="Script" path="res://menus/game_over.gd" id="2_fipsw"]
+[ext_resource type="Resource" uid="uid://bg4o2fwqrw7vq" path="res://resources/run_data.tres" id="3_oi0jq"]
 
-[node name="MainMenu" type="Control"]
+[node name="GameOver" type="Control"]
+texture_filter = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("1_iw73a")
-script = ExtResource("2_6l1gb")
+theme = ExtResource("1_d23hg")
+script = ExtResource("2_fipsw")
+run_data = ExtResource("3_oi0jq")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 0
@@ -42,13 +45,39 @@ layout_mode = 2
 [node name="Title" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 20
-text = "A Witch Call"
+text = "Game Over"
 horizontal_alignment = 1
 
-[node name="Sub" type="Label" parent="MarginContainer/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 20
+
+[node name="Sub" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 12
-text = "Reborn"
+text = "The witch will 
+need another day 
+to save the Halloween!"
+horizontal_alignment = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer2"]
+layout_mode = 2
+
+[node name="Sub" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "Your score is:"
+horizontal_alignment = 1
+
+[node name="Score" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "999"
 horizontal_alignment = 1
 
 [node name="Spacer" type="Control" parent="MarginContainer/VBoxContainer"]
@@ -60,18 +89,11 @@ layout_mode = 2
 size_flags_vertical = 4
 theme_override_constants/separation = 25
 
-[node name="Start" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+[node name="PlayAgain" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(2.08165e-12, 40)
 layout_mode = 2
-text = "Start
-"
-
-[node name="Options" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 40)
-layout_mode = 2
-text = "Options"
+text = "Play Again?"
 
 [node name="Quit" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer"]
 unique_name_in_owner = true

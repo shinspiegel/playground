@@ -17,10 +17,7 @@ func _ready() -> void:
 	sound.value_changed.connect(on_sound_change)
 	sound.value = game_data.sound_volume
 	sound_label.text = str(game_data.sound_volume * 100) + "%"
-
-
-func grab_focus() -> void:
-	back.grab_focus()
+	draw.connect(func(): back.grab_focus())
 
 
 func on_music_change(value: float) -> void:

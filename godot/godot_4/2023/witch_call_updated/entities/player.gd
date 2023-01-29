@@ -13,6 +13,7 @@ class_name Witch extends CharacterBody2D
 @onready var invencibility_coldown: Timer = $InvencibilityColdown
 @onready var hurt_box: HurtBox = $HurtBox
 
+var witch: Witch
 
 func _ready() -> void:
 	hurt_box.hit_received.connect(on_receive_hit)

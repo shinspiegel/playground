@@ -4,3 +4,12 @@ res://entities/game.tscn
 res://entities/hud.tscn
 res://entities/hud.gd
 res://entities/heart.tscn
+res://entities/game.gd
+res://entities/player.gd
+res://menus/game_over.tscn
+res://menus/game_over.gd
+res://menus/menus.tscn
+res://menus/main_menu.tscn
+res://menus/main_menu.gd
+res://menus/options.tscn
+res://menus/options.gd

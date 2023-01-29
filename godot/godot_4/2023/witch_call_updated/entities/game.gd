@@ -9,6 +9,7 @@ class_name Game extends Node2D
 @onready var monster_spawner: MonsterSpawner = $MonsterSpawner
 @onready var wave_timer: Timer = $WaveTimer
 
+var witch: Witch
 
 func _ready() -> void:
 	SignalBus.start_game.connect(start_game)
@@ -44,7 +45,10 @@ func complete_game() -> void:
 
 
 func game_over() -> void:
-	print_debug("NOT IMPLEMENTED, game over")
+	wave_timer.stop()
+	witch.queue_free()
+	hud.hide()
+	SignalBus.show_menu.emit("GameOver")
 
 
 func reset_game_data() -> void:
@@ -57,13 +61,11 @@ func reset_game_data() -> void:
 
 
 func spawn_player() -> void:
-	var player: Node2D = player_scene.instantiate()
-	add_child(player)
-	player.global_position = start_pos.global_position
+	witch = player_scene.instantiate()
+	add_child(witch)
+	witch.global_position = start_pos.global_position
 
 
 func set_start_position() -> void:
 	start_pos.position.x = ProjectSettings.get_setting("display/window/size/viewport_width") / 2
 	start_pos.position.y = ProjectSettings.get_setting("display/window/size/viewport_height") - 90
-
-
