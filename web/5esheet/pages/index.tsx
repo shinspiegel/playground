@@ -36,6 +36,8 @@ const Home: NextPage = () => {
   const { weapons, onAdd: onWeaponAdd } = useWeaponsList();
   const { traits } = useTraitsList();
 
+  const date = new Date();
+
   return (
     <>
       <Head />

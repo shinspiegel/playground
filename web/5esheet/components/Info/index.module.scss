@@ -1,16 +1,16 @@
 .container {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, auto));
-  grid-template-rows: repeat(2, minmax(0, auto));
   grid-template-areas:
     "name name  name   level"
     "race class player experience";
+  grid-template-columns: repeat(4, minmax(0, auto));
+  grid-template-rows: repeat(2, minmax(0, auto));
 }
 
 .name {
-  grid-area: name;
   display: flex;
   flex-direction: column-reverse;
+  grid-area: name;
 
   span {
     font-size: 12px;
@@ -18,20 +18,20 @@
   }
 
   input {
-    font-size: 20px;
     background: none;
     border: none;
+    font-size: 20px;
     height: 100%;
     text-align: center;
-    text-decoration: underline 1px ;
+    text-decoration: underline 1px;
     text-decoration-skip: 10px;
   }
 }
 
 .level {
-  grid-area: level;
   display: flex;
   flex-direction: column-reverse;
+  grid-area: level;
 }
 
 .race {

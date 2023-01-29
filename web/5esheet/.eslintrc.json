@@ -1,3 +1,13 @@
 {
-  "extends": "next/core-web-vitals"
+  "extends": "next/core-web-vitals",
+
+  "plugins": ["ban-class"],
+  "rules": {
+    "ban-class/ban-class": [
+      2,
+      {
+        "banned": ["Date"]
+      }
+    ]
+  }
 }
