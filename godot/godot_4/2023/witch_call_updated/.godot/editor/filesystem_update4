@@ -17,3 +17,8 @@ res://entities/monster.tscn
 res://waves/wave_1.tres
 res://waves/monsters/monster.tscn
 res://waves/monsters/monster.gd
+res://waves/monsters/basic_monster.tscn
+res://waves/monsters/speed_monster.tscn
+res://entities/tank_shield.tscn
+res://entities/tank_shield.gd
+res://waves/monsters/tank_monster.tscn

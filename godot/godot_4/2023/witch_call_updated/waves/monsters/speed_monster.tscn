@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://dfmw4neesexi3"]
+
+[ext_resource type="PackedScene" uid="uid://c773s0wrn86ss" path="res://waves/monsters/monster.tscn" id="1_khojn"]
+
+[node name="SpeedMonster" instance=ExtResource("1_khojn")]
+hit_points = 1
+speed = 200.0
+
+[editable path="HurtBox"]
+[editable path="HitBox"]

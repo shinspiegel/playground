@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://bh5tn2ljga43q"]
+
+[node name="MonsterShootSpawner" type="Node2D"]
+
+[node name="Marker2D" type="Marker2D" parent="."]
+gizmo_extents = 32.0
