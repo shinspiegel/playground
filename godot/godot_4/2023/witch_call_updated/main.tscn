@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://main.gd" id="1_ahs37"]
 [ext_resource type="Resource" uid="uid://dt6soudindf7k" path="res://resources/general_game_data.tres" id="2_jkpjl"]
 [ext_resource type="PackedScene" uid="uid://dxlvwsl2xwhe6" path="res://menus/menus.tscn" id="2_uebvo"]
-[ext_resource type="PackedScene" uid="uid://y1ydikw6mk7w" path="res://entities/game.tscn" id="4_7tmw5"]
+[ext_resource type="PackedScene" uid="uid://b81ju77085bt2" path="res://entities/game.tscn" id="4_7tmw5"]
 
 [node name="Main" type="Node2D"]
 texture_filter = 3

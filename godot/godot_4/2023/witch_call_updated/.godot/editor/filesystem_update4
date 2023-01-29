@@ -13,3 +13,7 @@ res://menus/main_menu.tscn
 res://menus/main_menu.gd
 res://menus/options.tscn
 res://menus/options.gd
+res://entities/monster.tscn
+res://waves/wave_1.tres
+res://waves/monsters/monster.tscn
+res://waves/monsters/monster.gd

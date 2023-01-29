@@ -1,12 +1,12 @@
-[gd_scene load_steps=14 format=3 uid="uid://bw4rf0iv2httw"]
+[gd_scene load_steps=14 format=3 uid="uid://c773s0wrn86ss"]
 
-[ext_resource type="Script" path="res://entities/monster.gd" id="1_fkee2"]
-[ext_resource type="Texture2D" uid="uid://cvnwgpqh0x8hi" path="res://assets/graphics/Pumpkin.png" id="2_4ai04"]
-[ext_resource type="Theme" uid="uid://bu0v5taq2t0qp" path="res://base_theme.tres" id="2_78yme"]
-[ext_resource type="Texture2D" uid="uid://fhqd8jbcrp36" path="res://assets/graphics/HealthBar.png" id="3_5i7yq"]
-[ext_resource type="PackedScene" uid="uid://coxjj0qrvwtm8" path="res://entities/hurt_box.tscn" id="3_c04h6"]
-[ext_resource type="PackedScene" uid="uid://d4so2xyw7tpj" path="res://entities/hit_box.tscn" id="6_kb7xv"]
-[ext_resource type="Script" path="res://resources/damage.gd" id="7_8ikq1"]
+[ext_resource type="Script" path="res://waves/monsters/monster.gd" id="1_ec7e5"]
+[ext_resource type="Theme" uid="uid://bu0v5taq2t0qp" path="res://base_theme.tres" id="2_kl2h7"]
+[ext_resource type="Texture2D" uid="uid://fhqd8jbcrp36" path="res://assets/graphics/HealthBar.png" id="3_78i1b"]
+[ext_resource type="Texture2D" uid="uid://cvnwgpqh0x8hi" path="res://assets/graphics/Pumpkin.png" id="4_6xs41"]
+[ext_resource type="PackedScene" uid="uid://coxjj0qrvwtm8" path="res://entities/hurt_box.tscn" id="5_314ql"]
+[ext_resource type="PackedScene" uid="uid://d4so2xyw7tpj" path="res://entities/hit_box.tscn" id="6_cinnp"]
+[ext_resource type="Script" path="res://resources/damage.gd" id="7_asj7q"]
 
 [sub_resource type="Animation" id="Animation_w2bfb"]
 length = 0.001
@@ -50,7 +50,7 @@ _data = {
 size = Vector2(72, 39)
 
 [sub_resource type="Resource" id="Resource_whay1"]
-script = ExtResource("7_8ikq1")
+script = ExtResource("7_asj7q")
 amount = 1
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_k2liw"]
@@ -58,7 +58,7 @@ radius = 17.0
 height = 64.0
 
 [node name="Monster" type="Node2D"]
-script = ExtResource("1_fkee2")
+script = ExtResource("1_ec7e5")
 
 [node name="Control" type="Control" parent="."]
 custom_minimum_size = Vector2(60, 4)
@@ -72,7 +72,7 @@ offset_right = 30.0
 offset_bottom = -28.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("2_78yme")
+theme = ExtResource("2_kl2h7")
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="Control"]
 layout_mode = 1
@@ -82,15 +82,15 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 value = 50.0
-texture_under = ExtResource("3_5i7yq")
-texture_progress = ExtResource("3_5i7yq")
+texture_under = ExtResource("3_78i1b")
+texture_progress = ExtResource("3_78i1b")
 tint_under = Color(0.14902, 0.0156863, 0.00392157, 1)
 tint_progress = Color(0.74902, 0.156863, 0.0509804, 1)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 3
 scale = Vector2(2, 2)
-texture = ExtResource("2_4ai04")
+texture = ExtResource("4_6xs41")
 hframes = 4
 vframes = 3
 
@@ -103,7 +103,7 @@ libraries = {
 "": SubResource("AnimationLibrary_kfhxb")
 }
 
-[node name="HurtBox" parent="." instance=ExtResource("3_c04h6")]
+[node name="HurtBox" parent="." instance=ExtResource("5_314ql")]
 collision_layer = 2
 collision_mask = 4
 
@@ -111,7 +111,7 @@ collision_mask = 4
 position = Vector2(0, 7.5)
 shape = SubResource("RectangleShape2D_ymcf7")
 
-[node name="HitBox" parent="." instance=ExtResource("6_kb7xv")]
+[node name="HitBox" parent="." instance=ExtResource("6_cinnp")]
 collision_layer = 2
 collision_mask = 1
 damage = SubResource("Resource_whay1")

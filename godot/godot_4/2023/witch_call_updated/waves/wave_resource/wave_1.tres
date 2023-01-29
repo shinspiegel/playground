@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Wave" load_steps=3 format=3 uid="uid://cnwu06eftyb2u"]
+
+[ext_resource type="PackedScene" uid="uid://bw4rf0iv2httw" path="res://entities/monster.tscn" id="1_lr7vi"]
+[ext_resource type="Script" path="res://resources/wave.gd" id="2_jgdn8"]
+
+[resource]
+script = ExtResource("2_jgdn8")
+time_limit = 5.0
+monster_scene = ExtResource("1_lr7vi")
+lanes_to_spawn = [3]

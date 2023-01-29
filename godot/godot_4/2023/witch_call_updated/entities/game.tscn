@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://y1ydikw6mk7w"]
+[gd_scene load_steps=10 format=3 uid="uid://b81ju77085bt2"]
 
 [ext_resource type="PackedScene" uid="uid://lulr7aa2qg0a" path="res://entities/cloud_spawner.tscn" id="1_cnf1g"]
 [ext_resource type="Script" path="res://entities/game.gd" id="1_fb5xa"]
@@ -6,21 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://clxp380txlm3j" path="res://entities/player.tscn" id="2_q7pr1"]
 [ext_resource type="Resource" uid="uid://bg4o2fwqrw7vq" path="res://resources/run_data.tres" id="3_bu72u"]
 [ext_resource type="PackedScene" uid="uid://cdxqs7cgt7vul" path="res://entities/monster_spawner.tscn" id="4_47vj4"]
-[ext_resource type="PackedScene" uid="uid://bw4rf0iv2httw" path="res://entities/monster.tscn" id="4_e3ubr"]
-[ext_resource type="Script" path="res://resources/wave.gd" id="4_uawe4"]
+[ext_resource type="Resource" uid="uid://cnwu06eftyb2u" path="res://waves/wave_resource/wave_1.tres" id="4_cvjhd"]
 [ext_resource type="PackedScene" uid="uid://ggkvdeyyo6v0" path="res://entities/hud.tscn" id="5_getyl"]
-
-[sub_resource type="Resource" id="Resource_p35ic"]
-script = ExtResource("4_uawe4")
-time_limit = 5.0
-monster_scene = ExtResource("4_e3ubr")
-lanes_to_spawn = [0]
-
-[sub_resource type="Resource" id="Resource_w34e3"]
-script = ExtResource("4_uawe4")
-time_limit = 3.0
-monster_scene = ExtResource("4_e3ubr")
-lanes_to_spawn = [7]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nwkjv"]
 size = Vector2(64, 768)
@@ -29,13 +16,14 @@ size = Vector2(64, 768)
 script = ExtResource("1_fb5xa")
 player_scene = ExtResource("2_q7pr1")
 run_data = ExtResource("3_bu72u")
-waves_list = [SubResource("Resource_p35ic"), SubResource("Resource_w34e3"), SubResource("Resource_w34e3"), SubResource("Resource_w34e3"), SubResource("Resource_w34e3")]
+waves_list = [ExtResource("4_cvjhd")]
 
 [node name="WaveTimer" type="Timer" parent="."]
+wait_time = 5.0
 one_shot = true
 
 [node name="MonsterSpawner" parent="." instance=ExtResource("4_47vj4")]
-position = Vector2(2.08165e-12, 24)
+position = Vector2(2.08165e-12, -32)
 
 [node name="CloudSpawner" parent="." instance=ExtResource("1_cnf1g")]
 position = Vector2(2.08165e-12, -12)

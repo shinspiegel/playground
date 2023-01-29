@@ -1,6 +1,6 @@
 class_name MonsterBase extends Node2D 
 
-@export var hit_points: int = 3
+@export var hit_points: int = 2
 @export var speed: float = 100.0
 @export var score: int = 10
 
