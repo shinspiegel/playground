@@ -1,11 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://ggkvdeyyo6v0"]
+[gd_scene load_steps=5 format=3 uid="uid://ggkvdeyyo6v0"]
 
 [ext_resource type="Script" path="res://entities/hud.gd" id="1_84re2"]
 [ext_resource type="Theme" uid="uid://bu0v5taq2t0qp" path="res://base_theme.tres" id="1_idoqj"]
+[ext_resource type="Resource" uid="uid://bg4o2fwqrw7vq" path="res://resources/run_data.tres" id="2_laona"]
 [ext_resource type="PackedScene" uid="uid://fxctt4stvdvo" path="res://entities/heart.tscn" id="3_wvg47"]
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_84re2")
+run_data = ExtResource("2_laona")
 heart_scene = ExtResource("3_wvg47")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]

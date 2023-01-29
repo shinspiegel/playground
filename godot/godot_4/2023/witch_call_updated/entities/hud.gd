@@ -1,8 +1,7 @@
 extends CanvasLayer
 
+@export var run_data: RunData
 @export var heart_scene: PackedScene
-@export var heart: int = 0
-@export var max_heart: int = 3
 
 @onready var heart_container: HBoxContainer = $MarginContainer/HBoxContainer/HealthContainer
 @onready var mana_bar: ProgressBar = $MarginContainer/HBoxContainer/ManaBar
@@ -10,9 +9,9 @@ extends CanvasLayer
 
 
 func _ready() -> void:
-	on_life_change(3)
-	on_mana_change(100)
-	on_score_change(0)
+	on_life_change(run_data.max_hearts)
+	on_mana_change(run_data.max_mana_var)
+	on_score_change(run_data.score)
 	SignalBus.mana_changed_to.connect(on_mana_change)
 	SignalBus.life_changed_to.connect(on_life_change)
 	SignalBus.score_changed_to.connect(on_score_change)
@@ -23,11 +22,12 @@ func on_mana_change(value: float) -> void:
 
 
 func on_life_change(value: int) -> void:
-	var cur = heart_container.get_child_count()
+	for child in heart_container.get_children():
+		child.queue_free()
 	
-	for _n in max_heart - cur:
-		var h = heart_scene.instantiate()
-		heart_container.add_child(h)
+	for _h in run_data.hearts:
+		var heart_instance = heart_scene.instantiate()
+		heart_container.add_child(heart_instance)
 
 
 func on_score_change(value: int) -> void:
