@@ -6,3 +6,10 @@ res://main.tscn
 res://resources/general_game_data.gd
 res://main.gd
 res://entities/game.gd
+res://entities/sfx_spawner.tscn
+res://entities/sfx_spawner.gd
+res://globals/signal_bus.gd
+res://entities/shoot.tscn
+res://entities/shoot.gd
+res://entities/shoot_monster.tscn
+res://entities/shoot_player.tscn

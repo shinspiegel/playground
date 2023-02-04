@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://dego4p5lc03ll"]
+[gd_scene load_steps=11 format=3 uid="uid://dego4p5lc03ll"]
 
 [ext_resource type="PackedScene" uid="uid://c0lw85dwb7o3o" path="res://entities/shoot.tscn" id="1_cqpu0"]
 [ext_resource type="Texture2D" uid="uid://bgpxsm4no800o" path="res://assets/graphics/MagicBolt.png" id="2_50v1c"]
+[ext_resource type="AudioStream" uid="uid://cp5x8wxp5bcdc" path="res://assets/audio/shoot.wav" id="2_bx8hg"]
 [ext_resource type="Script" path="res://resources/damage.gd" id="3_14j3q"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kjbtq"]
@@ -12,6 +13,21 @@ script = ExtResource("3_14j3q")
 amount = 1
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_losyw"]
+
+[sub_resource type="Animation" id="Animation_tj6vo"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
 
 [sub_resource type="Animation" id="Animation_i1und"]
 resource_name = "new_animation"
@@ -30,21 +46,6 @@ tracks/0/keys = {
 "values": [0, 1, 2, 3]
 }
 
-[sub_resource type="Animation" id="Animation_tj6vo"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_50es2"]
 _data = {
 "RESET": SubResource("Animation_tj6vo"),
@@ -53,6 +54,7 @@ _data = {
 
 [node name="ShootPlayer" instance=ExtResource("1_cqpu0")]
 down = true
+sfx = ExtResource("2_bx8hg")
 
 [node name="Sprite2D" parent="." index="0"]
 texture = ExtResource("2_50v1c")

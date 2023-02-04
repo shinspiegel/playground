@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://dqpeajalcuijc"]
+[gd_scene load_steps=7 format=3 uid="uid://dqpeajalcuijc"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_ahs37"]
 [ext_resource type="Resource" uid="uid://dt6soudindf7k" path="res://resources/general_game_data.tres" id="2_jkpjl"]
 [ext_resource type="PackedScene" uid="uid://dxlvwsl2xwhe6" path="res://menus/menus.tscn" id="2_uebvo"]
 [ext_resource type="PackedScene" uid="uid://b81ju77085bt2" path="res://entities/game.tscn" id="4_7tmw5"]
 [ext_resource type="PackedScene" uid="uid://ck23a7dilqr4w" path="res://entities/background_music.tscn" id="5_bbvrr"]
+[ext_resource type="PackedScene" uid="uid://b5ypieglih74s" path="res://entities/sfx_spawner.tscn" id="6_iou07"]
 
 [node name="Main" type="Node2D"]
 texture_filter = 3
@@ -29,6 +30,6 @@ metadata/_edit_lock_ = true
 
 [node name="BackgroundMusic" parent="." instance=ExtResource("5_bbvrr")]
 
-[node name="SFXSpawner" type="Node" parent="."]
+[node name="SFXSpawner" parent="." instance=ExtResource("6_iou07")]
 
 [editable path="Menus"]
