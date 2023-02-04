@@ -8,5 +8,4 @@ extends Node2D
 
 func _ready() -> void:
 	SignalBus.show_menu.emit("MainMenu")
-
-
+	SignalBus.play_menu_music.emit()

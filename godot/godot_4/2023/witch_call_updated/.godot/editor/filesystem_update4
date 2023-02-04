@@ -1,8 +1,8 @@
+res://entities/background_music.tscn
 res://waves/wave_resource/wave_1.tres
-res://waves/monsters/down_shoot.tscn
-res://waves/monsters/wait_and_shoot.gd
-res://entities/monster_shoot_spawner.tscn
-res://entities/monster_shoot_spawner.gd
-res://waves/monsters/down_shoot.gd
+res://entities/background_music.gd
 res://entities/game.tscn
-res://waves/monsters/tank_monster.tscn
+res://main.tscn
+res://resources/general_game_data.gd
+res://main.gd
+res://entities/game.gd

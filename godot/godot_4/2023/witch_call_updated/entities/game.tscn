@@ -16,7 +16,7 @@ size = Vector2(64, 768)
 script = ExtResource("1_fb5xa")
 player_scene = ExtResource("2_q7pr1")
 run_data = ExtResource("3_bu72u")
-waves_list = [ExtResource("4_cvjhd")]
+waves_list = Array[Resource("res://resources/wave.gd")]([ExtResource("4_cvjhd")])
 
 [node name="WaveTimer" type="Timer" parent="."]
 wait_time = 5.0

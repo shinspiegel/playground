@@ -7,4 +7,4 @@
 script = ExtResource("2_yh3we")
 time_limit = 5.0
 monster_scene = ExtResource("1_xpo0t")
-lanes_to_spawn = [3]
+lanes_to_spawn = Array[int]([3])
