@@ -1,0 +1,34 @@
+[gd_scene load_steps=8 format=3 uid="uid://douh3rqcwdkdb"]
+
+[ext_resource type="PackedScene" uid="uid://c773s0wrn86ss" path="res://waves/monsters/monster.tscn" id="1_wh8ws"]
+[ext_resource type="Script" path="res://waves/monsters/down_shoot.gd" id="2_4ciky"]
+[ext_resource type="Script" path="res://waves/monsters/monster_action.gd" id="3_apdea"]
+[ext_resource type="PackedScene" uid="uid://bh5tn2ljga43q" path="res://entities/monster_shoot_spawner.tscn" id="4_i5stx"]
+
+[sub_resource type="Resource" id="Resource_ibowd"]
+script = ExtResource("3_apdea")
+duration = 1.0
+type = 0
+
+[sub_resource type="Resource" id="Resource_l8ukq"]
+script = ExtResource("3_apdea")
+duration = 5.0
+type = 2
+
+[sub_resource type="Resource" id="Resource_tbcpl"]
+script = ExtResource("3_apdea")
+duration = 0.0
+type = 0
+
+[node name="DownAndShoot" instance=ExtResource("1_wh8ws")]
+script = ExtResource("2_4ciky")
+speed = 50.0
+monster_actions = [SubResource("Resource_ibowd"), SubResource("Resource_l8ukq"), SubResource("Resource_tbcpl")]
+
+[node name="MonsterShootSpawner" parent="." index="7" instance=ExtResource("4_i5stx")]
+position = Vector2(0, 32)
+single_trigger = false
+shoot_deplay = 0.5
+
+[editable path="HurtBox"]
+[editable path="HitBox"]
