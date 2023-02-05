@@ -1,15 +1,19 @@
 class_name RunData extends Resource
 
-@export var mana_bar: float = 100
-@export var max_mana_var: float = 100
-@export var mana_recovery_rate: float = 5
-@export var initial_recovery_rate: float = 5
+@export var start_wave: int = 0
+@export var start_score: int = 0
 
-@export var hearts: int = 3
+@export var max_mana_var: float = 100
+@export var initial_recovery_rate: float = 5
 @export var max_hearts: int = 3
 
-@export var level: int = 0
-@export var score: int = 0
+var level: int = 0
+var score: int = 0
+
+var mana_bar: float = 100
+var mana_recovery_rate: float = 5
+
+var hearts: int = 3
 
 
 func _init() -> void:
@@ -20,8 +24,8 @@ func _init() -> void:
 
 
 func reset() -> void:
-	level = 0
-	score = 0
+	level = start_wave
+	score = start_score
 	
 	mana_bar = max_mana_var
 	mana_recovery_rate = initial_recovery_rate

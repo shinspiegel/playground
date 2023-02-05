@@ -10,6 +10,8 @@ class_name Game extends Node2D
 @onready var wave_timer: Timer = $WaveTimer
 
 var witch: Witch
+var current_wave: Wave
+
 
 func _ready() -> void:
 	SignalBus.start_game.connect(start_game)
@@ -34,11 +36,22 @@ func run_wave() -> void:
 		complete_game()
 		return
 	
-	var current_wave = waves_list[run_data.level]
+	update_current_wave()
 	
 	wave_timer.start(current_wave.time_limit)
 	current_wave.execute_wave()
 	run_data.increase_level()
+
+
+func update_current_wave() -> void:
+	var options_available: Array[Wave] = []
+	
+	for wave in waves_list:
+		if wave.min_level >= run_data.level and wave.max_level <= run_data.level:
+			options_available.append(wave)
+	
+	options_available.shuffle()
+	current_wave = options_available[0]
 
 
 func complete_game() -> void:
@@ -54,10 +67,7 @@ func game_over() -> void:
 
 func reset_game_data() -> void:
 	run_data.reset()
-	# Reset all the game data
-	# - Reset monster spawner?
-	# - Reset score counter?
-	# - Reset ui?
+	update_current_wave()
 	pass
 
 

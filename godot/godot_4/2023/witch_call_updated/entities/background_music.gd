@@ -24,6 +24,7 @@ func play_menu_music() -> void:
 
 func play(playback: AudioStream) -> void:
 	if player.get_stream() != playback:
+		player.set_volume_db(game_data.get_music_db())
 		player.set_stream(playback)
 		player.play()
 

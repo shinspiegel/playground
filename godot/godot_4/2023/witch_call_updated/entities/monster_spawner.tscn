@@ -7,26 +7,26 @@
 script = ExtResource("1_5gxlw")
 run_data = ExtResource("2_daru1")
 
-[node name="Marker2D_1" type="Marker2D" parent="."]
+[node name="Marker2D_0" type="Marker2D" parent="."]
 position = Vector2(42, 2.08165e-12)
 
-[node name="Marker2D_2" type="Marker2D" parent="."]
+[node name="Marker2D_1" type="Marker2D" parent="."]
 position = Vector2(84, 2.08165e-12)
 
-[node name="Marker2D_3" type="Marker2D" parent="."]
+[node name="Marker2D_2" type="Marker2D" parent="."]
 position = Vector2(126, 2.08165e-12)
 
-[node name="Marker2D_4" type="Marker2D" parent="."]
+[node name="Marker2D_3" type="Marker2D" parent="."]
 position = Vector2(168, 2.08165e-12)
 
-[node name="Marker2D_5" type="Marker2D" parent="."]
+[node name="Marker2D_4" type="Marker2D" parent="."]
 position = Vector2(210, 2.08165e-12)
 
-[node name="Marker2D_6" type="Marker2D" parent="."]
+[node name="Marker2D_5" type="Marker2D" parent="."]
 position = Vector2(252, 2.08165e-12)
 
-[node name="Marker2D_7" type="Marker2D" parent="."]
+[node name="Marker2D_6" type="Marker2D" parent="."]
 position = Vector2(294, 2.08165e-12)
 
-[node name="Marker2D_8" type="Marker2D" parent="."]
+[node name="Marker2D_7" type="Marker2D" parent="."]
 position = Vector2(340, 2.08165e-12)

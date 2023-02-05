@@ -13,11 +13,11 @@ class_name Witch extends CharacterBody2D
 @onready var invencibility_coldown: Timer = $InvencibilityColdown
 @onready var hurt_box: HurtBox = $HurtBox
 
-var witch: Witch
 
 func _ready() -> void:
 	hurt_box.hit_received.connect(on_receive_hit)
 	invencibility_coldown.timeout.connect(on_invencibility_timeout)
+
 
 func _process(delta: float) -> void:
 	passive_restore_mana(delta)
@@ -58,6 +58,7 @@ func apply_shoot() -> void:
 		var shoot_node = shoot_scene.instantiate()
 		get_parent().add_child(shoot_node)
 		shoot_node.global_position = shoot_pos.global_position
+
 
 func check_direction_keys() -> void:
 	direction = Input.get_axis("left", "right")

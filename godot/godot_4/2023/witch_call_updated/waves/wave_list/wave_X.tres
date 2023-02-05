@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="Wave" load_steps=2 format=3 uid="uid://innf4d32bvr5"]
+
+[ext_resource type="Script" path="res://waves/wave_resource/wave.gd" id="1_oscei"]
+
+[resource]
+script = ExtResource("1_oscei")
+time_limit = 2.5
+monsterList = Array[Resource("res://waves/wave_resource/wave_monster_details.gd")]([])

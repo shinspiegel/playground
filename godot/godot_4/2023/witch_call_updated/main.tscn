@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://main.gd" id="1_ahs37"]
 [ext_resource type="Resource" uid="uid://dt6soudindf7k" path="res://resources/general_game_data.tres" id="2_jkpjl"]
 [ext_resource type="PackedScene" uid="uid://dxlvwsl2xwhe6" path="res://menus/menus.tscn" id="2_uebvo"]
-[ext_resource type="PackedScene" uid="uid://b81ju77085bt2" path="res://entities/game.tscn" id="4_7tmw5"]
+[ext_resource type="PackedScene" uid="uid://b5ssebmnrtioj" path="res://entities/game.tscn" id="4_7tmw5"]
 [ext_resource type="PackedScene" uid="uid://ck23a7dilqr4w" path="res://entities/background_music.tscn" id="5_bbvrr"]
 [ext_resource type="PackedScene" uid="uid://b5ypieglih74s" path="res://entities/sfx_spawner.tscn" id="6_iou07"]
 
@@ -13,6 +13,12 @@ script = ExtResource("1_ahs37")
 game_data = ExtResource("2_jkpjl")
 
 [node name="Menus" parent="." instance=ExtResource("2_uebvo")]
+
+[node name="MainMenu" parent="Menus" index="0"]
+visible = true
+
+[node name="GameOver" parent="Menus" index="2"]
+visible = false
 
 [node name="Game" parent="." instance=ExtResource("4_7tmw5")]
 

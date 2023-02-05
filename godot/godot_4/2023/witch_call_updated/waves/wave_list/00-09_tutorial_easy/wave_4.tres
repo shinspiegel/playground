@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Wave" load_steps=2 format=3 uid="uid://mhbd82wcps6a"]
+
+[ext_resource type="Script" path="res://waves/wave_resource/wave.gd" id="3_e67n7"]
+
+[resource]
+script = ExtResource("3_e67n7")
+time_limit = 5.0
+monsterList = Array[Resource("res://waves/wave_resource/wave_monster_details.gd")]([])
+min_level = 0
+max_level = 0

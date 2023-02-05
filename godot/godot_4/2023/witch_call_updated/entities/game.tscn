@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://b81ju77085bt2"]
+[gd_scene load_steps=13 format=3 uid="uid://b5ssebmnrtioj"]
 
 [ext_resource type="PackedScene" uid="uid://lulr7aa2qg0a" path="res://entities/cloud_spawner.tscn" id="1_cnf1g"]
 [ext_resource type="Script" path="res://entities/game.gd" id="1_fb5xa"]
@@ -6,8 +6,11 @@
 [ext_resource type="PackedScene" uid="uid://clxp380txlm3j" path="res://entities/player.tscn" id="2_q7pr1"]
 [ext_resource type="Resource" uid="uid://bg4o2fwqrw7vq" path="res://resources/run_data.tres" id="3_bu72u"]
 [ext_resource type="PackedScene" uid="uid://cdxqs7cgt7vul" path="res://entities/monster_spawner.tscn" id="4_47vj4"]
-[ext_resource type="Resource" uid="uid://cnwu06eftyb2u" path="res://waves/wave_resource/wave_1.tres" id="4_cvjhd"]
+[ext_resource type="Resource" uid="uid://b8p5j8w7rqkgr" path="res://waves/wave_list/00-09_tutorial_easy/wave_0.tres" id="4_k8cub"]
+[ext_resource type="Resource" uid="uid://dbps3v2p8df6x" path="res://waves/wave_list/00-09_tutorial_easy/wave_1.tres" id="5_2lwyr"]
 [ext_resource type="PackedScene" uid="uid://ggkvdeyyo6v0" path="res://entities/hud.tscn" id="5_getyl"]
+[ext_resource type="Resource" uid="uid://cua37aldocpak" path="res://waves/wave_list/00-09_tutorial_easy/wave_2.tres" id="6_cuslh"]
+[ext_resource type="Resource" uid="uid://bvlo55wb8ha7f" path="res://waves/wave_list/00-09_tutorial_easy/wave_3.tres" id="7_nfrc5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nwkjv"]
 size = Vector2(64, 768)
@@ -16,7 +19,7 @@ size = Vector2(64, 768)
 script = ExtResource("1_fb5xa")
 player_scene = ExtResource("2_q7pr1")
 run_data = ExtResource("3_bu72u")
-waves_list = Array[Resource("res://resources/wave.gd")]([ExtResource("4_cvjhd")])
+waves_list = Array[Resource("res://waves/wave_resource/wave.gd")]([ExtResource("4_k8cub"), ExtResource("5_2lwyr"), ExtResource("6_cuslh"), ExtResource("7_nfrc5")])
 
 [node name="WaveTimer" type="Timer" parent="."]
 wait_time = 5.0
