@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://clxp380txlm3j"]
+[gd_scene load_steps=14 format=3 uid="uid://clxp380txlm3j"]
 
 [ext_resource type="Script" path="res://entities/player.gd" id="1_2eh8r"]
 [ext_resource type="Resource" uid="uid://bg4o2fwqrw7vq" path="res://resources/run_data.tres" id="2_kpnlj"]
@@ -86,6 +86,9 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ihijd"]
 size = Vector2(32, 39)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_ilv6v"]
+radius = 35.0
+
 [node name="Player" type="CharacterBody2D"]
 texture_filter = 3
 collision_mask = 16
@@ -128,5 +131,10 @@ collision_mask = 34
 [node name="CollisionShape2D" parent="HurtBox" index="0"]
 position = Vector2(0, -4.5)
 shape = SubResource("RectangleShape2D_ihijd")
+
+[node name="PickupLoot" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PickupLoot"]
+shape = SubResource("CircleShape2D_ilv6v")
 
 [editable path="HurtBox"]

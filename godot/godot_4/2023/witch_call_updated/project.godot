@@ -66,6 +66,7 @@ shot={
 2d_physics/layer_4="PowerUp"
 2d_physics/layer_5="Wall"
 2d_physics/layer_6="EnemiShoot"
+2d_physics/layer_7="PlayerLoot"
 
 [rendering]
 

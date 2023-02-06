@@ -1,71 +1,56 @@
-[gd_scene load_steps=16 format=3 uid="uid://c773s0wrn86ss"]
+[gd_scene load_steps=11 format=3 uid="uid://c773s0wrn86ss"]
 
 [ext_resource type="Script" path="res://waves/monsters/monster.gd" id="1_ec7e5"]
 [ext_resource type="Theme" uid="uid://bu0v5taq2t0qp" path="res://base_theme.tres" id="2_kl2h7"]
 [ext_resource type="Script" path="res://waves/monsters/monster_action.gd" id="2_ssmym"]
 [ext_resource type="Texture2D" uid="uid://fhqd8jbcrp36" path="res://assets/graphics/HealthBar.png" id="3_78i1b"]
-[ext_resource type="Texture2D" uid="uid://cvnwgpqh0x8hi" path="res://assets/graphics/Pumpkin.png" id="4_6xs41"]
 [ext_resource type="PackedScene" uid="uid://coxjj0qrvwtm8" path="res://entities/hurt_box.tscn" id="5_314ql"]
 [ext_resource type="PackedScene" uid="uid://d4so2xyw7tpj" path="res://entities/hit_box.tscn" id="6_cinnp"]
 [ext_resource type="Script" path="res://resources/damage.gd" id="7_asj7q"]
+[ext_resource type="PackedScene" uid="uid://c731b1ifw218h" path="res://entities/loot_drop.tscn" id="9_lib25"]
 
 [sub_resource type="Resource" id="Resource_6xtnv"]
 script = ExtResource("2_ssmym")
 duration = 0.0
 type = 0
 
-[sub_resource type="Animation" id="Animation_w2bfb"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-
-[sub_resource type="Animation" id="Animation_ap7ne"]
-resource_name = "falling"
-length = 0.5
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3, 4]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_kfhxb"]
-_data = {
-"RESET": SubResource("Animation_w2bfb"),
-"falling": SubResource("Animation_ap7ne")
-}
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ymcf7"]
-size = Vector2(72, 39)
-
 [sub_resource type="Resource" id="Resource_whay1"]
 script = ExtResource("7_asj7q")
 amount = 1
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_k2liw"]
-radius = 17.0
-height = 64.0
-
 [node name="Monster" type="Node2D"]
 script = ExtResource("1_ec7e5")
-monster_actions = [SubResource("Resource_6xtnv")]
+monster_actions = Array[ExtResource("2_ssmym")]([SubResource("Resource_6xtnv")])
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 3
+scale = Vector2(2, 2)
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+rect = Rect2(-50, -50, 100, 100)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="ActionDuration" type="Timer" parent="."]
+one_shot = true
+
+[node name="HurtBox" parent="." instance=ExtResource("5_314ql")]
+collision_layer = 2
+collision_mask = 4
+
+[node name="CollisionShape2D" parent="HurtBox" index="0"]
+position = Vector2(0, 7.5)
+
+[node name="HitBox" parent="." instance=ExtResource("6_cinnp")]
+collision_layer = 2
+collision_mask = 1
+damage = SubResource("Resource_whay1")
+
+[node name="CollisionShape2D" parent="HitBox" index="0"]
+position = Vector2(0.00413381, 7)
+rotation = 1.5708
+
+[node name="LootDrop" parent="." instance=ExtResource("9_lib25")]
 
 [node name="Control" type="Control" parent="."]
 custom_minimum_size = Vector2(60, 4)
@@ -74,9 +59,9 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -30.0
-offset_top = -32.0
+offset_top = -40.0
 offset_right = 30.0
-offset_bottom = -28.0
+offset_bottom = -36.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_kl2h7")
@@ -93,43 +78,6 @@ texture_under = ExtResource("3_78i1b")
 texture_progress = ExtResource("3_78i1b")
 tint_under = Color(0.14902, 0.0156863, 0.00392157, 1)
 tint_progress = Color(0.74902, 0.156863, 0.0509804, 1)
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture_filter = 3
-scale = Vector2(2, 2)
-texture = ExtResource("4_6xs41")
-hframes = 4
-vframes = 3
-
-[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
-rect = Rect2(-50, -50, 100, 100)
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "falling"
-libraries = {
-"": SubResource("AnimationLibrary_kfhxb")
-}
-
-[node name="ActionDuration" type="Timer" parent="."]
-one_shot = true
-
-[node name="HurtBox" parent="." instance=ExtResource("5_314ql")]
-collision_layer = 2
-collision_mask = 4
-
-[node name="CollisionShape2D" parent="HurtBox" index="0"]
-position = Vector2(0, 7.5)
-shape = SubResource("RectangleShape2D_ymcf7")
-
-[node name="HitBox" parent="." instance=ExtResource("6_cinnp")]
-collision_layer = 2
-collision_mask = 1
-damage = SubResource("Resource_whay1")
-
-[node name="CollisionShape2D" parent="HitBox" index="0"]
-position = Vector2(0.00413381, 7)
-rotation = 1.5708
-shape = SubResource("CapsuleShape2D_k2liw")
 
 [editable path="HurtBox"]
 [editable path="HitBox"]

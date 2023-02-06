@@ -1,11 +1,22 @@
-[gd_scene load_steps=7 format=3 uid="uid://dqpeajalcuijc"]
+[gd_scene load_steps=18 format=3 uid="uid://dqpeajalcuijc"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_ahs37"]
 [ext_resource type="Resource" uid="uid://dt6soudindf7k" path="res://resources/general_game_data.tres" id="2_jkpjl"]
 [ext_resource type="PackedScene" uid="uid://dxlvwsl2xwhe6" path="res://menus/menus.tscn" id="2_uebvo"]
 [ext_resource type="PackedScene" uid="uid://b5ssebmnrtioj" path="res://entities/game.tscn" id="4_7tmw5"]
 [ext_resource type="PackedScene" uid="uid://ck23a7dilqr4w" path="res://entities/background_music.tscn" id="5_bbvrr"]
+[ext_resource type="Resource" uid="uid://b8p5j8w7rqkgr" path="res://waves/wave_list/00-09_tutorial_easy/wave_0.tres" id="5_ycqmq"]
 [ext_resource type="PackedScene" uid="uid://b5ypieglih74s" path="res://entities/sfx_spawner.tscn" id="6_iou07"]
+[ext_resource type="Resource" uid="uid://dbps3v2p8df6x" path="res://waves/wave_list/00-09_tutorial_easy/wave_1.tres" id="6_tlhdd"]
+[ext_resource type="Resource" uid="uid://cua37aldocpak" path="res://waves/wave_list/00-09_tutorial_easy/wave_2.tres" id="7_4edqk"]
+[ext_resource type="Resource" uid="uid://bvlo55wb8ha7f" path="res://waves/wave_list/00-09_tutorial_easy/wave_3.tres" id="8_g6gbt"]
+[ext_resource type="Resource" uid="uid://mhbd82wcps6a" path="res://waves/wave_list/00-09_tutorial_easy/wave_4.tres" id="9_vug6x"]
+[ext_resource type="Resource" uid="uid://bt8g4hlecf8f1" path="res://waves/wave_list/00-09_tutorial_easy/wave_5.tres" id="10_koi5e"]
+[ext_resource type="Resource" uid="uid://mecffy8i6egq" path="res://waves/wave_list/00-09_tutorial_easy/wave_6.tres" id="11_limgr"]
+[ext_resource type="Resource" uid="uid://bh7kkj57mug03" path="res://waves/wave_list/00-09_tutorial_easy/wave_7.tres" id="12_72d1s"]
+[ext_resource type="Resource" uid="uid://difa4chinrx3w" path="res://waves/wave_list/00-09_tutorial_easy/wave_8.tres" id="13_f0lqj"]
+[ext_resource type="Resource" uid="uid://jd682r0xjdgu" path="res://waves/wave_list/00-09_tutorial_easy/wave_9.tres" id="14_hsmse"]
+[ext_resource type="PackedScene" uid="uid://c7g85xox5nijd" path="res://debug.tscn" id="17_gj3ib"]
 
 [node name="Main" type="Node2D"]
 texture_filter = 3
@@ -21,6 +32,7 @@ visible = true
 visible = false
 
 [node name="Game" parent="." instance=ExtResource("4_7tmw5")]
+waves_list = Array[Resource("res://waves/wave_resource/wave.gd")]([ExtResource("5_ycqmq"), ExtResource("6_tlhdd"), ExtResource("7_4edqk"), ExtResource("8_g6gbt"), ExtResource("9_vug6x"), ExtResource("10_koi5e"), ExtResource("11_limgr"), ExtResource("12_72d1s"), ExtResource("13_f0lqj"), ExtResource("14_hsmse")])
 
 [node name="BackgroundColor" type="CanvasLayer" parent="."]
 layer = -1
@@ -37,5 +49,7 @@ metadata/_edit_lock_ = true
 [node name="BackgroundMusic" parent="." instance=ExtResource("5_bbvrr")]
 
 [node name="SFXSpawner" parent="." instance=ExtResource("6_iou07")]
+
+[node name="DEBUG" parent="." instance=ExtResource("17_gj3ib")]
 
 [editable path="Menus"]

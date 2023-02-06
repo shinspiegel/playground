@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://c731b1ifw218h"]
+
+[ext_resource type="Script" path="res://entities/loot_drop.gd" id="1_pgkdt"]
+
+[node name="LootDrop" type="Node2D"]
+script = ExtResource("1_pgkdt")

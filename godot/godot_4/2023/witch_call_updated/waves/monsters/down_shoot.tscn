@@ -1,9 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://douh3rqcwdkdb"]
+[gd_scene load_steps=16 format=3 uid="uid://douh3rqcwdkdb"]
 
 [ext_resource type="PackedScene" uid="uid://c773s0wrn86ss" path="res://waves/monsters/monster.tscn" id="1_wh8ws"]
 [ext_resource type="Script" path="res://waves/monsters/down_shoot.gd" id="2_4ciky"]
 [ext_resource type="Script" path="res://waves/monsters/monster_action.gd" id="3_apdea"]
 [ext_resource type="PackedScene" uid="uid://bh5tn2ljga43q" path="res://entities/monster_shoot_spawner.tscn" id="4_i5stx"]
+[ext_resource type="Script" path="res://resources/drop_item.gd" id="5_6u01v"]
+[ext_resource type="PackedScene" uid="uid://myd2j2g7stag" path="res://entities/loot_mana.tscn" id="6_qd33o"]
+[ext_resource type="PackedScene" uid="uid://4iki32bellhm" path="res://entities/loot_heart.tscn" id="7_vbfh2"]
+[ext_resource type="PackedScene" uid="uid://du3wsxd6km6y" path="res://entities/loot_damage_up.tscn" id="8_08aql"]
 
 [sub_resource type="Resource" id="Resource_ibowd"]
 script = ExtResource("3_apdea")
@@ -20,15 +24,37 @@ script = ExtResource("3_apdea")
 duration = 0.0
 type = 0
 
+[sub_resource type="Resource" id="Resource_hv367"]
+script = ExtResource("5_6u01v")
+chance = 10
+
+[sub_resource type="Resource" id="Resource_3tgva"]
+script = ExtResource("5_6u01v")
+scene = ExtResource("6_qd33o")
+chance = 6
+
+[sub_resource type="Resource" id="Resource_tlxcs"]
+script = ExtResource("5_6u01v")
+scene = ExtResource("7_vbfh2")
+chance = 3
+
+[sub_resource type="Resource" id="Resource_rtdq2"]
+script = ExtResource("5_6u01v")
+scene = ExtResource("8_08aql")
+chance = 1
+
 [node name="DownAndShoot" instance=ExtResource("1_wh8ws")]
 script = ExtResource("2_4ciky")
 speed = 50.0
-monster_actions = [SubResource("Resource_ibowd"), SubResource("Resource_l8ukq"), SubResource("Resource_tbcpl")]
+monster_actions = Array[ExtResource("3_apdea")]([SubResource("Resource_ibowd"), SubResource("Resource_l8ukq"), SubResource("Resource_tbcpl")])
 
 [node name="MonsterShootSpawner" parent="." index="7" instance=ExtResource("4_i5stx")]
 position = Vector2(0, 32)
 single_trigger = false
 shoot_deplay = 0.5
+
+[node name="LootDrop" parent="." index="8"]
+drop_options = Array[ExtResource("5_6u01v")]([SubResource("Resource_hv367"), SubResource("Resource_3tgva"), SubResource("Resource_tlxcs"), SubResource("Resource_rtdq2")])
 
 [editable path="HurtBox"]
 [editable path="HitBox"]

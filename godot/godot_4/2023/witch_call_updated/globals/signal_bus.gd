@@ -17,6 +17,7 @@ signal mana_changed_to(value: float)
 signal life_changed_to(value: int)
 signal score_changed_to(value: int)
 signal player_died()
+signal level_changed_to(value: int)
 
 
 # Run Signals

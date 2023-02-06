@@ -1,9 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://bldq1e0pimcyh"]
+[gd_scene load_steps=15 format=3 uid="uid://bldq1e0pimcyh"]
 
 [ext_resource type="PackedScene" uid="uid://c773s0wrn86ss" path="res://waves/monsters/monster.tscn" id="1_34c2m"]
 [ext_resource type="PackedScene" uid="uid://bh5tn2ljga43q" path="res://entities/monster_shoot_spawner.tscn" id="2_i3dro"]
 [ext_resource type="Script" path="res://waves/monsters/wait_and_shoot.gd" id="2_khkx8"]
 [ext_resource type="Script" path="res://waves/monsters/monster_action.gd" id="3_wdkin"]
+[ext_resource type="Script" path="res://resources/drop_item.gd" id="5_h7ihv"]
+[ext_resource type="PackedScene" uid="uid://myd2j2g7stag" path="res://entities/loot_mana.tscn" id="6_p8nlx"]
+[ext_resource type="PackedScene" uid="uid://4iki32bellhm" path="res://entities/loot_heart.tscn" id="7_g877a"]
 
 [sub_resource type="Resource" id="Resource_wodjn"]
 script = ExtResource("3_wdkin")
@@ -25,13 +28,30 @@ script = ExtResource("3_wdkin")
 duration = 0.0
 type = 0
 
+[sub_resource type="Resource" id="Resource_tkp2q"]
+script = ExtResource("5_h7ihv")
+chance = 12
+
+[sub_resource type="Resource" id="Resource_8eexg"]
+script = ExtResource("5_h7ihv")
+scene = ExtResource("6_p8nlx")
+chance = 6
+
+[sub_resource type="Resource" id="Resource_2thwy"]
+script = ExtResource("5_h7ihv")
+scene = ExtResource("7_g877a")
+chance = 2
+
 [node name="WaitAndShoot" instance=ExtResource("1_34c2m")]
 script = ExtResource("2_khkx8")
-monster_actions = [SubResource("Resource_wodjn"), SubResource("Resource_vxdmw"), SubResource("Resource_u3t74"), SubResource("Resource_jnclg")]
+monster_actions = Array[ExtResource("3_wdkin")]([SubResource("Resource_wodjn"), SubResource("Resource_vxdmw"), SubResource("Resource_u3t74"), SubResource("Resource_jnclg")])
 
 [node name="MonsterShootSpawner" parent="." index="7" instance=ExtResource("2_i3dro")]
 position = Vector2(0, 32)
 shoot_amount = 3
+
+[node name="LootDrop" parent="." index="8"]
+drop_options = Array[ExtResource("5_h7ihv")]([SubResource("Resource_tkp2q"), SubResource("Resource_8eexg"), SubResource("Resource_2thwy")])
 
 [editable path="HurtBox"]
 [editable path="HitBox"]

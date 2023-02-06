@@ -1,9 +1,36 @@
-[gd_resource type="Resource" script_class="Wave" load_steps=2 format=3 uid="uid://bt8g4hlecf8f1"]
+[gd_resource type="Resource" script_class="Wave" load_steps=8 format=3 uid="uid://bt8g4hlecf8f1"]
 
+[ext_resource type="PackedScene" uid="uid://k0qnr0lptiaj" path="res://waves/monsters/basic_monster.tscn" id="1_6d32h"]
+[ext_resource type="Script" path="res://waves/wave_resource/wave_monster_details.gd" id="2_wyxji"]
 [ext_resource type="Script" path="res://waves/wave_resource/wave.gd" id="3_e43yk"]
+
+[sub_resource type="Resource" id="Resource_3t6sq"]
+script = ExtResource("2_wyxji")
+monster_scene = ExtResource("1_6d32h")
+lane = 2
+delay = 0.0
+
+[sub_resource type="Resource" id="Resource_xhwep"]
+script = ExtResource("2_wyxji")
+monster_scene = ExtResource("1_6d32h")
+lane = 5
+delay = 0.0
+
+[sub_resource type="Resource" id="Resource_fev6a"]
+script = ExtResource("2_wyxji")
+monster_scene = ExtResource("1_6d32h")
+lane = 3
+delay = 1.0
+
+[sub_resource type="Resource" id="Resource_yrt7t"]
+script = ExtResource("2_wyxji")
+monster_scene = ExtResource("1_6d32h")
+lane = 4
+delay = 1.0
 
 [resource]
 script = ExtResource("3_e43yk")
-time_limit = 5.0
-monsterList = Array[Resource("res://waves/wave_resource/wave_monster_details.gd")]([])
-level_range = Array[int]([])
+time_limit = 8.0
+monsterList = Array[ExtResource("2_wyxji")]([SubResource("Resource_3t6sq"), SubResource("Resource_xhwep"), SubResource("Resource_fev6a"), SubResource("Resource_yrt7t")])
+min_level = 5
+max_level = 5

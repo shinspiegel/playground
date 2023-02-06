@@ -1,7 +1,7 @@
 class_name GeneralGameData extends Resource
 
 @export_range(0.0, 1, 0.1) var sound_volume: float = 1.0
-@export_range(0.0, 1, 0.1) var music_volume: float = 0.4
+@export_range(0.0, 1, 0.1) var music_volume: float = 1.0
 
 
 func get_sound_db() -> float:

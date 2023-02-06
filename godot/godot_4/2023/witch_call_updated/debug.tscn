@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://c7g85xox5nijd"]
+
+[ext_resource type="Script" path="res://DEBUG.gd" id="1_5vqg0"]
+[ext_resource type="Resource" uid="uid://bg4o2fwqrw7vq" path="res://resources/run_data.tres" id="2_habya"]
+[ext_resource type="Theme" uid="uid://bu0v5taq2t0qp" path="res://base_theme.tres" id="2_xfumk"]
+
+[node name="DEBUG" type="CanvasLayer"]
+script = ExtResource("1_5vqg0")
+run_data = ExtResource("2_habya")
+
+[node name="Control" type="MarginContainer" parent="."]
+modulate = Color(1, 1, 1, 0.270588)
+theme = ExtResource("2_xfumk")
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Control/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "LEVEL: 00"

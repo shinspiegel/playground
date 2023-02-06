@@ -9,7 +9,7 @@ class_name MonsterBase extends Node2D
 @onready var hurt_box: HurtBox = $HurtBox
 @onready var health_bar: TextureProgressBar = $Control/TextureProgressBar
 @onready var action_duration: Timer = $ActionDuration
-
+@onready var loot_drop: LootDrop = $LootDrop
 
 func _ready() -> void:
 	action_duration.timeout.connect(on_action_timeout)
@@ -50,6 +50,7 @@ func receive_hit(hit_box: HitBox) -> void:
 
 
 func die() -> void:
+	loot_drop.drop_random()
 	SignalBus.monster_die.emit(self)
 	queue_free()
 

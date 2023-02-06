@@ -37,7 +37,6 @@ func run_wave() -> void:
 		return
 	
 	update_current_wave()
-	
 	wave_timer.start(current_wave.time_limit)
 	current_wave.execute_wave()
 	run_data.increase_level()
@@ -68,7 +67,6 @@ func game_over() -> void:
 func reset_game_data() -> void:
 	run_data.reset()
 	update_current_wave()
-	pass
 
 
 func spawn_player() -> void:

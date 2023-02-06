@@ -1,0 +1,57 @@
+[gd_scene load_steps=7 format=3 uid="uid://myd2j2g7stag"]
+
+[ext_resource type="PackedScene" uid="uid://chdv150j8at38" path="res://entities/loot.tscn" id="1_7h205"]
+[ext_resource type="Texture2D" uid="uid://b7ge8fdh7rig1" path="res://assets/graphics/mana_crystal_recharge.png" id="2_3qmr6"]
+[ext_resource type="Script" path="res://entities/loot_mana.gd" id="2_nqern"]
+
+[sub_resource type="Animation" id="Animation_8nniq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_4doak"]
+resource_name = "new_animation"
+length = 1.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_en3e0"]
+_data = {
+"RESET": SubResource("Animation_8nniq"),
+"new_animation": SubResource("Animation_4doak")
+}
+
+[node name="LootMana" instance=ExtResource("1_7h205")]
+script = ExtResource("2_nqern")
+
+[node name="Sprite2D" parent="." index="1"]
+texture = ExtResource("2_3qmr6")
+hframes = 4
+vframes = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="4"]
+autoplay = "new_animation"
+libraries = {
+"": SubResource("AnimationLibrary_en3e0")
+}

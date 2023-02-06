@@ -3,7 +3,6 @@ class_name Witch extends CharacterBody2D
 @export var run_data: RunData
 @export var shoot_scene: PackedScene
 @export var shoot_mana_cost: float = 10
-@export var speed = 200.0
 @export var direction: float = 0.0
 @export var shoot: bool = false
 
@@ -12,15 +11,17 @@ class_name Witch extends CharacterBody2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var invencibility_coldown: Timer = $InvencibilityColdown
 @onready var hurt_box: HurtBox = $HurtBox
+@onready var pickup_loot: Area2D = $PickupLoot
 
 
 func _ready() -> void:
 	hurt_box.hit_received.connect(on_receive_hit)
 	invencibility_coldown.timeout.connect(on_invencibility_timeout)
+	pickup_loot.area_entered.connect(get_loot)
 
 
 func _process(delta: float) -> void:
-	passive_restore_mana(delta)
+	run_data.passive_manage_restoration(delta)
 
 
 func _physics_process(_delta: float) -> void:
@@ -36,9 +37,9 @@ func _physics_process(_delta: float) -> void:
 
 func apply_direction() -> void:
 	if direction:
-		velocity.x = direction * speed
+		velocity.x = direction * run_data.player_speed
 	else:
-		velocity.x = move_toward(velocity.x, 0, speed/10)
+		velocity.x = move_toward(velocity.x, 0, run_data.player_speed/10)
 
 
 func apply_animation() -> void:
@@ -68,10 +69,6 @@ func check_shoot_keys() -> void:
 	shoot = Input.is_action_pressed("shot")
 
 
-func passive_restore_mana(delta: float) -> void:
-	run_data.restore_mana(delta * run_data.mana_recovery_rate)
-
-
 func on_invencibility_timeout() -> void:
 	set_modulate(Color(1,1,1,1))
 
@@ -81,3 +78,9 @@ func on_receive_hit(hit: HitBox) -> void:
 		run_data.reduce_life(hit.get_damage_amount())
 		invencibility_coldown.start()
 		set_modulate(Color(1,1,1,0.2))
+
+
+func get_loot(area: Area2D) -> void:
+	if area is Loot:
+		area.grab_loot(self)
+		area.queue_free()

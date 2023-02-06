@@ -1,6 +1,6 @@
 class_name PlayerShoot extends Area2D
 
-
+@export var run_data: RunData
 @export var speed: float = 120
 @export var down: bool = false
 @export var sfx: AudioStream
@@ -13,6 +13,7 @@ func _ready() -> void:
 	notifier.screen_exited.connect(func(): queue_free())
 	hit_box.hit.connect(func(_hurt_box): queue_free())
 	SignalBus.play_sfx.emit(sfx)
+	hit_box.damage.amount = run_data.damage
 
 
 func _process(delta: float) -> void:
