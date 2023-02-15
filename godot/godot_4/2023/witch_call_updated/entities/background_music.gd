@@ -1,11 +1,10 @@
 class_name BackgroundMusic extends Node
 
 @export var game_data: GeneralGameData
+@export var game_music: AudioStream
+@export var menu_music: AudioStream
 
 @onready var player: AudioStreamPlayer = $AudioStreamPlayer
-
-var game_music = preload("res://assets/audio/backgroundMusic.ogg")
-var menu_music = preload("res://assets/audio/backgroundMusic.ogg")
 
 
 func _ready() -> void:
@@ -23,10 +22,19 @@ func play_menu_music() -> void:
 
 
 func play(playback: AudioStream) -> void:
-	if player.get_stream() != playback:
-		player.set_volume_db(game_data.get_music_db())
+	if not player.get_stream() == playback:
+		player.play()
+		var tween: Tween = get_tree().create_tween()
+		tween.tween_property(player, "volume_db", -90, 0.5)
+		tween.play()
+		
+		await tween.finished
+		tween.stop()
+		
+		tween.tween_property(player, "volume_db", game_data.get_music_db(), 0.5)
 		player.set_stream(playback)
 		player.play()
+		tween.play()
 
 
 func change_volume(_volume: float) -> void:
