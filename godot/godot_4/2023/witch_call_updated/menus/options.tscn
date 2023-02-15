@@ -1,8 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://1bt7tqi54mj"]
+[gd_scene load_steps=7 format=3 uid="uid://1bt7tqi54mj"]
 
 [ext_resource type="Theme" uid="uid://bu0v5taq2t0qp" path="res://base_theme.tres" id="1_aidc2"]
 [ext_resource type="Script" path="res://menus/options.gd" id="2_dsrdv"]
 [ext_resource type="Resource" uid="uid://dt6soudindf7k" path="res://resources/general_game_data.tres" id="3_rsedd"]
+[ext_resource type="Texture2D" uid="uid://ddjrw7sp5471u" path="res://assets/graphics/ui_assets/UI_button_normal_1.png" id="4_14l6q"]
+[ext_resource type="Texture2D" uid="uid://bmu42c6div408" path="res://assets/graphics/ui_assets/UI_button_pressed_1.png" id="5_yqj60"]
+[ext_resource type="Texture2D" uid="uid://bxfg3dqnvsp0t" path="res://assets/graphics/ui_assets/UI_button_hoverl_1.png" id="6_w2p6v"]
 
 [node name="Options" type="Control"]
 layout_mode = 3
@@ -106,12 +109,27 @@ layout_mode = 2
 text = "100%"
 horizontal_alignment = 2
 
-[node name="Back" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+[node name="Back" type="TextureButton" parent="MarginContainer/VBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
-text = "Back
-"
+texture_normal = ExtResource("4_14l6q")
+texture_pressed = ExtResource("5_yqj60")
+texture_hover = ExtResource("6_w2p6v")
+texture_focused = ExtResource("6_w2p6v")
+stretch_mode = 3
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer/Back"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -35.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "< Back"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Spacer2" type="Control" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2

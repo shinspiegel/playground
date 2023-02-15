@@ -1,8 +1,8 @@
 extends Control
 
-@onready var start = %Start
-@onready var options = %Options
-@onready var quit = %Quit
+@onready var start: TextureButton = %Start
+@onready var options: TextureButton = %Options
+@onready var quit: TextureButton = %Quit
 
 
 func _ready() -> void:

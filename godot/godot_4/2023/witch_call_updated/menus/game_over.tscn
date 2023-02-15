@@ -1,8 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://fdvnonf0vv8j"]
+[gd_scene load_steps=10 format=3 uid="uid://fdvnonf0vv8j"]
 
 [ext_resource type="Theme" uid="uid://bu0v5taq2t0qp" path="res://base_theme.tres" id="1_d23hg"]
 [ext_resource type="Script" path="res://menus/game_over.gd" id="2_fipsw"]
 [ext_resource type="Resource" uid="uid://bg4o2fwqrw7vq" path="res://resources/run_data.tres" id="3_oi0jq"]
+[ext_resource type="Texture2D" uid="uid://d2g4smn3sbgce" path="res://assets/graphics/ui_assets/UI_button_normal_4.png" id="4_ara40"]
+[ext_resource type="Texture2D" uid="uid://m1i6iuhqhniv" path="res://assets/graphics/ui_assets/UI_button_pressed_4.png" id="5_31n6u"]
+[ext_resource type="Texture2D" uid="uid://ft2gv2nrhr3q" path="res://assets/graphics/ui_assets/UI_button_hoverl_4.png" id="6_ndwxb"]
+[ext_resource type="Texture2D" uid="uid://ddjrw7sp5471u" path="res://assets/graphics/ui_assets/UI_button_normal_1.png" id="7_56fmw"]
+[ext_resource type="Texture2D" uid="uid://bmu42c6div408" path="res://assets/graphics/ui_assets/UI_button_pressed_1.png" id="8_g6o4k"]
+[ext_resource type="Texture2D" uid="uid://bxfg3dqnvsp0t" path="res://assets/graphics/ui_assets/UI_button_hoverl_1.png" id="9_j2k8w"]
 
 [node name="GameOver" type="Control"]
 texture_filter = 3
@@ -89,17 +95,47 @@ layout_mode = 2
 size_flags_vertical = 4
 theme_override_constants/separation = 25
 
-[node name="PlayAgain" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+[node name="PlayAgain" type="TextureButton" parent="MarginContainer/VBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(2.08165e-12, 40)
 layout_mode = 2
-text = "Play Again?"
+texture_normal = ExtResource("4_ara40")
+texture_pressed = ExtResource("5_31n6u")
+texture_hover = ExtResource("6_ndwxb")
+texture_focused = ExtResource("6_ndwxb")
+stretch_mode = 3
 
-[node name="Quit" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer/PlayAgain"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Play Again?"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Quit" type="TextureButton" parent="MarginContainer/VBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
+texture_normal = ExtResource("7_56fmw")
+texture_pressed = ExtResource("8_g6o4k")
+texture_hover = ExtResource("9_j2k8w")
+texture_focused = ExtResource("9_j2k8w")
+stretch_mode = 3
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer/Quit"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 text = "Quit"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Spacer2" type="Control" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2

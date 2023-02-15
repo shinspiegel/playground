@@ -6,7 +6,7 @@ extends Control
 @onready var music_label: Label = %MusicLabel
 @onready var sound: HSlider = %SoundRange
 @onready var sound_label: Label = %SoundLabel
-@onready var back: Button = %Back 
+@onready var back: TextureButton = %Back 
 
 
 func _ready() -> void:

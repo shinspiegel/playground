@@ -1,7 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://daykxnlrr7a8g"]
+[gd_scene load_steps=13 format=3 uid="uid://daykxnlrr7a8g"]
 
 [ext_resource type="Theme" uid="uid://bu0v5taq2t0qp" path="res://base_theme.tres" id="1_iw73a"]
 [ext_resource type="Script" path="res://menus/main_menu.gd" id="2_6l1gb"]
+[ext_resource type="Texture2D" uid="uid://ddjrw7sp5471u" path="res://assets/graphics/ui_assets/UI_button_normal_1.png" id="3_88jfa"]
+[ext_resource type="PackedScene" uid="uid://cdylch7b6cgs3" path="res://menus/game_title.tscn" id="3_urdrg"]
+[ext_resource type="Texture2D" uid="uid://bmu42c6div408" path="res://assets/graphics/ui_assets/UI_button_pressed_1.png" id="4_0k0u4"]
+[ext_resource type="Texture2D" uid="uid://bxfg3dqnvsp0t" path="res://assets/graphics/ui_assets/UI_button_hoverl_1.png" id="5_3lci0"]
+[ext_resource type="Texture2D" uid="uid://c0cvff3b5wseg" path="res://assets/graphics/ui_assets/UI_button_normal_3.png" id="6_4ydl6"]
+[ext_resource type="Texture2D" uid="uid://ciith13xjpqkw" path="res://assets/graphics/ui_assets/UI_button_pressed_3.png" id="7_f60pa"]
+[ext_resource type="Texture2D" uid="uid://g8f34w73d7d7" path="res://assets/graphics/ui_assets/UI_button_hoverl_3.png" id="8_letsp"]
+[ext_resource type="Texture2D" uid="uid://bmsarylh110bf" path="res://assets/graphics/ui_assets/UI_button_normal_2.png" id="9_4d2em"]
+[ext_resource type="Texture2D" uid="uid://cymoft7u50bpq" path="res://assets/graphics/ui_assets/UI_button_pressed_2.png" id="10_0tqmo"]
+[ext_resource type="Texture2D" uid="uid://cqd4w7hwmhmd1" path="res://assets/graphics/ui_assets/UI_button_hoverl_2.png" id="11_pj2f2"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -39,17 +49,11 @@ layout_mode = 2
 custom_minimum_size = Vector2(2.08165e-12, 40)
 layout_mode = 2
 
-[node name="Title" type="Label" parent="MarginContainer/VBoxContainer"]
+[node name="GameTitle" parent="MarginContainer/VBoxContainer" instance=ExtResource("3_urdrg")]
 layout_mode = 2
-theme_override_font_sizes/font_size = 20
-text = "A Witch Call"
-horizontal_alignment = 1
 
-[node name="Sub" type="Label" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 12
-text = "Reborn"
-horizontal_alignment = 1
+[node name="Node2D" parent="MarginContainer/VBoxContainer/GameTitle" index="0"]
+position = Vector2(165, 20)
 
 [node name="Spacer" type="Control" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -60,25 +64,72 @@ layout_mode = 2
 size_flags_vertical = 4
 theme_override_constants/separation = 25
 
-[node name="Start" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+[node name="Start" type="TextureButton" parent="MarginContainer/VBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(2.08165e-12, 40)
 layout_mode = 2
-text = "Start
-"
+texture_normal = ExtResource("3_88jfa")
+texture_pressed = ExtResource("4_0k0u4")
+texture_hover = ExtResource("5_3lci0")
+texture_focused = ExtResource("5_3lci0")
+stretch_mode = 3
 
-[node name="Options" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer/Start"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Start"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Options" type="TextureButton" parent="MarginContainer/VBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
-text = "Options"
+texture_normal = ExtResource("6_4ydl6")
+texture_pressed = ExtResource("7_f60pa")
+texture_hover = ExtResource("8_letsp")
+texture_focused = ExtResource("8_letsp")
+stretch_mode = 3
 
-[node name="Quit" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer/Options"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 35.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Options >"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Quit" type="TextureButton" parent="MarginContainer/VBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
+texture_normal = ExtResource("9_4d2em")
+texture_pressed = ExtResource("10_0tqmo")
+texture_hover = ExtResource("11_pj2f2")
+texture_focused = ExtResource("11_pj2f2")
+stretch_mode = 3
+
+[node name="Label3" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer/Quit"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 text = "Quit"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Spacer2" type="Control" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+
+[editable path="MarginContainer/VBoxContainer/GameTitle"]

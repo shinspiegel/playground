@@ -17,3 +17,10 @@ res://entities/hud.gd
 res://menus/main_menu.tscn
 res://entities/loot.gd
 res://waves/monsters/monster.gd
+res://menus/game_over.tscn
+res://menus/options.tscn
+res://base_theme.tres
+res://menus/options.gd
+res://menus/game_over.gd
+res://menus/main_menu.gd
+res://menus/game_title.tscn

@@ -2,8 +2,8 @@ extends Control
 
 @export var run_data: RunData
 
-@onready var player_again: Button = %PlayAgain
-@onready var quit: Button = %Quit
+@onready var player_again: TextureButton = %PlayAgain
+@onready var quit: TextureButton = %Quit
 @onready var score: Label = %Score
 
 func _ready() -> void:
