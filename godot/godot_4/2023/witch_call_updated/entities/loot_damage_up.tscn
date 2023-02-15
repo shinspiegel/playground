@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://du3wsxd6km6y"]
+[gd_scene load_steps=8 format=3 uid="uid://du3wsxd6km6y"]
 
 [ext_resource type="PackedScene" uid="uid://chdv150j8at38" path="res://entities/loot.tscn" id="1_cfekg"]
 [ext_resource type="Texture2D" uid="uid://dldtyt8xc2c7c" path="res://assets/graphics/damage_up.png" id="2_3x6r6"]
 [ext_resource type="Script" path="res://entities/loot_damage_up.gd" id="2_c88vs"]
+[ext_resource type="AudioStream" uid="uid://7r2aabsw7t22" path="res://assets/audio/pickup_damage_boost.wav" id="3_i26tw"]
 
 [sub_resource type="Animation" id="Animation_cyiwc"]
 length = 0.001
@@ -44,6 +45,7 @@ _data = {
 
 [node name="loot_damage_up" instance=ExtResource("1_cfekg")]
 script = ExtResource("2_c88vs")
+pickup_sound = ExtResource("3_i26tw")
 
 [node name="Sprite2D" parent="." index="1"]
 texture = ExtResource("2_3x6r6")

@@ -9,7 +9,7 @@ var menu_music = preload("res://assets/audio/backgroundMusic.ogg")
 
 
 func _ready() -> void:
-	SignalBus.play_game_sound.connect(play_game_music)
+	SignalBus.play_game_music.connect(play_game_music)
 	SignalBus.play_menu_music.connect(play_menu_music)
 	SignalBus.music_change.connect(change_volume)
 

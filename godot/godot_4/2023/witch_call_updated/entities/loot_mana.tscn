@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://myd2j2g7stag"]
+[gd_scene load_steps=8 format=3 uid="uid://myd2j2g7stag"]
 
 [ext_resource type="PackedScene" uid="uid://chdv150j8at38" path="res://entities/loot.tscn" id="1_7h205"]
 [ext_resource type="Texture2D" uid="uid://b7ge8fdh7rig1" path="res://assets/graphics/mana_crystal_recharge.png" id="2_3qmr6"]
 [ext_resource type="Script" path="res://entities/loot_mana.gd" id="2_nqern"]
+[ext_resource type="AudioStream" uid="uid://byq7kdax7w17r" path="res://assets/audio/pickup_mana.wav" id="3_prpik"]
 
 [sub_resource type="Animation" id="Animation_8nniq"]
 length = 0.001
@@ -44,6 +45,7 @@ _data = {
 
 [node name="LootMana" instance=ExtResource("1_7h205")]
 script = ExtResource("2_nqern")
+pickup_sound = ExtResource("3_prpik")
 
 [node name="Sprite2D" parent="." index="1"]
 texture = ExtResource("2_3qmr6")

@@ -1,7 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://b2r1n2nwjpl45"]
+[gd_scene load_steps=11 format=3 uid="uid://be37fqsv1c2uw"]
 
 [ext_resource type="PackedScene" uid="uid://c0lw85dwb7o3o" path="res://entities/shoot.tscn" id="1_dm54a"]
-[ext_resource type="AudioStream" uid="uid://cq6s72cyaj6x3" path="res://assets/audio/enemyShoot.wav" id="2_gj0ai"]
+[ext_resource type="AudioStream" uid="uid://cq6s72cyaj6x3" path="res://assets/audio/shoot_enemy.wav" id="2_gj0ai"]
 [ext_resource type="Texture2D" uid="uid://b044ukq4tt03n" path="res://assets/graphics/SeedBullet.png" id="2_n363r"]
 [ext_resource type="Script" path="res://resources/damage.gd" id="3_jra1r"]
 

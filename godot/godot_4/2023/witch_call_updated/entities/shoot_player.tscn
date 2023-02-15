@@ -1,8 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://dego4p5lc03ll"]
+[gd_scene load_steps=12 format=3 uid="uid://odfjow6bikjm"]
 
 [ext_resource type="PackedScene" uid="uid://c0lw85dwb7o3o" path="res://entities/shoot.tscn" id="1_cqpu0"]
 [ext_resource type="Texture2D" uid="uid://bgpxsm4no800o" path="res://assets/graphics/MagicBolt.png" id="2_50v1c"]
-[ext_resource type="AudioStream" uid="uid://cp5x8wxp5bcdc" path="res://assets/audio/shoot.wav" id="2_bx8hg"]
+[ext_resource type="AudioStream" uid="uid://cp5x8wxp5bcdc" path="res://assets/audio/shoot_player.wav" id="2_bx8hg"]
 [ext_resource type="Resource" uid="uid://bg4o2fwqrw7vq" path="res://resources/run_data.tres" id="2_ou56e"]
 [ext_resource type="Script" path="res://resources/damage.gd" id="3_14j3q"]
 

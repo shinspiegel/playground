@@ -1,8 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://c773s0wrn86ss"]
+[gd_scene load_steps=13 format=3 uid="uid://c773s0wrn86ss"]
 
 [ext_resource type="Script" path="res://waves/monsters/monster.gd" id="1_ec7e5"]
+[ext_resource type="PackedScene" uid="uid://ihs252lfmtda" path="res://entities/monster_death_effect.tscn" id="2_2r83y"]
 [ext_resource type="Theme" uid="uid://bu0v5taq2t0qp" path="res://base_theme.tres" id="2_kl2h7"]
 [ext_resource type="Script" path="res://waves/monsters/monster_action.gd" id="2_ssmym"]
+[ext_resource type="AudioStream" uid="uid://bklxr34qbtjlr" path="res://assets/audio/hurt_monster.wav" id="3_4vo6y"]
 [ext_resource type="Texture2D" uid="uid://fhqd8jbcrp36" path="res://assets/graphics/HealthBar.png" id="3_78i1b"]
 [ext_resource type="PackedScene" uid="uid://coxjj0qrvwtm8" path="res://entities/hurt_box.tscn" id="5_314ql"]
 [ext_resource type="PackedScene" uid="uid://d4so2xyw7tpj" path="res://entities/hit_box.tscn" id="6_cinnp"]
@@ -20,6 +22,8 @@ amount = 1
 
 [node name="Monster" type="Node2D"]
 script = ExtResource("1_ec7e5")
+death_animation = ExtResource("2_2r83y")
+monster_hurt_sfx = ExtResource("3_4vo6y")
 monster_actions = Array[ExtResource("2_ssmym")]([SubResource("Resource_6xtnv")])
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

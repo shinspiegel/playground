@@ -22,7 +22,7 @@ func _ready() -> void:
 
 
 func start_game() -> void:
-	SignalBus.play_game_sound.emit()
+	SignalBus.play_game_music.emit()
 	SignalBus.hide_all_menu.emit()
 	set_start_position()
 	spawn_player()

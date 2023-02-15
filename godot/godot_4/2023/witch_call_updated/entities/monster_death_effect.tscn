@@ -1,0 +1,60 @@
+[gd_scene load_steps=7 format=3 uid="uid://ihs252lfmtda"]
+
+[ext_resource type="Script" path="res://entities/monster_death_effect.gd" id="1_3too2"]
+[ext_resource type="Texture2D" uid="uid://mbsw8xsytclj" path="res://assets/graphics/Punkkin_death.png" id="1_ap1ga"]
+[ext_resource type="AudioStream" uid="uid://dwpopqqmeuwb3" path="res://assets/audio/explosion.wav" id="2_levds"]
+
+[sub_resource type="Animation" id="Animation_j57i1"]
+resource_name = "new_animation"
+length = 0.4
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7]
+}
+
+[sub_resource type="Animation" id="Animation_lp0of"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lon8d"]
+_data = {
+"RESET": SubResource("Animation_lp0of"),
+"new_animation": SubResource("Animation_j57i1")
+}
+
+[node name="MonsterDeathEffect" type="Node2D"]
+texture_filter = 3
+script = ExtResource("1_3too2")
+death_sfx = ExtResource("2_levds")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("1_ap1ga")
+hframes = 4
+vframes = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "new_animation"
+libraries = {
+"": SubResource("AnimationLibrary_lon8d")
+}

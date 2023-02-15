@@ -13,7 +13,9 @@ func _ready() -> void:
 	notifier.screen_exited.connect(func(): queue_free())
 	hit_box.hit.connect(func(_hurt_box): queue_free())
 	SignalBus.play_sfx.emit(sfx)
-	hit_box.damage.amount = run_data.damage
+	
+	if not run_data == null:
+		hit_box.damage.amount = run_data.damage
 
 
 func _process(delta: float) -> void:

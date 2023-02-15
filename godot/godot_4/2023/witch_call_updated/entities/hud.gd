@@ -3,9 +3,10 @@ extends CanvasLayer
 @export var run_data: RunData
 @export var heart_scene: PackedScene
 
-@onready var heart_container: HBoxContainer = $MarginContainer/HBoxContainer/HealthContainer
-@onready var mana_bar: ProgressBar = $MarginContainer/HBoxContainer/ManaBar
-@onready var score: Label = $MarginContainer/HBoxContainer/Control/Score
+@onready var heart_container: HBoxContainer = %HeartsContainer
+@onready var mana_bar: TextureProgressBar = %ManaBar
+@onready var score_label_text: Label = %ScoreLabelText
+@onready var score_label_shadow: Label = %ScoreLabelShadow
 
 
 func _ready() -> void:
@@ -18,7 +19,9 @@ func _ready() -> void:
 
 
 func on_mana_change(value: float) -> void:
-	mana_bar.value = value
+	var tween: Tween = get_tree().create_tween()
+	tween.tween_property(mana_bar, "value", value, 0.2)
+	tween.play()
 
 
 func on_life_change(_value: int) -> void:
@@ -31,4 +34,5 @@ func on_life_change(_value: int) -> void:
 
 
 func on_score_change(value: int) -> void:
-	score.text = str(value)
+	score_label_text.text = str(value)
+	score_label_shadow.text = str(value)

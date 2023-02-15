@@ -27,7 +27,7 @@ signal monster_die(monster: MonsterBase)
 
 # Music Signals
 signal play_menu_music()
-signal play_game_sound()
+signal play_game_music()
 
 
 # SFX Signals

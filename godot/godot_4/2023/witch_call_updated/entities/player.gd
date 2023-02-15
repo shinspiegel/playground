@@ -2,6 +2,7 @@ class_name Witch extends CharacterBody2D
 
 @export var run_data: RunData
 @export var shoot_scene: PackedScene
+@export var player_hurt_sfx: AudioStream
 @export var shoot_mana_cost: float = 10
 @export var direction: float = 0.0
 @export var shoot: bool = false
@@ -75,6 +76,7 @@ func on_invencibility_timeout() -> void:
 
 func on_receive_hit(hit: HitBox) -> void:
 	if invencibility_coldown.is_stopped():
+		SignalBus.play_sfx.emit(player_hurt_sfx)
 		run_data.reduce_life(hit.get_damage_amount())
 		invencibility_coldown.start()
 		set_modulate(Color(1,1,1,0.2))
