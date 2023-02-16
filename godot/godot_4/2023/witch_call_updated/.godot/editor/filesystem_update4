@@ -9,16 +9,3 @@ res://waves/wave_list/00-09_tutorial_easy/wave_6.tres
 res://waves/wave_list/00-09_tutorial_easy/wave_7.tres
 res://waves/wave_list/00-09_tutorial_easy/wave_8.tres
 res://waves/wave_list/00-09_tutorial_easy/wave_9.tres
-res://resources/general_game_data.tres
-res://entities/background_music.tscn
-res://entities/background_music.gd
-res://entities/monster_spawner.tscn
-res://entities/monster_spawner.gd
-res://globals/signal_bus.gd
-res://entities/game.gd
-res://entities/game.tscn
-res://menus/game_over.tscn
-res://menus/complete_game.tscn
-res://menus/menus.tscn
-res://menus/menus.gd
-res://menus/game_over.gd
