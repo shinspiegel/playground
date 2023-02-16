@@ -9,6 +9,6 @@ res://waves/wave_list/00-09_tutorial_easy/wave_6.tres
 res://waves/wave_list/00-09_tutorial_easy/wave_7.tres
 res://waves/wave_list/00-09_tutorial_easy/wave_8.tres
 res://waves/wave_list/00-09_tutorial_easy/wave_9.tres
-res://entities/background_music.gd
-res://entities/background_music.tscn
 res://resources/general_game_data.tres
+res://entities/background_music.tscn
+res://entities/background_music.gd

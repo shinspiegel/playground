@@ -23,7 +23,6 @@ func play_menu_music() -> void:
 
 func play(playback: AudioStream) -> void:
 	if not player.get_stream() == playback:
-		player.play()
 		var tween: Tween = get_tree().create_tween()
 		tween.tween_property(player, "volume_db", -90, 0.5)
 		tween.play()
