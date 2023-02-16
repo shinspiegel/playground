@@ -1,10 +1,11 @@
-Node2D
-Control
+TextureRect
+CenterContainer
 AnimationPlayer
 Sprite2D
+Control
+Node2D
 Label
 TextureButton
-TextureRect
 MarginContainer
 HBoxContainer
 TextureProgressBar

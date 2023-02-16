@@ -25,12 +25,6 @@ game_data = ExtResource("2_jkpjl")
 
 [node name="Menus" parent="." instance=ExtResource("2_uebvo")]
 
-[node name="MainMenu" parent="Menus" index="0"]
-visible = true
-
-[node name="GameOver" parent="Menus" index="2"]
-visible = false
-
 [node name="Game" parent="." instance=ExtResource("4_7tmw5")]
 waves_list = Array[Resource("res://waves/wave_resource/wave.gd")]([ExtResource("5_ycqmq"), ExtResource("6_tlhdd"), ExtResource("7_4edqk"), ExtResource("8_g6gbt"), ExtResource("9_vug6x"), ExtResource("10_koi5e"), ExtResource("11_limgr"), ExtResource("12_72d1s"), ExtResource("13_f0lqj"), ExtResource("14_hsmse")])
 

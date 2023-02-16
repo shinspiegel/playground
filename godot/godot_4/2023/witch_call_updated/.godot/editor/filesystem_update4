@@ -17,3 +17,8 @@ res://entities/monster_spawner.gd
 res://globals/signal_bus.gd
 res://entities/game.gd
 res://entities/game.tscn
+res://menus/game_over.tscn
+res://menus/complete_game.tscn
+res://menus/menus.tscn
+res://menus/menus.gd
+res://menus/game_over.gd

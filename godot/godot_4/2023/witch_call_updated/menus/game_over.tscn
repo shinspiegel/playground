@@ -1,14 +1,153 @@
-[gd_scene load_steps=10 format=3 uid="uid://fdvnonf0vv8j"]
+[gd_scene load_steps=21 format=3 uid="uid://fdvnonf0vv8j"]
 
 [ext_resource type="Theme" uid="uid://bu0v5taq2t0qp" path="res://base_theme.tres" id="1_d23hg"]
 [ext_resource type="Script" path="res://menus/game_over.gd" id="2_fipsw"]
 [ext_resource type="Resource" uid="uid://bg4o2fwqrw7vq" path="res://resources/run_data.tres" id="3_oi0jq"]
 [ext_resource type="Texture2D" uid="uid://d2g4smn3sbgce" path="res://assets/graphics/ui_assets/UI_button_normal_4.png" id="4_ara40"]
+[ext_resource type="Texture2D" uid="uid://pb0i4jw4gh15" path="res://assets/graphics/Punkkin_basic.png" id="4_bn534"]
+[ext_resource type="Texture2D" uid="uid://dhsqm5x3f0dxq" path="res://assets/graphics/title/game_over.png" id="5_6yrlr"]
 [ext_resource type="Texture2D" uid="uid://m1i6iuhqhniv" path="res://assets/graphics/ui_assets/UI_button_pressed_4.png" id="5_31n6u"]
 [ext_resource type="Texture2D" uid="uid://ft2gv2nrhr3q" path="res://assets/graphics/ui_assets/UI_button_hoverl_4.png" id="6_ndwxb"]
 [ext_resource type="Texture2D" uid="uid://ddjrw7sp5471u" path="res://assets/graphics/ui_assets/UI_button_normal_1.png" id="7_56fmw"]
 [ext_resource type="Texture2D" uid="uid://bmu42c6div408" path="res://assets/graphics/ui_assets/UI_button_pressed_1.png" id="8_g6o4k"]
 [ext_resource type="Texture2D" uid="uid://bxfg3dqnvsp0t" path="res://assets/graphics/ui_assets/UI_button_hoverl_1.png" id="9_j2k8w"]
+
+[sub_resource type="Animation" id="Animation_7pe2w"]
+resource_name = "new_animation"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_u8geo"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_f35bl"]
+_data = {
+"RESET": SubResource("Animation_u8geo"),
+"new_animation": SubResource("Animation_7pe2w")
+}
+
+[sub_resource type="Animation" id="Animation_leh25"]
+resource_name = "new_animation"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+}
+
+[sub_resource type="Animation" id="Animation_tb1qj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_483n6"]
+_data = {
+"RESET": SubResource("Animation_tb1qj"),
+"new_animation": SubResource("Animation_leh25")
+}
+
+[sub_resource type="Animation" id="Animation_fplkl"]
+resource_name = "new_animation"
+length = 10.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GameOver:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(0.812252, 0.615572),
+"update": 0,
+"values": [Vector2(150, 30), Vector2(150, 35)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Enemy:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 7),
+"transitions": PackedFloat32Array(1.23114, 1.31951),
+"update": 0,
+"values": [Vector2(140, 25), Vector2(140, 34)]
+}
+
+[sub_resource type="Animation" id="Animation_a76x3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GameOver:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(150, 30)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Enemy:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(140, 34)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3fq70"]
+_data = {
+"RESET": SubResource("Animation_a76x3"),
+"new_animation": SubResource("Animation_fplkl")
+}
 
 [node name="GameOver" type="Control"]
 texture_filter = 3
@@ -48,11 +187,41 @@ layout_mode = 2
 custom_minimum_size = Vector2(2.08165e-12, 40)
 layout_mode = 2
 
-[node name="Title" type="Label" parent="MarginContainer/VBoxContainer"]
+[node name="GameOver" type="Control" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(300, 60)
 layout_mode = 2
-theme_override_font_sizes/font_size = 20
-text = "Game Over"
-horizontal_alignment = 1
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Enemy" type="Sprite2D" parent="MarginContainer/VBoxContainer/GameOver"]
+position = Vector2(140, 34)
+scale = Vector2(2, 2)
+texture = ExtResource("4_bn534")
+hframes = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MarginContainer/VBoxContainer/GameOver/Enemy"]
+autoplay = "new_animation"
+libraries = {
+"": SubResource("AnimationLibrary_f35bl")
+}
+
+[node name="GameOver" type="Sprite2D" parent="MarginContainer/VBoxContainer/GameOver"]
+position = Vector2(150, 30)
+texture = ExtResource("5_6yrlr")
+hframes = 4
+vframes = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MarginContainer/VBoxContainer/GameOver/GameOver"]
+autoplay = "new_animation"
+libraries = {
+"": SubResource("AnimationLibrary_483n6")
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MarginContainer/VBoxContainer/GameOver"]
+autoplay = "new_animation"
+libraries = {
+"": SubResource("AnimationLibrary_3fq70")
+}
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2

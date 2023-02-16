@@ -55,7 +55,10 @@ func update_current_wave() -> void:
 
 
 func complete_game() -> void:
-	print_debug("NOT IMPLEMENTED, completed game")
+	wave_timer.stop()
+	witch.queue_free()
+	hud.hide()
+	SignalBus.show_menu.emit("Complete")
 
 
 func game_over() -> void:

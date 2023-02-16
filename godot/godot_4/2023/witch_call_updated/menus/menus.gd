@@ -17,6 +17,7 @@ func show_menu(menu: String) -> void:
 	hide_all()
 	if options.has(menu):
 		options[menu].show()
+		SignalBus.play_menu_music.emit()
 	else:
 		print_debug("Failed to display meny [%s]" % [menu])
 

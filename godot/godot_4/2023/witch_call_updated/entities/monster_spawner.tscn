@@ -11,6 +11,17 @@ run_data = ExtResource("2_daru1")
 
 [node name="Markers" type="Node2D" parent="."]
 
+[node name="Marker2D_0" type="Marker2D" parent="Markers"]
+position = Vector2(40, 2.08165e-12)
+
+[node name="Label" type="Label" parent="Markers/Marker2D_0"]
+offset_left = -15.0
+offset_top = -50.0
+offset_right = 15.0
+offset_bottom = -20.0
+text = "0"
+horizontal_alignment = 1
+
 [node name="Marker2D_1" type="Marker2D" parent="Markers"]
 position = Vector2(80, 2.08165e-12)
 
@@ -86,15 +97,4 @@ offset_top = -50.0
 offset_right = 15.0
 offset_bottom = -20.0
 text = "7"
-horizontal_alignment = 1
-
-[node name="Marker2D_0" type="Marker2D" parent="Markers"]
-position = Vector2(40, 2.08165e-12)
-
-[node name="Label" type="Label" parent="Markers/Marker2D_0"]
-offset_left = -15.0
-offset_top = -50.0
-offset_right = 15.0
-offset_bottom = -20.0
-text = "0"
 horizontal_alignment = 1
