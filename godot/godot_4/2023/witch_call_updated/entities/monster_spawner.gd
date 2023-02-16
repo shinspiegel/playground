@@ -2,8 +2,13 @@ class_name MonsterSpawner extends Node2D
 
 @export var run_data: RunData
 
+@onready var monsters: Node2D = $Enemies
+@onready var markers: Node2D = $Markers
+
+
 func _ready() -> void:
 	SignalBus.spawn_monster_at.connect(spawn)
+	SignalBus.clean_all_monster.connect(reset_monsters)
 
 
 func spawn(monster: PackedScene, lane: int, delay: float = 0.0) -> void:
@@ -21,5 +26,14 @@ func spawn(monster: PackedScene, lane: int, delay: float = 0.0) -> void:
 
 func instanciate_monster(monster: PackedScene, lane: int) -> void:
 	var monster_instance = monster.instantiate()
-	get_parent().add_child(monster_instance)
-	monster_instance.global_position.x = get_children()[lane].global_position.x
+	monsters.add_child(monster_instance)
+	monster_instance.global_position.x = get_mosnter_position_by_lane(lane)
+
+
+func reset_monsters() -> void:
+	for enemy in monsters.get_children():
+		enemy.queue_free()
+
+
+func get_mosnter_position_by_lane(lane: int) -> float:
+	return markers.get_children()[lane].global_position.x

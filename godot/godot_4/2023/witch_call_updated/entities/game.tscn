@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://cdxqs7cgt7vul" path="res://entities/monster_spawner.tscn" id="4_47vj4"]
 [ext_resource type="Resource" uid="uid://b8p5j8w7rqkgr" path="res://waves/wave_list/00-09_tutorial_easy/wave_0.tres" id="4_k8cub"]
 [ext_resource type="Resource" uid="uid://dbps3v2p8df6x" path="res://waves/wave_list/00-09_tutorial_easy/wave_1.tres" id="5_2lwyr"]
-[ext_resource type="PackedScene" uid="uid://ggkvdeyyo6v0" path="res://entities/hud.tscn" id="5_getyl"]
+[ext_resource type="PackedScene" path="res://entities/hud.tscn" id="5_getyl"]
 [ext_resource type="Resource" uid="uid://cua37aldocpak" path="res://waves/wave_list/00-09_tutorial_easy/wave_2.tres" id="6_cuslh"]
 [ext_resource type="Resource" uid="uid://bvlo55wb8ha7f" path="res://waves/wave_list/00-09_tutorial_easy/wave_3.tres" id="7_nfrc5"]
 
@@ -21,17 +21,17 @@ player_scene = ExtResource("2_q7pr1")
 run_data = ExtResource("3_bu72u")
 waves_list = Array[Resource("res://waves/wave_resource/wave.gd")]([ExtResource("4_k8cub"), ExtResource("5_2lwyr"), ExtResource("6_cuslh"), ExtResource("7_nfrc5")])
 
+[node name="CloudSpawner" parent="." instance=ExtResource("1_cnf1g")]
+position = Vector2(2.08165e-12, -12)
+
+[node name="StartingClouds" parent="." instance=ExtResource("2_e0r5h")]
+
 [node name="WaveTimer" type="Timer" parent="."]
 wait_time = 5.0
 one_shot = true
 
 [node name="MonsterSpawner" parent="." instance=ExtResource("4_47vj4")]
 position = Vector2(2.08165e-12, -32)
-
-[node name="CloudSpawner" parent="." instance=ExtResource("1_cnf1g")]
-position = Vector2(2.08165e-12, -12)
-
-[node name="StartingClouds" parent="." instance=ExtResource("2_e0r5h")]
 
 [node name="StartPlayerPos" type="Marker2D" parent="."]
 position = Vector2(180, 540)

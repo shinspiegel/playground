@@ -7,21 +7,14 @@
 script = ExtResource("1_5gxlw")
 run_data = ExtResource("2_daru1")
 
-[node name="Marker2D_0" type="Marker2D" parent="."]
-position = Vector2(40, 2.08165e-12)
+[node name="Enemies" type="Node2D" parent="."]
 
-[node name="Label" type="Label" parent="Marker2D_0"]
-offset_left = -15.0
-offset_top = -50.0
-offset_right = 15.0
-offset_bottom = -20.0
-text = "0"
-horizontal_alignment = 1
+[node name="Markers" type="Node2D" parent="."]
 
-[node name="Marker2D_1" type="Marker2D" parent="."]
+[node name="Marker2D_1" type="Marker2D" parent="Markers"]
 position = Vector2(80, 2.08165e-12)
 
-[node name="Label" type="Label" parent="Marker2D_1"]
+[node name="Label" type="Label" parent="Markers/Marker2D_1"]
 offset_left = -15.0
 offset_top = -50.0
 offset_right = 15.0
@@ -29,10 +22,10 @@ offset_bottom = -20.0
 text = "1"
 horizontal_alignment = 1
 
-[node name="Marker2D_2" type="Marker2D" parent="."]
+[node name="Marker2D_2" type="Marker2D" parent="Markers"]
 position = Vector2(120, 2.08165e-12)
 
-[node name="Label" type="Label" parent="Marker2D_2"]
+[node name="Label" type="Label" parent="Markers/Marker2D_2"]
 offset_left = -15.0
 offset_top = -50.0
 offset_right = 15.0
@@ -40,10 +33,10 @@ offset_bottom = -20.0
 text = "2"
 horizontal_alignment = 1
 
-[node name="Marker2D_3" type="Marker2D" parent="."]
+[node name="Marker2D_3" type="Marker2D" parent="Markers"]
 position = Vector2(160, 2.08165e-12)
 
-[node name="Label" type="Label" parent="Marker2D_3"]
+[node name="Label" type="Label" parent="Markers/Marker2D_3"]
 offset_left = -15.0
 offset_top = -50.0
 offset_right = 15.0
@@ -51,10 +44,10 @@ offset_bottom = -20.0
 text = "3"
 horizontal_alignment = 1
 
-[node name="Marker2D_4" type="Marker2D" parent="."]
+[node name="Marker2D_4" type="Marker2D" parent="Markers"]
 position = Vector2(200, 2.08165e-12)
 
-[node name="Label" type="Label" parent="Marker2D_4"]
+[node name="Label" type="Label" parent="Markers/Marker2D_4"]
 offset_left = -15.0
 offset_top = -50.0
 offset_right = 15.0
@@ -62,10 +55,10 @@ offset_bottom = -20.0
 text = "4"
 horizontal_alignment = 1
 
-[node name="Marker2D_5" type="Marker2D" parent="."]
+[node name="Marker2D_5" type="Marker2D" parent="Markers"]
 position = Vector2(240, 2.08165e-12)
 
-[node name="Label" type="Label" parent="Marker2D_5"]
+[node name="Label" type="Label" parent="Markers/Marker2D_5"]
 offset_left = -15.0
 offset_top = -50.0
 offset_right = 15.0
@@ -73,10 +66,10 @@ offset_bottom = -20.0
 text = "5"
 horizontal_alignment = 1
 
-[node name="Marker2D_6" type="Marker2D" parent="."]
+[node name="Marker2D_6" type="Marker2D" parent="Markers"]
 position = Vector2(280, 2.08165e-12)
 
-[node name="Label" type="Label" parent="Marker2D_6"]
+[node name="Label" type="Label" parent="Markers/Marker2D_6"]
 offset_left = -15.0
 offset_top = -50.0
 offset_right = 15.0
@@ -84,13 +77,24 @@ offset_bottom = -20.0
 text = "6"
 horizontal_alignment = 1
 
-[node name="Marker2D_7" type="Marker2D" parent="."]
+[node name="Marker2D_7" type="Marker2D" parent="Markers"]
 position = Vector2(320, 2.08165e-12)
 
-[node name="Label" type="Label" parent="Marker2D_7"]
+[node name="Label" type="Label" parent="Markers/Marker2D_7"]
 offset_left = -15.0
 offset_top = -50.0
 offset_right = 15.0
 offset_bottom = -20.0
 text = "7"
+horizontal_alignment = 1
+
+[node name="Marker2D_0" type="Marker2D" parent="Markers"]
+position = Vector2(40, 2.08165e-12)
+
+[node name="Label" type="Label" parent="Markers/Marker2D_0"]
+offset_left = -15.0
+offset_top = -50.0
+offset_right = 15.0
+offset_bottom = -20.0
+text = "0"
 horizontal_alignment = 1

@@ -24,6 +24,7 @@ func _ready() -> void:
 func start_game() -> void:
 	SignalBus.play_game_music.emit()
 	SignalBus.hide_all_menu.emit()
+	SignalBus.clean_all_monster.emit()
 	set_start_position()
 	spawn_player()
 	hud.show()
@@ -66,7 +67,6 @@ func game_over() -> void:
 
 func reset_game_data() -> void:
 	run_data.reset()
-	update_current_wave()
 
 
 func spawn_player() -> void:

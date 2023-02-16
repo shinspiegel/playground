@@ -12,3 +12,8 @@ res://waves/wave_list/00-09_tutorial_easy/wave_9.tres
 res://resources/general_game_data.tres
 res://entities/background_music.tscn
 res://entities/background_music.gd
+res://entities/monster_spawner.tscn
+res://entities/monster_spawner.gd
+res://globals/signal_bus.gd
+res://entities/game.gd
+res://entities/game.tscn

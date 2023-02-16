@@ -22,6 +22,7 @@ signal level_changed_to(value: int)
 
 # Run Signals
 signal spawn_monster_at(monster: PackedScene, lane: int, delay: float)
+signal clean_all_monster()
 signal monster_die(monster: MonsterBase)
 
 
