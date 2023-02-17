@@ -1,10 +1,12 @@
-TextureRect
-CenterContainer
-AnimationPlayer
-Sprite2D
-Control
-Node2D
 Label
+AnimationPlayer
+ColorRect
+TextureRect
+Control
+CanvasLayer
+Sprite2D
+CenterContainer
+Node2D
 TextureButton
 MarginContainer
 HBoxContainer
@@ -15,7 +17,6 @@ VisibleOnScreenNotifier2D
 VisibleOnScreenEnabler2D
 ShapeCast2D
 VBoxContainer
-CanvasLayer
 AudioStreamPlayer
 Node
 Timer
