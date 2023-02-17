@@ -7,4 +7,4 @@ script = ExtResource("1_oscei")
 time_limit = 10.0
 monsterList = Array[Resource("res://waves/wave_resource/wave_monster_details.gd")]([])
 min_level = 10
-max_level = 20
+max_level = 29
