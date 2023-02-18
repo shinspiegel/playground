@@ -33,3 +33,6 @@ signal play_game_music()
 
 # SFX Signals
 signal play_sfx(sound: AudioStream)
+
+# DEBUG Only
+signal update_wave_debug_name(name: String)

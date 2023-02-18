@@ -45,13 +45,15 @@ func run_wave() -> void:
 
 func update_current_wave() -> void:
 	var options_available: Array[Wave] = []
+	var current_level = run_data.level
 	
 	for wave in waves_list:
-		if wave.min_level >= run_data.level and wave.max_level <= run_data.level:
+		if wave.min_level <= current_level and wave.max_level >= current_level:
 			options_available.append(wave)
 	
 	options_available.shuffle()
 	current_wave = options_available[0]
+	SignalBus.update_wave_debug_name.emit(current_wave.resource_path)
 
 
 func complete_game() -> void:

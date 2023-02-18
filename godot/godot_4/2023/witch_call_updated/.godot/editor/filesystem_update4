@@ -30,3 +30,7 @@ res://waves/wave_list/10-29-medium/wave-medium-7.tres
 res://waves/wave_list/10-29-medium/wave-medium-8.tres
 res://waves/wave_list/10-29-medium/wave-medium-9.tres
 res://waves/wave_list/10-29-medium/wave-medium-6.tres
+res://entities/game.gd
+res://globals/signal_bus.gd
+res://debug.tscn
+res://DEBUG.gd
