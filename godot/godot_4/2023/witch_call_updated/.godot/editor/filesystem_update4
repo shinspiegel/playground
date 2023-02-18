@@ -16,3 +16,5 @@ res://waves/monsters/tank_monster.tscn
 res://waves/monsters/wait_and_shoot.tscn
 res://main.tscn
 res://resources/general_game_data.tres
+res://entities/game.tscn
+res://resources/run_data.tres

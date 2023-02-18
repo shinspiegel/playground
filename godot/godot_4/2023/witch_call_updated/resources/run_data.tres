@@ -6,6 +6,8 @@
 script = ExtResource("1_77ryh")
 start_wave = 0
 start_score = 0
-max_mana_var = 100.0
 initial_recovery_rate = 5.0
+initial_damage = 1
+initial_player_speed = 200.0
+max_mana_var = 100.0
 max_hearts = 3

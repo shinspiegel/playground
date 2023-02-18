@@ -18,7 +18,7 @@ delay = 0.0
 
 [resource]
 script = ExtResource("3_87hsi")
-time_limit = 7.0
+time_limit = 6.0
 monsterList = Array[ExtResource("2_olpp7")]([SubResource("Resource_rndkn"), SubResource("Resource_lui4p")])
 min_level = 3
 max_level = 3
