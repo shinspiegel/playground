@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://b5ssebmnrtioj"]
+[gd_scene load_steps=29 format=3 uid="uid://b5ssebmnrtioj"]
 
 [ext_resource type="PackedScene" uid="uid://lulr7aa2qg0a" path="res://entities/cloud_spawner.tscn" id="1_cnf1g"]
 [ext_resource type="Script" path="res://entities/game.gd" id="1_fb5xa"]
@@ -17,6 +17,16 @@
 [ext_resource type="Resource" uid="uid://bh7kkj57mug03" path="res://waves/wave_list/00-09_tutorial_easy/wave_7.tres" id="11_h1svp"]
 [ext_resource type="Resource" uid="uid://difa4chinrx3w" path="res://waves/wave_list/00-09_tutorial_easy/wave_8.tres" id="12_4dhjm"]
 [ext_resource type="Resource" uid="uid://jd682r0xjdgu" path="res://waves/wave_list/00-09_tutorial_easy/wave_9.tres" id="13_humq4"]
+[ext_resource type="Resource" uid="uid://vxeo3af0c7an" path="res://waves/wave_list/10-29-medium/wave-medium-0.tres" id="14_j3kvd"]
+[ext_resource type="Resource" uid="uid://dcrpaseygoiev" path="res://waves/wave_list/10-29-medium/wave-medium-1.tres" id="15_e2ies"]
+[ext_resource type="Resource" uid="uid://dvpu1g5crywqv" path="res://waves/wave_list/10-29-medium/wave-medium-2.tres" id="16_ckthi"]
+[ext_resource type="Resource" uid="uid://dqb4sq2s7wr3e" path="res://waves/wave_list/10-29-medium/wave-medium-3.tres" id="17_8p5j4"]
+[ext_resource type="Resource" uid="uid://bmeoivhilw0ks" path="res://waves/wave_list/10-29-medium/wave-medium-4.tres" id="18_uub6t"]
+[ext_resource type="Resource" uid="uid://cwkbeofc5k4kk" path="res://waves/wave_list/10-29-medium/wave-medium-5.tres" id="19_fiptu"]
+[ext_resource type="Resource" uid="uid://bgpdudmi2wior" path="res://waves/wave_list/10-29-medium/wave-medium-6.tres" id="20_52blr"]
+[ext_resource type="Resource" uid="uid://dq32mffiyaoai" path="res://waves/wave_list/10-29-medium/wave-medium-7.tres" id="21_e6dy7"]
+[ext_resource type="Resource" uid="uid://dwccjkvxwhevo" path="res://waves/wave_list/10-29-medium/wave-medium-8.tres" id="22_s4wj0"]
+[ext_resource type="Resource" uid="uid://dumxidn6gjkkp" path="res://waves/wave_list/10-29-medium/wave-medium-9.tres" id="23_kjju8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nwkjv"]
 size = Vector2(64, 768)
@@ -25,7 +35,7 @@ size = Vector2(64, 768)
 script = ExtResource("1_fb5xa")
 player_scene = ExtResource("2_q7pr1")
 run_data = ExtResource("3_bu72u")
-waves_list = Array[Resource("res://waves/wave_resource/wave.gd")]([ExtResource("4_k8cub"), ExtResource("5_2lwyr"), ExtResource("6_cuslh"), ExtResource("7_nfrc5"), ExtResource("8_qo6r0"), ExtResource("9_akerf"), ExtResource("10_x53nk"), ExtResource("11_h1svp"), ExtResource("12_4dhjm"), ExtResource("13_humq4")])
+waves_list = Array[Resource("res://waves/wave_resource/wave.gd")]([ExtResource("4_k8cub"), ExtResource("5_2lwyr"), ExtResource("6_cuslh"), ExtResource("7_nfrc5"), ExtResource("8_qo6r0"), ExtResource("9_akerf"), ExtResource("10_x53nk"), ExtResource("11_h1svp"), ExtResource("12_4dhjm"), ExtResource("13_humq4"), ExtResource("14_j3kvd"), ExtResource("15_e2ies"), ExtResource("16_ckthi"), ExtResource("17_8p5j4"), ExtResource("18_uub6t"), ExtResource("19_fiptu"), ExtResource("20_52blr"), ExtResource("21_e6dy7"), ExtResource("22_s4wj0"), ExtResource("23_kjju8")])
 
 [node name="CloudSpawner" parent="." instance=ExtResource("1_cnf1g")]
 position = Vector2(2.08165e-12, -12)

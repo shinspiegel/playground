@@ -18,3 +18,15 @@ res://main.tscn
 res://resources/general_game_data.tres
 res://entities/game.tscn
 res://resources/run_data.tres
+res://waves/wave_list/10-29-medium/wave-medium-0.tres
+res://waves/wave_list/10-29-medium/wave-medium-1.tres
+res://waves/wave_list/10-29-medium/wave-medium-2.tres
+res://waves/wave_list/10-29-medium/wave-medium-3.tres
+res://waves/wave_list/10-29-medium/wave-medium-4.tres
+res://waves/wave_list/10-29-medium/wave-medium-5.tres
+res://entities/clouds.tscn
+res://test_PLEASE_DELL_ME_LATER.tres
+res://waves/wave_list/10-29-medium/wave-medium-7.tres
+res://waves/wave_list/10-29-medium/wave-medium-8.tres
+res://waves/wave_list/10-29-medium/wave-medium-9.tres
+res://waves/wave_list/10-29-medium/wave-medium-6.tres
