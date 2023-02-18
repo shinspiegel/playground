@@ -1,9 +1,15 @@
-[gd_scene load_steps=12 format=3 uid="uid://k0qnr0lptiaj"]
+[gd_scene load_steps=14 format=3 uid="uid://k0qnr0lptiaj"]
 
 [ext_resource type="PackedScene" uid="uid://c773s0wrn86ss" path="res://waves/monsters/monster.tscn" id="1_aepw8"]
 [ext_resource type="Texture2D" uid="uid://pb0i4jw4gh15" path="res://assets/graphics/Punkkin_basic.png" id="2_4bej6"]
 [ext_resource type="Script" path="res://resources/drop_item.gd" id="2_6vlve"]
+[ext_resource type="Script" path="res://waves/monsters/monster_action.gd" id="2_d0k2y"]
 [ext_resource type="PackedScene" uid="uid://myd2j2g7stag" path="res://entities/loot_mana.tscn" id="3_fih34"]
+
+[sub_resource type="Resource" id="Resource_x8dd5"]
+script = ExtResource("2_d0k2y")
+duration = 0.0
+type = 0
 
 [sub_resource type="Animation" id="Animation_1oovu"]
 length = 0.001
@@ -60,8 +66,10 @@ scene = ExtResource("3_fih34")
 chance = 3
 
 [node name="BasicMonster" instance=ExtResource("1_aepw8")]
+hit_points = 1
 speed = 80.0
 score = 5
+monster_actions = Array[ExtResource("2_d0k2y")]([SubResource("Resource_x8dd5")])
 
 [node name="Sprite2D" parent="." index="0"]
 texture = ExtResource("2_4bej6")

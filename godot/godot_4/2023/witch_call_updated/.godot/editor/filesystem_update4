@@ -1,4 +1,4 @@
-res://main.tscn
+res://waves/monsters/basic_monster.tscn
 res://waves/wave_list/00-09_tutorial_easy/wave_0.tres
 res://waves/wave_list/00-09_tutorial_easy/wave_1.tres
 res://waves/wave_list/00-09_tutorial_easy/wave_2.tres
@@ -9,5 +9,10 @@ res://waves/wave_list/00-09_tutorial_easy/wave_6.tres
 res://waves/wave_list/00-09_tutorial_easy/wave_7.tres
 res://waves/wave_list/00-09_tutorial_easy/wave_8.tres
 res://waves/wave_list/00-09_tutorial_easy/wave_9.tres
-res://splash.tscn
-res://splash.gd
+res://waves/monsters/down_shoot.tscn
+res://waves/monsters/monster.tscn
+res://waves/monsters/speed_monster.tscn
+res://waves/monsters/tank_monster.tscn
+res://waves/monsters/wait_and_shoot.tscn
+res://main.tscn
+res://resources/general_game_data.tres

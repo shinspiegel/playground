@@ -9,8 +9,8 @@ func _ready() -> void:
 	animation_player.animation_finished.connect(func(_name): next())
 
 
-func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("ui_cancel"):
+func _input(event: InputEvent) -> void:
+	if event is InputEventKey:
 		next()
 
 

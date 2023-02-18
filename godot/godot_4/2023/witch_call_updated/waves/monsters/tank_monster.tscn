@@ -1,28 +1,43 @@
-[gd_scene load_steps=21 format=3 uid="uid://ycbee6imw2rw"]
+[gd_scene load_steps=21 format=3 uid="uid://cvaa4ki2ik00o"]
 
 [ext_resource type="PackedScene" uid="uid://c773s0wrn86ss" path="res://waves/monsters/monster.tscn" id="1_ancd7"]
 [ext_resource type="PackedScene" uid="uid://irv1wioog2sf" path="res://entities/tank_shield.tscn" id="2_0icmm"]
-[ext_resource type="Script" path="res://waves/monsters/monster_action.gd" id="2_f3u55"]
+[ext_resource type="Script" path="res://waves/monsters/monster_action.gd" id="2_jpw01"]
 [ext_resource type="Texture2D" uid="uid://dy1tw1hyxx1qe" path="res://assets/graphics/Punkkin_tank.png" id="3_i4gr3"]
 [ext_resource type="Script" path="res://resources/drop_item.gd" id="4_fxyc5"]
 [ext_resource type="PackedScene" uid="uid://myd2j2g7stag" path="res://entities/loot_mana.tscn" id="5_xnf0b"]
 [ext_resource type="PackedScene" uid="uid://c3efexc8gkf48" path="res://entities/loot_speed_up.tscn" id="6_55yxs"]
 [ext_resource type="PackedScene" uid="uid://du3wsxd6km6y" path="res://entities/loot_damage_up.tscn" id="7_i82ho"]
 
-[sub_resource type="Resource" id="Resource_n054r"]
-script = ExtResource("2_f3u55")
-duration = 0.5
+[sub_resource type="Resource" id="Resource_u8ktq"]
+script = ExtResource("2_jpw01")
+duration = 1.0
 type = 0
 
-[sub_resource type="Resource" id="Resource_s6nvt"]
-script = ExtResource("2_f3u55")
-duration = 2.0
+[sub_resource type="Resource" id="Resource_rocuk"]
+script = ExtResource("2_jpw01")
+duration = 1.0
 type = 1
 
-[sub_resource type="Resource" id="Resource_uo3u6"]
-script = ExtResource("2_f3u55")
+[sub_resource type="Resource" id="Resource_4bfeu"]
+script = ExtResource("2_jpw01")
 duration = 0.0
 type = 0
+
+[sub_resource type="Animation" id="Animation_2u7gg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
 
 [sub_resource type="Animation" id="Animation_wcdsw"]
 resource_name = "animate"
@@ -39,21 +54,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3]
-}
-
-[sub_resource type="Animation" id="Animation_2u7gg"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_u8172"]
@@ -89,9 +89,8 @@ scene = ExtResource("7_i82ho")
 chance = 1
 
 [node name="TankMonster" instance=ExtResource("1_ancd7")]
-hit_points = 3
 speed = 70.0
-monster_actions = Array[ExtResource("2_f3u55")]([SubResource("Resource_n054r"), SubResource("Resource_s6nvt"), SubResource("Resource_uo3u6")])
+monster_actions = Array[ExtResource("2_jpw01")]([SubResource("Resource_u8ktq"), SubResource("Resource_rocuk"), SubResource("Resource_4bfeu")])
 
 [node name="Sprite2D" parent="." index="0"]
 texture = ExtResource("3_i4gr3")

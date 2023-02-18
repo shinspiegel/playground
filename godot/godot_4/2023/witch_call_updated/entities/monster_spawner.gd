@@ -25,9 +25,14 @@ func spawn(monster: PackedScene, lane: int, delay: float = 0.0) -> void:
 
 
 func instanciate_monster(monster: PackedScene, lane: int) -> void:
-	var monster_instance = monster.instantiate()
+	var monster_instance: MonsterBase = monster.instantiate()
+	monster_instance.hit_points += get_level_hp_boost()
 	monsters.add_child(monster_instance)
 	monster_instance.global_position.x = get_mosnter_position_by_lane(lane)
+
+
+func get_level_hp_boost() -> int:
+	return int(run_data.level / 10)
 
 
 func reset_monsters() -> void:
