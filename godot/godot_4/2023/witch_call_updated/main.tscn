@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://dqpeajalcuijc"]
+[gd_scene load_steps=58 format=3 uid="uid://dqpeajalcuijc"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_ahs37"]
 [ext_resource type="Resource" uid="uid://dt6soudindf7k" path="res://resources/general_game_data.tres" id="2_jkpjl"]
@@ -37,6 +37,26 @@
 [ext_resource type="Resource" uid="uid://innf4d32bvr5" path="res://waves/wave_list/30-69-hard/wave-hard-7.tres" id="32_ghtv0"]
 [ext_resource type="Resource" uid="uid://w2jjk11w4ecw" path="res://waves/wave_list/30-69-hard/wave-hard-8.tres" id="33_wcnw3"]
 [ext_resource type="Resource" uid="uid://innf4d32bvr5" path="res://waves/wave_list/30-69-hard/wave-hard-9.tres" id="34_2jeq2"]
+[ext_resource type="Resource" uid="uid://innf4d32bvr5" path="res://waves/wave_list/30-69-hard/wave-hard-10.tres" id="35_nl70b"]
+[ext_resource type="Resource" uid="uid://dss6fprxfugjd" path="res://waves/wave_list/30-69-hard/wave-hard-11.tres" id="36_xkde7"]
+[ext_resource type="Resource" uid="uid://innf4d32bvr5" path="res://waves/wave_list/30-69-hard/wave-hard-12.tres" id="37_u2rnm"]
+[ext_resource type="Resource" uid="uid://innf4d32bvr5" path="res://waves/wave_list/30-69-hard/wave-hard-13.tres" id="38_v5dl7"]
+[ext_resource type="Resource" uid="uid://bxhmh2prfrcug" path="res://waves/wave_list/30-69-hard/wave-hard-14.tres" id="39_rjt7t"]
+[ext_resource type="Resource" uid="uid://innf4d32bvr5" path="res://waves/wave_list/30-69-hard/wave-hard-15.tres" id="40_wc2h3"]
+[ext_resource type="Resource" uid="uid://b656kky2m3624" path="res://waves/wave_list/30-69-hard/wave-hard-16.tres" id="41_y07ho"]
+[ext_resource type="Resource" uid="uid://innf4d32bvr5" path="res://waves/wave_list/30-69-hard/wave-hard-17.tres" id="42_7ial7"]
+[ext_resource type="Resource" uid="uid://innf4d32bvr5" path="res://waves/wave_list/30-69-hard/wave-hard-18.tres" id="43_pkkf5"]
+[ext_resource type="Resource" uid="uid://dtw32ms334sks" path="res://waves/wave_list/30-69-hard/wave-hard-19.tres" id="44_hlwet"]
+[ext_resource type="Resource" uid="uid://bseekdxxlg3ap" path="res://waves/wave_list/30-69-hard/wave-hard-20.tres" id="45_eek4c"]
+[ext_resource type="Resource" uid="uid://ctyhdq1ggk3de" path="res://waves/wave_list/30-69-hard/wave-hard-21.tres" id="46_ufgsq"]
+[ext_resource type="Resource" uid="uid://dxcwgeo3xid8u" path="res://waves/wave_list/30-69-hard/wave-hard-22.tres" id="47_o25b7"]
+[ext_resource type="Resource" uid="uid://da613toaa75ft" path="res://waves/wave_list/30-69-hard/wave-hard-23.tres" id="48_esspb"]
+[ext_resource type="Resource" uid="uid://dsr02kgbd54vm" path="res://waves/wave_list/30-69-hard/wave-hard-24.tres" id="49_gbmfo"]
+[ext_resource type="Resource" uid="uid://2i2esh0q5wst" path="res://waves/wave_list/30-69-hard/wave-hard-25.tres" id="50_g7kkc"]
+[ext_resource type="Resource" uid="uid://dmdmyxo6o0n58" path="res://waves/wave_list/30-69-hard/wave-hard-26.tres" id="51_pttb1"]
+[ext_resource type="Resource" uid="uid://dtl4aj4gxxhgf" path="res://waves/wave_list/30-69-hard/wave-hard-27.tres" id="52_4v3y8"]
+[ext_resource type="Resource" uid="uid://fekldb3s4bi0" path="res://waves/wave_list/30-69-hard/wave-hard-28.tres" id="53_36les"]
+[ext_resource type="Resource" uid="uid://b5hbr5xjcb45b" path="res://waves/wave_list/30-69-hard/wave-hard-29.tres" id="54_tu240"]
 
 [node name="Main" type="Node2D"]
 texture_filter = 3
@@ -46,7 +66,7 @@ game_data = ExtResource("2_jkpjl")
 [node name="Menus" parent="." instance=ExtResource("2_uebvo")]
 
 [node name="Game" parent="." instance=ExtResource("4_7tmw5")]
-waves_list = Array[Resource("res://waves/wave_resource/wave.gd")]([ExtResource("5_16jn3"), ExtResource("6_y13ya"), ExtResource("7_fjmcu"), ExtResource("8_guyc6"), ExtResource("9_lu7oj"), ExtResource("10_babdr"), ExtResource("11_3tmy1"), ExtResource("12_orkon"), ExtResource("13_lpe0f"), ExtResource("14_7hlkv"), ExtResource("15_jhrt6"), ExtResource("16_05ebg"), ExtResource("17_socr3"), ExtResource("18_mh446"), ExtResource("19_uik7m"), ExtResource("20_ouvil"), ExtResource("21_k25jv"), ExtResource("22_6sin2"), ExtResource("23_d1jvq"), ExtResource("24_nqad3"), ExtResource("25_31l24"), ExtResource("26_w7237"), ExtResource("27_jxkae"), ExtResource("28_40ehv"), ExtResource("29_o7gci"), ExtResource("30_2fyt7"), ExtResource("31_m5qi3"), ExtResource("32_ghtv0"), ExtResource("33_wcnw3"), ExtResource("34_2jeq2")])
+waves_list = Array[Resource("res://waves/wave_resource/wave.gd")]([ExtResource("5_16jn3"), ExtResource("6_y13ya"), ExtResource("7_fjmcu"), ExtResource("8_guyc6"), ExtResource("9_lu7oj"), ExtResource("10_babdr"), ExtResource("11_3tmy1"), ExtResource("12_orkon"), ExtResource("13_lpe0f"), ExtResource("14_7hlkv"), ExtResource("15_jhrt6"), ExtResource("16_05ebg"), ExtResource("17_socr3"), ExtResource("18_mh446"), ExtResource("19_uik7m"), ExtResource("20_ouvil"), ExtResource("21_k25jv"), ExtResource("22_6sin2"), ExtResource("23_d1jvq"), ExtResource("24_nqad3"), ExtResource("25_31l24"), ExtResource("26_w7237"), ExtResource("27_jxkae"), ExtResource("28_40ehv"), ExtResource("29_o7gci"), ExtResource("30_2fyt7"), ExtResource("31_m5qi3"), ExtResource("32_ghtv0"), ExtResource("33_wcnw3"), ExtResource("34_2jeq2"), ExtResource("35_nl70b"), ExtResource("36_xkde7"), ExtResource("37_u2rnm"), ExtResource("38_v5dl7"), ExtResource("39_rjt7t"), ExtResource("40_wc2h3"), ExtResource("41_y07ho"), ExtResource("42_7ial7"), ExtResource("43_pkkf5"), ExtResource("44_hlwet"), ExtResource("45_eek4c"), ExtResource("46_ufgsq"), ExtResource("47_o25b7"), ExtResource("48_esspb"), ExtResource("49_gbmfo"), ExtResource("50_g7kkc"), ExtResource("51_pttb1"), ExtResource("52_4v3y8"), ExtResource("53_36les"), ExtResource("54_tu240")])
 
 [node name="BackgroundColor" type="CanvasLayer" parent="."]
 layer = -1

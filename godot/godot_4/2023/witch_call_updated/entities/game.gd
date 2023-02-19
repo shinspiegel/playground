@@ -33,7 +33,7 @@ func start_game() -> void:
 
 
 func run_wave() -> void:
-	if run_data.level >= waves_list.size():
+	if run_data.level >= 99:
 		complete_game()
 		return
 	
