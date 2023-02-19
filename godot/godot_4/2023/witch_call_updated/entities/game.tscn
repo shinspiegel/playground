@@ -1,8 +1,7 @@
-[gd_scene load_steps=29 format=3 uid="uid://b5ssebmnrtioj"]
+[gd_scene load_steps=28 format=3 uid="uid://b5ssebmnrtioj"]
 
 [ext_resource type="PackedScene" uid="uid://lulr7aa2qg0a" path="res://entities/cloud_spawner.tscn" id="1_cnf1g"]
 [ext_resource type="Script" path="res://entities/game.gd" id="1_fb5xa"]
-[ext_resource type="PackedScene" uid="uid://die2giuomg3ym" path="res://entities/starting_clouds.tscn" id="2_e0r5h"]
 [ext_resource type="PackedScene" uid="uid://clxp380txlm3j" path="res://entities/player.tscn" id="2_q7pr1"]
 [ext_resource type="Resource" uid="uid://bg4o2fwqrw7vq" path="res://resources/run_data.tres" id="3_bu72u"]
 [ext_resource type="PackedScene" uid="uid://cdxqs7cgt7vul" path="res://entities/monster_spawner.tscn" id="4_47vj4"]
@@ -39,8 +38,6 @@ waves_list = Array[Resource("res://waves/wave_resource/wave.gd")]([ExtResource("
 
 [node name="CloudSpawner" parent="." instance=ExtResource("1_cnf1g")]
 position = Vector2(2.08165e-12, -12)
-
-[node name="StartingClouds" parent="." instance=ExtResource("2_e0r5h")]
 
 [node name="WaveTimer" type="Timer" parent="."]
 wait_time = 5.0
