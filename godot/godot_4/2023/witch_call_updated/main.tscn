@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://dqpeajalcuijc"]
+[gd_scene load_steps=68 format=3 uid="uid://dqpeajalcuijc"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_ahs37"]
 [ext_resource type="Resource" uid="uid://dt6soudindf7k" path="res://resources/general_game_data.tres" id="2_jkpjl"]
@@ -57,6 +57,16 @@
 [ext_resource type="Resource" uid="uid://dtl4aj4gxxhgf" path="res://waves/wave_list/30-69-hard/wave-hard-27.tres" id="52_4v3y8"]
 [ext_resource type="Resource" uid="uid://fekldb3s4bi0" path="res://waves/wave_list/30-69-hard/wave-hard-28.tres" id="53_36les"]
 [ext_resource type="Resource" uid="uid://b5hbr5xjcb45b" path="res://waves/wave_list/30-69-hard/wave-hard-29.tres" id="54_tu240"]
+[ext_resource type="Resource" uid="uid://innf4d32bvr5" path="res://waves/wave_list/70-99-impossible/wave-impossible-0.tres" id="55_y82il"]
+[ext_resource type="Resource" uid="uid://7uiovk4l3iyu" path="res://waves/wave_list/70-99-impossible/wave-impossible-1.tres" id="56_uedxy"]
+[ext_resource type="Resource" uid="uid://innf4d32bvr5" path="res://waves/wave_list/70-99-impossible/wave-impossible-2.tres" id="57_vgc1j"]
+[ext_resource type="Resource" uid="uid://bcyvdjbbcv73w" path="res://waves/wave_list/70-99-impossible/wave-impossible-3.tres" id="58_otqlm"]
+[ext_resource type="Resource" uid="uid://innf4d32bvr5" path="res://waves/wave_list/70-99-impossible/wave-impossible-4.tres" id="59_dxw5v"]
+[ext_resource type="Resource" uid="uid://innf4d32bvr5" path="res://waves/wave_list/70-99-impossible/wave-impossible-5.tres" id="60_5l8ed"]
+[ext_resource type="Resource" uid="uid://clwnj0m01qjc5" path="res://waves/wave_list/70-99-impossible/wave-impossible-6.tres" id="61_hqmx0"]
+[ext_resource type="Resource" uid="uid://innf4d32bvr5" path="res://waves/wave_list/70-99-impossible/wave-impossible-7.tres" id="62_7gxfl"]
+[ext_resource type="Resource" uid="uid://innf4d32bvr5" path="res://waves/wave_list/70-99-impossible/wave-impossible-8.tres" id="63_h5382"]
+[ext_resource type="Resource" uid="uid://innf4d32bvr5" path="res://waves/wave_list/70-99-impossible/wave-impossible-9.tres" id="64_rvtcg"]
 
 [node name="Main" type="Node2D"]
 texture_filter = 3
@@ -66,7 +76,7 @@ game_data = ExtResource("2_jkpjl")
 [node name="Menus" parent="." instance=ExtResource("2_uebvo")]
 
 [node name="Game" parent="." instance=ExtResource("4_7tmw5")]
-waves_list = Array[Resource("res://waves/wave_resource/wave.gd")]([ExtResource("5_16jn3"), ExtResource("6_y13ya"), ExtResource("7_fjmcu"), ExtResource("8_guyc6"), ExtResource("9_lu7oj"), ExtResource("10_babdr"), ExtResource("11_3tmy1"), ExtResource("12_orkon"), ExtResource("13_lpe0f"), ExtResource("14_7hlkv"), ExtResource("15_jhrt6"), ExtResource("16_05ebg"), ExtResource("17_socr3"), ExtResource("18_mh446"), ExtResource("19_uik7m"), ExtResource("20_ouvil"), ExtResource("21_k25jv"), ExtResource("22_6sin2"), ExtResource("23_d1jvq"), ExtResource("24_nqad3"), ExtResource("25_31l24"), ExtResource("26_w7237"), ExtResource("27_jxkae"), ExtResource("28_40ehv"), ExtResource("29_o7gci"), ExtResource("30_2fyt7"), ExtResource("31_m5qi3"), ExtResource("32_ghtv0"), ExtResource("33_wcnw3"), ExtResource("34_2jeq2"), ExtResource("35_nl70b"), ExtResource("36_xkde7"), ExtResource("37_u2rnm"), ExtResource("38_v5dl7"), ExtResource("39_rjt7t"), ExtResource("40_wc2h3"), ExtResource("41_y07ho"), ExtResource("42_7ial7"), ExtResource("43_pkkf5"), ExtResource("44_hlwet"), ExtResource("45_eek4c"), ExtResource("46_ufgsq"), ExtResource("47_o25b7"), ExtResource("48_esspb"), ExtResource("49_gbmfo"), ExtResource("50_g7kkc"), ExtResource("51_pttb1"), ExtResource("52_4v3y8"), ExtResource("53_36les"), ExtResource("54_tu240")])
+waves_list = Array[Resource("res://waves/wave_resource/wave.gd")]([ExtResource("5_16jn3"), ExtResource("6_y13ya"), ExtResource("7_fjmcu"), ExtResource("8_guyc6"), ExtResource("9_lu7oj"), ExtResource("10_babdr"), ExtResource("11_3tmy1"), ExtResource("12_orkon"), ExtResource("13_lpe0f"), ExtResource("14_7hlkv"), ExtResource("15_jhrt6"), ExtResource("16_05ebg"), ExtResource("17_socr3"), ExtResource("18_mh446"), ExtResource("19_uik7m"), ExtResource("20_ouvil"), ExtResource("21_k25jv"), ExtResource("22_6sin2"), ExtResource("23_d1jvq"), ExtResource("24_nqad3"), ExtResource("25_31l24"), ExtResource("26_w7237"), ExtResource("27_jxkae"), ExtResource("28_40ehv"), ExtResource("29_o7gci"), ExtResource("30_2fyt7"), ExtResource("31_m5qi3"), ExtResource("32_ghtv0"), ExtResource("33_wcnw3"), ExtResource("34_2jeq2"), ExtResource("35_nl70b"), ExtResource("36_xkde7"), ExtResource("37_u2rnm"), ExtResource("38_v5dl7"), ExtResource("39_rjt7t"), ExtResource("40_wc2h3"), ExtResource("41_y07ho"), ExtResource("42_7ial7"), ExtResource("43_pkkf5"), ExtResource("44_hlwet"), ExtResource("45_eek4c"), ExtResource("46_ufgsq"), ExtResource("47_o25b7"), ExtResource("48_esspb"), ExtResource("49_gbmfo"), ExtResource("50_g7kkc"), ExtResource("51_pttb1"), ExtResource("52_4v3y8"), ExtResource("53_36les"), ExtResource("54_tu240"), ExtResource("55_y82il"), ExtResource("56_uedxy"), ExtResource("57_vgc1j"), ExtResource("58_otqlm"), ExtResource("59_dxw5v"), ExtResource("60_5l8ed"), ExtResource("61_hqmx0"), ExtResource("62_7gxfl"), ExtResource("63_h5382"), ExtResource("64_rvtcg")])
 
 [node name="BackgroundColor" type="CanvasLayer" parent="."]
 layer = -1
