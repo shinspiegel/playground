@@ -1,3 +1,4 @@
+res://waves/monsters
 res://
 /Users/jeferson_leite_borges/Documents/Study/playground/godot/godot_4/2023/witch_call_updated/build/html
 /Users/jeferson_leite_borges/Documents/Study/playground/godot/godot_4/2023/witch_call_updated/build/win
@@ -6,6 +7,5 @@ res://
 res://assets/system_assets
 res://menus
 res://entities
-res://waves/monsters
 res://waves/monster_actions
 res://waves

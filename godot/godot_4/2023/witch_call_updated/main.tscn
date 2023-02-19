@@ -95,5 +95,6 @@ metadata/_edit_lock_ = true
 [node name="SFXSpawner" parent="." instance=ExtResource("6_iou07")]
 
 [node name="DEBUG" parent="." instance=ExtResource("17_gj3ib")]
+visible = false
 
 [editable path="Menus"]

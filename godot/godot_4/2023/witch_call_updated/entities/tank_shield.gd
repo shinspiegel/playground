@@ -26,4 +26,4 @@ func on_receive_hit(hit: HitBox) -> void:
 func calculate_shade_color() -> void:
 	var ratio = float(shield_energy) / float(max_shield_energy)
 	var shaded_color = lerp(color_blue, color_red, ratio)
-	set_modulate
+	set_modulate(shaded_color)

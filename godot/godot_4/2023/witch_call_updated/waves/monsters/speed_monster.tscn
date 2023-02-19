@@ -60,12 +60,12 @@ height = 54.0
 
 [sub_resource type="Resource" id="Resource_pcxp2"]
 script = ExtResource("3_smb64")
-chance = 10
+chance = 2
 
 [sub_resource type="Resource" id="Resource_tv67r"]
 script = ExtResource("3_smb64")
 scene = ExtResource("4_ljwtg")
-chance = 6
+chance = 14
 
 [sub_resource type="Resource" id="Resource_kj8mp"]
 script = ExtResource("3_smb64")

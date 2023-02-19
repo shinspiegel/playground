@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://4xg26tmhwocy"]
+[gd_scene load_steps=24 format=3 uid="uid://4xg26tmhwocy"]
 
 [ext_resource type="PackedScene" uid="uid://c773s0wrn86ss" path="res://waves/monsters/monster.tscn" id="1_wh8ws"]
 [ext_resource type="Script" path="res://waves/monsters/down_shoot.gd" id="2_4ciky"]
@@ -12,8 +12,28 @@
 
 [sub_resource type="Resource" id="Resource_2h76t"]
 script = ExtResource("3_ymn6y")
-duration = 0.0
+duration = 1.0
+type = 0
+
+[sub_resource type="Resource" id="Resource_7mcmh"]
+script = ExtResource("3_ymn6y")
+duration = 1.0
 type = 2
+
+[sub_resource type="Resource" id="Resource_6y1nc"]
+script = ExtResource("3_ymn6y")
+duration = 1.0
+type = 0
+
+[sub_resource type="Resource" id="Resource_84q4j"]
+script = ExtResource("3_ymn6y")
+duration = 1.0
+type = 2
+
+[sub_resource type="Resource" id="Resource_54nxr"]
+script = ExtResource("3_ymn6y")
+duration = 1.0
+type = 0
 
 [sub_resource type="Animation" id="Animation_8cu5g"]
 length = 0.001
@@ -82,7 +102,7 @@ chance = 1
 script = ExtResource("2_4ciky")
 hit_points = 1
 speed = 50.0
-monster_actions = Array[ExtResource("3_ymn6y")]([SubResource("Resource_2h76t")])
+monster_actions = Array[ExtResource("3_ymn6y")]([SubResource("Resource_2h76t"), SubResource("Resource_7mcmh"), SubResource("Resource_6y1nc"), SubResource("Resource_84q4j"), SubResource("Resource_54nxr")])
 
 [node name="Sprite2D" parent="." index="0"]
 texture = ExtResource("4_xl551")

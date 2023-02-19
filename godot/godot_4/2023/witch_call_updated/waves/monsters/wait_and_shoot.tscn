@@ -11,7 +11,7 @@
 
 [sub_resource type="Resource" id="Resource_4s6gk"]
 script = ExtResource("3_6x7ar")
-duration = 2.0
+duration = 1.0
 type = 0
 
 [sub_resource type="Resource" id="Resource_fcn46"]
@@ -76,12 +76,12 @@ radius = 25.02
 
 [sub_resource type="Resource" id="Resource_tkp2q"]
 script = ExtResource("5_h7ihv")
-chance = 12
+chance = 6
 
 [sub_resource type="Resource" id="Resource_8eexg"]
 script = ExtResource("5_h7ihv")
 scene = ExtResource("6_p8nlx")
-chance = 6
+chance = 12
 
 [sub_resource type="Resource" id="Resource_2thwy"]
 script = ExtResource("5_h7ihv")

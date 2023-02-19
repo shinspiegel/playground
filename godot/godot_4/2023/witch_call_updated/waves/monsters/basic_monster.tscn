@@ -58,12 +58,12 @@ radius = 26.0192
 
 [sub_resource type="Resource" id="Resource_a0hns"]
 script = ExtResource("2_6vlve")
-chance = 17
+chance = 10
 
 [sub_resource type="Resource" id="Resource_7bh4i"]
 script = ExtResource("2_6vlve")
 scene = ExtResource("3_fih34")
-chance = 3
+chance = 10
 
 [node name="BasicMonster" instance=ExtResource("1_aepw8")]
 hit_points = 1

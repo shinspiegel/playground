@@ -107,3 +107,7 @@ func increase_damage(amount: int = 1) -> void:
 
 func increase_player_speed(amount: float = 20.0) -> void:
 	player_speed += amount
+
+
+func get_level_modifier() -> int:
+	return int(level / 10)

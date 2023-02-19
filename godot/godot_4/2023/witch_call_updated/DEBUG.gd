@@ -5,6 +5,7 @@ class_name DEBUG extends CanvasLayer
 @onready var level: Label = $Control/VBoxContainer/Label
 @onready var wave: Label = $Control/VBoxContainer/Wave
 
+
 func _ready() -> void:
 	SignalBus.level_changed_to.connect(on_level_change)
 	SignalBus.update_wave_debug_name.connect(on_wave_name_change)
