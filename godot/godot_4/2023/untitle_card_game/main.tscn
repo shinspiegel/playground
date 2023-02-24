@@ -11,4 +11,3 @@ script = ExtResource("1_qqdtc")
 [node name="WordGame" parent="." instance=ExtResource("2_05pe4")]
 
 [node name="CardGame" parent="." instance=ExtResource("3_d5y01")]
-visible = false

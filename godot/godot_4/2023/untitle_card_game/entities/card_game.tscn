@@ -78,22 +78,37 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Enemy(10/10)"
 
-[node name="ButtonsArea" type="HBoxContainer" parent="MarginContainer/CenterContainer/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/CenterContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Button" type="Button" parent="MarginContainer/CenterContainer/VBoxContainer/ButtonsArea"]
+[node name="ButtonsArea" type="HBoxContainer" parent="MarginContainer/CenterContainer/VBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
-text = "One"
+alignment = 1
 
-[node name="Button2" type="Button" parent="MarginContainer/CenterContainer/VBoxContainer/ButtonsArea"]
+[node name="Button" type="Button" parent="MarginContainer/CenterContainer/VBoxContainer/VBoxContainer/ButtonsArea"]
 layout_mode = 2
-text = "two"
+text = "+1 Dmg"
 
-[node name="Button3" type="Button" parent="MarginContainer/CenterContainer/VBoxContainer/ButtonsArea"]
+[node name="Button2" type="Button" parent="MarginContainer/CenterContainer/VBoxContainer/VBoxContainer/ButtonsArea"]
 layout_mode = 2
-text = "three"
+text = "+1 Def"
 
-[node name="FinishBattle" type="Button" parent="MarginContainer/CenterContainer/VBoxContainer/ButtonsArea"]
+[node name="Button3" type="Button" parent="MarginContainer/CenterContainer/VBoxContainer/VBoxContainer/ButtonsArea"]
+layout_mode = 2
+text = "+1 HP"
+
+[node name="NextTurnArea" type="HBoxContainer" parent="MarginContainer/CenterContainer/VBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+alignment = 1
+
+[node name="EndTurn" type="Button" parent="MarginContainer/CenterContainer/VBoxContainer/VBoxContainer/NextTurnArea"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "End Turn"
+
+[node name="FinishBattle" type="Button" parent="MarginContainer/CenterContainer/VBoxContainer/VBoxContainer/NextTurnArea"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Exit"

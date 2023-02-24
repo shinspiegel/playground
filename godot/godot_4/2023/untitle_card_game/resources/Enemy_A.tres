@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="CharacterEntity" load_steps=2 format=3 uid="uid://jb3uqduh0kg3"]
+
+[ext_resource type="Script" path="res://resources/character_entity.gd" id="1_0ttvh"]
+
+[resource]
+script = ExtResource("1_0ttvh")
+max_hp = 7
+hp = 0
+speed = 10

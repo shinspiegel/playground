@@ -15,7 +15,6 @@ func start_world_game() -> void:
 	card_game.hide()
 
 
-func start_card_game(target) -> void:
-	print(target)
+func start_card_game(_target) -> void:
 	get_tree().paused = true
 	card_game.show()

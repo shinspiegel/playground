@@ -1,14 +1,21 @@
-[gd_scene load_steps=3 format=3 uid="uid://5r1d13hoicas"]
+[gd_scene load_steps=5 format=3 uid="uid://5r1d13hoicas"]
 
 [ext_resource type="PackedScene" uid="uid://ddll3ndrcofg2" path="res://entities/player.tscn" id="1_62cos"]
 [ext_resource type="PackedScene" uid="uid://cu7xmo5ys0ggu" path="res://entities/battle_initializer.tscn" id="2_h67p0"]
+[ext_resource type="Resource" uid="uid://xi3kimurv4ax" path="res://resources/Enemy_B.tres" id="3_l56os"]
+[ext_resource type="Resource" uid="uid://jb3uqduh0kg3" path="res://resources/Enemy_A.tres" id="4_3csxe"]
 
 [node name="WordGame" type="Node2D"]
 process_mode = 1
 y_sort_enabled = true
 
 [node name="Player" parent="." instance=ExtResource("1_62cos")]
-position = Vector2(100, 120)
+position = Vector2(212, 155)
 
 [node name="BattleInitializer" parent="." instance=ExtResource("2_h67p0")]
-position = Vector2(198, 154)
+position = Vector2(323, 198)
+target = ExtResource("3_l56os")
+
+[node name="BattleInitializer2" parent="." instance=ExtResource("2_h67p0")]
+position = Vector2(111, 195)
+target = ExtResource("4_3csxe")
