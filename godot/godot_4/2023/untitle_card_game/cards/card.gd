@@ -1,7 +1,5 @@
 class_name CardBase extends Control
 
-@export var card_data: CardData
-
 @onready var wrapper: Button = $Wrapper
 @onready var label: Label = $Wrapper/Label
 @onready var card_image: TextureRect = $Wrapper/TextureRect 
@@ -15,22 +13,20 @@ func _ready() -> void:
 	wrapper.focus_exited.connect(on_blur)
 	wrapper.pressed.connect(on_select_card)
 	set_initial_wrapper_state()
-	set_card_properties()
+
+
+func activate(owner: CharacterEntity, target: CharacterEntity) -> void:
+	print_debug("WARN:: Needs to implement this method as extended")
 
 
 func on_select_card() -> void:
 	wrapper.release_focus()
-	SignalBus.selected_card_data.emit(card_data)
+	SignalBus.selected_card_data.emit(self)
 
 
 func set_initial_wrapper_state() -> void:
 	wrapper.size = Vector2(50,50)
 	wrapper.position = Vector2(0,0)
-
-
-func set_card_properties() -> void:
-	label.text = card_data.label
-	card_image.texture = card_data.texture
 
 
 func on_focus() -> void:

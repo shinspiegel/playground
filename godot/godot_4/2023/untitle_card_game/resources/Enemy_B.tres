@@ -3,6 +3,8 @@
 [ext_resource type="Script" path="res://resources/character_entity.gd" id="1_hvfnn"]
 
 [resource]
+resource_name = "EnemyB"
 script = ExtResource("1_hvfnn")
 max_hp = 5
 hp = 0
+speed = 0

@@ -1,13 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://csi5h8mu4u4ty"]
+[gd_scene load_steps=3 format=3 uid="uid://crsjuxcopkuwa"]
 
-[ext_resource type="Script" path="res://entities/card.gd" id="1_kwdy3"]
-[ext_resource type="Texture2D" uid="uid://pjnw125ympfw" path="res://icon.svg" id="2_26fdf"]
-[ext_resource type="Script" path="res://resources/card_data.gd" id="2_iogi2"]
-
-[sub_resource type="Resource" id="Resource_5pv0s"]
-script = ExtResource("2_iogi2")
-label = "D1"
-texture = ExtResource("2_26fdf")
+[ext_resource type="Script" path="res://cards/card.gd" id="1_kwdy3"]
+[ext_resource type="Texture2D" uid="uid://pjnw125ympfw" path="res://icon.svg" id="2_dprrl"]
 
 [node name="Card" type="Control"]
 custom_minimum_size = Vector2(50, 50)
@@ -26,7 +20,6 @@ grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 script = ExtResource("1_kwdy3")
-card_data = SubResource("Resource_5pv0s")
 
 [node name="Wrapper" type="Button" parent="."]
 layout_mode = 1
@@ -50,6 +43,7 @@ offset_left = -10.0
 offset_right = 10.0
 offset_bottom = 20.0
 grow_horizontal = 2
+texture = ExtResource("2_dprrl")
 expand_mode = 2
 stretch_mode = 4
 
@@ -62,5 +56,6 @@ anchor_bottom = 1.0
 offset_top = -23.0
 grow_horizontal = 2
 grow_vertical = 0
+text = "NU"
 horizontal_alignment = 1
 vertical_alignment = 2

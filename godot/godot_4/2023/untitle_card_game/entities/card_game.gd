@@ -54,13 +54,15 @@ func turn(entity: CharacterEntity) -> void:
 
 
 func check_end_battle() -> void:
-	print_debug("IMPLEMENT:: Check for the victory condition")
+#	print_debug("IMPLEMENT:: Check for the victory condition")
+	pass
 
 
 func reset_battle_state() -> void:
+	player.reset()
+	enemy.reset()
 	player_hand.position.y = 400
 	hide_hand()
-	print_debug("IMPLEMENT:: Reset player/enemy state if any")
 
 
 func show_hand() -> void:
@@ -81,7 +83,7 @@ func hide_hand() -> void:
 	end_turn_button.release_focus()
 
 
-func on_card_selected(card: CardData) -> void:
+func on_card_selected(card: CardBase) -> void:
 	# Assume that this is a player interaction, so the card should be player only
 	card.activate(player, enemy)
 	SignalBus.turn_ended_by.emit(player)
