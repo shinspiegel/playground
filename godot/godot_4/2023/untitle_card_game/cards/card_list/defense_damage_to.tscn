@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://pe4525vvw7y0"]
+
+[ext_resource type="PackedScene" uid="uid://crsjuxcopkuwa" path="res://cards/card.tscn" id="1_nkaal"]
+[ext_resource type="Script" path="res://cards/card_list/defense_damage_to.gd" id="2_3veet"]
+
+[node name="Defense" instance=ExtResource("1_nkaal")]
+script = ExtResource("2_3veet")
+
+[node name="Label" parent="Wrapper" index="1"]
+text = "Def"

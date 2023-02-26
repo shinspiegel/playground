@@ -15,7 +15,7 @@ func _ready() -> void:
 	set_initial_wrapper_state()
 
 
-func activate(owner: CharacterEntity, target: CharacterEntity) -> void:
+func activate(_owner_entity: CharacterEntity, _target_entity: CharacterEntity) -> void:
 	print_debug("WARN:: Needs to implement this method as extended")
 
 
@@ -25,8 +25,8 @@ func on_select_card() -> void:
 
 
 func set_initial_wrapper_state() -> void:
-	wrapper.size = Vector2(50,50)
-	wrapper.position = Vector2(0,0)
+	wrapper.set_size(Vector2(50,50))
+	wrapper.set_position(Vector2(0,0))
 
 
 func on_focus() -> void:
@@ -43,3 +43,7 @@ func on_blur() -> void:
 	tw.tween_property(wrapper, "size", Vector2(50,50), time_out)
 	tw.tween_property(wrapper, "position", Vector2(0,0), time_out)
 	tw.play()
+
+
+func focus() -> void:
+	wrapper.grab_focus()

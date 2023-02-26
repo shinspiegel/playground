@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://bmmouykv3w7ea"]
+
+[ext_resource type="PackedScene" uid="uid://crsjuxcopkuwa" path="res://cards/card.tscn" id="1_2jfm8"]
+[ext_resource type="Script" path="res://cards/card_list/heal_damage_to.gd" id="2_afl13"]
+
+[node name="Heal" instance=ExtResource("1_2jfm8")]
+script = ExtResource("2_afl13")
+heal = 1
+
+[node name="Label" parent="Wrapper" index="1"]
+text = "Heal"

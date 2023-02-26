@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://crsjuxcopkuwa" path="res://cards/card.tscn" id="1_7bexq"]
 [ext_resource type="Script" path="res://cards/card_list/deal_damage_to.gd" id="2_dy0fh"]
 
-[node name="DealDamageTo" instance=ExtResource("1_7bexq")]
+[node name="Damage" instance=ExtResource("1_7bexq")]
 script = ExtResource("2_dy0fh")
 damage = 1
 

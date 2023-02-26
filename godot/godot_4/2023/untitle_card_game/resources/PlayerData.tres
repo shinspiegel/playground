@@ -1,6 +1,9 @@
-[gd_resource type="Resource" script_class="CharacterEntity" load_steps=2 format=3 uid="uid://c0r4qluwtcipc"]
+[gd_resource type="Resource" script_class="CharacterEntity" load_steps=5 format=3 uid="uid://c0r4qluwtcipc"]
 
+[ext_resource type="PackedScene" uid="uid://876g8j6hjs26" path="res://cards/card_list/deal_damage_to.tscn" id="1_6sgee"]
 [ext_resource type="Script" path="res://resources/character_entity.gd" id="1_qbjhb"]
+[ext_resource type="PackedScene" uid="uid://pe4525vvw7y0" path="res://cards/card_list/defense_damage_to.tscn" id="2_imdub"]
+[ext_resource type="PackedScene" uid="uid://bmmouykv3w7ea" path="res://cards/card_list/heal_damage_to.tscn" id="3_3sdmp"]
 
 [resource]
 resource_name = "Player"
@@ -8,3 +11,4 @@ script = ExtResource("1_qbjhb")
 max_hp = 10
 hp = 0
 speed = 5
+deck = Array[PackedScene]([ExtResource("1_6sgee"), ExtResource("2_imdub"), ExtResource("3_3sdmp"), ExtResource("1_6sgee"), ExtResource("1_6sgee"), ExtResource("2_imdub"), ExtResource("3_3sdmp"), ExtResource("1_6sgee"), ExtResource("2_imdub"), ExtResource("3_3sdmp")])
