@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://cl743sj4mfjhq"]
+[gd_scene load_steps=4 format=3 uid="uid://cl743sj4mfjhq"]
 
 [ext_resource type="Script" path="res://entities/card_game.gd" id="1_rl8ve"]
 [ext_resource type="Resource" uid="uid://c0r4qluwtcipc" path="res://resources/PlayerData.tres" id="2_fsb8a"]
+[ext_resource type="PackedScene" uid="uid://csi5h8mu4u4ty" path="res://entities/card.tscn" id="3_wmpvd"]
 
 [node name="CardGame" type="CanvasLayer"]
 process_mode = 2
@@ -117,81 +118,23 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 20
 alignment = 1
 
-[node name="Card" type="Control" parent="Hand/HBoxContainer"]
+[node name="Card" parent="Hand/HBoxContainer" instance=ExtResource("3_wmpvd")]
+layout_mode = 2
+
+[node name="Card2" parent="Hand/HBoxContainer" instance=ExtResource("3_wmpvd")]
+layout_mode = 2
+
+[node name="EntTurnButton" type="Control" parent="Hand/HBoxContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="Button" type="Button" parent="Hand/HBoxContainer/Card"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -9.5
-offset_top = -15.5
-offset_right = 9.5
-offset_bottom = 15.5
-grow_horizontal = 2
-grow_vertical = 2
-pivot_offset = Vector2(10, 30)
-text = "A"
-
-[node name="Card2" type="Control" parent="Hand/HBoxContainer"]
-custom_minimum_size = Vector2(30, 30)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-
-[node name="Button" type="Button" parent="Hand/HBoxContainer/Card2"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -9.5
-offset_top = -15.5
-offset_right = 9.5
-offset_bottom = 15.5
-grow_horizontal = 2
-grow_vertical = 2
-pivot_offset = Vector2(10, 30)
-text = "A"
-
-[node name="Card3" type="Control" parent="Hand/HBoxContainer"]
-custom_minimum_size = Vector2(30, 30)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-
-[node name="Button" type="Button" parent="Hand/HBoxContainer/Card3"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -9.5
-offset_top = -15.5
-offset_right = 9.5
-offset_bottom = 15.5
-grow_horizontal = 2
-grow_vertical = 2
-pivot_offset = Vector2(10, 30)
-text = "A"
-
-[node name="Card4" type="Control" parent="Hand/HBoxContainer"]
-custom_minimum_size = Vector2(30, 30)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-
-[node name="Button" type="Button" parent="Hand/HBoxContainer/Card4"]
+[node name="Button" type="Button" parent="Hand/HBoxContainer/EntTurnButton"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
