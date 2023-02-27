@@ -7,7 +7,6 @@ class_name CardBase extends Control
 var time_in: float = 0.3
 var time_out: float = 0.2
 
-
 func _ready() -> void:
 	wrapper.focus_entered.connect(on_focus)
 	wrapper.focus_exited.connect(on_blur)

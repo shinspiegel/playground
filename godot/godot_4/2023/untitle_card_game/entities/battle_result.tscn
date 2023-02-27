@@ -1,0 +1,102 @@
+[gd_scene load_steps=2 format=3 uid="uid://cbnws80apo3up"]
+
+[ext_resource type="Script" path="res://entities/battle_result.gd" id="1_rgti1"]
+
+[node name="BattleResult" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_rgti1")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Control" type="Control" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="BattleLost" type="Control" parent="MarginContainer/VBoxContainer/Control"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/VBoxContainer/Control/BattleLost"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Control/BattleLost/CenterContainer"]
+layout_mode = 2
+
+[node name="CenterContainer2" type="CenterContainer" parent="MarginContainer/VBoxContainer/Control/BattleLost/CenterContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer/VBoxContainer/Control/BattleLost/CenterContainer/VBoxContainer/CenterContainer2"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+color = Color(0.141176, 0.141176, 0.141176, 1)
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Control/BattleLost/CenterContainer/VBoxContainer/CenterContainer2"]
+layout_mode = 2
+text = "You Lost!"
+
+[node name="BattleWon" type="Control" parent="MarginContainer/VBoxContainer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer2" type="CenterContainer" parent="MarginContainer/VBoxContainer/Control/BattleWon"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Control/BattleWon/CenterContainer2"]
+layout_mode = 2
+
+[node name="CenterContainer2" type="CenterContainer" parent="MarginContainer/VBoxContainer/Control/BattleWon/CenterContainer2/VBoxContainer"]
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer/VBoxContainer/Control/BattleWon/CenterContainer2/VBoxContainer/CenterContainer2"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+color = Color(0.141176, 0.141176, 0.141176, 1)
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Control/BattleWon/CenterContainer2/VBoxContainer/CenterContainer2"]
+layout_mode = 2
+text = "You Won!"
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer/CenterContainer"]
+layout_mode = 2
+text = "Close"

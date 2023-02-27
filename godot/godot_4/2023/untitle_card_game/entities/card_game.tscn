@@ -1,32 +1,18 @@
-[gd_scene load_steps=5 format=3 uid="uid://cbjo3dcgjr808"]
+[gd_scene load_steps=6 format=3 uid="uid://cbjo3dcgjr808"]
 
 [ext_resource type="Script" path="res://entities/card_game.gd" id="1_rl8ve"]
 [ext_resource type="Resource" uid="uid://c0r4qluwtcipc" path="res://resources/PlayerData.tres" id="2_fsb8a"]
 [ext_resource type="PackedScene" uid="uid://dkn4qbiqi77n5" path="res://entities/battle_ui.tscn" id="3_oiplk"]
 [ext_resource type="PackedScene" uid="uid://1g8d70nb8a3d" path="res://entities/player_area.tscn" id="4_qwwrv"]
+[ext_resource type="PackedScene" uid="uid://cbnws80apo3up" path="res://entities/battle_result.tscn" id="5_cq5m8"]
 
 [node name="CardGame" type="CanvasLayer"]
 process_mode = 2
 script = ExtResource("1_rl8ve")
 player = ExtResource("2_fsb8a")
 
-[node name="DEBUG" type="CanvasLayer" parent="."]
-
-[node name="Control" type="Control" parent="DEBUG"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="DEBUG_LABEL" type="Label" parent="DEBUG/Control"]
-unique_name_in_owner = true
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
-text = "Turn "
-
 [node name="BattleUI" parent="." instance=ExtResource("3_oiplk")]
 
 [node name="PlayerArea" parent="." instance=ExtResource("4_qwwrv")]
+
+[node name="BattleResult" parent="." instance=ExtResource("5_cq5m8")]

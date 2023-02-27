@@ -5,7 +5,7 @@
 
 [node name="Damage" instance=ExtResource("1_7bexq")]
 script = ExtResource("2_dy0fh")
-damage = 1
+damage = 5
 
 [node name="Label" parent="Wrapper" index="1"]
 text = "Dmg"

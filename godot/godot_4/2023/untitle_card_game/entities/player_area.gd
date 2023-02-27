@@ -17,13 +17,9 @@ func _ready() -> void:
 	SignalBus.selected_card_data.connect(on_card_selected)
 	SignalBus.player_turn.connect(on_player_turn)
 	SignalBus.turn_ended_by.connect(on_turn_end)
+	SignalBus.card_game_over.connect(on_card_game_over)
 	end_turn_button.pressed.connect(end_turn_pressed)
-
-
-func on_battle_start(target: CharacterEntity) -> void:
-	enemy = target
-	initial_deck_shuffle()
-	pass
+	hide()
 
 
 func initial_deck_shuffle() -> void:
@@ -45,16 +41,6 @@ func reshuffle() -> void:
 	
 	for card in shuffle_cards:
 		drawing_pile.add_child(card)
-
-
-func on_player_turn() -> void:
-	show_hand()
-	await hand_displayed
-	
-	for _index in range(player.hand_size):
-		draw_card()
-	
-	grab_selection_focus()
 
 
 func draw_card() -> void:
@@ -103,6 +89,24 @@ func discard_hand() -> void:
 		discard_pile.add_child(card)
 
 
+func on_battle_start(target: CharacterEntity) -> void:
+	show()
+	enemy = target
+	initial_deck_shuffle()
+	# TODO: Set initial state / position / show
+	pass
+
+
+func on_player_turn() -> void:
+	show_hand()
+	await hand_displayed
+	
+	for _index in range(player.hand_size):
+		draw_card()
+	
+	grab_selection_focus()
+
+
 func on_card_selected(card: CardBase) -> void:
 	card.activate(player, enemy)
 	discard_hand()
@@ -111,3 +115,16 @@ func on_card_selected(card: CardBase) -> void:
 
 func on_turn_end(_entity: CharacterEntity) -> void:
 	hide_hand()
+
+
+func on_card_game_over() -> void:
+	for card in drawing_pile.get_children():
+		card.queue_free()
+	
+	for card in discard_pile.get_children():
+		card.queue_free()
+	
+	for card in cards_container.get_children():
+		card.queue_free()
+	
+	hide()

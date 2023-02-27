@@ -8,3 +8,4 @@ script = ExtResource("1_hvfnn")
 max_hp = 5
 hp = 0
 speed = 0
+deck = Array[PackedScene]([])

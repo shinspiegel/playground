@@ -12,6 +12,12 @@ func reset() -> void:
 	hp = max_hp
 
 
+func has_lost() -> bool:
+	if hp <= 0: 
+		return true
+	return false
+
+
 func deal_damage(damage: int) -> void:
 	hp -= damage
 	if hp < 0:

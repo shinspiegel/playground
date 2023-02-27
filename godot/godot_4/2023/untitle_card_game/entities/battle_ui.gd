@@ -1,19 +1,26 @@
-class_name BattleUI extends MarginContainer
+class_name BattleUI extends Control
 
 @export var player: CharacterEntity
 @export var enemy: CharacterEntity
 
-@onready var player_label: Label = $CenterContainer/VBoxContainer/HBoxContainer2/Control/Label
-@onready var enemy_label: Label = $CenterContainer/VBoxContainer/HBoxContainer2/Control2/Label
+@onready var player_label: Label = $MarginContainer/CenterContainer/VBoxContainer/HBoxContainer2/Control/Label
+@onready var enemy_label: Label = $MarginContainer/CenterContainer/VBoxContainer/HBoxContainer2/Control2/Label
 
 func _ready() -> void:
 	SignalBus.turn_ended_by.connect(update_ui)
 	SignalBus.battle_start_against.connect(on_battle_start)
+	SignalBus.card_game_over.connect(on_card_game_over)
+	hide()
+
+
+func on_card_game_over() -> void:
+	hide()
 
 
 func on_battle_start(target: CharacterEntity) -> void:
 	enemy = target
 	update_ui(enemy)
+	show()
 
 
 func update_ui(_target) -> void:

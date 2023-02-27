@@ -10,6 +10,7 @@ func _ready() -> void:
 	SignalBus.battle_start_against.connect(start_battle_against)
 	SignalBus.enemty_turn.connect(on_enemy_turn)
 #	end_turn_button.pressed.connect(func(): SignalBus.turn_ended_by.emit(player))
+	pass
 
 
 func start_battle_against(target: CharacterEntity) -> void:
@@ -19,14 +20,11 @@ func start_battle_against(target: CharacterEntity) -> void:
 
 
 func on_turn_finished(entity: CharacterEntity) -> void:
-	check_end_battle()
-	
-	if entity == player:
-		SignalBus.enemty_turn.emit()
-		return 
-	if entity == enemy:
-		SignalBus.player_turn.emit()
-		return 
+	if not has_card_game_finished():
+		if entity == player:
+			SignalBus.enemty_turn.emit()
+		if entity == enemy:
+			SignalBus.player_turn.emit()
 
 
 func on_enemy_turn() -> void:
@@ -38,14 +36,22 @@ func on_enemy_turn() -> void:
 		return
 
 
-func check_end_battle() -> void:
-#	print_debug("IMPLEMENT:: Check for the victory condition")
-	pass
+func has_card_game_finished() -> bool:
+	if player.has_lost() or enemy.has_lost():
+		if player.has_lost():
+			print_debug("IMPLEMENT:: Play lost status!")
+			SignalBus.card_game_lost.emit(enemy)
+		
+		if enemy.has_lost():
+			print_debug("IMPLEMENT:: Enemy lost status!")
+			SignalBus.card_game_won.emit(enemy)
+		
+		SignalBus.card_game_over.emit()
+		return true
+	
+	return false
 
 
 func reset_battle_state() -> void:
 	player.reset()
 	enemy.reset()
-#	player_hand.position.y = 400
-#	hide_hand()
-	pass
