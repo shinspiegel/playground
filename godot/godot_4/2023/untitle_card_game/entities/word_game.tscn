@@ -10,12 +10,12 @@ process_mode = 1
 y_sort_enabled = true
 
 [node name="Player" parent="." instance=ExtResource("1_62cos")]
-position = Vector2(212, 155)
+position = Vector2(311, 117)
 
 [node name="BattleInitializer" parent="." instance=ExtResource("2_h67p0")]
-position = Vector2(323, 198)
+position = Vector2(440, 172)
 target = ExtResource("3_l56os")
 
 [node name="BattleInitializer2" parent="." instance=ExtResource("2_h67p0")]
-position = Vector2(111, 195)
+position = Vector2(182, 171)
 target = ExtResource("4_3csxe")

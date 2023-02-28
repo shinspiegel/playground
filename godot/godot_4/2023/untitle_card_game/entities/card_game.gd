@@ -1,7 +1,7 @@
 class_name CardGame extends CanvasLayer
 
 @export var player: CharacterEntity
-@export var enemy: CharacterEntity
+@export var enemy: EnemyEntity
 
 
 func _ready() -> void:
@@ -30,6 +30,7 @@ func on_turn_finished(entity: CharacterEntity) -> void:
 func on_enemy_turn() -> void:
 		# TODO: process enemy turn
 		print("Turn enemy started")
+		enemy.execute_turn()
 		await get_tree().create_timer(1.0).timeout
 		SignalBus.turn_ended_by.emit(enemy)
 		print("Turn enemy ended")

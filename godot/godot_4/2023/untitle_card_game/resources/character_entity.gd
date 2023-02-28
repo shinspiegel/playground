@@ -8,6 +8,7 @@ class_name CharacterEntity extends Resource
 
 var hand_size: int = 3
 
+
 func reset() -> void:
 	hp = max_hp
 

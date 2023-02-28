@@ -12,7 +12,10 @@ script = ExtResource("1_rl8ve")
 player = ExtResource("2_fsb8a")
 
 [node name="BattleUI" parent="." instance=ExtResource("3_oiplk")]
+visible = false
 
 [node name="PlayerArea" parent="." instance=ExtResource("4_qwwrv")]
+visible = false
 
 [node name="BattleResult" parent="." instance=ExtResource("5_cq5m8")]
+visible = false
