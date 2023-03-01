@@ -7,7 +7,7 @@ An quick story about friendship and card battle on the school tournament!
 ## Protagonist 
 
 The protagonist will be an blank character.
-Should be able to portrait the character as male/female without hard
+Should be able to portrait the character as male/female
 
 ## NPC's
 
@@ -40,6 +40,7 @@ Each player needs to set the "Class" that it's being used.
 The class will say the **Hit Points**, **Speed**, and type of card that can be used.
 Each class starts with a set of basic cards. You can add and remove any number of cards. 
 The minimum is 5 cards, there is no limit of card you can have in your deck. 
+The winner of the match can choose one card from a random 3 from the opponents deck
 
 Each card will have an type, speed, and an effect.
 Certain classes can only use specifics type of cards.
@@ -80,8 +81,6 @@ At any point that a class have zero hitpoints, it loses. You cannot have more hi
 
 |#|Class|Spd|Effect|
 |-|:---:|:-:|------|
-|0| Cha | 0 |
-
 
 # Story
 
