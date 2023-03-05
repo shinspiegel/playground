@@ -21,6 +21,7 @@ SignalBus="*res://singletons/signal_bus.gd"
 DialogManager="*res://singletons/dialog_manager.gd"
 StoryManager="*res://singletons/story_manager.gd"
 TimeManager="*res://singletons/time_manager.gd"
+RoomManager="*res://singletons/room_manager.gd"
 
 [display]
 

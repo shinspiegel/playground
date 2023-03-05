@@ -1,44 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://5r1d13hoicas"]
+[gd_scene load_steps=2 format=3 uid="uid://5r1d13hoicas"]
 
-[ext_resource type="PackedScene" uid="uid://ddll3ndrcofg2" path="res://entities/player.tscn" id="1_62cos"]
-[ext_resource type="PackedScene" uid="uid://cu7xmo5ys0ggu" path="res://entities/battle_initializer.tscn" id="2_h67p0"]
-[ext_resource type="Resource" uid="uid://xi3kimurv4ax" path="res://resources/Enemy_B.tres" id="3_l56os"]
-[ext_resource type="Resource" uid="uid://jb3uqduh0kg3" path="res://resources/Enemy_A.tres" id="4_3csxe"]
-[ext_resource type="PackedScene" uid="uid://bcltwnaqusvwc" path="res://entities/game_camera.tscn" id="5_vuuxc"]
+[ext_resource type="Script" path="res://entities/word_game.gd" id="1_qiv53"]
 
 [node name="WordGame" type="Node2D"]
 process_mode = 1
 y_sort_enabled = true
-
-[node name="Camera" type="Node2D" parent="."]
-
-[node name="TopLeft" type="Marker2D" parent="Camera"]
-position = Vector2(-50, -60)
-
-[node name="DownRight" type="Marker2D" parent="Camera"]
-position = Vector2(1200, 600)
-
-[node name="GameCamera" parent="Camera" node_paths=PackedStringArray("top_left_marker", "bottom_right_marker") instance=ExtResource("5_vuuxc")]
-position = Vector2(28, 269)
-top_left_marker = NodePath("../TopLeft")
-bottom_right_marker = NodePath("../DownRight")
-
-[node name="Player" parent="." node_paths=PackedStringArray("camera_path") instance=ExtResource("1_62cos")]
-position = Vector2(512, 305)
-camera_path = NodePath("../Camera/GameCamera")
-
-[node name="BattleInitializer" parent="." instance=ExtResource("2_h67p0")]
-position = Vector2(928, 503)
-target = ExtResource("3_l56os")
-
-[node name="BattleInitializer4" parent="." instance=ExtResource("2_h67p0")]
-position = Vector2(932, 24)
-target = ExtResource("3_l56os")
-
-[node name="BattleInitializer2" parent="." instance=ExtResource("2_h67p0")]
-position = Vector2(21, 511)
-target = ExtResource("4_3csxe")
-
-[node name="BattleInitializer3" parent="." instance=ExtResource("2_h67p0")]
-position = Vector2(30, 23)
-target = ExtResource("4_3csxe")
+script = ExtResource("1_qiv53")

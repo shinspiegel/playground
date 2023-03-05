@@ -291,3 +291,5 @@ parameters/Idle/blend_position = Vector2(-0.149095, -0.102426)
 parameters/Move/blend_position = Vector2(0.0356683, 0.0111856)
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="."]
+update_rotation = false
+update_scale = false

@@ -1,0 +1,61 @@
+[gd_scene load_steps=8 format=3 uid="uid://dn4g10lf4rbuq"]
+
+[ext_resource type="Script" path="res://map_areas/room.gd" id="1_leioo"]
+[ext_resource type="PackedScene" uid="uid://ddll3ndrcofg2" path="res://entities/player.tscn" id="2_bepee"]
+[ext_resource type="PackedScene" uid="uid://bcltwnaqusvwc" path="res://entities/game_camera.tscn" id="3_c0tic"]
+[ext_resource type="PackedScene" uid="uid://cu7xmo5ys0ggu" path="res://entities/battle_initializer.tscn" id="4_11hy2"]
+[ext_resource type="Resource" uid="uid://xi3kimurv4ax" path="res://resources/Enemy_B.tres" id="5_hc3rl"]
+[ext_resource type="Resource" uid="uid://jb3uqduh0kg3" path="res://resources/Enemy_A.tres" id="6_s3ds7"]
+[ext_resource type="PackedScene" uid="uid://dnf8ldh5er5fv" path="res://entities/teleporter.tscn" id="7_t7uap"]
+
+[node name="TestRoom" type="Node2D" node_paths=PackedStringArray("camera")]
+script = ExtResource("1_leioo")
+player_scene = ExtResource("2_bepee")
+camera = NodePath("CameraDetails/GameCamera")
+
+[node name="CameraDetails" type="Node2D" parent="."]
+
+[node name="TopLeft" type="Marker2D" parent="CameraDetails"]
+position = Vector2(-50, -60)
+
+[node name="DownRight" type="Marker2D" parent="CameraDetails"]
+position = Vector2(1200, 600)
+
+[node name="GameCamera" parent="CameraDetails" node_paths=PackedStringArray("top_left_marker", "bottom_right_marker") instance=ExtResource("3_c0tic")]
+position = Vector2(2.08165e-12, 2.08165e-12)
+top_left_marker = NodePath("../TopLeft")
+bottom_right_marker = NodePath("../DownRight")
+
+[node name="PlayerSpawnPoint" type="Node2D" parent="."]
+
+[node name="Marker2D_0" type="Marker2D" parent="PlayerSpawnPoint"]
+position = Vector2(480, 274)
+
+[node name="Marker2D_1" type="Marker2D" parent="PlayerSpawnPoint"]
+position = Vector2(931, 274)
+
+[node name="BattleInitializer" parent="." instance=ExtResource("4_11hy2")]
+position = Vector2(928, 503)
+target = ExtResource("5_hc3rl")
+
+[node name="BattleInitializer4" parent="." instance=ExtResource("4_11hy2")]
+position = Vector2(932, 24)
+target = ExtResource("5_hc3rl")
+
+[node name="BattleInitializer2" parent="." instance=ExtResource("4_11hy2")]
+position = Vector2(21, 511)
+target = ExtResource("6_s3ds7")
+
+[node name="BattleInitializer3" parent="." instance=ExtResource("4_11hy2")]
+position = Vector2(30, 23)
+target = ExtResource("6_s3ds7")
+
+[node name="Teleporter" parent="." instance=ExtResource("7_t7uap")]
+position = Vector2(485, 22)
+room_name = "room_1"
+position_index = 0
+
+[node name="Teleporter2" parent="." instance=ExtResource("7_t7uap")]
+position = Vector2(483, 520)
+room_name = "room_2"
+position_index = 1

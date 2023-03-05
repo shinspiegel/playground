@@ -1,14 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://bwglqujxhoilx"]
+[gd_scene load_steps=3 format=3 uid="uid://bwglqujxhoilx"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_qqdtc"]
 [ext_resource type="PackedScene" uid="uid://5r1d13hoicas" path="res://entities/word_game.tscn" id="2_05pe4"]
-[ext_resource type="PackedScene" uid="uid://cbjo3dcgjr808" path="res://entities/card_game.tscn" id="3_d5y01"]
 
 [node name="Main" type="Node2D"]
 texture_filter = 3
 script = ExtResource("1_qqdtc")
 
 [node name="WordGame" parent="." instance=ExtResource("2_05pe4")]
-
-[node name="CardGame" parent="." instance=ExtResource("3_d5y01")]
-visible = false

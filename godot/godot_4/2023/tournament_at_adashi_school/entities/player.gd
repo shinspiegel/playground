@@ -1,6 +1,6 @@
 class_name Player extends CharacterBody2D
 
-@export var camera_path: Camera2D 
+@export var camera_node: Camera2D 
 
 @onready var animation_tree: AnimationTree = $AnimationTree
 @onready var remote_transform: RemoteTransform2D = $RemoteTransform2D
@@ -13,7 +13,8 @@ const SPEED: float = 200.0
 
 func _ready() -> void:
 	animation_tree_state = animation_tree["parameters/playback"]
-	remote_transform.set_remote_node(camera_path.get_path())
+	remote_transform.set_remote_node(camera_node.get_path())
+
 
 func _physics_process(_delta: float) -> void:
 	get_direction()
