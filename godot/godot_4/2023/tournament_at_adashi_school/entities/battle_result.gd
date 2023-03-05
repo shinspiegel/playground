@@ -23,13 +23,13 @@ func on_close_press() -> void:
 	SignalBus.battle_finished.emit()
 
 
-func on_player_won(target: CharacterEntity) -> void:
+func on_player_won(_target: CharacterEntity) -> void:
 	show()
 	battle_won.show()
 	close.grab_focus()
 
 
-func on_player_lost(target: CharacterEntity) -> void:
+func on_player_lost(_target: CharacterEntity) -> void:
 	show()
 	battle_lost.show()
 	close.grab_focus()

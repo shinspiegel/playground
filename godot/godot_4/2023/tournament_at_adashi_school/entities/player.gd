@@ -1,6 +1,9 @@
 class_name Player extends CharacterBody2D
 
+@export var camera_path: Camera2D 
+
 @onready var animation_tree: AnimationTree = $AnimationTree
+@onready var remote_transform: RemoteTransform2D = $RemoteTransform2D
 
 var direction: Vector2 = Vector2.ZERO
 var animation_tree_state: AnimationNodeStateMachinePlayback
@@ -10,7 +13,7 @@ const SPEED: float = 200.0
 
 func _ready() -> void:
 	animation_tree_state = animation_tree["parameters/playback"]
-
+	remote_transform.set_remote_node(camera_path.get_path())
 
 func _physics_process(_delta: float) -> void:
 	get_direction()
@@ -35,7 +38,7 @@ func apply_animation() -> void:
 
 func get_direction() -> void:
 	direction = Vector2.ZERO
-	direction = Input.get_vector("ui_left","ui_right","ui_up","ui_down")
+	direction = Input.get_vector("left","right","up","down")
 	
 	if direction.length() > 1.0:
 		direction = direction.normalized()
