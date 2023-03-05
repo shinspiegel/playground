@@ -11,14 +11,17 @@ Should be able to portrait the character as male/female
 
 ## NPC's
 
-- Akari Sasaki (F)
-  - Friendly, Calm
-- Rin Kimura (F)
-  - Energetic, Rival, Battle!
-- Asahi Saito (M)
-  - Companion, Hugger
+Sure!
 - Jirou Ikeda (M)
   - Quiet, Shy, Observant
+- Rin Kimura (F)
+  - Energetic, Rival, Battle!
+
+Optional
+- Akari Sasaki (F)
+  - Friendly, Calm
+- Asahi Saito (M)
+  - Companion, Hugger
 
 ## Adashi School
 
