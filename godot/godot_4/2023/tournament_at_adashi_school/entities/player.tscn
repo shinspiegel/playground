@@ -1,7 +1,7 @@
-[gd_scene load_steps=27 format=3 uid="uid://ddll3ndrcofg2"]
+[gd_scene load_steps=27 format=3]
 
 [ext_resource type="Script" path="res://entities/player.gd" id="1_7mxlf"]
-[ext_resource type="Texture2D" uid="uid://dj3vj4xjhwxlu" path="res://assets/NPC_Asset_Generation.png" id="2_07k1w"]
+[ext_resource type="Texture2D" uid="uid://dj3vj4xjhwxlu" path="res://assets/archived/NPC_Asset_Generation.png" id="2_07k1w"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wbpfh"]
 size = Vector2(68, 18)
@@ -265,6 +265,7 @@ states/Start/position = Vector2(264.5, 96.0137)
 
 [node name="Player" type="CharacterBody2D"]
 texture_filter = 3
+collision_mask = 2
 script = ExtResource("1_7mxlf")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

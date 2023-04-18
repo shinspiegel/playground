@@ -1,25 +1,143 @@
-[gd_scene load_steps=8 format=3 uid="uid://dn4g10lf4rbuq"]
+[gd_scene load_steps=8 format=3 uid="uid://bonbp0iv2nipf"]
 
-[ext_resource type="Script" path="res://map_areas/room.gd" id="1_leioo"]
-[ext_resource type="PackedScene" uid="uid://ddll3ndrcofg2" path="res://entities/player.tscn" id="2_bepee"]
+[ext_resource type="Script" path="res://map_areas/base_room.gd" id="1_d5w3f"]
+[ext_resource type="PackedScene" path="res://entities/player.tscn" id="2_bepee"]
+[ext_resource type="Texture2D" uid="uid://cl67jmndu86b6" path="res://assets/mock/room_mock.png" id="3_7cqck"]
 [ext_resource type="PackedScene" uid="uid://bcltwnaqusvwc" path="res://entities/game_camera.tscn" id="3_c0tic"]
-[ext_resource type="PackedScene" uid="uid://cu7xmo5ys0ggu" path="res://entities/battle_initializer.tscn" id="4_11hy2"]
-[ext_resource type="Resource" uid="uid://xi3kimurv4ax" path="res://resources/Enemy_B.tres" id="5_hc3rl"]
-[ext_resource type="Resource" uid="uid://jb3uqduh0kg3" path="res://resources/Enemy_A.tres" id="6_s3ds7"]
 [ext_resource type="PackedScene" uid="uid://dnf8ldh5er5fv" path="res://entities/teleporter.tscn" id="7_t7uap"]
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_x17a5"]
+texture = ExtResource("3_7cqck")
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+8:0/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+6:1/0 = 0
+7:1/0 = 0
+8:1/0 = 0
+0:3/0 = 0
+4:3/0 = 0
+5:3/0 = 0
+0:4/0 = 0
+1:4/0 = 0
+2:4/0 = 0
+3:4/0 = 0
+4:4/0 = 0
+6:4/0 = 0
+8:4/0 = 0
+4:5/0 = 0
+5:5/0 = 0
+6:5/0 = 0
+7:5/0 = 0
+8:5/0 = 0
+0:6/0 = 0
+1:6/0 = 0
+2:6/0 = 0
+3:6/0 = 0
+4:6/0 = 0
+5:6/0 = 0
+6:6/0 = 0
+7:6/0 = 0
+8:6/0 = 0
+0:7/0 = 0
+2:7/0 = 0
+3:7/0 = 0
+4:7/0 = 0
+5:7/0 = 0
+6:7/0 = 0
+7:7/0 = 0
+8:7/0 = 0
+0:8/0 = 0
+1:8/0 = 0
+2:8/0 = 0
+3:8/0 = 0
+4:8/0 = 0
+5:8/0 = 0
+6:8/0 = 0
+7:8/0 = 0
+8:8/0 = 0
+0:9/0 = 0
+1:9/0 = 0
+2:9/0 = 0
+3:9/0 = 0
+4:9/0 = 0
+6:9/0 = 0
+7:9/0 = 0
+8:9/0 = 0
+0:10/0 = 0
+1:10/0 = 0
+2:10/0 = 0
+3:10/0 = 0
+4:10/0 = 0
+5:10/0 = 0
+6:10/0 = 0
+7:10/0 = 0
+8:10/0 = 0
+0:11/0 = 0
+1:11/0 = 0
+2:11/0 = 0
+3:11/0 = 0
+4:11/0 = 0
+5:11/0 = 0
+6:11/0 = 0
+7:11/0 = 0
+8:11/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_gtg7l"]
+sources/1 = SubResource("TileSetAtlasSource_x17a5")
+
 [node name="TestRoom" type="Node2D" node_paths=PackedStringArray("camera")]
-script = ExtResource("1_leioo")
+script = ExtResource("1_d5w3f")
 player_scene = ExtResource("2_bepee")
 camera = NodePath("CameraDetails/GameCamera")
+
+[node name="BackgroundColor" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="ColorRect" type="ColorRect" parent="BackgroundColor"]
+texture_filter = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0509804, 0.0627451, 0.141176, 1)
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_gtg7l")
+format = 2
+layer_0/name = "Wall"
+layer_0/tile_data = PackedInt32Array(262149, 131073, 0, 262150, 131073, 0, 262151, 131073, 0, 262152, 131073, 0, 262153, 131073, 0, 262154, 131073, 0, 262155, 131073, 0, 262156, 131073, 0, 196613, 65537, 0, 196614, 65537, 0, 196615, 65537, 0, 196616, 65537, 0, 196617, 65537, 0, 196618, 65537, 0, 196619, 65537, 0, 196620, 65537, 0)
+layer_1/name = "Floor"
+layer_1/enabled = true
+layer_1/modulate = Color(1, 1, 1, 1)
+layer_1/y_sort_enabled = false
+layer_1/y_sort_origin = 0
+layer_1/z_index = 0
+layer_1/tile_data = PackedInt32Array(327685, 393217, 5, 393221, 393217, 5, 393222, 393217, 5, 393223, 393217, 5, 327687, 393217, 5, 327686, 393217, 5, 327688, 393217, 5, 327689, 393217, 5, 393225, 393217, 5, 458761, 393217, 5, 458760, 393217, 5, 458759, 393217, 5, 458758, 393217, 5, 393224, 393217, 5, 458757, 393217, 5, 524293, 393217, 5, 524294, 393217, 5, 589830, 393217, 5, 589831, 393217, 5, 589832, 393217, 5, 589833, 393217, 5, 589834, 393217, 5, 589835, 393217, 5, 589836, 393217, 5, 524300, 393217, 5, 524299, 393217, 5, 524298, 393217, 5, 524297, 393217, 5, 524296, 393217, 5, 524295, 393217, 5, 589829, 393217, 5, 458762, 393217, 5, 393226, 393217, 5, 327690, 393217, 5, 327691, 393217, 5, 393227, 393217, 5, 458763, 393217, 5, 458764, 393217, 5, 393228, 393217, 5, 327692, 393217, 5)
+layer_2/name = "Frame"
+layer_2/enabled = true
+layer_2/modulate = Color(1, 1, 1, 1)
+layer_2/y_sort_enabled = false
+layer_2/y_sort_origin = 0
+layer_2/z_index = 0
+layer_2/tile_data = PackedInt32Array()
 
 [node name="CameraDetails" type="Node2D" parent="."]
 
 [node name="TopLeft" type="Marker2D" parent="CameraDetails"]
-position = Vector2(-50, -60)
 
 [node name="DownRight" type="Marker2D" parent="CameraDetails"]
-position = Vector2(1200, 600)
+position = Vector2(2304, 1536)
 
 [node name="GameCamera" parent="CameraDetails" node_paths=PackedStringArray("top_left_marker", "bottom_right_marker") instance=ExtResource("3_c0tic")]
 position = Vector2(2.08165e-12, 2.08165e-12)
@@ -29,33 +147,17 @@ bottom_right_marker = NodePath("../DownRight")
 [node name="PlayerSpawnPoint" type="Node2D" parent="."]
 
 [node name="Marker2D_0" type="Marker2D" parent="PlayerSpawnPoint"]
-position = Vector2(480, 274)
+position = Vector2(768, 256)
 
 [node name="Marker2D_1" type="Marker2D" parent="PlayerSpawnPoint"]
-position = Vector2(931, 274)
-
-[node name="BattleInitializer" parent="." instance=ExtResource("4_11hy2")]
-position = Vector2(928, 503)
-target = ExtResource("5_hc3rl")
-
-[node name="BattleInitializer4" parent="." instance=ExtResource("4_11hy2")]
-position = Vector2(932, 24)
-target = ExtResource("5_hc3rl")
-
-[node name="BattleInitializer2" parent="." instance=ExtResource("4_11hy2")]
-position = Vector2(21, 511)
-target = ExtResource("6_s3ds7")
-
-[node name="BattleInitializer3" parent="." instance=ExtResource("4_11hy2")]
-position = Vector2(30, 23)
-target = ExtResource("6_s3ds7")
+position = Vector2(384, 1312)
 
 [node name="Teleporter" parent="." instance=ExtResource("7_t7uap")]
-position = Vector2(485, 22)
+position = Vector2(768, 160)
 room_name = "room_1"
-position_index = 0
+position_index = 1
 
 [node name="Teleporter2" parent="." instance=ExtResource("7_t7uap")]
-position = Vector2(483, 520)
+position = Vector2(384, 1376)
 room_name = "room_2"
-position_index = 1
+position_index = 0

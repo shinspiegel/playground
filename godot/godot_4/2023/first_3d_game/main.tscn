@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3 uid="uid://cmu1wrqk12ud3"]
+
+[ext_resource type="Material" uid="uid://ccb1m85j5debs" path="res://placeholder_texture.tres" id="1_73cfh"]
+[ext_resource type="PackedScene" uid="uid://dsc3ljpqnr4fm" path="res://player.tscn" id="1_we2cs"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_peflf"]
+
+[sub_resource type="Sky" id="Sky_7cswr"]
+sky_material = SubResource("ProceduralSkyMaterial_peflf")
+
+[sub_resource type="Environment" id="Environment_jhst2"]
+background_mode = 2
+sky = SubResource("Sky_7cswr")
+ambient_light_source = 3
+ambient_light_color = Color(0.596078, 0.815686, 0.933333, 1)
+
+[node name="Main" type="Node3D"]
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
+material_override = ExtResource("1_73cfh")
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D"]
+size = Vector3(60, 2, 60)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19, 9, 20)
+size = Vector3(2, 16, 20)
+
+[node name="Player" parent="." instance=ExtResource("1_we2cs")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_jhst2")
