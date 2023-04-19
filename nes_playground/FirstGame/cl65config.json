@@ -1,0 +1,5 @@
+{
+  "executable": "/Users/jeferson_leite_borges/Documents/Study/playground/nes_playground/cc65/bin/cl65",
+  "input": "source/main.s",
+  "params": "--verbose --target nes -o ./ROM/output.nes"
+}
