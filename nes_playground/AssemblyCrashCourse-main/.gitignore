@@ -1,0 +1,6 @@
+*.o
+examples/01_XandY
+examples/04_RPG_Subroutines
+examples/*.deb
+examples/*.0
+wrapper*

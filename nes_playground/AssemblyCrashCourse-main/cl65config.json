@@ -1,0 +1,4 @@
+{
+  "executable": "/Users/jeferson_leite_borges/Documents/Study/playground/nes_playground/cc65/bin/cl65",
+  "params": "--verbose --target nes wrapper.s"
+}
