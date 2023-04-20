@@ -5,6 +5,7 @@
   ; Initialize each monster's HP
   lda #100
   ldx #7
+
 initialize_hp_loop:
   sta $0300, x
   dex
@@ -18,12 +19,14 @@ initialize_hp_loop:
 
   ; Perform the multi-attack
   ldx #0
+
 multi_attack_loop:
   lda $0300, x
   sec
   sbc #50
   bpl store_hp
   lda #0
+
 store_hp:
   sta $0300, x
   inx
