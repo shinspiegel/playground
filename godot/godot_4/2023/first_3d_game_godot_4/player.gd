@@ -1,13 +1,11 @@
 class_name Player extends CharacterBody3D
 
 @export_range(0, 360, 15) var dir_rotation: int = 0
-@onready var input: PlayerInput = $PlayerInput
-
 
 const SPEED = 10.0
 const GRAVITY: float = 9.8
-var direction: Vector3 = Vector3.ZERO
 
+var direction: Vector3 = Vector3.ZERO
 
 func _physics_process(delta: float) -> void:
 	reset_direction()
@@ -28,7 +26,8 @@ func apply_gravity(delta: float) -> void:
 
 
 func calculate_direction() -> void:
-	var calculated: Vector3 = transform.basis * Vector3(input.direction.x, 0, input.direction.y)
+	var dir: Vector2 = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
+	var calculated: Vector3 = transform.basis * Vector3(dir.x, 0, dir.y)
 	direction = calculated.normalized()
 
 

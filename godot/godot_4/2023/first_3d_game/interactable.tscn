@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://nmgn0slpf3pu"]
+
+[ext_resource type="Script" path="res://interactable.gd" id="1_52evi"]
+[ext_resource type="PackedScene" uid="uid://coxj5upg2x6t5" path="res://player_input.tscn" id="2_1qwfn"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fhjcu"]
+size = Vector3(3, 3, 3)
+
+[node name="Interactable" type="Area3D"]
+collision_layer = 8
+collision_mask = 2
+script = ExtResource("1_52evi")
+
+[node name="PlayerInput" parent="." instance=ExtResource("2_1qwfn")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_fhjcu")
+
+[node name="Label3D" type="Label3D" parent="."]
+visible = false
+text = "Interact"

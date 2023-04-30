@@ -1,11 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://cftkvtyg68tcw"]
+[gd_scene load_steps=10 format=3 uid="uid://cftkvtyg68tcw"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_ksxeo"]
 [ext_resource type="PackedScene" uid="uid://dw7gkwfdi4uit" path="res://mock_level.tscn" id="1_runrc"]
 [ext_resource type="PackedScene" uid="uid://dsc3ljpqnr4fm" path="res://player.tscn" id="1_we2cs"]
 [ext_resource type="PackedScene" path="res://camera_on_rail.tscn" id="4_poq33"]
-[ext_resource type="PackedScene" uid="uid://7fqkgo47s5vj" path="res://npc.tscn" id="5_ql8cp"]
-[ext_resource type="PackedScene" uid="uid://nmgn0slpf3pu" path="res://interactable.tscn" id="6_1yyha"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_smp7o"]
 sky_top_color = Color(0.188235, 0.133333, 0.780392, 1)
@@ -27,8 +25,8 @@ size = Vector3(28, 1, 64)
 [sub_resource type="Curve3D" id="Curve3D_2n2ku"]
 bake_interval = 500.0
 _data = {
-"points": PackedVector3Array(-6, -2, 7, 2.08165e-12, 2.08165e-12, 2.08165e-12, 31, 14, 39, 2.08165e-12, 2.08165e-12, 2.08165e-12, 2.08165e-12, 2.08165e-12, 2.08165e-12, 42, 18, 16, 2.08165e-12, 2.08165e-12, 2.08165e-12, 2.08165e-12, 2.08165e-12, 2.08165e-12, 42, 21, -9, 2.08165e-12, 2.08165e-12, 2.08165e-12, -6, -3, -7, 30, 16, -33),
-"tilts": PackedFloat32Array(2.08165e-12, 0, 0, 0)
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 31, 14, 39, 0, 0, 0, 0, 0, 0, 42, 18, 16, 0, 0, 0, 0, 0, 0, 40, 21, -9, 0, 0, 0, 0, 0, 0, 30, 16, -33),
+"tilts": PackedFloat32Array(0, 0, 0, 0)
 }
 point_count = 4
 
@@ -77,9 +75,6 @@ transform = Transform3D(0.866025, 0, -0.5, 0.5, -4.37114e-08, 0.866025, -2.18557
 shadow_enabled = true
 
 [node name="CameraOnRail" parent="." instance=ExtResource("4_poq33")]
-player_node = NodePath("../Player")
-axis = "z"
-inverted = true
 
 [node name="MotionArea" parent="CameraOnRail" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, -0.5, 0)
@@ -89,19 +84,9 @@ shape = SubResource("BoxShape3D_vkalk")
 curve = SubResource("Curve3D_2n2ku")
 
 [node name="CameraMount" parent="CameraOnRail/CameraPath" index="0"]
-transform = Transform3D(-0.90199, -0.0668636, 0.426183, 2.05616e-12, 0.987758, 0.154976, -0.431387, 0.139806, -0.89111, 31, 14, 39)
+transform = Transform3D(-0.89428, -0.0890721, 0.438178, 0, 0.979793, 0.199172, -0.44714, 0.178144, -0.876357, 31, 14, 39)
 
 [node name="LevelCamera" parent="CameraOnRail/CameraPath/CameraMount" index="0"]
 transform = Transform3D(8.78467e-08, 0.500074, -0.86616, -8.56545e-09, 0.866153, 0.50007, 1.00014, -1.2128e-08, 7.91244e-09, 0, 0, 0)
 
-[node name="NPC" parent="." instance=ExtResource("5_ql8cp")]
-
-[node name="Interactable" parent="NPC" instance=ExtResource("6_1yyha")]
-
-[node name="Label3D" parent="NPC/Interactable" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
-billboard = 1
-font_size = 240
-
 [editable path="CameraOnRail"]
-[editable path="NPC/Interactable"]

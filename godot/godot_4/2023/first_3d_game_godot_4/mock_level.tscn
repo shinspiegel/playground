@@ -1,0 +1,39 @@
+[gd_scene load_steps=3 format=3 uid="uid://dw7gkwfdi4uit"]
+
+[ext_resource type="Material" uid="uid://ccb1m85j5debs" path="res://placeholder_orange.tres" id="1_6bepx"]
+[ext_resource type="Material" uid="uid://uwbrnah5jl8h" path="res://placeholder_grey.tres" id="1_n8u0j"]
+
+[node name="MockLevel" type="Node3D"]
+
+[node name="Combiner_Group" type="CSGCombiner3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
+material_override = ExtResource("1_n8u0j")
+use_collision = true
+
+[node name="Ground" type="CSGBox3D" parent="Combiner_Group"]
+size = Vector3(40, 2, 70)
+
+[node name="Combiner_Walls" type="CSGCombiner3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
+material_override = ExtResource("1_6bepx")
+use_collision = true
+
+[node name="Wall1" type="CSGBox3D" parent="Combiner_Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19, 5, 22)
+size = Vector3(2, 8, 26)
+
+[node name="Wall2" type="CSGBox3D" parent="Combiner_Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 5, 34)
+size = Vector3(38, 8, 2)
+
+[node name="Wall5" type="CSGBox3D" parent="Combiner_Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 5, -13)
+size = Vector3(2, 8, 44)
+
+[node name="Wall4" type="CSGBox3D" parent="Combiner_Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 5, 8)
+size = Vector3(8, 8, 2)
+
+[node name="Wall6" type="CSGBox3D" parent="Combiner_Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 5, -34)
+size = Vector3(30, 8, 2)
