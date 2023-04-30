@@ -1,0 +1,15 @@
+/Users/jeferson_leite_borges/Documents/Study/playground/dotnet/calendar_13/bin/Debug/net7.0/calendar_13
+/Users/jeferson_leite_borges/Documents/Study/playground/dotnet/calendar_13/bin/Debug/net7.0/calendar_13.deps.json
+/Users/jeferson_leite_borges/Documents/Study/playground/dotnet/calendar_13/bin/Debug/net7.0/calendar_13.runtimeconfig.json
+/Users/jeferson_leite_borges/Documents/Study/playground/dotnet/calendar_13/bin/Debug/net7.0/calendar_13.dll
+/Users/jeferson_leite_borges/Documents/Study/playground/dotnet/calendar_13/bin/Debug/net7.0/calendar_13.pdb
+/Users/jeferson_leite_borges/Documents/Study/playground/dotnet/calendar_13/obj/Debug/net7.0/calendar_13.csproj.AssemblyReference.cache
+/Users/jeferson_leite_borges/Documents/Study/playground/dotnet/calendar_13/obj/Debug/net7.0/calendar_13.GeneratedMSBuildEditorConfig.editorconfig
+/Users/jeferson_leite_borges/Documents/Study/playground/dotnet/calendar_13/obj/Debug/net7.0/calendar_13.AssemblyInfoInputs.cache
+/Users/jeferson_leite_borges/Documents/Study/playground/dotnet/calendar_13/obj/Debug/net7.0/calendar_13.AssemblyInfo.cs
+/Users/jeferson_leite_borges/Documents/Study/playground/dotnet/calendar_13/obj/Debug/net7.0/calendar_13.csproj.CoreCompileInputs.cache
+/Users/jeferson_leite_borges/Documents/Study/playground/dotnet/calendar_13/obj/Debug/net7.0/calendar_13.dll
+/Users/jeferson_leite_borges/Documents/Study/playground/dotnet/calendar_13/obj/Debug/net7.0/refint/calendar_13.dll
+/Users/jeferson_leite_borges/Documents/Study/playground/dotnet/calendar_13/obj/Debug/net7.0/calendar_13.pdb
+/Users/jeferson_leite_borges/Documents/Study/playground/dotnet/calendar_13/obj/Debug/net7.0/calendar_13.genruntimeconfig.cache
+/Users/jeferson_leite_borges/Documents/Study/playground/dotnet/calendar_13/obj/Debug/net7.0/ref/calendar_13.dll
