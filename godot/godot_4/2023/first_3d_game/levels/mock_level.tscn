@@ -1,0 +1,118 @@
+[gd_scene load_steps=12 format=3 uid="uid://dw7gkwfdi4uit"]
+
+[ext_resource type="Material" uid="uid://ccb1m85j5debs" path="res://resources/placeholder_texture/placeholder_orange.tres" id="1_6bepx"]
+[ext_resource type="Material" uid="uid://uwbrnah5jl8h" path="res://resources/placeholder_texture/placeholder_grey.tres" id="1_n8u0j"]
+[ext_resource type="PackedScene" uid="uid://dsc3ljpqnr4fm" path="res://entities/player/player.tscn" id="3_pnjyw"]
+[ext_resource type="PackedScene" path="res://entities/camera_on_rails/camera_on_rail.tscn" id="4_1xejg"]
+[ext_resource type="PackedScene" uid="uid://7fqkgo47s5vj" path="res://entities/npc/npc.tscn" id="5_1enyx"]
+[ext_resource type="PackedScene" uid="uid://nmgn0slpf3pu" path="res://entities/interactable/interactable.tscn" id="6_kas4g"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_10mcw"]
+sky_top_color = Color(0.188235, 0.133333, 0.780392, 1)
+sky_horizon_color = Color(0.537255, 0.65098, 0.85098, 1)
+
+[sub_resource type="Sky" id="Sky_1gvxx"]
+sky_material = SubResource("ProceduralSkyMaterial_10mcw")
+
+[sub_resource type="Environment" id="Environment_kuti0"]
+background_mode = 2
+background_color = Color(0.921569, 0.054902, 0.701961, 1)
+sky = SubResource("Sky_1gvxx")
+ambient_light_source = 2
+ambient_light_color = Color(0.4, 0.4, 0.4, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_id564"]
+size = Vector3(28, 1, 64)
+
+[sub_resource type="Curve3D" id="Curve3D_y3vw8"]
+bake_interval = 500.0
+_data = {
+"points": PackedVector3Array(-6, -2, 7, 2.08165e-12, 2.08165e-12, 2.08165e-12, 31, 14, 39, 2.08165e-12, 2.08165e-12, 2.08165e-12, 2.08165e-12, 2.08165e-12, 2.08165e-12, 42, 18, 16, 2.08165e-12, 2.08165e-12, 2.08165e-12, 2.08165e-12, 2.08165e-12, 2.08165e-12, 42, 21, -9, 2.08165e-12, 2.08165e-12, 2.08165e-12, -6, -3, -7, 30, 16, -33),
+"tilts": PackedFloat32Array(2.08165e-12, 0, 0, 0)
+}
+point_count = 4
+
+[node name="MockLevel" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_kuti0")
+
+[node name="Light" type="Marker3D" parent="."]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 39, 0)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Light"]
+transform = Transform3D(0.5, 0, -0.866025, 0.866025, -4.37114e-08, 0.5, -3.78552e-08, -1, -2.18557e-08, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Structures" type="Node3D" parent="."]
+
+[node name="Combiner_Group" type="CSGCombiner3D" parent="Structures"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
+material_override = ExtResource("1_n8u0j")
+use_collision = true
+collision_mask = 6
+
+[node name="Ground" type="CSGBox3D" parent="Structures/Combiner_Group"]
+size = Vector3(40, 2, 70)
+
+[node name="Combiner_Walls" type="CSGCombiner3D" parent="Structures"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
+material_override = ExtResource("1_6bepx")
+use_collision = true
+collision_mask = 6
+
+[node name="Wall1" type="CSGBox3D" parent="Structures/Combiner_Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19, 5, 22)
+size = Vector3(2, 8, 26)
+
+[node name="Wall2" type="CSGBox3D" parent="Structures/Combiner_Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 5, 34)
+size = Vector3(38, 8, 2)
+
+[node name="Wall5" type="CSGBox3D" parent="Structures/Combiner_Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 5, -13)
+size = Vector3(2, 8, 44)
+
+[node name="Wall4" type="CSGBox3D" parent="Structures/Combiner_Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 5, 8)
+size = Vector3(8, 8, 2)
+
+[node name="Wall6" type="CSGBox3D" parent="Structures/Combiner_Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 5, -34)
+size = Vector3(30, 8, 2)
+
+[node name="Entities" type="Node3D" parent="."]
+
+[node name="Player" parent="Entities" instance=ExtResource("3_pnjyw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1.19209e-07, 26)
+dir_rotation = 90
+
+[node name="CameraOnRail" parent="Entities" instance=ExtResource("4_1xejg")]
+player_node = NodePath("../Player")
+axis = "z"
+inverted = true
+
+[node name="MotionArea" parent="Entities/CameraOnRail" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, -0.5, 0)
+shape = SubResource("BoxShape3D_id564")
+
+[node name="CameraPath" parent="Entities/CameraOnRail" index="1"]
+curve = SubResource("Curve3D_y3vw8")
+
+[node name="CameraMount" parent="Entities/CameraOnRail/CameraPath" index="0"]
+transform = Transform3D(-0.90199, -0.0668636, 0.426183, 2.05616e-12, 0.987758, 0.154976, -0.431387, 0.139806, -0.89111, 31, 14, 39)
+
+[node name="LevelCamera" parent="Entities/CameraOnRail/CameraPath/CameraMount" index="0"]
+transform = Transform3D(8.78467e-08, 0.500074, -0.86616, -8.56545e-09, 0.866153, 0.50007, 1.00014, -1.2128e-08, 7.91244e-09, 0, 0, 0)
+
+[node name="NPC" parent="Entities" instance=ExtResource("5_1enyx")]
+
+[node name="Interactable" parent="Entities/NPC" instance=ExtResource("6_kas4g")]
+
+[node name="Label3D" parent="Entities/NPC/Interactable" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+billboard = 1
+font_size = 240
+
+[editable path="Entities/CameraOnRail"]
+[editable path="Entities/NPC/Interactable"]

@@ -1,0 +1,6 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://crpbujrtm0l5w"]
+
+[ext_resource type="Shader" path="res://resources/pixel_outline.gdshader" id="1_o0ldm"]
+
+[resource]
+shader = ExtResource("1_o0ldm")

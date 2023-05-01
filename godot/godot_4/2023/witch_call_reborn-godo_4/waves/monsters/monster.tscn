@@ -1,0 +1,80 @@
+[gd_scene load_steps=11 format=3 uid="uid://c773s0wrn86ss"]
+
+[ext_resource type="Script" path="res://waves/monsters/monster.gd" id="1_ec7e5"]
+[ext_resource type="PackedScene" uid="uid://ihs252lfmtda" path="res://entities/monster_death_effect.tscn" id="2_2r83y"]
+[ext_resource type="Theme" uid="uid://bu0v5taq2t0qp" path="res://base_theme.tres" id="2_kl2h7"]
+[ext_resource type="AudioStream" uid="uid://bklxr34qbtjlr" path="res://assets/audio/hurt_monster.wav" id="3_4vo6y"]
+[ext_resource type="Texture2D" uid="uid://fhqd8jbcrp36" path="res://assets/graphics/HealthBar.png" id="3_78i1b"]
+[ext_resource type="PackedScene" uid="uid://coxjj0qrvwtm8" path="res://entities/hurt_box.tscn" id="5_314ql"]
+[ext_resource type="PackedScene" uid="uid://d4so2xyw7tpj" path="res://entities/hit_box.tscn" id="6_cinnp"]
+[ext_resource type="Script" path="res://resources/damage.gd" id="7_asj7q"]
+[ext_resource type="PackedScene" uid="uid://c731b1ifw218h" path="res://entities/loot_drop.tscn" id="9_lib25"]
+
+[sub_resource type="Resource" id="Resource_whay1"]
+script = ExtResource("7_asj7q")
+amount = 1
+
+[node name="Monster" type="Node2D"]
+script = ExtResource("1_ec7e5")
+death_animation = ExtResource("2_2r83y")
+monster_hurt_sfx = ExtResource("3_4vo6y")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 3
+scale = Vector2(2, 2)
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+rect = Rect2(-50, -50, 100, 100)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="ActionDuration" type="Timer" parent="."]
+one_shot = true
+
+[node name="HurtBox" parent="." instance=ExtResource("5_314ql")]
+collision_layer = 2
+collision_mask = 4
+
+[node name="CollisionShape2D" parent="HurtBox" index="0"]
+position = Vector2(0, 7.5)
+
+[node name="HitBox" parent="." instance=ExtResource("6_cinnp")]
+collision_layer = 2
+collision_mask = 1
+damage = SubResource("Resource_whay1")
+
+[node name="CollisionShape2D" parent="HitBox" index="0"]
+position = Vector2(0.00413381, 7)
+rotation = 1.5708
+
+[node name="LootDrop" parent="." instance=ExtResource("9_lib25")]
+
+[node name="Control" type="Control" parent="."]
+custom_minimum_size = Vector2(60, 4)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -30.0
+offset_top = -40.0
+offset_right = 30.0
+offset_bottom = -36.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_kl2h7")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+value = 50.0
+texture_under = ExtResource("3_78i1b")
+texture_progress = ExtResource("3_78i1b")
+tint_under = Color(0.14902, 0.0156863, 0.00392157, 1)
+tint_progress = Color(0.74902, 0.156863, 0.0509804, 1)
+
+[editable path="HurtBox"]
+[editable path="HitBox"]

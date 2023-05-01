@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://lulr7aa2qg0a"]
+
+[ext_resource type="Script" path="res://entities/cloud_spawner.gd" id="1_buorq"]
+[ext_resource type="Texture2D" uid="uid://c0k0haachur5i" path="res://assets/graphics/Clouds.png" id="1_vgk44"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_vwg0e"]
+particles_animation = true
+particles_anim_h_frames = 5
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Gradient" id="Gradient_yw7y0"]
+colors = PackedColorArray(1, 1, 1, 0.705882, 1, 1, 1, 0.156863)
+
+[node name="CloudSpawner" type="Node2D"]
+script = ExtResource("1_buorq")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_vwg0e")
+position = Vector2(160, -202)
+emitting = false
+amount = 80
+lifetime = 5.0
+preprocess = 4.0
+local_coords = true
+texture = ExtResource("1_vgk44")
+emission_shape = 3
+emission_rect_extents = Vector2(240, 10)
+direction = Vector2(2.08165e-12, 1)
+spread = 0.0
+gravity = Vector2(2.08165e-12, 2.08165e-12)
+initial_velocity_min = 150.0
+initial_velocity_max = 200.0
+scale_amount_max = 3.0
+color_initial_ramp = SubResource("Gradient_yw7y0")
+anim_offset_max = 1.0

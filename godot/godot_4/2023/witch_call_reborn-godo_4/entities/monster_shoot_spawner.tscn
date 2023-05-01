@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://bh5tn2ljga43q"]
+
+[ext_resource type="Script" path="res://entities/monster_shoot_spawner.gd" id="1_gfiu2"]
+[ext_resource type="PackedScene" uid="uid://be37fqsv1c2uw" path="res://entities/shoot_monster.tscn" id="2_2hcee"]
+
+[node name="MonsterShootSpawner" type="Marker2D"]
+gizmo_extents = 32.0
+script = ExtResource("1_gfiu2")
+shoot_scene = ExtResource("2_2hcee")
+
+[node name="ShootDeplay" type="Timer" parent="."]
+one_shot = true

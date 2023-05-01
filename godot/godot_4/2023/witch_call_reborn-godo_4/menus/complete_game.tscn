@@ -1,0 +1,238 @@
+[gd_scene load_steps=16 format=3 uid="uid://c4adg34nj0wo1"]
+
+[ext_resource type="Theme" uid="uid://bu0v5taq2t0qp" path="res://base_theme.tres" id="1_8cj2u"]
+[ext_resource type="Script" path="res://menus/game_over.gd" id="2_6wkbt"]
+[ext_resource type="Resource" uid="uid://bg4o2fwqrw7vq" path="res://resources/run_data.tres" id="3_jic82"]
+[ext_resource type="Texture2D" uid="uid://cxg0jjhuuwfbp" path="res://assets/graphics/title/complete_game.png" id="4_7dgle"]
+[ext_resource type="Texture2D" uid="uid://bdqc3bl7gynmj" path="res://assets/graphics/title/game_title_moon.png" id="5_7ss1j"]
+[ext_resource type="Texture2D" uid="uid://cvybxaqm4fht0" path="res://assets/graphics/title/broken_pumpkin.png" id="6_bfq8e"]
+[ext_resource type="Texture2D" uid="uid://d2g4smn3sbgce" path="res://assets/graphics/ui_assets/UI_button_normal_4.png" id="6_pwy6n"]
+[ext_resource type="Texture2D" uid="uid://m1i6iuhqhniv" path="res://assets/graphics/ui_assets/UI_button_pressed_4.png" id="7_sgxhf"]
+[ext_resource type="Texture2D" uid="uid://ft2gv2nrhr3q" path="res://assets/graphics/ui_assets/UI_button_hoverl_4.png" id="8_m2byv"]
+[ext_resource type="Texture2D" uid="uid://ddjrw7sp5471u" path="res://assets/graphics/ui_assets/UI_button_normal_1.png" id="9_8tsn4"]
+[ext_resource type="Texture2D" uid="uid://bmu42c6div408" path="res://assets/graphics/ui_assets/UI_button_pressed_1.png" id="10_jpolb"]
+[ext_resource type="Texture2D" uid="uid://bxfg3dqnvsp0t" path="res://assets/graphics/ui_assets/UI_button_hoverl_1.png" id="11_peqjy"]
+
+[sub_resource type="Animation" id="Animation_a76x3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ThankYou:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(150, 30)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Moon:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(185, 32)]
+}
+
+[sub_resource type="Animation" id="Animation_fplkl"]
+resource_name = "new_animation"
+length = 10.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ThankYou:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(0.812252, 0.615572),
+"update": 0,
+"values": [Vector2(150, 30), Vector2(150, 35)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Moon:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 6.1),
+"transitions": PackedFloat32Array(1.6245, 1.1487),
+"update": 0,
+"values": [Vector2(190, 30), Vector2(180, 35)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3fq70"]
+_data = {
+"RESET": SubResource("Animation_a76x3"),
+"new_animation": SubResource("Animation_fplkl")
+}
+
+[node name="Complete" type="Control"]
+texture_filter = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_8cj2u")
+script = ExtResource("2_6wkbt")
+run_data = ExtResource("3_jic82")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0470588, 0.0313726, 0.121569, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Control" type="Control" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(2.08165e-12, 40)
+layout_mode = 2
+
+[node name="GameOver" type="Control" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(300, 60)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="ThankYou" type="Sprite2D" parent="MarginContainer/VBoxContainer/GameOver"]
+position = Vector2(150, 30)
+texture = ExtResource("4_7dgle")
+
+[node name="Moon" type="Sprite2D" parent="MarginContainer/VBoxContainer/GameOver"]
+position = Vector2(185, 32)
+texture = ExtResource("5_7ss1j")
+hframes = 4
+vframes = 3
+frame = 5
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MarginContainer/VBoxContainer/GameOver"]
+autoplay = "new_animation"
+libraries = {
+"": SubResource("AnimationLibrary_3fq70")
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 20
+
+[node name="Sub" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "You have complete 
+all the waves, and 
+help the witch to
+save the halloween!"
+horizontal_alignment = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer2"]
+layout_mode = 2
+
+[node name="Sub" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "Your score is:"
+horizontal_alignment = 1
+
+[node name="Score" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "999"
+horizontal_alignment = 1
+
+[node name="Spacer" type="Control" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/VBoxContainer/Spacer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/Spacer/CenterContainer"]
+layout_mode = 2
+texture = ExtResource("6_bfq8e")
+stretch_mode = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 25
+
+[node name="PlayAgain" type="TextureButton" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(2.08165e-12, 40)
+layout_mode = 2
+texture_normal = ExtResource("6_pwy6n")
+texture_pressed = ExtResource("7_sgxhf")
+texture_hover = ExtResource("8_m2byv")
+texture_focused = ExtResource("8_m2byv")
+stretch_mode = 3
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer/PlayAgain"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Play Again?"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Quit" type="TextureButton" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+texture_normal = ExtResource("9_8tsn4")
+texture_pressed = ExtResource("10_jpolb")
+texture_hover = ExtResource("11_peqjy")
+texture_focused = ExtResource("11_peqjy")
+stretch_mode = 3
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer/Quit"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Quit"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Spacer2" type="Control" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3

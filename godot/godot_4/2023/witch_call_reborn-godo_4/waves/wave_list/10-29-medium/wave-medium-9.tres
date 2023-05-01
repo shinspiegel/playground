@@ -1,0 +1,60 @@
+[gd_resource type="Resource" script_class="Wave" load_steps=12 format=3 uid="uid://dumxidn6gjkkp"]
+
+[ext_resource type="PackedScene" uid="uid://k0qnr0lptiaj" path="res://waves/monsters/basic_monster.tscn" id="1_8r8w1"]
+[ext_resource type="Script" path="res://waves/wave_resource/wave.gd" id="1_oscei"]
+[ext_resource type="Script" path="res://waves/wave_resource/wave_monster_details.gd" id="2_xltku"]
+
+[sub_resource type="Resource" id="Resource_88tyh"]
+script = ExtResource("2_xltku")
+monster_scene = ExtResource("1_8r8w1")
+lane = 0
+delay = 0.0
+
+[sub_resource type="Resource" id="Resource_0iuge"]
+script = ExtResource("2_xltku")
+monster_scene = ExtResource("1_8r8w1")
+lane = 7
+delay = 0.5
+
+[sub_resource type="Resource" id="Resource_04dxj"]
+script = ExtResource("2_xltku")
+monster_scene = ExtResource("1_8r8w1")
+lane = 1
+delay = 1.0
+
+[sub_resource type="Resource" id="Resource_kodcy"]
+script = ExtResource("2_xltku")
+monster_scene = ExtResource("1_8r8w1")
+lane = 6
+delay = 1.5
+
+[sub_resource type="Resource" id="Resource_pabs4"]
+script = ExtResource("2_xltku")
+monster_scene = ExtResource("1_8r8w1")
+lane = 2
+delay = 2.0
+
+[sub_resource type="Resource" id="Resource_ulid7"]
+script = ExtResource("2_xltku")
+monster_scene = ExtResource("1_8r8w1")
+lane = 5
+delay = 2.5
+
+[sub_resource type="Resource" id="Resource_ll07m"]
+script = ExtResource("2_xltku")
+monster_scene = ExtResource("1_8r8w1")
+lane = 3
+delay = 3.0
+
+[sub_resource type="Resource" id="Resource_ta8b0"]
+script = ExtResource("2_xltku")
+monster_scene = ExtResource("1_8r8w1")
+lane = 4
+delay = 3.5
+
+[resource]
+script = ExtResource("1_oscei")
+time_limit = 10.0
+monsterList = Array[ExtResource("2_xltku")]([SubResource("Resource_88tyh"), SubResource("Resource_0iuge"), SubResource("Resource_04dxj"), SubResource("Resource_kodcy"), SubResource("Resource_pabs4"), SubResource("Resource_ulid7"), SubResource("Resource_ll07m"), SubResource("Resource_ta8b0")])
+min_level = 10
+max_level = 29

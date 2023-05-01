@@ -1,0 +1,291 @@
+[gd_scene load_steps=30 format=3]
+
+[ext_resource type="Script" path="res://entities/hud.gd" id="1_84re2"]
+[ext_resource type="Theme" uid="uid://bu0v5taq2t0qp" path="res://base_theme.tres" id="1_idoqj"]
+[ext_resource type="Resource" uid="uid://bg4o2fwqrw7vq" path="res://resources/run_data.tres" id="2_laona"]
+[ext_resource type="PackedScene" path="res://entities/heart.tscn" id="3_wvg47"]
+[ext_resource type="Texture2D" uid="uid://b0nv0byy8ctpl" path="res://assets/graphics/ui_assets/UI_mana_crystal_background.png" id="5_mvy2o"]
+[ext_resource type="Texture2D" uid="uid://db1bd8i7x6g7d" path="res://assets/graphics/ui_assets/UI_mana_crystal_bar.png" id="6_08tqa"]
+[ext_resource type="Texture2D" uid="uid://sfu0m020o5g4" path="res://assets/graphics/ui_assets/UI_caldrun_1.png" id="7_h04v2"]
+[ext_resource type="Texture2D" uid="uid://7yipd5udrcmd" path="res://assets/graphics/ui_assets/UI_book.png" id="8_4qkha"]
+[ext_resource type="Texture2D" uid="uid://hox8l765n530" path="res://assets/graphics/ui_assets/UI_mana_crystal_animated_effect_1.png" id="8_plq8h"]
+[ext_resource type="Texture2D" uid="uid://cls8xwme7cqd8" path="res://assets/graphics/ui_assets/UI_mana_crystal_animated_effect_2.png" id="9_rre13"]
+[ext_resource type="Texture2D" uid="uid://cue8bjexp5yo3" path="res://assets/graphics/ui_assets/UI_mana_crystal_animated_effect_3.png" id="10_t117s"]
+[ext_resource type="Texture2D" uid="uid://b2x75h6ma1un" path="res://assets/graphics/ui_assets/UI_mana_crystal_animated_effect_4.png" id="11_7qaux"]
+[ext_resource type="Texture2D" uid="uid://rpqcrnq6y2fn" path="res://assets/graphics/ui_assets/UI_mana_crystal_animated_effect_5.png" id="12_ec5ag"]
+[ext_resource type="Texture2D" uid="uid://b5v12e8j7h3xf" path="res://assets/graphics/ui_assets/UI_mana_crystal_animated_effect_6.png" id="13_lsemt"]
+[ext_resource type="Texture2D" uid="uid://b00lqtm25vd86" path="res://assets/graphics/ui_assets/UI_caldrun_2.png" id="14_t8c8u"]
+[ext_resource type="Texture2D" uid="uid://df57yd13dhf12" path="res://assets/graphics/ui_assets/UI_caldrun_3.png" id="15_xbep5"]
+[ext_resource type="Texture2D" uid="uid://cw73tp8tgu0qv" path="res://assets/graphics/ui_assets/UI_caldrun_4.png" id="16_vobqc"]
+[ext_resource type="Texture2D" uid="uid://ybo4d41baa7e" path="res://assets/graphics/ui_assets/UI_caldrun_5.png" id="17_y84sb"]
+[ext_resource type="Texture2D" uid="uid://8rh6aiynxyw8" path="res://assets/graphics/ui_assets/UI_caldrun_6.png" id="18_sb3um"]
+[ext_resource type="Texture2D" uid="uid://c4mwbspv4sesr" path="res://assets/graphics/ui_assets/UI_caldrun_7.png" id="19_7her6"]
+
+[sub_resource type="Animation" id="Animation_boubf"]
+resource_name = "new_animation"
+length = 5.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ManaBar/TextureProgrssAnimation:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 4.4, 4.5, 4.6, 4.7, 4.8, 4.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [null, ExtResource("8_plq8h"), ExtResource("9_rre13"), ExtResource("10_t117s"), ExtResource("11_7qaux"), ExtResource("12_ec5ag"), ExtResource("13_lsemt")]
+}
+
+[sub_resource type="Animation" id="Animation_slxa0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ManaBar/TextureProgrssAnimation:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [null]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_j8weu"]
+_data = {
+"RESET": SubResource("Animation_slxa0"),
+"new_animation": SubResource("Animation_boubf")
+}
+
+[sub_resource type="Animation" id="Animation_sdpdd"]
+resource_name = "new_animation"
+length = 0.7
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CaldrunTexture:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("7_h04v2"), ExtResource("14_t8c8u"), ExtResource("15_xbep5"), ExtResource("16_vobqc"), ExtResource("17_y84sb"), ExtResource("18_sb3um"), ExtResource("19_7her6")]
+}
+
+[sub_resource type="Animation" id="Animation_7e65x"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CaldrunTexture:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("7_h04v2")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0ufvs"]
+_data = {
+"RESET": SubResource("Animation_7e65x"),
+"new_animation": SubResource("Animation_sdpdd")
+}
+
+[sub_resource type="Animation" id="Animation_81tm2"]
+resource_name = "new_animation"
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.87055, 1.23114),
+"update": 0,
+"values": [Vector2(2.08165e-12, -5), Vector2(2.08165e-12, 2)]
+}
+
+[sub_resource type="Animation" id="Animation_h21dx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_uyrtu"]
+_data = {
+"RESET": SubResource("Animation_h21dx"),
+"new_animation": SubResource("Animation_81tm2")
+}
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_84re2")
+run_data = ExtResource("2_laona")
+heart_scene = ExtResource("3_wvg47")
+
+[node name="HUD_MainControl" type="Control" parent="."]
+texture_filter = 3
+custom_minimum_size = Vector2(2.08165e-12, 63)
+layout_mode = 3
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("1_idoqj")
+
+[node name="MarginContainer" type="MarginContainer" parent="HUD_MainControl"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 64.0
+grow_horizontal = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HUD_MainControl/MarginContainer"]
+layout_mode = 2
+
+[node name="HeartsContainer" type="HBoxContainer" parent="HUD_MainControl/MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(90, 2.08165e-12)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+
+[node name="ManaCrystalContainer" type="Control" parent="HUD_MainControl/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(2.08165e-12, 64)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ManaBar" type="TextureProgressBar" parent="HUD_MainControl/MarginContainer/HBoxContainer/ManaCrystalContainer"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 33.0
+offset_top = -42.0
+offset_right = 173.0
+offset_bottom = -4.0
+grow_vertical = 0
+value = 50.0
+texture_under = ExtResource("5_mvy2o")
+texture_progress = ExtResource("6_08tqa")
+texture_progress_offset = Vector2(12, 12)
+
+[node name="TextureProgrssAnimation" type="TextureRect" parent="HUD_MainControl/MarginContainer/HBoxContainer/ManaCrystalContainer/ManaBar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CaldrunTexture" type="TextureRect" parent="HUD_MainControl/MarginContainer/HBoxContainer/ManaCrystalContainer"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -56.0
+offset_right = 40.0
+grow_vertical = 0
+texture = ExtResource("7_h04v2")
+stretch_mode = 2
+
+[node name="BarEffect" type="AnimationPlayer" parent="HUD_MainControl/MarginContainer/HBoxContainer/ManaCrystalContainer"]
+autoplay = "new_animation"
+libraries = {
+"": SubResource("AnimationLibrary_j8weu")
+}
+
+[node name="Caldrun" type="AnimationPlayer" parent="HUD_MainControl/MarginContainer/HBoxContainer/ManaCrystalContainer"]
+autoplay = "new_animation"
+libraries = {
+"": SubResource("AnimationLibrary_0ufvs")
+}
+
+[node name="ScoreContainer" type="Control" parent="HUD_MainControl/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="HUD_MainControl/MarginContainer/HBoxContainer/ScoreContainer"]
+custom_minimum_size = Vector2(64, 2.08165e-12)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -64.0
+offset_top = -64.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("8_4qkha")
+stretch_mode = 3
+
+[node name="ScoreLabelShadow" type="Label" parent="HUD_MainControl/MarginContainer/HBoxContainer/ScoreContainer/TextureRect"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(2.08165e-12, 2.08165e-12)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 2.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.372549, 0.0470588, 0.541176, 1)
+theme_override_colors/font_outline_color = Color(0.372549, 0.0470588, 0.541176, 1)
+theme_override_constants/outline_size = 2
+text = "999"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScoreLabelText" type="Label" parent="HUD_MainControl/MarginContainer/HBoxContainer/ScoreContainer"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -24.0
+offset_top = -44.0
+offset_right = 24.0
+offset_bottom = -25.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.603922, 0.0705882, 0.870588, 1)
+theme_override_colors/font_shadow_color = Color(0.372549, 0.0470588, 0.541176, 1)
+theme_override_colors/font_outline_color = Color(0.933333, 0.92549, 0.960784, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/outline_size = 4
+theme_override_constants/shadow_outline_size = 1
+text = "999"
+horizontal_alignment = 1
+
+[node name="Score" type="AnimationPlayer" parent="HUD_MainControl/MarginContainer/HBoxContainer/ScoreContainer"]
+autoplay = "new_animation"
+libraries = {
+"": SubResource("AnimationLibrary_uyrtu")
+}

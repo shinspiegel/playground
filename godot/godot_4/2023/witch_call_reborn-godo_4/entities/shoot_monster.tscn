@@ -1,0 +1,81 @@
+[gd_scene load_steps=11 format=3 uid="uid://be37fqsv1c2uw"]
+
+[ext_resource type="PackedScene" uid="uid://c0lw85dwb7o3o" path="res://entities/shoot.tscn" id="1_dm54a"]
+[ext_resource type="AudioStream" uid="uid://cq6s72cyaj6x3" path="res://assets/audio/shoot_enemy.wav" id="2_gj0ai"]
+[ext_resource type="Texture2D" uid="uid://b044ukq4tt03n" path="res://assets/graphics/SeedBullet.png" id="2_n363r"]
+[ext_resource type="Script" path="res://resources/damage.gd" id="3_jra1r"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g6ecs"]
+radius = 12.0
+
+[sub_resource type="Resource" id="Resource_sewvh"]
+script = ExtResource("3_jra1r")
+amount = 1
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_thf6h"]
+radius = 8.0
+
+[sub_resource type="Animation" id="Animation_2vl02"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_5akmw"]
+resource_name = "new_animation"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_c137d"]
+_data = {
+"RESET": SubResource("Animation_2vl02"),
+"new_animation": SubResource("Animation_5akmw")
+}
+
+[node name="ShootMonster" instance=ExtResource("1_dm54a")]
+speed = 140.0
+sfx = ExtResource("2_gj0ai")
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_n363r")
+hframes = 5
+
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource("CircleShape2D_g6ecs")
+
+[node name="HitBox" parent="." index="3"]
+collision_layer = 32
+collision_mask = 1
+damage = SubResource("Resource_sewvh")
+
+[node name="CollisionShape2D" parent="HitBox" index="0"]
+shape = SubResource("CircleShape2D_thf6h")
+
+[node name="AnimationPlayer" parent="." index="4"]
+autoplay = "new_animation"
+libraries = {
+"": SubResource("AnimationLibrary_c137d")
+}
+
+[editable path="HitBox"]

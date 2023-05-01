@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="RunData" load_steps=2 format=3 uid="uid://bg4o2fwqrw7vq"]
+
+[ext_resource type="Script" path="res://resources/run_data.gd" id="1_77ryh"]
+
+[resource]
+script = ExtResource("1_77ryh")
+start_wave = 0
+start_score = 0
+initial_recovery_rate = 5.0
+initial_damage = 1
+initial_player_speed = 200.0
+max_mana_var = 100.0
+max_hearts = 3

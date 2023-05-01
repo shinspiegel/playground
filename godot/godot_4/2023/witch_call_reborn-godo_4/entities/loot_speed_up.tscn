@@ -1,0 +1,13 @@
+[gd_scene load_steps=5 format=3 uid="uid://c3efexc8gkf48"]
+
+[ext_resource type="PackedScene" uid="uid://chdv150j8at38" path="res://entities/loot.tscn" id="1_10ghg"]
+[ext_resource type="Script" path="res://entities/loot_speed_up.gd" id="2_5hnsj"]
+[ext_resource type="Texture2D" uid="uid://prhnj3lrpd3f" path="res://assets/graphics/speed_up_upgrade.png" id="2_i4581"]
+[ext_resource type="AudioStream" uid="uid://cq08o3f7mj0dd" path="res://assets/audio/pickup_speed_boost.wav" id="3_4rstb"]
+
+[node name="LootSpeedUp" instance=ExtResource("1_10ghg")]
+script = ExtResource("2_5hnsj")
+pickup_sound = ExtResource("3_4rstb")
+
+[node name="Sprite2D" parent="." index="1"]
+texture = ExtResource("2_i4581")

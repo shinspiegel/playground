@@ -1,0 +1,97 @@
+[gd_scene load_steps=14 format=3 uid="uid://k0qnr0lptiaj"]
+
+[ext_resource type="PackedScene" uid="uid://c773s0wrn86ss" path="res://waves/monsters/monster.tscn" id="1_aepw8"]
+[ext_resource type="Texture2D" uid="uid://pb0i4jw4gh15" path="res://assets/graphics/Punkkin_basic.png" id="2_4bej6"]
+[ext_resource type="Script" path="res://resources/drop_item.gd" id="2_6vlve"]
+[ext_resource type="Script" path="res://waves/monsters/monster_action.gd" id="2_d0k2y"]
+[ext_resource type="PackedScene" uid="uid://myd2j2g7stag" path="res://entities/loot_mana.tscn" id="3_fih34"]
+
+[sub_resource type="Resource" id="Resource_x8dd5"]
+script = ExtResource("2_d0k2y")
+duration = 0.0
+type = 0
+
+[sub_resource type="Animation" id="Animation_1oovu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_vneei"]
+resource_name = "new_animation"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bj5ks"]
+_data = {
+"RESET": SubResource("Animation_1oovu"),
+"new_animation": SubResource("Animation_vneei")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kpgah"]
+radius = 15.75
+height = 56.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_b17jp"]
+radius = 26.0192
+
+[sub_resource type="Resource" id="Resource_a0hns"]
+script = ExtResource("2_6vlve")
+chance = 10
+
+[sub_resource type="Resource" id="Resource_7bh4i"]
+script = ExtResource("2_6vlve")
+scene = ExtResource("3_fih34")
+chance = 10
+
+[node name="BasicMonster" instance=ExtResource("1_aepw8")]
+hit_points = 1
+speed = 80.0
+score = 5
+monster_actions = Array[ExtResource("2_d0k2y")]([SubResource("Resource_x8dd5")])
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_4bej6")
+hframes = 4
+
+[node name="AnimationPlayer" parent="." index="2"]
+autoplay = "new_animation"
+libraries = {
+"": SubResource("AnimationLibrary_bj5ks")
+}
+
+[node name="CollisionShape2D" parent="HurtBox" index="0"]
+position = Vector2(-1, 10.25)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_kpgah")
+
+[node name="CollisionShape2D" parent="HitBox" index="0"]
+position = Vector2(0.00118109, 2)
+shape = SubResource("CircleShape2D_b17jp")
+
+[node name="LootDrop" parent="." index="6"]
+drop_options = Array[ExtResource("2_6vlve")]([SubResource("Resource_a0hns"), SubResource("Resource_7bh4i")])
+
+[editable path="HurtBox"]
+[editable path="HitBox"]

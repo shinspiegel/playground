@@ -1,0 +1,54 @@
+[gd_resource type="Resource" script_class="Wave" load_steps=11 format=3 uid="uid://difa4chinrx3w"]
+
+[ext_resource type="PackedScene" uid="uid://k0qnr0lptiaj" path="res://waves/monsters/basic_monster.tscn" id="1_fcvn4"]
+[ext_resource type="Script" path="res://waves/wave_resource/wave_monster_details.gd" id="2_0wqim"]
+[ext_resource type="Script" path="res://waves/wave_resource/wave.gd" id="3_3p28b"]
+
+[sub_resource type="Resource" id="Resource_0a1u8"]
+script = ExtResource("2_0wqim")
+monster_scene = ExtResource("1_fcvn4")
+lane = 1
+delay = 0.0
+
+[sub_resource type="Resource" id="Resource_x2otv"]
+script = ExtResource("2_0wqim")
+monster_scene = ExtResource("1_fcvn4")
+lane = 3
+delay = 0.2
+
+[sub_resource type="Resource" id="Resource_1rpwr"]
+script = ExtResource("2_0wqim")
+monster_scene = ExtResource("1_fcvn4")
+lane = 5
+delay = 0.4
+
+[sub_resource type="Resource" id="Resource_o4whc"]
+script = ExtResource("2_0wqim")
+monster_scene = ExtResource("1_fcvn4")
+lane = 6
+delay = 1.0
+
+[sub_resource type="Resource" id="Resource_7bfi0"]
+script = ExtResource("2_0wqim")
+monster_scene = ExtResource("1_fcvn4")
+lane = 5
+delay = 1.2
+
+[sub_resource type="Resource" id="Resource_ky3d8"]
+script = ExtResource("2_0wqim")
+monster_scene = ExtResource("1_fcvn4")
+lane = 3
+delay = 1.4
+
+[sub_resource type="Resource" id="Resource_fjcrr"]
+script = ExtResource("2_0wqim")
+monster_scene = ExtResource("1_fcvn4")
+lane = 1
+delay = 1.6
+
+[resource]
+script = ExtResource("3_3p28b")
+time_limit = 10.0
+monsterList = Array[ExtResource("2_0wqim")]([SubResource("Resource_0a1u8"), SubResource("Resource_x2otv"), SubResource("Resource_1rpwr"), SubResource("Resource_o4whc"), SubResource("Resource_7bfi0"), SubResource("Resource_ky3d8"), SubResource("Resource_fjcrr")])
+min_level = 8
+max_level = 8

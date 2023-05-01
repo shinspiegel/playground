@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="Wave" load_steps=7 format=3 uid="uid://dq32mffiyaoai"]
+
+[ext_resource type="PackedScene" uid="uid://cvaa4ki2ik00o" path="res://waves/monsters/tank_monster.tscn" id="1_8vqcx"]
+[ext_resource type="Script" path="res://waves/wave_resource/wave.gd" id="1_oscei"]
+[ext_resource type="Script" path="res://waves/wave_resource/wave_monster_details.gd" id="2_37llu"]
+
+[sub_resource type="Resource" id="Resource_3bkk1"]
+script = ExtResource("2_37llu")
+monster_scene = ExtResource("1_8vqcx")
+lane = 3
+delay = 0.0
+
+[sub_resource type="Resource" id="Resource_tf7ma"]
+script = ExtResource("2_37llu")
+monster_scene = ExtResource("1_8vqcx")
+lane = 3
+delay = 2.0
+
+[sub_resource type="Resource" id="Resource_iqw5p"]
+script = ExtResource("2_37llu")
+monster_scene = ExtResource("1_8vqcx")
+lane = 3
+delay = 4.0
+
+[resource]
+script = ExtResource("1_oscei")
+time_limit = 10.0
+monsterList = Array[ExtResource("2_37llu")]([SubResource("Resource_3bkk1"), SubResource("Resource_tf7ma"), SubResource("Resource_iqw5p")])
+min_level = 10
+max_level = 29

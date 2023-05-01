@@ -1,0 +1,305 @@
+[gd_scene load_steps=23 format=3 uid="uid://cdylch7b6cgs3"]
+
+[ext_resource type="Texture2D" uid="uid://pb0i4jw4gh15" path="res://assets/graphics/Punkkin_basic.png" id="1_a0w5t"]
+[ext_resource type="Texture2D" uid="uid://dnwxr3ii5wqcu" path="res://assets/graphics/title/game_title_title.png" id="2_n42g8"]
+[ext_resource type="Texture2D" uid="uid://onkodogddwi2" path="res://assets/graphics/title/game_title_subtitle.png" id="3_ccwqu"]
+[ext_resource type="Texture2D" uid="uid://bdqc3bl7gynmj" path="res://assets/graphics/title/game_title_moon.png" id="4_b12ug"]
+
+[sub_resource type="Animation" id="Animation_yjscj"]
+resource_name = "new_animation"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_6nk7j"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_o06ys"]
+_data = {
+"RESET": SubResource("Animation_6nk7j"),
+"new_animation": SubResource("Animation_yjscj")
+}
+
+[sub_resource type="Animation" id="Animation_7wpl2"]
+resource_name = "new_animation"
+length = 6.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(100, 13), Vector2(100, 18)]
+}
+
+[sub_resource type="Animation" id="Animation_e7hul"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(100, 18)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yfc5n"]
+_data = {
+"RESET": SubResource("Animation_e7hul"),
+"new_animation": SubResource("Animation_7wpl2")
+}
+
+[sub_resource type="Animation" id="Animation_brp7a"]
+resource_name = "new_animation"
+length = 3.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.757858, 1.23114),
+"update": 0,
+"values": [Vector2(2.08165e-12, 2.08165e-12), Vector2(2.08165e-12, 2)]
+}
+
+[sub_resource type="Animation" id="Animation_it2nh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nk4kk"]
+_data = {
+"RESET": SubResource("Animation_it2nh"),
+"new_animation": SubResource("Animation_brp7a")
+}
+
+[sub_resource type="Animation" id="Animation_w8oly"]
+resource_name = "new_animation"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 0, 1, 2, 3, 4, 5, 6, 7, 8]
+}
+
+[sub_resource type="Animation" id="Animation_mpvfi"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jr2hi"]
+_data = {
+"RESET": SubResource("Animation_mpvfi"),
+"new_animation": SubResource("Animation_w8oly")
+}
+
+[sub_resource type="Animation" id="Animation_4vdqy"]
+resource_name = "new_animation"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+}
+
+[sub_resource type="Animation" id="Animation_nhb3k"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6i6hu"]
+_data = {
+"RESET": SubResource("Animation_nhb3k"),
+"new_animation": SubResource("Animation_4vdqy")
+}
+
+[sub_resource type="Animation" id="Animation_cw6km"]
+resource_name = "new_animation"
+length = 10.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Moon:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1.1487, 0.757858),
+"update": 0,
+"values": [Vector2(-120, 8), Vector2(-115, 10)]
+}
+
+[sub_resource type="Animation" id="Animation_4uo0a"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Moon:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-109, 13)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hlsdb"]
+_data = {
+"RESET": SubResource("Animation_4uo0a"),
+"new_animation": SubResource("Animation_cw6km")
+}
+
+[node name="GameTitle" type="Control"]
+custom_minimum_size = Vector2(300, 60)
+layout_mode = 3
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Node2D" type="Node2D" parent="."]
+texture_filter = 3
+position = Vector2(150, 20)
+
+[node name="Pumpkin" type="Sprite2D" parent="Node2D"]
+position = Vector2(100, 18)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_a0w5t")
+hframes = 4
+
+[node name="SpriteAnim" type="AnimationPlayer" parent="Node2D/Pumpkin"]
+autoplay = "new_animation"
+libraries = {
+"": SubResource("AnimationLibrary_o06ys")
+}
+
+[node name="MoveAnim" type="AnimationPlayer" parent="Node2D/Pumpkin"]
+root_node = NodePath("../SpriteAnim")
+autoplay = "new_animation"
+libraries = {
+"": SubResource("AnimationLibrary_yfc5n")
+}
+
+[node name="Title" type="Sprite2D" parent="Node2D"]
+texture = ExtResource("2_n42g8")
+
+[node name="MoveAnim" type="AnimationPlayer" parent="Node2D/Title"]
+autoplay = "new_animation"
+libraries = {
+"": SubResource("AnimationLibrary_nk4kk")
+}
+
+[node name="SubTitle" type="Sprite2D" parent="Node2D"]
+position = Vector2(-1, 22)
+texture = ExtResource("3_ccwqu")
+hframes = 4
+vframes = 3
+
+[node name="SpriteAnim" type="AnimationPlayer" parent="Node2D/SubTitle"]
+autoplay = "new_animation"
+libraries = {
+"": SubResource("AnimationLibrary_jr2hi")
+}
+
+[node name="Moon" type="Sprite2D" parent="Node2D"]
+position = Vector2(-109, 13)
+texture = ExtResource("4_b12ug")
+hframes = 4
+vframes = 3
+
+[node name="SpriteAnim" type="AnimationPlayer" parent="Node2D/Moon"]
+autoplay = "new_animation"
+libraries = {
+"": SubResource("AnimationLibrary_6i6hu")
+}
+
+[node name="MoveAnim" type="AnimationPlayer" parent="Node2D/Moon"]
+root_node = NodePath("../..")
+autoplay = "new_animation"
+libraries = {
+"": SubResource("AnimationLibrary_hlsdb")
+}

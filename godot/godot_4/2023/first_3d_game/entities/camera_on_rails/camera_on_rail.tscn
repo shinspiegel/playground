@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://entities/camera_on_rails/camera_on_rail.gd" id="1_jq6iw"]
+
+[node name="CameraOnRail" type="Area3D"]
+script = ExtResource("1_jq6iw")
+
+[node name="MotionArea" type="CollisionShape3D" parent="."]
+
+[node name="CameraPath" type="Path3D" parent="."]
+
+[node name="CameraMount" type="PathFollow3D" parent="CameraPath"]
+transform = Transform3D(0.999847, 0, 0, 0, 0.999854, 0, 0, 0, 0.999857, 0, 0, 0)
+rotation_mode = 2
+loop = false
+
+[node name="LevelCamera" type="Camera3D" parent="CameraPath/CameraMount"]
+doppler_tracking = 1
+current = true
+fov = 50.0

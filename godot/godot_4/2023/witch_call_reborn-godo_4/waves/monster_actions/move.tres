@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="MonsterAction" load_steps=2 format=3 uid="uid://0arh138vss3h"]
+
+[ext_resource type="Script" path="res://waves/monsters/monster_action.gd" id="1_uwvu4"]
+
+[resource]
+script = ExtResource("1_uwvu4")
+duration = 1.0

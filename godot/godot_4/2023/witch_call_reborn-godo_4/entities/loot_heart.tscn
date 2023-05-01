@@ -1,0 +1,58 @@
+[gd_scene load_steps=8 format=3 uid="uid://4iki32bellhm"]
+
+[ext_resource type="PackedScene" uid="uid://chdv150j8at38" path="res://entities/loot.tscn" id="1_dww15"]
+[ext_resource type="Texture2D" uid="uid://ctpl8dcubttg5" path="res://assets/graphics/pick_up_heart.png" id="2_4lwtt"]
+[ext_resource type="Script" path="res://entities/loot_heart.gd" id="2_r2037"]
+[ext_resource type="AudioStream" uid="uid://b2yjkq6m7rwp2" path="res://assets/audio/pickup_heart.wav" id="3_gmqo4"]
+
+[sub_resource type="Animation" id="Animation_nvq82"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_2qbqi"]
+resource_name = "new_animation"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 1, 0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_51w41"]
+_data = {
+"RESET": SubResource("Animation_nvq82"),
+"new_animation": SubResource("Animation_2qbqi")
+}
+
+[node name="LootHeart" instance=ExtResource("1_dww15")]
+script = ExtResource("2_r2037")
+pickup_sound = ExtResource("3_gmqo4")
+
+[node name="Sprite2D" parent="." index="1"]
+texture = ExtResource("2_4lwtt")
+hframes = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="4"]
+autoplay = "new_animation"
+libraries = {
+"": SubResource("AnimationLibrary_51w41")
+}

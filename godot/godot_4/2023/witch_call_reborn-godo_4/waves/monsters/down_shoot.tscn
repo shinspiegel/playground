@@ -1,0 +1,135 @@
+[gd_scene load_steps=24 format=3 uid="uid://4xg26tmhwocy"]
+
+[ext_resource type="PackedScene" uid="uid://c773s0wrn86ss" path="res://waves/monsters/monster.tscn" id="1_wh8ws"]
+[ext_resource type="Script" path="res://waves/monsters/down_shoot.gd" id="2_4ciky"]
+[ext_resource type="Script" path="res://waves/monsters/monster_action.gd" id="3_ymn6y"]
+[ext_resource type="PackedScene" uid="uid://bh5tn2ljga43q" path="res://entities/monster_shoot_spawner.tscn" id="4_i5stx"]
+[ext_resource type="Texture2D" uid="uid://pdlh8f8rrxxw" path="res://assets/graphics/Pumpkin_down_shoot.png" id="4_xl551"]
+[ext_resource type="Script" path="res://resources/drop_item.gd" id="5_6u01v"]
+[ext_resource type="PackedScene" uid="uid://myd2j2g7stag" path="res://entities/loot_mana.tscn" id="6_qd33o"]
+[ext_resource type="PackedScene" uid="uid://4iki32bellhm" path="res://entities/loot_heart.tscn" id="7_vbfh2"]
+[ext_resource type="PackedScene" uid="uid://du3wsxd6km6y" path="res://entities/loot_damage_up.tscn" id="8_08aql"]
+
+[sub_resource type="Resource" id="Resource_2h76t"]
+script = ExtResource("3_ymn6y")
+duration = 1.0
+type = 0
+
+[sub_resource type="Resource" id="Resource_7mcmh"]
+script = ExtResource("3_ymn6y")
+duration = 1.0
+type = 2
+
+[sub_resource type="Resource" id="Resource_6y1nc"]
+script = ExtResource("3_ymn6y")
+duration = 1.0
+type = 0
+
+[sub_resource type="Resource" id="Resource_84q4j"]
+script = ExtResource("3_ymn6y")
+duration = 1.0
+type = 2
+
+[sub_resource type="Resource" id="Resource_54nxr"]
+script = ExtResource("3_ymn6y")
+duration = 1.0
+type = 0
+
+[sub_resource type="Animation" id="Animation_8cu5g"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_5l410"]
+resource_name = "animated"
+length = 0.4
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_g2s7m"]
+_data = {
+"RESET": SubResource("Animation_8cu5g"),
+"animated": SubResource("Animation_5l410")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nyf3h"]
+height = 60.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fvxu0"]
+radius = 23.0217
+
+[sub_resource type="Resource" id="Resource_hv367"]
+script = ExtResource("5_6u01v")
+chance = 10
+
+[sub_resource type="Resource" id="Resource_3tgva"]
+script = ExtResource("5_6u01v")
+scene = ExtResource("6_qd33o")
+chance = 6
+
+[sub_resource type="Resource" id="Resource_tlxcs"]
+script = ExtResource("5_6u01v")
+scene = ExtResource("7_vbfh2")
+chance = 3
+
+[sub_resource type="Resource" id="Resource_rtdq2"]
+script = ExtResource("5_6u01v")
+scene = ExtResource("8_08aql")
+chance = 1
+
+[node name="DownAndShoot" instance=ExtResource("1_wh8ws")]
+script = ExtResource("2_4ciky")
+hit_points = 1
+speed = 50.0
+monster_actions = Array[ExtResource("3_ymn6y")]([SubResource("Resource_2h76t"), SubResource("Resource_7mcmh"), SubResource("Resource_6y1nc"), SubResource("Resource_84q4j"), SubResource("Resource_54nxr")])
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("4_xl551")
+hframes = 4
+
+[node name="AnimationPlayer" parent="." index="2"]
+autoplay = "animated"
+libraries = {
+"": SubResource("AnimationLibrary_g2s7m")
+}
+
+[node name="CollisionShape2D" parent="HurtBox" index="0"]
+position = Vector2(-1, 18)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_nyf3h")
+
+[node name="CollisionShape2D" parent="HitBox" index="0"]
+position = Vector2(-0.998228, 3.00059)
+shape = SubResource("CircleShape2D_fvxu0")
+
+[node name="LootDrop" parent="." index="6"]
+drop_options = Array[ExtResource("5_6u01v")]([SubResource("Resource_hv367"), SubResource("Resource_3tgva"), SubResource("Resource_tlxcs"), SubResource("Resource_rtdq2")])
+
+[node name="MonsterShootSpawner" parent="." index="7" instance=ExtResource("4_i5stx")]
+position = Vector2(0, 32)
+single_trigger = false
+shoot_deplay = 0.5
+
+[editable path="HurtBox"]
+[editable path="HitBox"]

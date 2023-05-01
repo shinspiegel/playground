@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="Wave" load_steps=7 format=3 uid="uid://dvpu1g5crywqv"]
+
+[ext_resource type="Script" path="res://waves/wave_resource/wave.gd" id="1_oscei"]
+[ext_resource type="PackedScene" uid="uid://4xg26tmhwocy" path="res://waves/monsters/down_shoot.tscn" id="1_yd73j"]
+[ext_resource type="Script" path="res://waves/wave_resource/wave_monster_details.gd" id="2_3tnb2"]
+
+[sub_resource type="Resource" id="Resource_c7nxy"]
+script = ExtResource("2_3tnb2")
+monster_scene = ExtResource("1_yd73j")
+lane = 0
+delay = 0.0
+
+[sub_resource type="Resource" id="Resource_2x5ig"]
+script = ExtResource("2_3tnb2")
+monster_scene = ExtResource("1_yd73j")
+lane = 3
+delay = 0.0
+
+[sub_resource type="Resource" id="Resource_uvdst"]
+script = ExtResource("2_3tnb2")
+monster_scene = ExtResource("1_yd73j")
+lane = 7
+delay = 0.0
+
+[resource]
+script = ExtResource("1_oscei")
+time_limit = 5.0
+monsterList = Array[ExtResource("2_3tnb2")]([SubResource("Resource_c7nxy"), SubResource("Resource_2x5ig"), SubResource("Resource_uvdst")])
+min_level = 10
+max_level = 29

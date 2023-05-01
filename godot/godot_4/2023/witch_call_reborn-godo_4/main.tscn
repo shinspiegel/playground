@@ -1,0 +1,81 @@
+[gd_scene load_steps=49 format=3 uid="uid://dqpeajalcuijc"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_ahs37"]
+[ext_resource type="Resource" uid="uid://dt6soudindf7k" path="res://resources/general_game_data.tres" id="2_jkpjl"]
+[ext_resource type="PackedScene" uid="uid://dxlvwsl2xwhe6" path="res://menus/menus.tscn" id="2_uebvo"]
+[ext_resource type="PackedScene" uid="uid://b5ssebmnrtioj" path="res://entities/game.tscn" id="4_7tmw5"]
+[ext_resource type="Resource" uid="uid://b8p5j8w7rqkgr" path="res://waves/wave_list/00-09_tutorial_easy/wave_0.tres" id="5_16jn3"]
+[ext_resource type="PackedScene" uid="uid://ck23a7dilqr4w" path="res://entities/background_music.tscn" id="5_bbvrr"]
+[ext_resource type="PackedScene" uid="uid://b5ypieglih74s" path="res://entities/sfx_spawner.tscn" id="6_iou07"]
+[ext_resource type="Resource" uid="uid://dbps3v2p8df6x" path="res://waves/wave_list/00-09_tutorial_easy/wave_1.tres" id="6_y13ya"]
+[ext_resource type="Resource" uid="uid://cua37aldocpak" path="res://waves/wave_list/00-09_tutorial_easy/wave_2.tres" id="7_fjmcu"]
+[ext_resource type="Resource" uid="uid://bvlo55wb8ha7f" path="res://waves/wave_list/00-09_tutorial_easy/wave_3.tres" id="8_guyc6"]
+[ext_resource type="Resource" uid="uid://mhbd82wcps6a" path="res://waves/wave_list/00-09_tutorial_easy/wave_4.tres" id="9_lu7oj"]
+[ext_resource type="Resource" uid="uid://bt8g4hlecf8f1" path="res://waves/wave_list/00-09_tutorial_easy/wave_5.tres" id="10_babdr"]
+[ext_resource type="Resource" uid="uid://mecffy8i6egq" path="res://waves/wave_list/00-09_tutorial_easy/wave_6.tres" id="11_3tmy1"]
+[ext_resource type="Resource" uid="uid://bh7kkj57mug03" path="res://waves/wave_list/00-09_tutorial_easy/wave_7.tres" id="12_orkon"]
+[ext_resource type="Resource" uid="uid://difa4chinrx3w" path="res://waves/wave_list/00-09_tutorial_easy/wave_8.tres" id="13_lpe0f"]
+[ext_resource type="Resource" uid="uid://jd682r0xjdgu" path="res://waves/wave_list/00-09_tutorial_easy/wave_9.tres" id="14_7hlkv"]
+[ext_resource type="Resource" uid="uid://vxeo3af0c7an" path="res://waves/wave_list/10-29-medium/wave-medium-0.tres" id="15_jhrt6"]
+[ext_resource type="Resource" uid="uid://dcrpaseygoiev" path="res://waves/wave_list/10-29-medium/wave-medium-1.tres" id="16_05ebg"]
+[ext_resource type="PackedScene" uid="uid://c7g85xox5nijd" path="res://debug.tscn" id="17_gj3ib"]
+[ext_resource type="Resource" uid="uid://dvpu1g5crywqv" path="res://waves/wave_list/10-29-medium/wave-medium-2.tres" id="17_socr3"]
+[ext_resource type="Resource" uid="uid://dqb4sq2s7wr3e" path="res://waves/wave_list/10-29-medium/wave-medium-3.tres" id="18_mh446"]
+[ext_resource type="Resource" uid="uid://bmeoivhilw0ks" path="res://waves/wave_list/10-29-medium/wave-medium-4.tres" id="19_uik7m"]
+[ext_resource type="Resource" uid="uid://cwkbeofc5k4kk" path="res://waves/wave_list/10-29-medium/wave-medium-5.tres" id="20_ouvil"]
+[ext_resource type="Resource" uid="uid://bgpdudmi2wior" path="res://waves/wave_list/10-29-medium/wave-medium-6.tres" id="21_k25jv"]
+[ext_resource type="Resource" uid="uid://dq32mffiyaoai" path="res://waves/wave_list/10-29-medium/wave-medium-7.tres" id="22_6sin2"]
+[ext_resource type="Resource" uid="uid://dwccjkvxwhevo" path="res://waves/wave_list/10-29-medium/wave-medium-8.tres" id="23_d1jvq"]
+[ext_resource type="Resource" uid="uid://dumxidn6gjkkp" path="res://waves/wave_list/10-29-medium/wave-medium-9.tres" id="24_nqad3"]
+[ext_resource type="Resource" uid="uid://dbtyt1uplf7tw" path="res://waves/wave_list/30-69-hard/wave-hard-5.tres" id="30_2fyt7"]
+[ext_resource type="Resource" uid="uid://dvsjvrjr742o6" path="res://waves/wave_list/30-69-hard/wave-hard-6.tres" id="31_m5qi3"]
+[ext_resource type="Resource" uid="uid://w2jjk11w4ecw" path="res://waves/wave_list/30-69-hard/wave-hard-8.tres" id="33_wcnw3"]
+[ext_resource type="Resource" uid="uid://dss6fprxfugjd" path="res://waves/wave_list/30-69-hard/wave-hard-11.tres" id="36_xkde7"]
+[ext_resource type="Resource" uid="uid://bxhmh2prfrcug" path="res://waves/wave_list/30-69-hard/wave-hard-14.tres" id="39_rjt7t"]
+[ext_resource type="Resource" uid="uid://b656kky2m3624" path="res://waves/wave_list/30-69-hard/wave-hard-16.tres" id="41_y07ho"]
+[ext_resource type="Resource" uid="uid://dtw32ms334sks" path="res://waves/wave_list/30-69-hard/wave-hard-19.tres" id="44_hlwet"]
+[ext_resource type="Resource" uid="uid://bseekdxxlg3ap" path="res://waves/wave_list/30-69-hard/wave-hard-20.tres" id="45_eek4c"]
+[ext_resource type="Resource" uid="uid://ctyhdq1ggk3de" path="res://waves/wave_list/30-69-hard/wave-hard-21.tres" id="46_ufgsq"]
+[ext_resource type="Resource" uid="uid://dxcwgeo3xid8u" path="res://waves/wave_list/30-69-hard/wave-hard-22.tres" id="47_o25b7"]
+[ext_resource type="Resource" uid="uid://da613toaa75ft" path="res://waves/wave_list/30-69-hard/wave-hard-23.tres" id="48_esspb"]
+[ext_resource type="Resource" uid="uid://dsr02kgbd54vm" path="res://waves/wave_list/30-69-hard/wave-hard-24.tres" id="49_gbmfo"]
+[ext_resource type="Resource" uid="uid://2i2esh0q5wst" path="res://waves/wave_list/30-69-hard/wave-hard-25.tres" id="50_g7kkc"]
+[ext_resource type="Resource" uid="uid://dmdmyxo6o0n58" path="res://waves/wave_list/30-69-hard/wave-hard-26.tres" id="51_pttb1"]
+[ext_resource type="Resource" uid="uid://dtl4aj4gxxhgf" path="res://waves/wave_list/30-69-hard/wave-hard-27.tres" id="52_4v3y8"]
+[ext_resource type="Resource" uid="uid://fekldb3s4bi0" path="res://waves/wave_list/30-69-hard/wave-hard-28.tres" id="53_36les"]
+[ext_resource type="Resource" uid="uid://b5hbr5xjcb45b" path="res://waves/wave_list/30-69-hard/wave-hard-29.tres" id="54_tu240"]
+[ext_resource type="Resource" uid="uid://7uiovk4l3iyu" path="res://waves/wave_list/70-99-impossible/wave-impossible-1.tres" id="56_uedxy"]
+[ext_resource type="Resource" uid="uid://bcyvdjbbcv73w" path="res://waves/wave_list/70-99-impossible/wave-impossible-3.tres" id="58_otqlm"]
+[ext_resource type="Resource" uid="uid://clwnj0m01qjc5" path="res://waves/wave_list/70-99-impossible/wave-impossible-6.tres" id="61_hqmx0"]
+[ext_resource type="Resource" uid="uid://innf4d32bvr5" path="res://waves/wave_list/wave_X.tres" id="64_e3528"]
+
+[node name="Main" type="Node2D"]
+texture_filter = 3
+script = ExtResource("1_ahs37")
+game_data = ExtResource("2_jkpjl")
+
+[node name="Menus" parent="." instance=ExtResource("2_uebvo")]
+
+[node name="Game" parent="." instance=ExtResource("4_7tmw5")]
+waves_list = Array[Resource("res://waves/wave_resource/wave.gd")]([ExtResource("5_16jn3"), ExtResource("6_y13ya"), ExtResource("7_fjmcu"), ExtResource("8_guyc6"), ExtResource("9_lu7oj"), ExtResource("10_babdr"), ExtResource("11_3tmy1"), ExtResource("12_orkon"), ExtResource("13_lpe0f"), ExtResource("14_7hlkv"), ExtResource("15_jhrt6"), ExtResource("16_05ebg"), ExtResource("17_socr3"), ExtResource("18_mh446"), ExtResource("19_uik7m"), ExtResource("20_ouvil"), ExtResource("21_k25jv"), ExtResource("22_6sin2"), ExtResource("23_d1jvq"), ExtResource("24_nqad3"), ExtResource("64_e3528"), ExtResource("64_e3528"), ExtResource("64_e3528"), ExtResource("64_e3528"), ExtResource("64_e3528"), ExtResource("30_2fyt7"), ExtResource("31_m5qi3"), ExtResource("64_e3528"), ExtResource("33_wcnw3"), ExtResource("64_e3528"), ExtResource("64_e3528"), ExtResource("36_xkde7"), ExtResource("64_e3528"), ExtResource("64_e3528"), ExtResource("39_rjt7t"), ExtResource("64_e3528"), ExtResource("41_y07ho"), ExtResource("64_e3528"), ExtResource("64_e3528"), ExtResource("44_hlwet"), ExtResource("45_eek4c"), ExtResource("46_ufgsq"), ExtResource("47_o25b7"), ExtResource("48_esspb"), ExtResource("49_gbmfo"), ExtResource("50_g7kkc"), ExtResource("51_pttb1"), ExtResource("52_4v3y8"), ExtResource("53_36les"), ExtResource("54_tu240"), ExtResource("64_e3528"), ExtResource("56_uedxy"), ExtResource("64_e3528"), ExtResource("58_otqlm"), ExtResource("64_e3528"), ExtResource("64_e3528"), ExtResource("61_hqmx0"), ExtResource("64_e3528"), ExtResource("64_e3528"), ExtResource("64_e3528")])
+
+[node name="BackgroundColor" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="ColorRect" type="ColorRect" parent="BackgroundColor"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0666667, 0.0901961, 0.258824, 1)
+metadata/_edit_lock_ = true
+
+[node name="BackgroundMusic" parent="." instance=ExtResource("5_bbvrr")]
+
+[node name="SFXSpawner" parent="." instance=ExtResource("6_iou07")]
+
+[node name="DEBUG" parent="." instance=ExtResource("17_gj3ib")]
+visible = false
+
+[editable path="Menus"]

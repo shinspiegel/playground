@@ -1,0 +1,122 @@
+[gd_scene load_steps=21 format=3 uid="uid://cvaa4ki2ik00o"]
+
+[ext_resource type="PackedScene" uid="uid://c773s0wrn86ss" path="res://waves/monsters/monster.tscn" id="1_ancd7"]
+[ext_resource type="PackedScene" uid="uid://irv1wioog2sf" path="res://entities/tank_shield.tscn" id="2_0icmm"]
+[ext_resource type="Script" path="res://waves/monsters/monster_action.gd" id="2_jpw01"]
+[ext_resource type="Texture2D" uid="uid://dy1tw1hyxx1qe" path="res://assets/graphics/Punkkin_tank.png" id="3_i4gr3"]
+[ext_resource type="Script" path="res://resources/drop_item.gd" id="4_fxyc5"]
+[ext_resource type="PackedScene" uid="uid://myd2j2g7stag" path="res://entities/loot_mana.tscn" id="5_xnf0b"]
+[ext_resource type="PackedScene" uid="uid://c3efexc8gkf48" path="res://entities/loot_speed_up.tscn" id="6_55yxs"]
+[ext_resource type="PackedScene" uid="uid://du3wsxd6km6y" path="res://entities/loot_damage_up.tscn" id="7_i82ho"]
+
+[sub_resource type="Resource" id="Resource_u8ktq"]
+script = ExtResource("2_jpw01")
+duration = 1.0
+type = 0
+
+[sub_resource type="Resource" id="Resource_rocuk"]
+script = ExtResource("2_jpw01")
+duration = 1.0
+type = 1
+
+[sub_resource type="Resource" id="Resource_4bfeu"]
+script = ExtResource("2_jpw01")
+duration = 0.0
+type = 0
+
+[sub_resource type="Animation" id="Animation_2u7gg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_wcdsw"]
+resource_name = "animate"
+length = 0.4
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_u8172"]
+_data = {
+"RESET": SubResource("Animation_2u7gg"),
+"animate": SubResource("Animation_wcdsw")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_41cqn"]
+radius = 17.5
+height = 62.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ou0lw"]
+radius = 29.0172
+
+[sub_resource type="Resource" id="Resource_ekc3x"]
+script = ExtResource("4_fxyc5")
+chance = 2
+
+[sub_resource type="Resource" id="Resource_a1a82"]
+script = ExtResource("4_fxyc5")
+scene = ExtResource("5_xnf0b")
+chance = 16
+
+[sub_resource type="Resource" id="Resource_fq3ju"]
+script = ExtResource("4_fxyc5")
+scene = ExtResource("6_55yxs")
+chance = 1
+
+[sub_resource type="Resource" id="Resource_3rkhx"]
+script = ExtResource("4_fxyc5")
+scene = ExtResource("7_i82ho")
+chance = 1
+
+[node name="TankMonster" instance=ExtResource("1_ancd7")]
+hit_points = 1
+speed = 70.0
+monster_actions = Array[ExtResource("2_jpw01")]([SubResource("Resource_u8ktq"), SubResource("Resource_rocuk"), SubResource("Resource_4bfeu")])
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("3_i4gr3")
+hframes = 4
+
+[node name="AnimationPlayer" parent="." index="2"]
+autoplay = "animate"
+libraries = {
+"": SubResource("AnimationLibrary_u8172")
+}
+
+[node name="CollisionShape2D" parent="HurtBox" index="0"]
+position = Vector2(0, 13)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_41cqn")
+
+[node name="CollisionShape2D" parent="HitBox" index="0"]
+position = Vector2(0.00354326, 6)
+shape = SubResource("CircleShape2D_ou0lw")
+
+[node name="LootDrop" parent="." index="6"]
+drop_options = Array[ExtResource("4_fxyc5")]([SubResource("Resource_ekc3x"), SubResource("Resource_a1a82"), SubResource("Resource_fq3ju"), SubResource("Resource_3rkhx")])
+
+[node name="TankShield" parent="." index="7" instance=ExtResource("2_0icmm")]
+position = Vector2(0, 40)
+
+[editable path="HurtBox"]
+[editable path="HitBox"]
