@@ -1,11 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://dw7gkwfdi4uit"]
+[gd_scene load_steps=12 format=3 uid="uid://cjw4gbysjwx27"]
 
-[ext_resource type="Material" uid="uid://ccb1m85j5debs" path="res://resources/placeholder_texture/placeholder_orange.tres" id="1_6bepx"]
-[ext_resource type="Material" uid="uid://uwbrnah5jl8h" path="res://resources/placeholder_texture/placeholder_grey.tres" id="1_n8u0j"]
-[ext_resource type="PackedScene" uid="uid://dsc3ljpqnr4fm" path="res://entities/player/player.tscn" id="3_pnjyw"]
-[ext_resource type="PackedScene" path="res://entities/camera_on_rails/camera_on_rail.tscn" id="4_1xejg"]
-[ext_resource type="PackedScene" uid="uid://7fqkgo47s5vj" path="res://entities/npc/npc.tscn" id="5_1enyx"]
-[ext_resource type="PackedScene" uid="uid://nmgn0slpf3pu" path="res://entities/interactable/interactable.tscn" id="6_kas4g"]
+[ext_resource type="Material" uid="uid://uwbrnah5jl8h" path="res://resources/placeholder_texture/placeholder_grey.tres" id="1_vdv8p"]
+[ext_resource type="Material" uid="uid://ccb1m85j5debs" path="res://resources/placeholder_texture/placeholder_orange.tres" id="2_gqojl"]
+[ext_resource type="PackedScene" uid="uid://dsc3ljpqnr4fm" path="res://entities/player/player.tscn" id="3_y3ac1"]
+[ext_resource type="PackedScene" path="res://entities/camera_on_rails/camera_on_rail.tscn" id="4_aj3xf"]
+[ext_resource type="PackedScene" uid="uid://7fqkgo47s5vj" path="res://entities/npc/npc.tscn" id="5_1wh04"]
+[ext_resource type="PackedScene" uid="uid://uqwkrj88ciet" path="res://entities/door/door.tscn" id="7_1e8gq"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_10mcw"]
 sky_top_color = Color(0.188235, 0.133333, 0.780392, 1)
@@ -45,10 +45,12 @@ transform = Transform3D(0.5, 0, -0.866025, 0.866025, -4.37114e-08, 0.5, -3.78552
 shadow_enabled = true
 
 [node name="Structures" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 0.5, 2.08165e-12)
+metadata/_edit_lock_ = true
 
 [node name="Combiner_Group" type="CSGCombiner3D" parent="Structures"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
-material_override = ExtResource("1_n8u0j")
+material_override = ExtResource("1_vdv8p")
 use_collision = true
 collision_mask = 6
 
@@ -57,7 +59,7 @@ size = Vector3(40, 2, 70)
 
 [node name="Combiner_Walls" type="CSGCombiner3D" parent="Structures"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
-material_override = ExtResource("1_6bepx")
+material_override = ExtResource("2_gqojl")
 use_collision = true
 collision_mask = 6
 
@@ -81,13 +83,18 @@ size = Vector3(8, 8, 2)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 5, -34)
 size = Vector3(30, 8, 2)
 
+[node name="DoorHole1" type="CSGBox3D" parent="Structures/Combiner_Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19, 4.5, 22)
+operation = 2
+size = Vector3(4, 6, 4)
+
 [node name="Entities" type="Node3D" parent="."]
 
-[node name="Player" parent="Entities" instance=ExtResource("3_pnjyw")]
+[node name="Player" parent="Entities" instance=ExtResource("3_y3ac1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1.19209e-07, 26)
 dir_rotation = 90
 
-[node name="CameraOnRail" parent="Entities" instance=ExtResource("4_1xejg")]
+[node name="CameraOnRail" parent="Entities" instance=ExtResource("4_aj3xf")]
 player_node = NodePath("../Player")
 axis = "z"
 inverted = true
@@ -105,14 +112,10 @@ transform = Transform3D(-0.90199, -0.0668636, 0.426183, 2.05616e-12, 0.987758, 0
 [node name="LevelCamera" parent="Entities/CameraOnRail/CameraPath/CameraMount" index="0"]
 transform = Transform3D(8.78467e-08, 0.500074, -0.86616, -8.56545e-09, 0.866153, 0.50007, 1.00014, -1.2128e-08, 7.91244e-09, 0, 0, 0)
 
-[node name="NPC" parent="Entities" instance=ExtResource("5_1enyx")]
+[node name="NPC" parent="Entities" instance=ExtResource("5_1wh04")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, -0.5, -10)
 
-[node name="Interactable" parent="Entities/NPC" instance=ExtResource("6_kas4g")]
-
-[node name="Label3D" parent="Entities/NPC/Interactable" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
-billboard = 1
-font_size = 240
+[node name="Door" parent="Entities" instance=ExtResource("7_1e8gq")]
+transform = Transform3D(-4.37114e-08, 3.48787e-16, 1, 3.48787e-16, 1, -3.48787e-16, -1, 3.48787e-16, -4.37114e-08, -19, 0, 22)
 
 [editable path="Entities/CameraOnRail"]
-[editable path="Entities/NPC/Interactable"]

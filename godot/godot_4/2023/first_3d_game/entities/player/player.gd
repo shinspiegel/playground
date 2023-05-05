@@ -1,8 +1,9 @@
 class_name Player extends CharacterBody3D
 
 @export_range(0, 360, 15) var dir_rotation: int = 0
-@onready var input: PlayerInput = $PlayerInput
 
+@onready var input: PlayerInput = $PlayerInput
+@onready var interactor: Interactor = $Interactor
 
 const SPEED = 10.0
 const GRAVITY: float = 9.8
@@ -12,10 +13,16 @@ var direction: Vector3 = Vector3.ZERO
 func _physics_process(delta: float) -> void:
 	reset_direction()
 	apply_gravity(delta)
+	check_interatcion()
 	calculate_direction()
 	apply_axis_rotation()
 	apply_direction_to_velocity()
 	move_and_slide()
+
+
+func check_interatcion() -> void:
+	if input.just_interacted:
+		interactor.interact_on_current()
 
 
 func reset_direction() -> void:

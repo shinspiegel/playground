@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://uqwkrj88ciet"]
+
+[ext_resource type="PackedScene" uid="uid://nmgn0slpf3pu" path="res://entities/interactable/interactable.tscn" id="1_buxaq"]
+[ext_resource type="Script" path="res://entities/door/door.gd" id="1_uumoa"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_0h2ke"]
+size = Vector3(4, 6, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sjf4k"]
+size = Vector3(4, 6, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_44kec"]
+size = Vector3(5, 6, 5)
+
+[node name="Door" type="StaticBody3D"]
+script = ExtResource("1_uumoa")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+mesh = SubResource("BoxMesh_0h2ke")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+shape = SubResource("BoxShape3D_sjf4k")
+
+[node name="Interactable" parent="." instance=ExtResource("1_buxaq")]
+
+[node name="CollisionShape3D" parent="Interactable" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+shape = SubResource("BoxShape3D_44kec")
+
+[editable path="Interactable"]

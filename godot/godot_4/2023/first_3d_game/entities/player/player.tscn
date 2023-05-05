@@ -1,11 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://dsc3ljpqnr4fm"]
+[gd_scene load_steps=7 format=3 uid="uid://dsc3ljpqnr4fm"]
 
 [ext_resource type="Script" path="res://entities/player/player.gd" id="1_ndpqx"]
 [ext_resource type="PackedScene" uid="uid://coxj5upg2x6t5" path="res://entities/player_input/player_input.tscn" id="2_fkh45"]
+[ext_resource type="PackedScene" uid="uid://bknihe1aubn8w" path="res://entities/interactor/interactor.tscn" id="3_a2t6x"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_1diny"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_0a3r3"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_f8ibj"]
+size = Vector3(3, 4, 3)
 
 [node name="Player" type="CharacterBody3D"]
 collision_layer = 2
@@ -16,7 +20,17 @@ script = ExtResource("1_ndpqx")
 [node name="PlayerInput" parent="." instance=ExtResource("2_fkh45")]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 mesh = SubResource("CylinderMesh_1diny")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CylinderShape3D_0a3r3")
+
+[node name="Interactor" parent="." instance=ExtResource("3_a2t6x")]
+
+[node name="CollisionShape3D" parent="Interactor" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+shape = SubResource("BoxShape3D_f8ibj")
+
+[editable path="Interactor"]

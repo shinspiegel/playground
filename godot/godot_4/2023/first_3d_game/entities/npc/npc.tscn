@@ -1,17 +1,33 @@
-[gd_scene load_steps=4 format=3 uid="uid://7fqkgo47s5vj"]
+[gd_scene load_steps=7 format=3 uid="uid://7fqkgo47s5vj"]
 
 [ext_resource type="Script" path="res://entities/npc/npc.gd" id="1_dwigf"]
+[ext_resource type="PackedScene" uid="uid://nmgn0slpf3pu" path="res://entities/interactable/interactable.tscn" id="2_6n1r0"]
+[ext_resource type="Material" uid="uid://ccb1m85j5debs" path="res://resources/placeholder_texture/placeholder_orange.tres" id="2_u35oc"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_hv0kg"]
+material = ExtResource("2_u35oc")
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_n85qe"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xib6j"]
+size = Vector3(4, 3, 4)
 
 [node name="NPC" type="CharacterBody3D"]
 collision_layer = 4
 script = ExtResource("1_dwigf")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 mesh = SubResource("CylinderMesh_hv0kg")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CylinderShape3D_n85qe")
+
+[node name="Interactable" parent="." instance=ExtResource("2_6n1r0")]
+
+[node name="CollisionShape3D" parent="Interactable" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+shape = SubResource("BoxShape3D_xib6j")
+
+[editable path="Interactable"]
