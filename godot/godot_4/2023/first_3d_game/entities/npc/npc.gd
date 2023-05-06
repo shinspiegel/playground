@@ -17,7 +17,8 @@ func _ready() -> void:
 
 
 func on_interact() -> void:
-	print("Interacted: ", self)
+	print(self)
+	print_debug("WARN:: Should have implemented this method.")
 
 
 func on_focus() -> void:

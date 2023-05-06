@@ -1,28 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://c60capvd562vw"]
+[gd_scene load_steps=2 format=3 uid="uid://c60capvd562vw"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_ksxeo"]
-[ext_resource type="PackedScene" uid="uid://dw7gkwfdi4uit" path="res://levels/mock_level_1.tscn" id="1_runrc"]
 
 [node name="Main" type="Node3D"]
 script = ExtResource("1_ksxeo")
+initial_area = "mock_1"
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="Control" type="Control" parent="CanvasLayer"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Label" type="Label" parent="CanvasLayer/Control"]
-layout_mode = 0
-offset_left = 18.0
-offset_top = 20.0
-offset_right = 401.0
-offset_bottom = 100.0
-theme_override_font_sizes/font_size = 40
-text = "Vector()"
-
-[node name="MockLevel" parent="." instance=ExtResource("1_runrc")]
+[node name="CurrentArea" type="Node3D" parent="."]
