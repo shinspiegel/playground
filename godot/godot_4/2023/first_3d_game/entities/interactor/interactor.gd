@@ -9,7 +9,7 @@ func _ready() -> void:
 	area_exited.connect(on_area_exit)
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if interactable_list.size() <= 0:
 		current_interactable = null
 		
