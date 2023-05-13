@@ -1,0 +1,104 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+
+export interface Props {
+  frontmatter: Record<string, any>;
+  headings: { depth: number; slug: string; text: string }[];
+}
+
+const { title } = Astro.props.frontmatter;
+const { headings } = Astro.props;
+---
+
+<BaseLayout title={`SRS ${title}`}>
+  <aside>
+    <h6>Table of Index</h6>
+    <ul>
+      {
+        headings.map((link) => (
+          <a href={`#${link.slug}`}>
+            <li data-level={link.depth}>{link.text}</li>
+          </a>
+        ))
+      }
+    </ul>
+  </aside>
+
+  <slot />
+</BaseLayout>
+
+<style lang="scss">
+  [data-level="1"] {
+    --level: 1;
+  }
+  [data-level="2"] {
+    --level: 2;
+  }
+  [data-level="3"] {
+    --level: 3;
+  }
+  [data-level="4"] {
+    --level: 4;
+  }
+  [data-level="5"] {
+    --level: 5;
+  }
+  [data-level="6"] {
+    --level: 6;
+  }
+  [data-level="7"] {
+    --level: 7;
+  }
+  [data-level="8"] {
+    --level: 8;
+  }
+  [data-level="9"] {
+    --level: 9;
+  }
+
+  aside {
+    font-size: 1.4rem;
+    background: var(--background);
+    border-left: 1px solid var(--primary);
+    border-bottom: 1px solid var(--primary);
+    float: right;
+    max-width: 14rem;
+    padding: 0 0 1rem 1rem;
+    display: none;
+
+    @media (min-width: 768px) {
+      display: block;
+    }
+
+    ul,
+    li {
+      color: var(--link);
+      list-style: none;
+      margin: 0;
+      padding: 0.2rem 0;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+      margin-left: calc(var(--level) * 0.8rem);
+    }
+  }
+</style>
+
+<style lang="scss" is:global>
+  main {
+    strong,
+    em {
+      color: var(--primary-tint);
+    }
+
+    ul,
+    ol {
+      padding-left: 2rem;
+      padding-bottom: 1rem;
+
+      li {
+        padding-left: 2rem;
+      }
+    }
+  }
+</style>

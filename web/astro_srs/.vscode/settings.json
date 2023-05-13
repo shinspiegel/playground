@@ -1,0 +1,6 @@
+{
+  "files.associations": {
+    "*.mdx": "markdown"
+  },
+  "editor.tabSize": 4
+}

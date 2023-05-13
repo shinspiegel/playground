@@ -1,0 +1,51 @@
+---
+export interface props {
+  title?: string;
+}
+
+const { title = "Click to open the example" } = Astro.props;
+---
+
+<div data-is-open="true" class="example-box">
+  <div class="title">{title}</div>
+  <slot />
+</div>
+
+<script>
+  for (const el of document.getElementsByClassName("example-box")) {
+    el.addEventListener("click", () => onClick(el));
+  }
+
+  function onClick(el: Element) {
+    if (el.getAttribute("data-is-open") === "true") {
+      el.setAttribute("data-is-open", "false");
+    } else {
+      el.setAttribute("data-is-open", "true");
+    }
+  }
+</script>
+
+<style lang="scss">
+  .title {
+    color: var(--faded-text);
+    font-size: 1rem;
+    transform: translateX(-0.5rem) translateY(-0.5rem);
+  }
+
+  .example-box {
+    padding: 1rem;
+    border: 1px solid var(--primary-shade);
+    margin-bottom: 2rem;
+    border-radius: 4px;
+    overflow: hidden;
+    transition: all 0.4s ease;
+
+    &[data-is-open="true"] {
+      max-height: 0.2rem;
+    }
+
+    &[data-is-open="false"] {
+      max-height: 100vh;
+    }
+  }
+</style>

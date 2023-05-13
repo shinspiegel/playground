@@ -1,0 +1,16 @@
+---
+import AstroLayout from "../layouts/AstroLayout.astro";
+
+const FirstBlogPost = (
+  await Astro.glob("../posts/*.md")
+    .then((list) => {
+      list.sort((a, b) => b.frontmatter.date.localeCompare(a.frontmatter.date));
+      return list;
+    })
+    .then((list) => list.map((item) => item.Content))
+)[0];
+---
+
+<AstroLayout>
+  <FirstBlogPost />
+</AstroLayout>

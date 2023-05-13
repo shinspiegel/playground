@@ -1,0 +1,17 @@
+{
+  "name": "astro_srs",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/mdx": "^0.19.1",
+    "astro": "^2.4.1",
+    "sass": "^1.62.1"
+  }
+}

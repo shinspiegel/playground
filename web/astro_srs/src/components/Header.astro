@@ -1,0 +1,53 @@
+---
+type Link = {
+  name: string;
+  target: string;
+};
+
+const links: Link[] = [
+  { name: "Home", target: "/" },
+  { name: "Basic Rules", target: "/basic-rules" },
+  { name: "Rules", target: "/rules" },
+  { name: "Characters", target: "/characters" },
+  { name: "Classes", target: "/class" },
+  { name: "About", target: "/about" },
+];
+---
+
+<header>
+  <nav>
+    <ul>
+      {
+        links.map(({ name, target }) => (
+          <a href={target}>
+            <li>{name}</li>
+          </a>
+        ))
+      }
+    </ul>
+  </nav>
+</header>
+
+<style lang="scss">
+  header {
+    width: 100%;
+    border-bottom: 1px solid var(--primary);
+    margin-bottom: 2rem;
+    overflow-x: scroll;
+    overflow-y: hidden;
+
+    ul {
+      width: max-content;
+      list-style: none;
+      display: flex;
+      margin: 0 auto;
+      padding: 0;
+    }
+
+    li {
+      min-width: 4rem;
+      padding: 1rem;
+      white-space: nowrap;
+    }
+  }
+</style>

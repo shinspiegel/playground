@@ -1,0 +1,36 @@
+<button id="scroll-to-top-button">Top</button>
+
+<script>
+  const btn = document.getElementById("scroll-to-top-button");
+  if (btn) {
+    btn.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
+  }
+</script>
+
+<style lang="scss">
+  button {
+    position: fixed;
+    top: 95vh;
+    left: 95vw;
+    color: var(--text);
+    border: 0;
+    padding: 0.4rem 0.8rem;
+    border-radius: 4px;
+    background-color: var(--primary);
+    transform: translateX(-100%);
+    opacity: 0.2;
+    transition: opacity 0.2s ease;
+
+    @media (pointer: coarse) {
+      opacity: 1;
+    }
+
+    @media (min-width: 768px) {
+      display: none;
+    }
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+</style>

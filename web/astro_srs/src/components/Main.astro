@@ -1,0 +1,26 @@
+<main>
+  <slot />
+</main>
+
+<style lang="scss">
+  main {
+    width: 100%;
+    flex: 1;
+
+    @media (min-width: 320px) {
+      width: 320px;
+    }
+
+    @media (min-width: 425px) {
+      width: 400px;
+    }
+
+    @media (min-width: 768px) {
+      width: 700px;
+    }
+
+    @media (min-width: 1440px) {
+      width: 1200px;
+    }
+  }
+</style>

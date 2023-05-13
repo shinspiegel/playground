@@ -1,0 +1,191 @@
+---
+layout: ../layouts/MarkdownLayout.astro
+title: My Blog Post
+---
+
+import ExampleBox from "../components/ExampleBox.astro";
+
+# Characters
+
+In order to play, you must create characters. Characters can include both PCs and NPCs as well as the enemies who serve as obstacles – any person who actually appears in a session of play. Characters are generally divided into two categories: [PCs](#player-characters-pcs) and [NPCs](#non-player-characters-npcs).
+
+## Player Characters (PCs)
+
+This is a character created and controlled by a player. The player decides on the PC's name, appearance, background, abilities, and personality, and assumes the role of that character during the game. PCs are often the protagonists of the story, and their actions and decisions help drive the plot forward. PCs generally have more detailed and complex character sheets than NPCs.
+
+## Non-Player Characters (NPCs)
+
+This is a character created and controlled by the GM (Game Master) or other players. NPCs can include allies, enemies, bystanders, and other characters who interact with the PCs during the game. NPCs are often used to provide information, offer quests or challenges, or serve as obstacles for the PCs to overcome.
+
+# Representing Characters
+
+Characters are primarily defined by three things: [Classes](#class), [Attributes](#attributes), and [Combat Values](#combat-values). In addition, they have some non-mechanical [Personal Data](#personal-data-1).
+
+## Class
+
+Classes collect and abstract a character's ancestry, ability in magic, combat, or other fields, as well as general areas of expertise. Classes provide a framework for character development and allow players to choose a unique playstyle for their character. Each class has a distinct set of strengths and weaknesses, and often corresponds to a certain archetype.
+
+## Attributes
+
+Attributes represent a character's physical or mental abilities on a numerical scale, revealing their strengths and weaknesses. There is a total of six attributes as the following:
+
+**Strength (STR)**: This attribute reflects a character's physical power, ability to exert force, and overall physical resilience and endurance. A character with high Strength would be able to lift heavy objects, overpower opponents in combat, and withstand physical punishment.
+
+**Reflexes (REF)**: This attribute reflects a character's agility, speed, and ability to react quickly. A character with high Reflexes would be able to dodge attacks, move quickly, and perform feats of acrobatics.
+
+**Perception (PER)**: This attribute reflects a character's awareness of their surroundings and ability to perceive details. A character with high Perception would be able to notice hidden objects or clues, detect traps or danger, and gather information through observation.
+
+**Intelligence (INT)**: This attribute reflects a character's mental abilities, such as reasoning, problem-solving, and knowledge. A character with high Intelligence would be able to solve puzzles, understand complex concepts, and recall information from memory.
+
+**Will (WIL)**: This attribute reflects a character's mental fortitude and strength of character. A character with high Will would be able to resist mental attacks, withstand pain or discomfort, and maintain their focus or composure in stressful situations.
+
+**Luck (LUC)**: This attribute reflects a character's probability of experiencing fortunate or unfortunate events. A character with high Luck would be more likely to have positive outcomes in random or chance-based situations, while a character with low Luck may be more prone to bad luck or misfortune.
+
+### Value and Modifier
+
+The value represents the total amount of the character's power in that attribute, while the modifier is the value used for actions.
+
+To calculate the modifier, you take the total value of the attribute and divide it by 3, rounding down to the nearest whole number.
+
+The modifier is what you will typically use when making rolls or _tests_ related to that attribute. So if a character needs to make a Strength-based roll, they would add their Strength modifier to their dice roll to determine the final result.
+
+For the remanding of this document, the attribute name in square brackets means the _value_, while the shorthand means the _modifier_.
+
+<ExampleBox>
+
+For example, if a character has a **[Strength]** value of 12, their **[STR]** modifier would be 4 (12 divided by 3, rounded down).
+
+</ExampleBox>
+
+## Combat Values
+
+Combat Values are derived from Attributes and are mainly used in combat (as the name suggests).
+
+**Hit**: This refers to a character's ability to successfully strike an opponent in combat, either with a weapon or unarmed.
+
+**Dodge**: This refers to a character's ability to avoid being hit by incoming attacks or hazards.
+
+**Magic**: This refers to a character's ability to cast spells or use supernatural abilities.
+
+**Anti-magic**: This refers to a character's ability to resist or counter magic.
+
+**Speed**: This refers to a character's ability to move quickly and cover ground rapidly, making them more agile and able to react to threats more effectively.
+
+**Vitality**: This refers to a character's overall physical health and ability to withstand damage or injury.
+
+**Spirit**: This attribute reflects a character's mental fortitude and can also be used as a resource to power certain abilities, such as spells or special
+attacks.
+
+**Attack Power**: A modifier added to damage dealt in combat.
+
+### The initial values
+
+All the combat values are derived from the [attributes](#attributes). This is how you calculate each one of them:
+
+- **Hit**: [REF + PER / 2]
+- **Dodge**: [REF + LUC / 2]
+- **Magic**: [INT + PER / 2]
+- **Anti-magic**: [INT + LUC / 2 ]
+- **Speed**: [REF + INT / 2]
+- **Vitality**: [Strength]
+- **Spirit**: [Will]
+- **Attack Power**: [0]
+
+### Vitality and Spirit
+
+_Vitality_ and _Spirit_ are special combat values that represent a character's physical and mental resilience in combat, respectively. They have both a maximum value and a current value, which can change during the course of a fight.
+
+When a character takes damage in combat, their Vitality value is reduced by the amount of damage they receive. For example, if a character with a _Maximum Vitality_ value of 10 takes 3 points of damage, their _Current Vitality_ value would be reduced to 7. If a character's Current Vitality value reaches 0, they are incapacitated and can no longer participate in combat.
+
+Similarly, when a character uses special abilities or magic that require the use of their Spirit, their _Current Spirit_ value is reduced by the amount required for the ability. For example, if a character with a _Maximum Spirit_ value of 8 uses an ability that requires 2 spirit points (SP), their _Current Spirit_ value would be reduced to 6. If a character's current Spirit value reaches 0, they are unable to use any more special abilities or magic until their current spirit value is restored.
+
+During a combat encounter, characters may have the opportunity to restore their current vitality or spirit values using various means, such as potions or spells. However, these options are usually limited, so characters must be careful to manage their resources effectively in order to survive and succeed in combat.
+
+# How to Make Characters
+
+There are two ways to make characters: [Quickstart](#quickstart-1) and [Construction](#construction-1). The GM should guide each Player in choosing one of these methods and creating a character. Whichever method is chosen, players should always fill in the [Personal Data](#personal-data-1) for their characters. This allows even [Quickstart](#quickstart-1) characters to be personalized to the player's liking.
+
+## Construction
+
+In the Construction method, the player chooses everything about the character: [Classes](#choosing-classes), [Techniques](#techniques), and all. The player should get a clear concept of who her character is and what he can do, so she must know enough about the rules of the game as well as the background and setting of the Scenario to make that possible. Since creating a character from scratch requires referencing the book for each [Class](#class) and [Technique](#techniques), it can take quite a bit of time.
+
+## Quickstart
+
+The Quickstart method requires choosing a pre-generated character called a Sample Character and fleshing out his Personal Data. The biggest advantage of using Quickstart is that character creation only takes a few minutes. Because the rules to actually use the character and his abilities can be looked up during play, creating a character in this manner takes very little time in comparison.
+
+## Personal Data
+
+The player should decide her character's age, sex, appearance, etc, as well as origin and personal history. Because this fleshes out and differentiates the characters, it is one of the most important steps in character creation.
+
+# Quickstart
+
+The Quickstart method is a quick and easy way to begin play. Quickstart characters are made by selecting a Sample Character and using it as a model. The GM should prepare at least one Quickstart start character per player, so players will always have the option to choose a quickstart.
+
+## The Quickstart Procedure
+
+Quickstart characters are created using the following procedure. Fundamentally, players should follow the GM's advice and direction. The GM will show the options available and the player can choose. The player can also suggest to change details on the character if needed, if approved by the GM the player can apply the change.
+
+# Construction
+
+Construction is a method that allows more flexibility than Quickstart. This is suggested for experienced players that already read all the rules and are familiar with the game setting.
+
+## Choosing Classes
+
+Classes determine a character's race, talents, attribute potential, etc, and are the most important factor in determining the character's [Attribute](#attributes) scores and [Combat Values](#combat-values). Each character should be created with 3 total levels of Classes. These 3 levels can be split between multiple Classes or all be taken in the same Class.
+
+## Levels
+
+Levels show numerically how skilled a character is at the tropes of a certain Class and determine the value of other statistics.
+
+**Picking the initial Classes**: Since a character has 3 levels to split between the Classes, there are three possible distributions: all 3 levels in one Class, 2 levels in one Class and 1 level in a second, or 1 level each in three different Classes. Some classes are only accessible at the character creation, other classes are only available when the character achieve some objective.
+
+## Determining Base Values
+
+The Base Value of each [Attribute](#attributes) is a direct measurement of the character's talents in that Attribute.
+
+1. For each Attribute, add the Base Value given for each Class. If a Class has been taken for multiple levels, add its value the same number of times.
+2. After adding the Class values together, you may add an additional 1 point anywhere.
+
+## Attribute Bonuses
+
+Attribute Bonuses are used in Action Resolution rather than the full Base Value. The _bonus_ value is one third the Base Value, rounded down.
+
+## Recording Attributes
+
+Write both the _base value_ and the _bonus_ in the appropriate places on the Character Sheet.
+
+## Determining Combat Values
+
+Combat Values are mainly used in combat situations. Each particular Combat Value has a different calculation to determine its value.
+
+## Combat Value Bonus
+
+A character's Combat Values are also altered by his Classes, depending on their levels. Each Class has a level-by-level chart that lists the bonuses or penalties to Combat Values the Class gives. Generally this bonus is the main benefit of having a high level in a Class.
+
+## Techniques
+
+Techniques represent various special skills, gadgetry, magic, or powerful equipment that a character possesses. Characters will accumulate numerous techniques as they advance. Known Techniques should be written in the appropriate place on the Character Sheet, a summary of the effects with a page number for further reference is also recommended.
+
+On the first level of each class, you receive 2 techniques. For each additional level you receive one extra technique. After level 5 you only receive one technique for every even number level.
+
+## Items
+
+Every thing that is external of the character, like weapons and armor are divided into two subcategories: **items** and **equipment**. Items include every possession of the character – which means equipment are also a kind of item. Equipment refers only to items like weapons, armor, and accessories that alter _Combat Values_.
+
+## Movement Range
+
+Characters have a Movement Range statistic, which outlines how far they may travel in a set period of time.
+
+**Short move**: This refers to a character's ability to move a short distance. This movement does not consume any action.
+
+**Skirmish move**: This refers to a character's ability to move a medium distance, this uses a [Minor Action](#)
+
+**Full move**: This refers to a character's ability to move a long distance, this uses a [Major Actions](#)
+
+## Completing Construction
+
+This is the last step unique to the Construction method. From here onward, skip to the [Personal Data](#personal-data-1) section.
+
+# Personal Data
+
+After choosing the character's Classes, Techniques, equipment, etc, by whichever method, the player should fill in the Personal Data. Personal Data includes such things as the character's origin, backstory, personal goals, the identity of any related characters, plus of course sex, age, name, and other information that fleshes out and personally identifies the character.

@@ -1,0 +1,200 @@
+---
+layout: ../layouts/MarkdownLayout.astro
+---
+
+import ExampleBox from "../components/ExampleBox.astro";
+
+The rules chapter is the heart of the game, providing a comprehensive guide the base game mechanics to play.
+
+# Action Resolution
+
+This chapter will explains how to resolve actions and determine the outcome of conflicts in the game.
+
+## What is Action Resolution?
+
+Action Resolution is how we determine whether the actions characters attempt during play succeed or fail. Whenever we use the term _test_, it means to use the Action Resolution rules. The Action Resolution rules are used only when the GM decides the action is important enough to warrant them, or when the failure of the action could create a new outcome for the scene.
+
+### Action Resolution Steps
+
+Once you have a situation to be resolve, you should follow the steps below.
+
+1. **Determine the Difficulty Value**
+
+   The Difficulty Value is a number which indicates how easy or hard the action is. Occasionally the rules will set an explicit Difficulty Value, but the rest of the time the GM should set an appropriate one. A Result exceeding the Difficulty Value means the action is a success. The GM doesn't need to inform the players of the Difficulty Value and is free to simply ask for the roll Result instead.
+
+   | Difficulty Value | Difficulty of action |
+   | :--------------: | :------------------- |
+   |       6~8        | Easy to do           |
+   |       9~11       | Doable               |
+   |      12~15       | Hard to do           |
+   |       16+        | Almost impossible    |
+
+2. **Determine the bonus**
+   The _bonus_ is one of the Attribute Bonus or Combat Value for this _tests_. The GM determines which value is most appropriate to the action. The player should add any bonuses from relevant Techniques or Equipment and then supply the GM with the final Test Value. Remember that Vitality and Spirit can't be used for bonus.
+3. **Roll the Dice**
+   The player rolls **2D6**. If the dice roll (without applied any bonus) is at or above the _Critical Threshold_, a Critical occurs, this means that it's an automatic success. Conversely, if they roll at or below the _Fumble Threshold_, a Fumble occurs, this means that it's an automatic failure.
+4. **Determine the Result**
+   If the dice return neither a Critical nor a Fumble, sum the dice and add to the _bonus_ to the Test Value to determine the _Result_. The _Result_ is a measure of how well the character performed the action.
+
+   This is the base formula: _2d6 + bonus_
+
+   <ExampleBox title="Circumstantial Modifiers">
+
+   _Circumstantial Modifiers_: Depending on the circumstances, the GM can add a circumstantial bonus or penalty to the
+   Result before checking for success or failure. For most cases, this value is +0, but the GM could specify a value,
+   usually between +3 and -3.
+
+   </ExampleBox>
+
+5. **Determine Success or Failure**
+   The actual results of the action are determined by comparing the Difficulty Value to the Result. A Result at or above the Difficulty Value is a success; one below the Difficulty Value is a failure.
+
+   - Result >= Difficulty Value: Success
+   - Result < Difficulty Value: Failure
+
+6. **Narrate the outcome**
+   Now that success or failure has been determined, the GM should finish up Task Resolution by incorporating the results into the narrative. A Critical or Fumble should be appropriately emphasized over a normal success or failure.
+
+<ExampleBox>
+
+One of the players is using a sneak character who is trying to sneak past a group of guards patrolling a castle.
+
+The GM sets the _Difficulty Value_ for this action at 12 (step 1), indicating that it's a hard task to accomplish, but not that hard, he also indicates that this is an Reflexes _test_ (step 2).
+
+This character have a value of 13 in his character Reflexes, granting a total of +4, he also have a technique that if he is shadows he receives extra +1 for avoiding detection (step 3).
+
+The player roll the dice, and got a 3 and a 5. This does not hit the Critical Threshold of 12, neither the Fumble Threshold of 2, so it's needed to calculate the _result_, which is the sum od the dice (3+5=8) and bonus (4+1=5), so the result is **13** (8+5=13), this completes this step (step 4).
+
+Because 13 is greater of equal the _Difficulty Value_, this is a success.
+
+</ExampleBox>
+
+## Opposed Actions
+
+When one character's actions are interfered with or opposed by another character, an Opposed Action Test results.
+
+### Actions and Reactions
+
+The two (or more) characters involved in the opposed test are called the **Agressor** (who performs the main Action) and the **Defender** (who performs the opposing Reaction). To determine the outcome of the test, the **Agressor** and **Defender** both make tests using only steps 2-4 of the main [Action Resolution rules](#action-resolution-steps); the **Agressor** should give his result before the **Defender** tests. There's no need to set a difficulty, but circumstantial bonuses or penalties can be applied as normal. If it's unclear which character is the **Agressor** and which the **Defender**, whoever announced the action first is the **Agressor**.
+
+### Unable to Act
+
+There may be some situations where the **Defender** is unable to act. In those cases, use the Test Value from step 2 and any circumstantial modifiers, but do not add or roll dice.
+
+## Winning the Opposed Action
+
+Once both parties have a _Result_, it's time to produce an outcome: Whoever has the higher _Result_ is the winner, and that action is the valid one. If the **Agressor** wins, the original action continues unimpeded; if it was an attack, for example, the attack connects. If the **Defender** wins, the interference causes the original action to fail; if it was an attack, for example, the attack misses.
+
+<ExampleBox>
+
+A **Player** is trying to escape from thought the window, a **NPC Guard** notices the player moving in this direction and tries to stop it. The **GM** states that the player should make a _reflex test_, while the guard should try to make a _strength test_ to hold the him down. Because the player is the one who initiate the _test_, he will be **agressor** while the guard will be the **defender**
+
+In this case the **player** does the step 2, and his bonus is total of +4, while the **guard** is only +1, this completes this step. At this moment the **player** starts the step 3, and rolls the dice (rolling 2 and 4) an total of 6, because this is not a critical neither a fumble, the **guard** should also roll the dice (rolling a 3 and 6) an total of 9, also this is not a critical neither a fumble.
+
+At this moment the step 4 starts, the player have a total of 10 (6 + 4 = 10), and the guard have an total of 10 (9 + 1 = 10), because the guard was the **defender** he wins on a tie and stops the player from escaping through the window.
+
+</ExampleBox>
+
+### Defense Primacy
+
+Should both parties achieve the same Result, the **Defender** wins. This is called the _Rule of Defense Primacy_ because the most common Reactions are defensive ones.
+
+### Criticals
+
+If the Actor achieves a Critical and the **Defender** does not, the Actor wins. On the other hand, if the **Defender** achieves a Critical, due to the "Rule of Defense Primacy", the **Defender** wins regardless of whether the Actor also achieved a Critical.
+
+### Fumble
+
+If the Actor Fumbles, the **Defender** wins and there is no need for the **Defender** to test at all. If the **Defender** Fumbles, the Actor wins regardless of Result.
+
+# Structure of Play
+
+Sessions are split into a preparation phase, called [Pre-Play](#pre-play), the actual action of the session, called [Main Play](#main-play), and a phase for character advancement and cleanup, called [Post-Play](#post-play). [Main Play](#main-play) is further subdivided into four Acts called [Exposition](#act-i-exposition), [Action](#act-ii-action), [Climax](#act-iii-climax), and [Epilogue](#act-iv-Epilogue), and each of these Acts is also subdivided into multiple [Scenes](#scenes). Scenes form the basic block of gameplay.
+
+## Pre-Play
+
+Pre-Play mainly consists of the GM's preparations for the game session, but also includes the GM and Players gathering for the session, talking about the game, and other things that happen before actually beginning play.
+
+### GM Preparations
+
+The Game Master must make certain preparations before running the session, or the session may not run smoothly. The most important of these preparations is the mental one: The GM should approach the game with a good attitude, ready to have fun and to help the Players also have fun. Those with a clear goal in mind will get a much more positive result than those who come to the game with a halfhearted attitude. While this game was created to produce fun play, it cannot help along a poor effort, and coming to the table with a positive _let's have fun!_ attitude will produce better, high-quality play. Also, absolutely do not use this game as a vehicle to put down, humiliate, insult, or hurt another.
+
+### Familiarize yourself with the rules
+
+Since the GM is responsible for rule arbitration, she should carefully read over the rulebook and get a good sense of the rules and about where in the book each rule is, should one need to be referenced during play.
+
+### Lay out the Scenario
+
+A scenario is the adventure or storyline that players will embark on during a game day. It provides a framework for the game, including the setting, non-player characters, and challenges that players will encounter. The scenario typically has a goal or objective for the players to achieve, providing a sense of direction and purpose to the game. Whether battling fierce monsters, solving complex puzzles, or unraveling a mystery, the scenario sets the stage for the adventure and provides the backdrop for players to showcase their skills and abilities. The GM should read over the Scenario if using a pre-prepared one, or outline the basics of the Scenario if using a self-created one.
+
+<ExampleBox title="Improvising vs Preparation">
+
+There is no rule on how much a **GM** should improvise and how much should prepare.
+The _rule of thumbs up_ for this type of situation is:
+
+- Every 1 hour of prep should be worth it at least 2 hours of play.
+
+If you have the main idea for the scenario, have some extra material will not hurt, but have the base layout of the scenario in mind, keeps notes around and have fun. You can always fine tune the amount of time of preparation vs the improvisation with experience and learning about your players.
+
+</ExampleBox>
+
+**Prepare other materials**: Finally, the GM should prepare any other materials for use during the session, such as dice, handouts for players, creation of NPCs, etc.
+
+### The Day of the Session
+
+There are also some preparations to be made on the day of the session itself, after the group has gathered but before beginning Main Play.
+
+**Character creation and upkeep**: The GM should help each Player select, modify, or create the character he will use for the session. As each Player finishes, the GM should review the character sheet for mistakes or omissions and generally take note of the contents.
+
+**Pick a seating arrangement**: The GM and Players should choose comfortable seats where each can see and hear the others. We recommend the GM be seated near the middle of the long section of the table, rather than at one of the ends, in order to remain near the center of the group and be the most visible person.
+
+**Introductions**: One by one, each Player should give a short introduction about his character, so everyone has fresh in mind who their companions will be for the adventure.
+
+## Main Play
+
+Main Play is when the Scenario is enacted and the game is actually played. As mentioned above, Main Play is divided into four Acts, each divided into multiple Scenes.
+
+**Act I: Exposition**: The Exposition Act is where the introduction and setup of the Scenario occurs. In this act, the players are introduced to the setting, non-player characters, and any other relevant details that will be important for the adventure. Players may investigate clues, gather information, or otherwise prepare themselves for the challenges ahead.
+
+**Act II: Action**: The Action is the meat of the Scenario, where the story and events unfold. During this Act, the PCs meet and learn about the situation or conflict, encounter various events and rivals, and build to the Climax. The events in this Act affect the Scenario the most.
+
+**Act III: Climax**: The Climax encompasses the encounter with the true villain of the Scenario – what would be the boss character of a video game. Of course, the outcome doesn't have to be a battle; that's up to the Players to determine.
+
+**Act IV: Epilogue**: The epilogue acts as the Scenario's end. Its actual contents depend greatly on what actually happened over the course of the session. After the climax, this act provides a chance for players to reflect on their accomplishments and wrap up any loose ends. This act may include debriefing and discussion.
+
+### Scenes
+
+Scenes form the basic unit of gameplay and are the mechanism by which the game advances. Each Scene, like those in movies and television shows, is a period of the story concerned with a particular time, place, and character. A Session basically consists of a series of Scenes, each following from the previous, tied together with a Scenario. Of course, not all Scenes in a Session need to advance the Scenario, and both the GM and Players can propose Scenes that interest them regardless of the overall story. The GM has final say over framing each Scene.
+
+**Entry and Exit**: Consider the Scene like the stage of a theater. In order to participate in a Scene, a character must _Make an Entrance_. Without entering the stage, the actor cannot perform; similarly, without entering the scene, the character cannot act. Extending the same metaphor, a character can _Make an Exit_ to leave the Scene. This can be done at any point during the Scene, with the GM's approval. The GM has control over the Entries and Exits to the Scene, and can allow characters to Enter or Leave at any time.
+
+#### Structure of a Scene
+
+Each Scene follows the same basic steps.
+
+1. **Choose the Protagonist**
+   The GM chooses which character will take the leading role in the scene. This character is called the _Protagonist_. When Framing a Scene, the GM always first announces the _Protagonist_, who automatically Enters the Scene.
+2. **Frame the Scene**
+   The GM announces the start of a new Scene, and quickly lays out the situation: the Protagonist, the location of the scene, and a few words about the situation or goal. This doesn't need to be an extensive explanation – just a sentence or two is enough. Whatever situation it is, the Protagonist should be at the heart of it.
+3. **Fellow Travelers**
+   The Protagonist's Player can designate any number of other PCs as _fellow travelers_ who happened to be along when the Scene began; so long as their Players consent, these characters automatically Enter the Scene with the Protagonist. The GM can overrule this selection, barring any fellows from the Scene if necessary. NPCs can also be declared as fellow travelers, in which case the GM needs to consent for them to Enter.
+4. **Scene Crashers**
+   Any PCs not chosen as fellow travelers can still Enter the Scene uninvited, provided the GM approves. This can be done at any time, even while the Scene is in progress.
+5. **Play out the Scene**
+   The GM and the present PCs should now play out the scene. The GM can add or embellish details as necessary, but the focus is on the PCs and especially the _Protagonist_.
+6. **Ending the Scene**
+   At any point, the GM can declare the Scene over, usually when the goal is achieved or failed to achieve. At this time, perform any necessary behind-the-scenes bookkeeping, then the GM should announce the next _Protagonist_ and frame the new Scene.
+
+**Master Scenes**: The GM may choose to frame some Scenes without including a _Protagonist_. These Scenes are called Master Scenes. The GM decides who can and cannot Enter the Scene and may even play out the Scene with no PCs present. This scenes usually are used to develop a specific NPC or prepare for the next scene.
+
+## Post-Play
+
+After Main Play (some would say the whole Session) is over, Post-Play begins. This is when Experience Points are tallied and other post-session cleanup occurs.
+
+Once the GM has declared the end of Main Play, today's story has come to a close. At this point, Post-Play begins. This is when Experience Points are tallied and other post-session cleanup occurs.
+
+**Experience Pool**: During the scenes, every time a character makes a _test_, if the die roll is a double (both dice have the same value), this will add 1 point to the experience pool.
+
+**Experience Points**: Each day of game will award with 1 experience point. Also, take the experience pool and evenly splits between all the players (drop fractions). This will be the received experience points for every player, this also includes the GM, the experience is assigned to each player not the character.
+
+**Character Advancement**: By spending accumulated Experience Points, Players and GMs can improve the capabilities of the story's Characters. It's not necessary to spend the Experience Points to benefit a PC under your own control – any Character may benefit from the expenditure. However, once Experience Points are spent on a Character, they're gone and can't be used to improve other Characters (you should remove them from the tally on your Record and Session Sheets).
