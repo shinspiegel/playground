@@ -3,12 +3,10 @@ class_name Main extends Node3D
 @export var initial_area: String = ""
 @onready var curr_area: Node3D = $CurrentArea
 
-const d = preload("res://resources/dialogue/dialogue_list/dialogue_one.tres")
 
 func _ready() -> void:
 	AreaPreloaded.area_changed_to.connect(on_load_area)
 	AreaPreloaded.change_by_name(initial_area)
-	DialogueControl.load_dialog(d)
 
 
 func on_load_area(area: PackedScene) -> void:

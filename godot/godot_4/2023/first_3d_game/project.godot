@@ -18,7 +18,6 @@ config/icon="res://icon.svg"
 [autoload]
 
 AreaPreloaded="*res://singletons/area_preloaded/area_preloaded.gd"
-DialogueControl="*res://singletons/dialogue_control/dialogue_control.tscn"
 
 [display]
 
@@ -26,6 +25,7 @@ window/size/viewport_width=1280
 window/size/viewport_height=720
 window/size/window_width_override=2560
 window/size/window_height_override=1440
+window/stretch/mode="viewport"
 
 [input]
 

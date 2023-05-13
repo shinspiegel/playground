@@ -1,9 +1,61 @@
-[gd_scene load_steps=2 format=3 uid="uid://c60capvd562vw"]
+[gd_scene load_steps=3 format=3 uid="uid://c60capvd562vw"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_ksxeo"]
+[ext_resource type="Texture2D" uid="uid://cnbjewhsrh73y" path="res://icon.svg" id="2_8wqda"]
 
 [node name="Main" type="Node3D"]
 script = ExtResource("1_ksxeo")
 initial_area = "mock_1"
 
 [node name="CurrentArea" type="Node3D" parent="."]
+
+[node name="TextMessage" type="CanvasLayer" parent="."]
+
+[node name="MarginContainer" type="MarginContainer" parent="TextMessage"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="ColorRect" type="ColorRect" parent="TextMessage/MarginContainer"]
+custom_minimum_size = Vector2(2.08165e-12, 200)
+layout_mode = 2
+size_flags_vertical = 8
+color = Color(0.109804, 0.109804, 0.109804, 1)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TextMessage/MarginContainer"]
+custom_minimum_size = Vector2(2.08165e-12, 200)
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="Spacer" type="Control" parent="TextMessage/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(10, 2.08165e-12)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="TextMessage/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(180, 180)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("2_8wqda")
+
+[node name="Spacer2" type="Control" parent="TextMessage/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(30, 2.08165e-12)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TextMessage/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(2.08165e-12, 180)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 64
+text = "THIS IS A PLACEHOLDER TEXT"
+autowrap_mode = 2
+
+[node name="Spacer3" type="Control" parent="TextMessage/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(10, 2.08165e-12)
+layout_mode = 2
