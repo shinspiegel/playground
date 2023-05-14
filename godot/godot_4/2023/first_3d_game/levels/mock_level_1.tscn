@@ -38,6 +38,7 @@ point_count = 4
 script = ExtResource("7_r06kr")
 message = "Hi, I'm NPC 0"
 icon = ExtResource("6_86h8p")
+options = Array[String](["One", "two"])
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_7uoc6"]
 load_path = "res://.godot/imported/texture_01.png-4d706ac0790c4461d3bf93ae6e751192.etc2.ctex"
@@ -53,6 +54,7 @@ material = SubResource("StandardMaterial3D_tcl4w")
 script = ExtResource("7_r06kr")
 message = "I'm NPC 2 and I'm cool"
 icon = ExtResource("6_86h8p")
+options = Array[String]([])
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_svn8o"]
 load_path = "res://.godot/imported/texture_01.png-4d706ac0790c4461d3bf93ae6e751192.etc2.ctex"
@@ -68,6 +70,7 @@ material = SubResource("StandardMaterial3D_bpedm")
 script = ExtResource("7_r06kr")
 message = "I'm super NPC and I'm even cooler"
 icon = ExtResource("6_86h8p")
+options = Array[String]([])
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_flcwj"]
 load_path = "res://.godot/imported/texture_01.png-4d706ac0790c4461d3bf93ae6e751192.etc2.ctex"
@@ -83,6 +86,7 @@ material = SubResource("StandardMaterial3D_75xal")
 script = ExtResource("7_r06kr")
 message = "CMON MOTHERFUCKER!"
 icon = ExtResource("6_86h8p")
+options = Array[String]([])
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_dximx"]
 load_path = "res://.godot/imported/texture_01.png-4d706ac0790c4461d3bf93ae6e751192.etc2.ctex"
@@ -175,6 +179,7 @@ transform = Transform3D(-0.90199, -0.0668636, 0.426183, 2.05616e-12, 0.987758, 0
 transform = Transform3D(8.78467e-08, 0.500074, -0.86616, -8.56545e-09, 0.866153, 0.50007, 1.00014, -1.2128e-08, 7.91244e-09, 0, 0, 0)
 
 [node name="NPC" parent="Entities" instance=ExtResource("5_1enyx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, 0, 19.5)
 message = SubResource("Resource_xe2a0")
 
 [node name="MeshInstance3D" parent="Entities/NPC" index="0"]

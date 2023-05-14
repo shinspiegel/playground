@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://bqeyba24ewvtg"]
+
+[node name="Button" type="Button"]
+theme_override_font_sizes/font_size = 70
+action_mode = 0
+text = "PLACEHOLDER"

@@ -16,6 +16,10 @@ func _ready() -> void:
 	interactable.blur.connect(on_blur)
 	
 	mesh = $MeshInstance3D.mesh
+	TextMessage.option_selected.connect(func(a,b,c): 
+		if a == message:
+			print(self, a,b,c)
+	)
 
 
 func on_interact() -> void:
