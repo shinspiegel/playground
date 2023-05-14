@@ -1,5 +1,8 @@
 class_name Interactor extends Area3D
 
+signal focus_grabed_to(interactable: Interactable)
+signal interacted_on(interactabled: Interactable)
+
 @export var current_interactable: Interactable = null
 @export var interactable_list: Array[Interactable] = []
 
@@ -15,14 +18,21 @@ func _process(_delta: float) -> void:
 		
 	elif interactable_list.size() == 1:
 		current_interactable = interactable_list[0]
-		current_interactable.grab_focus()
+		grab_focus_on_current()
 	else:
 		get_closest_from_list()
+
+
+func grab_focus_on_current() -> void:
+	current_interactable.grab_focus()
+	focus_grabed_to.emit(current_interactable)
 
 
 func interact_on_current() -> void:
 	if not current_interactable == null:
 		current_interactable.interact()
+		interacted_on.emit(current_interactable)
+
 
 func get_closest_from_list() -> void:
 	var closest_one = interactable_list[0]
@@ -30,6 +40,7 @@ func get_closest_from_list() -> void:
 	
 	for interactable in interactable_list:
 		var interactable_distance = global_transform.origin.distance_to(interactable.global_transform.origin)
+		
 		if interactable_distance < distance:
 			distance = interactable_distance
 			closest_one = interactable
@@ -37,8 +48,9 @@ func get_closest_from_list() -> void:
 	if not closest_one == current_interactable:
 		if not current_interactable == null: 
 			current_interactable.drop_focus()
+		
 		current_interactable = closest_one
-		current_interactable.grab_focus()
+		grab_focus_on_current()
 
 
 func on_area_entered(area: Area3D) -> void:

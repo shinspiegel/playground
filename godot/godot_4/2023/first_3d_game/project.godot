@@ -18,6 +18,8 @@ config/icon="res://icon.svg"
 [autoload]
 
 AreaPreloaded="*res://singletons/area_preloaded/area_preloaded.gd"
+TextMessage="*res://singletons/text_message/text_message.tscn"
+PlayerInput="*res://singletons/player_input/player_input.tscn"
 
 [display]
 

@@ -4,6 +4,8 @@ class_name NPC extends CharacterBody3D
 const blue: BaseMaterial3D = preload("res://resources/placeholder_texture/placeholder_blue.tres")
 const orange: BaseMaterial3D = preload("res://resources/placeholder_texture/placeholder_orange.tres")
 
+@export var message: DialogueMessage
+
 @onready var interactable: Interactable = $Interactable
 var mesh: PrimitiveMesh
 
@@ -17,8 +19,7 @@ func _ready() -> void:
 
 
 func on_interact() -> void:
-	print(self)
-	print_debug("WARN:: Should have implemented this method.")
+	TextMessage.display_message(message)
 
 
 func on_focus() -> void:
@@ -27,6 +28,7 @@ func on_focus() -> void:
 
 func on_blur() -> void:
 	set_thing(orange)
+	TextMessage.close_message()
 
 
 func set_thing(m: BaseMaterial3D) -> void:

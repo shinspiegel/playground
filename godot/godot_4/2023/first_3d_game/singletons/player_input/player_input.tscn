@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://ckwpyf2f0vjov"]
+
+[ext_resource type="Script" path="res://singletons/player_input/player_input.gd" id="1_r15om"]
+
+[node name="PlayerInput" type="Node"]
+process_mode = 3
+script = ExtResource("1_r15om")
+
+[node name="InteractColdown" type="Timer" parent="."]
+wait_time = 0.3
+one_shot = true

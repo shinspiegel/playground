@@ -1,7 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://dsc3ljpqnr4fm"]
+[gd_scene load_steps=6 format=3 uid="uid://dsc3ljpqnr4fm"]
 
 [ext_resource type="Script" path="res://entities/player/player.gd" id="1_ndpqx"]
-[ext_resource type="PackedScene" uid="uid://coxj5upg2x6t5" path="res://entities/player_input/player_input.tscn" id="2_fkh45"]
 [ext_resource type="PackedScene" uid="uid://bknihe1aubn8w" path="res://entities/interactor/interactor.tscn" id="3_a2t6x"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_1diny"]
@@ -16,8 +15,6 @@ collision_layer = 2
 collision_mask = 13
 up_direction = Vector3(1.04082e-12, 1, 1.04082e-12)
 script = ExtResource("1_ndpqx")
-
-[node name="PlayerInput" parent="." instance=ExtResource("2_fkh45")]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
