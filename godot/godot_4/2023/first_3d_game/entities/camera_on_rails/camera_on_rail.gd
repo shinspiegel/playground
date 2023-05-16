@@ -5,6 +5,7 @@ signal moved(percentage: Vector3)
 @export var player_node: NodePath
 @export_enum("x", "y", "z") var axis: String = "x"
 @export var inverted: bool = false
+@export var area_ratio: Vector3 = Vector3.ZERO
 
 @onready var shape: CollisionShape3D = $MotionArea
 @onready var camera_mount: PathFollow3D = $CameraPath/CameraMount
@@ -17,8 +18,9 @@ func _ready() -> void:
 
 
 func _process(_delta: float) -> void:
-	moved.emit(calculate_position())
-	adjust_camera(calculate_position())
+	area_ratio = calculate_position()
+	moved.emit(area_ratio)
+	adjust_camera(area_ratio[axis])
 
 
 func calculate_position() -> Vector3:
@@ -34,5 +36,8 @@ func calculate_position() -> Vector3:
 	)
 
 
-func adjust_camera(pos: Vector3) -> void:
-	camera_mount.progress_ratio = pos[axis] if not inverted else (1-pos[axis])
+func adjust_camera(ratio: float) -> void:
+	if not inverted:
+		camera_mount.progress_ratio = ratio
+	else: 
+		camera_mount.progress_ratio = 1 - ratio
