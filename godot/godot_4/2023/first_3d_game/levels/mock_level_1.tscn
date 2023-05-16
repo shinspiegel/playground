@@ -1,13 +1,16 @@
-[gd_scene load_steps=30 format=3 uid="uid://dw7gkwfdi4uit"]
+[gd_scene load_steps=22 format=3 uid="uid://crrq7fa7g02s1"]
 
 [ext_resource type="Material" uid="uid://ccb1m85j5debs" path="res://resources/placeholder_texture/placeholder_orange.tres" id="1_6bepx"]
 [ext_resource type="Material" uid="uid://uwbrnah5jl8h" path="res://resources/placeholder_texture/placeholder_grey.tres" id="1_n8u0j"]
 [ext_resource type="PackedScene" uid="uid://dsc3ljpqnr4fm" path="res://entities/player/player.tscn" id="3_pnjyw"]
 [ext_resource type="PackedScene" path="res://entities/camera_on_rails/camera_on_rail.tscn" id="4_1xejg"]
 [ext_resource type="PackedScene" uid="uid://7fqkgo47s5vj" path="res://entities/npc/npc.tscn" id="5_1enyx"]
-[ext_resource type="Texture2D" uid="uid://cnbjewhsrh73y" path="res://icon.svg" id="6_86h8p"]
+[ext_resource type="PackedScene" uid="uid://nmgn0slpf3pu" path="res://entities/interactable/interactable.tscn" id="6_bve8t"]
+[ext_resource type="Script" path="res://dialogue_test.gd" id="7_0og73"]
 [ext_resource type="PackedScene" uid="uid://uqwkrj88ciet" path="res://entities/door/door.tscn" id="7_j8c4p"]
-[ext_resource type="Script" path="res://resources/dialogue_message/dialogue_message.gd" id="7_r06kr"]
+[ext_resource type="Script" path="res://resources/dialogue/dialogue_message.gd" id="8_cx3d5"]
+[ext_resource type="Texture2D" uid="uid://cnbjewhsrh73y" path="res://icon.svg" id="8_hg46b"]
+[ext_resource type="Script" path="res://resources/dialogue/dialogue_list.gd" id="10_vlsty"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_10mcw"]
 sky_top_color = Color(0.188235, 0.133333, 0.780392, 1)
@@ -34,69 +37,38 @@ _data = {
 }
 point_count = 4
 
-[sub_resource type="Resource" id="Resource_xe2a0"]
-script = ExtResource("7_r06kr")
-message = "Hi, I'm NPC 0"
-icon = ExtResource("6_86h8p")
-options = Array[String](["One", "two"])
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_7uoc6"]
-load_path = "res://.godot/imported/texture_01.png-4d706ac0790c4461d3bf93ae6e751192.etc2.ctex"
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tcl4w"]
-albedo_texture = SubResource("CompressedTexture2D_7uoc6")
-uv1_triplanar = true
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_su6eo"]
-material = SubResource("StandardMaterial3D_tcl4w")
-
-[sub_resource type="Resource" id="Resource_2t2un"]
-script = ExtResource("7_r06kr")
-message = "I'm NPC 2 and I'm cool"
-icon = ExtResource("6_86h8p")
+[sub_resource type="Resource" id="Resource_7d1tv"]
+script = ExtResource("8_cx3d5")
+character = "Shin"
+message = "First"
+icon = ExtResource("8_hg46b")
 options = Array[String]([])
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_svn8o"]
-load_path = "res://.godot/imported/texture_01.png-4d706ac0790c4461d3bf93ae6e751192.etc2.ctex"
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bpedm"]
-albedo_texture = SubResource("CompressedTexture2D_svn8o")
-uv1_triplanar = true
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_7nqxq"]
-material = SubResource("StandardMaterial3D_bpedm")
-
-[sub_resource type="Resource" id="Resource_wyo8g"]
-script = ExtResource("7_r06kr")
-message = "I'm super NPC and I'm even cooler"
-icon = ExtResource("6_86h8p")
+[sub_resource type="Resource" id="Resource_wgi8n"]
+script = ExtResource("8_cx3d5")
+character = "Not shin"
+message = "Second"
+icon = ExtResource("8_hg46b")
 options = Array[String]([])
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_flcwj"]
-load_path = "res://.godot/imported/texture_01.png-4d706ac0790c4461d3bf93ae6e751192.etc2.ctex"
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_75xal"]
-albedo_texture = SubResource("CompressedTexture2D_flcwj")
-uv1_triplanar = true
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_8t28e"]
-material = SubResource("StandardMaterial3D_75xal")
-
-[sub_resource type="Resource" id="Resource_8xv2s"]
-script = ExtResource("7_r06kr")
-message = "CMON MOTHERFUCKER!"
-icon = ExtResource("6_86h8p")
+[sub_resource type="Resource" id="Resource_ldat8"]
+script = ExtResource("8_cx3d5")
+character = "Shin"
+message = "Third message"
+icon = ExtResource("8_hg46b")
 options = Array[String]([])
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_dximx"]
-load_path = "res://.godot/imported/texture_01.png-4d706ac0790c4461d3bf93ae6e751192.etc2.ctex"
+[sub_resource type="Resource" id="Resource_ff217"]
+script = ExtResource("8_cx3d5")
+character = "Not shin"
+message = "Last Message"
+icon = ExtResource("8_hg46b")
+options = Array[String]([])
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8prl2"]
-albedo_texture = SubResource("CompressedTexture2D_dximx")
-uv1_triplanar = true
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_fb8d2"]
-material = SubResource("StandardMaterial3D_8prl2")
+[sub_resource type="Resource" id="Resource_5h5vm"]
+script = ExtResource("10_vlsty")
+id = "entry_hall"
+list = Array[ExtResource("8_cx3d5")]([SubResource("Resource_7d1tv"), SubResource("Resource_wgi8n"), SubResource("Resource_ldat8"), SubResource("Resource_ff217")])
 
 [node name="MockLevel" type="Node3D"]
 
@@ -180,42 +152,25 @@ transform = Transform3D(8.78467e-08, 0.500074, -0.86616, -8.56545e-09, 0.866153,
 
 [node name="NPC" parent="Entities" instance=ExtResource("5_1enyx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, 0, 19.5)
-message = SubResource("Resource_xe2a0")
 
-[node name="MeshInstance3D" parent="Entities/NPC" index="0"]
-mesh = SubResource("CylinderMesh_su6eo")
+[node name="Interactable" parent="Entities/NPC" instance=ExtResource("6_bve8t")]
+
+[node name="Dialogue" type="Node" parent="Entities/NPC"]
+script = ExtResource("7_0og73")
+interactable_path = NodePath("../Interactable")
+dialogue = SubResource("Resource_5h5vm")
 
 [node name="NPC2" parent="Entities" instance=ExtResource("5_1enyx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 0, 12.5)
-message = SubResource("Resource_2t2un")
-
-[node name="MeshInstance3D" parent="Entities/NPC2" index="0"]
-mesh = SubResource("CylinderMesh_7nqxq")
 
 [node name="NPC4" parent="Entities" instance=ExtResource("5_1enyx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 0, 11)
-message = SubResource("Resource_wyo8g")
-
-[node name="MeshInstance3D" parent="Entities/NPC4" index="0"]
-mesh = SubResource("CylinderMesh_8t28e")
 
 [node name="NPC3" parent="Entities" instance=ExtResource("5_1enyx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 0, 14)
-message = SubResource("Resource_8xv2s")
-
-[node name="MeshInstance3D" parent="Entities/NPC3" index="0"]
-mesh = SubResource("CylinderMesh_fb8d2")
 
 [node name="Door" parent="Entities" instance=ExtResource("7_j8c4p")]
 transform = Transform3D(-4.37114e-08, 3.48787e-16, 1, 3.48787e-16, 1, -3.48787e-16, -1, 3.48787e-16, -4.37114e-08, -11, 1.19209e-07, -8)
 area_name = "mock_2"
 
 [editable path="Entities/CameraOnRail"]
-[editable path="Entities/NPC"]
-[editable path="Entities/NPC/Interactable"]
-[editable path="Entities/NPC2"]
-[editable path="Entities/NPC2/Interactable"]
-[editable path="Entities/NPC4"]
-[editable path="Entities/NPC4/Interactable"]
-[editable path="Entities/NPC3"]
-[editable path="Entities/NPC3/Interactable"]

@@ -1,79 +1,88 @@
 [gd_scene load_steps=3 format=3 uid="uid://4wy4wcov2ydk"]
 
 [ext_resource type="Script" path="res://singletons/text_message/text_message.gd" id="1_j40x3"]
-[ext_resource type="PackedScene" uid="uid://bqeyba24ewvtg" path="res://ui_elements/text/button.tscn" id="2_t6rsp"]
+[ext_resource type="Texture2D" uid="uid://cnbjewhsrh73y" path="res://icon.svg" id="2_fyxyx"]
 
 [node name="TextMessage" type="CanvasLayer"]
 process_mode = 3
 script = ExtResource("1_j40x3")
-button_scene = ExtResource("2_t6rsp")
 
-[node name="TextColdown" type="Timer" parent="."]
-wait_time = 0.5
-one_shot = true
-
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="BaseNode" type="Control" parent="."]
+unique_name_in_owner = true
+layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 32
-theme_override_constants/margin_top = 32
-theme_override_constants/margin_right = 32
-theme_override_constants/margin_bottom = 32
 
-[node name="ColorRect" type="ColorRect" parent="MarginContainer"]
-custom_minimum_size = Vector2(2.08165e-12, 200)
-layout_mode = 2
-size_flags_vertical = 8
-color = Color(0.109804, 0.109804, 0.109804, 1)
-
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
-custom_minimum_size = Vector2(2.08165e-12, 200)
-layout_mode = 2
-size_flags_vertical = 8
-
-[node name="Spacer" type="Control" parent="MarginContainer/HBoxContainer"]
-custom_minimum_size = Vector2(10, 2.08165e-12)
-layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer"]
-custom_minimum_size = Vector2(180, 180)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-
-[node name="Spacer2" type="Control" parent="MarginContainer/HBoxContainer"]
-custom_minimum_size = Vector2(30, 2.08165e-12)
-layout_mode = 2
-
-[node name="Label" type="Label" parent="MarginContainer/HBoxContainer"]
-custom_minimum_size = Vector2(2.08165e-12, 180)
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 64
-text = "THIS IS A PLACEHOLDER TEXT"
-autowrap_mode = 2
-visible_characters = 0
-visible_ratio = 0.0
-
-[node name="Spacer3" type="Control" parent="MarginContainer/HBoxContainer"]
-custom_minimum_size = Vector2(10, 2.08165e-12)
-layout_mode = 2
-
-[node name="Control" type="Control" parent="MarginContainer"]
-layout_mode = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Control"]
+[node name="ColorRect" type="ColorRect" parent="BaseNode"]
 layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -241.0
-offset_top = -119.5
-offset_bottom = 119.5
-grow_horizontal = 0
-grow_vertical = 2
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -598.0
+offset_top = -232.0
+offset_right = 599.0
+offset_bottom = -39.0
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(0, 0, 0, 1)
+
+[node name="Message" type="Label" parent="BaseNode"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -579.0
+offset_top = -216.0
+offset_right = 580.0
+offset_bottom = -56.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 50
+text = "Placeholder message to show how it should look and to see the breaking point"
+autowrap_mode = 3
+text_overrun_behavior = 2
+
+[node name="CharName" type="Label" parent="BaseNode"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -35.0
+offset_top = -275.0
+offset_right = 582.0
+offset_bottom = -203.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 40
+theme_override_font_sizes/font_size = 40
+text = "Long Name"
+horizontal_alignment = 2
+
+[node name="Profile" type="TextureRect" parent="BaseNode"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -586.0
+offset_top = -344.0
+offset_right = -466.0
+offset_bottom = -224.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("2_fyxyx")
+expand_mode = 4

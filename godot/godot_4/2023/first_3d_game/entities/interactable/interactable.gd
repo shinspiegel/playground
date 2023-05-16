@@ -6,8 +6,12 @@ signal blur()
 
 @export var focused: bool = false
 
+@onready var colddown: Timer = $Colddown
+
 func interact() -> void:
-	interacted.emit()
+	if colddown.time_left <= 0:
+		interacted.emit()
+		colddown.start()
 
 
 func grab_focus() -> void:
