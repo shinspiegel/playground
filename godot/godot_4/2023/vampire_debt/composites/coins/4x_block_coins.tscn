@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://bf3ylg4a0xs3g"]
+
+[ext_resource type="PackedScene" uid="uid://vcsq4niwot4j" path="res://entities/coin.tscn" id="1_rou7g"]
+
+[node name="5xBlockCoins" type="Node3D"]
+
+[node name="Coin" parent="." instance=ExtResource("1_rou7g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.2, -0.5)
+anim_skip = 0.1
+
+[node name="Coin2" parent="." instance=ExtResource("1_rou7g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.2, 0.5)
+anim_skip = 0.4
+
+[node name="Coin3" parent="." instance=ExtResource("1_rou7g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.2, -0.5)
+anim_skip = 0.2
+
+[node name="Coin4" parent="." instance=ExtResource("1_rou7g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.2, 0.5)
+anim_skip = 0.5

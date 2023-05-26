@@ -1,0 +1,89 @@
+[gd_scene load_steps=8 format=3 uid="uid://vcsq4niwot4j"]
+
+[ext_resource type="ArrayMesh" uid="uid://cge2fuclikg8j" path="res://assets/models/coinGold.obj" id="1_nii57"]
+[ext_resource type="Script" path="res://entities/coin.gd" id="1_punm3"]
+[ext_resource type="AudioStream" uid="uid://l11hfbxm3nw5" path="res://assets/music_sfx/coin.wav" id="2_hu5io"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_vj74u"]
+height = 0.2
+radius = 0.4
+
+[sub_resource type="Animation" id="Animation_bxj6b"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CoinGold:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_u5k57"]
+resource_name = "animate"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(3.48787e-16, 3.14159, 3.48787e-16)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CoinGold:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(2.08165e-12, 0.05, 2.08165e-12), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wcyej"]
+_data = {
+"RESET": SubResource("Animation_bxj6b"),
+"animate": SubResource("Animation_u5k57")
+}
+
+[node name="Coin" type="Area3D"]
+script = ExtResource("1_punm3")
+sfx = ExtResource("2_hu5io")
+
+[node name="CoinGold" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+mesh = ExtResource("1_nii57")
+skeleton = NodePath("../../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 1.57853e-24, -4.02214e-24, -4.37114e-08, -1, 0, 1, -4.37114e-08, 3.48787e-17, 0.3, -3.48787e-17)
+shape = SubResource("CylinderShape3D_vj74u")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "animate"
+libraries = {
+"": SubResource("AnimationLibrary_wcyej")
+}

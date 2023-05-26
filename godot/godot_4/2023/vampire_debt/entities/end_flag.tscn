@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://j8ivgdiek1ff"]
+
+[ext_resource type="Script" path="res://entities/end_flag.gd" id="1_mxo30"]
+[ext_resource type="ArrayMesh" uid="uid://cx3dwltkgs56g" path="res://assets/models/flag.obj" id="2_g77hg"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_405u0"]
+height = 1.8
+radius = 0.3
+
+[node name="EndFlag" type="Area3D"]
+script = ExtResource("1_mxo30")
+
+[node name="Flag" type="MeshInstance3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+mesh = ExtResource("2_g77hg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+shape = SubResource("CylinderShape3D_405u0")

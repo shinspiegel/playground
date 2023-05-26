@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://chv6muawsyju0"]
+
+[ext_resource type="PackedScene" uid="uid://cbmmhtuih5cud" path="res://entities/ground_spike.tscn" id="1_1hbef"]
+
+[node name="2xLineSpike" type="Node3D"]
+
+[node name="GroundSpike" parent="." instance=ExtResource("1_1hbef")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, -0.5)
+
+[node name="GroundSpike2" parent="." instance=ExtResource("1_1hbef")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 0.5)
+
+[node name="GroundSpike3" parent="." instance=ExtResource("1_1hbef")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, -0.5)
+
+[node name="GroundSpike4" parent="." instance=ExtResource("1_1hbef")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0.5)

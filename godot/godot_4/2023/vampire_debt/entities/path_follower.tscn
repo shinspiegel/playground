@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://cyv26jd4i4uh1"]
+
+[ext_resource type="Script" path="res://entities/path_follower.gd" id="1_h2xkv"]
+
+[sub_resource type="Curve3D" id="Curve3D_wjpp7"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2.08165e-12, 3, 2.08165e-12),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[node name="PathFollower" type="Path3D"]
+curve = SubResource("Curve3D_wjpp7")
+script = ExtResource("1_h2xkv")
+
+[node name="Colddown" type="Timer" parent="."]
+one_shot = true
+
+[node name="PathFollow3D" type="PathFollow3D" parent="."]
+transform = Transform3D(0.999999, 0, 0, 0, 0.99998, 0, 0, 0, 0.999999, 0, 0, 0)
+rotation_mode = 0

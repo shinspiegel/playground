@@ -1,0 +1,39 @@
+[gd_scene load_steps=4 format=3 uid="uid://bfuukpoueice5"]
+
+[ext_resource type="PackedScene" uid="uid://cyv26jd4i4uh1" path="res://entities/path_follower.tscn" id="1_b7e3i"]
+[ext_resource type="PackedScene" uid="uid://dqnh3tq5rphv0" path="res://entities/spike_enemy.tscn" id="2_daus5"]
+
+[sub_resource type="Curve3D" id="Curve3D_p8wal"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2.08165e-12, 3, 2.08165e-12),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[node name="3xLineUpSpike" type="Node3D"]
+
+[node name="PathFollower" parent="." instance=ExtResource("1_b7e3i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -1)
+curve = SubResource("Curve3D_p8wal")
+metadata/_edit_group_ = true
+
+[node name="SpikeEnemy" parent="PathFollower" instance=ExtResource("2_daus5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+
+[node name="PathFollower2" parent="." instance=ExtResource("1_b7e3i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+curve = SubResource("Curve3D_p8wal")
+delay_time = 0.25
+metadata/_edit_group_ = true
+
+[node name="SpikeEnemy" parent="PathFollower2" instance=ExtResource("2_daus5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+
+[node name="PathFollower3" parent="." instance=ExtResource("1_b7e3i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 1)
+curve = SubResource("Curve3D_p8wal")
+delay_time = 0.5
+metadata/_edit_group_ = true
+
+[node name="SpikeEnemy" parent="PathFollower3" instance=ExtResource("2_daus5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)

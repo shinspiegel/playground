@@ -1,0 +1,118 @@
+[gd_scene load_steps=9 format=3 uid="uid://bkmi58rlfal7u"]
+
+[ext_resource type="Script" path="res://levels/level.gd" id="1_ihukq"]
+[ext_resource type="PackedScene" uid="uid://1ouyfmmdwec1" path="res://ui/game_ui.tscn" id="2_qcgc1"]
+[ext_resource type="PackedScene" uid="uid://owxppbi6qgh8" path="res://composites/coins/5x_line_coin.tscn" id="3_uj0ta"]
+[ext_resource type="PackedScene" uid="uid://b55nrc7tglefj" path="res://blocks/platform_large.tscn" id="4_7e4wx"]
+[ext_resource type="PackedScene" uid="uid://ct6mtr2nsrq" path="res://entities/tutorial_message.tscn" id="5_xe4mp"]
+[ext_resource type="PackedScene" uid="uid://j8ivgdiek1ff" path="res://entities/end_flag.tscn" id="8_nnana"]
+[ext_resource type="PackedScene" uid="uid://4yk5rqcvb58v" path="res://entities/player.tscn" id="10_epco0"]
+
+[sub_resource type="Environment" id="Environment_hlpg8"]
+background_mode = 1
+background_color = Color(0, 0.337255, 0.560784, 1)
+
+[node name="Level" type="Node3D"]
+script = ExtResource("1_ihukq")
+player_path = NodePath("Player")
+
+[node name="GameUI" parent="." instance=ExtResource("2_qcgc1")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_hlpg8")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.904339, -0.099144, -0.41514, 0.426593, 0.241331, 0.871652, 0.0137672, -0.965365, 0.260539, 0, 7, 0)
+shadow_enabled = true
+
+[node name="Coins" type="Node3D" parent="."]
+
+[node name="5xLineCoin" parent="Coins" instance=ExtResource("3_uj0ta")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 1, 4)
+
+[node name="Platforms" type="Node3D" parent="."]
+
+[node name="PlatformLarge" parent="Platforms" instance=ExtResource("4_7e4wx")]
+
+[node name="PlatformLarge2" parent="Platforms" instance=ExtResource("4_7e4wx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+
+[node name="PlatformLarge3" parent="Platforms" instance=ExtResource("4_7e4wx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0)
+
+[node name="PlatformLarge4" parent="Platforms" instance=ExtResource("4_7e4wx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 0)
+
+[node name="PlatformLarge5" parent="Platforms" instance=ExtResource("4_7e4wx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 2)
+
+[node name="PlatformLarge6" parent="Platforms" instance=ExtResource("4_7e4wx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 4)
+
+[node name="PlatformLarge7" parent="Platforms" instance=ExtResource("4_7e4wx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 4)
+
+[node name="PlatformLarge8" parent="Platforms" instance=ExtResource("4_7e4wx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 4)
+
+[node name="PlatformLarge9" parent="Platforms" instance=ExtResource("4_7e4wx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 4)
+
+[node name="PlatformLarge10" parent="Platforms" instance=ExtResource("4_7e4wx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, 4)
+
+[node name="PlatformLarge11" parent="Platforms" instance=ExtResource("4_7e4wx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 4)
+
+[node name="PlatformLarge12" parent="Platforms" instance=ExtResource("4_7e4wx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 0, 4)
+
+[node name="PlatformLarge13" parent="Platforms" instance=ExtResource("4_7e4wx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 0, 4)
+
+[node name="PlatformLarge14" parent="Platforms" instance=ExtResource("4_7e4wx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21, 1, 4)
+
+[node name="PlatformLarge15" parent="Platforms" instance=ExtResource("4_7e4wx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 2.5, 4)
+
+[node name="PlatformLarge16" parent="Platforms" instance=ExtResource("4_7e4wx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 5, 1)
+
+[node name="PlatformLarge17" parent="Platforms" instance=ExtResource("4_7e4wx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21, 7, 1)
+
+[node name="PlatformLarge18" parent="Platforms" instance=ExtResource("4_7e4wx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 8, 3)
+
+[node name="PlatformLarge19" parent="Platforms" instance=ExtResource("4_7e4wx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 8, 3)
+
+[node name="PlatformLarge20" parent="Platforms" instance=ExtResource("4_7e4wx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19, 8, 3)
+
+[node name="PlatformLarge21" parent="Platforms" instance=ExtResource("4_7e4wx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21, 8, 3)
+
+[node name="Hazards" type="Node3D" parent="."]
+
+[node name="Messages" type="Node3D" parent="."]
+
+[node name="TutorialMessage" parent="Messages" instance=ExtResource("5_xe4mp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -3.5)
+text = "Don't Fall"
+
+[node name="TutorialMessage2" parent="Messages" instance=ExtResource("5_xe4mp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.5, 2, 1)
+text = "Collect coins to pay the debt"
+
+[node name="TutorialMessage3" parent="Messages" instance=ExtResource("5_xe4mp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.5, 10, -1)
+text = "Get the flag and end this level"
+
+[node name="Player" parent="." instance=ExtResource("10_epco0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="EndFlag" parent="." instance=ExtResource("8_nnana")]
+transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, 15, 9, 3)
+next_scene = "1"

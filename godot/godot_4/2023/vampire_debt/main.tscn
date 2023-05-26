@@ -1,0 +1,249 @@
+[gd_scene load_steps=16 format=3 uid="uid://b6fd62ib4rg2j"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_li4fh"]
+[ext_resource type="PackedScene" uid="uid://b55nrc7tglefj" path="res://blocks/platform_large.tscn" id="1_thn3r"]
+[ext_resource type="ArrayMesh" uid="uid://gjuyfsvj5gs0" path="res://assets/models/characterVampire.obj" id="2_gia80"]
+[ext_resource type="AudioStream" uid="uid://di21l6oc0s7pp" path="res://assets/music_sfx/UI Simple Select.wav" id="2_n3p5v"]
+[ext_resource type="AudioStream" uid="uid://qtqosekm4tbd" path="res://assets/music_sfx/UI Simple Confirm.wav" id="3_r58bl"]
+[ext_resource type="PackedScene" uid="uid://vcsq4niwot4j" path="res://entities/coin.tscn" id="3_t5u26"]
+[ext_resource type="PackedScene" uid="uid://bkmi58rlfal7u" path="res://levels/level_0.tscn" id="4_shasm"]
+[ext_resource type="PackedScene" uid="uid://60r1yhwvcjes" path="res://ui/button.tscn" id="8_vmwmy"]
+
+[sub_resource type="Environment" id="Environment_s36x5"]
+background_mode = 1
+background_color = Color(0, 0.337255, 0.560784, 1)
+
+[sub_resource type="Gradient" id="Gradient_bkcj3"]
+offsets = PackedFloat32Array(0.00170358)
+colors = PackedColorArray(0.41024, 0.41024, 0.41024, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_1daqb"]
+gradient = SubResource("Gradient_bkcj3")
+width = 50
+height = 50
+fill_from = Vector2(0, 0.00213675)
+
+[sub_resource type="Gradient" id="Gradient_b2ku0"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_n48h3"]
+gradient = SubResource("Gradient_b2ku0")
+width = 50
+height = 50
+fill_from = Vector2(0, 0.00213675)
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_40jbj"]
+color = Color(0.145098, 0.145098, 0.145098, 1)
+thickness = 50
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_8h7tf"]
+color = Color(0.254902, 0.254902, 0.254902, 1)
+thickness = 50
+
+[node name="Main" type="Node3D"]
+script = ExtResource("1_li4fh")
+menu_select_sfx = ExtResource("2_n3p5v")
+menu_click_sfx = ExtResource("3_r58bl")
+first_level = ExtResource("4_shasm")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_s36x5")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.904339, -0.099144, -0.41514, 0.426593, 0.241331, 0.871652, 0.0137672, -0.965365, 0.260539, 0, 7, 0)
+shadow_enabled = true
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, -2, 3.5, 3.5)
+current = true
+fov = 60.0
+
+[node name="Char" type="Node3D" parent="."]
+
+[node name="PlatformLarge" parent="Char" instance=ExtResource("1_thn3r")]
+
+[node name="CharacterVampire" type="MeshInstance3D" parent="Char"]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 1, 0)
+mesh = ExtResource("2_gia80")
+skeleton = NodePath("../..")
+
+[node name="Coin" parent="Char" instance=ExtResource("3_t5u26")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1, 0.5)
+
+[node name="Coin2" parent="Char" instance=ExtResource("3_t5u26")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1)
+
+[node name="Coin3" parent="Char" instance=ExtResource("3_t5u26")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1, 0.5)
+
+[node name="Coin4" parent="Char" instance=ExtResource("3_t5u26")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1, -0.5)
+
+[node name="Coin5" parent="Char" instance=ExtResource("3_t5u26")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -1)
+
+[node name="Coin6" parent="Char" instance=ExtResource("3_t5u26")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1, -0.5)
+
+[node name="Coin7" parent="Char" instance=ExtResource("3_t5u26")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 0)
+
+[node name="Coin8" parent="Char" instance=ExtResource("3_t5u26")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, 0)
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="UI"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -518.5
+offset_top = 44.0
+offset_right = 518.5
+offset_bottom = 252.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 15
+theme_override_font_sizes/font_size = 150
+text = "Vampire Debt!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="UI"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -518.0
+offset_top = 252.0
+offset_right = 519.0
+offset_bottom = 365.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 80
+text = "Please help!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MainMenu" type="VBoxContainer" parent="UI"]
+custom_minimum_size = Vector2(500, 2.08165e-12)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -150.0
+offset_top = -166.0
+offset_right = 150.0
+offset_bottom = -48.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 20
+
+[node name="Start" parent="UI/MainMenu" instance=ExtResource("8_vmwmy")]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Start"
+
+[node name="Options" parent="UI/MainMenu" instance=ExtResource("8_vmwmy")]
+unique_name_in_owner = true
+layout_mode = 2
+text = "< Options"
+
+[node name="Quit" parent="UI/MainMenu" instance=ExtResource("8_vmwmy")]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Quit"
+
+[node name="OptionsMenu" type="VBoxContainer" parent="UI"]
+visible = false
+custom_minimum_size = Vector2(450, 2.08165e-12)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 48.0
+offset_top = -434.0
+offset_right = 498.0
+offset_bottom = -40.0
+grow_vertical = 0
+theme_override_constants/separation = 20
+alignment = 2
+
+[node name="Label" type="Label" parent="UI/OptionsMenu"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 80
+text = "Music"
+
+[node name="Music" type="HSlider" parent="UI/OptionsMenu"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_icons/grabber = SubResource("GradientTexture2D_1daqb")
+theme_override_icons/grabber_highlight = SubResource("GradientTexture2D_n48h3")
+theme_override_styles/slider = SubResource("StyleBoxLine_40jbj")
+theme_override_styles/grabber_area = SubResource("StyleBoxLine_8h7tf")
+max_value = 1.0
+step = 0.1
+value = 0.5
+
+[node name="Label2" type="Label" parent="UI/OptionsMenu"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 80
+text = "Sound"
+
+[node name="Sound" type="HSlider" parent="UI/OptionsMenu"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_icons/grabber = SubResource("GradientTexture2D_1daqb")
+theme_override_icons/grabber_highlight = SubResource("GradientTexture2D_n48h3")
+theme_override_styles/slider = SubResource("StyleBoxLine_40jbj")
+theme_override_styles/grabber_area = SubResource("StyleBoxLine_8h7tf")
+max_value = 1.0
+step = 0.1
+value = 0.5
+
+[node name="Back" parent="UI/OptionsMenu" instance=ExtResource("8_vmwmy")]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Back >"
+
+[node name="ControlsHint" type="VBoxContainer" parent="UI"]
+custom_minimum_size = Vector2(500, 2.08165e-12)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 32.0
+offset_top = -254.0
+offset_right = 532.0
+offset_bottom = -40.0
+grow_vertical = 0
+
+[node name="Label3" type="Label" parent="UI/ControlsHint"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Controls"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="UI/ControlsHint"]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 40
+theme_override_font_sizes/bold_font_size = 40
+theme_override_font_sizes/italics_font_size = 40
+theme_override_font_sizes/bold_italics_font_size = 40
+theme_override_font_sizes/mono_font_size = 40
+bbcode_enabled = true
+text = "Move: [b]Arrow[/b] or [b]WASD[/b]
+Jump: [b]Space[/b] or [b]Enter[/b]
+Menu: [b]Escape[/b]"
+fit_content = true
+scroll_active = false

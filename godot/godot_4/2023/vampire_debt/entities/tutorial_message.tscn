@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://ct6mtr2nsrq"]
+
+[node name="TutorialMessage" type="Label3D"]
+text = "Placeholder Message"
+font_size = 120
+outline_size = 20

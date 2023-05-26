@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://dq33hcfyjh2x0"]
+
+[ext_resource type="Script" path="res://globals/game_manager.gd" id="1_ymfsg"]
+[ext_resource type="Script" path="res://globals/level_manager.gd" id="2_d73lo"]
+
+[node name="GameManager" type="Node"]
+script = ExtResource("1_ymfsg")
+
+[node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
+
+[node name="LevelManager" type="Node" parent="."]
+script = ExtResource("2_d73lo")

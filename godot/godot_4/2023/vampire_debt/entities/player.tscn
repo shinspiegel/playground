@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://4yk5rqcvb58v"]
+
+[ext_resource type="Script" path="res://entities/player.gd" id="1_1b8u1"]
+[ext_resource type="ArrayMesh" uid="uid://gjuyfsvj5gs0" path="res://assets/models/characterVampire.obj" id="1_2fqnl"]
+[ext_resource type="AudioStream" uid="uid://cs4mvjgqhmgl3" path="res://assets/music_sfx/attack_monster.wav" id="2_n6jum"]
+[ext_resource type="AudioStream" uid="uid://c3wth8q3x48g4" path="res://assets/music_sfx/die_knight.wav" id="3_ris67"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_b4vxv"]
+radius = 0.3
+height = 1.2
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_1b8u1")
+jump_sfx = ExtResource("2_n6jum")
+death_sfx = ExtResource("3_ris67")
+
+[node name="CharacterVampire" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+mesh = ExtResource("1_2fqnl")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
+shape = SubResource("CapsuleShape3D_b4vxv")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 4.5, 4.7)
+current = true
+fov = 60.0
