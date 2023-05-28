@@ -12,8 +12,8 @@ const min_score: int = 15
 
 var start_Score: int = 0
 var score: int = 0
-var music_volume: float = 1.0
-var sfx_volume: float = 1.0
+var music_volume: float = .1
+var sfx_volume: float = .1
 
 
 func increase_score(amount: int) -> void:
@@ -28,7 +28,7 @@ func reset_score_to_start_level() -> void:
 
 
 ## Update the start of the level score
-func update_start_score() -> void:
+func save_score() -> void:
 	start_Score = score
 
 

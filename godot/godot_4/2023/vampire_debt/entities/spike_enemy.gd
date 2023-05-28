@@ -7,4 +7,4 @@ func _ready() -> void:
 
 func on_body_entered(body: Node3D) -> void:
 	if body is Player: 
-		GameManager.reload_current_scene()
+		GameManager.level_manager.reload_current_scene()

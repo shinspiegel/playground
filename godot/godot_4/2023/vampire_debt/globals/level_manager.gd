@@ -15,6 +15,7 @@ func reload_current_scene() -> void:
 
 func load_level(level: String) -> void:
 	if levels.has(level): 
+		GameManager.save_score()
 		get_tree().change_scene_to_packed(levels[level])
 	else:
 		print_debug("Failed to load level with key:: [%s]" % [level])

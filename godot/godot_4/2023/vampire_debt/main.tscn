@@ -1,13 +1,13 @@
 [gd_scene load_steps=16 format=3 uid="uid://b6fd62ib4rg2j"]
 
-[ext_resource type="Script" path="res://main.gd" id="1_li4fh"]
-[ext_resource type="PackedScene" uid="uid://b55nrc7tglefj" path="res://blocks/platform_large.tscn" id="1_thn3r"]
-[ext_resource type="ArrayMesh" uid="uid://gjuyfsvj5gs0" path="res://assets/models/characterVampire.obj" id="2_gia80"]
-[ext_resource type="AudioStream" uid="uid://di21l6oc0s7pp" path="res://assets/music_sfx/UI Simple Select.wav" id="2_n3p5v"]
-[ext_resource type="AudioStream" uid="uid://qtqosekm4tbd" path="res://assets/music_sfx/UI Simple Confirm.wav" id="3_r58bl"]
-[ext_resource type="PackedScene" uid="uid://vcsq4niwot4j" path="res://entities/coin.tscn" id="3_t5u26"]
-[ext_resource type="PackedScene" uid="uid://bkmi58rlfal7u" path="res://levels/level_0.tscn" id="4_shasm"]
-[ext_resource type="PackedScene" uid="uid://60r1yhwvcjes" path="res://ui/button.tscn" id="8_vmwmy"]
+[ext_resource type="Script" path="res://main.gd" id="1_1v3mp"]
+[ext_resource type="AudioStream" uid="uid://di21l6oc0s7pp" path="res://assets/music_sfx/UI Simple Select.wav" id="2_pykva"]
+[ext_resource type="AudioStream" uid="uid://qtqosekm4tbd" path="res://assets/music_sfx/UI Simple Confirm.wav" id="3_eh3o4"]
+[ext_resource type="PackedScene" uid="uid://bkmi58rlfal7u" path="res://levels/level_0.tscn" id="4_c7yqu"]
+[ext_resource type="PackedScene" uid="uid://b55nrc7tglefj" path="res://blocks/platform_large.tscn" id="5_00e2a"]
+[ext_resource type="ArrayMesh" uid="uid://gjuyfsvj5gs0" path="res://assets/models/characterVampire.obj" id="6_36i2c"]
+[ext_resource type="PackedScene" uid="uid://vcsq4niwot4j" path="res://entities/coin.tscn" id="7_tald7"]
+[ext_resource type="PackedScene" uid="uid://60r1yhwvcjes" path="res://ui/button.tscn" id="8_ceuh2"]
 
 [sub_resource type="Environment" id="Environment_s36x5"]
 background_mode = 1
@@ -42,10 +42,10 @@ color = Color(0.254902, 0.254902, 0.254902, 1)
 thickness = 50
 
 [node name="Main" type="Node3D"]
-script = ExtResource("1_li4fh")
-menu_select_sfx = ExtResource("2_n3p5v")
-menu_click_sfx = ExtResource("3_r58bl")
-first_level = ExtResource("4_shasm")
+script = ExtResource("1_1v3mp")
+menu_select_sfx = ExtResource("2_pykva")
+menu_click_sfx = ExtResource("3_eh3o4")
+first_level = ExtResource("4_c7yqu")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_s36x5")
@@ -61,35 +61,35 @@ fov = 60.0
 
 [node name="Char" type="Node3D" parent="."]
 
-[node name="PlatformLarge" parent="Char" instance=ExtResource("1_thn3r")]
+[node name="PlatformLarge" parent="Char" instance=ExtResource("5_00e2a")]
 
 [node name="CharacterVampire" type="MeshInstance3D" parent="Char"]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 1, 0)
-mesh = ExtResource("2_gia80")
+mesh = ExtResource("6_36i2c")
 skeleton = NodePath("../..")
 
-[node name="Coin" parent="Char" instance=ExtResource("3_t5u26")]
+[node name="Coin" parent="Char" instance=ExtResource("7_tald7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1, 0.5)
 
-[node name="Coin2" parent="Char" instance=ExtResource("3_t5u26")]
+[node name="Coin2" parent="Char" instance=ExtResource("7_tald7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1)
 
-[node name="Coin3" parent="Char" instance=ExtResource("3_t5u26")]
+[node name="Coin3" parent="Char" instance=ExtResource("7_tald7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1, 0.5)
 
-[node name="Coin4" parent="Char" instance=ExtResource("3_t5u26")]
+[node name="Coin4" parent="Char" instance=ExtResource("7_tald7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1, -0.5)
 
-[node name="Coin5" parent="Char" instance=ExtResource("3_t5u26")]
+[node name="Coin5" parent="Char" instance=ExtResource("7_tald7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -1)
 
-[node name="Coin6" parent="Char" instance=ExtResource("3_t5u26")]
+[node name="Coin6" parent="Char" instance=ExtResource("7_tald7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1, -0.5)
 
-[node name="Coin7" parent="Char" instance=ExtResource("3_t5u26")]
+[node name="Coin7" parent="Char" instance=ExtResource("7_tald7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 0)
 
-[node name="Coin8" parent="Char" instance=ExtResource("3_t5u26")]
+[node name="Coin8" parent="Char" instance=ExtResource("7_tald7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, 0)
 
 [node name="UI" type="Control" parent="."]
@@ -150,17 +150,17 @@ grow_horizontal = 2
 grow_vertical = 0
 theme_override_constants/separation = 20
 
-[node name="Start" parent="UI/MainMenu" instance=ExtResource("8_vmwmy")]
+[node name="Start" parent="UI/MainMenu" instance=ExtResource("8_ceuh2")]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Start"
 
-[node name="Options" parent="UI/MainMenu" instance=ExtResource("8_vmwmy")]
+[node name="Options" parent="UI/MainMenu" instance=ExtResource("8_ceuh2")]
 unique_name_in_owner = true
 layout_mode = 2
 text = "< Options"
 
-[node name="Quit" parent="UI/MainMenu" instance=ExtResource("8_vmwmy")]
+[node name="Quit" parent="UI/MainMenu" instance=ExtResource("8_ceuh2")]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Quit"
@@ -212,7 +212,7 @@ max_value = 1.0
 step = 0.1
 value = 0.5
 
-[node name="Back" parent="UI/OptionsMenu" instance=ExtResource("8_vmwmy")]
+[node name="Back" parent="UI/OptionsMenu" instance=ExtResource("8_ceuh2")]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Back >"
