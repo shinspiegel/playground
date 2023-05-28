@@ -110,6 +110,7 @@ const title = `Hack SRS - ${extraTitle}`;
     h5,
     h6 {
       color: var(--primary);
+      margin-top: 0.6rem;
       margin-bottom: 1rem;
       font-size: 1.8rem;
       text-align: center;
@@ -176,8 +177,12 @@ const title = `Hack SRS - ${extraTitle}`;
         padding: 0.2rem 1rem 0.2rem 1rem;
       }
 
-      tr:has(td:hover) {
-        background-color: var(--background-tint);
+      tr {
+        background: var(--background);
+
+        &:nth-child(even) {
+          background: var(--background-tint);
+        }
       }
     }
   </style>

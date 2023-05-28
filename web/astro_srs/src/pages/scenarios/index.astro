@@ -1,0 +1,23 @@
+---
+import AstroLayout from "../../layouts/AstroLayout.astro";
+
+const entries = await Astro.glob("./*.mdx")
+  .then((list) => {
+    list.sort((a, b) => b.frontmatter.date.localeCompare(a.frontmatter.date));
+    return list;
+  })
+  .then((list) => list.map((item) => ({ url: item.url, name: item.frontmatter.title })));
+---
+
+<AstroLayout>
+  <h1>This is the title</h1>
+  <ul>
+    {
+      entries.map((entry) => (
+        <a href={entry.url}>
+          <li>{entry.name}</li>
+        </a>
+      ))
+    }
+  </ul>
+</AstroLayout>

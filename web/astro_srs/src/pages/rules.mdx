@@ -73,9 +73,11 @@ Because 13 is greater of equal the _Difficulty Value_, this is a success.
 
 When one character's actions are interfered with or opposed by another character, an Opposed Action Test results.
 
-### Actions and Reactions
+### Agressor and Defender
 
-The two (or more) characters involved in the opposed test are called the **Agressor** (who performs the main Action) and the **Defender** (who performs the opposing Reaction). To determine the outcome of the test, the **Agressor** and **Defender** both make tests using only steps 2-4 of the main [Action Resolution rules](#action-resolution-steps); the **Agressor** should give his result before the **Defender** tests. There's no need to set a difficulty, but circumstantial bonuses or penalties can be applied as normal. If it's unclear which character is the **Agressor** and which the **Defender**, whoever announced the action first is the **Agressor**.
+The two (or more) characters involved in the opposed test are called the **Agressor** (who performs the main Action) and the **Defender** (who performs the opposing Reaction). To determine the outcome of the test, the **Agressor** and **Defender** both make tests using only steps 2-4 of the main [Action Resolution rules](#action-resolution-steps).
+
+The **Agressor** should give his result before the **Defender** tests. In most cases there's no need to set a difficulty, but circumstantial bonuses or penalties can be applied as normal, other cases the agressor is required to succeed an specific difficult value prior to the defender roll his test. If it's unclear which character is the Agressor and which the Defender, whoever announced the action first is the **Agressor**.
 
 ### Unable to Act
 
@@ -99,13 +101,112 @@ At this moment the step 4 starts, the player have a total of 10 (6 + 4 = 10), an
 
 Should both parties achieve the same Result, the **Defender** wins. This is called the _Rule of Defense Primacy_ because the most common Reactions are defensive ones.
 
-### Criticals
+### Critical
 
 If the Actor achieves a Critical and the **Defender** does not, the Actor wins. On the other hand, if the **Defender** achieves a Critical, due to the "Rule of Defense Primacy", the **Defender** wins regardless of whether the Actor also achieved a Critical.
 
 ### Fumble
 
 If the Actor Fumbles, the **Defender** wins and there is no need for the **Defender** to test at all. If the **Defender** Fumbles, the Actor wins regardless of Result.
+
+# Combat
+
+This section of the game provides rules and guidelines for resolving combat situations. Learn how to utilize your character's attributes, combat values, and special abilities to overcome adversaries and emerge victorious.
+
+When a diplomatic solution fails, a combat starts. Use the combat resolution steps to help you on how to proceed with a combat.
+
+<ExampleBox>
+  A **Player Character** after failing to negociate safe passage through the bandit camp will be assaulted by the three
+  enemy **Bandits**. The next examples will assume this combat example.
+</ExampleBox>
+
+## Combat Resolution Steps
+
+1. **Determine the Initiative**
+
+   Every combatant should make a [Speed](/characters#combat-values) test, there is no difficult value for this test, the higher the better. The result will de balled _initiative value_ and will be used for the combat.
+
+   In case of tie make an [opposed](#opposed-actions) [Speed](/characters#combat-values) test to tie break.
+
+   <ExampleBox>
+   For this example round, let's have the following initiative values:
+
+      - **Bandit A** - 18
+      - **Player** - 15
+      - **Bandit B** - 15
+      - **Bandit C** - 12
+
+    The player and bandit B makes a speed test to decide the tie break, the player wins the keep on the previous order.
+    </ExampleBox>
+
+2. **Taking a turn** (and deciding the actions)
+
+   Once every combatant have a their initiative value, from the **highest** to the **lowest** will take an actions for the round. A single major and minor action will be taken on each round. That means that the fastest combatant will take action first.
+
+   On each combatant turn it can take actions, like Full, Major or Minor.
+
+3. **Should continue the combat?**
+
+   After all the combatants finished the turn, a total of approximated 10s passed in the combat. If there is still willing combatants to fight, repeat step 2.
+
+## Taking a turn (and deciding the actions)
+
+On your turn three steps happen,
+
+1. **Start of the turn**: Some techniques and spells affects this step of the turn.
+2. **Take actions**: This is the action that the character chooses happening.
+3. **End of the turn**: Some techniques and spells affects this steps of the turn.
+
+When you take action you need to choose one of the following:
+
+- Take a **Full action**, or
+- Take a **Major** and a **Minor** action, or
+- Take two **Minor** actions.
+
+An Full Action, this is a complex and demanding action. Requiring the full focus of the character attention for the turn. A Major Action, this is a complex action, but does not demand full attention. And a Minor Action, this is a simple task, that does not require focus. If the character take a minor he can also take a
+
+## Actions List
+
+This is a simplified list of possible actions that you can take withing a single turn. Some actions may require more time to prepare, in this case they count as full action, and require multiple of these actions to complete the intended action.
+
+- **Full Action list**
+  - *Full move*: This is full move. Usually _[Skirmish x 2]_
+  - *Ranged attacks*: A basic ranged attack that require you to aim and shot.
+  - *Spell Attacks*: Most of the spells that attacks use this action.
+  - *Use a complex Item*: Some specific items are considered complex to use, in this case require the usage of this action.
+- **Major Action list**\_
+  - *Skirmish move*: This is a quick movement. Usually _[REF +5]_
+  - *Melee attacks*: Most of the melee attacks use the major action.
+  - *Techniques*: Most of the techniques use this action.
+  - *Spells Effect*: Most of the spells that does not create a harmful effect use this action.
+- **Minor Action List**
+  - *Short Move*: This is a quick movement. Usually _[REF]_
+  - *Use Item*: Most of the items require this action.
+  - *Interact with the environment*: Most of the interaction with the environment use this action.
+  - *Draw/Stow weapon*: Most of the weapons use this action to draw or stow it.
+  - *Reload weapon*: Most ranged weapons that require to reload use this action to reload.
+
+## Making an melee or ranged attack
+
+An melee or ranged attack is in most cases a simple [opposed test](#opposed-actions), the attacker (aka agressor) will test [hit](/characters#combat-values) against the defender [dodge](/characters#combat-values).
+
+If the attacker succeed, it will cause damage. In the common attacks, the damage is equal to _[1d6 + [Attack Power](/characters#combat-values)]_. The defender will reduce this value from his armor if it concedes protection against the damage type. If the remaining value is greater than zero, the defender then reduces his [current Vitality](/characters#combat-values) with the remaining.
+
+## Casting a spell
+
+If the character wants to cast a spell it needs to make a spellcasting [magic](/characters#combat-values) test. The difficult value is according to the spell that the caster wants to use. If the spell affects an target, this is considered an [opposed test](#opposed-actions) by the [anti-magic](/characters#combat-values) of the defender.
+
+If the caster succeed the difficult value the spell was correct spellcasted and the caster reduced the MP by the spell cost.
+
+If the spell deals damage, the damage and damage type will be described in the spell, if the spells affects the target the caster rolls the damage and the target reduces this value by it's armor if it concedes protection against the damage type. If the remaining value is greater than zero, the defender then reduces his [current Vitality](/characters#combat-values) with the remaining.
+
+## Using a Technique
+
+Most of the techniques requires the user to make a test, the technique will describe and define which attribute or combat value will be used to make this test, and the difficult value. If the technique affects an unwilling target, this is considered an [opposed test](#opposed-actions), the technique also defines the defender attribute or combat value that will be used.
+
+If user succeed the difficult value the technique was used and the cost (if any) should be reduced from the character.
+
+If the technique deals damage, the damage and damage type will be described in the technique, if the techniques affects the target the user rolls the damage and the target reduces this value by it's armor if it concedes protection against the damage type. If the remaining value is greater than zero, the defender then reduces his [current Vitality](/characters#combat-values) with the remaining.
 
 # Structure of Play
 

@@ -53,7 +53,7 @@ For the remanding of this document, the attribute name in square brackets means 
 
 <ExampleBox>
 
-For example, if a character has a **[Strength]** value of 12, their **[STR]** modifier would be 4 (12 divided by 3, rounded down).
+For example, if a character has a **[Strength]** value of 13, their **[STR]** modifier would be 4 (13 divided by 3, rounded down).
 
 </ExampleBox>
 
@@ -76,20 +76,20 @@ Combat Values are derived from Attributes and are mainly used in combat (as the 
 **Spirit**: This attribute reflects a character's mental fortitude and can also be used as a resource to power certain abilities, such as spells or special
 attacks.
 
-**Attack Power**: A modifier added to damage dealt in combat.
+**Attack Power**: A modifier added to weapon damage dealt in combat.
 
 ### The initial values
 
 All the combat values are derived from the [attributes](#attributes). This is how you calculate each one of them:
 
-- **Hit**: [REF + PER / 2]
-- **Dodge**: [REF + LUC / 2]
-- **Magic**: [INT + PER / 2]
-- **Anti-magic**: [INT + LUC / 2 ]
-- **Speed**: [REF + INT / 2]
-- **Vitality**: [Strength]
-- **Spirit**: [Will]
-- **Attack Power**: [0]
+- **Hit**: [ ( REF + PER ) ÷ 2]
+- **Dodge**: [ ( REF + LUC ) ÷ 2]
+- **Magic**: [ ( INT + PER ) ÷ 2]
+- **Anti-magic**: [ ( INT + LUC ) ÷ 2 ]
+- **Speed**: [ ( REF + INT ) ÷ 2]
+- **Vitality**: [ Strength ]
+- **Spirit**: [ Will ]
+- **Attack Power**: [ 0 ]
 
 ### Vitality and Spirit
 
@@ -174,13 +174,13 @@ Every thing that is external of the character, like weapons and armor are divide
 
 ## Movement Range
 
-Characters have a Movement Range statistic, which outlines how far they may travel in a set period of time.
+Characters have a Movement Range statistic, which outlines how far they may travel in meters in a set period of time.
 
-**Short move**: This refers to a character's ability to move a short distance. This movement does not consume any action.
+**Short move**: This refers to a character's ability to move a short distance. The value is equal to character _[REF]_.
 
-**Skirmish move**: This refers to a character's ability to move a medium distance, this uses a [Minor Action](#)
+**Skirmish move**: This refers to a character's ability to move a medium distance. The value is equal to character _[REF + 5]_
 
-**Full move**: This refers to a character's ability to move a long distance, this uses a [Major Actions](#)
+**Full move**: This refers to a character's ability to move a long distance. The value is equal to character _[Skirmish x 2]_
 
 ## Completing Construction
 
