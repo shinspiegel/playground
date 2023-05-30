@@ -1,53 +1,15 @@
----
-type Link = {
-  name: string;
-  target: string;
-};
-
-const links: Link[] = [
-  { name: "Home", target: "/" },
-  { name: "Basic Rules", target: "/basic-rules" },
-  { name: "Rules", target: "/rules" },
-  { name: "Characters", target: "/characters" },
-  { name: "Classes", target: "/classes" },
-  { name: "About", target: "/about" },
-];
----
-
-<header>
-  <nav>
-    <ul>
-      {
-        links.map(({ name, target }) => (
-          <a href={target}>
-            <li>{name}</li>
-          </a>
-        ))
-      }
-    </ul>
-  </nav>
-</header>
+<header>SRS Hack!</header>
 
 <style lang="scss">
   header {
     width: 100%;
     border-bottom: 1px solid var(--primary);
     margin-bottom: 2rem;
-    overflow-x: scroll;
-    overflow-y: hidden;
+    text-align: center;
 
-    ul {
-      width: max-content;
-      list-style: none;
-      display: flex;
-      margin: 0 auto;
-      padding: 0;
-    }
-
-    li {
-      min-width: 4rem;
-      padding: 1rem;
-      white-space: nowrap;
+    @media (min-width: 768px) {
+      margin-bottom: 0;
+      border: none;
     }
   }
 </style>

@@ -1,0 +1,132 @@
+---
+type Link = {
+  name: string;
+  target: string;
+};
+
+const links: Link[] = [
+  { name: "Home", target: "/" },
+  { name: "Basic Rules", target: "/basic-rules" },
+  { name: "Game Rules", target: "/rules" },
+  { name: "Characters", target: "/characters" },
+  { name: "Classes", target: "/classes" },
+  { name: "Scenarios", target: "/scenarios" },
+  { name: "About", target: "/about" },
+];
+---
+
+<aside id="navigation" data-is-open="false">
+  <button id="navigation-button">{"Open >"}</button>
+
+  <nav>
+    <ul>
+      {
+        links.map(({ name, target }) => (
+          <li>
+            <a href={target}>{name}</a>
+          </li>
+        ))
+      }
+    </ul>
+  </nav>
+</aside>
+
+<style lang="scss">
+  #navigation {
+    @media (max-width: 767px) {
+      padding: 0 1rem;
+      position: fixed;
+      left: 0;
+      top: 0;
+      height: 100vh;
+      width: 15rem;
+      z-index: 100;
+      transition: all ease 0.3s;
+      background: var(--background);
+
+      nav {
+        padding: 2rem 0;
+        overflow-y: scroll;
+        overflow-x: hidden;
+        height: 100%;
+      }
+
+      &[data-is-open="true"] {
+        transform: translateX(0);
+      }
+
+      &[data-is-open="false"] {
+        transform: translateX(-100%);
+      }
+    }
+
+    @media (min-width: 768px) {
+      position: initial;
+      margin-bottom: 2rem;
+      border-bottom: 1px solid var(--primary);
+      width: 100%;
+      display: flex;
+      justify-content: center;
+
+      nav {
+        overflow-y: hidden;
+        overflow-x: scroll;
+      }
+    }
+  }
+
+  #navigation-button {
+    padding: 1rem;
+    position: absolute;
+    border: none;
+    bottom: 1rem;
+    left: 15rem;
+    z-index: 110;
+    width: 8rem;
+
+    @media (min-width: 768px) {
+      display: none;
+    }
+  }
+
+  ul {
+    margin: 0.6rem 0;
+
+    ul {
+      margin-left: 1rem;
+      font-size: 1.5rem;
+    }
+
+    li {
+      list-style: none;
+      white-space: nowrap;
+    }
+
+    @media (min-width: 768px) {
+      display: flex;
+
+      li:not(:last-child) {
+        margin-right: 1rem;
+      }
+    }
+  }
+</style>
+
+<script>
+  const navigation = document.getElementById("navigation");
+  const navButton = document.getElementById("navigation-button");
+
+  if (navigation && navButton) {
+    navButton.addEventListener("click", (ev) => clickHandler(ev, navigation, navButton));
+  }
+
+  function clickHandler(ev: Event, nav: Element, btn: Element) {
+    if (nav.getAttribute("data-is-open") === "true") {
+      nav.setAttribute("data-is-open", "false");
+      btn.innerHTML = "Open >";
+    } else {
+      nav.setAttribute("data-is-open", "true");
+      btn.innerHTML = "< Close";
+    }
+  }
+</script>

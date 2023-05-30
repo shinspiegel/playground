@@ -2,6 +2,7 @@
 import Footer from "../components/Footer.astro";
 import Header from "../components/Header.astro";
 import Main from "../components/Main.astro";
+import Navigation from "../components/Navigation.astro";
 import ScrollTopButton from "../components/ScrollTopButton.astro";
 
 export interface Props {
@@ -24,6 +25,8 @@ const title = `Hack SRS - ${extraTitle}`;
 
   <body>
     <Header />
+
+    <Navigation />
 
     <Main>
       <ScrollTopButton />
@@ -52,7 +55,7 @@ const title = `Hack SRS - ${extraTitle}`;
     *::before {
       margin: 0px;
       padding: 0px;
-      box-sizing: content-box;
+      box-sizing: border-box;
     }
 
     html {
@@ -156,6 +159,7 @@ const title = `Hack SRS - ${extraTitle}`;
       border-spacing: 0rem;
       margin-top: 1rem;
       margin-bottom: 2rem;
+      overflow-x: scroll;
 
       th,
       td {
@@ -175,10 +179,11 @@ const title = `Hack SRS - ${extraTitle}`;
 
       td {
         padding: 0.2rem 1rem 0.2rem 1rem;
+        max-width: 50vw;
       }
 
       tr {
-        background: var(--background);
+        // background: var(--background);
 
         &:nth-child(even) {
           background: var(--background-tint);
