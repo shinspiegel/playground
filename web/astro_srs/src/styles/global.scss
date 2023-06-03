@@ -1,0 +1,154 @@
+// Variables
+:root {
+  --background: rgb(2, 9, 19);
+  --background-tint: rgb(8, 25, 49);
+  --text: rgb(216, 226, 233);
+  --faded-text: rgb(60, 67, 78);
+  --primary: rgb(236, 102, 18);
+  --primary-tint: rgb(234, 151, 42);
+  --primary-shade: rgb(205, 41, 16);
+  --link: rgb(129, 116, 243);
+}
+
+// Reset
+*,
+*::after,
+*::before {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+html {
+  color: var(--text);
+  background: var(--background);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+
+  @media (min-width: 768px) {
+    font-size: 75%;
+  }
+
+  @media (min-width: 1440px) {
+    font-size: 80%;
+  }
+}
+
+body {
+  min-height: 100vh;
+  font-size: 1.6rem;
+}
+
+// Scrollbar
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--primary-shade) var(--background);
+
+  &::-webkit-scrollbar {
+    width: 4px;
+    height: 2px;
+  }
+  &::-webkit-scrollbar-track {
+    background: var(--background);
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--primary-shade);
+    border-radius: 0px;
+    border: 0px;
+  }
+}
+
+// Base skin
+p {
+  margin-bottom: 0.8rem;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--primary);
+  margin-top: 0.6rem;
+  margin-bottom: 1rem;
+  font-size: 1.8rem;
+  text-align: center;
+
+  @media (min-width: 768px) {
+    text-align: left;
+  }
+}
+
+h1 {
+  border-bottom: 1px solid var(--primary-shade);
+  margin-bottom: 2rem;
+  font-size: 2.4rem;
+}
+
+p + h1 {
+  margin-top: 4rem;
+}
+
+h2 {
+  font-size: 2.2rem;
+}
+
+h3 {
+  font-size: 2rem;
+}
+
+a {
+  color: var(--link);
+  text-decoration: none;
+
+  &:link,
+  &:hover,
+  &:visited,
+  &:active {
+    color: var(--link);
+  }
+}
+
+// Tables
+table {
+  border-collapse: collapse;
+  border-spacing: 0rem;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+  overflow-x: scroll;
+
+  thead {
+    font-weight: bold;
+  }
+
+  th,
+  td {
+    & + th,
+    & + td {
+      border-left: 1px solid var(--primary-shade);
+    }
+  }
+
+  th {
+    border-bottom: 1px solid var(--primary-shade);
+    padding: 0.2rem 1rem 0.2rem 1rem;
+    margin-bottom: 2rem;
+    font-weight: normal;
+    color: var(--primary);
+  }
+
+  td {
+    padding: 0.2rem 1rem 0.2rem 1rem;
+    max-width: 50vw;
+  }
+
+  tr {
+    // background: var(--background);
+
+    &:nth-child(even) {
+      background: var(--background-tint);
+    }
+  }
+}

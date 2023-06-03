@@ -1,133 +1,138 @@
 ---
 type Link = {
-  name: string;
-  target: string;
+  title: string;
+  url?: string;
+  subLink?: Link[];
 };
 
+const classList = (await Astro.glob("../pages/classes/*.mdx"))
+  .filter((c) => !c.frontmatter?.unlisted)
+  .sort((a, b) => a.frontmatter?.title?.localeCompare(b.frontmatter?.title))
+  .sort((a, b) => a.frontmatter?.type?.localeCompare(b.frontmatter?.type))
+  .map((item) => ({
+    title: item.frontmatter?.title as string,
+    url: item.url,
+  }));
+
+const sampleCharacter = (await Astro.glob("../pages/example-character/*.mdx"))
+  .sort((a, b) => a.frontmatter?.title?.localeCompare(b.frontmatter?.title))
+  .sort((a, b) => a.frontmatter?.type?.localeCompare(b.frontmatter?.type))
+  .map((item) => ({
+    title: item.frontmatter?.title as string,
+    url: item.url,
+  }));
+
+const scenarios = (await Astro.glob("../pages/scenarios/*.mdx"))
+  .sort((a, b) => a.frontmatter?.title?.localeCompare(b.frontmatter?.title))
+  .sort((a, b) => a.frontmatter?.type?.localeCompare(b.frontmatter?.type))
+  .map((item) => ({
+    title: item.frontmatter?.title as string,
+    url: item.url,
+  }));
+
 const links: Link[] = [
-  { name: "Home", target: "/" },
-  { name: "Basic Rules", target: "/basic-rules" },
-  { name: "Game Rules", target: "/rules" },
-  { name: "Characters", target: "/characters" },
-  { name: "Classes", target: "/classes" },
-  { name: "Sample Characters", target: "/example-character" },
-  { name: "Scenarios", target: "/scenarios" },
-  { name: "About", target: "/about" },
+  { title: "Home", url: "/" },
+  {
+    title: "Rules",
+    subLink: [
+      { title: "Basic Rules", url: "/basic-rules" },
+      { title: "Game Rules", url: "/rules" },
+    ],
+  },
+  { title: "Characters", url: "/characters", subLink: sampleCharacter },
+  { title: "Classes", url: "/classes", subLink: classList },
+  { title: "Sample Characters", url: "/example-character" },
+  { title: "Scenarios", url: "/scenarios", subLink: scenarios },
+  { title: "About", url: "/about" },
 ];
 ---
 
-<aside id="navigation" data-is-open="false">
-  <button id="navigation-button">{"Open >"}</button>
+<nav id="navigation" data-is-closed="true">
+  <button id="navigation-button">Open</button>
 
-  <nav>
-    <ul>
-      {
-        links.map(({ name, target }) => (
-          <li>
-            <a href={target}>{name}</a>
-          </li>
-        ))
-      }
-    </ul>
-  </nav>
-</aside>
+  <ul id="navigation-list">
+    {
+      links.map(({ title, url, subLink }) => (
+        <>
+          <li>{url ? <a href={url}>{title}</a> : title}</li>
+          {subLink && (
+            <ul>
+              {subLink.map(({ title, url }) => (
+                <li>
+                  <a href={url}>{title}</a>
+                </li>
+              ))}
+            </ul>
+          )}
+        </>
+      ))
+    }
+  </ul>
+</nav>
 
 <style lang="scss">
-  #navigation {
+  #navigation-list {
+    padding: 2rem 2rem 2rem 2rem;
+    overflow-y: scroll;
+    height: 100%;
+  }
+
+  ul {
+    list-style: none;
+
+    &:not(:last-child) {
+      margin-left: 2rem;
+    }
+  }
+
+  nav {
     @media (max-width: 767px) {
-      padding: 0 1rem;
-      position: fixed;
-      left: 0;
-      top: 0;
-      height: 100vh;
-      width: 15rem;
-      z-index: 100;
-      transition: all ease 0.3s;
       background: var(--background);
+      height: 100vh;
+      width: 20rem;
+      position: fixed;
+      top: 0;
+      left: 0;
+      transition: all ease 0.3s;
 
-      nav {
-        padding: 2rem 0;
-        overflow-y: scroll;
-        overflow-x: hidden;
-        height: 100%;
+      &[data-is-closed="false"] {
+        left: 0;
       }
 
-      &[data-is-open="true"] {
-        transform: translateX(0);
-      }
-
-      &[data-is-open="false"] {
-        transform: translateX(-100%);
+      &[data-is-closed="true"] {
+        left: -20rem;
       }
     }
 
     @media (min-width: 768px) {
-      position: initial;
-      margin-bottom: 2rem;
-      border-bottom: 1px solid var(--primary);
-      width: 100%;
-      display: flex;
-      justify-content: center;
-
-      nav {
-        overflow-y: hidden;
-        overflow-x: scroll;
-      }
+      display: block;
     }
   }
 
-  #navigation-button {
-    padding: 1rem;
+  button {
     position: absolute;
-    border: none;
     bottom: 1rem;
-    left: 15rem;
-    z-index: 110;
-    width: 8rem;
+    right: -4rem;
 
     @media (min-width: 768px) {
       display: none;
     }
   }
-
-  ul {
-    margin: 0.6rem 0;
-
-    ul {
-      margin-left: 1rem;
-      font-size: 1.5rem;
-    }
-
-    li {
-      list-style: none;
-      white-space: nowrap;
-    }
-
-    @media (min-width: 768px) {
-      display: flex;
-
-      li:not(:last-child) {
-        margin-right: 1rem;
-      }
-    }
-  }
 </style>
 
 <script>
-  const navigation = document.getElementById("navigation");
-  const navButton = document.getElementById("navigation-button");
+  const nav = document.getElementById("navigation");
+  const navBtn = document.getElementById("navigation-button");
 
-  if (navigation && navButton) {
-    navButton.addEventListener("click", (ev) => clickHandler(ev, navigation, navButton));
-  }
+  navBtn?.addEventListener("click", handleClick);
 
-  function clickHandler(ev: Event, nav: Element, btn: Element) {
-    if (nav.getAttribute("data-is-open") === "true") {
-      nav.setAttribute("data-is-open", "false");
-      btn.innerHTML = "Open >";
+  function handleClick() {
+    const isClosed = nav?.getAttribute("data-is-closed") === "true";
+
+    if (isClosed) {
+      nav?.setAttribute("data-is-closed", "false");
     } else {
-      nav.setAttribute("data-is-open", "true");
-      btn.innerHTML = "< Close";
+      nav?.setAttribute("data-is-closed", "true");
     }
   }
 </script>

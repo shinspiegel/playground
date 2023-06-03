@@ -24,7 +24,9 @@ const { headings } = Astro.props;
     </ul>
   </aside>
 
-  <slot />
+  <content>
+    <slot />
+  </content>
 </BaseLayout>
 
 <style lang="scss">
@@ -80,6 +82,14 @@ const { headings } = Astro.props;
       white-space: nowrap;
       overflow: hidden;
       margin-left: calc(var(--level) * 0.8rem);
+    }
+  }
+
+  content {
+    display: block;
+
+    @media (min-width: 768px) {
+      margin-right: 10rem;
     }
   }
 </style>
