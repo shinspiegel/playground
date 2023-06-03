@@ -1,0 +1,38 @@
+---
+const entries = await Astro.glob("../pages/classes/*.mdx")
+  .then((list) => {
+    list.sort((a, b) => a.frontmatter?.title?.localeCompare(b.frontmatter?.title));
+    return list;
+  })
+  .then((list) => {
+    list.sort((a, b) => a.frontmatter?.type?.localeCompare(b.frontmatter?.type));
+    return list;
+  })
+  .then((list) =>
+    list.map((item) => ({
+      url: item.url,
+      title: item.frontmatter?.title,
+      type: item.frontmatter?.type,
+      desc: item.frontmatter?.description
+    }))
+  );
+---
+
+<table>
+  <thead>
+    <tr>
+      <td>Name</td>
+      <td>Type</td>
+      <td>Description</td>
+    </tr>
+  </thead>
+  <tbody>
+    {entries.map((row) => (
+        <tr>
+          <td><a href={row.url}>{row.title}</a></td>
+          <td>{row.type}</td>
+          <td>{row.desc ? row.desc : "-"}</td>
+        </tr>
+      ))}
+  </tbody>
+</table>
