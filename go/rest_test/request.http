@@ -1,0 +1,16 @@
+@HOST=localhost:8080
+
+
+###
+GET http://{{HOST}}/albums HTTP/1.1
+
+###
+POST http://{{HOST}}/albums HTTP/1.1
+Content-Type: application/json
+
+{
+    "id": "4",
+    "title": "The Modern Sound of Betty Carter",
+    "artist": "Betty Carter",
+    "price": 49.99
+}
