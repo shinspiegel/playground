@@ -32,16 +32,10 @@ const scenarios = (await Astro.glob("../pages/scenarios/*.mdx"))
 
 const links: Link[] = [
   { title: "Home", url: "/" },
-  {
-    title: "Rules",
-    subLink: [
-      { title: "Basic Rules", url: "/basic-rules" },
-      { title: "Game Rules", url: "/rules" },
-    ],
-  },
-  { title: "Characters", url: "/characters", subLink: sampleCharacter },
+  { title: "Rules", subLink: [{ title: "Basic Rules", url: "/basic-rules" }, { title: "Game Rules", url: "/rules" }]},
+  { title: "Characters", url: "/characters" },
   { title: "Classes", url: "/classes", subLink: classList },
-  { title: "Sample Characters", url: "/example-character" },
+  { title: "Sample Characters", url: "/example-character", subLink: sampleCharacter },
   { title: "Scenarios", url: "/scenarios", subLink: scenarios },
   { title: "About", url: "/about" },
 ];

@@ -1,0 +1,33 @@
+---
+export interface Props {
+  forClass?: string;
+}
+
+const sampleCharacter = (await Astro.glob("../pages/example-character/*.mdx"))
+  .filter((c) => !c.frontmatter?.unlisted)
+  .sort((a, b) => a.frontmatter?.title?.localeCompare(b.frontmatter?.title))
+  .sort((a, b) => a.frontmatter?.type?.localeCompare(b.frontmatter?.type))
+  .map((item) => {
+    const title: string = item.frontmatter?.title ?? "Untitled";
+    const classes: string[] = item.frontmatter?.classesUsed?.split(",").map((c) => c.toLowerCase().trim()) ?? [];
+    const url: string = item.url ?? "/";
+
+    return { title, classes, url };
+  })
+  .filter((c) => {
+    if (Astro.props.forClass) {
+      return c.classes.includes(Astro.props.forClass.toLowerCase());
+    }
+    return true;
+  });
+---
+
+<ul>
+  {
+    sampleCharacter.map((className) => (
+      <li>
+        <a href={className.url}>{className.title}</a>
+      </li>
+    ))
+  }
+</ul>

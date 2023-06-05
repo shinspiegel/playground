@@ -2,16 +2,20 @@
 layout: ../../layouts/MarkdownLayout.astro
 title: Black Mage
 type: Base Class
-descriptions: Black magic specialist caster.
+description: Black magic specialist caster.
 ---
+
+import QuickClassList from "../../components/QuickClassList.astro";
 
 # Black Mage
 
-[Description]
+The Black Mage is a master of the arcane arts, specializing in the dark and destructive forces of black magic. They harness the elements and channel them into devastating spells, unleashing bolts of lightning, conjuring flames that engulf their foes, and delving into the mysteries of shadow. With their unparalleled spellcasting prowess, Black Mages stand as formidable adversaries and invaluable allies on the battlefield.
 
 # Quick Character
 
-[Create a quick character or link to a quick character that uses this class]
+In case you need a quick character to start playing, you can use one of the following to be your starter character.
+
+<QuickClassList forClass="Black Mage" />
 
 # Constructions
 
@@ -21,46 +25,49 @@ descriptions: Black magic specialist caster.
 
 | Strength | Reflexes | Perception | Intelligence | Will | Luck |
 | :------: | :------: | :--------: | :----------: | :--: | :--: |
-|    0     |    0     |     0      |      0       |  0   |  0   |
+|    3     |    2     |     4      |      5       |  6   |  4   |
 
 # Level Progression
 
 | Level | Hit | Dodge | Magic | Anti-magic | Speed | Vitality | Spirit | Attack Power |
 | :---: | :-: | :---: | :---: | :--------: | :---: | :------: | :----: | :----------: |
-|   1   |  0  |   0   |   0   |     0      |   0   |    0     |   0    |      0       |
-|   2   |  0  |   0   |   0   |     0      |   0   |    0     |   0    |      0       |
-|   3   |  0  |   0   |   0   |     0      |   0   |    0     |   0    |      0       |
-|   4   |  0  |   0   |   0   |     0      |   0   |    0     |   0    |      0       |
-|   5   |  0  |   0   |   0   |     0      |   0   |    0     |   0    |      0       |
-|   6   |  0  |   0   |   0   |     0      |   0   |    0     |   0    |      0       |
-|   7   |  0  |   0   |   0   |     0      |   0   |    0     |   0    |      0       |
-|   8   |  0  |   0   |   0   |     0      |   0   |    0     |   0    |      0       |
-|   9   |  0  |   0   |   0   |     0      |   0   |    0     |   0    |      0       |
-|  10   |  0  |   0   |   0   |     0      |   0   |    0     |   0    |      0       |
+|   1   |  0  |   0   |   1   |     1      |   1   |    2     |   3    |      0       |
+|   2   |  1  |   1   |   2   |     2      |   2   |    4     |   6    |      0       |
+|   3   |  1  |   1   |   3   |     2      |   2   |    6     |   9    |      0       |
+|   4   |  2  |   1   |   3   |     3      |   3   |    8     |   13   |      1       |
+|   5   |  2  |   2   |   4   |     3      |   3   |    9     |   16   |      1       |
+|   6   |  3  |   2   |   4   |     4      |   4   |    11    |   19   |      1       |
+|   7   |  3  |   2   |   5   |     4      |   4   |    13    |   22   |      2       |
+|   8   |  4  |   3   |   6   |     5      |   5   |    14    |   25   |      2       |
+|   9   |  4  |   4   |   6   |     5      |   5   |    16    |   28   |      2       |
+|  10   |  5  |   4   |   7   |     6      |   6   |    17    |   32   |      3       |
 
 # Techniques
 
-| Technique | Level | Timing | Target | Cost |
-| :-------- | :---: | :----: | :----- | :--: |
-|           | Auto  |        |        |      |
-|           |   1   |        |        |      |
-|           |   1   |        |        |      |
-|           |   1   |        |        |      |
-|           |   1   |        |        |      |
-|           |   2   |        |        |      |
-|           |   2   |        |        |      |
-|           |   2   |        |        |      |
-|           |   3   |        |        |      |
-|           |   3   |        |        |      |
-|           |   4   |        |        |      |
-|           |   4   |        |        |      |
-|           |   5   |        |        |      |
-|           |   6   |        |        |      |
-|           |   7   |        |        |      |
-|           |   8   |        |        |      |
-|           |   9   |        |        |      |
-|           |  10   |        |        |      |
+## Techniques List
 
-# Technique Descriptions
+| Technique       | Level | Test  | Timing | Target | Cost  | Short Description                                   |
+| :-------------- | :---: | :---: | :----: | :----- | :---: | --------------------------------------------------- |
+| Fine Arts       |   2   |   -   | Always | Self   |   -   | Critical threshold -1 (Min 9)                       |
+| Mana Infusion   |   3   |   -   | Minor  | Self   | 5 MP  | Receives +2 on the next magic test                  |
+| Wizard Eye      |   4   |   -   | Major  | Self   | 4 MP  | Can see magic in the area, up to 20m                |
+| Mana Surge      |   5   | Magic | Minor  | Self   |   -   | The next spell have cost halved. Diff spell cost +5 |
+| Arcane Shield   |   6   |   -   | Damage | Self   | 10 MP | Reduce the magical damage in 10                     |
+| Empower Casting |   8   |   -   | Minor  | Self   | 6 MP  | Increase range 10m. If deal damage +2d6             |
 
-## Tech Name
+## Spells List
+
+| Technique            | Level |  Test   | Timing | Target          | Cost  | Short Description                                          |
+| :------------------- | :---: | :-----: | :----: | :-------------- | :---: | ---------------------------------------------------------- |
+| Fire Arrow           |   1   | Magic+1 | Major  | 1/15m           | 3 MP  | 2d6 fire damage                                            |
+| Ice Bullet           |   1   |  Magic  | Major  | 1/20m           | 3 MP  | 1d6 ice damage, -1 speed                                   |
+| Thunder Fist         |   1   | Magic+2 | Major  | 1/touch         | 5 MP  | 3d6 electric damage                                        |
+| Arcane Barrier       |   2   |  Magic  | Major  | Self            | 1 MP  | For the scene, 3 damage protection                         |
+| Illusionary Cloak    |   2   |  Magic  | Minor  | Self or 1/touch | 3 MP  | Up to minute, receive +1d6 to sneak                        |
+| Haste                |   3   |  Magic  | Major  | Self            | 5 MP  | +10 Speed                                                  |
+| Lightning Surge      |   3   |  Magic  | Major  | 1/20m           | 2 MP  | 1d6 damage. On hit, jumps next up 10m (cost per hit)       |
+| Mind Warp            |   4   |  Magic  | Major  | 1/20m           | 3 MP  | Disorient. Can sense thoughts                              |
+| Soul Drain           |   5   |  Magic  | Minor  | 1/10m           |   -   | Reduces 1d6 MP on target, recover half of it.              |
+| Teleportation Circle |   6   |  Magic  | Major  | 1/10m           | 20 MP | Up to minute open a teleport circle                        |
+| Void Step            |   8   |  Magic  | Major  | Self            | 10 MP | End of turn, become intangible, move thought solid objects |
+| Gravity Blast        |  10   |  Magic  | Major  | 1/50m           | 20 MP | 10d6 gravity damage                                        |
