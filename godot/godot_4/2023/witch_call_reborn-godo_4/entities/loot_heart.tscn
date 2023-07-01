@@ -1,9 +1,9 @@
 [gd_scene load_steps=8 format=3 uid="uid://4iki32bellhm"]
 
 [ext_resource type="PackedScene" uid="uid://chdv150j8at38" path="res://entities/loot.tscn" id="1_dww15"]
-[ext_resource type="Texture2D" uid="uid://ctpl8dcubttg5" path="res://assets/graphics/pick_up_heart.png" id="2_4lwtt"]
+[ext_resource type="Texture2D" uid="uid://bn31x8ig2vckk" path="res://assets/graphics/pick_up_heart.png" id="2_4lwtt"]
 [ext_resource type="Script" path="res://entities/loot_heart.gd" id="2_r2037"]
-[ext_resource type="AudioStream" uid="uid://b2yjkq6m7rwp2" path="res://assets/audio/pickup_heart.wav" id="3_gmqo4"]
+[ext_resource type="AudioStream" uid="uid://cpn2cuy3ue2vi" path="res://assets/audio/pickup_heart.wav" id="3_gmqo4"]
 
 [sub_resource type="Animation" id="Animation_nvq82"]
 length = 0.001

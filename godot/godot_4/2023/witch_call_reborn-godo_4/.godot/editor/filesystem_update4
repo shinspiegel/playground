@@ -1,4 +1,4 @@
-res://main.tscn
+res://entities/loot_heart.tscn
 res://waves/wave_list/00-09_tutorial_easy/wave_0.tres
 res://waves/wave_list/00-09_tutorial_easy/wave_1.tres
 res://waves/wave_list/00-09_tutorial_easy/wave_2.tres
@@ -19,7 +19,6 @@ res://waves/wave_list/10-29-medium/wave-medium-6.tres
 res://waves/wave_list/10-29-medium/wave-medium-7.tres
 res://waves/wave_list/10-29-medium/wave-medium-8.tres
 res://waves/wave_list/10-29-medium/wave-medium-9.tres
-res://waves/wave_list/wave_X.tres
 res://waves/wave_list/30-69-hard/wave-hard-5.tres
 res://waves/wave_list/30-69-hard/wave-hard-6.tres
 res://waves/wave_list/30-69-hard/wave-hard-8.tres
@@ -40,5 +39,6 @@ res://waves/wave_list/30-69-hard/wave-hard-29.tres
 res://waves/wave_list/70-99-impossible/wave-impossible-1.tres
 res://waves/wave_list/70-99-impossible/wave-impossible-3.tres
 res://waves/wave_list/70-99-impossible/wave-impossible-6.tres
-res://resources/general_game_data.tres
-res://splash.tscn
+res://waves/wave_list/wave_X.tres
+res://main.tscn
+res://entities/heart.tscn

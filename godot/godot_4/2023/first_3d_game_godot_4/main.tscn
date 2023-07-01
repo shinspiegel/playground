@@ -75,6 +75,9 @@ transform = Transform3D(0.866025, 0, -0.5, 0.5, -4.37114e-08, 0.866025, -2.18557
 shadow_enabled = true
 
 [node name="CameraOnRail" parent="." instance=ExtResource("4_poq33")]
+player_node = NodePath("../Player")
+axis = "z"
+inverted = true
 
 [node name="MotionArea" parent="CameraOnRail" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, -0.5, 0)
@@ -84,9 +87,9 @@ shape = SubResource("BoxShape3D_vkalk")
 curve = SubResource("Curve3D_2n2ku")
 
 [node name="CameraMount" parent="CameraOnRail/CameraPath" index="0"]
-transform = Transform3D(-0.89428, -0.0890721, 0.438178, 0, 0.979793, 0.199172, -0.44714, 0.178144, -0.876357, 31, 14, 39)
+transform = Transform3D(-0.901986, -0.066863, 0.426171, 0, 0.987749, 0.154971, -0.431385, 0.139804, -0.891085, 31, 14, 39)
 
 [node name="LevelCamera" parent="CameraOnRail/CameraPath/CameraMount" index="0"]
-transform = Transform3D(8.78467e-08, 0.500074, -0.86616, -8.56545e-09, 0.866153, 0.50007, 1.00014, -1.2128e-08, 7.91244e-09, 0, 0, 0)
+transform = Transform3D(8.84441e-08, 0.500084, -0.866167, -3.4419e-08, 0.86617, 0.500086, 1.00016, -3.0665e-08, 1.03205e-07, 0, 0, 0)
 
 [editable path="CameraOnRail"]

@@ -1,9 +1,9 @@
-[gd_scene load_steps=8 format=3]
+[gd_scene load_steps=8 format=3 uid="uid://3qhnu77xevkf"]
 
-[ext_resource type="Texture2D" uid="uid://bsr2h7d577p1d" path="res://assets/graphics/ui_assets/UI_hearts_1.png" id="1_7kvkp"]
-[ext_resource type="Texture2D" uid="uid://ctgwr6lpn4358" path="res://assets/graphics/ui_assets/hearts_1.png" id="1_royso"]
-[ext_resource type="Texture2D" uid="uid://cb13y60ehkumk" path="res://assets/graphics/ui_assets/UI_hearts_2.png" id="3_73e7o"]
-[ext_resource type="Texture2D" uid="uid://cfxgd4bq0o2wh" path="res://assets/graphics/ui_assets/UI_hearts_3.png" id="4_vc0va"]
+[ext_resource type="Texture2D" uid="uid://dc1x5ex1jjqc7" path="res://assets/graphics/ui_assets/UI_hearts_1.png" id="1_7kvkp"]
+[ext_resource type="Texture2D" uid="uid://b5s2aofans6jj" path="res://assets/graphics/ui_assets/hearts_1.png" id="1_royso"]
+[ext_resource type="Texture2D" uid="uid://bm252pp605wlp" path="res://assets/graphics/ui_assets/UI_hearts_2.png" id="3_73e7o"]
+[ext_resource type="Texture2D" uid="uid://0je7vi3tihgj" path="res://assets/graphics/ui_assets/UI_hearts_3.png" id="4_vc0va"]
 
 [sub_resource type="Animation" id="Animation_brcqj"]
 length = 0.001
