@@ -14,6 +14,11 @@
 		5445D3F02A501770005A2704 /* LocatorTestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5445D3EF2A501770005A2704 /* LocatorTestTests.swift */; };
 		5445D3FA2A501770005A2704 /* LocatorTestUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5445D3F92A501770005A2704 /* LocatorTestUITests.swift */; };
 		5445D3FC2A501770005A2704 /* LocatorTestUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5445D3FB2A501770005A2704 /* LocatorTestUITestsLaunchTests.swift */; };
+		5445D40B2A501865005A2704 /* Saitama_2.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 5445D40A2A501865005A2704 /* Saitama_2.gpx */; };
+		5445D40D2A501881005A2704 /* Saitama_3.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 5445D40C2A501881005A2704 /* Saitama_3.gpx */; };
+		5445D40F2A501A94005A2704 /* Osaka_1.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 5445D40E2A501A94005A2704 /* Osaka_1.gpx */; };
+		5445D4112A501AD0005A2704 /* Osaka_2.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 5445D4102A501AD0005A2704 /* Osaka_2.gpx */; };
+		5445D4132A501ADF005A2704 /* Osaka_3.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 5445D4122A501ADF005A2704 /* Osaka_3.gpx */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +49,12 @@
 		5445D3F52A501770005A2704 /* LocatorTestUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LocatorTestUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5445D3F92A501770005A2704 /* LocatorTestUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocatorTestUITests.swift; sourceTree = "<group>"; };
 		5445D3FB2A501770005A2704 /* LocatorTestUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocatorTestUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		5445D4092A5017D3005A2704 /* Saitama_1.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Saitama_1.gpx; sourceTree = "<group>"; };
+		5445D40A2A501865005A2704 /* Saitama_2.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Saitama_2.gpx; sourceTree = "<group>"; };
+		5445D40C2A501881005A2704 /* Saitama_3.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Saitama_3.gpx; sourceTree = "<group>"; };
+		5445D40E2A501A94005A2704 /* Osaka_1.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Osaka_1.gpx; sourceTree = "<group>"; };
+		5445D4102A501AD0005A2704 /* Osaka_2.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Osaka_2.gpx; sourceTree = "<group>"; };
+		5445D4122A501ADF005A2704 /* Osaka_3.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Osaka_3.gpx; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +105,7 @@
 		5445D3DD2A50176F005A2704 /* LocatorTest */ = {
 			isa = PBXGroup;
 			children = (
+				5445D4082A5017BB005A2704 /* LocationList */,
 				5445D3DE2A50176F005A2704 /* LocatorTestApp.swift */,
 				5445D3E02A50176F005A2704 /* ContentView.swift */,
 				5445D3E22A501770005A2704 /* Assets.xcassets */,
@@ -125,6 +137,19 @@
 				5445D3FB2A501770005A2704 /* LocatorTestUITestsLaunchTests.swift */,
 			);
 			path = LocatorTestUITests;
+			sourceTree = "<group>";
+		};
+		5445D4082A5017BB005A2704 /* LocationList */ = {
+			isa = PBXGroup;
+			children = (
+				5445D4092A5017D3005A2704 /* Saitama_1.gpx */,
+				5445D40A2A501865005A2704 /* Saitama_2.gpx */,
+				5445D40C2A501881005A2704 /* Saitama_3.gpx */,
+				5445D40E2A501A94005A2704 /* Osaka_1.gpx */,
+				5445D4102A501AD0005A2704 /* Osaka_2.gpx */,
+				5445D4122A501ADF005A2704 /* Osaka_3.gpx */,
+			);
+			path = LocationList;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -231,7 +256,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5445D40D2A501881005A2704 /* Saitama_3.gpx in Resources */,
+				5445D4132A501ADF005A2704 /* Osaka_3.gpx in Resources */,
 				5445D3E62A501770005A2704 /* Preview Assets.xcassets in Resources */,
+				5445D40F2A501A94005A2704 /* Osaka_1.gpx in Resources */,
+				5445D40B2A501865005A2704 /* Saitama_2.gpx in Resources */,
+				5445D4112A501AD0005A2704 /* Osaka_2.gpx in Resources */,
 				5445D3E32A501770005A2704 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -417,6 +447,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"LocatorTest/Preview Content\"";
+				DEVELOPMENT_TEAM = 5DLWFAWWR7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -445,6 +476,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"LocatorTest/Preview Content\"";
+				DEVELOPMENT_TEAM = 5DLWFAWWR7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
