@@ -1,0 +1,8 @@
+# Created by Kenney (www.kenney.nl)
+
+newmtl woodDark
+Kd 0.6392157 0.3647059 0.2274509
+
+newmtl skin
+Kd 1 0.8509804 0.6117647
+

@@ -1,11 +1,8 @@
-[gd_scene load_steps=16 format=3 uid="uid://b6fd62ib4rg2j"]
+[gd_scene load_steps=13 format=3 uid="uid://b6fd62ib4rg2j"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_1v3mp"]
-[ext_resource type="AudioStream" uid="uid://di21l6oc0s7pp" path="res://assets/music_sfx/UI Simple Select.wav" id="2_pykva"]
-[ext_resource type="AudioStream" uid="uid://qtqosekm4tbd" path="res://assets/music_sfx/UI Simple Confirm.wav" id="3_eh3o4"]
 [ext_resource type="PackedScene" uid="uid://bkmi58rlfal7u" path="res://levels/level_0.tscn" id="4_c7yqu"]
 [ext_resource type="PackedScene" uid="uid://b55nrc7tglefj" path="res://blocks/platform_large.tscn" id="5_00e2a"]
-[ext_resource type="ArrayMesh" uid="uid://gjuyfsvj5gs0" path="res://assets/models/characterVampire.obj" id="6_36i2c"]
 [ext_resource type="PackedScene" uid="uid://vcsq4niwot4j" path="res://entities/coin.tscn" id="7_tald7"]
 [ext_resource type="PackedScene" uid="uid://60r1yhwvcjes" path="res://ui/button.tscn" id="8_ceuh2"]
 
@@ -43,8 +40,6 @@ thickness = 50
 
 [node name="Main" type="Node3D"]
 script = ExtResource("1_1v3mp")
-menu_select_sfx = ExtResource("2_pykva")
-menu_click_sfx = ExtResource("3_eh3o4")
 first_level = ExtResource("4_c7yqu")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -65,7 +60,6 @@ fov = 60.0
 
 [node name="CharacterVampire" type="MeshInstance3D" parent="Char"]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 1, 0)
-mesh = ExtResource("6_36i2c")
 skeleton = NodePath("../..")
 
 [node name="Coin" parent="Char" instance=ExtResource("7_tald7")]

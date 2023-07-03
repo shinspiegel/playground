@@ -1,0 +1,8 @@
+# Created by Kenney (www.kenney.nl)
+
+newmtl stone
+Kd 0.6 0.7490196 0.7882353
+
+newmtl brick
+Kd 0.7882353 0.3803921 0.3215686
+

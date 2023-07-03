@@ -29,4 +29,4 @@ func check_player_death() -> void:
 
 
 func on_player_die() -> void:
-	GameManager.reload_current_scene()
+	GameManager.level_manager.reload_current_scene()

@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://60r1yhwvcjes"]
 
 [ext_resource type="Script" path="res://ui/button.gd" id="1_aqmai"]
-[ext_resource type="AudioStream" uid="uid://qtqosekm4tbd" path="res://assets/music_sfx/UI Simple Confirm.wav" id="2_iuncg"]
-[ext_resource type="AudioStream" uid="uid://di21l6oc0s7pp" path="res://assets/music_sfx/UI Simple Select.wav" id="3_43auk"]
+[ext_resource type="AudioStream" uid="uid://b6t6341mo762n" path="res://assets/music_sfx/UI Simple Confirm.wav" id="2_8vjnp"]
+[ext_resource type="AudioStream" uid="uid://b3wpkxdx47rg" path="res://assets/music_sfx/UI Simple Select.wav" id="3_p0edr"]
 
 [node name="Button" type="Button"]
 anchors_preset = 15
@@ -13,5 +13,5 @@ grow_vertical = 2
 theme_override_font_sizes/font_size = 80
 text = "Placeholder"
 script = ExtResource("1_aqmai")
-pressed_sfx = ExtResource("2_iuncg")
-focus_sfx = ExtResource("3_43auk")
+pressed_sfx = ExtResource("2_8vjnp")
+focus_sfx = ExtResource("3_p0edr")

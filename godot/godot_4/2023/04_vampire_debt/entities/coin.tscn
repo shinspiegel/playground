@@ -1,8 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://vcsq4niwot4j"]
+[gd_scene load_steps=7 format=3 uid="uid://vcsq4niwot4j"]
 
-[ext_resource type="ArrayMesh" uid="uid://cge2fuclikg8j" path="res://assets/models/coinGold.obj" id="1_nii57"]
 [ext_resource type="Script" path="res://entities/coin.gd" id="1_punm3"]
-[ext_resource type="AudioStream" uid="uid://l11hfbxm3nw5" path="res://assets/music_sfx/coin.wav" id="2_hu5io"]
+[ext_resource type="ArrayMesh" uid="uid://bbacl30ntyqql" path="res://assets/models/coinGold.obj" id="2_yp8bm"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_vj74u"]
 height = 0.2
@@ -71,11 +70,10 @@ _data = {
 
 [node name="Coin" type="Area3D"]
 script = ExtResource("1_punm3")
-sfx = ExtResource("2_hu5io")
 
 [node name="CoinGold" type="MeshInstance3D" parent="."]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
-mesh = ExtResource("1_nii57")
+mesh = ExtResource("2_yp8bm")
 skeleton = NodePath("../../..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

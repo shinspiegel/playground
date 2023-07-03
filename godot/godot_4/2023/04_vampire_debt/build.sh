@@ -1,5 +1,5 @@
 NAME="Vampire_Debt"
-VERSION="0.0.0"
+VERSION=$(head -n 1 VERSION.txt)
 DATE="$(date +%s)"
 FULL_HASH="$(git log -n 1 --pretty=format:"%H")"
 HASH=${FULL_HASH:0:6}
@@ -34,8 +34,8 @@ godot_build() {
   rm -rf "$BUILD_PATH"
 }
 
-godot_build   "HTML5"   "index.html"
-godot_build   "Linux"   "$NAME.x86_64"
-godot_build   "MacOS"   "$NAME.dmg"
-godot_build   "Win"     "$NAME.exe"
+godot_build   "html5"   "index.html"
+godot_build   "linux"   "$NAME.x86_64"
+godot_build   "macos"   "$NAME.dmg"
+godot_build   "win"     "$NAME.exe"
 

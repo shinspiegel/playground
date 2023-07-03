@@ -1,0 +1,58 @@
+[gd_scene load_steps=9 format=3 uid="uid://cbtmjii7mcnjq"]
+
+[ext_resource type="Texture2D" uid="uid://b8np3bttl03mi" path="res://assets/kenney_prototype-textures/PNG/Dark/texture_01.png" id="1_1ppld"]
+[ext_resource type="PackedScene" uid="uid://d1o47sm6ckoeg" path="res://entities/player/player.tscn" id="2_0wyk3"]
+[ext_resource type="PackedScene" uid="uid://daocwedjvjgeo" path="res://entities/game_camera/game_camera.tscn" id="3_m0yjk"]
+[ext_resource type="PackedScene" uid="uid://eklfh17o8vc" path="res://entities/damage_number/damage_number.tscn" id="4_48qgw"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_75gcr"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_kegns"]
+sky_material = SubResource("ProceduralSkyMaterial_75gcr")
+
+[sub_resource type="Environment" id="Environment_j5bdk"]
+background_mode = 2
+sky = SubResource("Sky_kegns")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hva8p"]
+albedo_texture = ExtResource("1_1ppld")
+uv1_triplanar = true
+
+[node name="Level" type="Node3D"]
+
+[node name="Environment" type="Node3D" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Environment"]
+environment = SubResource("Environment_j5bdk")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Environment"]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 5, 5)
+shadow_enabled = true
+
+[node name="World" type="Node3D" parent="."]
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="World"]
+material_override = SubResource("StandardMaterial3D_hva8p")
+use_collision = true
+collision_layer = 4
+collision_mask = 0
+
+[node name="CSGBox3D" type="CSGBox3D" parent="World/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+size = Vector3(50, 1, 50)
+
+[node name="Player" parent="." instance=ExtResource("2_0wyk3")]
+camera_path = NodePath("../GameCamera")
+
+[node name="GameCamera" parent="." instance=ExtResource("3_m0yjk")]
+
+[node name="DamageNumber" parent="." instance=ExtResource("4_48qgw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -0.1)
+scale_in = 1.0
+scale_out = 1.0
+pos_in = 1.0
+pos_out = 1.0

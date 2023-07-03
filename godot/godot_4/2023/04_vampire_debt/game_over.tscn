@@ -1,9 +1,9 @@
 [gd_scene load_steps=11 format=3 uid="uid://dc375dqn4f03p"]
 
 [ext_resource type="Script" path="res://game_over.gd" id="1_26te8"]
-[ext_resource type="ArrayMesh" uid="uid://dn4skvmidm7ln" path="res://assets/models/crate.obj" id="3_tn71f"]
+[ext_resource type="ArrayMesh" uid="uid://b21r02bnvdmit" path="res://assets/models/characterVampire.obj" id="3_c2tm0"]
+[ext_resource type="ArrayMesh" uid="uid://dh8t50ooxe78i" path="res://assets/models/crate.obj" id="3_t0dc0"]
 [ext_resource type="PackedScene" uid="uid://b55nrc7tglefj" path="res://blocks/platform_large.tscn" id="5_gg2dm"]
-[ext_resource type="ArrayMesh" uid="uid://gjuyfsvj5gs0" path="res://assets/models/characterVampire.obj" id="6_1gwa7"]
 [ext_resource type="PackedScene" uid="uid://60r1yhwvcjes" path="res://ui/button.tscn" id="6_w4xxd"]
 [ext_resource type="PackedScene" uid="uid://vcsq4niwot4j" path="res://entities/coin.tscn" id="7_hvb8r"]
 
@@ -79,32 +79,32 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
 
 [node name="CharacterVampire" type="MeshInstance3D" parent="Char"]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -1, 1, -1)
-mesh = ExtResource("6_1gwa7")
+mesh = ExtResource("3_c2tm0")
 skeleton = NodePath("../..")
 
 [node name="Crate" type="MeshInstance3D" parent="Char"]
 transform = Transform3D(1.93185, 0, -0.517638, 0, 2, 0, 0.517638, 0, 1.93185, -2.5, 1, -2)
-mesh = ExtResource("3_tn71f")
+mesh = ExtResource("3_t0dc0")
 skeleton = NodePath("../..")
 
 [node name="Crate2" type="MeshInstance3D" parent="Char"]
 transform = Transform3D(1.73205, 0, -1, 0, 2, 0, 1, 0, 1.73205, -1, 1, -2.5)
-mesh = ExtResource("3_tn71f")
+mesh = ExtResource("3_t0dc0")
 skeleton = NodePath("../..")
 
 [node name="Crate3" type="MeshInstance3D" parent="Char"]
 transform = Transform3D(2, 0, -5.7221e-09, 0, 2, 0, -1.18867e-08, 0, 2, 0.5, 1, -2)
-mesh = ExtResource("3_tn71f")
+mesh = ExtResource("3_t0dc0")
 skeleton = NodePath("../..")
 
 [node name="Crate4" type="MeshInstance3D" parent="Char"]
 transform = Transform3D(1.93185, 0, 0.517638, 0, 2, 0, -0.517638, 0, 1.93185, -0.5, 2, -2.5)
-mesh = ExtResource("3_tn71f")
+mesh = ExtResource("3_t0dc0")
 skeleton = NodePath("../..")
 
 [node name="Crate5" type="MeshInstance3D" parent="Char"]
 transform = Transform3D(1.93185, 0, -0.517638, 0, 2, 0, 0.517638, 0, 1.93185, -2, 2, -2.5)
-mesh = ExtResource("3_tn71f")
+mesh = ExtResource("3_t0dc0")
 skeleton = NodePath("../..")
 
 [node name="CoinArea" type="Node3D" parent="."]

@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://eklfh17o8vc"]
+
+[ext_resource type="Script" path="res://entities/damage_number/damage_number.gd" id="1_os0tn"]
+
+[node name="DamageNumber" type="Node3D"]
+script = ExtResource("1_os0tn")
+
+[node name="Label3D" type="Label3D" parent="."]
+billboard = 1
+outline_modulate = Color(0, 0, 0, 0)
+text = "10"
+font_size = 128
+outline_size = 24

@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://b55nrc7tglefj"]
 
-[ext_resource type="ArrayMesh" uid="uid://d3ecuvi3x1r07" path="res://assets/models/blockLarge.obj" id="1_ep4jf"]
+[ext_resource type="ArrayMesh" uid="uid://cb2ky4yqhrqt7" path="res://assets/models/blockLarge.obj" id="1_xk05x"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bgv2e"]
 size = Vector3(2, 1, 2)
@@ -8,7 +8,7 @@ size = Vector3(2, 1, 2)
 [node name="PlatformLarge" type="StaticBody3D"]
 
 [node name="BlockLarge" type="MeshInstance3D" parent="."]
-mesh = ExtResource("1_ep4jf")
+mesh = ExtResource("1_xk05x")
 skeleton = NodePath("../..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
