@@ -12,6 +12,15 @@ Even the sprites I made you can use in your own projects, doesn't not even need 
 
 The published version should be somewhere on the [Itch.io](https://shinspiegel.itch.io/), it's easy to find.
 
+- [Vampire Debt](https://shinspiegel.itch.io/vampire-debt)
+- [Witch Call Reborn](https://shinspiegel.itch.io/witch-call-reborn)
+- [A Witch Call](https://shinspiegel.itch.io/a-witch-call)
+- [Until the end of it(Demo)](https://shinspiegel.itch.io/until-the-end-of-it)
+- [UnNamed Caverns](https://shinspiegel.itch.io/unnamed-caverns)
+- [Path of Light](https://shinspiegel.itch.io/path-of-light)
+- [1Bit Shooter](https://shinspiegel.itch.io/1bit-shooter)
+- [Dodge the Creeps](https://shinspiegel.itch.io/dodge-the-creeps-godot-tutorial)
+
 Otherwise just open the project in your Godot and play the game.
 
 ### Can you tell me something about the projects itself?
