@@ -14,6 +14,6 @@ The published version should be somewhere on the [Itch.io](https://shinspiegel.i
 
 Otherwise just open the project in your Godot and play the game.
 
-### Can you tell me something about the projects it self?
+### Can you tell me something about the projects itself?
 
-Yeah, just PM me on the twitter or mail me at shin.jef@gmail.com.
+Yeah, just PM me on the ~~twitter~~ [Mastodon](https://mastodon.gamedev.place/@shinspiegel) or mail me at [shin.jef@gmail.com](mailto:shin.jef@gmail.com).
