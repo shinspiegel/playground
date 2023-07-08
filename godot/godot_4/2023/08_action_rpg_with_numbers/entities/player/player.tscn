@@ -1,19 +1,16 @@
-[gd_scene load_steps=9 format=3 uid="uid://d1o47sm6ckoeg"]
+[gd_scene load_steps=7 format=3 uid="uid://d1o47sm6ckoeg"]
 
 [ext_resource type="Script" path="res://entities/player/player.gd" id="1_sbvtd"]
 [ext_resource type="Script" path="res://entities/player/PlayerInput.gd" id="2_e3j58"]
-[ext_resource type="PackedScene" uid="uid://do4nccpla7tv6" path="res://assets/kenney_mini-dungeon/Models/GLTF format/character-human.glb" id="3_8yjmw"]
-[ext_resource type="PackedScene" uid="uid://bp555qutlg2ut" path="res://entities/boxes/hit_box.tscn" id="4_0ya17"]
-[ext_resource type="Script" path="res://resources/damage.gd" id="5_173fk"]
+[ext_resource type="PackedScene" uid="uid://dbjrbaxgarqo7" path="res://models/character_human.tscn" id="3_16mb0"]
+[ext_resource type="PackedScene" uid="uid://bouf4v4ksctph" path="res://entities/boxes/hurt_box.tscn" id="6_1kvce"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_je5ul"]
 height = 1.8
 
-[sub_resource type="Resource" id="Resource_dla6r"]
-script = ExtResource("5_173fk")
-amount = 1
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_ry5xg"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_aj6yn"]
+radius = 0.4
+height = 1.8
 
 [node name="Player" type="CharacterBody3D"]
 collision_mask = 4
@@ -24,8 +21,8 @@ script = ExtResource("2_e3j58")
 
 [node name="Model" type="Node3D" parent="."]
 
-[node name="character-human" parent="Model" instance=ExtResource("3_8yjmw")]
-transform = Transform3D(-2.6, 9.06846e-16, -2.27299e-07, 9.06846e-16, 2.6, -9.06846e-16, 2.27299e-07, -9.06846e-16, -2.6, 0, 0, -0.1)
+[node name="character-human" parent="Model" instance=ExtResource("3_16mb0")]
+transform = Transform3D(-2.7, 9.41724e-16, -2.36042e-07, 9.41725e-16, 2.7, -9.41725e-16, 2.36042e-07, -9.41725e-16, -2.7, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
@@ -35,13 +32,13 @@ shape = SubResource("CylinderShape3D_je5ul")
 update_rotation = false
 update_scale = false
 
-[node name="HitBox" parent="." instance=ExtResource("4_0ya17")]
-damage = SubResource("Resource_dla6r")
+[node name="HurtBox" parent="." node_paths=PackedStringArray("override_number_position") instance=ExtResource("6_1kvce")]
+collision_mask = 10
+override_number_position = NodePath("Marker3D")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="HitBox"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 1)
-shape = SubResource("BoxShape3D_ry5xg")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HurtBox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+shape = SubResource("CapsuleShape3D_aj6yn")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="HitBox/CollisionShape3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 1)
-shape = SubResource("BoxShape3D_ry5xg")
+[node name="Marker3D" type="Marker3D" parent="HurtBox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2, 0)

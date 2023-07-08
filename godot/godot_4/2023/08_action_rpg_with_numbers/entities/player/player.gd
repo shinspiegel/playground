@@ -9,12 +9,11 @@ var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 @onready var input: PlayerInput = $PlayerInput
 @onready var remote_transform_3d: RemoteTransform3D = $RemoteTransform3D
 @onready var model: Node3D = $Model
-@onready var hit_box: HitBox = $HitBox
+@onready var hurt_box: Area3D = $HurtBox
 
 
 func _ready() -> void:
 	remote_transform_3d.remote_path = get_node(camera_path).get_path()
-	hit_box.hit.connect(on_hit_target)
 
 
 func _physics_process(delta: float) -> void:
@@ -51,7 +50,3 @@ func apply_model_facing_diretion() -> void:
 	if input.get_direction(transform.basis).length() > 0:
 		var input_angle := Vector2(input.get_input().y, input.get_input().x).angle()
 		model.rotation.y = lerp_angle(model.rotation.y, input_angle,FACING_LERP)
-
-
-func on_hit_target(box: HurtBox) -> void:
-	print(box)

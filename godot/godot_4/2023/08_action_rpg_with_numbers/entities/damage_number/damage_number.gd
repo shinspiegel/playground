@@ -1,26 +1,36 @@
 class_name DamageNumber extends Node3D
 
-@export_subgroup("Size")
+@export_subgroup("Size", "scale_")
 @export var scale_max: Vector3 = Vector3(2, 2, 2)
 @export var scale_min: Vector3 = Vector3(0.8, 0.8, 0.8)
-@export var scale_in: float = 0.3
-@export var scale_out: float = 0.2
+@export_range(0.0, 1.0, 0.1) var scale_in: float = 0.3
+@export_range(0.0, 1.0, 0.1) var scale_out: float = 0.2
 
-@export_subgroup("Position")
+@export_subgroup("Position", "pos_")
 @export var pos_up: Vector3 = Vector3(0, 1, 0)
 @export var pos_down: Vector3 = Vector3(0, -1, 0)
-@export var pos_in: float = 0.2
-@export var pos_out: float = 0.3
+@export_range(0.0, 1.0, 0.1) var pos_in: float = 0.2
+@export_range(0.0, 1.0, 0.1) var pos_out: float = 0.3
 
-@export_subgroup("Color")
-@export var text_color: Color = Color(1, 1, 1)
+@export_subgroup("Color", "color_")
+@export var color_base: Color = Color(1, 1, 1)
+@export var color_critical: Color = Color(1, 0, 0)
+
 
 @onready var label: Label3D = $Label3D
 
-
 func _ready() -> void:
-	set_label_color()
 	animate()
+
+
+
+func apply_damage(damage: Damage) -> void:
+	if damage.is_critical:
+		label.modulate = color_critical
+	else:
+		label.modulate = color_base
+	
+	label.text = str(damage.amount)
 
 
 func animate() -> void:
@@ -36,9 +46,3 @@ func animate() -> void:
 	tw_pos.play()
 
 
-func set_label_color() -> void:
-	label.modulate = text_color
-
-
-func set_text(value: String) -> void:
-	label.text = value

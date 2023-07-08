@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://b8np3bttl03mi" path="res://assets/kenney_prototype-textures/PNG/Dark/texture_01.png" id="1_1ppld"]
 [ext_resource type="PackedScene" uid="uid://d1o47sm6ckoeg" path="res://entities/player/player.tscn" id="2_0wyk3"]
 [ext_resource type="PackedScene" uid="uid://daocwedjvjgeo" path="res://entities/game_camera/game_camera.tscn" id="3_m0yjk"]
-[ext_resource type="PackedScene" uid="uid://eklfh17o8vc" path="res://entities/damage_number/damage_number.tscn" id="4_48qgw"]
+[ext_resource type="PackedScene" uid="uid://m7l22hwdpx0x" path="res://entities/spike/spikes.tscn" id="4_8ejwn"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_75gcr"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -50,9 +50,5 @@ camera_path = NodePath("../GameCamera")
 
 [node name="GameCamera" parent="." instance=ExtResource("3_m0yjk")]
 
-[node name="DamageNumber" parent="." instance=ExtResource("4_48qgw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -0.1)
-scale_in = 1.0
-scale_out = 1.0
-pos_in = 1.0
-pos_out = 1.0
+[node name="Spikes" parent="." instance=ExtResource("4_8ejwn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.3)
