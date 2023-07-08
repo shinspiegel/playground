@@ -25,21 +25,37 @@ func _ready() -> void:
 
 
 func apply_damage(damage: Damage) -> void:
-	if damage.is_critical:
+	set_damage_color(damage.is_critical)
+	set_damage_text(str(damage.amount))
+
+
+
+func set_damage_text(text: String) -> void:
+	label.text = text
+
+
+func set_damage_color(is_critical: bool = false) -> void:
+	if is_critical:
 		label.modulate = color_critical
 	else:
 		label.modulate = color_base
-	
-	label.text = str(damage.amount)
 
 
 func animate() -> void:
+	# Randomize the position
+	var rand_pos_x = randf_range(-0.5, 0.5)
+	pos_up.x = rand_pos_x
+	pos_down.x = (rand_pos_x*2)
+	pos_up.y += rand_pos_x
+	
+	# Scale tween
 	var tw_scale = get_tree().create_tween().set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_CUBIC)
 	tw_scale.tween_property(label, "scale", scale_max, scale_in)
 	tw_scale.tween_property(label, "scale", scale_min, scale_out)
 	tw_scale.tween_callback(queue_free)
 	tw_scale.play()
 	
+	# Position tween
 	var tw_pos = get_tree().create_tween().set_trans(Tween.TRANS_CUBIC)
 	tw_pos.tween_property(label, "position", pos_up, pos_in).set_ease(Tween.EASE_OUT)
 	tw_pos.tween_property(label, "position", pos_down, pos_out).set_ease(Tween.EASE_IN)
