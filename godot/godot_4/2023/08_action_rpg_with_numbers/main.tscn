@@ -1,9 +1,28 @@
-[gd_scene load_steps=9 format=3 uid="uid://cbtmjii7mcnjq"]
+[gd_scene load_steps=28 format=3 uid="uid://cbtmjii7mcnjq"]
 
 [ext_resource type="Texture2D" uid="uid://b8np3bttl03mi" path="res://assets/kenney_prototype-textures/PNG/Dark/texture_01.png" id="1_1ppld"]
 [ext_resource type="PackedScene" uid="uid://d1o47sm6ckoeg" path="res://entities/player/player.tscn" id="2_0wyk3"]
 [ext_resource type="PackedScene" uid="uid://daocwedjvjgeo" path="res://entities/game_camera/game_camera.tscn" id="3_m0yjk"]
+[ext_resource type="PackedScene" uid="uid://cvoutd4lwwtlh" path="res://assets/kenney_mini-dungeon/Models/GLTF format/banner.glb" id="3_rmqt5"]
 [ext_resource type="PackedScene" uid="uid://m7l22hwdpx0x" path="res://entities/spike/spikes.tscn" id="4_8ejwn"]
+[ext_resource type="PackedScene" uid="uid://boa0w03otpidb" path="res://assets/kenney_mini-dungeon/Models/GLTF format/barrel.glb" id="4_yyap5"]
+[ext_resource type="PackedScene" uid="uid://lw2uode8ffrn" path="res://assets/kenney_mini-dungeon/Models/GLTF format/character-orc.glb" id="5_dcq12"]
+[ext_resource type="PackedScene" uid="uid://dl5g3yrje7mf" path="res://assets/kenney_mini-dungeon/Models/GLTF format/chest.glb" id="6_geml5"]
+[ext_resource type="PackedScene" uid="uid://237gx0a8pugq" path="res://assets/kenney_mini-dungeon/Models/GLTF format/coin.glb" id="7_mbklk"]
+[ext_resource type="PackedScene" uid="uid://cpds84p6yywpe" path="res://assets/kenney_mini-dungeon/Models/GLTF format/column.glb" id="8_l3elq"]
+[ext_resource type="PackedScene" uid="uid://6rf7q67elbxe" path="res://assets/kenney_mini-dungeon/Models/GLTF format/dirt.glb" id="9_0ylli"]
+[ext_resource type="PackedScene" uid="uid://bx21f1yuagdqq" path="res://assets/kenney_mini-dungeon/Models/GLTF format/door.glb" id="10_sks6e"]
+[ext_resource type="PackedScene" uid="uid://cnks2nncj7bta" path="res://assets/kenney_mini-dungeon/Models/GLTF format/floor-detail.glb" id="11_r6f2c"]
+[ext_resource type="PackedScene" uid="uid://pf67xyxr3j7w" path="res://assets/kenney_mini-dungeon/Models/GLTF format/floor.glb" id="12_ca4e0"]
+[ext_resource type="PackedScene" uid="uid://cclfh7bx42nc7" path="res://assets/kenney_mini-dungeon/Models/GLTF format/rocks.glb" id="13_n3m2u"]
+[ext_resource type="PackedScene" uid="uid://nootmbuhaelu" path="res://assets/kenney_mini-dungeon/Models/GLTF format/stairs.glb" id="14_exiua"]
+[ext_resource type="PackedScene" uid="uid://j01xh8lbupl8" path="res://assets/kenney_mini-dungeon/Models/GLTF format/stones.glb" id="15_tto8y"]
+[ext_resource type="PackedScene" uid="uid://c5v714mdoa3qt" path="res://assets/kenney_mini-dungeon/Models/GLTF format/wall-half.glb" id="16_ccfgp"]
+[ext_resource type="PackedScene" uid="uid://dtoiobufceaf3" path="res://assets/kenney_mini-dungeon/Models/GLTF format/wall-narrow.glb" id="17_vg4kf"]
+[ext_resource type="PackedScene" uid="uid://bliou8102wmi7" path="res://assets/kenney_mini-dungeon/Models/GLTF format/wall-opening.glb" id="18_1tr1x"]
+[ext_resource type="PackedScene" uid="uid://da75cex3h4gre" path="res://assets/kenney_mini-dungeon/Models/GLTF format/wall.glb" id="19_rtxri"]
+[ext_resource type="PackedScene" uid="uid://cou01k5v800am" path="res://assets/kenney_mini-dungeon/Models/GLTF format/wood-structure.glb" id="20_0jybr"]
+[ext_resource type="PackedScene" uid="uid://dvnut21225dlb" path="res://assets/kenney_mini-dungeon/Models/GLTF format/wood-support.glb" id="21_0xnjo"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_75gcr"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -45,10 +64,67 @@ collision_mask = 0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 size = Vector3(50, 1, 50)
 
+[node name="Spikes" parent="World" instance=ExtResource("4_8ejwn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.3)
+
+[node name="banner" parent="World" instance=ExtResource("3_rmqt5")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -3.8, 0, 6.4)
+
+[node name="barrel" parent="World" instance=ExtResource("4_yyap5")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -0.7, 0, -6.6)
+
+[node name="character-orc" parent="World" instance=ExtResource("5_dcq12")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -1.1, 0, 12.3)
+
+[node name="chest" parent="World" instance=ExtResource("6_geml5")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 4.1, 0, 0)
+
+[node name="coin" parent="World" instance=ExtResource("7_mbklk")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -6.7, 0, 4.5)
+
+[node name="column" parent="World" instance=ExtResource("8_l3elq")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -6, 0, 10.9)
+
+[node name="dirt" parent="World" instance=ExtResource("9_0ylli")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -5.2, 0, -4.6)
+
+[node name="door" parent="World" instance=ExtResource("10_sks6e")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -5.9, 0, 7.2)
+
+[node name="floor-detail" parent="World" instance=ExtResource("11_r6f2c")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -7.2, 0.1, 1.3)
+
+[node name="floor" parent="World" instance=ExtResource("12_ca4e0")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -4.8, 0.1, 1.3)
+
+[node name="rocks" parent="World" instance=ExtResource("13_n3m2u")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 2.8, 0, -4.4)
+
+[node name="stairs" parent="World" instance=ExtResource("14_exiua")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -16.5, 0, 10.4)
+
+[node name="stones" parent="World" instance=ExtResource("15_tto8y")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -3, 0, 10.2)
+
+[node name="wall-half" parent="World" instance=ExtResource("16_ccfgp")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -9.1, 0, -1.9)
+
+[node name="wall-narrow" parent="World" instance=ExtResource("17_vg4kf")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -7.7, 0, 16.2)
+
+[node name="wall-opening" parent="World" instance=ExtResource("18_1tr1x")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -10.9, 0, 12.8)
+
+[node name="wall" parent="World" instance=ExtResource("19_rtxri")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -10, 0, 7.4)
+
+[node name="wood-structure" parent="World" instance=ExtResource("20_0jybr")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 1.3, 0, 7.9)
+
+[node name="wood-support" parent="World" instance=ExtResource("21_0xnjo")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -11.1, 0, 2.4)
+
 [node name="Player" parent="." instance=ExtResource("2_0wyk3")]
 camera_path = NodePath("../GameCamera")
 
 [node name="GameCamera" parent="." instance=ExtResource("3_m0yjk")]
-
-[node name="Spikes" parent="." instance=ExtResource("4_8ejwn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.3)

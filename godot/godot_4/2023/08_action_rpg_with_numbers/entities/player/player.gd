@@ -3,7 +3,7 @@ class_name Player extends CharacterBody3D
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 const FACING_LERP = 0.3
-var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
+const GRAVITY = 9.8
 
 @export var camera_path: NodePath
 @onready var input: PlayerInput = $PlayerInput
@@ -27,7 +27,7 @@ func _physics_process(delta: float) -> void:
 
 func apply_gravity(delta: float) -> void:
 	if not is_on_floor():
-		velocity.y -= gravity * delta
+		velocity.y -= GRAVITY * delta
 
 
 func apply_direction() -> void:
