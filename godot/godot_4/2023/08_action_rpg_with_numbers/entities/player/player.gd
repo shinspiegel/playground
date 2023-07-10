@@ -11,9 +11,11 @@ const GRAVITY = 9.8
 @onready var model: Node3D = $Model
 @onready var hurt_box: Area3D = $HurtBox
 
+var game_camera: Camera3D
 
 func _ready() -> void:
-	remote_transform_3d.remote_path = get_node(camera_path).get_path()
+	game_camera = get_node(camera_path)
+	remote_transform_3d.remote_path = game_camera.get_path()
 
 
 func _physics_process(delta: float) -> void:

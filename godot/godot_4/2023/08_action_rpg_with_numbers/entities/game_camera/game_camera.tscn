@@ -2,6 +2,8 @@
 
 [node name="GameCamera" type="Node3D"]
 
-[node name="Camera3D" type="Camera3D" parent="."]
+[node name="GeneralCamera" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 2.08165e-12, 25, 25)
+cull_mask = 1
+current = true
 fov = 20.0
