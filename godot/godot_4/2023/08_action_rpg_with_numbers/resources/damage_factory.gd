@@ -8,11 +8,17 @@ class_name DamageFactory extends Resource
 @export_range(1.0, 5.0, 0.1) var critical_multiplier: float = 2.0
 @export_range(0.0, 1.0, 0.1) var critical_chance: float = 0.1
 
+@export_group("Damage Type")
+@export var type: Constants.DamageType = Constants.DamageType.PHYSICAL
+
 
 func generate_damage() -> Damage:
 	var dmg = Constants.DMG.RESOURCE.new()
+
 	dmg.is_critical = randomize_critical()
 	dmg.amount = randomize_damage(dmg.is_critical)
+	dmg.type = type
+	
 	return dmg
 
 
