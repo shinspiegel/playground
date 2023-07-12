@@ -26,6 +26,7 @@ environment = SubResource("Environment_j5bdk")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Environment"]
 transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 5, 5)
+visible = false
 shadow_enabled = true
 
 [node name="TestLevel" parent="." instance=ExtResource("1_gxjcv")]
