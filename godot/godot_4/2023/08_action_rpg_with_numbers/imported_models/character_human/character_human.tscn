@@ -5,19 +5,19 @@
 [node name="character-human" instance=ExtResource("1_hwwwe")]
 
 [node name="body" parent="character-human2" index="0"]
-layers = 2
+layers = 3
 
 [node name="arm-left" parent="character-human2/body" index="0"]
-layers = 2
+layers = 3
 
 [node name="arm-right" parent="character-human2/body" index="1"]
-layers = 2
+layers = 3
 
 [node name="leg-left" parent="character-human2/body" index="2"]
-layers = 2
+layers = 3
 
 [node name="leg-right" parent="character-human2/body" index="3"]
-layers = 2
+layers = 3
 
 [node name="head" parent="character-human2/body" index="4"]
-layers = 2
+layers = 3

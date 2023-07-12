@@ -11,7 +11,7 @@ const GRAVITY = 9.8
 @onready var model: Node3D = $Model
 @onready var hurt_box: Area3D = $HurtBox
 
-var game_camera: Camera3D
+var game_camera: Node3D
 
 func _ready() -> void:
 	game_camera = get_node(camera_path)

@@ -1,7 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://d1o47sm6ckoeg"]
+[gd_scene load_steps=9 format=3 uid="uid://d1o47sm6ckoeg"]
 
 [ext_resource type="Script" path="res://entities/player/player.gd" id="1_sbvtd"]
-[ext_resource type="Script" path="res://entities/player/PlayerInput.gd" id="2_e3j58"]
+[ext_resource type="Script" path="res://entities/player/player_stats.gd" id="2_g4pfc"]
+[ext_resource type="Script" path="res://entities/player/player_input.gd" id="3_0tev6"]
+[ext_resource type="Resource" uid="uid://dx1fwa34j4jna" path="res://entities/player/player_health.tres" id="3_8rgjx"]
 [ext_resource type="PackedScene" uid="uid://dbjrbaxgarqo7" path="res://imported_models/character_human/character_human.tscn" id="3_16mb0"]
 [ext_resource type="PackedScene" uid="uid://bouf4v4ksctph" path="res://entities/boxes/hurt_box.tscn" id="6_1kvce"]
 
@@ -16,8 +18,12 @@ height = 1.8
 collision_mask = 4
 script = ExtResource("1_sbvtd")
 
+[node name="PlayerStats" type="Node" parent="."]
+script = ExtResource("2_g4pfc")
+health = ExtResource("3_8rgjx")
+
 [node name="PlayerInput" type="Node" parent="."]
-script = ExtResource("2_e3j58")
+script = ExtResource("3_0tev6")
 
 [node name="Model" type="Node3D" parent="."]
 
