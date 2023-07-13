@@ -1,5 +1,6 @@
 # Things todo
 
-- [ ] Create health pool (or IntCounter resource)
-- [ ] Create PlayerStats resource (use IntCounter)
-- [ ] Make camera move on the player axis
+- [x] Create health pool (or IntCounter resource)
+- [x] Create PlayerStats resource (use IntCounter)
+- [x] Create ghost view
+- [ ] Create the StateManager script
