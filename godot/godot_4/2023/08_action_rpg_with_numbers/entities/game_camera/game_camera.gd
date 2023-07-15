@@ -10,12 +10,23 @@ var shader_material: ShaderMaterial
 
 
 func _ready() -> void:
-	if ghost_viewport.material is ShaderMaterial:
-		shader_material = ghost_viewport.material
+	set_material()
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
+	apply_transform()
+	apply_shader_to_material()
+
+
+func apply_shader_to_material() -> void:
+	shader_material.set_shader_parameter("general_camera_texture", general_sub_viewport.get_texture()) 
+
+
+func apply_transform() -> void:
 	general_holder.global_transform = global_transform
 	ghost_holder.global_transform = global_transform
-	
-	shader_material.set_shader_parameter("general_camera_texture", general_sub_viewport.get_texture()) 
+
+
+func set_material() -> void:
+	if ghost_viewport.material is ShaderMaterial:
+		shader_material = ghost_viewport.material

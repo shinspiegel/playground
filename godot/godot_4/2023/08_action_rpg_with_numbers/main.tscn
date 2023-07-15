@@ -31,7 +31,7 @@ shadow_enabled = true
 
 [node name="TestLevel" parent="." instance=ExtResource("1_gxjcv")]
 
-[node name="Player" parent="." instance=ExtResource("2_0wyk3")]
-camera_path = NodePath("../GameCamera")
+[node name="Player" parent="." node_paths=PackedStringArray("game_camera") instance=ExtResource("2_0wyk3")]
+game_camera = NodePath("../GameCamera")
 
 [node name="GameCamera" parent="." instance=ExtResource("3_m0yjk")]

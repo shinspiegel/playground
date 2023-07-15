@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://d1o47sm6ckoeg"]
+[gd_scene load_steps=12 format=3 uid="uid://d1o47sm6ckoeg"]
 
 [ext_resource type="Script" path="res://entities/player/player.gd" id="1_sbvtd"]
 [ext_resource type="Script" path="res://entities/player/player_stats.gd" id="2_g4pfc"]
@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://dbjrbaxgarqo7" path="res://imported_models/character_human/character_human.tscn" id="3_16mb0"]
 [ext_resource type="PackedScene" uid="uid://cos3ybvqe8ts7" path="res://entities/state_manager/state_manager.tscn" id="5_hf7pt"]
 [ext_resource type="PackedScene" uid="uid://bouf4v4ksctph" path="res://entities/boxes/hurt_box.tscn" id="6_1kvce"]
+[ext_resource type="Script" path="res://entities/player/states/player_idle.gd" id="6_ggb6s"]
+[ext_resource type="Script" path="res://entities/player/states/player_move.gd" id="7_qhf8x"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_je5ul"]
 height = 1.8
@@ -26,7 +28,16 @@ health = ExtResource("3_8rgjx")
 [node name="PlayerInput" type="Node" parent="."]
 script = ExtResource("3_0tev6")
 
-[node name="StateManager" parent="." instance=ExtResource("5_hf7pt")]
+[node name="StateManager" parent="." node_paths=PackedStringArray("initial_state") instance=ExtResource("5_hf7pt")]
+initial_state = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="StateManager" node_paths=PackedStringArray("player")]
+script = ExtResource("6_ggb6s")
+player = NodePath("../..")
+
+[node name="Move" type="Node" parent="StateManager" node_paths=PackedStringArray("player")]
+script = ExtResource("7_qhf8x")
+player = NodePath("../..")
 
 [node name="Model" type="Node3D" parent="."]
 

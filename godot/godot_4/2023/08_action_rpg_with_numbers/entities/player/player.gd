@@ -5,25 +5,23 @@ const JUMP_VELOCITY = 4.5
 const FACING_LERP = 0.3
 const GRAVITY = 9.8
 
-@export var camera_path: NodePath
+@export var game_camera: Node3D
 @onready var input: PlayerInput = $PlayerInput
 @onready var remote_transform_3d: RemoteTransform3D = $RemoteTransform3D
 @onready var model: Node3D = $Model
 @onready var hurt_box: Area3D = $HurtBox
+@onready var state_manager: StateManager = $StateManager
 
-var game_camera: Node3D
 
 func _ready() -> void:
-	game_camera = get_node(camera_path)
 	remote_transform_3d.remote_path = game_camera.get_path()
 
 
 func _physics_process(delta: float) -> void:
-	apply_gravity(delta)
-	apply_jump()
-	apply_direction()
-	apply_model_facing_diretion()
-	
+#	apply_gravity(delta)
+#	apply_direction()
+#	apply_model_facing_diretion()
+	state_manager.apply_current_state(delta)
 	move_and_slide()
 
 
@@ -41,11 +39,6 @@ func apply_direction() -> void:
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
-
-
-func apply_jump() -> void:
-	if input.has_jump() and is_on_floor():
-		velocity.y = JUMP_VELOCITY
 
 
 func apply_model_facing_diretion() -> void:
