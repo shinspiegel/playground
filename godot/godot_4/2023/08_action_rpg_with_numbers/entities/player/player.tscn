@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://d1o47sm6ckoeg"]
+[gd_scene load_steps=14 format=3 uid="uid://d1o47sm6ckoeg"]
 
 [ext_resource type="Script" path="res://entities/player/player.gd" id="1_sbvtd"]
 [ext_resource type="Script" path="res://entities/player/player_stats.gd" id="2_g4pfc"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://bouf4v4ksctph" path="res://entities/boxes/hurt_box.tscn" id="6_1kvce"]
 [ext_resource type="Script" path="res://entities/player/states/player_idle.gd" id="6_ggb6s"]
 [ext_resource type="Script" path="res://entities/player/states/player_move.gd" id="7_qhf8x"]
+[ext_resource type="Script" path="res://entities/player/states/player_attack.gd" id="11_5u6co"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_je5ul"]
 height = 1.8
@@ -41,21 +42,24 @@ transform = Transform3D(0.707107, -1.28028e-08, 0.707107, -0.707107, -3.09086e-0
 remote_path = NodePath("../../../../../../../Weapons/Right")
 
 [node name="leg-left" parent="Model/character-human/character-human2/body" index="2"]
-transform = Transform3D(1, 0, 0, 0, 0.499998, 0.866026, 0, -0.866026, 0.499998, -0.083571, 0, -2.88765e-15)
+transform = Transform3D(1, -3.48787e-16, 3.48787e-16, 3.48787e-16, 1, -3.48787e-16, -3.48787e-16, 3.48787e-16, 1, -0.083571, 0, -2.88765e-15)
 
 [node name="leg-right" parent="Model/character-human/character-human2/body" index="3"]
-transform = Transform3D(1, -4.67281e-17, 1.74393e-16, 1.74393e-16, 0.499998, -0.866026, -4.67282e-17, 0.866026, 0.499998, 0.083571, 0, 2.14172e-09)
+transform = Transform3D(1, -3.48787e-16, 3.48787e-16, 3.48787e-16, 1, -3.48787e-16, -3.48787e-16, 3.48787e-16, 1, 0.083571, 0, 2.14172e-09)
 
 [node name="Weapons" type="Node3D" parent="."]
 
 [node name="Left" type="Node3D" parent="Weapons"]
-transform = Transform3D(-0.707107, 4.45893e-08, -0.707107, -0.707106, -3.09086e-08, 0.707107, 9.67369e-09, 1, 5.33851e-08, 0.572, 0.30225, -5.00112e-08)
+transform = Transform3D(-0.707107, 4.45892e-08, -0.707105, -0.707106, -3.09085e-08, 0.707105, 9.67369e-09, 0.999997, 5.33849e-08, 0.572, 0.30225, 1.45932e-08)
 
-[node name="TestWeapon" parent="Weapons/Left" instance=ExtResource("3_p7tol")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+[node name="TestWeapon2" parent="Weapons/Left" instance=ExtResource("3_p7tol")]
+transform = Transform3D(1, 1.32163e-15, -1.23653e-08, 5.20719e-15, 1, 7.10202e-16, -2.18647e-08, -3.40402e-16, 1, 0, 0, -4.47035e-08)
 
 [node name="Right" type="Node3D" parent="Weapons"]
-transform = Transform3D(-0.707107, 4.45893e-08, -0.707107, -0.707107, -3.09086e-08, 0.707107, 9.67369e-09, 1, 5.33851e-08, 0.572, 0.30225, -5.00112e-08)
+transform = Transform3D(-0.707107, 7.462e-08, 0.707107, 0.707107, -3.09086e-08, 0.707107, 7.462e-08, 1, -3.09086e-08, -0.572, 0.30225, 5.00004e-08)
+
+[node name="TestWeapon" parent="Weapons/Right" instance=ExtResource("3_p7tol")]
+transform = Transform3D(0.999999, 0, 0, 0, 0.999997, 0, 0, 0, 0.999997, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
@@ -80,8 +84,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2, 0)
 script = ExtResource("2_g4pfc")
 health = ExtResource("3_8rgjx")
 
-[node name="PlayerInput" type="Node" parent="."]
+[node name="PlayerInput" type="Node" parent="." node_paths=PackedStringArray("player")]
 script = ExtResource("3_0tev6")
+player = NodePath("..")
 
 [node name="StateManager" parent="." node_paths=PackedStringArray("initial_state") instance=ExtResource("5_hf7pt")]
 initial_state = NodePath("Idle")
@@ -92,6 +97,10 @@ player = NodePath("../..")
 
 [node name="Move" type="Node" parent="StateManager" node_paths=PackedStringArray("player")]
 script = ExtResource("7_qhf8x")
+player = NodePath("../..")
+
+[node name="Attack" type="Node" parent="StateManager" node_paths=PackedStringArray("player")]
+script = ExtResource("11_5u6co")
 player = NodePath("../..")
 
 [editable path="Model/character-human"]

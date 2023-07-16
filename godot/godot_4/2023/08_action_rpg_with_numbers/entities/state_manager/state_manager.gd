@@ -41,6 +41,14 @@ func has_state() -> bool:
 	return false
 
 
+func get_current_name() -> BaseState:
+	return current_state
+
+
+func get_current_state_name() -> String:
+	return current_state.name
+
+
 func apply_current_state(delta: float) -> void:
 	if has_state():
 		current_state.apply(delta)

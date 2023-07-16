@@ -1,28 +1,24 @@
 class_name PlayerInput extends Node
 
-const UP = "forward"
-const DOWN = "backward"
-const LEFT = "left"
-const RIGHT = "right"
-const JUMP = "jump"
+@export var player: Player
 
-@export var jump: bool
-
+var attack: bool
 
 func _process(_delta: float) -> void:
-	jump = Input.is_action_just_pressed(JUMP)
-
-
-func has_jump() -> bool:
-	return jump
+	attack = Input.is_action_just_pressed(Constants.key_map.ATTACK)
 
 
 ## Returns the controller input
 func get_input() -> Vector2:
-	return Input.get_vector(LEFT, RIGHT, UP, DOWN)
+	return Input.get_vector(
+		Constants.key_map.LEFT, 
+		Constants.key_map.RIGHT, 
+		Constants.key_map.UP, 
+		Constants.key_map.DOWN
+	)
 
 
 ## Returns the direction for the 3d plane normalized
-func get_direction(player_basis: Basis) -> Vector3:
-	var direction := (player_basis * Vector3(get_input().x, 0, get_input().y)).normalized()
+func get_direction() -> Vector3:
+	var direction := (player.transform.basis * Vector3(get_input().x, 0, get_input().y)).normalized()
 	return direction
