@@ -1,9 +1,16 @@
 class_name Player extends CharacterBody3D
 
-const SPEED = 5.0
-const JUMP_VELOCITY = 4.5
-const FACING_LERP = 0.3
-const GRAVITY = 9.8
+const MOVE = {
+	SPEED = 5.0,
+	JUMP_VELOCITY = 4.5,
+	FACING_LERP = 0.3,
+	GRAVITY = 9.8,
+}
+
+const ANIM = {
+	IDLE = "idle",
+	MOVE = "move",
+}
 
 @export var game_camera: Node3D
 @export var anim_player: AnimationPlayer
@@ -43,19 +50,24 @@ func check_state_change() -> void:
 
 func apply_gravity(delta: float) -> void:
 	if not is_on_floor():
-		velocity.y -= GRAVITY * delta
+		velocity.y -= MOVE.GRAVITY * delta
 
 
 func apply_direction() -> void:
 	if direction:
-		velocity.x = direction.x * SPEED
-		velocity.z = direction.z * SPEED
+		velocity.x = direction.x * MOVE.SPEED
+		velocity.z = direction.z * MOVE.SPEED
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-		velocity.z = move_toward(velocity.z, 0, SPEED)
+		velocity.x = move_toward(velocity.x, 0, MOVE.SPEED)
+		velocity.z = move_toward(velocity.z, 0, MOVE.SPEED)
 
 
 func apply_model_facing_diretion() -> void:
 	if input.get_direction(transform.basis).length() > 0:
 		var input_angle := Vector2(input.get_input().y, input.get_input().x).angle()
-		model.rotation.y = lerp_angle(model.rotation.y, input_angle,FACING_LERP)
+		model.rotation.y = lerp_angle(model.rotation.y, input_angle, MOVE.FACING_LERP)
+
+
+func anim_play(animation: String) -> void: anim_player.play(animation)
+func anim_play_idle() -> void: anim_play(ANIM.IDLE)
+func anim_play_move() -> void: anim_play(ANIM.MOVE)

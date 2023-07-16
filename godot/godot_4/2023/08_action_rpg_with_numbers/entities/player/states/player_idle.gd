@@ -2,7 +2,7 @@ extends PlayerState
 
 
 func enter() -> void:
-	player.anim_player.play("Idle")
+	player.anim_play_idle()
 
 
 func apply(delta: float) -> void:
