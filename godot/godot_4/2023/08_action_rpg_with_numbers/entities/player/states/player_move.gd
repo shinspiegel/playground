@@ -1,9 +1,11 @@
 extends PlayerState
 
 
-func apply(_delta: float) -> void:
-	var direction := player.input.get_direction(player.transform.basis)
-	
-	if direction:
-		player.velocity.x = direction.x * player.SPEED
-		player.velocity.z = direction.z * player.SPEED
+func enter() -> void:
+	player.anim_player.play("Move")
+
+
+func apply(delta: float) -> void:
+	player.apply_gravity(delta)
+	player.apply_direction()
+	player.apply_model_facing_diretion()

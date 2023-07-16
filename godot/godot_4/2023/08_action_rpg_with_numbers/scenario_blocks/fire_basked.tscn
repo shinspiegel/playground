@@ -1,6 +1,51 @@
-[gd_scene load_steps=2 format=3 uid="uid://6w5jwxicsiy4"]
+[gd_scene load_steps=10 format=3 uid="uid://6w5jwxicsiy4"]
 
 [ext_resource type="PackedScene" uid="uid://b75qypxq2kjr" path="res://assets/kenney_graveyard-kit/Models/GLTF format/fireBasket.glb" id="1_8xfoo"]
+[ext_resource type="Texture2D" uid="uid://xfx425msxww0" path="res://assets/kenney_particle-pack/PNG (Transparent)/fire_01.png" id="2_d3cjk"]
+
+[sub_resource type="Gradient" id="Gradient_03mjm"]
+offsets = PackedFloat32Array(0.056, 0.125333, 0.36, 1)
+colors = PackedColorArray(1, 0, 0, 1, 1, 1, 0, 1, 0.12, 0.12, 0.12, 1, 0, 0, 0, 0.309804)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_eakw0"]
+gradient = SubResource("Gradient_03mjm")
+
+[sub_resource type="Curve" id="Curve_cbpya"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.242618, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.267038), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_1y6jx"]
+curve = SubResource("Curve_cbpya")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_uppe6"]
+emission_shape = 1
+emission_sphere_radius = 0.5
+direction = Vector3(2.08165e-12, 1, 2.08165e-12)
+spread = 10.0
+gravity = Vector3(2.08165e-12, 2.08165e-12, 2.08165e-12)
+initial_velocity_min = 0.5
+initial_velocity_max = 5.0
+angle_max = 360.0
+scale_min = 0.5
+scale_max = 2.0
+scale_curve = SubResource("CurveTexture_1y6jx")
+color_ramp = SubResource("GradientTexture1D_eakw0")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_622yh"]
+transparency = 3
+alpha_hash_scale = 0.5
+alpha_antialiasing_mode = 0
+blend_mode = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("2_d3cjk")
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_f2uil"]
+material = SubResource("StandardMaterial3D_622yh")
 
 [node name="FireBasked" instance=ExtResource("1_8xfoo")]
 
@@ -15,3 +60,14 @@ light_color = Color(0.968627, 0.956863, 0.12549, 1)
 light_energy = 2.0
 shadow_enabled = true
 omni_range = 10.0
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)
+layers = 3
+amount = 50
+lifetime = 0.5
+randomness = 1.0
+visibility_aabb = AABB(-1.5, -4, -1.5, 3, 8, 3)
+draw_order = 3
+process_material = SubResource("ParticleProcessMaterial_uppe6")
+draw_pass_1 = SubResource("QuadMesh_f2uil")

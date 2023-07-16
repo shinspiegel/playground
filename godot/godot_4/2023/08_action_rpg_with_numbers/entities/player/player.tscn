@@ -17,32 +17,27 @@ height = 1.8
 radius = 0.4
 height = 1.8
 
-[node name="Player" type="CharacterBody3D"]
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("anim_player")]
 collision_mask = 4
 script = ExtResource("1_sbvtd")
-
-[node name="PlayerStats" type="Node" parent="."]
-script = ExtResource("2_g4pfc")
-health = ExtResource("3_8rgjx")
-
-[node name="PlayerInput" type="Node" parent="."]
-script = ExtResource("3_0tev6")
-
-[node name="StateManager" parent="." node_paths=PackedStringArray("initial_state") instance=ExtResource("5_hf7pt")]
-initial_state = NodePath("Idle")
-
-[node name="Idle" type="Node" parent="StateManager" node_paths=PackedStringArray("player")]
-script = ExtResource("6_ggb6s")
-player = NodePath("../..")
-
-[node name="Move" type="Node" parent="StateManager" node_paths=PackedStringArray("player")]
-script = ExtResource("7_qhf8x")
-player = NodePath("../..")
+anim_player = NodePath("Model/character-human/AnimationPlayer")
 
 [node name="Model" type="Node3D" parent="."]
 
 [node name="character-human" parent="Model" instance=ExtResource("3_16mb0")]
 transform = Transform3D(-2.6, 9.06846e-16, -2.27299e-07, 9.06846e-16, 2.6, -9.06846e-16, 2.27299e-07, -9.06846e-16, -2.6, 0, 0, 0)
+
+[node name="arm-left" parent="Model/character-human/character-human2/body" index="0"]
+transform = Transform3D(0.707107, 1.28028e-08, -0.707107, 0.707107, -3.09086e-08, 0.707107, -1.28028e-08, -1, -3.09086e-08, -0.1, 0.15, 2.08165e-12)
+
+[node name="arm-right" parent="Model/character-human/character-human2/body" index="1"]
+transform = Transform3D(0.707107, -1.28028e-08, 0.707107, -0.707107, -3.09086e-08, 0.707107, 1.28028e-08, -1, -3.09086e-08, 0.1, 0.15, 2.08165e-12)
+
+[node name="leg-left" parent="Model/character-human/character-human2/body" index="2"]
+transform = Transform3D(1, 0, 0, 0, 0.499998, 0.866026, 0, -0.866026, 0.499998, -0.083571, 0, -2.88765e-15)
+
+[node name="leg-right" parent="Model/character-human/character-human2/body" index="3"]
+transform = Transform3D(1, -4.67281e-17, 1.74393e-16, 1.74393e-16, 0.499998, -0.866026, -4.67282e-17, 0.866026, 0.499998, 0.083571, 0, 2.14172e-09)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
@@ -62,3 +57,23 @@ shape = SubResource("CapsuleShape3D_aj6yn")
 
 [node name="Marker3D" type="Marker3D" parent="HurtBox"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2, 0)
+
+[node name="PlayerStats" type="Node" parent="."]
+script = ExtResource("2_g4pfc")
+health = ExtResource("3_8rgjx")
+
+[node name="PlayerInput" type="Node" parent="."]
+script = ExtResource("3_0tev6")
+
+[node name="StateManager" parent="." node_paths=PackedStringArray("initial_state") instance=ExtResource("5_hf7pt")]
+initial_state = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="StateManager" node_paths=PackedStringArray("player")]
+script = ExtResource("6_ggb6s")
+player = NodePath("../..")
+
+[node name="Move" type="Node" parent="StateManager" node_paths=PackedStringArray("player")]
+script = ExtResource("7_qhf8x")
+player = NodePath("../..")
+
+[editable path="Model/character-human"]

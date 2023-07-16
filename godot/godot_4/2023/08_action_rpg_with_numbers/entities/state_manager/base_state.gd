@@ -1,6 +1,5 @@
 class_name BaseState extends Node
 
-
 func enter() -> void:
 	pass
 
