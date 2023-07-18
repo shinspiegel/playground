@@ -2,5 +2,6 @@
 	"godot_tools.gdscript_lsp_server_port": 6005,
 	"godot_tools.editor_path": "/opt/homebrew/bin/godot",
 	"editor.insertSpaces": false,
-	"editor.tabSize": 4
+	"editor.tabSize": 4,
+	"workbench.colorTheme": "Catppuccin Mocha"
 }

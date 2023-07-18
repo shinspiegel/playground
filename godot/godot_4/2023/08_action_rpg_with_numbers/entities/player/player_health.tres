@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="IntCounter" load_steps=2 format=3 uid="uid://dx1fwa34j4jna"]
+
+[ext_resource type="Script" path="res://resources/int_counter.gd" id="1_hlghj"]
+
+[resource]
+script = ExtResource("1_hlghj")
+current = 0
+min_value = 0
+max_value = 5

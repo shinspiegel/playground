@@ -1,9 +1,60 @@
-[gd_scene format=3 uid="uid://daocwedjvjgeo"]
+[gd_scene load_steps=4 format=3 uid="uid://daocwedjvjgeo"]
+
+[ext_resource type="Script" path="res://entities/game_camera/game_camera.gd" id="1_61y3e"]
+[ext_resource type="Shader" path="res://entities/game_camera/game_camera.gdshader" id="2_2n7in"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2w66w"]
+shader = ExtResource("2_2n7in")
+shader_parameter/overlay_color = Color(1, 1, 1, 0.3)
+shader_parameter/threshold = 0.001
 
 [node name="GameCamera" type="Node3D"]
+script = ExtResource("1_61y3e")
 
-[node name="GeneralCamera" type="Camera3D" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="GeneralViewport" type="SubViewportContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GeneralSubViewport" type="SubViewport" parent="CanvasLayer/GeneralViewport"]
+unique_name_in_owner = true
+handle_input_locally = false
+size = Vector2i(1920, 1080)
+render_target_update_mode = 4
+
+[node name="GeneralHolder" type="Node3D" parent="CanvasLayer/GeneralViewport/GeneralSubViewport"]
+unique_name_in_owner = true
+
+[node name="GeneralCamera" type="Camera3D" parent="CanvasLayer/GeneralViewport/GeneralSubViewport/GeneralHolder"]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 2.08165e-12, 25, 25)
 cull_mask = 1
+current = true
+fov = 20.0
+
+[node name="GhostViewport" type="SubViewportContainer" parent="CanvasLayer"]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_2w66w")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GhostSubViewport" type="SubViewport" parent="CanvasLayer/GhostViewport"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(1920, 1080)
+render_target_update_mode = 4
+
+[node name="GhostHolder" type="Node3D" parent="CanvasLayer/GhostViewport/GhostSubViewport"]
+unique_name_in_owner = true
+
+[node name="GhostCamera" type="Camera3D" parent="CanvasLayer/GhostViewport/GhostSubViewport/GhostHolder"]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 2.08165e-12, 25, 25)
+cull_mask = 2
 current = true
 fov = 20.0

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cos3ybvqe8ts7"]
+
+[ext_resource type="Script" path="res://entities/state_manager/state_manager.gd" id="1_vo8iy"]
+
+[node name="StateManager" type="Node"]
+script = ExtResource("1_vo8iy")

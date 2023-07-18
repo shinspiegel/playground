@@ -1,5 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://cbtmjii7mcnjq"]
+[gd_scene load_steps=8 format=3 uid="uid://cbtmjii7mcnjq"]
 
+[ext_resource type="Script" path="res://main.gd" id="1_0eaar"]
 [ext_resource type="PackedScene" uid="uid://8qh1126b5f56" path="res://levels/test_level.tscn" id="1_gxjcv"]
 [ext_resource type="PackedScene" uid="uid://d1o47sm6ckoeg" path="res://entities/player/player.tscn" id="2_0wyk3"]
 [ext_resource type="PackedScene" uid="uid://daocwedjvjgeo" path="res://entities/game_camera/game_camera.tscn" id="3_m0yjk"]
@@ -18,19 +19,37 @@ tonemap_mode = 2
 glow_enabled = true
 
 [node name="Main" type="Node3D"]
+script = ExtResource("1_0eaar")
 
 [node name="Environment" type="Node3D" parent="."]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Environment"]
 environment = SubResource("Environment_j5bdk")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Environment"]
-transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 5, 5)
-shadow_enabled = true
-
 [node name="TestLevel" parent="." instance=ExtResource("1_gxjcv")]
 
-[node name="Player" parent="." instance=ExtResource("2_0wyk3")]
-camera_path = NodePath("../GameCamera")
+[node name="Player" parent="." node_paths=PackedStringArray("game_camera") instance=ExtResource("2_0wyk3")]
+game_camera = NodePath("../GameCamera")
 
 [node name="GameCamera" parent="." instance=ExtResource("3_m0yjk")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_left = 31.0
+offset_top = 26.0
+offset_right = 186.0
+offset_bottom = 78.0
+theme_override_font_sizes/font_size = 40
+text = "DEBUG::
+PlayerState::[NONE]
+"
