@@ -1,16 +1,18 @@
 class_name Player extends CharacterBody3D
 
 const MOVE = { SPEED = 5.0, JUMP_VELOCITY = 4.5, FACING_LERP = 0.3, GRAVITY = 9.8, }
-const ANIM = { IDLE = "idle", MOVE = "move", SWING_LEFT = "swing_left", SWING_RIGHT = "swing_right" }
+const ANIM = { RESET= "RESET", IDLE = "idle", MOVE = "move", SWING_LEFT = "swing_left", SWING_RIGHT = "swing_right" }
 const STATES = { IDLE = "Idle", MOVE = "Move", ATTACK = "Attack", }
 
 @export var game_camera: Node3D
 @export var anim_player: AnimationPlayer
+
 @onready var input: PlayerInput = $PlayerInput
 @onready var remote_transform_3d: RemoteTransform3D = $RemoteTransform3D
 @onready var model: Node3D = $Model
 @onready var hurt_box: Area3D = $HurtBox
 @onready var state_manager: StateManager = $StateManager
+
 
 func _ready() -> void:
 	remote_transform_3d.remote_path = game_camera.get_path()
@@ -27,9 +29,17 @@ func _physics_process(delta: float) -> void:
 
 
 func check_state_change() -> void:
-	if state_manager.get_current_state_name() == STATES.ATTACK: return
-	if input.attack: return state_manager.change_state(STATES.ATTACK)
-	if input.get_direction(): return state_manager.change_state(STATES.MOVE)
+	if state_manager.get_current_state_name() == STATES.ATTACK: 
+		return
+	
+	if input.attack_left or input.attack_right: 
+		state_manager.change_state(STATES.ATTACK)
+		if input.attack_left: anim_play(ANIM.SWING_LEFT)
+		if input.attack_right: anim_play(ANIM.SWING_RIGHT)
+		return
+	
+	if input.get_direction(): 
+		return state_manager.change_state(STATES.MOVE)
 	
 	return state_manager.change_state(STATES.IDLE)
 
@@ -55,12 +65,9 @@ func apply_model_facing_diretion() -> void:
 
 
 func on_animation_finished(anim: String) -> void:
-	if anim == ANIM.SWING_LEFT:
+	if anim == ANIM.SWING_LEFT or anim == ANIM.SWING_RIGHT:
 		state_manager.change_state(STATES.IDLE)
 
 
-
-func anim_play(animation: String) -> void: anim_player.play(animation)
-func anim_play_idle() -> void: anim_play(ANIM.IDLE)
-func anim_play_move() -> void: anim_play(ANIM.MOVE)
-func anim_play_attack() -> void: anim_play(ANIM.SWING_LEFT)
+func anim_play(animation: String) -> void: 
+	anim_player.play(animation)

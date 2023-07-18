@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://d1o47sm6ckoeg"]
+[gd_scene load_steps=16 format=3 uid="uid://d1o47sm6ckoeg"]
 
 [ext_resource type="Script" path="res://entities/player/player.gd" id="1_sbvtd"]
 [ext_resource type="Script" path="res://entities/player/player_stats.gd" id="2_g4pfc"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://by52ltovoyc4s" path="res://entities/equipments/test_weapon.tscn" id="3_p7tol"]
 [ext_resource type="PackedScene" uid="uid://cos3ybvqe8ts7" path="res://entities/state_manager/state_manager.tscn" id="5_hf7pt"]
 [ext_resource type="PackedScene" uid="uid://bouf4v4ksctph" path="res://entities/boxes/hurt_box.tscn" id="6_1kvce"]
+[ext_resource type="Script" path="res://resources/int_counter.gd" id="6_8rxsd"]
 [ext_resource type="Script" path="res://entities/player/states/player_idle.gd" id="6_ggb6s"]
 [ext_resource type="Script" path="res://entities/player/states/player_move.gd" id="7_qhf8x"]
 [ext_resource type="Script" path="res://entities/player/states/player_attack.gd" id="11_5u6co"]
@@ -19,6 +20,12 @@ height = 1.8
 radius = 0.4
 height = 1.8
 
+[sub_resource type="Resource" id="Resource_8y3gc"]
+script = ExtResource("6_8rxsd")
+current = 1
+min_value = 1
+max_value = 99
+
 [node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("anim_player")]
 collision_mask = 4
 script = ExtResource("1_sbvtd")
@@ -29,14 +36,17 @@ anim_player = NodePath("Model/character-human/AnimationPlayer")
 [node name="character-human" parent="Model" instance=ExtResource("3_16mb0")]
 transform = Transform3D(-2.6, 9.06846e-16, -2.27299e-07, 9.06846e-16, 2.6, -9.06846e-16, 2.27299e-07, -9.06846e-16, -2.6, 0, 0, 0)
 
+[node name="character-human2" parent="Model/character-human" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
 [node name="arm-left" parent="Model/character-human/character-human2/body" index="0"]
-transform = Transform3D(0.707107, 1.28028e-08, -0.707107, 0.707107, -3.09086e-08, 0.707107, -1.28028e-08, -1, -3.09086e-08, -0.1, 0.15, 2.08165e-12)
+transform = Transform3D(0.707107, 1.06027e-06, -0.707107, 0.707107, -2.55972e-06, 0.707107, -1.06027e-06, -1, -2.55972e-06, -0.1, 0.15, 2.08165e-12)
 
 [node name="RemoteTransform3D" parent="Model/character-human/character-human2/body/arm-left/holder_left2" index="0"]
 remote_path = NodePath("../../../../../../../Weapons/Left")
 
 [node name="arm-right" parent="Model/character-human/character-human2/body" index="1"]
-transform = Transform3D(0.707107, -1.28028e-08, 0.707107, -0.707107, -3.09086e-08, 0.707107, 1.28028e-08, -1, -3.09086e-08, 0.1, 0.15, 2.08165e-12)
+transform = Transform3D(0.707107, -1.06027e-06, 0.707107, -0.707107, -2.55972e-06, 0.707107, 1.06027e-06, -1, -2.55972e-06, 0.1, 0.15, 2.08165e-12)
 
 [node name="RemoteTransform3D2" parent="Model/character-human/character-human2/body/arm-right/holder_left" index="0"]
 remote_path = NodePath("../../../../../../../Weapons/Right")
@@ -50,13 +60,13 @@ transform = Transform3D(1, -3.48787e-16, 3.48787e-16, 3.48787e-16, 1, -3.48787e-
 [node name="Weapons" type="Node3D" parent="."]
 
 [node name="Left" type="Node3D" parent="Weapons"]
-transform = Transform3D(-0.707107, 4.45892e-08, -0.707105, -0.707106, -3.09085e-08, 0.707105, 9.67369e-09, 0.999997, 5.33849e-08, 0.572, 0.30225, 1.45932e-08)
+transform = Transform3D(-0.57415, -0.00144558, -0.818531, -0.818516, 0.00700837, 0.574129, 0.00490734, 0.999826, -0.00520786, 0.661671, 0.364407, 0.00397232)
 
 [node name="TestWeapon2" parent="Weapons/Left" instance=ExtResource("3_p7tol")]
 transform = Transform3D(1, 1.32163e-15, -1.23653e-08, 5.20719e-15, 1, 7.10202e-16, -2.18647e-08, -3.40402e-16, 1, 0, 0, -4.47035e-08)
 
 [node name="Right" type="Node3D" parent="Weapons"]
-transform = Transform3D(-0.707107, 7.462e-08, 0.707107, 0.707107, -3.09086e-08, 0.707107, 7.462e-08, 1, -3.09086e-08, -0.572, 0.30225, 5.00004e-08)
+transform = Transform3D(-0.574149, -0.00144881, 0.818525, 0.818515, -0.00700873, 0.574125, 0.00490577, 0.999826, 0.00521068, -0.661671, 0.364407, -0.00397371)
 
 [node name="TestWeapon" parent="Weapons/Right" instance=ExtResource("3_p7tol")]
 transform = Transform3D(0.999999, 0, 0, 0, 0.999997, 0, 0, 0, 0.999997, 0, 0, 0)
@@ -82,6 +92,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2, 0)
 
 [node name="PlayerStats" type="Node" parent="."]
 script = ExtResource("2_g4pfc")
+level = SubResource("Resource_8y3gc")
 health = ExtResource("3_8rgjx")
 
 [node name="PlayerInput" type="Node" parent="." node_paths=PackedStringArray("player")]

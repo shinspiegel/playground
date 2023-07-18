@@ -16,5 +16,6 @@ const key_map = {
 	DOWN = "backward",
 	LEFT = "left",
 	RIGHT = "right",
-	ATTACK = "attack",
+	ATTACK_LEFT = "attack_left",
+	ATTACK_RIGHT = "attack_right",
 }

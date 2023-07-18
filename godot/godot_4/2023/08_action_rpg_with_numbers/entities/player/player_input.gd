@@ -2,10 +2,13 @@ class_name PlayerInput extends Node
 
 @export var player: Player
 
-var attack: bool
+var attack_left: bool
+var attack_right: bool
+
 
 func _process(_delta: float) -> void:
-	attack = Input.is_action_just_pressed(Constants.key_map.ATTACK)
+	attack_left = Input.is_action_pressed(Constants.key_map.ATTACK_LEFT)
+	attack_right = Input.is_action_pressed(Constants.key_map.ATTACK_RIGHT)
 
 
 ## Returns the controller input

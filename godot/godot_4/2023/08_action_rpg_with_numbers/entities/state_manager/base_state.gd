@@ -10,3 +10,7 @@ func exit() -> void:
 
 func apply(_delta: float) -> void:
 	pass
+
+
+func receive_message(_id: String, _message) -> void:
+	pass
