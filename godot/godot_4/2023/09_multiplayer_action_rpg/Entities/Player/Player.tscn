@@ -1,15 +1,22 @@
-[gd_scene load_steps=16 format=3 uid="uid://ds28cgcihxlkb"]
+[gd_scene load_steps=23 format=3 uid="uid://ds28cgcihxlkb"]
 
 [ext_resource type="Script" path="res://Entities/Player/Player.cs" id="1_j7gqa"]
 [ext_resource type="Script" path="res://Entities/Player/PlayerData.cs" id="2_cgdsk"]
 [ext_resource type="Script" path="res://Entities/Player/PlayerInput.cs" id="3_o3qk4"]
 [ext_resource type="Texture2D" uid="uid://qv3gagyjena" path="res://Assets/template/Sprite Sheets/Character Idle 48x48.png" id="4_5hqia"]
+[ext_resource type="PackedScene" uid="uid://4nj0qm4q28dr" path="res://Entities/StateManager/StateManager.tscn" id="4_perfh"]
+[ext_resource type="Script" path="res://Entities/Player/States/Idle.cs" id="5_0tnkd"]
 [ext_resource type="Texture2D" uid="uid://ohb2715vkvmc" path="res://Assets/template/Sprite Sheets/player jump 48x48.png" id="5_y603h"]
 [ext_resource type="Texture2D" uid="uid://cpg5n0swvghff" path="res://Assets/template/Sprite Sheets/player land 48x48.png" id="6_3km54"]
+[ext_resource type="Script" path="res://Entities/Player/States/Move.cs" id="6_ec8he"]
+[ext_resource type="Script" path="res://Entities/Player/States/Jump.cs" id="7_257q5"]
 [ext_resource type="Texture2D" uid="uid://bbqm0j7843jtu" path="res://Assets/template/Sprite Sheets/run cycle 48x48.png" id="7_k1e4n"]
+[ext_resource type="Script" path="res://Entities/Player/States/Falling.cs" id="8_wkryk"]
+[ext_resource type="Script" path="res://Entities/Player/States/Landing.cs" id="9_0pyuu"]
+[ext_resource type="Script" path="res://Entities/Player/PlayerAnimPlyer.cs" id="12_txvk3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o4ide"]
-size = Vector2(16, 30)
+size = Vector2(12, 30)
 
 [sub_resource type="Animation" id="Animation_244r1"]
 length = 0.001
@@ -262,18 +269,40 @@ _data = {
 "run": SubResource("Animation_og5hf")
 }
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("Data", "Input", "Anim")]
+[node name="Player" type="CharacterBody2D"]
 texture_filter = 1
 script = ExtResource("1_j7gqa")
-Data = NodePath("PlayerData")
-Input = NodePath("PlayerInput")
-Anim = NodePath("AnimationPlayer")
 
 [node name="PlayerData" type="Node" parent="."]
 script = ExtResource("2_cgdsk")
 
 [node name="PlayerInput" type="Node" parent="."]
 script = ExtResource("3_o3qk4")
+
+[node name="StateManager" parent="." node_paths=PackedStringArray("Initial") instance=ExtResource("4_perfh")]
+Initial = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="StateManager" node_paths=PackedStringArray("Player", "Anim")]
+script = ExtResource("5_0tnkd")
+Player = NodePath("../..")
+Anim = NodePath("../../PlayerAnimPlyer")
+
+[node name="Move" type="Node" parent="StateManager" node_paths=PackedStringArray("Anim")]
+script = ExtResource("6_ec8he")
+Anim = NodePath("../../PlayerAnimPlyer")
+
+[node name="Jump" type="Node" parent="StateManager"]
+script = ExtResource("7_257q5")
+
+[node name="Falling" type="Node" parent="StateManager" node_paths=PackedStringArray("Player", "Anim")]
+script = ExtResource("8_wkryk")
+Player = NodePath("../..")
+Anim = NodePath("../../PlayerAnimPlyer")
+
+[node name="Landing" type="Node" parent="StateManager" node_paths=PackedStringArray("Player", "Anim")]
+script = ExtResource("9_0pyuu")
+Player = NodePath("../..")
+Anim = NodePath("../../PlayerAnimPlyer")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -15)
@@ -284,7 +313,8 @@ position = Vector2(0, -16)
 texture = ExtResource("4_5hqia")
 hframes = 10
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="PlayerAnimPlyer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_2h6e6")
 }
+script = ExtResource("12_txvk3")
