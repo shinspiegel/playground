@@ -277,6 +277,23 @@ script = ExtResource("1_j7gqa")
 [node name="PlayerData" type="Node" parent="."]
 script = ExtResource("2_cgdsk")
 
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -15)
+shape = SubResource("RectangleShape2D_o4ide")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -16)
+texture = ExtResource("4_5hqia")
+hframes = 10
+
+[node name="PlayerAnimPlyer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_2h6e6")
+}
+script = ExtResource("12_txvk3")
+
 [node name="PlayerInput" type="Node" parent="."]
 script = ExtResource("3_o3qk4")
 
@@ -310,18 +327,3 @@ anim = NodePath("../../PlayerAnimPlyer")
 script = ExtResource("9_0pyuu")
 player = NodePath("../..")
 anim = NodePath("../../PlayerAnimPlyer")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -15)
-shape = SubResource("RectangleShape2D_o4ide")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, -16)
-texture = ExtResource("4_5hqia")
-hframes = 10
-
-[node name="PlayerAnimPlyer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_2h6e6")
-}
-script = ExtResource("12_txvk3")

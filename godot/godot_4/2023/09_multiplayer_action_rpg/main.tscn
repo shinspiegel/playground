@@ -6,11 +6,14 @@
 
 [node name="Main" type="Node2D"]
 
-[node name="Player" parent="." instance=ExtResource("1_cp6yu")]
+[node name="Player" parent="." node_paths=PackedStringArray("gameCamera") instance=ExtResource("1_cp6yu")]
 position = Vector2(248, 133)
+gameCamera = NodePath("../GameCamera")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(235, 210)
 shape = SubResource("WorldBoundaryShape2D_ajltq")
+
+[node name="GameCamera" type="Camera2D" parent="."]

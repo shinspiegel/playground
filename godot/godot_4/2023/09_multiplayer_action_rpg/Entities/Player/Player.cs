@@ -3,10 +3,13 @@ using Godot.Collections;
 
 public partial class Player : CharacterBody2D
 {
-	public PlayerData Data;
-	public PlayerInput Input;
-	public PlayerAnimPlyer Anim;
-	public StateManager StateManager;
+	[Export] public Camera2D gameCamera;
+
+	public PlayerData data;
+	public PlayerInput input;
+	public PlayerAnimPlyer anim;
+	public StateManager stateManager;
+	public RemoteTransform2D remoteTransform;
 
 	// Used for current frame changes, applied in the `ApplyMove`
 	private Vector2 velocity = Vector2.Zero;
@@ -16,18 +19,20 @@ public partial class Player : CharacterBody2D
 	public override void _Ready()
 	{
 		base._Ready();
-		Data = GetNode<PlayerData>("PlayerData");
-		Input = GetNode<PlayerInput>("PlayerInput");
-		Anim = GetNode<PlayerAnimPlyer>("PlayerAnimPlyer");
-		StateManager = GetNode<StateManager>("StateManager");
+		data = GetNode<PlayerData>("PlayerData");
+		input = GetNode<PlayerInput>("PlayerInput");
+		anim = GetNode<PlayerAnimPlyer>("PlayerAnimPlyer");
+		stateManager = GetNode<StateManager>("StateManager");
+		remoteTransform = GetNode<RemoteTransform2D>("RemoteTransform2D");
 
-		StateManager.StateFinished += OnStateEnd;
+		stateManager.StateFinished += OnStateEnd;
+		remoteTransform.RemotePath = gameCamera.GetPath();
 	}
 
 	public override void _PhysicsProcess(double delta)
 	{
 		CleanNextState();
-		StateManager.Apply(delta);
+		stateManager.Apply(delta);
 
 		// applyGravity((float)delta);
 		// checkJump();
@@ -59,24 +64,24 @@ public partial class Player : CharacterBody2D
 	{
 		if (direction != 0.0f)
 		{
-			velocity.X = (direction * Data.Speed) * ratio;
+			velocity.X = (direction * data.Speed) * ratio;
 		}
 		else
 		{
-			velocity.X = Mathf.MoveToward(Velocity.X, 0, (Data.Speed * ratio));
+			velocity.X = Mathf.MoveToward(Velocity.X, 0, (data.Speed * ratio));
 		}
 	}
 
 	public void ApplyJumpForce()
 	{
-		velocity.Y = Data.JumpVelocity;
+		velocity.Y = data.JumpVelocity;
 	}
 
 	public void ApplyGravity(float delta)
 	{
 		if (!IsOnFloor())
 		{
-			velocity.Y += Data.gravity * delta;
+			velocity.Y += data.gravity * delta;
 		}
 	}
 
@@ -93,18 +98,19 @@ public partial class Player : CharacterBody2D
 
 	private void StateUpdate()
 	{
-		bool shouldFall = Velocity.Y > 0;
-		bool shouldLand = Velocity.Y == 0 && StateManager.CurrentName() == "Falling";
-		bool shouldMove = Input.moveDir != 0 && IsOnFloor();
-		bool shouldJump = Input.isJumping && IsOnFloor();
+		bool shouldMove = input.moveDir != 0 && IsOnFloor();
+		bool shouldIdle = input.moveDir == 0 && Velocity.X == 0 && IsOnFloor();
+		bool shouldFall = Velocity.Y > 0 && !IsOnFloor();
+		bool shouldLand = Velocity.Y == 0 && stateManager.CurrentName() == "Falling";
+		bool shouldJump = input.isJumping && IsOnFloor();
 
 		if (nextState == null && shouldFall) { nextState = "Falling"; }
 		if (nextState == null && shouldLand) { nextState = "Landing"; }
 		if (nextState == null && shouldJump) { nextState = "Jump"; }
 		if (nextState == null && shouldMove) { nextState = "Move"; }
-		if (nextState == null) { nextState = "Idle"; }
+		if (nextState == null && shouldIdle) { nextState = "Idle"; }
 
-		if (nextState != null) { StateManager.Change(nextState); }
+		if (nextState != null) { stateManager.Change(nextState); }
 	}
 
 	private void OnStateEnd(string state)
