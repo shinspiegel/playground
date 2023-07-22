@@ -12,6 +12,8 @@ public partial class Jump : BaseState
 		player.ApplyGravity((float)delta);
 		player.ApplyDirection(input.moveDir, 0.9f);
 		player.ApplyFlip();
+
+		if (player.Velocity.Y > 0) { EndState(); }
 	}
 
 	public override void Enter()

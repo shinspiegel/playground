@@ -12,6 +12,15 @@ public partial class Move : BaseState
 		player.ApplyGravity((float)delta);
 		player.ApplyDirection(input.moveDir);
 		player.ApplyFlip();
+
+		if (
+			(player.Velocity.X == 0.0f && input.moveDir == 0.0f) ||
+			input.isJumping ||
+			input.isRoll
+			)
+		{
+			EndState();
+		}
 	}
 
 	public override void Enter()

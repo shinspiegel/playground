@@ -12,6 +12,8 @@ public partial class Falling : BaseState
 		player.ApplyGravity((float)delta);
 		player.ApplyDirection(input.moveDir, 0.8f);
 		player.ApplyFlip();
+
+		if (player.Velocity.Y == 0.0f) { EndState(); }
 	}
 
 	public override void Enter()

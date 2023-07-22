@@ -13,4 +13,5 @@ public partial class PlayerAnimPlyer : AnimationPlayer
 
 	public void JumpLand() { Play("jump_land"); }
 
+	public void Roll() { Play("roll"); }
 }

@@ -11,4 +11,7 @@ public partial class BaseState : Node
 	public virtual void Exit() { if (debug) GD.Print($"Existed::[{Name}]"); }
 
 	public virtual void Apply(double delta) { }
+
+	public virtual void EndState() { EmitSignal(SignalName.Ended, Name); }
+
 }

@@ -15,7 +15,6 @@ public partial class Player : CharacterBody2D
 	// Used for current frame changes, applied in the `ApplyMove`
 	private Vector2 velocity = Vector2.Zero;
 	private bool isFlip = false;
-	private string nextState = null;
 
 	public override void _Ready()
 	{
@@ -36,10 +35,13 @@ public partial class Player : CharacterBody2D
 
 	public override void _PhysicsProcess(double delta)
 	{
-		CleanNextState();
 		stateManager.Apply(delta);
 		ApplyMove();
-		StateUpdate();
+	}
+
+	public int GetFacing()
+	{
+		return !isFlip ? 1 : -1;
 	}
 
 	public void ApplyFlip()
@@ -89,31 +91,52 @@ public partial class Player : CharacterBody2D
 		MoveAndSlide();
 	}
 
-	private void CleanNextState()
-	{
-		nextState = null;
-	}
-
-	private void StateUpdate()
-	{
-		bool shouldMove = input.moveDir != 0 && IsOnFloor();
-		bool shouldIdle = input.moveDir == 0 && Velocity.X == 0 && IsOnFloor();
-		bool shouldFall = Velocity.Y > 0 && !IsOnFloor();
-		bool shouldLand = Velocity.Y == 0 && stateManager.CurrentName() == "Falling";
-		bool shouldJump = input.isJumping && IsOnFloor();
-
-		if (nextState == null && shouldFall) { nextState = "Falling"; }
-		if (nextState == null && shouldLand) { nextState = "Landing"; }
-		if (nextState == null && shouldJump) { nextState = "Jump"; }
-		if (nextState == null && shouldMove) { nextState = "Move"; }
-		if (nextState == null && shouldIdle) { nextState = "Idle"; }
-
-		if (nextState != null) { stateManager.Change(nextState); }
-	}
-
 	private void OnStateEnd(string state)
 	{
-		if (state == "Landing") { nextState = "Idle"; }
+		string nextState = null;
+
+		if (state == "Idle")
+		{
+			if (input.moveDir != 0.0f) { nextState = "Move"; }
+			if (input.isJumping) { nextState = "Jump"; }
+			if (input.isRoll) { nextState = "Roll"; }
+		}
+
+		if (state == "Move")
+		{
+			nextState = "Idle";
+			if (input.isJumping) { nextState = "Jump"; }
+			if (input.isRoll) { nextState = "Roll"; }
+		}
+
+		if (state == "Jump")
+		{
+			nextState = "Falling";
+		}
+
+		if (state == "Falling")
+		{
+			nextState = "Landing";
+			if (input.moveDir != 0.0f) { nextState = "Move"; }
+		}
+
+		if (state == "Landing")
+		{
+			nextState = "Idle";
+			if (input.moveDir != 0.0f) { nextState = "Move"; }
+			if (input.isJumping) { nextState = "Jump"; }
+			if (input.isRoll) { nextState = "Roll"; }
+		}
+
+		if (state == "Roll")
+		{
+			nextState = "Idle";
+		}
+
+		if (nextState != null)
+		{
+			stateManager.Change(nextState);
+		}
 	}
 
 	private void OnHit()

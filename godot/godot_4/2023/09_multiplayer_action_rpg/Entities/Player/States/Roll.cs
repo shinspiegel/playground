@@ -1,10 +1,9 @@
 using Godot;
 using System;
 
-public partial class Landing : BaseState
+public partial class Roll : BaseState
 {
 	[Export] Player player;
-	[Export] PlayerInput input;
 	[Export] PlayerAnimPlyer anim;
 
 	public override void _Ready()
@@ -16,17 +15,20 @@ public partial class Landing : BaseState
 	public override void Apply(double delta)
 	{
 		player.ApplyFlip();
-		player.ApplyDirection(input.moveDir, 0.2f);
+		player.ApplyDirection(player.GetFacing(), 0.5f);
 	}
 
 	public override void Enter()
 	{
 		base.Enter();
-		anim.JumpLand();
+		anim.Roll();
 	}
 
 	private void onAnimFinished(StringName name)
 	{
-		if (name == "jump_land") { EndState(); }
+		if (name == "roll")
+		{
+			EndState();
+		}
 	}
 }

@@ -11,6 +11,11 @@ public partial class Idle : BaseState
 	{
 		player.ApplyGravity((float)delta);
 		player.ApplyDirection(input.moveDir);
+
+		if (input.moveDir != 0.0f || input.isJumping || input.isRoll)
+		{
+			EndState();
+		}
 	}
 
 	public override void Enter()

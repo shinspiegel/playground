@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://ds28cgcihxlkb"]
+[gd_scene load_steps=28 format=3 uid="uid://ds28cgcihxlkb"]
 
 [ext_resource type="Script" path="res://Entities/Player/Player.cs" id="1_j7gqa"]
 [ext_resource type="Resource" uid="uid://c1m1mfjyqmwf1" path="res://Entities/Player/PlayerData.tres" id="2_eu2hy"]
@@ -12,9 +12,11 @@
 [ext_resource type="Script" path="res://Entities/Player/States/Move.cs" id="6_ec8he"]
 [ext_resource type="Script" path="res://Entities/Player/States/Jump.cs" id="7_257q5"]
 [ext_resource type="Texture2D" uid="uid://bbqm0j7843jtu" path="res://Assets/template/Sprite Sheets/run cycle 48x48.png" id="7_k1e4n"]
+[ext_resource type="Texture2D" uid="uid://dwsstmm2qwahd" path="res://Assets/template/Player Roll/Player Roll 48x48.png" id="8_a6xrc"]
 [ext_resource type="Script" path="res://Entities/Player/States/Falling.cs" id="8_wkryk"]
 [ext_resource type="Script" path="res://Entities/Player/States/Landing.cs" id="9_0pyuu"]
 [ext_resource type="Script" path="res://Entities/Player/PlayerAnimPlyer.cs" id="12_txvk3"]
+[ext_resource type="Script" path="res://Entities/Player/States/Roll.cs" id="17_qshk7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_607nx"]
 size = Vector2(10, 28)
@@ -222,6 +224,46 @@ tracks/2/keys = {
 "values": [0]
 }
 
+[sub_resource type="Animation" id="Animation_uecae"]
+resource_name = "roll"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("8_a6xrc")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [7]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6]
+}
+
 [sub_resource type="Animation" id="Animation_og5hf"]
 resource_name = "run"
 length = 0.4
@@ -271,6 +313,7 @@ _data = {
 "jump_down": SubResource("Animation_57n86"),
 "jump_land": SubResource("Animation_5avgp"),
 "jump_up": SubResource("Animation_1k1c0"),
+"roll": SubResource("Animation_uecae"),
 "run": SubResource("Animation_og5hf")
 }
 
@@ -333,7 +376,13 @@ player = NodePath("../..")
 input = NodePath("../../PlayerInput")
 anim = NodePath("../../PlayerAnimPlyer")
 
-[node name="Landing" type="Node" parent="StateManager" node_paths=PackedStringArray("player", "anim")]
+[node name="Landing" type="Node" parent="StateManager" node_paths=PackedStringArray("player", "input", "anim")]
 script = ExtResource("9_0pyuu")
+player = NodePath("../..")
+input = NodePath("../../PlayerInput")
+anim = NodePath("../../PlayerAnimPlyer")
+
+[node name="Roll" type="Node" parent="StateManager" node_paths=PackedStringArray("player", "anim")]
+script = ExtResource("17_qshk7")
 player = NodePath("../..")
 anim = NodePath("../../PlayerAnimPlyer")
