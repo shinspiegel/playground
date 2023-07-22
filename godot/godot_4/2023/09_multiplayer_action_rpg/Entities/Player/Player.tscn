@@ -1,7 +1,8 @@
-[gd_scene load_steps=23 format=3 uid="uid://ds28cgcihxlkb"]
+[gd_scene load_steps=25 format=3 uid="uid://ds28cgcihxlkb"]
 
 [ext_resource type="Script" path="res://Entities/Player/Player.cs" id="1_j7gqa"]
-[ext_resource type="Script" path="res://Entities/Player/PlayerData.cs" id="2_cgdsk"]
+[ext_resource type="Resource" uid="uid://c1m1mfjyqmwf1" path="res://Entities/Player/PlayerData.tres" id="2_eu2hy"]
+[ext_resource type="PackedScene" uid="uid://h8iexqhdqah" path="res://Entities/HurtBox/HurtBox.tscn" id="3_0eg4p"]
 [ext_resource type="Script" path="res://Entities/Player/PlayerInput.cs" id="3_o3qk4"]
 [ext_resource type="Texture2D" uid="uid://qv3gagyjena" path="res://Assets/template/Sprite Sheets/Character Idle 48x48.png" id="4_5hqia"]
 [ext_resource type="PackedScene" uid="uid://4nj0qm4q28dr" path="res://Entities/StateManager/StateManager.tscn" id="4_perfh"]
@@ -14,6 +15,9 @@
 [ext_resource type="Script" path="res://Entities/Player/States/Falling.cs" id="8_wkryk"]
 [ext_resource type="Script" path="res://Entities/Player/States/Landing.cs" id="9_0pyuu"]
 [ext_resource type="Script" path="res://Entities/Player/PlayerAnimPlyer.cs" id="12_txvk3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_607nx"]
+size = Vector2(10, 28)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o4ide"]
 size = Vector2(12, 30)
@@ -274,11 +278,16 @@ _data = {
 texture_filter = 1
 collision_mask = 4
 script = ExtResource("1_j7gqa")
-
-[node name="PlayerData" type="Node" parent="."]
-script = ExtResource("2_cgdsk")
+data = ExtResource("2_eu2hy")
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="."]
+
+[node name="HurtBox" parent="." instance=ExtResource("3_0eg4p")]
+collision_mask = 10
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2(0, -15)
+shape = SubResource("RectangleShape2D_607nx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -15)

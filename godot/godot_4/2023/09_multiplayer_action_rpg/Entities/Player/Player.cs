@@ -3,13 +3,14 @@ using Godot.Collections;
 
 public partial class Player : CharacterBody2D
 {
+	[Export] public PlayerData data;
 	[Export] public Camera2D gameCamera;
 
-	public PlayerData data;
 	public PlayerInput input;
 	public PlayerAnimPlyer anim;
 	public StateManager stateManager;
 	public RemoteTransform2D remoteTransform;
+	public HurtBox hurtBox;
 
 	// Used for current frame changes, applied in the `ApplyMove`
 	private Vector2 velocity = Vector2.Zero;
@@ -20,7 +21,6 @@ public partial class Player : CharacterBody2D
 	{
 		base._Ready();
 
-		data = GetNode<PlayerData>("PlayerData");
 		input = GetNode<PlayerInput>("PlayerInput");
 		anim = GetNode<PlayerAnimPlyer>("PlayerAnimPlyer");
 
@@ -29,6 +29,9 @@ public partial class Player : CharacterBody2D
 
 		remoteTransform = GetNode<RemoteTransform2D>("RemoteTransform2D");
 		remoteTransform.RemotePath = gameCamera.GetPath();
+
+		hurtBox = GetNode<HurtBox>("HurtBox");
+		hurtBox.Hit += OnHit;
 	}
 
 	public override void _PhysicsProcess(double delta)
@@ -59,17 +62,17 @@ public partial class Player : CharacterBody2D
 	{
 		if (direction != 0.0f)
 		{
-			velocity.X = (direction * data.Speed) * ratio;
+			velocity.X = (direction * data.speed) * ratio;
 		}
 		else
 		{
-			velocity.X = Mathf.MoveToward(Velocity.X, 0, (data.Speed * ratio));
+			velocity.X = Mathf.MoveToward(Velocity.X, 0, (data.speed * ratio));
 		}
 	}
 
 	public void ApplyJumpForce(float ratio = 1.0f)
 	{
-		velocity.Y = (data.JumpVelocity) * ratio;
+		velocity.Y = (data.jumpForce) * ratio;
 	}
 
 	public void ApplyGravity(float delta, float ratio = 1.0f)
@@ -111,5 +114,10 @@ public partial class Player : CharacterBody2D
 	private void OnStateEnd(string state)
 	{
 		if (state == "Landing") { nextState = "Idle"; }
+	}
+
+	private void OnHit()
+	{
+		GD.Print($"[{Name}]::Hit");
 	}
 }

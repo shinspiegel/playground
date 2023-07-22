@@ -1,0 +1,14 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://c1m1mfjyqmwf1"]
+
+[ext_resource type="Script" path="res://Entities/Player/PlayerData.cs" id="1_4ag66"]
+
+[resource]
+script = ExtResource("1_4ag66")
+level = 1
+experience = 0
+attack = 0
+defense = 0
+agility = 0
+speed = 300.0
+jumpForce = -400.0
+gravity = 980.0
