@@ -19,13 +19,15 @@ public partial class Player : CharacterBody2D
 	public override void _Ready()
 	{
 		base._Ready();
+
 		data = GetNode<PlayerData>("PlayerData");
 		input = GetNode<PlayerInput>("PlayerInput");
 		anim = GetNode<PlayerAnimPlyer>("PlayerAnimPlyer");
-		stateManager = GetNode<StateManager>("StateManager");
-		remoteTransform = GetNode<RemoteTransform2D>("RemoteTransform2D");
 
+		stateManager = GetNode<StateManager>("StateManager");
 		stateManager.StateFinished += OnStateEnd;
+
+		remoteTransform = GetNode<RemoteTransform2D>("RemoteTransform2D");
 		remoteTransform.RemotePath = gameCamera.GetPath();
 	}
 
@@ -33,14 +35,7 @@ public partial class Player : CharacterBody2D
 	{
 		CleanNextState();
 		stateManager.Apply(delta);
-
-		// applyGravity((float)delta);
-		// checkJump();
-		// applyDirection();
-		// applyFlip();
-
 		ApplyMove();
-
 		StateUpdate();
 	}
 
@@ -72,16 +67,16 @@ public partial class Player : CharacterBody2D
 		}
 	}
 
-	public void ApplyJumpForce()
+	public void ApplyJumpForce(float ratio = 1.0f)
 	{
-		velocity.Y = data.JumpVelocity;
+		velocity.Y = (data.JumpVelocity) * ratio;
 	}
 
-	public void ApplyGravity(float delta)
+	public void ApplyGravity(float delta, float ratio = 1.0f)
 	{
 		if (!IsOnFloor())
 		{
-			velocity.Y += data.gravity * delta;
+			velocity.Y += (data.gravity * delta) * ratio;
 		}
 	}
 
