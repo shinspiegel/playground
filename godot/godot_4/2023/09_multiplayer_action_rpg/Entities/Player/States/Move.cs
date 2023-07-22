@@ -3,13 +3,21 @@ using System;
 
 public partial class Move : BaseState
 {
-	[Export] PlayerAnimPlyer Anim;
-	
-	public override void Apply(double delta) { }
+	[Export] public Player player;
+	[Export] public PlayerInput input;
+	[Export] public PlayerAnimPlyer anim;
 
-	public override void Enter() { 
-		Anim.Run();
+	public override void Apply(double delta)
+	{
+		player.ApplyGravity((float)delta);
+		player.ApplyDirection(input.moveDir);
+		player.ApplyFlip();
 	}
 
-	public override void Exit() { }
+	public override void Enter()
+	{
+		base.Enter();
+		anim.Run();
+	}
+
 }

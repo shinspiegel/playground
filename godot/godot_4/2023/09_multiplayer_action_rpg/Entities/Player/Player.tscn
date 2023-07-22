@@ -220,8 +220,9 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_og5hf"]
 resource_name = "run"
-length = 0.8
+length = 0.4
 loop_mode = 1
+step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -253,7 +254,7 @@ tracks/2/path = NodePath("Sprite2D:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5, 6, 7]
@@ -279,30 +280,36 @@ script = ExtResource("2_cgdsk")
 [node name="PlayerInput" type="Node" parent="."]
 script = ExtResource("3_o3qk4")
 
-[node name="StateManager" parent="." node_paths=PackedStringArray("Initial") instance=ExtResource("4_perfh")]
-Initial = NodePath("Idle")
+[node name="StateManager" parent="." instance=ExtResource("4_perfh")]
 
-[node name="Idle" type="Node" parent="StateManager" node_paths=PackedStringArray("Player", "Anim")]
+[node name="Idle" type="Node" parent="StateManager" node_paths=PackedStringArray("player", "input", "anim")]
 script = ExtResource("5_0tnkd")
-Player = NodePath("../..")
-Anim = NodePath("../../PlayerAnimPlyer")
+player = NodePath("../..")
+input = NodePath("../../PlayerInput")
+anim = NodePath("../../PlayerAnimPlyer")
 
-[node name="Move" type="Node" parent="StateManager" node_paths=PackedStringArray("Anim")]
+[node name="Move" type="Node" parent="StateManager" node_paths=PackedStringArray("player", "input", "anim")]
 script = ExtResource("6_ec8he")
-Anim = NodePath("../../PlayerAnimPlyer")
+player = NodePath("../..")
+input = NodePath("../../PlayerInput")
+anim = NodePath("../../PlayerAnimPlyer")
 
-[node name="Jump" type="Node" parent="StateManager"]
+[node name="Jump" type="Node" parent="StateManager" node_paths=PackedStringArray("player", "input", "anim")]
 script = ExtResource("7_257q5")
+player = NodePath("../..")
+input = NodePath("../../PlayerInput")
+anim = NodePath("../../PlayerAnimPlyer")
 
-[node name="Falling" type="Node" parent="StateManager" node_paths=PackedStringArray("Player", "Anim")]
+[node name="Falling" type="Node" parent="StateManager" node_paths=PackedStringArray("player", "input", "anim")]
 script = ExtResource("8_wkryk")
-Player = NodePath("../..")
-Anim = NodePath("../../PlayerAnimPlyer")
+player = NodePath("../..")
+input = NodePath("../../PlayerInput")
+anim = NodePath("../../PlayerAnimPlyer")
 
-[node name="Landing" type="Node" parent="StateManager" node_paths=PackedStringArray("Player", "Anim")]
+[node name="Landing" type="Node" parent="StateManager" node_paths=PackedStringArray("player", "anim")]
 script = ExtResource("9_0pyuu")
-Player = NodePath("../..")
-Anim = NodePath("../../PlayerAnimPlyer")
+player = NodePath("../..")
+anim = NodePath("../../PlayerAnimPlyer")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -15)

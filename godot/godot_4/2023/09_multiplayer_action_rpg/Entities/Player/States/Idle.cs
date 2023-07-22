@@ -3,22 +3,20 @@ using System;
 
 public partial class Idle : BaseState
 {
-	[Export] Player Player;
-	[Export] PlayerAnimPlyer Anim;
+	[Export] Player player;
+	[Export] PlayerInput input;
+	[Export] PlayerAnimPlyer anim;
 
 	public override void Apply(double delta)
 	{
-		Player.ApplyGravity((float)delta);
-		// Player.checkJump();
-		// Player.applyDirection();
-		// Player.applyFlip();
-
+		player.ApplyGravity((float)delta);
+		player.ApplyDirection(input.moveDir);
 	}
 
 	public override void Enter()
 	{
-		Anim.Idle();
+		base.Enter();
+		anim.Idle();
 	}
 
-	public override void Exit() { }
 }

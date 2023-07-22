@@ -3,17 +3,20 @@ using System;
 
 public partial class Falling : BaseState
 {
-	[Export] Player Player;
-	[Export] PlayerAnimPlyer Anim;
+	[Export] public Player player;
+	[Export] public PlayerInput input;
+	[Export] public PlayerAnimPlyer anim;
 
 	public override void Apply(double delta)
 	{
-		Player.ApplyGravity((float)delta);
+		player.ApplyGravity((float)delta);
+		player.ApplyDirection(input.moveDir, 0.8f);
+		player.ApplyFlip();
 	}
 
-	public override void Enter() { 
-		Anim.JumpDown();
+	public override void Enter()
+	{
+		base.Enter();
+		anim.JumpDown();
 	}
-
-	public override void Exit() { }
 }

@@ -1,9 +1,23 @@
 using Godot;
 using System;
 
-public partial class Jump : BaseState 
+public partial class Jump : BaseState
 {
-	public override void Apply(double delta) { }
-	public override void Enter() { }
-	public override void Exit() { }
+	[Export] public Player player;
+	[Export] public PlayerInput input;
+	[Export] public PlayerAnimPlyer anim;
+
+	public override void Apply(double delta)
+	{
+		player.ApplyGravity((float)delta);
+		player.ApplyDirection(input.moveDir, 0.9f);
+		player.ApplyFlip();
+	}
+
+	public override void Enter()
+	{
+		base.Enter();
+		anim.JumpUp();
+		player.ApplyJumpForce();
+	}
 }

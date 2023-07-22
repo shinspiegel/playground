@@ -5,9 +5,9 @@ public partial class StateManager : Node
 {
 	[Signal] public delegate void StateFinishedEventHandler(string name);
 
-	[Export] public Dictionary<string, BaseState> States = new Dictionary<string, BaseState>();
-	[Export] public BaseState Initial;
-	[Export] public BaseState Current;
+	[Export] public Dictionary<string, BaseState> states = new Dictionary<string, BaseState>();
+	[Export] public BaseState initial;
+	[Export] public BaseState current;
 
 	public override void _Ready()
 	{
@@ -18,34 +18,36 @@ public partial class StateManager : Node
 
 	public void Apply(double delta)
 	{
-		if (Current == null) return;
-		Current.Apply(delta);
+		if (current == null) return;
+		current.Apply(delta);
 	}
 
 	public void Change(string next)
 	{
-		if (States[next] != null)
+		if (states[next] == null || CurrentName() == next)
 		{
-			if (Current != null)
-			{
-				Current.Exit();
-			}
-
-			Current = States[next];
-			Current.Enter();
+			return;
 		}
+
+		if (current != null)
+		{
+			current.Exit();
+		}
+
+		current = states[next];
+		current.Enter();
 	}
 
 	public string CurrentName()
 	{
-		return Current.Name;
+		return current.Name;
 	}
 
 	private void loadInitialState()
 	{
-		if (Initial != null && Initial is BaseState)
+		if (initial != null && initial is BaseState)
 		{
-			Current = Initial;
+			current = initial;
 		}
 		else if (GetChildCount() > 0)
 		{
@@ -53,7 +55,7 @@ public partial class StateManager : Node
 			{
 				if (child is BaseState)
 				{
-					Current = (BaseState)child;
+					current = (BaseState)child;
 					return;
 				}
 			}
@@ -66,8 +68,8 @@ public partial class StateManager : Node
 		{
 			if (child is BaseState)
 			{
-				States[child.Name] = (BaseState)child;
-				States[child.Name].Ended += onStateFinish;
+				states[child.Name] = (BaseState)child;
+				states[child.Name].Ended += onStateFinish;
 			}
 		}
 	}

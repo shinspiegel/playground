@@ -3,26 +3,32 @@ using System;
 
 public partial class Landing : BaseState
 {
-	[Export] Player Player;
-	[Export] PlayerAnimPlyer Anim;
+	[Export] Player player;
+	[Export] PlayerAnimPlyer anim;
 
 	public override void _Ready()
 	{
 		base._Ready();
-		Anim.AnimationFinished += onAnimFinished;
+		anim.AnimationFinished += onAnimFinished;
 	}
 
-	public override void Apply(double delta) { }
+	public override void Apply(double delta)
+	{
+		player.ApplyFlip();
+		player.ApplyDirection();
+	}
 
 	public override void Enter()
 	{
-		Anim.JumpLand();
+		base.Enter();
+		anim.JumpLand();
 	}
-
-	public override void Exit() { }
 
 	private void onAnimFinished(StringName name)
 	{
-		GD.Print($"Finished::[{name}]");
+		if (name == "jump_land")
+		{
+			EmitSignal(SignalName.Ended, Name);
+		}
 	}
 }
