@@ -1,11 +1,11 @@
 using Godot;
-using Godot.Collections;
 
 public partial class PlayerInput : Node
 {
 	[Export] public float moveDir = 0.0f;
 	[Export] public bool isJumping = false;
 	[Export] public bool isRoll = false;
+	[Export] public bool isAttack = false;
 
 	public override void _PhysicsProcess(double delta)
 	{
@@ -13,20 +13,26 @@ public partial class PlayerInput : Node
 		CalculateDirection();
 		UpdateJump();
 		UpdateRoll();
+		UpdateAttack();
 	}
 
 	private void CalculateDirection()
 	{
-		moveDir = Input.GetActionStrength("ui_right") - Input.GetActionStrength("ui_left");
+		moveDir = Input.GetActionStrength("right") - Input.GetActionStrength("left");
 	}
 
 	private void UpdateJump()
 	{
-		isJumping = Input.IsActionPressed("ui_accept");
+		isJumping = Input.IsActionPressed("jump");
 	}
 
 	private void UpdateRoll()
 	{
-		isRoll = Input.IsActionPressed("ui_cancel");
+		isRoll = Input.IsActionPressed("roll");
+	}
+
+	private void UpdateAttack()
+	{
+		isAttack = Input.IsActionPressed("attack");
 	}
 }
