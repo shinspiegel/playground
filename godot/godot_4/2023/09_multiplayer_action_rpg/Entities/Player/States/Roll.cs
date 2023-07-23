@@ -9,7 +9,7 @@ public partial class Roll : BaseState
 	public override void _Ready()
 	{
 		base._Ready();
-		anim.AnimationFinished += onAnimFinished;
+		anim.AnimationFinished += OnAnimFinished;
 	}
 
 	public override void Apply(double delta)
@@ -24,7 +24,7 @@ public partial class Roll : BaseState
 		anim.Roll();
 	}
 
-	private void onAnimFinished(StringName name)
+	private void OnAnimFinished(StringName name)
 	{
 		if (name == "roll")
 		{

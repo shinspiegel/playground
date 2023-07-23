@@ -10,7 +10,7 @@ public partial class Landing : BaseState
 	public override void _Ready()
 	{
 		base._Ready();
-		anim.AnimationFinished += onAnimFinished;
+		anim.AnimationFinished += OnAnimFinished;
 	}
 
 	public override void Apply(double delta)
@@ -25,7 +25,7 @@ public partial class Landing : BaseState
 		anim.JumpLand();
 	}
 
-	private void onAnimFinished(StringName name)
+	private void OnAnimFinished(StringName name)
 	{
 		if (name == "jump_land") { EndState(); }
 	}

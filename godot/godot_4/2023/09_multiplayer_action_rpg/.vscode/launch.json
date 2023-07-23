@@ -1,0 +1,26 @@
+{
+	"version": "0.2.0",
+	"configurations": [
+		{
+			"name": "🎮 Launch",
+			"type": "coreclr",
+			"request": "launch",
+			"preLaunchTask": "build",
+			"program": "/Applications/Godot_mono.app/Contents/MacOS/Godot",
+			"console": "internalConsole",
+			"stopAtEntry": false,
+		},
+		{
+			"name": "🎮 Launch (Shape Visible)",
+			"type": "coreclr",
+			"request": "launch",
+			"preLaunchTask": "build",
+			"program": "/Applications/Godot_mono.app/Contents/MacOS/Godot",
+			"console": "internalConsole",
+			"stopAtEntry": false,
+			"args": [
+				"--debug-collisions"
+			]
+		},
+	]
+}

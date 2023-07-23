@@ -4,3 +4,6 @@
 
 [node name="HurtBox" type="Area2D"]
 script = ExtResource("1_0xjeo")
+
+[node name="Colddown" type="Timer" parent="."]
+one_shot = true

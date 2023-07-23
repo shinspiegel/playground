@@ -1,5 +1,5 @@
-using Godot;
 using System;
+using Godot;
 
 public partial class PlayerAnimPlyer : AnimationPlayer
 {
@@ -14,4 +14,6 @@ public partial class PlayerAnimPlyer : AnimationPlayer
 	public void JumpLand() { Play("jump_land"); }
 
 	public void Roll() { Play("roll"); }
+
+	public void Hit() { Play("hit"); }
 }

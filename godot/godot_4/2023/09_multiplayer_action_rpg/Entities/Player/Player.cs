@@ -128,6 +128,14 @@ public partial class Player : CharacterBody2D
 			if (input.isRoll) { nextState = "Roll"; }
 		}
 
+		if (state == "Hit")
+		{
+			nextState = "Idle";
+			if (input.moveDir != 0.0f) { nextState = "Move"; }
+			if (input.isJumping) { nextState = "Jump"; }
+			if (input.isRoll) { nextState = "Roll"; }
+		}
+
 		if (state == "Roll")
 		{
 			nextState = "Idle";
@@ -141,6 +149,6 @@ public partial class Player : CharacterBody2D
 
 	private void OnHit()
 	{
-		GD.Print($"[{Name}]::Hit");
+		stateManager.Change("Hit");
 	}
 }
