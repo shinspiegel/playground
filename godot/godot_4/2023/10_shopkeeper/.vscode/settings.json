@@ -1,0 +1,40 @@
+{
+	"[csharp]": {
+		"editor.codeActionsOnSave": {
+			"source.addMissingImports": true,
+			"source.organizeImports": true
+		},
+		"editor.formatOnPaste": false,
+		"editor.formatOnSave": false,
+		"editor.formatOnType": false,
+	},
+	"godot_tools.gdscript_lsp_server_port": 6005,
+	"csharp.semanticHighlighting.enabled": true,
+	"editor.insertSpaces": false,
+	"editor.tabSize": 4,
+	"editor.semanticHighlighting.enabled": true,
+	// C# doc comment colorization gets lost with semantic highlighting, but we
+	// need semantic highlighting for proper syntax highlighting with record
+	// shorthand.
+	//
+	// Here's a workaround for doc comment highlighting from
+	// https://github.com/OmniSharp/omnisharp-vscode/issues/3816
+	"editor.tokenColorCustomizations": {
+		"[*Dark*]":{"textMateRules": [{"scope": "comment.documentation", "settings":{"foreground": "#608B4E"}},{"scope": "comment.documentation.attribute", "settings":{"foreground": "#C8C8C8"}},{"scope": "comment.documentation.cdata", "settings":{"foreground": "#E9D585"}},{"scope": "comment.documentation.delimiter", "settings":{"foreground": "#808080"}},{"scope": "comment.documentation.name", "settings":{"foreground": "#569CD6"}} ] },
+		"[*Light*]":{"textMateRules": [{"scope": "comment.documentation", "settings":{"foreground": "#008000"}},{"scope": "comment.documentation.attribute", "settings":{"foreground": "#282828"}},{"scope": "comment.documentation.cdata", "settings":{"foreground": "#808080"}},{"scope": "comment.documentation.delimiter", "settings":{"foreground": "#808080"}},{"scope": "comment.documentation.name", "settings":{"foreground": "#808080"}} ] },
+		"[*]":{"textMateRules": [{"scope": "comment.documentation", "settings":{"foreground": "#0091ff"}},{"scope": "comment.documentation.attribute", "settings":{"foreground": "#8480ff"}},{"scope": "comment.documentation.cdata", "settings":{"foreground": "#0091ff"}},{"scope": "comment.documentation.delimiter", "settings":{"foreground": "#aa00ff"}},{"scope": "comment.documentation.name", "settings":{"foreground": "#ef0074"}} ] }
+	},
+	"omnisharp.enableEditorConfigSupport": true,
+	"omnisharp.enableImportCompletion": true,
+	"omnisharp.enableMsBuildLoadProjectsOnDemand": false,
+	"omnisharp.enableRoslynAnalyzers": true,
+	"omnisharp.maxFindSymbolsItems": 3000,
+	"omnisharp.organizeImportsOnFormat": true,
+	"omnisharp.useModernNet": true,
+	"omnisharp.dotnetPath": "/usr/local/share/dotnet",
+	"cSpell.words": [
+		"colddown",
+		"Mathf",
+		"Monitorable"
+	],
+}

@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://q7gcdko4h3go"]
+
+[ext_resource type="Texture2D" uid="uid://cj7psibwjry08" path="res://Assets/Pixel-RPG_Prototype_v003/Extras/Shadow.png" id="1_a1i4e"]
+[ext_resource type="Script" path="res://Entities/Player/Player.cs" id="1_l6lrx"]
+[ext_resource type="Texture2D" uid="uid://dondx86fbcfxp" path="res://Assets/Pixel-RPG_Prototype_v003/Sprites/Prototype/Prototype_Worksheet.png" id="2_a6ryr"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3h3hh"]
+radius = 32.0
+height = 96.0
+
+[node name="Player" type="CharacterBody2D"]
+collision_mask = 0
+motion_mode = 1
+script = ExtResource("1_l6lrx")
+
+[node name="Shadow" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, -56)
+scale = Vector2(8, 8)
+texture = ExtResource("1_a1i4e")
+
+[node name="PlayerSprite" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, -56)
+scale = Vector2(8, 8)
+texture = ExtResource("2_a6ryr")
+hframes = 4
+vframes = 12
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -48)
+shape = SubResource("CapsuleShape2D_3h3hh")

@@ -1,0 +1,278 @@
+[gd_scene load_steps=3 format=3 uid="uid://1xlwaxmymknb"]
+
+[ext_resource type="PackedScene" uid="uid://cigq7bioau75y" path="res://Entities/Crafting/Recipe.tscn" id="1_0t5ju"]
+[ext_resource type="Texture2D" uid="uid://0m8bgo8ph7gj" path="res://icon.svg" id="2_y4uci"]
+
+[node name="Crafting" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RecipesWrapper" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = 32.0
+offset_top = 32.0
+offset_right = 416.0
+offset_bottom = -36.0
+grow_vertical = 2
+metadata/_edit_group_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="RecipesWrapper"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Crafting" type="Label" parent="RecipesWrapper/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "Ingredients"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="RecipesWrapper/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+follow_focus = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="RecipesWrapper/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 0
+
+[node name="Recipe2" parent="RecipesWrapper/VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource("1_0t5ju")]
+layout_mode = 2
+
+[node name="Recipe3" parent="RecipesWrapper/VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource("1_0t5ju")]
+layout_mode = 2
+
+[node name="Recipe4" parent="RecipesWrapper/VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource("1_0t5ju")]
+layout_mode = 2
+
+[node name="Recipe5" parent="RecipesWrapper/VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource("1_0t5ju")]
+layout_mode = 2
+
+[node name="Recipe6" parent="RecipesWrapper/VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource("1_0t5ju")]
+layout_mode = 2
+
+[node name="Recipe7" parent="RecipesWrapper/VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource("1_0t5ju")]
+layout_mode = 2
+
+[node name="Recipe8" parent="RecipesWrapper/VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource("1_0t5ju")]
+layout_mode = 2
+
+[node name="Recipe9" parent="RecipesWrapper/VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource("1_0t5ju")]
+layout_mode = 2
+
+[node name="Recipe10" parent="RecipesWrapper/VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource("1_0t5ju")]
+layout_mode = 2
+
+[node name="Recipe11" parent="RecipesWrapper/VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource("1_0t5ju")]
+layout_mode = 2
+
+[node name="Recipe12" parent="RecipesWrapper/VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource("1_0t5ju")]
+layout_mode = 2
+
+[node name="IngredientsWrapper" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = 441.0
+offset_top = 32.0
+offset_right = 832.0
+offset_bottom = -36.0
+grow_vertical = 2
+metadata/_edit_group_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="IngredientsWrapper"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Crafting" type="Label" parent="IngredientsWrapper/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "Ingredients"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="IngredientsWrapper/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+follow_focus = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="IngredientsWrapper/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 0
+
+[node name="Recipe" parent="IngredientsWrapper/VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource("1_0t5ju")]
+layout_mode = 2
+
+[node name="Recipe2" parent="IngredientsWrapper/VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource("1_0t5ju")]
+layout_mode = 2
+
+[node name="Recipe3" parent="IngredientsWrapper/VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource("1_0t5ju")]
+layout_mode = 2
+
+[node name="Recipe4" parent="IngredientsWrapper/VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource("1_0t5ju")]
+layout_mode = 2
+
+[node name="Recipe5" parent="IngredientsWrapper/VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource("1_0t5ju")]
+layout_mode = 2
+
+[node name="Recipe6" parent="IngredientsWrapper/VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource("1_0t5ju")]
+layout_mode = 2
+
+[node name="Recipe7" parent="IngredientsWrapper/VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource("1_0t5ju")]
+layout_mode = 2
+
+[node name="Recipe8" parent="IngredientsWrapper/VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource("1_0t5ju")]
+layout_mode = 2
+
+[node name="Recipe9" parent="IngredientsWrapper/VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource("1_0t5ju")]
+layout_mode = 2
+
+[node name="Recipe10" parent="IngredientsWrapper/VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource("1_0t5ju")]
+layout_mode = 2
+
+[node name="Recipe11" parent="IngredientsWrapper/VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource("1_0t5ju")]
+layout_mode = 2
+
+[node name="Recipe12" parent="IngredientsWrapper/VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource("1_0t5ju")]
+layout_mode = 2
+
+[node name="CraftControl" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1027.0
+offset_bottom = -453.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CraftControl"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="CraftControl/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="CraftControl/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+texture = ExtResource("2_y4uci")
+
+[node name="TextureRect2" type="TextureRect" parent="CraftControl/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+texture = ExtResource("2_y4uci")
+
+[node name="TextureRect3" type="TextureRect" parent="CraftControl/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+texture = ExtResource("2_y4uci")
+
+[node name="TextureRect4" type="TextureRect" parent="CraftControl/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+texture = ExtResource("2_y4uci")
+
+[node name="TextureRect5" type="TextureRect" parent="CraftControl/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+texture = ExtResource("2_y4uci")
+
+[node name="Label" type="Label" parent="CraftControl/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "Possible Craft Name"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CraftControl/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="ColorRect" type="ColorRect" parent="CraftControl/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="ColorRect2" type="ColorRect" parent="CraftControl/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="ColorRect3" type="ColorRect" parent="CraftControl/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="PlayerHints" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -942.0
+offset_top = -541.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="TextureRect" type="TextureRect" parent="PlayerHints"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 606.0
+offset_top = 205.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_y4uci")
+stretch_mode = 4
+
+[node name="ColorRect" type="ColorRect" parent="PlayerHints"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -250.0
+offset_right = -274.0
+offset_bottom = -89.0
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(0.219608, 0.219608, 0.219608, 1)
+
+[node name="Label" type="Label" parent="PlayerHints/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 36
+text = "This is a message to help the player with the crafting"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
