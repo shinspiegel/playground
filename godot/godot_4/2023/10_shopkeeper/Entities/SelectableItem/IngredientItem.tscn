@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://dbfibwlxilruw"]
+
+[ext_resource type="PackedScene" uid="uid://cigq7bioau75y" path="res://Entities/SelectableItem/SelectableItem.tscn" id="1_x7xrg"]
+[ext_resource type="Script" path="res://Entities/SelectableItem/IngredientItem.gd" id="2_qd1v6"]
+
+[node name="IngredientItem" instance=ExtResource("1_x7xrg")]
+script = ExtResource("2_qd1v6")
+ingredient = null

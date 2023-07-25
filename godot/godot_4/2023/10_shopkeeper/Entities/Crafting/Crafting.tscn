@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://1xlwaxmymknb"]
+[gd_scene load_steps=4 format=3 uid="uid://1xlwaxmymknb"]
 
-[ext_resource type="PackedScene" uid="uid://cigq7bioau75y" path="res://Entities/Crafting/Recipe.tscn" id="1_0t5ju"]
+[ext_resource type="PackedScene" uid="uid://fp5cbyotlhg8" path="res://Entities/SelectableItem/RecipeItem.tscn" id="1_1p804"]
+[ext_resource type="PackedScene" uid="uid://dbfibwlxilruw" path="res://Entities/SelectableItem/IngredientItem.tscn" id="2_07aun"]
 [ext_resource type="Texture2D" uid="uid://0m8bgo8ph7gj" path="res://icon.svg" id="2_y4uci"]
 
 [node name="Crafting" type="Control"]
@@ -20,7 +21,6 @@ offset_top = 32.0
 offset_right = 416.0
 offset_bottom = -36.0
 grow_vertical = 2
-metadata/_edit_group_ = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="RecipesWrapper"]
 layout_mode = 1
@@ -48,37 +48,16 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/separation = 0
 
-[node name="Recipe2" parent="RecipesWrapper/VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource("1_0t5ju")]
+[node name="RecipeItem" parent="RecipesWrapper/VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource("1_1p804")]
 layout_mode = 2
 
-[node name="Recipe3" parent="RecipesWrapper/VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource("1_0t5ju")]
+[node name="RecipeItem2" parent="RecipesWrapper/VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource("1_1p804")]
 layout_mode = 2
 
-[node name="Recipe4" parent="RecipesWrapper/VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource("1_0t5ju")]
+[node name="RecipeItem3" parent="RecipesWrapper/VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource("1_1p804")]
 layout_mode = 2
 
-[node name="Recipe5" parent="RecipesWrapper/VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource("1_0t5ju")]
-layout_mode = 2
-
-[node name="Recipe6" parent="RecipesWrapper/VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource("1_0t5ju")]
-layout_mode = 2
-
-[node name="Recipe7" parent="RecipesWrapper/VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource("1_0t5ju")]
-layout_mode = 2
-
-[node name="Recipe8" parent="RecipesWrapper/VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource("1_0t5ju")]
-layout_mode = 2
-
-[node name="Recipe9" parent="RecipesWrapper/VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource("1_0t5ju")]
-layout_mode = 2
-
-[node name="Recipe10" parent="RecipesWrapper/VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource("1_0t5ju")]
-layout_mode = 2
-
-[node name="Recipe11" parent="RecipesWrapper/VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource("1_0t5ju")]
-layout_mode = 2
-
-[node name="Recipe12" parent="RecipesWrapper/VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource("1_0t5ju")]
+[node name="RecipeItem4" parent="RecipesWrapper/VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource("1_1p804")]
 layout_mode = 2
 
 [node name="IngredientsWrapper" type="Control" parent="."]
@@ -90,7 +69,6 @@ offset_top = 32.0
 offset_right = 832.0
 offset_bottom = -36.0
 grow_vertical = 2
-metadata/_edit_group_ = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="IngredientsWrapper"]
 layout_mode = 1
@@ -118,40 +96,16 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/separation = 0
 
-[node name="Recipe" parent="IngredientsWrapper/VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource("1_0t5ju")]
+[node name="IngredientItem" parent="IngredientsWrapper/VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource("2_07aun")]
 layout_mode = 2
 
-[node name="Recipe2" parent="IngredientsWrapper/VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource("1_0t5ju")]
+[node name="IngredientItem2" parent="IngredientsWrapper/VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource("2_07aun")]
 layout_mode = 2
 
-[node name="Recipe3" parent="IngredientsWrapper/VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource("1_0t5ju")]
+[node name="IngredientItem3" parent="IngredientsWrapper/VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource("2_07aun")]
 layout_mode = 2
 
-[node name="Recipe4" parent="IngredientsWrapper/VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource("1_0t5ju")]
-layout_mode = 2
-
-[node name="Recipe5" parent="IngredientsWrapper/VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource("1_0t5ju")]
-layout_mode = 2
-
-[node name="Recipe6" parent="IngredientsWrapper/VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource("1_0t5ju")]
-layout_mode = 2
-
-[node name="Recipe7" parent="IngredientsWrapper/VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource("1_0t5ju")]
-layout_mode = 2
-
-[node name="Recipe8" parent="IngredientsWrapper/VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource("1_0t5ju")]
-layout_mode = 2
-
-[node name="Recipe9" parent="IngredientsWrapper/VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource("1_0t5ju")]
-layout_mode = 2
-
-[node name="Recipe10" parent="IngredientsWrapper/VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource("1_0t5ju")]
-layout_mode = 2
-
-[node name="Recipe11" parent="IngredientsWrapper/VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource("1_0t5ju")]
-layout_mode = 2
-
-[node name="Recipe12" parent="IngredientsWrapper/VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource("1_0t5ju")]
+[node name="IngredientItem4" parent="IngredientsWrapper/VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource("2_07aun")]
 layout_mode = 2
 
 [node name="CraftControl" type="Control" parent="."]
