@@ -1,8 +1,49 @@
-[gd_scene load_steps=4 format=3 uid="uid://1xlwaxmymknb"]
+[gd_scene load_steps=13 format=3 uid="uid://1xlwaxmymknb"]
 
-[ext_resource type="PackedScene" uid="uid://fp5cbyotlhg8" path="res://Entities/SelectableItem/RecipeItem.tscn" id="1_1p804"]
-[ext_resource type="PackedScene" uid="uid://dbfibwlxilruw" path="res://Entities/SelectableItem/IngredientItem.tscn" id="2_07aun"]
+[ext_resource type="Script" path="res://Entities/Crafting/Crafting.gd" id="1_d6glt"]
 [ext_resource type="Texture2D" uid="uid://0m8bgo8ph7gj" path="res://icon.svg" id="2_y4uci"]
+[ext_resource type="Script" path="res://Resources/RecipeBase.gd" id="3_1wibu"]
+[ext_resource type="Script" path="res://Resources/IngredientBase.gd" id="4_16mt4"]
+
+[sub_resource type="Resource" id="Resource_kvuum"]
+script = ExtResource("3_1wibu")
+image = ExtResource("2_y4uci")
+title = "Recipe One"
+
+[sub_resource type="Resource" id="Resource_8noy4"]
+script = ExtResource("3_1wibu")
+image = ExtResource("2_y4uci")
+title = "Recipe Two"
+
+[sub_resource type="Resource" id="Resource_ghuje"]
+script = ExtResource("3_1wibu")
+image = ExtResource("2_y4uci")
+title = "Recipe 3"
+
+[sub_resource type="Resource" id="Resource_5ph07"]
+script = ExtResource("4_16mt4")
+image = ExtResource("2_y4uci")
+title = "Ingredient 1"
+
+[sub_resource type="Resource" id="Resource_4cuog"]
+script = ExtResource("4_16mt4")
+image = ExtResource("2_y4uci")
+title = "Ingredient 2"
+
+[sub_resource type="Resource" id="Resource_obd8k"]
+script = ExtResource("4_16mt4")
+image = ExtResource("2_y4uci")
+title = "Ingredient 3"
+
+[sub_resource type="Resource" id="Resource_c8opc"]
+script = ExtResource("4_16mt4")
+image = ExtResource("2_y4uci")
+title = "Ingredient 4"
+
+[sub_resource type="Resource" id="Resource_vprkr"]
+script = ExtResource("4_16mt4")
+image = ExtResource("2_y4uci")
+title = "Ingredient 5"
 
 [node name="Crafting" type="Control"]
 layout_mode = 3
@@ -11,6 +52,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_d6glt")
+recipe_list = Array[ExtResource("3_1wibu")]([SubResource("Resource_kvuum"), SubResource("Resource_8noy4"), SubResource("Resource_ghuje")])
+ingredients_list = Array[ExtResource("4_16mt4")]([SubResource("Resource_5ph07"), SubResource("Resource_4cuog"), SubResource("Resource_obd8k"), SubResource("Resource_c8opc"), SubResource("Resource_vprkr")])
 
 [node name="RecipesWrapper" type="Control" parent="."]
 layout_mode = 1
@@ -42,23 +86,11 @@ layout_mode = 2
 size_flags_vertical = 3
 follow_focus = true
 
-[node name="VBoxContainer" type="VBoxContainer" parent="RecipesWrapper/VBoxContainer/ScrollContainer"]
+[node name="RecipeBox" type="VBoxContainer" parent="RecipesWrapper/VBoxContainer/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/separation = 0
-
-[node name="RecipeItem" parent="RecipesWrapper/VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource("1_1p804")]
-layout_mode = 2
-
-[node name="RecipeItem2" parent="RecipesWrapper/VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource("1_1p804")]
-layout_mode = 2
-
-[node name="RecipeItem3" parent="RecipesWrapper/VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource("1_1p804")]
-layout_mode = 2
-
-[node name="RecipeItem4" parent="RecipesWrapper/VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource("1_1p804")]
-layout_mode = 2
 
 [node name="IngredientsWrapper" type="Control" parent="."]
 layout_mode = 1
@@ -90,23 +122,11 @@ layout_mode = 2
 size_flags_vertical = 3
 follow_focus = true
 
-[node name="VBoxContainer" type="VBoxContainer" parent="IngredientsWrapper/VBoxContainer/ScrollContainer"]
+[node name="IngredientBox" type="VBoxContainer" parent="IngredientsWrapper/VBoxContainer/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/separation = 0
-
-[node name="IngredientItem" parent="IngredientsWrapper/VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource("2_07aun")]
-layout_mode = 2
-
-[node name="IngredientItem2" parent="IngredientsWrapper/VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource("2_07aun")]
-layout_mode = 2
-
-[node name="IngredientItem3" parent="IngredientsWrapper/VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource("2_07aun")]
-layout_mode = 2
-
-[node name="IngredientItem4" parent="IngredientsWrapper/VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource("2_07aun")]
-layout_mode = 2
 
 [node name="CraftControl" type="Control" parent="."]
 layout_mode = 1
