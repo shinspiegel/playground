@@ -1,4 +1,3 @@
-class_name RecipeBase extends Resource
+class_name RecipeBase extends InventoryItem
 
-@export var image: Texture2D
-@export var title: String
+@export_enum("Potion", "LiquidGas", "Bomb") var type: String

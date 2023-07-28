@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="CraftEntry" load_steps=2 format=3 uid="uid://dy4mr0oq1d4af"]
+
+[ext_resource type="Script" path="res://Resources/CraftEntry.gd" id="1_ewli5"]
+
+[resource]
+script = ExtResource("1_ewli5")
+data_name = "Craft Name"
+suc_required = 3
+suc_multiplier = 1.0
+suc_fail_limit = 1
+diff_slider_speed = 1.0
+diff_good = 1.0
+diff_ok = 4.0
+diff_bad = 9.0
+diff_fail = 10.0

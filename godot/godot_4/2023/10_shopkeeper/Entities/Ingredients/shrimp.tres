@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="IngredientBase" load_steps=3 format=3 uid="uid://b1cxx60l065lr"]
+
+[ext_resource type="Texture2D" uid="uid://vj1g4dixqere" path="res://Assets/Icons/sliced_food/sliced_food63.png" id="1_ha18q"]
+[ext_resource type="Script" path="res://Resources/IngredientBase.gd" id="2_7u3jo"]
+
+[resource]
+script = ExtResource("2_7u3jo")
+custom_effect = "Cry"
+image = ExtResource("1_ha18q")
+title = "Onion"

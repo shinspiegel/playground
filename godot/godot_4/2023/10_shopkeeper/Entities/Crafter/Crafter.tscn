@@ -1,0 +1,154 @@
+[gd_scene load_steps=9 format=3 uid="uid://bs5dnig0t47rk"]
+
+[ext_resource type="Script" path="res://Entities/Crafter/HitSlider.gd" id="1_8ifvv"]
+[ext_resource type="Texture2D" uid="uid://0m8bgo8ph7gj" path="res://icon.svg" id="1_ipr24"]
+[ext_resource type="Script" path="res://Entities/Crafter/Crafter.gd" id="1_taltl"]
+[ext_resource type="Resource" uid="uid://dy4mr0oq1d4af" path="res://Entities/CraftEntries/FirstEntry.tres" id="2_e2ope"]
+[ext_resource type="Texture2D" uid="uid://dpyhtq180crb1" path="res://Assets/template_block.png" id="2_fdnlj"]
+
+[sub_resource type="Animation" id="Animation_0f3dx"]
+resource_name = "Anim"
+length = 12.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VerticalBar:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3, 6, 9, 12),
+"transitions": PackedFloat32Array(0.5, 2, 0.5, 2, 0.5),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-500, 2.08165e-12), Vector2(0, 0), Vector2(500, 2.08165e-12), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_8ruo7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VerticalBar:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_55p1j"]
+_data = {
+"Anim": SubResource("Animation_0f3dx"),
+"RESET": SubResource("Animation_8ruo7")
+}
+
+[node name="Crafter" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_taltl")
+entry = ExtResource("2_e2ope")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="ItemName" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "Crafting Item X"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CenterContainer2" type="CenterContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="ProgressBar" type="ProgressBar" parent="MarginContainer/VBoxContainer/CenterContainer2"]
+custom_minimum_size = Vector2(600, 2.08165e-12)
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Control" type="Control" parent="MarginContainer/VBoxContainer/CenterContainer"]
+layout_mode = 2
+
+[node name="HitSlider" type="Node2D" parent="MarginContainer/VBoxContainer/CenterContainer/Control"]
+script = ExtResource("1_8ifvv")
+
+[node name="PossibleLeft" type="Node2D" parent="MarginContainer/VBoxContainer/CenterContainer/Control/HitSlider"]
+
+[node name="Fail" type="Sprite2D" parent="MarginContainer/VBoxContainer/CenterContainer/Control/HitSlider/PossibleLeft"]
+self_modulate = Color(1, 0, 0, 1)
+scale = Vector2(10, 0.33)
+texture = ExtResource("2_fdnlj")
+
+[node name="Bad" type="Sprite2D" parent="MarginContainer/VBoxContainer/CenterContainer/Control/HitSlider/PossibleLeft"]
+self_modulate = Color(1, 0.619608, 0.0509804, 1)
+scale = Vector2(8, 0.57)
+texture = ExtResource("2_fdnlj")
+
+[node name="Ok" type="Sprite2D" parent="MarginContainer/VBoxContainer/CenterContainer/Control/HitSlider/PossibleLeft"]
+self_modulate = Color(0.411765, 1, 0.0705882, 1)
+scale = Vector2(4, 0.8)
+texture = ExtResource("2_fdnlj")
+
+[node name="Good" type="Sprite2D" parent="MarginContainer/VBoxContainer/CenterContainer/Control/HitSlider/PossibleLeft"]
+self_modulate = Color(0, 1, 0.65098, 1)
+scale = Vector2(1, 0.89)
+texture = ExtResource("2_fdnlj")
+
+[node name="VerticalBar" type="Sprite2D" parent="MarginContainer/VBoxContainer/CenterContainer/Control/HitSlider"]
+scale = Vector2(0.1, 0.4)
+texture = ExtResource("1_ipr24")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MarginContainer/VBoxContainer/CenterContainer/Control/HitSlider"]
+libraries = {
+"": SubResource("AnimationLibrary_55p1j")
+}
+
+[node name="Control" type="Control" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(2.08165e-12, 500)
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer/VBoxContainer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.141176, 0.141176, 0.141176, 1)
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -75.0
+offset_top = -13.0
+offset_right = 75.0
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Caldrum animation"

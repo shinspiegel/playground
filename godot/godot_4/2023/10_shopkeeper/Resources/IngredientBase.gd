@@ -1,4 +1,4 @@
-class_name IngredientBase extends Resource
+class_name IngredientBase extends InventoryItem
 
-@export var image: Texture2D
-@export var title: String
+@export_range(0.0, 1.0, 0.1) var quality = 0.5
+@export var custom_effect: String = ""

@@ -1,51 +1,13 @@
-[gd_scene load_steps=13 format=3 uid="uid://1xlwaxmymknb"]
+[gd_scene load_steps=6 format=3 uid="uid://1xlwaxmymknb"]
 
 [ext_resource type="Script" path="res://Entities/Crafting/Crafting.gd" id="1_d6glt"]
+[ext_resource type="Resource" uid="uid://b6o83g06ohbd5" path="res://Entities/Player/PlayerInventory.tres" id="2_8brgh"]
 [ext_resource type="Texture2D" uid="uid://0m8bgo8ph7gj" path="res://icon.svg" id="2_y4uci"]
-[ext_resource type="Script" path="res://Resources/RecipeBase.gd" id="3_1wibu"]
-[ext_resource type="Script" path="res://Resources/IngredientBase.gd" id="4_16mt4"]
-
-[sub_resource type="Resource" id="Resource_kvuum"]
-script = ExtResource("3_1wibu")
-image = ExtResource("2_y4uci")
-title = "Recipe One"
-
-[sub_resource type="Resource" id="Resource_8noy4"]
-script = ExtResource("3_1wibu")
-image = ExtResource("2_y4uci")
-title = "Recipe Two"
-
-[sub_resource type="Resource" id="Resource_ghuje"]
-script = ExtResource("3_1wibu")
-image = ExtResource("2_y4uci")
-title = "Recipe 3"
-
-[sub_resource type="Resource" id="Resource_5ph07"]
-script = ExtResource("4_16mt4")
-image = ExtResource("2_y4uci")
-title = "Ingredient 1"
-
-[sub_resource type="Resource" id="Resource_4cuog"]
-script = ExtResource("4_16mt4")
-image = ExtResource("2_y4uci")
-title = "Ingredient 2"
-
-[sub_resource type="Resource" id="Resource_obd8k"]
-script = ExtResource("4_16mt4")
-image = ExtResource("2_y4uci")
-title = "Ingredient 3"
-
-[sub_resource type="Resource" id="Resource_c8opc"]
-script = ExtResource("4_16mt4")
-image = ExtResource("2_y4uci")
-title = "Ingredient 4"
-
-[sub_resource type="Resource" id="Resource_vprkr"]
-script = ExtResource("4_16mt4")
-image = ExtResource("2_y4uci")
-title = "Ingredient 5"
+[ext_resource type="Resource" uid="uid://ceakexm8037m2" path="res://Entities/Player/RecipesList.tres" id="3_2gfcs"]
+[ext_resource type="Script" path="res://Entities/Crafting/IngerdientsImages.gd" id="5_u7lyg"]
 
 [node name="Crafting" type="Control"]
+texture_filter = 1
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -53,8 +15,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_d6glt")
-recipe_list = Array[ExtResource("3_1wibu")]([SubResource("Resource_kvuum"), SubResource("Resource_8noy4"), SubResource("Resource_ghuje")])
-ingredients_list = Array[ExtResource("4_16mt4")]([SubResource("Resource_5ph07"), SubResource("Resource_4cuog"), SubResource("Resource_obd8k"), SubResource("Resource_c8opc"), SubResource("Resource_vprkr")])
+inventory = ExtResource("2_8brgh")
+recipes = ExtResource("3_2gfcs")
 
 [node name="RecipesWrapper" type="Control" parent="."]
 layout_mode = 1
@@ -113,7 +75,7 @@ grow_vertical = 2
 [node name="Crafting" type="Label" parent="IngredientsWrapper/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 48
-text = "Ingredients"
+text = "Inventory"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -135,7 +97,7 @@ anchor_left = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -1027.0
-offset_bottom = -453.0
+offset_bottom = -315.0
 grow_horizontal = 0
 grow_vertical = 2
 
@@ -148,27 +110,27 @@ grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="CraftControl/VBoxContainer"]
+[node name="StartContainer" type="HBoxContainer" parent="CraftControl/VBoxContainer"]
 layout_mode = 2
 alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="CraftControl/VBoxContainer/HBoxContainer2"]
+[node name="TextureRect" type="TextureRect" parent="CraftControl/VBoxContainer/StartContainer"]
 layout_mode = 2
 texture = ExtResource("2_y4uci")
 
-[node name="TextureRect2" type="TextureRect" parent="CraftControl/VBoxContainer/HBoxContainer2"]
+[node name="TextureRect2" type="TextureRect" parent="CraftControl/VBoxContainer/StartContainer"]
 layout_mode = 2
 texture = ExtResource("2_y4uci")
 
-[node name="TextureRect3" type="TextureRect" parent="CraftControl/VBoxContainer/HBoxContainer2"]
+[node name="TextureRect3" type="TextureRect" parent="CraftControl/VBoxContainer/StartContainer"]
 layout_mode = 2
 texture = ExtResource("2_y4uci")
 
-[node name="TextureRect4" type="TextureRect" parent="CraftControl/VBoxContainer/HBoxContainer2"]
+[node name="TextureRect4" type="TextureRect" parent="CraftControl/VBoxContainer/StartContainer"]
 layout_mode = 2
 texture = ExtResource("2_y4uci")
 
-[node name="TextureRect5" type="TextureRect" parent="CraftControl/VBoxContainer/HBoxContainer2"]
+[node name="TextureRect5" type="TextureRect" parent="CraftControl/VBoxContainer/StartContainer"]
 layout_mode = 2
 texture = ExtResource("2_y4uci")
 
@@ -179,27 +141,72 @@ text = "Possible Craft Name"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CraftControl/VBoxContainer"]
+[node name="IngerdientsImages" type="HBoxContainer" parent="CraftControl/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+script = ExtResource("5_u7lyg")
+
+[node name="ColorRect" type="ColorRect" parent="CraftControl/VBoxContainer/IngerdientsImages"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="IngredientOne" type="TextureRect" parent="CraftControl/VBoxContainer/IngerdientsImages/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect2" type="ColorRect" parent="CraftControl/VBoxContainer/IngerdientsImages"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="IngredientTwo" type="TextureRect" parent="CraftControl/VBoxContainer/IngerdientsImages/ColorRect2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect3" type="ColorRect" parent="CraftControl/VBoxContainer/IngerdientsImages"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="IngredientThree" type="TextureRect" parent="CraftControl/VBoxContainer/IngerdientsImages/ColorRect3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="CraftControl/VBoxContainer"]
+custom_minimum_size = Vector2(2.08165e-12, 40)
+layout_mode = 2
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="CraftControl/VBoxContainer"]
 layout_mode = 2
 alignment = 1
 
-[node name="ColorRect" type="ColorRect" parent="CraftControl/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(200, 200)
+[node name="Craft" type="Button" parent="CraftControl/VBoxContainer/HBoxContainer3"]
+custom_minimum_size = Vector2(240, 0)
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
+theme_override_font_sizes/font_size = 46
+text = "Craft"
 
-[node name="ColorRect2" type="ColorRect" parent="CraftControl/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(200, 200)
+[node name="Reset" type="Button" parent="CraftControl/VBoxContainer/HBoxContainer3"]
+custom_minimum_size = Vector2(240, 0)
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-
-[node name="ColorRect3" type="ColorRect" parent="CraftControl/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(200, 200)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
+theme_override_font_sizes/font_size = 46
+text = "Reset"
 
 [node name="PlayerHints" type="Control" parent="."]
 layout_mode = 1
@@ -209,20 +216,19 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -942.0
-offset_top = -541.0
+offset_top = -305.0
 grow_horizontal = 0
 grow_vertical = 0
 
 [node name="TextureRect" type="TextureRect" parent="PlayerHints"]
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = 11
+anchor_left = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 606.0
-offset_top = 205.0
-grow_horizontal = 2
+offset_left = -309.0
+grow_horizontal = 0
 grow_vertical = 2
-texture = ExtResource("2_y4uci")
 stretch_mode = 4
 
 [node name="ColorRect" type="ColorRect" parent="PlayerHints"]
@@ -231,9 +237,9 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -250.0
+offset_top = -231.0
 offset_right = -274.0
-offset_bottom = -89.0
+offset_bottom = -70.0
 grow_horizontal = 2
 grow_vertical = 0
 color = Color(0.219608, 0.219608, 0.219608, 1)

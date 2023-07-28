@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="RecipeBase" load_steps=3 format=3 uid="uid://pre46xw8vrmb"]
+
+[ext_resource type="Texture2D" uid="uid://i548mnvlmp5l" path="res://Assets/Icons/sliced_food/sliced_food3.png" id="1_14h20"]
+[ext_resource type="Script" path="res://Resources/RecipeBase.gd" id="1_f3acc"]
+
+[resource]
+script = ExtResource("1_f3acc")
+type = "Potion"
+image = ExtResource("1_14h20")
+title = "Hot Tea"
