@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://q7gcdko4h3go"]
 
 [ext_resource type="Texture2D" uid="uid://cj7psibwjry08" path="res://Assets/Pixel-RPG_Prototype_v003/Extras/Shadow.png" id="1_a1i4e"]
-[ext_resource type="Script" path="res://Entities/Player/Player.cs" id="1_l6lrx"]
+[ext_resource type="Script" path="res://Entities/Player/Player.gd" id="1_q0q3m"]
 [ext_resource type="Texture2D" uid="uid://dondx86fbcfxp" path="res://Assets/Pixel-RPG_Prototype_v003/Sprites/Prototype/Prototype_Worksheet.png" id="2_a6ryr"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3h3hh"]
@@ -11,7 +11,7 @@ height = 96.0
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 0
 motion_mode = 1
-script = ExtResource("1_l6lrx")
+script = ExtResource("1_q0q3m")
 
 [node name="Shadow" type="Sprite2D" parent="."]
 texture_filter = 1
