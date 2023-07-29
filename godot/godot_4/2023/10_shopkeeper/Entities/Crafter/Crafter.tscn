@@ -52,7 +52,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_taltl")
-entry = ExtResource("2_e2ope")
+craft_entry = ExtResource("2_e2ope")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -79,7 +79,35 @@ vertical_alignment = 1
 [node name="CenterContainer2" type="CenterContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="ProgressBar" type="ProgressBar" parent="MarginContainer/VBoxContainer/CenterContainer2"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/CenterContainer2"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/CenterContainer2/HBoxContainer"]
+custom_minimum_size = Vector2(120, 2.08165e-12)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Sucess"
+horizontal_alignment = 2
+
+[node name="CraftProgress" type="ProgressBar" parent="MarginContainer/VBoxContainer/CenterContainer2/HBoxContainer"]
+custom_minimum_size = Vector2(600, 2.08165e-12)
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+
+[node name="CenterContainer3" type="CenterContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/CenterContainer3"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/CenterContainer3/HBoxContainer"]
+custom_minimum_size = Vector2(120, 2.08165e-12)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "HP"
+horizontal_alignment = 2
+
+[node name="FailProgress" type="ProgressBar" parent="MarginContainer/VBoxContainer/CenterContainer3/HBoxContainer"]
 custom_minimum_size = Vector2(600, 2.08165e-12)
 layout_mode = 2
 theme_override_font_sizes/font_size = 64
@@ -93,6 +121,7 @@ layout_mode = 2
 
 [node name="HitSlider" type="Node2D" parent="MarginContainer/VBoxContainer/CenterContainer/Control"]
 script = ExtResource("1_8ifvv")
+craft_entry = ExtResource("2_e2ope")
 
 [node name="PossibleLeft" type="Node2D" parent="MarginContainer/VBoxContainer/CenterContainer/Control/HitSlider"]
 
