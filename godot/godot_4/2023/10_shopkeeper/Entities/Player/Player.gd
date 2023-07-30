@@ -2,11 +2,20 @@ class_name Player extends CharacterBody2D
 
 const Speed: float = 500.0
 
+@export var camera: Node2D
+
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var animation_tree: AnimationTree = $AnimationTree
+@onready var camera_mount: RemoteTransform2D = $CameraMount
+
 
 var direction: Vector2 = Vector2.ZERO
 var input = Vector2.ZERO
+
+
+func _ready() -> void:
+	if not camera == null: 
+		camera_mount.remote_path = camera.get_path()
 
 
 func _physics_process(_delta: float) -> void:

@@ -4,9 +4,9 @@
 [ext_resource type="Script" path="res://Entities/Player/Player.gd" id="1_q0q3m"]
 [ext_resource type="Texture2D" uid="uid://5n6ifwdcw1at" path="res://Assets/Protoype_base.png" id="3_hfkam"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3h3hh"]
-radius = 32.0
-height = 96.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_a2ynx"]
+radius = 16.0
+height = 64.0
 
 [sub_resource type="Animation" id="Animation_ok12n"]
 length = 0.1
@@ -240,9 +240,11 @@ max_space = 2.0
 blend_mode = 1
 
 [node name="Player" type="CharacterBody2D"]
-collision_mask = 0
+collision_mask = 4
 motion_mode = 1
 script = ExtResource("1_q0q3m")
+
+[node name="CameraMount" type="RemoteTransform2D" parent="."]
 
 [node name="Shadow" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -259,8 +261,9 @@ hframes = 4
 vframes = 13
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -48)
-shape = SubResource("CapsuleShape2D_3h3hh")
+position = Vector2(5.68434e-14, -16)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_a2ynx")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
