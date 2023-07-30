@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="IngredientBase" load_steps=3 format=3 uid="uid://bywdo0encxqbd"]
 
-[ext_resource type="Texture2D" uid="uid://dgwlbs1kar4dk" path="res://Assets/Icons/sliced_food/sliced_food64.png" id="1_wt2u8"]
+[ext_resource type="Texture2D" uid="uid://dgwlbs1kar4dk" path="res://Assets/Graphics/Icons/sliced_food/sliced_food64.png" id="1_wt2u8"]
 [ext_resource type="Script" path="res://Resources/IngredientBase.gd" id="2_1nxsm"]
 
 [resource]

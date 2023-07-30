@@ -1,6 +1,20 @@
-[gd_scene load_steps=2 format=3 uid="uid://d2prm0slgg6ds"]
+[gd_scene load_steps=5 format=3 uid="uid://d2prm0slgg6ds"]
 
 [ext_resource type="Script" path="res://Managers/GameManager.gd" id="1_0a3ex"]
+[ext_resource type="Script" path="res://Managers/SignalManager.gd" id="2_cek3r"]
+[ext_resource type="Script" path="res://Managers/SoundManager.gd" id="3_adkjm"]
+[ext_resource type="Script" path="res://Managers/MusicManager.gd" id="4_x1xji"]
 
 [node name="GameManager" type="Node"]
 script = ExtResource("1_0a3ex")
+
+[node name="SignalManager" type="Node" parent="."]
+script = ExtResource("2_cek3r")
+
+[node name="SoundManager" type="Node" parent="."]
+script = ExtResource("3_adkjm")
+
+[node name="MusicManager" type="Node" parent="."]
+script = ExtResource("4_x1xji")
+
+[node name="BackgroundMusic" type="AudioStreamPlayer" parent="MusicManager"]
