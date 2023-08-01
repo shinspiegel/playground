@@ -1,9 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://8qprolvbrxad"]
+[gd_scene load_steps=4 format=3 uid="uid://8qprolvbrxad"]
 
 [ext_resource type="TileSet" uid="uid://3kh3oor5xar7" path="res://Dungeons/BaseTilemap.tres" id="1_ffsow"]
+[ext_resource type="Script" path="res://Dungeons/TestDungeon/TestDungeon.gd" id="1_pdvj5"]
 [ext_resource type="PackedScene" uid="uid://q7gcdko4h3go" path="res://Entities/Player/Player.tscn" id="2_dcrsp"]
 
 [node name="TestDungeon" type="Node2D"]
+script = ExtResource("1_pdvj5")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = -1
@@ -14,7 +16,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.101961, 0.0980392, 0.109804, 1)
+color = Color(0.105882, 0.0980392, 0.121569, 1)
 
 [node name="TileMap" type="TileMap" parent="."]
 y_sort_enabled = true
@@ -47,6 +49,6 @@ layer_3/tile_data = PackedInt32Array()
 
 [node name="Player" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("2_dcrsp")]
 position = Vector2(925.837, 558.827)
-camera = NodePath("")
+camera = NodePath("../Camera2D")
 
 [node name="Camera2D" type="Camera2D" parent="."]

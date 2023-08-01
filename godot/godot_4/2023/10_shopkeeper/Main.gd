@@ -16,6 +16,7 @@ func _ready() -> void:
 	sound_slider.value = GameManager.sounds.get_volume()
 	
 	start.grab_focus()
+	GameManager.musics.play_menu_music()
 
 
 func on_start() -> void:
