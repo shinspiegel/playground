@@ -20,11 +20,11 @@ func get_volume() -> float:
 	return volume
 
 
-func play_menu_music() -> void:
+func menu() -> void:
 	change_music(music_loads.menu)
 
 
-func play_dungeon_music() -> void:
+func dungeon() -> void:
 	change_music(music_loads.dungeon)
 
 

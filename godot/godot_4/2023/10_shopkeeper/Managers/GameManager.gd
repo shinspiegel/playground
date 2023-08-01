@@ -6,14 +6,16 @@ const dungeon = {
 	"test": preload("res://Dungeons/TestDungeon/TestDungeon.tscn")
 }
 
+@onready var scenes: Node = $SceneManager
 @onready var signals: SignalManager = $SignalManager
 @onready var sounds: SoundManager = $SoundManager
 @onready var musics: MusicManager = $MusicManager
 
 
 func start_game() -> void: 
-	get_tree().change_scene_to_packed(dungeon.test)
+	scenes.level_selector()
 
 
 func quit_game() -> void: 
 	get_tree().quit()
+

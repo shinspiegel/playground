@@ -7,6 +7,8 @@ extends Control
 
 
 func _ready() -> void:
+	GameManager.musics.menu()
+	
 	start.pressed.connect(on_start)
 	quit.pressed.connect(on_quit)
 	
@@ -16,7 +18,6 @@ func _ready() -> void:
 	sound_slider.value = GameManager.sounds.get_volume()
 	
 	start.grab_focus()
-	GameManager.musics.play_menu_music()
 
 
 func on_start() -> void:
