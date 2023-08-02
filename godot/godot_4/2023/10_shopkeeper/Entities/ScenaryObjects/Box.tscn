@@ -1,27 +1,27 @@
-[gd_scene load_steps=7 format=3 uid="uid://52jyju2obejk"]
+[gd_scene load_steps=7 format=3 uid="uid://bbolk0pv2clnw"]
 
-[ext_resource type="PackedScene" uid="uid://dh2w5u8tcpyx2" path="res://Entities/InteractableItem/InteractableItem.tscn" id="1_4ynev"]
-[ext_resource type="Shader" path="res://Shader/PixelPerfectShader.gdshader" id="2_0r3qi"]
-[ext_resource type="Script" path="res://Entities/ScenaryObjects/Door.gd" id="2_g542p"]
-[ext_resource type="Texture2D" uid="uid://cwvmyh2y18rsa" path="res://Assets/Graphics/Pixel Art Top Down - Basic/Texture/TX Props.png" id="3_rffup"]
+[ext_resource type="PackedScene" uid="uid://dh2w5u8tcpyx2" path="res://Entities/InteractableItem/InteractableItem.tscn" id="1_4jv5v"]
+[ext_resource type="Script" path="res://Entities/ScenaryObjects/Door.gd" id="2_yoll1"]
+[ext_resource type="Shader" path="res://Shader/PixelPerfectShader.gdshader" id="3_7nyot"]
+[ext_resource type="Texture2D" uid="uid://cwvmyh2y18rsa" path="res://Assets/Graphics/Pixel Art Top Down - Basic/Texture/TX Props.png" id="4_weyli"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fdt83"]
 resource_local_to_scene = true
-shader = ExtResource("2_0r3qi")
+shader = ExtResource("3_7nyot")
 shader_parameter/line_color = Color(1, 1, 1, 1)
 shader_parameter/line_thickness = 1.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pf8tk"]
 size = Vector2(208, 64)
 
-[node name="Door" instance=ExtResource("1_4ynev")]
-script = ExtResource("2_g542p")
+[node name="Door" instance=ExtResource("1_4jv5v")]
+script = ExtResource("2_yoll1")
 target_map = ""
 
 [node name="ItemSprite" parent="." index="0"]
 material = SubResource("ShaderMaterial_fdt83")
 position = Vector2(132, -100)
-texture = ExtResource("3_rffup")
+texture = ExtResource("4_weyli")
 region_enabled = true
 region_rect = Rect2(16, 96, 64, 64)
 

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://crfud6q1c04nb"]
 
-[ext_resource type="Script" path="res://Entities/LevelSelect/LevelSelect.gd" id="1_s148m"]
+[ext_resource type="Script" path="res://Dungeons/LevelSelect/LevelSelect.gd" id="1_8f2o5"]
 
 [node name="LevelSelect" type="Control"]
 layout_mode = 3
@@ -9,7 +9,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_s148m")
+script = ExtResource("1_8f2o5")
 
 [node name="AlchemistHouse" type="Button" parent="."]
 layout_mode = 1

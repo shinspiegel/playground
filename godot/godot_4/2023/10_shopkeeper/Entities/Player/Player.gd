@@ -7,6 +7,7 @@ const Speed: float = 500.0
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var animation_tree: AnimationTree = $AnimationTree
 @onready var camera_mount: RemoteTransform2D = $CameraMount
+@onready var interactor: Interactor = $Interactor
 
 
 var direction: Vector2 = Vector2.ZERO
@@ -21,12 +22,18 @@ func _ready() -> void:
 func _physics_process(_delta: float) -> void:
 	apply_direction()
 	get_input()
+	apply_interactable()
 	apply_movement()
 	apply_animation()
 
 
 func get_input() -> void:
 	input = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down").normalized()
+
+
+func apply_interactable() -> void:
+	if Input.is_action_just_pressed("ui_accept"):
+		interactor.interact()
 
 
 func apply_direction() -> void:

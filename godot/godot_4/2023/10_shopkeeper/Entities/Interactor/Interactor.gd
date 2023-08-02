@@ -8,6 +8,11 @@ func _ready() -> void:
 	area_exited.connect(on_exit)
 
 
+func interact() -> void:
+	if current_area:
+		current_area.interacted.emit()
+
+
 func on_enter(area: Area2D) -> void:
 	if not area is Interactable: return
 	current_area = area

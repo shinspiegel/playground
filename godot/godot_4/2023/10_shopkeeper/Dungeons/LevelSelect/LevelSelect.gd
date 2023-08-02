@@ -14,5 +14,5 @@ func _ready() -> void:
 	
 	city.pressed.connect(func(): GameManager.scenes.level_selector())
 	
-	alchemist_house.pressed.connect(func(): GameManager.scenes.test_dungeon())
+	alchemist_house.pressed.connect(func(): GameManager.scenes.alchemy_lab())
 	alchemist_house.grab_focus()

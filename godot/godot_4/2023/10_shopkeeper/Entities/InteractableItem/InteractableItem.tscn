@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://dh2w5u8tcpyx2"]
+
+[ext_resource type="Script" path="res://Entities/InteractableItem/InteractableItem.gd" id="1_ff7g4"]
+[ext_resource type="Shader" path="res://Shader/PixelPerfectShader.gdshader" id="2_1crk5"]
+[ext_resource type="PackedScene" uid="uid://cw0525aaq016h" path="res://Entities/Interactable/Interactable.tscn" id="4_pr7ip"]
+[ext_resource type="PackedScene" uid="uid://b67el3gcni36f" path="res://Entities/PopUpMessage/PopUpMessage.tscn" id="5_6ryqa"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_oea8w"]
+resource_local_to_scene = true
+shader = ExtResource("2_1crk5")
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/line_thickness = 1.0
+
+[node name="InteractableItem" type="Node2D"]
+script = ExtResource("1_ff7g4")
+
+[node name="ItemSprite" type="Sprite2D" parent="."]
+texture_filter = 3
+material = SubResource("ShaderMaterial_oea8w")
+scale = Vector2(4, 4)
+
+[node name="Interactable" parent="." instance=ExtResource("4_pr7ip")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable"]
+
+[node name="PopUpMessage" parent="." node_paths=PackedStringArray("interactable") instance=ExtResource("5_6ryqa")]
+text = "Open"
+interactable = NodePath("../Interactable")
