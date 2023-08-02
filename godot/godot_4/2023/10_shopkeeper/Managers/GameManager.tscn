@@ -20,5 +20,6 @@ script = ExtResource("3_adkjm")
 
 [node name="MusicManager" type="Node" parent="."]
 script = ExtResource("4_x1xji")
+volume = 0.0
 
 [node name="BackgroundMusic" type="AudioStreamPlayer" parent="MusicManager"]

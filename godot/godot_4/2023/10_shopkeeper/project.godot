@@ -39,3 +39,4 @@ naming/scene_name_casing=1
 2d_physics/layer_2="enemies"
 2d_physics/layer_3="world"
 2d_physics/layer_4="hazards"
+2d_physics/layer_5="items"

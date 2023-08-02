@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://dx83cihbeh62m"]
+
+[ext_resource type="Texture2D" uid="uid://cwvmyh2y18rsa" path="res://Assets/Graphics/Pixel Art Top Down - Basic/Texture/TX Props.png" id="1_chdn5"]
+[ext_resource type="Shader" path="res://Shader/PixelPerfectShader.gdshader" id="1_dpy3u"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_oea8w"]
+shader = ExtResource("1_dpy3u")
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/line_thickness = 1.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0xrvj"]
+size = Vector2(266, 138)
+
+[node name="InteractableItem" type="Node2D"]
+
+[node name="ItemSprite" type="Sprite2D" parent="."]
+texture_filter = 3
+material = SubResource("ShaderMaterial_oea8w")
+position = Vector2(125, -101)
+scale = Vector2(4, 4)
+texture = ExtResource("1_chdn5")
+region_enabled = true
+region_rect = Rect2(16, 96, 64, 64)
+
+[node name="InteractableArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractableArea"]
+position = Vector2(123, 59)
+shape = SubResource("RectangleShape2D_0xrvj")

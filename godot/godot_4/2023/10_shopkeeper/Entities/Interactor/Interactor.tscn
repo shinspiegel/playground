@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dgr0joudhrbvh"]
+
+[ext_resource type="Script" path="res://Entities/Interactor/Interactor.gd" id="1_1qi72"]
+
+[node name="Interactor" type="Area2D"]
+collision_mask = 16
+script = ExtResource("1_1qi72")

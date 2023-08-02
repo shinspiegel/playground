@@ -1,8 +1,9 @@
-[gd_scene load_steps=26 format=3 uid="uid://q7gcdko4h3go"]
+[gd_scene load_steps=28 format=3 uid="uid://q7gcdko4h3go"]
 
 [ext_resource type="Texture2D" uid="uid://cj7psibwjry08" path="res://Assets/Graphics/Pixel-RPG_Prototype_v003/Extras/Shadow.png" id="1_a1i4e"]
 [ext_resource type="Script" path="res://Entities/Player/Player.gd" id="1_q0q3m"]
 [ext_resource type="Texture2D" uid="uid://5n6ifwdcw1at" path="res://Assets/Graphics/Protoype_base.png" id="3_hfkam"]
+[ext_resource type="PackedScene" uid="uid://dgr0joudhrbvh" path="res://Entities/Interactor/Interactor.tscn" id="4_o631r"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_a2ynx"]
 radius = 16.0
@@ -239,6 +240,9 @@ min_space = -2.0
 max_space = 2.0
 blend_mode = 1
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n3yvc"]
+size = Vector2(96, 80)
+
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 4
 motion_mode = 1
@@ -277,3 +281,9 @@ active = true
 parameters/blend_position = 2.08165e-12
 parameters/0/blend_position = Vector2(2.08165e-12, 2.08165e-12)
 parameters/1/blend_position = Vector2(2.08165e-12, -1)
+
+[node name="Interactor" parent="." instance=ExtResource("4_o631r")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactor"]
+position = Vector2(0, -32)
+shape = SubResource("RectangleShape2D_n3yvc")

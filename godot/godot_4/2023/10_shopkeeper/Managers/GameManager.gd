@@ -6,7 +6,7 @@ const dungeon = {
 	"test": preload("res://Dungeons/TestDungeon/TestDungeon.tscn")
 }
 
-@onready var scenes: Node = $SceneManager
+@onready var scenes: SceneManager = $SceneManager
 @onready var signals: SignalManager = $SignalManager
 @onready var sounds: SoundManager = $SoundManager
 @onready var musics: MusicManager = $MusicManager
