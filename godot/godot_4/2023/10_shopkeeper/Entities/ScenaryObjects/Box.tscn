@@ -1,7 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://bbolk0pv2clnw"]
 
 [ext_resource type="PackedScene" uid="uid://dh2w5u8tcpyx2" path="res://Entities/InteractableItem/InteractableItem.tscn" id="1_4jv5v"]
-[ext_resource type="Script" path="res://Entities/ScenaryObjects/Door.gd" id="2_yoll1"]
 [ext_resource type="Shader" path="res://Shader/PixelPerfectShader.gdshader" id="3_7nyot"]
 [ext_resource type="Texture2D" uid="uid://cwvmyh2y18rsa" path="res://Assets/Graphics/Pixel Art Top Down - Basic/Texture/TX Props.png" id="4_weyli"]
 
@@ -12,22 +11,36 @@ shader_parameter/line_color = Color(1, 1, 1, 1)
 shader_parameter/line_thickness = 1.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pf8tk"]
-size = Vector2(208, 64)
+size = Vector2(256, 256)
 
-[node name="Door" instance=ExtResource("1_4jv5v")]
-script = ExtResource("2_yoll1")
-target_map = ""
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rgand"]
+size = Vector2(128, 128)
+
+[node name="Box" instance=ExtResource("1_4jv5v")]
 
 [node name="ItemSprite" parent="." index="0"]
 material = SubResource("ShaderMaterial_fdt83")
-position = Vector2(132, -100)
+position = Vector2(64, -32)
 texture = ExtResource("4_weyli")
 region_enabled = true
-region_rect = Rect2(16, 96, 64, 64)
+region_rect = Rect2(152, 8, 48, 64)
+
+[node name="Interactable" parent="." index="1"]
+position = Vector2(0, 64)
 
 [node name="CollisionShape2D" parent="Interactable" index="0"]
-position = Vector2(128, 32)
+position = Vector2(64, -64)
 shape = SubResource("RectangleShape2D_pf8tk")
 
 [node name="PopUpMessage" parent="." index="2"]
-position = Vector2(128, -256)
+position = Vector2(64, -136)
+text = "Collect"
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." index="3"]
+position = Vector2(0, 64)
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" index="0"]
+position = Vector2(64, -64)
+shape = SubResource("RectangleShape2D_rgand")
