@@ -1,6 +1,7 @@
 class_name CraftSelection extends Control
 
 signal cancelled()
+signal craft_created()
 
 const recipe_scene = preload("res://Entities/SelectableItem/RecipeItem.tscn")
 const ingredient_scene = preload("res://Entities/SelectableItem/IngredientItem.tscn")
@@ -23,11 +24,12 @@ func _ready() -> void:
 	craft_button.pressed.connect(on_craft)
 	reset_button.pressed.connect(on_reset)
 	back_button.pressed.connect(func(): cancelled.emit())
+	draw.connect(start)
 
 
 func start() -> void:
-	build(recipes.list, recipe_box, recipe_scene)
-	build(inventory.list, ingredient_box, ingredient_scene)
+	build(GameManager.craft.recipes_know, recipe_box, recipe_scene)
+	build(GameManager.craft.inventory, ingredient_box, ingredient_scene)
 	
 	reset_craft_status()
 	update_craft_disabled()
@@ -37,8 +39,7 @@ func start() -> void:
 
 func select_first_recipe() -> void:
 	if recipe_box.get_child_count() > 0:
-		var child = recipe_box.get_child(0)
-		if child is RecipeItem: child.grab_focus()
+		recipe_box.get_child(0).grab_focus()
 
 
 func reset_craft_status() -> void:
@@ -55,6 +56,11 @@ func reset_craft_status() -> void:
 
 
 func build(list: Array, box: BoxContainer, scene: PackedScene) -> void:
+	for node in box.get_children():
+		# Needs to free on this frame
+		# so I can select the updated list
+		node.free() 
+	
 	for item in list:
 		var node = scene.instantiate()
 		box.add_child(node)
@@ -109,7 +115,9 @@ func on_selection(item, state) -> void:
 
 
 func on_craft() -> void:
-	print("CRAFT!")
+	print_debug("TBD::Send recipe to the manager")
+	craft_created.emit()
+	
 
 
 func on_reset() -> void:

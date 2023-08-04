@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://dfmy82o6kch48"]
+[gd_scene load_steps=7 format=3 uid="uid://dfmy82o6kch48"]
 
 [ext_resource type="PackedScene" uid="uid://j61ohun3dki1" path="res://Dungeons/BaseDungeon.tscn" id="1_hlc1m"]
 [ext_resource type="Script" path="res://Dungeons/AlchemistLab/AlchemistLab.gd" id="2_21cbx"]
 [ext_resource type="PackedScene" uid="uid://52jyju2obejk" path="res://Entities/ScenaryObjects/Door.tscn" id="4_251o4"]
 [ext_resource type="PackedScene" uid="uid://1xlwaxmymknb" path="res://Entities/CraftSelection/CraftSelection.tscn" id="4_b02p0"]
 [ext_resource type="PackedScene" uid="uid://ja2p80lbkk54" path="res://Entities/ScenaryObjects/CraftStation.tscn" id="5_1sx3k"]
+[ext_resource type="PackedScene" uid="uid://bs5dnig0t47rk" path="res://Entities/Crafter/Crafter.tscn" id="6_gfpom"]
 
 [node name="AlchemistLab" instance=ExtResource("1_hlc1m")]
 script = ExtResource("2_21cbx")
@@ -26,3 +27,7 @@ position = Vector2(1408, 320)
 [node name="Overlay" type="CanvasLayer" parent="." index="3"]
 
 [node name="CraftSelection" parent="Overlay" index="0" instance=ExtResource("4_b02p0")]
+visible = false
+
+[node name="Crafter" parent="Overlay" index="1" instance=ExtResource("6_gfpom")]
+visible = false

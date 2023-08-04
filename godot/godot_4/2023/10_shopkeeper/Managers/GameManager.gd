@@ -7,10 +7,9 @@ const dungeon = {
 }
 
 @onready var scenes: SceneManager = $SceneManager
-@onready var signals: SignalManager = $SignalManager
 @onready var sounds: SoundManager = $SoundManager
 @onready var musics: MusicManager = $MusicManager
-@onready var inventory: InventoryManager = $InventoryManager
+@onready var craft: CraftManager = $CraftManager
 
 
 func start_game() -> void: 

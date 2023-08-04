@@ -12,6 +12,10 @@ signal failed()
 
 
 func _ready() -> void:
+	draw.connect(start)
+
+
+func start() -> void:
 	item_name_label.text = craft_entry.data_name
 	
 	hit_slider.start()

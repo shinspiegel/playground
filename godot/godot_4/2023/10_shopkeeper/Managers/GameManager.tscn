@@ -1,23 +1,50 @@
-[gd_scene load_steps=7 format=3 uid="uid://d2prm0slgg6ds"]
+[gd_scene load_steps=15 format=3 uid="uid://d2prm0slgg6ds"]
 
 [ext_resource type="Script" path="res://Managers/GameManager.gd" id="1_0a3ex"]
 [ext_resource type="Script" path="res://Managers/SceneManager.gd" id="2_3mlft"]
-[ext_resource type="Script" path="res://Managers/InventoryManager.gd" id="2_bjemb"]
-[ext_resource type="Script" path="res://Managers/SignalManager.gd" id="2_cek3r"]
+[ext_resource type="Script" path="res://Managers/CraftManager.gd" id="2_bjemb"]
 [ext_resource type="Script" path="res://Managers/SoundManager.gd" id="3_adkjm"]
+[ext_resource type="Script" path="res://Resources/RecipeBase.gd" id="3_w4rve"]
+[ext_resource type="Resource" uid="uid://cbnf66fprb431" path="res://Ingredients/banana.tres" id="4_3b3e2"]
 [ext_resource type="Script" path="res://Managers/MusicManager.gd" id="4_x1xji"]
+[ext_resource type="Resource" uid="uid://bywdo0encxqbd" path="res://Ingredients/onion.tres" id="5_gb1me"]
+[ext_resource type="Resource" uid="uid://b1cxx60l065lr" path="res://Ingredients/shrimp.tres" id="6_smcoj"]
+[ext_resource type="Resource" uid="uid://cdsl42l7glojy" path="res://Ingredients/strawberry.tres" id="7_yjb6v"]
+[ext_resource type="Script" path="res://Resources/CraftEntry.gd" id="8_jmhk5"]
+
+[sub_resource type="Resource" id="Resource_5m0x4"]
+script = ExtResource("3_w4rve")
+type = "Potion"
+title = "Base Potion"
+
+[sub_resource type="Resource" id="Resource_78oea"]
+script = ExtResource("3_w4rve")
+type = "Bomb"
+title = "Base Bomb"
+
+[sub_resource type="Resource" id="Resource_byk7k"]
+script = ExtResource("8_jmhk5")
+data_name = "Craft Name"
+suc_required = 3
+suc_multiplier = 1.0
+suc_fail_limit = 2
+diff_slider_speed = 2.0
+diff_good = 1.0
+diff_ok = 4.0
+diff_bad = 9.0
+diff_fail = 10.0
 
 [node name="GameManager" type="Node"]
 script = ExtResource("1_0a3ex")
 
-[node name="InventoryManager" type="Node" parent="."]
+[node name="CraftManager" type="Node" parent="."]
 script = ExtResource("2_bjemb")
+recipes_know = Array[ExtResource("3_w4rve")]([SubResource("Resource_5m0x4"), SubResource("Resource_78oea")])
+inventory = Array[Resource("res://Resources/InventoryItem.gd")]([ExtResource("4_3b3e2"), ExtResource("5_gb1me"), ExtResource("6_smcoj"), ExtResource("7_yjb6v")])
+craft_entry = SubResource("Resource_byk7k")
 
 [node name="SceneManager" type="Node" parent="."]
 script = ExtResource("2_3mlft")
-
-[node name="SignalManager" type="Node" parent="."]
-script = ExtResource("2_cek3r")
 
 [node name="SoundManager" type="Node" parent="."]
 script = ExtResource("3_adkjm")

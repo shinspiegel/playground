@@ -17,3 +17,6 @@ class_name CraftEntry extends Resource
 @export_range(0.0, 10.0, 0.5) var diff_ok: float = 4
 @export_range(0.0, 10.0, 0.5) var diff_bad: float = 9
 @export_range(0.0, 10.0, 0.5) var diff_fail: float = 10
+
+@export_group("Target Item")
+@export var target_item: InventoryItem
