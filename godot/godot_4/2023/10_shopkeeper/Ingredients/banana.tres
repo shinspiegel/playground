@@ -5,6 +5,7 @@
 
 [resource]
 script = ExtResource("2_yub7p")
+quality = 0.5
 custom_effect = "Cry"
 image = ExtResource("1_5yxeh")
 title = "Onion"

@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3 uid="uid://ja2p80lbkk54"]
+
+[ext_resource type="PackedScene" uid="uid://dh2w5u8tcpyx2" path="res://Entities/InteractableItem/InteractableItem.tscn" id="1_k3bl5"]
+[ext_resource type="Shader" path="res://Shader/PixelPerfectShader.gdshader" id="2_vij3v"]
+[ext_resource type="Texture2D" uid="uid://cwvmyh2y18rsa" path="res://Assets/Graphics/Pixel Art Top Down - Basic/Texture/TX Props.png" id="3_no7r5"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fdt83"]
+resource_local_to_scene = true
+shader = ExtResource("2_vij3v")
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/line_thickness = 1.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pf8tk"]
+size = Vector2(128, 128)
+
+[node name="CraftStation" instance=ExtResource("1_k3bl5")]
+
+[node name="ItemSprite" parent="." index="0"]
+material = SubResource("ShaderMaterial_fdt83")
+position = Vector2(194, 196)
+texture = ExtResource("3_no7r5")
+region_enabled = true
+region_rect = Rect2(351, 267, 99, 76)
+
+[node name="Interactable" parent="." index="1"]
+position = Vector2(0, 64)
+
+[node name="CollisionShape2D" parent="Interactable" index="0"]
+position = Vector2(192, 128)
+shape = SubResource("RectangleShape2D_pf8tk")
+
+[node name="PopUpMessage" parent="." index="2"]
+position = Vector2(192, -8)
+text = "Craft"

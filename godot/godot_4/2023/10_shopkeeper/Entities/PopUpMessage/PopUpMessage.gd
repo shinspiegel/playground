@@ -7,6 +7,7 @@ class_name PopUpMessage extends Node2D
 @onready var label: Label = $LabelWrapper/Label
 @onready var label_wrapper: Node2D = $LabelWrapper
 
+
 func _ready() -> void:
 	if interactable:
 		interactable.focus.connect(on_focus)
@@ -14,11 +15,15 @@ func _ready() -> void:
 	label.text = text
 	label_wrapper.modulate = Color(1,1,1,0)
 	label_wrapper.position = Vector2.ZERO
+	tree_exiting.connect(on_exit)
+
+
+func on_exit() -> void:
+	interactable.focus.disconnect(on_focus)
+	interactable.blur.disconnect(on_blur)
 
 
 func on_focus() -> void:
-	if get_tree() == null: return
-	
 	var tween = get_tree().create_tween()
 	tween.set_ease(Tween.EASE_OUT_IN).set_parallel(true)
 	tween.tween_property(label_wrapper, "position", distance, time)
@@ -26,8 +31,6 @@ func on_focus() -> void:
 
 
 func on_blur() -> void:
-	if get_tree() == null: return
-	
 	var tween = get_tree().create_tween()
 	tween.set_ease(Tween.EASE_OUT_IN).set_parallel(true)
 	tween.tween_property(label_wrapper, "position", Vector2.ZERO, time)

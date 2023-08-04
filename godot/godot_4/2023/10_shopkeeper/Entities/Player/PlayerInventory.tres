@@ -1,11 +1,11 @@
 [gd_resource type="Resource" script_class="Inventory" load_steps=7 format=3 uid="uid://b6o83g06ohbd5"]
 
 [ext_resource type="Script" path="res://Resources/Inventory.gd" id="1_7ix3c"]
-[ext_resource type="Resource" uid="uid://cbnf66fprb431" path="res://Entities/Ingredients/banana.tres" id="1_yhs51"]
-[ext_resource type="Resource" uid="uid://bywdo0encxqbd" path="res://Entities/Ingredients/onion.tres" id="2_82c4s"]
-[ext_resource type="Resource" uid="uid://b1cxx60l065lr" path="res://Entities/Ingredients/shrimp.tres" id="3_knrrf"]
-[ext_resource type="Resource" uid="uid://cdsl42l7glojy" path="res://Entities/Ingredients/strawberry.tres" id="4_e0ym5"]
-[ext_resource type="Resource" uid="uid://v0xbp2woakih" path="res://Entities/Ingredients/watermelon.tres" id="5_skyxg"]
+[ext_resource type="Resource" uid="uid://cbnf66fprb431" path="res://Ingredients/banana.tres" id="1_yhs51"]
+[ext_resource type="Resource" uid="uid://bywdo0encxqbd" path="res://Ingredients/onion.tres" id="2_82c4s"]
+[ext_resource type="Resource" uid="uid://b1cxx60l065lr" path="res://Ingredients/shrimp.tres" id="3_knrrf"]
+[ext_resource type="Resource" uid="uid://cdsl42l7glojy" path="res://Ingredients/strawberry.tres" id="4_e0ym5"]
+[ext_resource type="Resource" uid="uid://v0xbp2woakih" path="res://Ingredients/watermelon.tres" id="5_skyxg"]
 
 [resource]
 script = ExtResource("1_7ix3c")
