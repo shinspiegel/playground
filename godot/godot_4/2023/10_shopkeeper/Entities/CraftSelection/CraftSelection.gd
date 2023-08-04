@@ -1,4 +1,6 @@
-extends Control
+class_name CraftSelection extends Control
+
+signal cancelled()
 
 const recipe_scene = preload("res://Entities/SelectableItem/RecipeItem.tscn")
 const ingredient_scene = preload("res://Entities/SelectableItem/IngredientItem.tscn")
@@ -10,8 +12,8 @@ const ingredient_scene = preload("res://Entities/SelectableItem/IngredientItem.t
 @onready var ingredient_box: VBoxContainer = $IngredientsWrapper/VBoxContainer/ScrollContainer/IngredientBox
 @onready var craft_button: Button = $CraftControl/VBoxContainer/HBoxContainer3/Craft
 @onready var reset_button: Button = $CraftControl/VBoxContainer/HBoxContainer3/Reset
+@onready var back_button: Button = $CraftControl/VBoxContainer/HBoxContainer4/Back
 @onready var ingerdients_images: IngredientsImagesContainer = $CraftControl/VBoxContainer/IngerdientsImages
-
 
 var current_recipe: RecipeBase
 var selected_ingredients: Array[IngredientBase] = [] 
@@ -20,12 +22,15 @@ var selected_ingredients: Array[IngredientBase] = []
 func _ready() -> void:
 	craft_button.pressed.connect(on_craft)
 	reset_button.pressed.connect(on_reset)
+	back_button.pressed.connect(func(): cancelled.emit())
+
+
+func start() -> void:
+	build(recipes.list, recipe_box, recipe_scene)
+	build(inventory.list, ingredient_box, ingredient_scene)
 	
 	reset_craft_status()
 	update_craft_disabled()
-	
-	build(recipes.list, recipe_box, recipe_scene)
-	build(inventory.list, ingredient_box, ingredient_scene)
 	
 	select_first_recipe()
 
@@ -110,3 +115,4 @@ func on_craft() -> void:
 func on_reset() -> void:
 	reset_craft_status()
 	select_first_recipe()
+	ingerdients_images.set_textures(selected_ingredients)

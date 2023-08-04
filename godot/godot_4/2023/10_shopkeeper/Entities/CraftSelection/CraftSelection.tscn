@@ -1,12 +1,12 @@
 [gd_scene load_steps=6 format=3 uid="uid://1xlwaxmymknb"]
 
-[ext_resource type="Script" path="res://Entities/Crafting/Crafting.gd" id="1_d6glt"]
+[ext_resource type="Script" path="res://Entities/CraftSelection/CraftSelection.gd" id="1_d6glt"]
 [ext_resource type="Resource" uid="uid://b6o83g06ohbd5" path="res://Entities/Player/PlayerInventory.tres" id="2_8brgh"]
 [ext_resource type="Texture2D" uid="uid://0m8bgo8ph7gj" path="res://icon.svg" id="2_y4uci"]
 [ext_resource type="Resource" uid="uid://ceakexm8037m2" path="res://Entities/Player/RecipesList.tres" id="3_2gfcs"]
-[ext_resource type="Script" path="res://Entities/Crafting/IngerdientsImages.gd" id="5_u7lyg"]
+[ext_resource type="Script" path="res://Entities/CraftSelection/IngerdientsImages.gd" id="5_u7lyg"]
 
-[node name="Crafting" type="Control"]
+[node name="CraftSelection" type="Control"]
 texture_filter = 1
 layout_mode = 3
 anchors_preset = 15
@@ -110,30 +110,6 @@ grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
-[node name="StartContainer" type="HBoxContainer" parent="CraftControl/VBoxContainer"]
-layout_mode = 2
-alignment = 1
-
-[node name="TextureRect" type="TextureRect" parent="CraftControl/VBoxContainer/StartContainer"]
-layout_mode = 2
-texture = ExtResource("2_y4uci")
-
-[node name="TextureRect2" type="TextureRect" parent="CraftControl/VBoxContainer/StartContainer"]
-layout_mode = 2
-texture = ExtResource("2_y4uci")
-
-[node name="TextureRect3" type="TextureRect" parent="CraftControl/VBoxContainer/StartContainer"]
-layout_mode = 2
-texture = ExtResource("2_y4uci")
-
-[node name="TextureRect4" type="TextureRect" parent="CraftControl/VBoxContainer/StartContainer"]
-layout_mode = 2
-texture = ExtResource("2_y4uci")
-
-[node name="TextureRect5" type="TextureRect" parent="CraftControl/VBoxContainer/StartContainer"]
-layout_mode = 2
-texture = ExtResource("2_y4uci")
-
 [node name="Label" type="Label" parent="CraftControl/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 64
@@ -208,6 +184,20 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 46
 text = "Reset"
 
+[node name="Control2" type="Control" parent="CraftControl/VBoxContainer"]
+custom_minimum_size = Vector2(2.08165e-12, 20)
+layout_mode = 2
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="CraftControl/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Back" type="Button" parent="CraftControl/VBoxContainer/HBoxContainer4"]
+custom_minimum_size = Vector2(240, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 46
+text = "Back"
+
 [node name="PlayerHints" type="Control" parent="."]
 layout_mode = 1
 anchors_preset = 3
@@ -229,6 +219,7 @@ anchor_bottom = 1.0
 offset_left = -309.0
 grow_horizontal = 0
 grow_vertical = 2
+texture = ExtResource("2_y4uci")
 stretch_mode = 4
 
 [node name="ColorRect" type="ColorRect" parent="PlayerHints"]

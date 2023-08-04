@@ -1,5 +1,7 @@
 class_name InteractableItem extends Node2D
 
+signal interacted()
+
 @onready var item_sprite: Sprite2D = $ItemSprite
 @onready var interactable: Interactable = $Interactable
 
@@ -12,8 +14,7 @@ func _ready() -> void:
 
 
 func on_interacted() -> void:
-	print_debug("WARN::Not implemented::", self)
-
+	interacted.emit()
 
 
 func on_focus() -> void:
