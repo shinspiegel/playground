@@ -1,9 +1,0 @@
-[gd_resource type="Resource" script_class="RecipesKnown" load_steps=4 format=3 uid="uid://ceakexm8037m2"]
-
-[ext_resource type="Resource" uid="uid://bppapm3puuuke" path="res://Entities/Recipes/hot_tea.tres" id="1_g8lrl"]
-[ext_resource type="Script" path="res://Resources/RecipesKnown.gd" id="1_jclw3"]
-[ext_resource type="Resource" uid="uid://pre46xw8vrmb" path="res://Entities/Recipes/wine.tres" id="2_tihem"]
-
-[resource]
-script = ExtResource("1_jclw3")
-list = Array[Resource("res://Resources/RecipeBase.gd")]([ExtResource("1_g8lrl"), ExtResource("2_tihem")])
