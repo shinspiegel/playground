@@ -13,6 +13,12 @@ var craft_entry: CraftEntry
 
 func _ready() -> void:
 	draw.connect(start)
+	hidden.connect(finish)
+
+
+func _process(_delta: float) -> void:
+	if Input.is_action_just_pressed("ui_accept"):
+		hit_slider.check_which_area()
 
 
 func start() -> void:
@@ -22,6 +28,16 @@ func start() -> void:
 	hit_slider.start()
 	hit_slider.hit.connect(on_hit)
 	
+	reset()
+
+
+func finish() -> void:
+	print("finished")
+	hit_slider.hit.disconnect(on_hit)
+	reset()
+
+
+func reset() -> void:
 	craft_progress.value = 0
 	craft_progress.min_value = 0
 	craft_progress.max_value = craft_entry.suc_required
@@ -31,9 +47,21 @@ func start() -> void:
 	fail_progress.max_value = craft_entry.suc_fail_limit
 
 
-func _process(_delta: float) -> void:
-	if Input.is_action_just_pressed("ui_accept"):
-		hit_slider.check_which_area()
+func add_hit(power: float) -> void:
+	power *= craft_entry.suc_multiplier
+	craft_progress.value = clamp(craft_progress.value + power, 0, craft_entry.suc_required)
+	
+	if craft_progress.value >= craft_progress.max_value:
+		succeed.emit()
+		start()
+
+
+func add_fail() -> void:
+	fail_progress.value = clamp(fail_progress.value - 1, 0, craft_entry.suc_fail_limit)
+	
+	if fail_progress.value <= 0:
+		failed.emit()
+		start()
 
 
 func on_hit(area: HitSlider.AREAS) -> void:
@@ -45,18 +73,3 @@ func on_hit(area: HitSlider.AREAS) -> void:
 			HitSlider.AREAS.fail: add_hit(0)
 	else:
 		add_fail()
-
-
-func add_hit(power: float) -> void:
-	power *= craft_entry.suc_multiplier
-	craft_progress.value = clamp(craft_progress.value + power, 0, craft_entry.suc_required)
-	
-	if craft_progress.value >= craft_progress.max_value:
-		succeed.emit()
-
-
-func add_fail() -> void:
-	fail_progress.value = clamp(fail_progress.value - 1, 0, craft_entry.suc_fail_limit)
-	
-	if fail_progress.value <= 0:
-		failed.emit()

@@ -22,6 +22,7 @@ func _ready() -> void:
 
 
 func start() -> void:
+	print("Started")
 	build(GameManager.crafts.recipes_know, recipe_box, recipe_scene)
 	build(GameManager.crafts.inventory, ingredient_box, ingredient_scene)
 	

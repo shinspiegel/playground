@@ -15,18 +15,25 @@ func _ready() -> void:
 	craft_selection.craft_created.connect(on_craft_entry_creater)
 	craft_selection.hide()
 	
-	crafter.hide()
 	crafter.succeed.connect(on_craft_succeed)
 	crafter.failed.connect(on_craft_failed)
+	crafter.hide()
+
+
+func set_dungeon_area(state: bool) -> void:
+	if state:
+		dungeon_nodes.set_deferred("process_mode", PROCESS_MODE_INHERIT)
+	else:
+		dungeon_nodes.set_deferred("process_mode", PROCESS_MODE_DISABLED)
 
 
 func open_craft_selection() -> void:
-	dungeon_nodes.set_deferred("process_mode", PROCESS_MODE_DISABLED)
+	set_dungeon_area(false)
 	craft_selection.show()
 
 
 func close_craft_selection() -> void:
-	dungeon_nodes.set_deferred("process_mode", PROCESS_MODE_INHERIT)
+	set_dungeon_area(true)
 	craft_selection.hide()
 
 
@@ -36,12 +43,12 @@ func on_craft_entry_creater() -> void:
 
 
 func on_craft_succeed() -> void:
-	dungeon_nodes.set_deferred("process_mode", PROCESS_MODE_INHERIT)
+	set_dungeon_area(true)
 	crafter.hide()
 	craft_selection.hide()
 
 
 func on_craft_failed() -> void:
-	dungeon_nodes.set_deferred("process_mode", PROCESS_MODE_INHERIT)
+	set_dungeon_area(true)
 	crafter.hide()
 	craft_selection.hide()
