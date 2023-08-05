@@ -3,12 +3,12 @@ class_name Crafter extends Control
 signal succeed()
 signal failed()
 
-@export var craft_entry: CraftEntry
-
 @onready var item_name_label: Label = $MarginContainer/VBoxContainer/ItemName
 @onready var hit_slider: HitSlider = $MarginContainer/VBoxContainer/CenterContainer/Control/HitSlider
 @onready var craft_progress: ProgressBar = $MarginContainer/VBoxContainer/CenterContainer2/HBoxContainer/CraftProgress
 @onready var fail_progress: ProgressBar = $MarginContainer/VBoxContainer/CenterContainer3/HBoxContainer/FailProgress
+
+var craft_entry: CraftEntry
 
 
 func _ready() -> void:
@@ -16,6 +16,7 @@ func _ready() -> void:
 
 
 func start() -> void:
+	craft_entry = GameManager.crafts.craft_entry
 	item_name_label.text = craft_entry.data_name
 	
 	hit_slider.start()

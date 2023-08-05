@@ -38,8 +38,10 @@ func on_craft_entry_creater() -> void:
 func on_craft_succeed() -> void:
 	dungeon_nodes.set_deferred("process_mode", PROCESS_MODE_INHERIT)
 	crafter.hide()
+	craft_selection.hide()
 
 
 func on_craft_failed() -> void:
 	dungeon_nodes.set_deferred("process_mode", PROCESS_MODE_INHERIT)
 	crafter.hide()
+	craft_selection.hide()

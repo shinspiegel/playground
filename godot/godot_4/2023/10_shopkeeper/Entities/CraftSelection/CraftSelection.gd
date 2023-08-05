@@ -6,18 +6,12 @@ signal craft_created()
 const recipe_scene = preload("res://Entities/SelectableItem/RecipeItem.tscn")
 const ingredient_scene = preload("res://Entities/SelectableItem/IngredientItem.tscn")
 
-@export var inventory: Inventory
-@export var recipes: RecipesKnown
-
 @onready var recipe_box: VBoxContainer = $RecipesWrapper/VBoxContainer/ScrollContainer/RecipeBox
 @onready var ingredient_box: VBoxContainer = $IngredientsWrapper/VBoxContainer/ScrollContainer/IngredientBox
 @onready var craft_button: Button = $CraftControl/VBoxContainer/HBoxContainer3/Craft
 @onready var reset_button: Button = $CraftControl/VBoxContainer/HBoxContainer3/Reset
 @onready var back_button: Button = $CraftControl/VBoxContainer/HBoxContainer4/Back
 @onready var ingerdients_images: IngredientsImagesContainer = $CraftControl/VBoxContainer/IngerdientsImages
-
-var current_recipe: RecipeBase
-var selected_ingredients: Array[IngredientBase] = [] 
 
 
 func _ready() -> void:
@@ -28,8 +22,8 @@ func _ready() -> void:
 
 
 func start() -> void:
-	build(GameManager.craft.recipes_know, recipe_box, recipe_scene)
-	build(GameManager.craft.inventory, ingredient_box, ingredient_scene)
+	build(GameManager.crafts.recipes_know, recipe_box, recipe_scene)
+	build(GameManager.crafts.inventory, ingredient_box, ingredient_scene)
 	
 	reset_craft_status()
 	update_craft_disabled()
@@ -43,8 +37,8 @@ func select_first_recipe() -> void:
 
 
 func reset_craft_status() -> void:
-	current_recipe = null
-	selected_ingredients = []
+	GameManager.crafts.current_recipe = null
+	GameManager.crafts.selected_ingredients.clear()
 	
 	for child in recipe_box.get_children():
 		if child is RecipeItem: 
@@ -70,13 +64,13 @@ func build(list: Array, box: BoxContainer, scene: PackedScene) -> void:
 
 func toggle_recipe(recipe_item: RecipeItem, state: bool) -> void:
 	if state:
-		current_recipe = recipe_item.recipe
+		GameManager.crafts.current_recipe = recipe_item.recipe
 	
 		for child in recipe_box.get_children():
-			if child is RecipeItem and not child.recipe == current_recipe: 
+			if child is RecipeItem and not child.recipe == GameManager.crafts.current_recipe: 
 				child.unselect(false)
 	else:
-		current_recipe = null
+		GameManager.crafts.current_recipe = null
 		
 		for child in recipe_box.get_children():
 			if child is RecipeItem: 
@@ -84,16 +78,16 @@ func toggle_recipe(recipe_item: RecipeItem, state: bool) -> void:
 
 
 func toggle_ingredients(ingredient_item: IngredientItem) -> void:
-	if selected_ingredients.has(ingredient_item.ingredient):
-		selected_ingredients.remove_at(selected_ingredients.find(ingredient_item.ingredient))
-	elif selected_ingredients.size() < 3:
-		selected_ingredients.append(ingredient_item.ingredient)
+	if GameManager.crafts.selected_ingredients.has(ingredient_item.ingredient):
+		GameManager.crafts.selected_ingredients.remove_at(GameManager.crafts.selected_ingredients.find(ingredient_item.ingredient))
+	elif GameManager.crafts.selected_ingredients.size() < 3:
+		GameManager.crafts.selected_ingredients.append(ingredient_item.ingredient)
 	else:
 		ingredient_item.unselect(false)
 
 
 func is_craft_enabled() -> bool:
-	return selected_ingredients.size() >= 3 and current_recipe
+	return GameManager.crafts.selected_ingredients.size() >= 3 and GameManager.crafts.current_recipe
 
 
 func update_craft_disabled() -> void:
@@ -109,18 +103,17 @@ func on_selection(item, state) -> void:
 	
 	if item is IngredientItem:
 		toggle_ingredients(item)
-		ingerdients_images.set_textures(selected_ingredients)
+		ingerdients_images.set_textures(GameManager.crafts.selected_ingredients)
 	
 	update_craft_disabled()
 
 
 func on_craft() -> void:
-	print_debug("TBD::Send recipe to the manager")
+	GameManager.crafts.generate_craft_entry()
 	craft_created.emit()
-	
 
 
 func on_reset() -> void:
 	reset_craft_status()
 	select_first_recipe()
-	ingerdients_images.set_textures(selected_ingredients)
+	ingerdients_images.set_textures(GameManager.crafts.selected_ingredients)

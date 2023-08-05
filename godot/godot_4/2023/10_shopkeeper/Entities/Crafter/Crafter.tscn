@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://0m8bgo8ph7gj" path="res://icon.svg" id="1_ipr24"]
 [ext_resource type="Script" path="res://Entities/Crafter/Crafter.gd" id="1_taltl"]
 [ext_resource type="Resource" uid="uid://dy4mr0oq1d4af" path="res://Entities/CraftEntries/FirstEntry.tres" id="2_e2ope"]
-[ext_resource type="Texture2D" uid="uid://dpyhtq180crb1" path="res://Assets/template_block.png" id="2_fdnlj"]
+[ext_resource type="Texture2D" uid="uid://dpyhtq180crb1" path="res://Assets/Graphics/template_block.png" id="2_fdnlj"]
 
 [sub_resource type="Animation" id="Animation_0f3dx"]
 resource_name = "Anim"
@@ -52,7 +52,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_taltl")
-craft_entry = ExtResource("2_e2ope")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1

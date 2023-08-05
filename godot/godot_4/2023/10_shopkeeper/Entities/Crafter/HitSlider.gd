@@ -15,10 +15,11 @@ signal hit(area: AREAS)
 
 
 func _ready() -> void:
-	start()
+	draw.connect(start)
 
 
 func start() -> void:
+	craft_entry = GameManager.crafts.craft_entry
 	animation_player.speed_scale = craft_entry.diff_slider_speed
 	set_visual_areas()
 	animation_player.play("Anim")

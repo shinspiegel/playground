@@ -1,9 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://1xlwaxmymknb"]
+[gd_scene load_steps=4 format=3 uid="uid://1xlwaxmymknb"]
 
 [ext_resource type="Script" path="res://Entities/CraftSelection/CraftSelection.gd" id="1_d6glt"]
-[ext_resource type="Resource" uid="uid://b6o83g06ohbd5" path="res://Entities/Player/PlayerInventory.tres" id="2_8brgh"]
 [ext_resource type="Texture2D" uid="uid://0m8bgo8ph7gj" path="res://icon.svg" id="2_y4uci"]
-[ext_resource type="Resource" uid="uid://ceakexm8037m2" path="res://Entities/Player/RecipesList.tres" id="3_2gfcs"]
 [ext_resource type="Script" path="res://Entities/CraftSelection/IngerdientsImages.gd" id="5_u7lyg"]
 
 [node name="CraftSelection" type="Control"]
@@ -15,8 +13,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_d6glt")
-inventory = ExtResource("2_8brgh")
-recipes = ExtResource("3_2gfcs")
 
 [node name="RecipesWrapper" type="Control" parent="."]
 layout_mode = 1
