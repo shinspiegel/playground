@@ -17,12 +17,12 @@ const ingredient_scene = preload("res://Entities/SelectableItem/IngredientItem.t
 func _ready() -> void:
 	craft_button.pressed.connect(on_craft)
 	reset_button.pressed.connect(on_reset)
-	back_button.pressed.connect(func(): cancelled.emit())
+	back_button.pressed.connect(on_cancel)
 	draw.connect(start)
+	hidden.connect(finish)
 
 
 func start() -> void:
-	print("Started")
 	build(GameManager.crafts.recipes_know, recipe_box, recipe_scene)
 	build(GameManager.crafts.inventory, ingredient_box, ingredient_scene)
 	
@@ -30,6 +30,12 @@ func start() -> void:
 	update_craft_disabled()
 	
 	select_first_recipe()
+
+
+func finish() -> void:
+	reset_craft_status()
+	select_first_recipe()
+	clear_selection_on_right()
 
 
 func select_first_recipe() -> void:
@@ -98,13 +104,17 @@ func update_craft_disabled() -> void:
 		craft_button.disabled = true
 
 
+func clear_selection_on_right() -> void:
+	ingerdients_images.set_textures(GameManager.crafts.selected_ingredients)
+
+
 func on_selection(item, state) -> void:
 	if item is RecipeItem:
 		toggle_recipe(item, state)
 	
 	if item is IngredientItem:
 		toggle_ingredients(item)
-		ingerdients_images.set_textures(GameManager.crafts.selected_ingredients)
+		clear_selection_on_right()
 	
 	update_craft_disabled()
 
@@ -117,4 +127,9 @@ func on_craft() -> void:
 func on_reset() -> void:
 	reset_craft_status()
 	select_first_recipe()
-	ingerdients_images.set_textures(GameManager.crafts.selected_ingredients)
+	clear_selection_on_right()
+
+
+func on_cancel() -> void:
+	on_reset()
+	cancelled.emit()

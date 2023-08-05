@@ -13,27 +13,18 @@ var craft_entry: CraftEntry
 
 func _ready() -> void:
 	draw.connect(start)
-	hidden.connect(finish)
+	hit_slider.hit.connect(on_hit)
 
 
 func _process(_delta: float) -> void:
-	if Input.is_action_just_pressed("ui_accept"):
+	if visible and Input.is_action_just_pressed("ui_accept"):
 		hit_slider.check_which_area()
 
 
 func start() -> void:
 	craft_entry = GameManager.crafts.craft_entry
 	item_name_label.text = craft_entry.data_name
-	
 	hit_slider.start()
-	hit_slider.hit.connect(on_hit)
-	
-	reset()
-
-
-func finish() -> void:
-	print("finished")
-	hit_slider.hit.disconnect(on_hit)
 	reset()
 
 
@@ -53,7 +44,7 @@ func add_hit(power: float) -> void:
 	
 	if craft_progress.value >= craft_progress.max_value:
 		succeed.emit()
-		start()
+		reset()
 
 
 func add_fail() -> void:
@@ -61,7 +52,7 @@ func add_fail() -> void:
 	
 	if fail_progress.value <= 0:
 		failed.emit()
-		start()
+		reset()
 
 
 func on_hit(area: HitSlider.AREAS) -> void:
