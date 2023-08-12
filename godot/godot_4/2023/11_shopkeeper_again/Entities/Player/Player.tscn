@@ -1,11 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://b55y6h54npqdk"]
+[gd_scene load_steps=7 format=3 uid="uid://b55y6h54npqdk"]
 
-[ext_resource type="Texture2D" uid="uid://dondx86fbcfxp" path="res://Assets/Graphics/Pixel-RPG_Prototype_v003/Sprites/Prototype/Prototype_Worksheet.png" id="1_gl1dt"]
 [ext_resource type="Script" path="res://Entities/Player/Player.gd" id="1_ymq7c"]
+[ext_resource type="Texture2D" uid="uid://cj7psibwjry08" path="res://Assets/Graphics/Pixel-RPG_Prototype_v003/Extras/Shadow.png" id="2_cvtie"]
+[ext_resource type="Texture2D" uid="uid://5n6ifwdcw1at" path="res://Assets/Graphics/Protoype_base.png" id="2_yfvtf"]
+[ext_resource type="PackedScene" uid="uid://1nnw4qoibolx" path="res://Entities/Interactives/Interactor.tscn" id="4_ntgkn"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xs1of"]
 radius = 22.0
 height = 80.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hxrje"]
+radius = 76.0
 
 [node name="Player" type="CharacterBody2D"]
 texture_filter = 1
@@ -13,14 +18,25 @@ collision_mask = 12
 motion_mode = 1
 script = ExtResource("1_ymq7c")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Shadow" type="Sprite2D" parent="."]
 position = Vector2(0, -56)
 scale = Vector2(8, 8)
-texture = ExtResource("1_gl1dt")
+texture = ExtResource("2_cvtie")
+
+[node name="PlayerSprite" type="Sprite2D" parent="."]
+position = Vector2(0, -56)
+scale = Vector2(8, 8)
+texture = ExtResource("2_yfvtf")
 hframes = 4
-vframes = 12
+vframes = 13
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-7.10543e-15, -22)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_xs1of")
+
+[node name="Interactor" parent="." instance=ExtResource("4_ntgkn")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactor"]
+position = Vector2(0, -11)
+shape = SubResource("CircleShape2D_hxrje")
