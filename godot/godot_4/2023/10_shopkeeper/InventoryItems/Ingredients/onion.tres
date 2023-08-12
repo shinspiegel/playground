@@ -1,10 +1,17 @@
-[gd_resource type="Resource" script_class="IngredientBase" load_steps=3 format=3 uid="uid://bywdo0encxqbd"]
+[gd_resource type="Resource" script_class="IngredientBase" load_steps=5 format=3 uid="uid://bywdo0encxqbd"]
 
+[ext_resource type="Script" path="res://Resources/IngredientBonus.gd" id="1_enf7v"]
 [ext_resource type="Texture2D" uid="uid://dgwlbs1kar4dk" path="res://Assets/Graphics/Icons/sliced_food/sliced_food64.png" id="1_wt2u8"]
 [ext_resource type="Script" path="res://Resources/IngredientBase.gd" id="2_1nxsm"]
 
+[sub_resource type="Resource" id="Resource_fcu2x"]
+script = ExtResource("1_enf7v")
+type = "diff_ok"
+amount = 1.0
+
 [resource]
 script = ExtResource("2_1nxsm")
-custom_effect = "Tasty"
+quality = 0.5
+bonus_list = Array[ExtResource("1_enf7v")]([SubResource("Resource_fcu2x")])
 image = ExtResource("1_wt2u8")
 title = "Shrimp"

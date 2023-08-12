@@ -31,7 +31,7 @@ script = ExtResource("1_0a3ex")
 [node name="CraftManager" type="Node" parent="."]
 script = ExtResource("2_bjemb")
 recipes_know = Array[ExtResource("3_w4rve")]([SubResource("Resource_5m0x4"), SubResource("Resource_78oea")])
-inventory = Array[Resource("res://Resources/IngredientBase.gd")]([ExtResource("4_3b3e2"), ExtResource("5_gb1me"), ExtResource("6_smcoj"), ExtResource("7_yjb6v")])
+inventory = Array[Resource("res://Resources/InventoryItem.gd")]([ExtResource("4_3b3e2"), ExtResource("5_gb1me"), ExtResource("6_smcoj"), ExtResource("7_yjb6v")])
 
 [node name="SceneManager" type="Node" parent="."]
 script = ExtResource("2_3mlft")

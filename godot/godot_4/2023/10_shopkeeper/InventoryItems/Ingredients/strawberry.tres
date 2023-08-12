@@ -1,10 +1,17 @@
-[gd_resource type="Resource" script_class="IngredientBase" load_steps=3 format=3 uid="uid://cdsl42l7glojy"]
+[gd_resource type="Resource" script_class="IngredientBase" load_steps=5 format=3 uid="uid://cdsl42l7glojy"]
 
+[ext_resource type="Script" path="res://Resources/IngredientBonus.gd" id="1_swhsi"]
 [ext_resource type="Texture2D" uid="uid://df0b7oms1vvn3" path="res://Assets/Graphics/Icons/sliced_food/sliced_food34.png" id="1_t2y8n"]
 [ext_resource type="Script" path="res://Resources/IngredientBase.gd" id="2_s3kum"]
 
+[sub_resource type="Resource" id="Resource_wgqnk"]
+script = ExtResource("1_swhsi")
+type = "diff_slider_speed"
+amount = 1.0
+
 [resource]
 script = ExtResource("2_s3kum")
-custom_effect = "Delicious"
+quality = 0.5
+bonus_list = Array[ExtResource("1_swhsi")]([SubResource("Resource_wgqnk")])
 image = ExtResource("1_t2y8n")
 title = "Strawberry"

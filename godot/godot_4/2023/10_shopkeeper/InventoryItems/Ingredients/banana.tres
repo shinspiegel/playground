@@ -1,11 +1,17 @@
-[gd_resource type="Resource" script_class="IngredientBase" load_steps=3 format=3 uid="uid://cbnf66fprb431"]
+[gd_resource type="Resource" script_class="IngredientBase" load_steps=5 format=3 uid="uid://cbnf66fprb431"]
 
 [ext_resource type="Texture2D" uid="uid://vj1g4dixqere" path="res://Assets/Graphics/Icons/sliced_food/sliced_food63.png" id="1_5yxeh"]
+[ext_resource type="Script" path="res://Resources/IngredientBonus.gd" id="1_45nof"]
 [ext_resource type="Script" path="res://Resources/IngredientBase.gd" id="2_yub7p"]
+
+[sub_resource type="Resource" id="Resource_ei7sf"]
+script = ExtResource("1_45nof")
+type = "diff_good"
+amount = 1.0
 
 [resource]
 script = ExtResource("2_yub7p")
 quality = 0.5
-custom_effect = "Cry"
+bonus_list = Array[ExtResource("1_45nof")]([SubResource("Resource_ei7sf")])
 image = ExtResource("1_5yxeh")
 title = "Onion"

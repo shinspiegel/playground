@@ -20,9 +20,25 @@ class_name CraftEntry extends Resource
 
 
 func apply_recipe(recipe: RecipeBase) -> void:
+	data_name = recipe.type
 	suc_required = recipe.success_required
 	suc_fail_limit = recipe.fail_limit
 
 
 func apply_ingredients(list: Array[IngredientBase]) -> void:
-	print("apply!::", list)
+	for item in list:
+		for bonus in item.bonus_list:
+			apply_ingredient_bonus(bonus)
+
+
+func apply_ingredient_bonus(bonus: IngredientBonus) -> void:
+	match bonus.type:
+		"suc_required": suc_required += bonus.amount
+		"suc_multiplier": suc_multiplier += bonus.amount
+		"suc_fail_limit": suc_fail_limit += bonus.amount
+		
+		"diff_slider_speed": diff_slider_speed += bonus.amount
+		"diff_good": diff_good += bonus.amount
+		"diff_ok": diff_ok += bonus.amount
+		"diff_bad": diff_bad += bonus.amount
+		"diff_fail": diff_fail += bonus.amount
