@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://vlk5jfkdc85o"]
+
+[ext_resource type="PackedScene" uid="uid://b55y6h54npqdk" path="res://Entities/Player/Player.tscn" id="1_5lr4u"]
+
+[node name="AlchemyLab" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_5lr4u")]
+position = Vector2(952, 566)
