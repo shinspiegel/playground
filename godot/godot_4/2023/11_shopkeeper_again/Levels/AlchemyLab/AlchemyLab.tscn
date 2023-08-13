@@ -1,12 +1,14 @@
-[gd_scene load_steps=6 format=3 uid="uid://vlk5jfkdc85o"]
+[gd_scene load_steps=7 format=3 uid="uid://vlk5jfkdc85o"]
 
 [ext_resource type="PackedScene" uid="uid://b55y6h54npqdk" path="res://Entities/Player/Player.tscn" id="1_5lr4u"]
 [ext_resource type="PackedScene" uid="uid://dhhchbkfgbk7b" path="res://Levels/BaseLevel.tscn" id="1_askou"]
 [ext_resource type="PackedScene" uid="uid://b7n4t0hc7lufb" path="res://Entities/InteractableObjects/Door/Door.tscn" id="2_p2k0u"]
 [ext_resource type="Script" path="res://Levels/AlchemyLab/AlchemyLab.gd" id="2_wsw88"]
 [ext_resource type="PackedScene" uid="uid://cqdckkm58keqv" path="res://Entities/InteractableObjects/CraftStation/CraftStation.tscn" id="3_0rdn8"]
+[ext_resource type="PackedScene" uid="uid://dm3qkxxagigj8" path="res://Entities/CraftDefinition/CraftDefinition.tscn" id="6_wiqr4"]
 
 [node name="AlchemyLab" instance=ExtResource("1_askou")]
+texture_filter = 1
 script = ExtResource("2_wsw88")
 
 [node name="Player" parent="SortedObject" index="0" node_paths=PackedStringArray("game_camera") instance=ExtResource("1_5lr4u")]
@@ -20,40 +22,7 @@ position = Vector2(968, 528)
 position = Vector2(132, 256)
 destination = "world_map"
 
-[node name="CraftDefinition" type="Control" parent="Overlay" index="1"]
-visible = false
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="Background" parent="Overlay" index="0"]
+visible = true
 
-[node name="ColorRect" type="ColorRect" parent="Overlay/CraftDefinition" index="0"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 0.784314)
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Overlay/CraftDefinition" index="1"]
-layout_mode = 1
-anchors_preset = 13
-anchor_left = 0.5
-anchor_right = 0.5
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-alignment = 1
-
-[node name="Craft" type="Button" parent="Overlay/CraftDefinition/VBoxContainer" index="0"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 64
-text = "Craft"
-
-[node name="Cancel" type="Button" parent="Overlay/CraftDefinition/VBoxContainer" index="1"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 64
-text = "Cancel"
+[node name="CraftDefinition" parent="Overlay" index="2" instance=ExtResource("6_wiqr4")]
