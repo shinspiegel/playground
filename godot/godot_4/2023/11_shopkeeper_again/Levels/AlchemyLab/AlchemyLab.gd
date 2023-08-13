@@ -2,6 +2,7 @@ extends BaseLevel
 
 
 func _ready() -> void:
+	super._ready()
 	CraftManager.started.connect(on_craft_start)
 	CraftManager.ended.connect(on_craft_ended)
 

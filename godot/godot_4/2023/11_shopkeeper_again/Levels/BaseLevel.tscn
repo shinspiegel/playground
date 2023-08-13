@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://dhhchbkfgbk7b"]
+[gd_scene load_steps=3 format=3 uid="uid://dhhchbkfgbk7b"]
 
 [ext_resource type="Script" path="res://Levels/BaseLevel.gd" id="1_a0n1l"]
+[ext_resource type="PackedScene" uid="uid://d1gtt417ipxmc" path="res://Entities/PlayerInventory/PlayerInventory.tscn" id="2_f8kvr"]
 
 [node name="BaseLevel" type="Node2D"]
 script = ExtResource("1_a0n1l")
@@ -22,3 +23,6 @@ color = Color(0.0980392, 0.0941176, 0.109804, 1)
 y_sort_enabled = true
 
 [node name="Overlay" type="CanvasLayer" parent="."]
+
+[node name="PlayerInventory" parent="Overlay" instance=ExtResource("2_f8kvr")]
+visible = false

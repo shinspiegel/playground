@@ -18,6 +18,9 @@ func _physics_process(_delta: float) -> void:
 	if Input.is_action_just_pressed("ui_accept") and interactor.can_interact():
 		interactor.interact_current()
 	
+	if Input.is_action_just_pressed("ui_cancel"):
+		GameManager.open_inventory()
+	
 	if direction:
 		velocity = direction * SPEED
 	else:

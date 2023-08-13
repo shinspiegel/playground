@@ -20,7 +20,7 @@ position = Vector2(968, 528)
 position = Vector2(132, 256)
 destination = "world_map"
 
-[node name="CraftDefinition" type="Control" parent="Overlay" index="0"]
+[node name="CraftDefinition" type="Control" parent="Overlay" index="1"]
 visible = false
 layout_mode = 3
 anchors_preset = 15
