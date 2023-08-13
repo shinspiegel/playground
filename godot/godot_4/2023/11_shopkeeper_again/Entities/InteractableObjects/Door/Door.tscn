@@ -1,0 +1,41 @@
+[gd_scene load_steps=8 format=3 uid="uid://b7n4t0hc7lufb"]
+
+[ext_resource type="PackedScene" uid="uid://1sgnnal1cpka" path="res://Entities/InteractableObjects/InteractableObject.tscn" id="1_snf10"]
+[ext_resource type="Script" path="res://Entities/InteractableObjects/Door/Door.gd" id="1_u4s6g"]
+[ext_resource type="Texture2D" uid="uid://cwvmyh2y18rsa" path="res://Assets/Graphics/Pixel Art Top Down - Basic/Texture/TX Props.png" id="1_wcv0x"]
+[ext_resource type="Shader" path="res://Shaders/PerfectOutline.gdshader" id="2_ks4xt"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3injd"]
+resource_local_to_scene = true
+shader = ExtResource("2_ks4xt")
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/line_thickness = 1.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hubnx"]
+size = Vector2(192, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0nca1"]
+size = Vector2(148, 200)
+
+[node name="Door" instance=ExtResource("1_snf10")]
+script = ExtResource("1_u4s6g")
+destination = ""
+
+[node name="Sprite2D" parent="." index="0"]
+material = SubResource("ShaderMaterial_3injd")
+position = Vector2(100, -96)
+texture = ExtResource("1_wcv0x")
+region_enabled = true
+region_rect = Rect2(28, 102, 40, 54)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable" index="0"]
+position = Vector2(96, 32)
+shape = SubResource("RectangleShape2D_hubnx")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." index="2"]
+collision_layer = 4
+collision_mask = 11
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" index="0"]
+position = Vector2(98, -100)
+shape = SubResource("RectangleShape2D_0nca1")

@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://1sgnnal1cpka"]
+
+[ext_resource type="Script" path="res://Entities/InteractableObjects/InteractableObject.gd" id="1_cmted"]
+[ext_resource type="Shader" path="res://Shaders/PerfectOutline.gdshader" id="2_6jprr"]
+[ext_resource type="PackedScene" uid="uid://cswg8wk5bh33g" path="res://Entities/Interactives/Interactable.tscn" id="4_gccod"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ur4yq"]
+resource_local_to_scene = true
+shader = ExtResource("2_6jprr")
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/line_thickness = 1.0
+
+[node name="InteractableObject" type="Node2D"]
+script = ExtResource("1_cmted")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+material = SubResource("ShaderMaterial_ur4yq")
+scale = Vector2(4, 4)
+
+[node name="Interactable" parent="." instance=ExtResource("4_gccod")]

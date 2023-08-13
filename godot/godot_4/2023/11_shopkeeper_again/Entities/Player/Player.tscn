@@ -9,8 +9,9 @@
 radius = 22.0
 height = 80.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_hxrje"]
-radius = 76.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dld7w"]
+radius = 32.0
+height = 112.0
 
 [node name="Player" type="CharacterBody2D"]
 texture_filter = 1
@@ -38,5 +39,7 @@ shape = SubResource("CapsuleShape2D_xs1of")
 [node name="Interactor" parent="." instance=ExtResource("4_ntgkn")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interactor"]
-position = Vector2(0, -11)
-shape = SubResource("CircleShape2D_hxrje")
+position = Vector2(0, -56)
+shape = SubResource("CapsuleShape2D_dld7w")
+
+[node name="CameraMount" type="RemoteTransform2D" parent="."]

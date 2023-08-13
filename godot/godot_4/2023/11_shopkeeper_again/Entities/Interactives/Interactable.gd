@@ -1,15 +1,17 @@
 class_name Interactable extends Area2D
 
-
+signal interacted()
+signal focus()
+signal blur()
 
 
 func interact() -> void:
-	print_debug(self)
+	interacted.emit()
 
 
 func grab_focus() -> void:
-	print_debug(self)
+	focus.emit()
 
 
 func release_focus() -> void:
-	print_debug(self)
+	blur.emit()

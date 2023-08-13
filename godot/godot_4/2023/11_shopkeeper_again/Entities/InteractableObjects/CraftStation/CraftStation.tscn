@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=3 uid="uid://cqdckkm58keqv"]
+
+[ext_resource type="PackedScene" uid="uid://1sgnnal1cpka" path="res://Entities/InteractableObjects/InteractableObject.tscn" id="1_sc1ke"]
+[ext_resource type="Shader" path="res://Shaders/PerfectOutline.gdshader" id="2_o3r5v"]
+[ext_resource type="Texture2D" uid="uid://cwvmyh2y18rsa" path="res://Assets/Graphics/Pixel Art Top Down - Basic/Texture/TX Props.png" id="3_w7icp"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_byip2"]
+resource_local_to_scene = true
+shader = ExtResource("2_o3r5v")
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/line_thickness = 1.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v7oq4"]
+size = Vector2(124, 96)
+
+[node name="CraftStation" instance=ExtResource("1_sc1ke")]
+
+[node name="Sprite2D" parent="." index="0"]
+material = SubResource("ShaderMaterial_byip2")
+position = Vector2(192, 148)
+texture = ExtResource("3_w7icp")
+region_enabled = true
+region_rect = Rect2(350, 266, 100, 78)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable" index="0"]
+position = Vector2(194, 148)
+shape = SubResource("RectangleShape2D_v7oq4")

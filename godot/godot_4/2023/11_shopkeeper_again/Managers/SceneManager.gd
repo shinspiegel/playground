@@ -1,8 +1,8 @@
 extends Node
 
-enum LEVELS {
-	world_map,
-	alchemy_lab,
+const LEVELS = {
+	"world_map": "world_map", 
+	"alchemy_lab": "alchemy_lab", 
 }
 
 const __preloaded_scenes = {
@@ -11,6 +11,6 @@ const __preloaded_scenes = {
 }
 
 
-func change_to(area: LEVELS) -> void:
+func change_to(area: String) -> void:
 	if __preloaded_scenes.has(area):
 		get_tree().change_scene_to_packed(__preloaded_scenes[area])
