@@ -1,34 +1,59 @@
-[gd_scene load_steps=4 format=3 uid="uid://vlk5jfkdc85o"]
+[gd_scene load_steps=6 format=3 uid="uid://vlk5jfkdc85o"]
 
 [ext_resource type="PackedScene" uid="uid://b55y6h54npqdk" path="res://Entities/Player/Player.tscn" id="1_5lr4u"]
+[ext_resource type="PackedScene" uid="uid://dhhchbkfgbk7b" path="res://Levels/BaseLevel.tscn" id="1_askou"]
 [ext_resource type="PackedScene" uid="uid://b7n4t0hc7lufb" path="res://Entities/InteractableObjects/Door/Door.tscn" id="2_p2k0u"]
+[ext_resource type="Script" path="res://Levels/AlchemyLab/AlchemyLab.gd" id="2_wsw88"]
 [ext_resource type="PackedScene" uid="uid://cqdckkm58keqv" path="res://Entities/InteractableObjects/CraftStation/CraftStation.tscn" id="3_0rdn8"]
 
-[node name="AlchemyLab" type="Node2D"]
+[node name="AlchemyLab" instance=ExtResource("1_askou")]
+script = ExtResource("2_wsw88")
 
-[node name="BackgroundColor" type="CanvasLayer" parent="."]
-layer = -1
+[node name="Player" parent="SortedObject" index="0" node_paths=PackedStringArray("game_camera") instance=ExtResource("1_5lr4u")]
+position = Vector2(584, 400)
+game_camera = NodePath("../../GameCamera")
 
-[node name="ColorRect" type="ColorRect" parent="BackgroundColor"]
+[node name="CraftStation" parent="SortedObject" index="1" instance=ExtResource("3_0rdn8")]
+position = Vector2(968, 528)
+
+[node name="Door" parent="SortedObject" index="2" instance=ExtResource("2_p2k0u")]
+position = Vector2(132, 256)
+destination = "world_map"
+
+[node name="CraftDefinition" type="Control" parent="Overlay" index="0"]
+visible = false
+layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.0980392, 0.0941176, 0.109804, 1)
 
-[node name="GameCamera" type="Camera2D" parent="."]
+[node name="ColorRect" type="ColorRect" parent="Overlay/CraftDefinition" index="0"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.784314)
 
-[node name="SortedObject" type="Node2D" parent="."]
-y_sort_enabled = true
+[node name="VBoxContainer" type="VBoxContainer" parent="Overlay/CraftDefinition" index="1"]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
 
-[node name="Player" parent="SortedObject" node_paths=PackedStringArray("game_camera") instance=ExtResource("1_5lr4u")]
-position = Vector2(643, 543)
-game_camera = NodePath("../../GameCamera")
+[node name="Craft" type="Button" parent="Overlay/CraftDefinition/VBoxContainer" index="0"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "Craft"
 
-[node name="Door" parent="SortedObject" instance=ExtResource("2_p2k0u")]
-position = Vector2(40, 240)
-destination = "world_map"
-
-[node name="CraftStation" parent="SortedObject" instance=ExtResource("3_0rdn8")]
-position = Vector2(728, 504)
+[node name="Cancel" type="Button" parent="Overlay/CraftDefinition/VBoxContainer" index="1"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "Cancel"

@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://cqdckkm58keqv"]
+[gd_scene load_steps=7 format=3 uid="uid://cqdckkm58keqv"]
 
 [ext_resource type="PackedScene" uid="uid://1sgnnal1cpka" path="res://Entities/InteractableObjects/InteractableObject.tscn" id="1_sc1ke"]
 [ext_resource type="Shader" path="res://Shaders/PerfectOutline.gdshader" id="2_o3r5v"]
+[ext_resource type="Script" path="res://Entities/InteractableObjects/CraftStation/CraftStation.gd" id="2_un2pr"]
 [ext_resource type="Texture2D" uid="uid://cwvmyh2y18rsa" path="res://Assets/Graphics/Pixel Art Top Down - Basic/Texture/TX Props.png" id="3_w7icp"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_byip2"]
@@ -14,6 +15,7 @@ shader_parameter/line_thickness = 1.0
 size = Vector2(124, 96)
 
 [node name="CraftStation" instance=ExtResource("1_sc1ke")]
+script = ExtResource("2_un2pr")
 
 [node name="Sprite2D" parent="." index="0"]
 material = SubResource("ShaderMaterial_byip2")

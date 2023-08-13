@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=3 uid="uid://dhhchbkfgbk7b"]
+
+[ext_resource type="Script" path="res://Levels/BaseLevel.gd" id="1_a0n1l"]
+
+[node name="BaseLevel" type="Node2D"]
+script = ExtResource("1_a0n1l")
+
+[node name="BackgroundColor" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="ColorRect" type="ColorRect" parent="BackgroundColor"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0980392, 0.0941176, 0.109804, 1)
+
+[node name="GameCamera" type="Camera2D" parent="."]
+
+[node name="SortedObject" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Overlay" type="CanvasLayer" parent="."]

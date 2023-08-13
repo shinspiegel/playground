@@ -18,6 +18,7 @@ config/icon="res://Assets/icon.svg"
 [autoload]
 
 SceneManager="*res://Managers/SceneManager.tscn"
+CraftManager="*res://Managers/CraftManager.tscn"
 
 [display]
 
