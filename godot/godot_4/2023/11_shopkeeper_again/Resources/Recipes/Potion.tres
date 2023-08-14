@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Recipe" load_steps=3 format=3 uid="uid://b63dnje0px28r"]
+
+[ext_resource type="Texture2D" uid="uid://xuxe6tgr8u5t" path="res://Assets/icon.svg" id="1_sixqd"]
+[ext_resource type="Script" path="res://Resources/Recipe.gd" id="2_1rqrk"]
+
+[resource]
+script = ExtResource("2_1rqrk")
+recipe_name = "Potion"
+icon = ExtResource("1_sixqd")
+discovered = true

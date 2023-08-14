@@ -8,6 +8,8 @@
 	- Levels for the player to wanter around
 - **Managers**
 	- Singletons
+- ** Resources**
+	- Custom resources to be used
 - **Shaders**
 	- All the shader material used
 - **Main.[tscn/gd]**

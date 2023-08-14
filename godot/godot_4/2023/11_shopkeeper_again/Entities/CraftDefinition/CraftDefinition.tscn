@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://dm3qkxxagigj8"]
 
-[ext_resource type="PackedScene" uid="uid://btqan1boilcq7" path="res://Entities/CraftDefinition/UI_Elements/CraftRepiceButton.tscn" id="1_0g33q"]
+[ext_resource type="Script" path="res://Entities/CraftDefinition/CraftDefinition.gd" id="1_g8ejd"]
 [ext_resource type="PackedScene" uid="uid://68gjo82w5dh" path="res://Entities/CraftDefinition/UI_Elements/IngredientButton.tscn" id="2_3vekh"]
 [ext_resource type="Texture2D" uid="uid://xuxe6tgr8u5t" path="res://Assets/icon.svg" id="3_22ro8"]
 [ext_resource type="Texture2D" uid="uid://dowy1qn7ahjel" path="res://Assets/UI Elements/Download/GUI.png" id="4_bg8py"]
@@ -12,6 +12,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_g8ejd")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 custom_minimum_size = Vector2(2.08165e-12, 600)
@@ -50,30 +51,10 @@ layout_mode = 2
 size_flags_vertical = 3
 follow_focus = true
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer2/ScrollContainer"]
+[node name="RecipesBox" type="VBoxContainer" parent="HBoxContainer/VBoxContainer2/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-
-[node name="RecipeButton" parent="HBoxContainer/VBoxContainer2/ScrollContainer/VBoxContainer" instance=ExtResource("1_0g33q")]
-layout_mode = 2
-text = "Bomb"
-icon = ExtResource("3_22ro8")
-
-[node name="RecipeButton2" parent="HBoxContainer/VBoxContainer2/ScrollContainer/VBoxContainer" instance=ExtResource("1_0g33q")]
-layout_mode = 2
-text = "Quick Bomb"
-icon = ExtResource("3_22ro8")
-
-[node name="RecipeButton3" parent="HBoxContainer/VBoxContainer2/ScrollContainer/VBoxContainer" instance=ExtResource("1_0g33q")]
-layout_mode = 2
-text = "Potion"
-icon = ExtResource("3_22ro8")
-
-[node name="RecipeButton4" parent="HBoxContainer/VBoxContainer2/ScrollContainer/VBoxContainer" instance=ExtResource("1_0g33q")]
-layout_mode = 2
-text = "Slow Potion"
-icon = ExtResource("3_22ro8")
 
 [node name="VBoxContainer3" type="VBoxContainer" parent="HBoxContainer"]
 custom_minimum_size = Vector2(350, 2.08165e-12)
@@ -95,37 +76,37 @@ layout_mode = 2
 size_flags_vertical = 3
 follow_focus = true
 
-[node name="GridContainer" type="GridContainer" parent="HBoxContainer/VBoxContainer3/ScrollContainer2"]
+[node name="InventoryGrid" type="GridContainer" parent="HBoxContainer/VBoxContainer3/ScrollContainer2"]
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 3
 columns = 5
 
-[node name="IngredientButton" parent="HBoxContainer/VBoxContainer3/ScrollContainer2/GridContainer" instance=ExtResource("2_3vekh")]
+[node name="IngredientButton" parent="HBoxContainer/VBoxContainer3/ScrollContainer2/InventoryGrid" instance=ExtResource("2_3vekh")]
 layout_mode = 2
 icon = ExtResource("3_22ro8")
 
-[node name="IngredientButton2" parent="HBoxContainer/VBoxContainer3/ScrollContainer2/GridContainer" instance=ExtResource("2_3vekh")]
+[node name="IngredientButton2" parent="HBoxContainer/VBoxContainer3/ScrollContainer2/InventoryGrid" instance=ExtResource("2_3vekh")]
 layout_mode = 2
 icon = ExtResource("3_22ro8")
 
-[node name="IngredientButton3" parent="HBoxContainer/VBoxContainer3/ScrollContainer2/GridContainer" instance=ExtResource("2_3vekh")]
+[node name="IngredientButton3" parent="HBoxContainer/VBoxContainer3/ScrollContainer2/InventoryGrid" instance=ExtResource("2_3vekh")]
 layout_mode = 2
 icon = ExtResource("3_22ro8")
 
-[node name="IngredientButton4" parent="HBoxContainer/VBoxContainer3/ScrollContainer2/GridContainer" instance=ExtResource("2_3vekh")]
+[node name="IngredientButton4" parent="HBoxContainer/VBoxContainer3/ScrollContainer2/InventoryGrid" instance=ExtResource("2_3vekh")]
 layout_mode = 2
 icon = ExtResource("3_22ro8")
 
-[node name="IngredientButton5" parent="HBoxContainer/VBoxContainer3/ScrollContainer2/GridContainer" instance=ExtResource("2_3vekh")]
+[node name="IngredientButton5" parent="HBoxContainer/VBoxContainer3/ScrollContainer2/InventoryGrid" instance=ExtResource("2_3vekh")]
 layout_mode = 2
 icon = ExtResource("3_22ro8")
 
-[node name="IngredientButton6" parent="HBoxContainer/VBoxContainer3/ScrollContainer2/GridContainer" instance=ExtResource("2_3vekh")]
+[node name="IngredientButton6" parent="HBoxContainer/VBoxContainer3/ScrollContainer2/InventoryGrid" instance=ExtResource("2_3vekh")]
 layout_mode = 2
 icon = ExtResource("3_22ro8")
 
-[node name="IngredientButton7" parent="HBoxContainer/VBoxContainer3/ScrollContainer2/GridContainer" instance=ExtResource("2_3vekh")]
+[node name="IngredientButton7" parent="HBoxContainer/VBoxContainer3/ScrollContainer2/InventoryGrid" instance=ExtResource("2_3vekh")]
 layout_mode = 2
 icon = ExtResource("3_22ro8")
 

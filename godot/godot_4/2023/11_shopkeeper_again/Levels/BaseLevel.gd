@@ -13,7 +13,7 @@ func _ready() -> void:
 
 
 func on_inventory_opened() -> void:
-	sorted_object.set_deferred("process_mode", PROCESS_MODE_DISABLED)
+	pause_sorted()
 	background.show()
 	player_inventory.show()
 
@@ -21,4 +21,12 @@ func on_inventory_opened() -> void:
 func on_inventory_closed() -> void:
 	player_inventory.hide()
 	background.hide()
+	unpause_sorted()
+
+
+func pause_sorted() -> void:
+	sorted_object.set_deferred("process_mode", PROCESS_MODE_DISABLED)
+
+
+func unpause_sorted() -> void:
 	sorted_object.set_deferred("process_mode", PROCESS_MODE_INHERIT)

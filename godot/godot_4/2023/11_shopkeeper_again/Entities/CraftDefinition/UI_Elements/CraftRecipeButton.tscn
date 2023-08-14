@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://btp3awfrqupp0" path="res://Assets/UI Elements/UpdatedElements/256x64_base_button_normal.png" id="1_vbt26"]
 [ext_resource type="Texture2D" uid="uid://cdro4qpjkxfo6" path="res://Assets/UI Elements/UpdatedElements/256x64_base_button_hover.png" id="2_qet6o"]
-[ext_resource type="Script" path="res://Entities/CraftDefinition/UI_Elements/CraftRepiceButton.gd" id="3_vcjw2"]
+[ext_resource type="Script" path="res://Entities/CraftDefinition/UI_Elements/CraftRecipeButton.gd" id="3_vcjw2"]
 
 [node name="RecipeButton" type="TextureButton"]
 custom_minimum_size = Vector2(2.08165e-12, 64)

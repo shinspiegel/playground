@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Recipe" load_steps=3 format=3 uid="uid://damibvsvx33iw"]
+
+[ext_resource type="Texture2D" uid="uid://xuxe6tgr8u5t" path="res://Assets/icon.svg" id="1_domb3"]
+[ext_resource type="Script" path="res://Resources/Recipe.gd" id="2_ud0fy"]
+
+[resource]
+script = ExtResource("2_ud0fy")
+recipe_name = "Quick Bomb"
+icon = ExtResource("1_domb3")
+discovered = true

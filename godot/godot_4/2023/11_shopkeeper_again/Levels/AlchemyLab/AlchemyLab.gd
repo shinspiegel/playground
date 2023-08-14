@@ -10,8 +10,10 @@ func _ready() -> void:
 
 
 func on_craft_start() -> void:
-	print_debug(self)
+	pause_sorted()
+	craft_definition.show()
 
 
 func on_craft_ended() -> void:
-	print_debug(self)
+	craft_definition.hide()
+	unpause_sorted()

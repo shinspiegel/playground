@@ -1,4 +1,4 @@
-@tool class_name CraftRecipeButton extends TextureButton
+class_name CraftRecipeButton extends TextureButton
 
 signal selected()
 
@@ -9,6 +9,7 @@ signal selected()
 @export var text: String
 @export var is_selected: bool
 @export var icon: Texture2D
+@export var recipe: Recipe
 
 
 func _ready() -> void:
@@ -20,6 +21,7 @@ func _ready() -> void:
 
 func on_press() -> void:
 	check_button.button_pressed = !check_button.button_pressed
+	CraftManager.select_recipe(recipe)
 
 
 func set_is_selected(value: bool) -> void:
