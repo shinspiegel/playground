@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://dm3qkxxagigj8"]
+[gd_scene load_steps=5 format=3 uid="uid://dm3qkxxagigj8"]
 
 [ext_resource type="PackedScene" uid="uid://btqan1boilcq7" path="res://Entities/CraftDefinition/UI_Elements/CraftRepiceButton.tscn" id="1_0g33q"]
+[ext_resource type="PackedScene" uid="uid://68gjo82w5dh" path="res://Entities/CraftDefinition/UI_Elements/IngredientButton.tscn" id="2_3vekh"]
+[ext_resource type="Texture2D" uid="uid://xuxe6tgr8u5t" path="res://Assets/icon.svg" id="3_22ro8"]
+[ext_resource type="Texture2D" uid="uid://dowy1qn7ahjel" path="res://Assets/UI Elements/Download/GUI.png" id="4_bg8py"]
 
 [node name="CraftDefinition" type="Control"]
 layout_mode = 3
@@ -10,265 +13,234 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(2.08165e-12, 600)
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -557.0
+offset_top = -300.0
+offset_right = 557.0
+offset_bottom = 300.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
-custom_minimum_size = Vector2(2.08165e-12, 600)
-layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer"]
 custom_minimum_size = Vector2(256, 2.08165e-12)
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer2"]
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer2"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "Select a Recipe"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Control" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainer2"]
+[node name="Control" type="Control" parent="HBoxContainer/VBoxContainer2"]
 custom_minimum_size = Vector2(2.08165e-12, 30)
 layout_mode = 2
 
-[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/HBoxContainer/VBoxContainer2"]
+[node name="ScrollContainer" type="ScrollContainer" parent="HBoxContainer/VBoxContainer2"]
 layout_mode = 2
 size_flags_vertical = 3
 follow_focus = true
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer2/ScrollContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer2/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Button" parent="MarginContainer/HBoxContainer/VBoxContainer2/ScrollContainer/VBoxContainer" instance=ExtResource("1_0g33q")]
+[node name="RecipeButton" parent="HBoxContainer/VBoxContainer2/ScrollContainer/VBoxContainer" instance=ExtResource("1_0g33q")]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
+text = "Bomb"
+icon = ExtResource("3_22ro8")
 
-[node name="Button2" parent="MarginContainer/HBoxContainer/VBoxContainer2/ScrollContainer/VBoxContainer" instance=ExtResource("1_0g33q")]
+[node name="RecipeButton2" parent="HBoxContainer/VBoxContainer2/ScrollContainer/VBoxContainer" instance=ExtResource("1_0g33q")]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
+text = "Quick Bomb"
+icon = ExtResource("3_22ro8")
 
-[node name="Button3" parent="MarginContainer/HBoxContainer/VBoxContainer2/ScrollContainer/VBoxContainer" instance=ExtResource("1_0g33q")]
+[node name="RecipeButton3" parent="HBoxContainer/VBoxContainer2/ScrollContainer/VBoxContainer" instance=ExtResource("1_0g33q")]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
+text = "Potion"
+icon = ExtResource("3_22ro8")
 
-[node name="Button4" parent="MarginContainer/HBoxContainer/VBoxContainer2/ScrollContainer/VBoxContainer" instance=ExtResource("1_0g33q")]
+[node name="RecipeButton4" parent="HBoxContainer/VBoxContainer2/ScrollContainer/VBoxContainer" instance=ExtResource("1_0g33q")]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
+text = "Slow Potion"
+icon = ExtResource("3_22ro8")
 
-[node name="VBoxContainer3" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
-custom_minimum_size = Vector2(400, 2.08165e-12)
+[node name="VBoxContainer3" type="VBoxContainer" parent="HBoxContainer"]
+custom_minimum_size = Vector2(350, 2.08165e-12)
 layout_mode = 2
 
-[node name="Label2" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer3"]
+[node name="Label2" type="Label" parent="HBoxContainer/VBoxContainer3"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "Inventory"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Control3" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainer3"]
+[node name="Control3" type="Control" parent="HBoxContainer/VBoxContainer3"]
 custom_minimum_size = Vector2(2.08165e-12, 30)
 layout_mode = 2
 
-[node name="ScrollContainer2" type="ScrollContainer" parent="MarginContainer/HBoxContainer/VBoxContainer3"]
+[node name="ScrollContainer2" type="ScrollContainer" parent="HBoxContainer/VBoxContainer3"]
 layout_mode = 2
 size_flags_vertical = 3
 follow_focus = true
 
-[node name="GridContainer" type="GridContainer" parent="MarginContainer/HBoxContainer/VBoxContainer3/ScrollContainer2"]
+[node name="GridContainer" type="GridContainer" parent="HBoxContainer/VBoxContainer3/ScrollContainer2"]
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 3
-columns = 4
+columns = 5
 
-[node name="Button" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer3/ScrollContainer2/GridContainer"]
+[node name="IngredientButton" parent="HBoxContainer/VBoxContainer3/ScrollContainer2/GridContainer" instance=ExtResource("2_3vekh")]
 layout_mode = 2
-theme_override_font_sizes/font_size = 32
-text = "Aaa"
+icon = ExtResource("3_22ro8")
 
-[node name="Button2" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer3/ScrollContainer2/GridContainer"]
+[node name="IngredientButton2" parent="HBoxContainer/VBoxContainer3/ScrollContainer2/GridContainer" instance=ExtResource("2_3vekh")]
 layout_mode = 2
-theme_override_font_sizes/font_size = 32
-text = "Aaa"
+icon = ExtResource("3_22ro8")
 
-[node name="Button3" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer3/ScrollContainer2/GridContainer"]
+[node name="IngredientButton3" parent="HBoxContainer/VBoxContainer3/ScrollContainer2/GridContainer" instance=ExtResource("2_3vekh")]
 layout_mode = 2
-theme_override_font_sizes/font_size = 32
-text = "Aaa"
+icon = ExtResource("3_22ro8")
 
-[node name="Button4" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer3/ScrollContainer2/GridContainer"]
+[node name="IngredientButton4" parent="HBoxContainer/VBoxContainer3/ScrollContainer2/GridContainer" instance=ExtResource("2_3vekh")]
 layout_mode = 2
-theme_override_font_sizes/font_size = 32
-text = "Aaa"
+icon = ExtResource("3_22ro8")
 
-[node name="Button5" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer3/ScrollContainer2/GridContainer"]
+[node name="IngredientButton5" parent="HBoxContainer/VBoxContainer3/ScrollContainer2/GridContainer" instance=ExtResource("2_3vekh")]
 layout_mode = 2
-theme_override_font_sizes/font_size = 32
-text = "Aaa"
+icon = ExtResource("3_22ro8")
 
-[node name="Button6" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer3/ScrollContainer2/GridContainer"]
+[node name="IngredientButton6" parent="HBoxContainer/VBoxContainer3/ScrollContainer2/GridContainer" instance=ExtResource("2_3vekh")]
 layout_mode = 2
-theme_override_font_sizes/font_size = 32
-text = "Aaa"
+icon = ExtResource("3_22ro8")
 
-[node name="Button7" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer3/ScrollContainer2/GridContainer"]
+[node name="IngredientButton7" parent="HBoxContainer/VBoxContainer3/ScrollContainer2/GridContainer" instance=ExtResource("2_3vekh")]
 layout_mode = 2
-theme_override_font_sizes/font_size = 32
-text = "Aaa"
+icon = ExtResource("3_22ro8")
 
-[node name="Button8" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer3/ScrollContainer2/GridContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 32
-text = "Aaa"
-
-[node name="Button9" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer3/ScrollContainer2/GridContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 32
-text = "Aaa"
-
-[node name="Button10" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer3/ScrollContainer2/GridContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 32
-text = "Aaa"
-
-[node name="Button11" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer3/ScrollContainer2/GridContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 32
-text = "Aaa"
-
-[node name="Button12" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer3/ScrollContainer2/GridContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 32
-text = "Aaa"
-
-[node name="Button13" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer3/ScrollContainer2/GridContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 32
-text = "Aaa"
-
-[node name="Button14" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer3/ScrollContainer2/GridContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 32
-text = "Aaa"
-
-[node name="Button15" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer3/ScrollContainer2/GridContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 32
-text = "Aaa"
-
-[node name="Button16" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer3/ScrollContainer2/GridContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 32
-text = "Aaa"
-
-[node name="Button17" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer3/ScrollContainer2/GridContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 32
-text = "Aaa"
-
-[node name="Button18" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer3/ScrollContainer2/GridContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 32
-text = "Aaa"
-
-[node name="Button19" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer3/ScrollContainer2/GridContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 32
-text = "Aaa"
-
-[node name="Button20" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer3/ScrollContainer2/GridContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 32
-text = "Aaa"
-
-[node name="Button21" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer3/ScrollContainer2/GridContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 32
-text = "Aaa"
-
-[node name="Button22" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer3/ScrollContainer2/GridContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 32
-text = "Aaa"
-
-[node name="Button23" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer3/ScrollContainer2/GridContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 32
-text = "Aaa"
-
-[node name="Button24" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer3/ScrollContainer2/GridContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 32
-text = "Aaa"
-
-[node name="Button25" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer3/ScrollContainer2/GridContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 32
-text = "Aaa"
-
-[node name="Button26" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer3/ScrollContainer2/GridContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 32
-text = "Aaa"
-
-[node name="Button27" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer3/ScrollContainer2/GridContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 32
-text = "Aaa"
-
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
 custom_minimum_size = Vector2(500, 2.08165e-12)
 layout_mode = 2
 
-[node name="Label3" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="Label3" type="Label" parent="HBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "Craft Selection"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Control2" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="Control2" type="Control" parent="HBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(2.08165e-12, 30)
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Label4" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer"]
+[node name="Label4" type="Label" parent="HBoxContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "Quick Bomb: Throw on the ground, waits for 3 seconds and explodes"
 autowrap_mode = 2
 
-[node name="Label5" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer"]
+[node name="Label5" type="Label" parent="HBoxContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "Small Damage: Deals 5 damage"
 autowrap_mode = 2
 
-[node name="Label6" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer"]
+[node name="Label6" type="Label" parent="HBoxContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "Area Effect: Explodes for 1m"
 autowrap_mode = 2
 
-[node name="Label7" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer"]
+[node name="Label7" type="Label" parent="HBoxContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "Paralizes: Can inflict paralize."
 autowrap_mode = 2
+
+[node name="HelperChat" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1024.0
+offset_top = -384.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="NinePatchRect" type="NinePatchRect" parent="HelperChat"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -976.0
+offset_top = -95.0
+offset_right = -760.0
+offset_bottom = -31.0
+grow_horizontal = 0
+grow_vertical = 2
+scale = Vector2(4, 4)
+texture = ExtResource("4_bg8py")
+region_rect = Rect2(2, 34, 44, 44)
+patch_margin_left = 14
+patch_margin_top = 14
+patch_margin_right = 14
+patch_margin_bottom = 13
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="TextureRect" type="TextureRect" parent="HelperChat"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -160.0
+offset_top = -64.0
+offset_right = -32.0
+offset_bottom = 64.0
+grow_horizontal = 0
+grow_vertical = 2
+texture = ExtResource("3_22ro8")
+expand_mode = 4
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="HelperChat"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -947.0
+offset_top = -67.0
+offset_right = -168.0
+offset_bottom = 134.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 32
+text = "Line 1
+Line 2
+Line 3
+Line 4 "

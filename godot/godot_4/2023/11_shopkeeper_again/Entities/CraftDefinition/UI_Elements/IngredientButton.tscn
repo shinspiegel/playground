@@ -1,0 +1,46 @@
+[gd_scene load_steps=6 format=3 uid="uid://68gjo82w5dh"]
+
+[ext_resource type="Texture2D" uid="uid://cf3dqfh84s58a" path="res://Assets/UI Elements/UpdatedElements/64_64_base_button_normal.png" id="1_rsxkj"]
+[ext_resource type="Texture2D" uid="uid://t8y2ptgta5d4" path="res://Assets/UI Elements/UpdatedElements/64x64_base_button_hover.png" id="2_agp7c"]
+[ext_resource type="Texture2D" uid="uid://dmdwl31cdfk0l" path="res://Assets/UI Elements/UpdatedElements/64_64_base_button_pressed.png" id="2_otnuk"]
+[ext_resource type="Texture2D" uid="uid://do1y3am6c722o" path="res://Assets/UI Elements/UpdatedElements/64x64_base_button_disabled.png" id="3_4lh54"]
+[ext_resource type="Script" path="res://Entities/CraftDefinition/UI_Elements/IngredientButton.gd" id="5_mvguo"]
+
+[node name="IngredientButton" type="TextureButton"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+toggle_mode = true
+texture_normal = ExtResource("1_rsxkj")
+texture_pressed = ExtResource("2_otnuk")
+texture_hover = ExtResource("2_agp7c")
+texture_disabled = ExtResource("3_4lh54")
+texture_focused = ExtResource("2_agp7c")
+script = ExtResource("5_mvguo")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer"]
+layout_mode = 2
+expand_mode = 4
+stretch_mode = 5

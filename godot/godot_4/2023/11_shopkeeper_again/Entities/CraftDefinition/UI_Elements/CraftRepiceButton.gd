@@ -6,25 +6,22 @@ signal selected()
 @onready var texture_rect: TextureRect = $MarginContainer/HBoxContainer/TextureRect
 @onready var label: Label = $MarginContainer/HBoxContainer/Label
 
-@export var text: String:
-	get: 
-		return label.text
-	set(t): 
-		label.text = t
-
-@export var is_selected: bool:
-	get: 
-		return check_button.button_pressed
-	set(t):
-		check_button.button_pressed = t
-		if t: selected.emit()
-
-@export var icon: Texture2D:
-	get: 
-		return texture_rect.texture
-	set(t): 
-		texture_rect.texture = t
+@export var text: String
+@export var is_selected: bool
+@export var icon: Texture2D
 
 
 func _ready() -> void:
-	pressed.connect(func(): is_selected = !is_selected)
+	label.text = text
+	texture_rect.texture = icon
+	check_button.button_pressed = is_selected
+	pressed.connect(on_press)
+
+
+func on_press() -> void:
+	check_button.button_pressed = !check_button.button_pressed
+
+
+func set_is_selected(value: bool) -> void:
+	is_selected = value
+	check_button.button_pressed = value
