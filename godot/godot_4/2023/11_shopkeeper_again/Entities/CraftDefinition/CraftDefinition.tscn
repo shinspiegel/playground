@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://dm3qkxxagigj8"]
+[gd_scene load_steps=2 format=3 uid="uid://dm3qkxxagigj8"]
 
-[ext_resource type="Texture2D" uid="uid://btp3awfrqupp0" path="res://Assets/UI Elements/UpdatedElements/base_button_256x64.png" id="1_ppujy"]
-[ext_resource type="Texture2D" uid="uid://d2mlin4g1ci6s" path="res://Assets/UI Elements/UpdatedElements/base_button_512x64.png" id="2_qblyn"]
+[ext_resource type="PackedScene" uid="uid://btqan1boilcq7" path="res://Entities/CraftDefinition/UI_Elements/CraftRepiceButton.tscn" id="1_0g33q"]
 
 [node name="CraftDefinition" type="Control"]
 layout_mode = 3
@@ -50,52 +49,25 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Button" type="TextureButton" parent="MarginContainer/HBoxContainer/VBoxContainer2/ScrollContainer/VBoxContainer"]
-custom_minimum_size = Vector2(2.08165e-12, 64)
+[node name="Button" parent="MarginContainer/HBoxContainer/VBoxContainer2/ScrollContainer/VBoxContainer" instance=ExtResource("1_0g33q")]
 layout_mode = 2
-texture_normal = ExtResource("1_ppujy")
-texture_hover = ExtResource("2_qblyn")
-texture_focused = ExtResource("2_qblyn")
+size_flags_horizontal = 4
+size_flags_vertical = 4
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer2/ScrollContainer/VBoxContainer/Button"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="CheckBox" type="CheckBox" parent="MarginContainer/HBoxContainer/VBoxContainer2/ScrollContainer/VBoxContainer/Button/HBoxContainer"]
+[node name="Button2" parent="MarginContainer/HBoxContainer/VBoxContainer2/ScrollContainer/VBoxContainer" instance=ExtResource("1_0g33q")]
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 
-[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer2/ScrollContainer/VBoxContainer/Button/HBoxContainer"]
+[node name="Button3" parent="MarginContainer/HBoxContainer/VBoxContainer2/ScrollContainer/VBoxContainer" instance=ExtResource("1_0g33q")]
 layout_mode = 2
-text = "Recipe To Be Selected"
+size_flags_horizontal = 4
+size_flags_vertical = 4
 
-[node name="Button5" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer2/ScrollContainer/VBoxContainer"]
+[node name="Button4" parent="MarginContainer/HBoxContainer/VBoxContainer2/ScrollContainer/VBoxContainer" instance=ExtResource("1_0g33q")]
 layout_mode = 2
-theme_override_font_sizes/font_size = 32
-text = "Quick Bomb"
-
-[node name="Button6" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer2/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 32
-text = "Easy Bomb"
-
-[node name="Button2" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer2/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 32
-text = "Potion"
-
-[node name="Button3" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer2/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 32
-text = "Quick Potion"
-
-[node name="Button4" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer2/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 32
-text = "Easy Potion"
+size_flags_horizontal = 4
+size_flags_vertical = 4
 
 [node name="VBoxContainer3" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(400, 2.08165e-12)
