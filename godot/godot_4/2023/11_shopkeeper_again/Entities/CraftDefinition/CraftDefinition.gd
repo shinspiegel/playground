@@ -26,6 +26,7 @@ func setup_recipe_list() -> void:
 		# since it will use the first for the default selection
 		child.free()
 	
+	# Update list
 	for recipe in CraftManager.get_recipe_list():
 		var node: CraftRecipeButton = recipe_button.instantiate()
 		node.recipe = recipe
@@ -34,6 +35,7 @@ func setup_recipe_list() -> void:
 		node.is_selected = false
 		recipes_box.add_child(node)
 	
+	# Selecte first
 	if recipes_box.get_child_count() > 0:
 		var first = recipes_box.get_child(0)
 		if first is Control:

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Ingredient" load_steps=3 format=3 uid="uid://cq8yt7rsa066o"]
+
+[ext_resource type="Texture2D" uid="uid://xuxe6tgr8u5t" path="res://Assets/icon.svg" id="1_3axbt"]
+[ext_resource type="Script" path="res://Resources/Ingredient.gd" id="2_0vb88"]
+
+[resource]
+script = ExtResource("2_0vb88")
+item_name = "Coal"
+icon = ExtResource("1_3axbt")
+rarity = 1
