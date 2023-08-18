@@ -10,16 +10,14 @@ const SPEED = 500.0
 
 func _ready() -> void:
 	camera_mount.remote_path = game_camera.get_path()
+	PlayerInput.options_pressed.connect(func(): GameManager.open_inventory())
 
 
 func _physics_process(_delta: float) -> void:
-	var direction := Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
+	var direction := PlayerInput.direction
 	
-	if Input.is_action_just_pressed("ui_accept") and interactor.can_interact():
+	if PlayerInput.cross and interactor.can_interact():
 		interactor.interact_current()
-	
-	if Input.is_action_just_pressed("ui_cancel"):
-		GameManager.open_inventory()
 	
 	if direction:
 		velocity = direction * SPEED

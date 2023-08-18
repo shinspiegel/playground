@@ -1,6 +1,7 @@
 class_name PlayerInventoryAddHotbar extends VBoxContainer
 
 signal canceled()
+signal hotbar_selected()
 
 @export var player_data: PlayerData
 @export var item: InventoryItem
@@ -12,9 +13,15 @@ signal canceled()
 
 
 func _ready() -> void:
-	button_add_1.pressed.connect(func(): on_slot_select(PlayerData.HOTBAR.zero))
-	button_add_2.pressed.connect(func(): on_slot_select(PlayerData.HOTBAR.one))
-	button_add_3.pressed.connect(func(): on_slot_select(PlayerData.HOTBAR.two))
+	button_add_1.pressed.connect(on_select_zero)
+	PlayerInput.square_pressed.connect(on_select_zero)
+	
+	button_add_2.pressed.connect(on_select_one)
+	PlayerInput.triangle_pressed.connect(on_select_one)
+	
+	button_add_3.pressed.connect(on_select_two)
+	PlayerInput.circle_pressed.connect(on_select_two)
+	
 	back_selected.pressed.connect(func(): canceled.emit())
 
 
@@ -26,6 +33,19 @@ func set_item(value: InventoryItem) -> void:
 	item = value
 
 
-func on_slot_select(slot: int) -> void:
-	player_data.set_hotbar(item, slot)
-	canceled.emit()
+func on_select_zero() -> void:
+	if visible:
+		player_data.set_hotbar(item, PlayerData.HOTBAR.zero)
+		hotbar_selected.emit()
+
+
+func on_select_one() -> void:
+	if visible:
+		player_data.set_hotbar(item, PlayerData.HOTBAR.one)
+		hotbar_selected.emit()
+
+
+func on_select_two() -> void:
+	if visible:
+		player_data.set_hotbar(item, PlayerData.HOTBAR.two)
+		hotbar_selected.emit()

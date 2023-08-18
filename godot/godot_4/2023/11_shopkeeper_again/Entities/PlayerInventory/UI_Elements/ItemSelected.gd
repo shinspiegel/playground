@@ -17,7 +17,8 @@ func _ready() -> void:
 	add_hot_bar.pressed.connect(func(): hot_bar_pressed.emit())
 	drop.pressed.connect(func(): print(self))
 	destroy.pressed.connect(on_destroy_item)
-	back_inventory.pressed.connect(func(): canceled.emit())
+	back_inventory.pressed.connect(on_back_press)
+	PlayerInput.circle_pressed.connect(on_back_press)
 
 
 func _draw() -> void:
@@ -32,3 +33,8 @@ func set_item(value: InventoryItem) -> void:
 func on_destroy_item() -> void:
 	player_data.destroy_item(item)
 	canceled.emit()
+
+
+func on_back_press() -> void:
+	if visible:
+		canceled.emit()

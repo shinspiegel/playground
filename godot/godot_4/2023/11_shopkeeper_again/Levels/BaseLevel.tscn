@@ -25,6 +25,8 @@ y_sort_enabled = true
 
 [node name="Overlay" type="CanvasLayer" parent="."]
 
+[node name="GameUI" parent="Overlay" instance=ExtResource("3_y08pv")]
+
 [node name="Background" type="Control" parent="Overlay"]
 visible = false
 layout_mode = 3
@@ -45,5 +47,3 @@ color = Color(0.5, 0.5, 0.5, 0.784314)
 
 [node name="PlayerInventory" parent="Overlay" instance=ExtResource("2_f8kvr")]
 visible = false
-
-[node name="GameUI" parent="Overlay" instance=ExtResource("3_y08pv")]

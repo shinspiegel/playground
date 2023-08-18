@@ -12,6 +12,7 @@ func _ready() -> void:
 	item_selected.hot_bar_pressed.connect(on_hot_bar_pressed)
 	
 	add_hotbar.canceled.connect(on_hotbar_cancel)
+	add_hotbar.hotbar_selected.connect(on_hotbar_selected)
 
 
 func _draw() -> void:
@@ -44,4 +45,10 @@ func on_hot_bar_pressed() -> void:
 func on_hotbar_cancel() -> void:
 	inventory_selection.hide()
 	item_selected.show()
+	add_hotbar.hide()
+
+
+func on_hotbar_selected() -> void:
+	inventory_selection.show()
+	item_selected.hide()
 	add_hotbar.hide()

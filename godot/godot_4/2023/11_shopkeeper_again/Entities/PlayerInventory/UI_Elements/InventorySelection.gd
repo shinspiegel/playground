@@ -5,6 +5,7 @@ const inventory_item = preload("res://Entities/CraftDefinition/UI_Elements/Ingre
 signal item_selected(node: Control, item: InventoryItem)
 
 @export var player_data: PlayerData
+@export var item: InventoryItem
 
 @onready var back: Button = $Back
 @onready var grid_container: GridContainer = $ScrollContainer/MarginContainer/GridContainer
@@ -12,6 +13,10 @@ signal item_selected(node: Control, item: InventoryItem)
 
 func _ready() -> void:
 	back.pressed.connect(func(): GameManager.close_inventory())
+	back.focus_entered.connect(func(): item = null)
+	PlayerInput.square_pressed.connect(on_square_press)
+	PlayerInput.triangle_pressed.connect(on_triangle_press)
+	PlayerInput.circle_pressed.connect(on_circle_press)
 
 
 func _draw() -> void:
@@ -33,6 +38,7 @@ func __update_grid_container() -> void:
 		var node = inventory_item.instantiate()
 		node.icon = entry.icon
 		node.pressed.connect(func(): item_selected.emit(node, entry))
+		node.focus_entered.connect(func(): item = entry)
 		grid_container.add_child(node)
 
 
@@ -41,3 +47,19 @@ func __initial_selection() -> void:
 		grid_container.get_child(0).grab_focus()
 	else:
 		back.grab_focus()
+
+
+func on_square_press() -> void:
+	if visible and item:
+		player_data.set_hotbar(item, PlayerData.HOTBAR.zero)
+
+
+func on_triangle_press() -> void:
+	if visible and item:
+		player_data.set_hotbar(item, PlayerData.HOTBAR.one)
+
+
+func on_circle_press() -> void:
+	if visible and item:
+		player_data.set_hotbar(item, PlayerData.HOTBAR.two)
+
