@@ -1,0 +1,133 @@
+[gd_scene load_steps=4 format=3 uid="uid://e2y7vd68reog"]
+
+[ext_resource type="Script" path="res://Entities/PlayerInventory/UI_Elements/InventorySelection.gd" id="1_2oqnr"]
+[ext_resource type="PackedScene" uid="uid://68gjo82w5dh" path="res://Entities/CraftDefinition/UI_Elements/IngredientButton.tscn" id="1_3wdk7"]
+[ext_resource type="Resource" uid="uid://bst3hk2ql5uhn" path="res://Resources/PlayerData/PlayerData.tres" id="2_ib8mf"]
+
+[node name="InventorySelection" type="VBoxContainer"]
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -4.0
+offset_right = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+alignment = 1
+script = ExtResource("1_2oqnr")
+player_data = ExtResource("2_ib8mf")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+custom_minimum_size = Vector2(360, 300)
+layout_mode = 2
+follow_focus = true
+vertical_scroll_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="GridContainer" type="GridContainer" parent="ScrollContainer/MarginContainer"]
+layout_mode = 2
+columns = 5
+
+[node name="IngredientButton" parent="ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("1_3wdk7")]
+layout_mode = 2
+
+[node name="IngredientButton2" parent="ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("1_3wdk7")]
+layout_mode = 2
+
+[node name="IngredientButton3" parent="ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("1_3wdk7")]
+layout_mode = 2
+
+[node name="IngredientButton4" parent="ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("1_3wdk7")]
+layout_mode = 2
+
+[node name="IngredientButton5" parent="ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("1_3wdk7")]
+layout_mode = 2
+
+[node name="IngredientButton6" parent="ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("1_3wdk7")]
+layout_mode = 2
+
+[node name="IngredientButton7" parent="ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("1_3wdk7")]
+layout_mode = 2
+
+[node name="IngredientButton8" parent="ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("1_3wdk7")]
+layout_mode = 2
+
+[node name="IngredientButton9" parent="ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("1_3wdk7")]
+layout_mode = 2
+
+[node name="IngredientButton10" parent="ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("1_3wdk7")]
+layout_mode = 2
+
+[node name="IngredientButton11" parent="ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("1_3wdk7")]
+layout_mode = 2
+
+[node name="IngredientButton12" parent="ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("1_3wdk7")]
+layout_mode = 2
+
+[node name="IngredientButton13" parent="ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("1_3wdk7")]
+layout_mode = 2
+
+[node name="IngredientButton14" parent="ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("1_3wdk7")]
+layout_mode = 2
+
+[node name="IngredientButton15" parent="ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("1_3wdk7")]
+layout_mode = 2
+
+[node name="IngredientButton16" parent="ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("1_3wdk7")]
+layout_mode = 2
+
+[node name="IngredientButton17" parent="ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("1_3wdk7")]
+layout_mode = 2
+
+[node name="IngredientButton18" parent="ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("1_3wdk7")]
+layout_mode = 2
+
+[node name="IngredientButton19" parent="ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("1_3wdk7")]
+layout_mode = 2
+
+[node name="IngredientButton20" parent="ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("1_3wdk7")]
+layout_mode = 2
+
+[node name="IngredientButton21" parent="ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("1_3wdk7")]
+layout_mode = 2
+
+[node name="IngredientButton22" parent="ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("1_3wdk7")]
+layout_mode = 2
+
+[node name="IngredientButton23" parent="ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("1_3wdk7")]
+layout_mode = 2
+
+[node name="IngredientButton24" parent="ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("1_3wdk7")]
+layout_mode = 2
+
+[node name="IngredientButton25" parent="ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("1_3wdk7")]
+layout_mode = 2
+
+[node name="IngredientButton26" parent="ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("1_3wdk7")]
+layout_mode = 2
+
+[node name="IngredientButton27" parent="ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("1_3wdk7")]
+layout_mode = 2
+
+[node name="IngredientButton28" parent="ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("1_3wdk7")]
+layout_mode = 2
+
+[node name="IngredientButton29" parent="ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("1_3wdk7")]
+layout_mode = 2
+
+[node name="IngredientButton30" parent="ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("1_3wdk7")]
+layout_mode = 2
+
+[node name="Back" type="Button" parent="."]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "Back"

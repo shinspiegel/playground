@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="PlayerData" load_steps=5 format=3 uid="uid://bst3hk2ql5uhn"]
+
+[ext_resource type="Resource" uid="uid://cq8yt7rsa066o" path="res://Resources/Ingredients/Coal.tres" id="1_t8obi"]
+[ext_resource type="Script" path="res://Resources/PlayerData.gd" id="1_xqemp"]
+[ext_resource type="Resource" uid="uid://bpyy3qw5m1ogf" path="res://Resources/Ingredients/Cristal.tres" id="2_c0wt3"]
+[ext_resource type="Resource" uid="uid://ci5pi1bu0wmrf" path="res://Resources/Ingredients/Wood.tres" id="3_4ycll"]
+
+[resource]
+script = ExtResource("1_xqemp")
+health_max = 20
+health_current = 20
+inventory = Array[Resource("res://Resources/InventoryItem.gd")]([ExtResource("1_t8obi"), ExtResource("2_c0wt3"), ExtResource("3_4ycll")])

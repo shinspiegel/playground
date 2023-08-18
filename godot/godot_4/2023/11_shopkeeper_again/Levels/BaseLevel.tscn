@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://dhhchbkfgbk7b"]
+[gd_scene load_steps=4 format=3 uid="uid://dhhchbkfgbk7b"]
 
 [ext_resource type="Script" path="res://Levels/BaseLevel.gd" id="1_a0n1l"]
 [ext_resource type="PackedScene" uid="uid://d1gtt417ipxmc" path="res://Entities/PlayerInventory/PlayerInventory.tscn" id="2_f8kvr"]
+[ext_resource type="PackedScene" uid="uid://cpvv3jnlwq2qf" path="res://Entities/GameUI/GameUi.tscn" id="3_y08pv"]
 
 [node name="BaseLevel" type="Node2D"]
 script = ExtResource("1_a0n1l")
@@ -44,3 +45,5 @@ color = Color(0.5, 0.5, 0.5, 0.784314)
 
 [node name="PlayerInventory" parent="Overlay" instance=ExtResource("2_f8kvr")]
 visible = false
+
+[node name="GameUI" parent="Overlay" instance=ExtResource("3_y08pv")]

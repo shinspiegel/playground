@@ -7,12 +7,11 @@ const recipes = [
 	preload("res://Resources/Recipes/SlowPotion.tres"),
 ]
 
-const ingredients = [
-	preload("res://Resources/Ingredients/Coal.tres"), 
-	preload("res://Resources/Ingredients/Cristal.tres"), 
-	preload("res://Resources/Ingredients/Wood.tres")
-]
-
+const INGREDIENTS = {
+	"coal": preload("res://Resources/Ingredients/Coal.tres"), 
+	"cristal": preload("res://Resources/Ingredients/Cristal.tres"), 
+	"wood": preload("res://Resources/Ingredients/Wood.tres")
+}
 
 signal started()
 signal ended()

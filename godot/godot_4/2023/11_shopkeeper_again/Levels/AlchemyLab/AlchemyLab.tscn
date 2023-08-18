@@ -25,5 +25,5 @@ destination = "world_map"
 [node name="Background" parent="Overlay" index="0"]
 visible = true
 
-[node name="CraftDefinition" parent="Overlay" index="2" instance=ExtResource("6_wiqr4")]
+[node name="CraftDefinition" parent="Overlay" index="3" instance=ExtResource("6_wiqr4")]
 visible = false

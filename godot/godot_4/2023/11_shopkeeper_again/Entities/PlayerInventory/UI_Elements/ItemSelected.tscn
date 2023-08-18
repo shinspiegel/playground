@@ -1,0 +1,45 @@
+[gd_scene load_steps=3 format=3 uid="uid://dkryd61bbh3r3"]
+
+[ext_resource type="Script" path="res://Entities/PlayerInventory/UI_Elements/ItemSelected.gd" id="1_lrifq"]
+[ext_resource type="Resource" uid="uid://bst3hk2ql5uhn" path="res://Resources/PlayerData/PlayerData.tres" id="2_ti2g8"]
+
+[node name="ItemSelected" type="VBoxContainer"]
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -219.0
+offset_right = 219.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+alignment = 1
+script = ExtResource("1_lrifq")
+player_data = ExtResource("2_ti2g8")
+
+[node name="SelectedTexture" type="TextureRect" parent="."]
+texture_filter = 1
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+expand_mode = 2
+stretch_mode = 5
+
+[node name="AddHotBar" type="Button" parent="."]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "Add to hotbar"
+
+[node name="Drop" type="Button" parent="."]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "Drop"
+
+[node name="Destroy" type="Button" parent="."]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "Destroy"
+
+[node name="BackInventory" type="Button" parent="."]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "Back"

@@ -4,6 +4,7 @@
 [ext_resource type="Script" path="res://Resources/Ingredient.gd" id="2_0vb88"]
 
 [resource]
+resource_local_to_scene = true
 script = ExtResource("2_0vb88")
 item_name = "Coal"
 icon = ExtResource("1_3axbt")

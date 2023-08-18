@@ -5,6 +5,7 @@
 
 [sub_resource type="Resource" id="Resource_rxvw8"]
 script = ExtResource("2_6dnrv")
+ingredients = Array[Resource("res://Resources/Ingredient.gd")]([])
 
 [node name="CraftManager" type="Node"]
 script = ExtResource("1_gh3uc")

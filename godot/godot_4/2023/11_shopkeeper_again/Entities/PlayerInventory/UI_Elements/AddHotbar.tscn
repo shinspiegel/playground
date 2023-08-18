@@ -1,0 +1,119 @@
+[gd_scene load_steps=10 format=3 uid="uid://cj1glkhq6t7lg"]
+
+[ext_resource type="Texture2D" uid="uid://xuxe6tgr8u5t" path="res://Assets/icon.svg" id="1_m87kn"]
+[ext_resource type="Script" path="res://Entities/PlayerInventory/UI_Elements/AddHotbar.gd" id="1_uf0fr"]
+[ext_resource type="Resource" uid="uid://bst3hk2ql5uhn" path="res://Resources/PlayerData/PlayerData.tres" id="2_7ikx1"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_oxq6e"]
+load_path = "res://.godot/imported/gdb-playstation-2.png-3c1a9f90e970260b7e3aaea4161f96a1.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lg8yk"]
+atlas = SubResource("CompressedTexture2D_oxq6e")
+region = Rect2(16, 80, 16, 16)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_wstl7"]
+load_path = "res://.godot/imported/gdb-playstation-2.png-3c1a9f90e970260b7e3aaea4161f96a1.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0cicx"]
+atlas = SubResource("CompressedTexture2D_wstl7")
+region = Rect2(16, 32, 16, 16)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_mpn3j"]
+load_path = "res://.godot/imported/gdb-playstation-2.png-3c1a9f90e970260b7e3aaea4161f96a1.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_la7gm"]
+atlas = SubResource("CompressedTexture2D_mpn3j")
+region = Rect2(16, 48, 16, 16)
+
+[node name="AddHotbar" type="VBoxContainer"]
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -219.0
+offset_right = 219.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+alignment = 1
+script = ExtResource("1_uf0fr")
+player_data = ExtResource("2_7ikx1")
+
+[node name="selected_texture" type="TextureRect" parent="."]
+texture_filter = 1
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("1_m87kn")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Which hotbar?"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+alignment = 1
+
+[node name="ButtonAdd1" type="Button" parent="HBoxContainer"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/ButtonAdd1"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_lg8yk")
+expand_mode = 4
+stretch_mode = 5
+
+[node name="ButtonAdd2" type="Button" parent="HBoxContainer"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/ButtonAdd2"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_0cicx")
+expand_mode = 4
+stretch_mode = 5
+
+[node name="ButtonAdd3" type="Button" parent="HBoxContainer"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/ButtonAdd3"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_la7gm")
+expand_mode = 4
+stretch_mode = 5
+
+[node name="BackSelected" type="Button" parent="."]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 64
+text = "Back"

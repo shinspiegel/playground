@@ -1,0 +1,174 @@
+[gd_scene load_steps=15 format=3 uid="uid://cpvv3jnlwq2qf"]
+
+[ext_resource type="Script" path="res://Entities/GameUI/GameUi.gd" id="1_50x7v"]
+[ext_resource type="Texture2D" uid="uid://dowy1qn7ahjel" path="res://Assets/UI Elements/Download/GUI.png" id="2_bs57i"]
+[ext_resource type="Resource" uid="uid://bst3hk2ql5uhn" path="res://Resources/PlayerData/PlayerData.tres" id="2_relme"]
+[ext_resource type="Texture2D" uid="uid://xuxe6tgr8u5t" path="res://Assets/icon.svg" id="4_lb807"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_m6dn5"]
+load_path = "res://.godot/imported/GUI.png-80eaddc7cb35c6309d29128d7420e8c0.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7jtqq"]
+atlas = SubResource("CompressedTexture2D_m6dn5")
+region = Rect2(136, 20, 52, 8)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_fmesy"]
+load_path = "res://.godot/imported/GUI.png-80eaddc7cb35c6309d29128d7420e8c0.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hv4yh"]
+atlas = SubResource("CompressedTexture2D_fmesy")
+region = Rect2(72, 20, 52, 8)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_sqawb"]
+load_path = "res://.godot/imported/gdb-playstation-2.png-3c1a9f90e970260b7e3aaea4161f96a1.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1mu5i"]
+atlas = SubResource("CompressedTexture2D_sqawb")
+region = Rect2(17, 49, 14, 14)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_sib3s"]
+load_path = "res://.godot/imported/gdb-playstation-2.png-3c1a9f90e970260b7e3aaea4161f96a1.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d8yin"]
+atlas = SubResource("CompressedTexture2D_sib3s")
+region = Rect2(17, 33, 14, 14)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_anwoy"]
+load_path = "res://.godot/imported/gdb-playstation-2.png-3c1a9f90e970260b7e3aaea4161f96a1.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ahcx5"]
+atlas = SubResource("CompressedTexture2D_anwoy")
+region = Rect2(17, 49, 14, 14)
+
+[node name="GameUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_50x7v")
+player_data = ExtResource("2_relme")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="HeathArea" type="Control" parent="MarginContainer"]
+layout_mode = 2
+metadata/_edit_group_ = true
+
+[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer/HeathArea"]
+texture_filter = 1
+layout_mode = 1
+offset_right = 32.0
+offset_bottom = 20.0
+scale = Vector2(4, 4)
+texture = ExtResource("2_bs57i")
+region_rect = Rect2(96, 36, 26, 24)
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="MarginContainer/HeathArea"]
+texture_filter = 1
+layout_mode = 1
+offset_left = 128.0
+offset_right = 180.0
+offset_bottom = 8.0
+scale = Vector2(6, 6)
+max_value = 1.0
+step = 0.1
+value = 0.5
+texture_under = SubResource("AtlasTexture_7jtqq")
+texture_progress = SubResource("AtlasTexture_hv4yh")
+
+[node name="Label" type="Label" parent="MarginContainer/HeathArea"]
+layout_mode = 1
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 120.0
+offset_bottom = 72.0
+theme_override_font_sizes/font_size = 32
+text = "10/10"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HotbarArea" type="Control" parent="MarginContainer"]
+layout_mode = 2
+metadata/_edit_group_ = true
+
+[node name="ControllerButtons" type="HBoxContainer" parent="MarginContainer/HotbarArea"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -64.0
+offset_right = 200.0
+grow_vertical = 0
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HotbarArea/ControllerButtons"]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = SubResource("AtlasTexture_1mu5i")
+expand_mode = 4
+stretch_mode = 5
+
+[node name="TextureRect2" type="TextureRect" parent="MarginContainer/HotbarArea/ControllerButtons"]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = SubResource("AtlasTexture_d8yin")
+expand_mode = 4
+stretch_mode = 5
+
+[node name="TextureRect3" type="TextureRect" parent="MarginContainer/HotbarArea/ControllerButtons"]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = SubResource("AtlasTexture_ahcx5")
+expand_mode = 4
+stretch_mode = 5
+
+[node name="EquipamentIcons" type="HBoxContainer" parent="MarginContainer/HotbarArea"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -134.0
+offset_right = 200.0
+offset_bottom = -70.0
+grow_vertical = 0
+
+[node name="HotbarZero" type="TextureRect" parent="MarginContainer/HotbarArea/EquipamentIcons"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("4_lb807")
+expand_mode = 4
+stretch_mode = 5
+
+[node name="HotbarOne" type="TextureRect" parent="MarginContainer/HotbarArea/EquipamentIcons"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("4_lb807")
+expand_mode = 4
+stretch_mode = 5
+
+[node name="HotbarTwo" type="TextureRect" parent="MarginContainer/HotbarArea/EquipamentIcons"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("4_lb807")
+expand_mode = 4
+stretch_mode = 5

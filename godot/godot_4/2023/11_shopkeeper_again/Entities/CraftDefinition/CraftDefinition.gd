@@ -8,11 +8,18 @@ const ingredient_button = preload("res://Entities/CraftDefinition/UI_Elements/In
 
 
 func _ready() -> void:
-	draw.connect(setup_recipe_list)
-	CraftManager.recipe_changed.connect(select_current_recipe)
+	draw.connect(start_craft_definition)
+	CraftManager.recipe_changed.connect(on_recipe_change)
 
 
-func select_current_recipe(current: Recipe) -> void:
+func start_craft_definition() -> void:
+	__remove_recipes_children()
+	__add_recipes()
+	__select_first_recipe()
+
+
+
+func on_recipe_change(current: Recipe) -> void:
 	for entry in recipes_box.get_children():
 		if entry is CraftRecipeButton and entry.recipe == current:
 			entry.set_is_selected(true)
@@ -20,13 +27,14 @@ func select_current_recipe(current: Recipe) -> void:
 			entry.set_is_selected(false)
 
 
-func setup_recipe_list() -> void:
+func __remove_recipes_children() -> void:
 	for child in recipes_box.get_children():
 		# Need to remove on this frame,
 		# since it will use the first for the default selection
 		child.free()
-	
-	# Update list
+
+
+func __add_recipes() -> void:
 	for recipe in CraftManager.get_recipe_list():
 		var node: CraftRecipeButton = recipe_button.instantiate()
 		node.recipe = recipe
@@ -34,9 +42,11 @@ func setup_recipe_list() -> void:
 		node.icon = recipe.icon
 		node.is_selected = false
 		recipes_box.add_child(node)
-	
-	# Selecte first
+
+
+func __select_first_recipe() -> void:
 	if recipes_box.get_child_count() > 0:
 		var first = recipes_box.get_child(0)
 		if first is Control:
 			first.grab_focus()
+
