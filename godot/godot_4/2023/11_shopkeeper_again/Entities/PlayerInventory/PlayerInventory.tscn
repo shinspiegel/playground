@@ -1,9 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://d1gtt417ipxmc"]
+[gd_scene load_steps=2 format=3 uid="uid://d1gtt417ipxmc"]
 
 [ext_resource type="Script" path="res://Entities/PlayerInventory/PlayerInventory.gd" id="1_m7id1"]
-[ext_resource type="PackedScene" uid="uid://cj1glkhq6t7lg" path="res://Entities/PlayerInventory/UI_Elements/AddHotbar.tscn" id="2_wjgo7"]
-[ext_resource type="PackedScene" uid="uid://e2y7vd68reog" path="res://Entities/PlayerInventory/UI_Elements/InventorySelection.tscn" id="3_nqvp8"]
-[ext_resource type="PackedScene" uid="uid://dkryd61bbh3r3" path="res://Entities/PlayerInventory/UI_Elements/ItemSelected.tscn" id="4_85efe"]
 
 [node name="PlayerInventory" type="Control"]
 layout_mode = 3
@@ -13,19 +10,3 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_m7id1")
-
-[node name="InventorySelection" parent="." instance=ExtResource("3_nqvp8")]
-visible = false
-layout_mode = 1
-offset_left = -180.0
-offset_right = 180.0
-
-[node name="ItemSelected" parent="." instance=ExtResource("4_85efe")]
-visible = false
-layout_mode = 1
-
-[node name="AddHotbar" parent="." instance=ExtResource("2_wjgo7")]
-visible = false
-layout_mode = 1
-offset_left = -132.5
-offset_right = 132.5

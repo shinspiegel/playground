@@ -14,5 +14,4 @@ func clone() -> InventoryItem:
 	resource.icon = icon
 	resource.rarity = rarity
 	
-	print_debug(self)
 	return resource

@@ -14,16 +14,32 @@ signal item_selected(node: Control, item: InventoryItem)
 func _ready() -> void:
 	back.pressed.connect(func(): GameManager.close_inventory())
 	back.focus_entered.connect(func(): item = null)
+	back.grab_focus()
+	
 	PlayerInput.square_pressed.connect(on_square_press)
 	PlayerInput.triangle_pressed.connect(on_triangle_press)
 	PlayerInput.circle_pressed.connect(on_circle_press)
-
-
-func _draw() -> void:
-	back.grab_focus()
+	PlayerInput.options_pressed.connect(on_option_pressed)
+	
 	__clean_grid()
 	__update_grid_container()
 	__initial_selection()
+
+
+func on_option_pressed() -> void:
+	GameManager.close_inventory()
+
+
+func on_square_press() -> void:
+	if item: player_data.set_hotbar(item, PlayerData.HOTBAR.zero)
+
+
+func on_triangle_press() -> void:
+	if item: player_data.set_hotbar(item, PlayerData.HOTBAR.one)
+
+
+func on_circle_press() -> void:
+	if item: player_data.set_hotbar(item, PlayerData.HOTBAR.two)
 
 
 func __clean_grid() -> void:
@@ -47,19 +63,3 @@ func __initial_selection() -> void:
 		grid_container.get_child(0).grab_focus()
 	else:
 		back.grab_focus()
-
-
-func on_square_press() -> void:
-	if visible and item:
-		player_data.set_hotbar(item, PlayerData.HOTBAR.zero)
-
-
-func on_triangle_press() -> void:
-	if visible and item:
-		player_data.set_hotbar(item, PlayerData.HOTBAR.one)
-
-
-func on_circle_press() -> void:
-	if visible and item:
-		player_data.set_hotbar(item, PlayerData.HOTBAR.two)
-

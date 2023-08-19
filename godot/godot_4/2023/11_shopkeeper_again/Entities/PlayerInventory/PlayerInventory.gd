@@ -1,54 +1,44 @@
 extends Control
 
-@onready var inventory_selection: PlayerInventorySelection = $InventorySelection
-@onready var item_selected: PlayerInventorySelected = $ItemSelected
-@onready var add_hotbar: PlayerInventoryAddHotbar = $AddHotbar
+const inventory_selection_scene = preload("res://Entities/PlayerInventory/UI_Elements/InventorySelection.tscn")
+const item_selected_scene = preload("res://Entities/PlayerInventory/UI_Elements/ItemSelected.tscn")
+
+@export var player: Player
 
 
 func _ready() -> void:
-	inventory_selection.item_selected.connect(on_inventory_select)
-	
-	item_selected.canceled.connect(on_item_selected_cancel)
-	item_selected.hot_bar_pressed.connect(on_hot_bar_pressed)
-	
-	add_hotbar.canceled.connect(on_hotbar_cancel)
-	add_hotbar.hotbar_selected.connect(on_hotbar_selected)
+	GameManager.inventory_opened.connect(on_inventory_open)
+	GameManager.inventory_closed.connect(__clear_child)
 
 
-func _draw() -> void:
-	inventory_selection.show()
-	item_selected.hide()
-	add_hotbar.hide()
+func on_inventory_open() -> void:
+	__clear_child()
+	__create_inventory()
 
 
-func on_inventory_select(_node: Control, item: InventoryItem) -> void:
-	item_selected.set_item(item)
-	add_hotbar.set_item(item)
-	
-	inventory_selection.hide()
-	item_selected.show()
-	add_hotbar.hide()
+func on_item_select(_node: Control, item: InventoryItem) -> void:
+	__clear_child()
+	__create_item_selection(item)
 
 
-func on_item_selected_cancel() -> void:
-	inventory_selection.show()
-	item_selected.hide()
-	add_hotbar.hide()
+func on_drop_item(item: InventoryItem) -> void:
+	GameManager.spawn_item(item, player.global_position)
 
 
-func on_hot_bar_pressed() -> void:
-	inventory_selection.hide()
-	item_selected.hide()
-	add_hotbar.show()
+func __create_inventory() -> void:
+	var node: PlayerInventorySelection = inventory_selection_scene.instantiate()
+	node.item_selected.connect(on_item_select)
+	add_child(node)
 
 
-func on_hotbar_cancel() -> void:
-	inventory_selection.hide()
-	item_selected.show()
-	add_hotbar.hide()
+func __create_item_selection(item: InventoryItem) -> void:
+	var node: PlayerInventorySelected = item_selected_scene.instantiate()
+	node.item = item
+	node.canceled.connect(on_inventory_open)
+	node.dropped_item.connect(on_drop_item)
+	add_child(node)
 
 
-func on_hotbar_selected() -> void:
-	inventory_selection.show()
-	item_selected.hide()
-	add_hotbar.hide()
+func __clear_child() -> void:
+	for child in get_children():
+		child.queue_free()
