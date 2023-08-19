@@ -22,7 +22,7 @@ position = Vector2(968, 528)
 position = Vector2(132, 256)
 destination = "world_map"
 
-[node name="Background" parent="Overlay" index="0"]
+[node name="Background" parent="Overlay" index="1"]
 visible = true
 
 [node name="CraftDefinition" parent="Overlay" index="3" instance=ExtResource("6_wiqr4")]
