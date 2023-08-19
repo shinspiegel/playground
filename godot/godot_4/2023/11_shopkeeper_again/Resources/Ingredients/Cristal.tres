@@ -3,13 +3,13 @@
 [ext_resource type="Texture2D" uid="uid://d4jgpw6hhmhdy" path="res://Assets/Graphics/Items/16x16_base_item.png" id="1_6yhuk"]
 [ext_resource type="Script" path="res://Resources/Ingredient.gd" id="1_djwyc"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_a2fdl"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_3ftng"]
 atlas = ExtResource("1_6yhuk")
-region = Rect2(16, 0, 16, 16)
+region = Rect2(0, 0, 16, 16)
 
 [resource]
 resource_local_to_scene = true
 script = ExtResource("1_djwyc")
 item_name = "Cristal"
-icon = SubResource("AtlasTexture_a2fdl")
-rarity = 2
+icon = SubResource("AtlasTexture_3ftng")
+rarity = 0
