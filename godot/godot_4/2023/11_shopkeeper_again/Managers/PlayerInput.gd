@@ -26,6 +26,7 @@ signal options_pressed()
 @export var circle: bool = false
 @export var options: bool = false
 
+
 func _process(_delta: float) -> void:
 	__update_direction()
 	__update_action_buttons()
@@ -33,11 +34,11 @@ func _process(_delta: float) -> void:
 
 
 func __update_direction() -> void:
-	direction = Input.get_vector(LEFT, RIGHT, UP, DOWN)
+	direction = Input.get_vector(LEFT, RIGHT, UP, DOWN).normalized()
 
 
 func __update_action_buttons() -> void:
-	cross = Input.is_action_pressed(CIRCLE)
+	cross = Input.is_action_pressed(CROSS)
 	square = Input.is_action_pressed(SQUARE)
 	triangle = Input.is_action_pressed(TRIANGLE)
 	circle = Input.is_action_pressed(CIRCLE)

@@ -1,15 +1,37 @@
-[gd_scene load_steps=7 format=3 uid="uid://vlk5jfkdc85o"]
+[gd_scene load_steps=13 format=3 uid="uid://vlk5jfkdc85o"]
 
 [ext_resource type="PackedScene" uid="uid://b55y6h54npqdk" path="res://Entities/Player/Player.tscn" id="1_5lr4u"]
 [ext_resource type="PackedScene" uid="uid://dhhchbkfgbk7b" path="res://Levels/BaseLevel.tscn" id="1_askou"]
 [ext_resource type="PackedScene" uid="uid://b7n4t0hc7lufb" path="res://Entities/InteractableObjects/Door/Door.tscn" id="2_p2k0u"]
 [ext_resource type="Script" path="res://Levels/AlchemyLab/AlchemyLab.gd" id="2_wsw88"]
 [ext_resource type="PackedScene" uid="uid://cqdckkm58keqv" path="res://Entities/InteractableObjects/CraftStation/CraftStation.tscn" id="3_0rdn8"]
+[ext_resource type="PackedScene" uid="uid://c4vm5txg8nqpk" path="res://Entities/DropItem/DropItem.tscn" id="6_fe5jf"]
 [ext_resource type="PackedScene" uid="uid://dm3qkxxagigj8" path="res://Entities/CraftDefinition/CraftDefinition.tscn" id="6_wiqr4"]
+[ext_resource type="Texture2D" uid="uid://d4jgpw6hhmhdy" path="res://Assets/Graphics/Items/16x16_base_item.png" id="8_e7dln"]
+[ext_resource type="Resource" uid="uid://bst3hk2ql5uhn" path="res://Resources/PlayerData/PlayerData.tres" id="8_iiph8"]
+[ext_resource type="Script" path="res://Resources/Ingredient.gd" id="9_ymw5m"]
 
-[node name="AlchemyLab" instance=ExtResource("1_askou")]
+[sub_resource type="AtlasTexture" id="AtlasTexture_a2fdl"]
+atlas = ExtResource("8_e7dln")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="Resource" id="Resource_3ou7e"]
+resource_local_to_scene = true
+script = ExtResource("9_ymw5m")
+item_name = "Cristal"
+icon = SubResource("AtlasTexture_a2fdl")
+rarity = 2
+
+[node name="AlchemyLab" node_paths=PackedStringArray("player") instance=ExtResource("1_askou")]
 texture_filter = 1
 script = ExtResource("2_wsw88")
+player = NodePath("SortedObject/Player")
+
+[node name="CraftDefinition" parent="Overlay" index="3" instance=ExtResource("6_wiqr4")]
+visible = false
+
+[node name="BaseTilemap" parent="." index="3"]
+layer_0/tile_data = PackedInt32Array(131072, 5, 0, 131073, 65541, 0, 131074, 65541, 0, 131075, 65541, 7, 131076, 65541, 0, 131077, 65541, 0, 131078, 65541, 7, 131079, 65541, 7, 131080, 65541, 7, 131081, 65541, 0, 131082, 65541, 0, 131083, 65541, 7, 131084, 65541, 7, 131085, 131077, 0, 196621, 5, 6, 262157, 131077, 1, 327693, 5, 6, 393229, 131077, 1, 458765, 5, 6, 524301, 131077, 2, 524300, 65541, 5, 524299, 65541, 5, 524298, 65541, 2, 524297, 65541, 2, 524296, 65541, 5, 524295, 65541, 5, 524294, 65541, 2, 524293, 65541, 5, 524292, 65541, 2, 524291, 65541, 5, 524290, 65541, 5, 524289, 65541, 5, 524288, 5, 2, 458752, 131077, 6, 393216, 5, 1, 327680, 5, 1, 262144, 5, 1, 196608, 5, 1, 196609, 65541, 1, 262145, 65541, 1, 327681, 65541, 1, 393217, 65541, 1, 458753, 65541, 1, 458754, 65541, 1, 393218, 65541, 1, 327682, 65541, 1, 262146, 65541, 1, 196610, 65541, 1, 196611, 65541, 1, 262147, 65541, 1, 327683, 65541, 1, 393219, 65541, 1, 458755, 65541, 1, 458756, 65541, 1, 393220, 65541, 1, 327684, 65541, 1, 262148, 65541, 1, 196612, 65541, 1, 196613, 65541, 1, 262149, 65541, 1, 327685, 65541, 1, 393221, 65541, 1, 458757, 65541, 1, 458758, 65541, 1, 393222, 65541, 1, 327686, 65541, 1, 262150, 65541, 1, 196614, 65541, 1, 196617, 65541, 1, 196618, 65541, 1, 196619, 65541, 1, 196620, 65541, 1, 196616, 65541, 1, 196615, 65541, 1, 262151, 65541, 1, 262152, 65541, 1, 262153, 65541, 1, 262154, 65541, 1, 262155, 65541, 1, 262156, 65541, 1, 327692, 65541, 1, 327691, 65541, 1, 327690, 65541, 1, 327689, 65541, 1, 327688, 65541, 1, 327687, 65541, 1, 393223, 65541, 1, 393224, 65541, 1, 393225, 65541, 1, 393226, 65541, 1, 393227, 65541, 1, 393228, 65541, 1, 458760, 65541, 1, 458759, 65541, 1, 458761, 65541, 1, 458762, 65541, 1, 458763, 65541, 1, 458764, 65541, 1, 0, 327683, 1, 1, 458755, 1, 2, 262147, 9, 3, 262147, 9, 4, 393219, 6, 5, 65539, 9, 6, 458755, 1, 7, 262147, 9, 8, 327683, 9, 9, 131075, 9, 10, 262147, 9, 11, 393219, 6, 12, 327683, 9, 13, 65539, 9, 14, 524291, 1, 65535, 262147, 1, 131071, 262147, 2, 196607, 262147, 2, 262143, 262147, 2, 327679, 262147, 3, 393215, 262147, 3, 458751, 262147, 3, 524287, 262147, 2, 589823, 262147, 2, 65550, 524291, 2, 131086, 524291, 2, 196622, 524291, 2, 262158, 524291, 3, 327694, 524291, 2, 393230, 524291, 3, 458766, 524291, 3, 524302, 524291, 3, 589838, 393219, 4, 655359, 262147, 4, 589824, 393219, 4, 589825, 458755, 4, 589826, 393219, 4, 589827, 393219, 4, 589828, 458755, 4, 589829, 327683, 4, 589830, 458755, 4, 589831, 393219, 4, 589832, 393219, 4, 589833, 458755, 4, 589834, 393219, 4, 589835, 393219, 4, 589836, 327683, 4, 589837, 393219, 4)
 
 [node name="Player" parent="SortedObject" index="0" node_paths=PackedStringArray("game_camera") instance=ExtResource("1_5lr4u")]
 position = Vector2(584, 400)
@@ -22,8 +44,7 @@ position = Vector2(968, 528)
 position = Vector2(132, 256)
 destination = "world_map"
 
-[node name="Background" parent="Overlay" index="1"]
-visible = true
-
-[node name="CraftDefinition" parent="Overlay" index="3" instance=ExtResource("6_wiqr4")]
-visible = false
+[node name="DropItem" parent="SortedObject" index="3" instance=ExtResource("6_fe5jf")]
+position = Vector2(703, 415)
+player_data = ExtResource("8_iiph8")
+item = SubResource("Resource_3ou7e")

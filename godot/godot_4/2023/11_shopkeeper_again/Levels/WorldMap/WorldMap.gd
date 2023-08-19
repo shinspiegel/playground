@@ -10,7 +10,7 @@ extends Control
 func _ready() -> void:
 	alchemy_lab.pressed.connect(func(): SceneManager.change_to(SceneManager.LEVELS.alchemy_lab))
 	city.pressed.connect(func(): print_debug("city"))
-	dungeon_1.pressed.connect(func(): print_debug("dungeon_1"))
+	dungeon_1.pressed.connect(func(): SceneManager.change_to(SceneManager.LEVELS.test_map))
 	dungeon_2.pressed.connect(func(): print_debug("dungeon_2"))
 	dungeon_3.pressed.connect(func(): print_debug("dungeon_3"))
 	

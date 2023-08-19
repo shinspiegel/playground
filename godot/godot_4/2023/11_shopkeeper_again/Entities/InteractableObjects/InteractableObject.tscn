@@ -11,6 +11,7 @@ shader_parameter/line_color = Color(1, 1, 1, 1)
 shader_parameter/line_thickness = 1.0
 
 [node name="InteractableObject" type="Node2D"]
+texture_filter = 1
 script = ExtResource("1_cmted")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

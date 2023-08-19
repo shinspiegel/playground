@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://dhhchbkfgbk7b"]
+[gd_scene load_steps=5 format=3 uid="uid://dhhchbkfgbk7b"]
 
 [ext_resource type="Script" path="res://Levels/BaseLevel.gd" id="1_a0n1l"]
 [ext_resource type="PackedScene" uid="uid://d1gtt417ipxmc" path="res://Entities/PlayerInventory/PlayerInventory.tscn" id="2_f8kvr"]
 [ext_resource type="PackedScene" uid="uid://cpvv3jnlwq2qf" path="res://Entities/GameUI/GameUi.tscn" id="3_y08pv"]
+[ext_resource type="TileSet" uid="uid://3186l104bphe" path="res://Levels/BaseTilemap.tres" id="4_exi35"]
 
 [node name="BaseLevel" type="Node2D"]
 script = ExtResource("1_a0n1l")
@@ -19,9 +20,6 @@ grow_vertical = 2
 color = Color(0.0980392, 0.0941176, 0.109804, 1)
 
 [node name="GameCamera" type="Camera2D" parent="."]
-
-[node name="SortedObject" type="Node2D" parent="."]
-y_sort_enabled = true
 
 [node name="Overlay" type="CanvasLayer" parent="."]
 
@@ -43,7 +41,16 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.5, 0.5, 0.5, 0.784314)
+color = Color(0, 0, 0, 0.686275)
 
 [node name="PlayerInventory" parent="Overlay" instance=ExtResource("2_f8kvr")]
 visible = false
+
+[node name="BaseTilemap" type="TileMap" parent="."]
+texture_filter = 1
+scale = Vector2(4, 4)
+tile_set = ExtResource("4_exi35")
+format = 2
+
+[node name="SortedObject" type="Node2D" parent="."]
+y_sort_enabled = true

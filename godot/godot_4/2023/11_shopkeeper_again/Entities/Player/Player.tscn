@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://b55y6h54npqdk"]
+[gd_scene load_steps=8 format=3 uid="uid://b55y6h54npqdk"]
 
 [ext_resource type="Script" path="res://Entities/Player/Player.gd" id="1_ymq7c"]
+[ext_resource type="Resource" uid="uid://bst3hk2ql5uhn" path="res://Resources/PlayerData/PlayerData.tres" id="2_0dk82"]
 [ext_resource type="Texture2D" uid="uid://cj7psibwjry08" path="res://Assets/Graphics/Pixel-RPG_Prototype_v003/Extras/Shadow.png" id="2_cvtie"]
 [ext_resource type="Texture2D" uid="uid://5n6ifwdcw1at" path="res://Assets/Graphics/Protoype_base.png" id="2_yfvtf"]
 [ext_resource type="PackedScene" uid="uid://1nnw4qoibolx" path="res://Entities/Interactives/Interactor.tscn" id="4_ntgkn"]
@@ -18,6 +19,7 @@ texture_filter = 1
 collision_mask = 12
 motion_mode = 1
 script = ExtResource("1_ymq7c")
+player_data = ExtResource("2_0dk82")
 
 [node name="Shadow" type="Sprite2D" parent="."]
 position = Vector2(0, -56)
