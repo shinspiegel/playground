@@ -1,5 +1,6 @@
 class_name InteractableObject extends Node2D
 
+@export_group("Color")
 @export var outline_color: Color = Color(1,1,1)
 @onready var interactable: Interactable = $Interactable
 @onready var sprite_2d: Sprite2D = $Sprite2D

@@ -15,7 +15,7 @@
 atlas = ExtResource("8_e7dln")
 region = Rect2(0, 0, 16, 16)
 
-[sub_resource type="Resource" id="Resource_5658l"]
+[sub_resource type="Resource" id="Resource_iegx0"]
 resource_local_to_scene = true
 script = ExtResource("9_ymw5m")
 item_name = "Cristal"
@@ -26,14 +26,14 @@ rarity = 0
 atlas = ExtResource("8_e7dln")
 region = Rect2(16, 0, 16, 16)
 
-[sub_resource type="Resource" id="Resource_hhanh"]
+[sub_resource type="Resource" id="Resource_1cnhv"]
 resource_local_to_scene = true
 script = ExtResource("9_ymw5m")
 item_name = "Coal"
 icon = SubResource("AtlasTexture_ffv6e")
 rarity = 1
 
-[sub_resource type="Resource" id="Resource_6nav1"]
+[sub_resource type="Resource" id="Resource_81l6q"]
 resource_local_to_scene = true
 script = ExtResource("9_ymw5m")
 item_name = "Cristal"
@@ -47,7 +47,7 @@ load_path = "res://.godot/imported/16x16_base_item.png-db85afb67d9bcd71221fbfff1
 atlas = SubResource("CompressedTexture2D_wkr8n")
 region = Rect2(0, 0, 16, 16)
 
-[sub_resource type="Resource" id="Resource_q8eoo"]
+[sub_resource type="Resource" id="Resource_xu17n"]
 resource_local_to_scene = true
 script = ExtResource("9_ymw5m")
 item_name = "Wood"
@@ -83,19 +83,19 @@ destination = "world_map"
 [node name="DropItem" parent="SortedObject" index="3" instance=ExtResource("6_fe5jf")]
 position = Vector2(224, 484)
 player_data = ExtResource("8_iiph8")
-item = SubResource("Resource_5658l")
+item = SubResource("Resource_iegx0")
 
 [node name="DropItem2" parent="SortedObject" index="4" instance=ExtResource("6_fe5jf")]
 position = Vector2(749, 343)
 player_data = ExtResource("8_iiph8")
-item = SubResource("Resource_hhanh")
+item = SubResource("Resource_1cnhv")
 
 [node name="DropItem3" parent="SortedObject" index="5" instance=ExtResource("6_fe5jf")]
 position = Vector2(491, 609)
 player_data = ExtResource("8_iiph8")
-item = SubResource("Resource_6nav1")
+item = SubResource("Resource_81l6q")
 
 [node name="DropItem4" parent="SortedObject" index="6" instance=ExtResource("6_fe5jf")]
 position = Vector2(783, 581)
 player_data = ExtResource("8_iiph8")
-item = SubResource("Resource_q8eoo")
+item = SubResource("Resource_xu17n")

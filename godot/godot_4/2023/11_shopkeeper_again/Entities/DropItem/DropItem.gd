@@ -1,5 +1,6 @@
 class_name DropItem extends InteractableObject
 
+@export_group("Drop Info")
 @export var player_data: PlayerData = preload("res://Resources/PlayerData/PlayerData.tres")
 @export var default_sprite: Texture2D
 @export var item: InventoryItem
