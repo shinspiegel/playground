@@ -20,6 +20,7 @@ signal circle_pressed()
 signal options_pressed()
 
 @export var direction: Vector2 = Vector2.ZERO
+@export var facing: Vector2 = Vector2.ZERO
 @export var cross: bool = false
 @export var square: bool = false
 @export var triangle: bool = false
@@ -35,6 +36,9 @@ func _process(_delta: float) -> void:
 
 func __update_direction() -> void:
 	direction = Input.get_vector(LEFT, RIGHT, UP, DOWN).normalized()
+	
+	if direction.length() > 0:
+		facing = direction
 
 
 func __update_action_buttons() -> void:

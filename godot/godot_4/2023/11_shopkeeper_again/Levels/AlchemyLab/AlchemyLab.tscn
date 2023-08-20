@@ -15,7 +15,7 @@
 atlas = ExtResource("8_e7dln")
 region = Rect2(0, 0, 16, 16)
 
-[sub_resource type="Resource" id="Resource_dl15j"]
+[sub_resource type="Resource" id="Resource_5658l"]
 resource_local_to_scene = true
 script = ExtResource("9_ymw5m")
 item_name = "Cristal"
@@ -26,14 +26,14 @@ rarity = 0
 atlas = ExtResource("8_e7dln")
 region = Rect2(16, 0, 16, 16)
 
-[sub_resource type="Resource" id="Resource_mol1d"]
+[sub_resource type="Resource" id="Resource_hhanh"]
 resource_local_to_scene = true
 script = ExtResource("9_ymw5m")
 item_name = "Coal"
 icon = SubResource("AtlasTexture_ffv6e")
 rarity = 1
 
-[sub_resource type="Resource" id="Resource_qjbtx"]
+[sub_resource type="Resource" id="Resource_6nav1"]
 resource_local_to_scene = true
 script = ExtResource("9_ymw5m")
 item_name = "Cristal"
@@ -47,7 +47,7 @@ load_path = "res://.godot/imported/16x16_base_item.png-db85afb67d9bcd71221fbfff1
 atlas = SubResource("CompressedTexture2D_wkr8n")
 region = Rect2(0, 0, 16, 16)
 
-[sub_resource type="Resource" id="Resource_5u7jb"]
+[sub_resource type="Resource" id="Resource_q8eoo"]
 resource_local_to_scene = true
 script = ExtResource("9_ymw5m")
 item_name = "Wood"
@@ -64,6 +64,7 @@ visible = true
 player = NodePath("../../SortedObject/Player")
 
 [node name="CraftDefinition" parent="Overlay" index="3" instance=ExtResource("6_wiqr4")]
+visible = false
 
 [node name="BaseTilemap" parent="." index="3"]
 layer_0/tile_data = PackedInt32Array(131072, 5, 0, 131073, 65541, 0, 131074, 65541, 0, 131075, 65541, 7, 131076, 65541, 0, 131077, 65541, 0, 131078, 65541, 7, 131079, 65541, 7, 131080, 65541, 7, 131081, 65541, 0, 131082, 65541, 0, 131083, 65541, 7, 131084, 65541, 7, 131085, 131077, 0, 196621, 5, 6, 262157, 131077, 1, 327693, 5, 6, 393229, 131077, 1, 458765, 5, 6, 524301, 131077, 2, 524300, 65541, 5, 524299, 65541, 5, 524298, 65541, 2, 524297, 65541, 2, 524296, 65541, 5, 524295, 65541, 5, 524294, 65541, 2, 524293, 65541, 5, 524292, 65541, 2, 524291, 65541, 5, 524290, 65541, 5, 524289, 65541, 5, 524288, 5, 2, 458752, 131077, 6, 393216, 5, 1, 327680, 5, 1, 262144, 5, 1, 196608, 5, 1, 196609, 65541, 1, 262145, 65541, 1, 327681, 65541, 1, 393217, 65541, 1, 458753, 65541, 1, 458754, 65541, 1, 393218, 65541, 1, 327682, 65541, 1, 262146, 65541, 1, 196610, 65541, 1, 196611, 65541, 1, 262147, 65541, 1, 327683, 65541, 1, 393219, 65541, 1, 458755, 65541, 1, 458756, 65541, 1, 393220, 65541, 1, 327684, 65541, 1, 262148, 65541, 1, 196612, 65541, 1, 196613, 65541, 1, 262149, 65541, 1, 327685, 65541, 1, 393221, 65541, 1, 458757, 65541, 1, 458758, 65541, 1, 393222, 65541, 1, 327686, 65541, 1, 262150, 65541, 1, 196614, 65541, 1, 196617, 65541, 1, 196618, 65541, 1, 196619, 65541, 1, 196620, 65541, 1, 196616, 65541, 1, 196615, 65541, 1, 262151, 65541, 1, 262152, 65541, 1, 262153, 65541, 1, 262154, 65541, 1, 262155, 65541, 1, 262156, 65541, 1, 327692, 65541, 1, 327691, 65541, 1, 327690, 65541, 1, 327689, 65541, 1, 327688, 65541, 1, 327687, 65541, 1, 393223, 65541, 1, 393224, 65541, 1, 393225, 65541, 1, 393226, 65541, 1, 393227, 65541, 1, 393228, 65541, 1, 458760, 65541, 1, 458759, 65541, 1, 458761, 65541, 1, 458762, 65541, 1, 458763, 65541, 1, 458764, 65541, 1, 0, 327683, 1, 1, 458755, 1, 2, 262147, 9, 3, 262147, 9, 4, 393219, 6, 5, 65539, 9, 6, 458755, 1, 7, 262147, 9, 8, 327683, 9, 9, 131075, 9, 10, 262147, 9, 11, 393219, 6, 12, 327683, 9, 13, 65539, 9, 14, 524291, 1, 65535, 262147, 1, 131071, 262147, 2, 196607, 262147, 2, 262143, 262147, 2, 327679, 262147, 3, 393215, 262147, 3, 458751, 262147, 3, 524287, 262147, 2, 589823, 262147, 2, 65550, 524291, 2, 131086, 524291, 2, 196622, 524291, 2, 262158, 524291, 3, 327694, 524291, 2, 393230, 524291, 3, 458766, 524291, 3, 524302, 524291, 3, 589838, 524291, 4, 655359, 262147, 4, 589824, 393219, 4, 589825, 458755, 4, 589826, 393219, 4, 589827, 393219, 4, 589828, 458755, 4, 589829, 327683, 4, 589830, 458755, 4, 589831, 393219, 4, 589832, 393219, 4, 589833, 458755, 4, 589834, 393219, 4, 589835, 393219, 4, 589836, 327683, 4, 589837, 393219, 4)
@@ -82,19 +83,19 @@ destination = "world_map"
 [node name="DropItem" parent="SortedObject" index="3" instance=ExtResource("6_fe5jf")]
 position = Vector2(224, 484)
 player_data = ExtResource("8_iiph8")
-item = SubResource("Resource_dl15j")
+item = SubResource("Resource_5658l")
 
 [node name="DropItem2" parent="SortedObject" index="4" instance=ExtResource("6_fe5jf")]
 position = Vector2(749, 343)
 player_data = ExtResource("8_iiph8")
-item = SubResource("Resource_mol1d")
+item = SubResource("Resource_hhanh")
 
 [node name="DropItem3" parent="SortedObject" index="5" instance=ExtResource("6_fe5jf")]
 position = Vector2(491, 609)
 player_data = ExtResource("8_iiph8")
-item = SubResource("Resource_qjbtx")
+item = SubResource("Resource_6nav1")
 
 [node name="DropItem4" parent="SortedObject" index="6" instance=ExtResource("6_fe5jf")]
 position = Vector2(783, 581)
 player_data = ExtResource("8_iiph8")
-item = SubResource("Resource_5u7jb")
+item = SubResource("Resource_q8eoo")
