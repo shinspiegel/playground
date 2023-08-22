@@ -10,7 +10,7 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	if can_interact():
-		check_for_multiple_atras()
+		__check_for_multiple_areas()
 
 
 func can_interact() -> bool:
@@ -21,21 +21,6 @@ func can_interact() -> bool:
 
 func interact_current() -> void:
 	current_intractable.interact()
-
-
-func check_for_multiple_atras() -> void:
-	if get_overlapping_areas().size() == 1:
-		return
-	
-	for area in get_overlapping_areas():
-		if area is Interactable:
-			if area == current_intractable:
-				pass
-			
-			if __is_shorter(area):
-				current_intractable.release_focus()
-				current_intractable = area
-				current_intractable.grab_focus()
 
 
 func on_area_entered(area: Area2D) -> void:
@@ -50,6 +35,45 @@ func on_area_exited(area: Area2D) -> void:
 		if current_intractable == area:
 			current_intractable.release_focus()
 			current_intractable = null
+			__check_grab_next(area)
+
+
+func __check_for_multiple_areas() -> void:
+	if get_overlapping_areas().size() == 1:
+		return
+	
+	for area in get_overlapping_areas():
+		if area is Interactable:
+			if area == current_intractable:
+				pass
+			
+			if __is_shorter(area):
+				current_intractable.release_focus()
+				current_intractable = area
+				current_intractable.grab_focus()
+
+
+func __check_grab_next(ignore: Area2D) -> void:
+	if get_overlapping_areas().size() == 1:
+		return
+	
+	var list = get_overlapping_areas()
+	list.erase(ignore)
+	
+	for area in list:
+		if area is Interactable:
+			if not current_intractable:
+				current_intractable = area
+				current_intractable.grab_focus()
+				pass
+			
+			if area == current_intractable:
+				pass
+			
+			if __is_shorter(area):
+				current_intractable.release_focus()
+				current_intractable = area
+				current_intractable.grab_focus()
 
 
 func __is_shorter(area: Interactable) -> bool:
