@@ -62,6 +62,9 @@ func use_hotbar_item(slot: HOTBAR, pos: Vector2 = Vector2.ZERO) -> void:
 		if item is InventoryBomb:
 			GameManager.spawn_bomb(item, pos)
 			destroy_item(item)
+		elif item is InventoryPotion:
+			__use_potion_resource(item)
+			destroy_item(item)
 		elif item is InventoryItem:
 			GameManager.spawn_item(item, pos)
 			destroy_item(item)
@@ -71,3 +74,7 @@ func __auto_update_hotbar(item: InventoryItem) -> void:
 	if not hotbar_zero: return set_hotbar(item, HOTBAR.zero) 
 	if not hotbar_one: return set_hotbar(item, HOTBAR.one)
 	if not hotbar_two: return set_hotbar(item, HOTBAR.two)
+
+
+func __use_potion_resource(item: InventoryPotion) -> void:
+	print_debug("Warn::Usage of resource [%s]" % [item])
