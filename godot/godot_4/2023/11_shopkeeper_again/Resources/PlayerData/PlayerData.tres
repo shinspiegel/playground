@@ -1,9 +1,11 @@
-[gd_resource type="Resource" script_class="PlayerData" load_steps=2 format=3 uid="uid://bst3hk2ql5uhn"]
+[gd_resource type="Resource" script_class="PlayerData" load_steps=3 format=3 uid="uid://bst3hk2ql5uhn"]
 
+[ext_resource type="Resource" uid="uid://cnkwn05bvcfqm" path="res://Resources/Ingredients/base_bomb.tres" id="1_mkdyj"]
 [ext_resource type="Script" path="res://Resources/PlayerData.gd" id="1_xqemp"]
 
 [resource]
 script = ExtResource("1_xqemp")
 health_max = 20
 health_current = 20
-inventory = Array[Resource("res://Resources/InventoryItem.gd")]([])
+hotbar_zero = ExtResource("1_mkdyj")
+inventory = Array[Resource("res://Resources/InventoryItem.gd")]([ExtResource("1_mkdyj")])

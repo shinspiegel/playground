@@ -1,57 +1,12 @@
-[gd_scene load_steps=18 format=3 uid="uid://vlk5jfkdc85o"]
+[gd_scene load_steps=8 format=3 uid="uid://vlk5jfkdc85o"]
 
 [ext_resource type="PackedScene" uid="uid://b55y6h54npqdk" path="res://Entities/Player/Player.tscn" id="1_5lr4u"]
 [ext_resource type="PackedScene" uid="uid://dhhchbkfgbk7b" path="res://Levels/BaseLevel.tscn" id="1_askou"]
 [ext_resource type="PackedScene" uid="uid://b7n4t0hc7lufb" path="res://Entities/InteractableObjects/Door/Door.tscn" id="2_p2k0u"]
 [ext_resource type="Script" path="res://Levels/AlchemyLab/AlchemyLab.gd" id="2_wsw88"]
 [ext_resource type="PackedScene" uid="uid://cqdckkm58keqv" path="res://Entities/InteractableObjects/CraftStation/CraftStation.tscn" id="3_0rdn8"]
-[ext_resource type="PackedScene" uid="uid://c4vm5txg8nqpk" path="res://Entities/DropItem/DropItem.tscn" id="6_fe5jf"]
+[ext_resource type="PackedScene" uid="uid://c4vm5txg8nqpk" path="res://Entities/InteractableObjects/DropItem/DropItem.tscn" id="6_fe5jf"]
 [ext_resource type="PackedScene" uid="uid://dm3qkxxagigj8" path="res://Entities/CraftDefinition/CraftDefinition.tscn" id="6_wiqr4"]
-[ext_resource type="Texture2D" uid="uid://d4jgpw6hhmhdy" path="res://Assets/Graphics/Items/16x16_base_item.png" id="8_e7dln"]
-[ext_resource type="Script" path="res://Resources/Ingredient.gd" id="9_ymw5m"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_3ftng"]
-atlas = ExtResource("8_e7dln")
-region = Rect2(0, 0, 16, 16)
-
-[sub_resource type="Resource" id="Resource_1adbn"]
-resource_local_to_scene = true
-script = ExtResource("9_ymw5m")
-item_name = "Cristal"
-icon = SubResource("AtlasTexture_3ftng")
-rarity = 0
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ffv6e"]
-atlas = ExtResource("8_e7dln")
-region = Rect2(16, 0, 16, 16)
-
-[sub_resource type="Resource" id="Resource_xr0w4"]
-resource_local_to_scene = true
-script = ExtResource("9_ymw5m")
-item_name = "Coal"
-icon = SubResource("AtlasTexture_ffv6e")
-rarity = 1
-
-[sub_resource type="Resource" id="Resource_irg72"]
-resource_local_to_scene = true
-script = ExtResource("9_ymw5m")
-item_name = "Cristal"
-icon = SubResource("AtlasTexture_3ftng")
-rarity = 0
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_wkr8n"]
-load_path = "res://.godot/imported/16x16_base_item.png-db85afb67d9bcd71221fbfff1281f6b7.ctex"
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_wlyc3"]
-atlas = SubResource("CompressedTexture2D_wkr8n")
-region = Rect2(0, 0, 16, 16)
-
-[sub_resource type="Resource" id="Resource_wqmjp"]
-resource_local_to_scene = true
-script = ExtResource("9_ymw5m")
-item_name = "Wood"
-icon = SubResource("AtlasTexture_wlyc3")
-rarity = 0
 
 [node name="AlchemyLab" node_paths=PackedStringArray("player") instance=ExtResource("1_askou")]
 texture_filter = 1
@@ -81,16 +36,12 @@ destination = "world_map"
 
 [node name="DropItem" parent="SortedObject" index="3" instance=ExtResource("6_fe5jf")]
 position = Vector2(224, 484)
-item = SubResource("Resource_1adbn")
 
 [node name="DropItem2" parent="SortedObject" index="4" instance=ExtResource("6_fe5jf")]
 position = Vector2(749, 343)
-item = SubResource("Resource_xr0w4")
 
 [node name="DropItem3" parent="SortedObject" index="5" instance=ExtResource("6_fe5jf")]
-position = Vector2(491, 609)
-item = SubResource("Resource_irg72")
+position = Vector2(454, 601)
 
-[node name="DropItem4" parent="SortedObject" index="6" instance=ExtResource("6_fe5jf")]
-position = Vector2(783, 581)
-item = SubResource("Resource_wqmjp")
+[node name="DropItem5" parent="SortedObject" index="6" instance=ExtResource("6_fe5jf")]
+position = Vector2(240, 700)

@@ -59,7 +59,10 @@ func use_hotbar_item(slot: HOTBAR, pos: Vector2 = Vector2.ZERO) -> void:
 		HOTBAR.two: item = hotbar_two
 	
 	if item:
-		if item is InventoryItem:
+		if item is InventoryBomb:
+			GameManager.spawn_bomb(item, pos)
+			destroy_item(item)
+		elif item is InventoryItem:
 			GameManager.spawn_item(item, pos)
 			destroy_item(item)
 

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="InventoryBomb" load_steps=4 format=3 uid="uid://cnkwn05bvcfqm"]
+
+[ext_resource type="Script" path="res://Resources/InventoryBomb.gd" id="1_1oyv4"]
+[ext_resource type="Texture2D" uid="uid://c7v52dfhrk2ps" path="res://Assets/Graphics/Icons/Food_Microwave.png" id="1_rbrpw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dhpkb"]
+atlas = ExtResource("1_rbrpw")
+region = Rect2(598, 526, 18, 20)
+
+[resource]
+script = ExtResource("1_1oyv4")
+time_to_explode = 0.0
+item_name = ""
+icon = SubResource("AtlasTexture_dhpkb")
+rarity = 0

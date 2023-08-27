@@ -2,12 +2,13 @@ class_name InteractableObject extends Node2D
 
 @export_group("Color")
 @export var outline_color: Color = Color(1,1,1)
+
 @onready var interactable: Interactable = $Interactable
 @onready var sprite_2d: Sprite2D = $Sprite2D
 
 
 func _ready() -> void:
-	interactable.interacted.connect(on_interact)
+	interactable.interacted.connect(_on_interact)
 	interactable.focus.connect(on_focus)
 	interactable.blur.connect(on_blur)
 	sprite_2d.material.set("shader_parameter/line_thickness", 0.0)
@@ -15,12 +16,12 @@ func _ready() -> void:
 
 
 func _exit_tree() -> void:
-	interactable.interacted.disconnect(on_interact)
+	interactable.interacted.disconnect(_on_interact)
 	interactable.focus.disconnect(on_focus)
 	interactable.blur.disconnect(on_blur)
 
 
-func on_interact() -> void:
+func _on_interact() -> void:
 	print_debug("WARN::Not implemeted")
 
 

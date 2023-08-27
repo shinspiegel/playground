@@ -39,3 +39,6 @@ func on_item_spawn(item: InventoryItem, pos: Vector2, scene: PackedScene) -> voi
 	
 	if node is DropItem:
 		node.set_item(item)
+	
+	if node is ExplosiveItem:
+		node.set_item(item)

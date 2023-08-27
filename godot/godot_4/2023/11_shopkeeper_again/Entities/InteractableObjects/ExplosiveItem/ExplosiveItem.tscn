@@ -1,0 +1,43 @@
+[gd_scene load_steps=10 format=3 uid="uid://dc2mak0ecqf45"]
+
+[ext_resource type="PackedScene" uid="uid://1sgnnal1cpka" path="res://Entities/InteractableObjects/InteractableObject.tscn" id="1_sualf"]
+[ext_resource type="Script" path="res://Entities/InteractableObjects/ExplosiveItem/ExplosiveItem.gd" id="2_wuw3x"]
+[ext_resource type="Shader" path="res://Shaders/PerfectOutline.gdshader" id="2_xsd7y"]
+[ext_resource type="Resource" uid="uid://bst3hk2ql5uhn" path="res://Resources/PlayerData/PlayerData.tres" id="3_6exa4"]
+[ext_resource type="Texture2D" uid="uid://cj7psibwjry08" path="res://Assets/Graphics/Pixel-RPG_Prototype_v003/Extras/Shadow.png" id="3_ni1nm"]
+[ext_resource type="Texture2D" uid="uid://cjx4dvl84ygur" path="res://Assets/Graphics/16x16_base_item.png" id="5_ap2se"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gyhtq"]
+atlas = ExtResource("3_ni1nm")
+region = Rect2(10, 21, 12, 4)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_u74jy"]
+resource_local_to_scene = true
+shader = ExtResource("2_xsd7y")
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/line_thickness = 1.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mm7ih"]
+radius = 36.0
+
+[node name="ExplosiveItem" instance=ExtResource("1_sualf")]
+script = ExtResource("2_wuw3x")
+player_data = ExtResource("3_6exa4")
+item = null
+
+[node name="Shadow" type="Sprite2D" parent="." index="0"]
+position = Vector2(2.08165e-12, -19)
+scale = Vector2(4, 4)
+texture = SubResource("AtlasTexture_gyhtq")
+
+[node name="Sprite2D" parent="." index="1"]
+material = SubResource("ShaderMaterial_u74jy")
+position = Vector2(0, -72)
+texture = ExtResource("5_ap2se")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable" index="0"]
+position = Vector2(0, -20)
+shape = SubResource("CircleShape2D_mm7ih")
+
+[node name="Timer" type="Timer" parent="." index="3"]
+one_shot = true

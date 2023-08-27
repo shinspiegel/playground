@@ -1,0 +1,134 @@
+[gd_scene load_steps=16 format=3 uid="uid://c4vm5txg8nqpk"]
+
+[ext_resource type="PackedScene" uid="uid://1sgnnal1cpka" path="res://Entities/InteractableObjects/InteractableObject.tscn" id="1_1asd4"]
+[ext_resource type="Script" path="res://Entities/InteractableObjects/DropItem/DropItem.gd" id="2_mkfxf"]
+[ext_resource type="Resource" uid="uid://bst3hk2ql5uhn" path="res://Resources/PlayerData/PlayerData.tres" id="3_kjgvr"]
+[ext_resource type="Texture2D" uid="uid://d4jgpw6hhmhdy" path="res://Assets/Graphics/Items/16x16_base_item.png" id="4_tt53o"]
+[ext_resource type="Texture2D" uid="uid://cj7psibwjry08" path="res://Assets/Graphics/Pixel-RPG_Prototype_v003/Extras/Shadow.png" id="5_berfy"]
+[ext_resource type="Shader" path="res://Shaders/PerfectOutline.gdshader" id="6_vw0xo"]
+[ext_resource type="Texture2D" uid="uid://cjx4dvl84ygur" path="res://Assets/Graphics/16x16_base_item.png" id="7_ncos7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_107ms"]
+atlas = ExtResource("4_tt53o")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3hbel"]
+atlas = ExtResource("5_berfy")
+region = Rect2(10, 21, 12, 4)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8glqg"]
+resource_local_to_scene = true
+shader = ExtResource("6_vw0xo")
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/line_thickness = 1.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_76ax6"]
+radius = 48.0
+
+[sub_resource type="Animation" id="Animation_o4h8v"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -64)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(4, 4)]
+}
+
+[sub_resource type="Animation" id="Animation_0v2oh"]
+resource_name = "bomb_animation"
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -64), Vector2(-2, -64), Vector2(2.08165e-12, -62), Vector2(2, -64), Vector2(-2, -64), Vector2(2, -64), Vector2(0, -64), Vector2(2.08165e-12, -62), Vector2(0, -64), Vector2(-2, -64), Vector2(2.08165e-12, -62), Vector2(2, -64), Vector2(-2, -64), Vector2(2, -64), Vector2(0, -64), Vector2(2.08165e-12, -62), Vector2(0, -64), Vector2(-2, -64), Vector2(2, -64), Vector2(0, -64)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:scale")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(2, 1),
+"update": 0,
+"values": [Vector2(4, 4), Vector2(5, 5)]
+}
+
+[sub_resource type="Animation" id="Animation_leqll"]
+resource_name = "drop_item_animation"
+length = 5.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5, 2.5, 5),
+"transitions": PackedFloat32Array(0.5, -2, 0.5, 1),
+"update": 0,
+"values": [Vector2(0, -64), Vector2(0, -52), Vector2(0, -64), Vector2(0, -64)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kqvtp"]
+_data = {
+"RESET": SubResource("Animation_o4h8v"),
+"bomb_animation": SubResource("Animation_0v2oh"),
+"drop_item_animation": SubResource("Animation_leqll")
+}
+
+[node name="DropItem" instance=ExtResource("1_1asd4")]
+script = ExtResource("2_mkfxf")
+player_data = ExtResource("3_kjgvr")
+default_sprite = SubResource("AtlasTexture_107ms")
+item = null
+
+[node name="Shadow" type="Sprite2D" parent="." index="0"]
+position = Vector2(2.08165e-12, -19)
+scale = Vector2(4, 4)
+texture = SubResource("AtlasTexture_3hbel")
+
+[node name="Sprite2D" parent="." index="1"]
+material = SubResource("ShaderMaterial_8glqg")
+position = Vector2(0, -64)
+texture = ExtResource("7_ncos7")
+
+[node name="Interactable" parent="." index="2"]
+position = Vector2(0, -43)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable" index="0"]
+position = Vector2(2.08165e-12, 24)
+shape = SubResource("CircleShape2D_76ax6")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="3"]
+autoplay = "drop_item_animation"
+libraries = {
+"": SubResource("AnimationLibrary_kqvtp")
+}
