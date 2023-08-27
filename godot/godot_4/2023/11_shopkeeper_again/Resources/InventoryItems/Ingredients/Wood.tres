@@ -1,17 +1,9 @@
-[gd_resource type="Resource" script_class="Ingredient" load_steps=4 format=3 uid="uid://ci5pi1bu0wmrf"]
+[gd_resource type="Resource" script_class="InventoryIngredient" load_steps=2 format=3 uid="uid://ci5pi1bu0wmrf"]
 
-[ext_resource type="Script" path="res://Resources/InventoryItems/Ingredient.gd" id="2_4h87m"]
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_wkr8n"]
-load_path = "res://.godot/imported/16x16_base_item.png-db85afb67d9bcd71221fbfff1281f6b7.ctex"
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_wlyc3"]
-atlas = SubResource("CompressedTexture2D_wkr8n")
-region = Rect2(0, 0, 16, 16)
+[ext_resource type="Script" path="res://Resources/InventoryItems/InventoryIngredient.gd" id="1_caf14"]
 
 [resource]
 resource_local_to_scene = true
-script = ExtResource("2_4h87m")
-item_name = "Wood"
-icon = SubResource("AtlasTexture_wlyc3")
+script = ExtResource("1_caf14")
+item_name = ""
 rarity = 0
