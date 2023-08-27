@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="Ingredient" load_steps=4 format=3 uid="uid://cq8yt7rsa066o"]
 
-[ext_resource type="Texture2D" uid="uid://d4jgpw6hhmhdy" path="res://Assets/Graphics/Items/16x16_base_item.png" id="1_dc14h"]
-[ext_resource type="Script" path="res://Resources/Ingredient.gd" id="2_0vb88"]
+[ext_resource type="Texture2D" uid="uid://dvc058pc1yiy" path="res://Assets/Graphics/Items/16x16_base_item.png" id="1_dc14h"]
+[ext_resource type="Script" path="res://Resources/InventoryItems/Ingredient.gd" id="2_0vb88"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ffv6e"]
 atlas = ExtResource("1_dc14h")

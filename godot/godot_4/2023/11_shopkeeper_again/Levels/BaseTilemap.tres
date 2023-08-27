@@ -1,8 +1,8 @@
 [gd_resource type="TileSet" load_steps=7 format=3 uid="uid://3186l104bphe"]
 
-[ext_resource type="Texture2D" uid="uid://dylyqrxk62nhq" path="res://Assets/Graphics/StoneTile.png" id="1_2hgya"]
-[ext_resource type="Texture2D" uid="uid://ue36grnapa0u" path="res://Assets/Graphics/Pixel Art Top Down - Basic/Texture/TX Tileset Wall.png" id="2_a5td7"]
-[ext_resource type="Texture2D" uid="uid://d3yqqhc0skin2" path="res://Assets/Graphics/Pixel Art Top Down - Basic/Texture/TX Tileset Stone Ground.png" id="3_jytqp"]
+[ext_resource type="Texture2D" uid="uid://c8xrx3q0gaecb" path="res://Assets/Graphics/StoneTile.png" id="1_2hgya"]
+[ext_resource type="Texture2D" uid="uid://n13j7mq1s0jp" path="res://Assets/Graphics/Pixel Art Top Down - Basic/Texture/TX Tileset Wall.png" id="2_a5td7"]
+[ext_resource type="Texture2D" uid="uid://dmmbde0bdq01" path="res://Assets/Graphics/Pixel Art Top Down - Basic/Texture/TX Tileset Stone Ground.png" id="3_jytqp"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8n04m"]
 texture = ExtResource("1_2hgya")

@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://1sgnnal1cpka" path="res://Entities/InteractableObjects/InteractableObject.tscn" id="1_snf10"]
 [ext_resource type="Script" path="res://Entities/InteractableObjects/Door/Door.gd" id="1_u4s6g"]
-[ext_resource type="Texture2D" uid="uid://cwvmyh2y18rsa" path="res://Assets/Graphics/Pixel Art Top Down - Basic/Texture/TX Props.png" id="1_wcv0x"]
+[ext_resource type="Texture2D" uid="uid://brdkv8fv1in3v" path="res://Assets/Graphics/Pixel Art Top Down - Basic/Texture/TX Props.png" id="1_wcv0x"]
 [ext_resource type="Shader" path="res://Shaders/PerfectOutline.gdshader" id="2_ks4xt"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3injd"]

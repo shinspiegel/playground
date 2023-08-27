@@ -1,12 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://bv744m3pmb0m1"]
+[gd_scene load_steps=3 format=3 uid="uid://bv744m3pmb0m1"]
 
-[ext_resource type="Script" path="res://Managers/CraftManager.gd" id="1_gh3uc"]
-[ext_resource type="Script" path="res://Resources/CraftDefinition.gd" id="2_6dnrv"]
-
-[sub_resource type="Resource" id="Resource_rxvw8"]
-script = ExtResource("2_6dnrv")
-ingredients = Array[Resource("res://Resources/Ingredient.gd")]([])
+[ext_resource type="Script" path="res://Managers/CraftManager.gd" id="1_sdc0a"]
+[ext_resource type="Resource" uid="uid://xu485ypkge27" path="res://Resources/Recipes/BaseCraftDefinition.tres" id="2_4gxtv"]
 
 [node name="CraftManager" type="Node"]
-script = ExtResource("1_gh3uc")
-craft_definition = SubResource("Resource_rxvw8")
+script = ExtResource("1_sdc0a")
+craft_definition = ExtResource("2_4gxtv")

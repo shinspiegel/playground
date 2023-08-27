@@ -1,15 +1,9 @@
-[gd_resource type="Resource" script_class="PlayerData" load_steps=5 format=3 uid="uid://bst3hk2ql5uhn"]
+[gd_resource type="Resource" script_class="PlayerData" load_steps=2 format=3 uid="uid://bst3hk2ql5uhn"]
 
-[ext_resource type="Resource" uid="uid://cnkwn05bvcfqm" path="res://Resources/Ingredients/base_bomb.tres" id="1_mkdyj"]
 [ext_resource type="Script" path="res://Resources/PlayerData/PlayerData.gd" id="1_xqemp"]
-[ext_resource type="Resource" uid="uid://cq8yt7rsa066o" path="res://Resources/Ingredients/Coal.tres" id="2_vd8kd"]
-[ext_resource type="Resource" uid="uid://bpyy3qw5m1ogf" path="res://Resources/Ingredients/Cristal.tres" id="3_btxyl"]
 
 [resource]
 script = ExtResource("1_xqemp")
 health_max = 20
 health_current = 10
-hotbar_zero = ExtResource("1_mkdyj")
-hotbar_one = ExtResource("2_vd8kd")
-hotbar_two = ExtResource("3_btxyl")
-inventory = Array[Resource("res://Resources/InventoryItem.gd")]([ExtResource("1_mkdyj"), ExtResource("2_vd8kd"), ExtResource("3_btxyl")])
+inventory = Array[Resource("res://Resources/InventoryItems/InventoryItem.gd")]([])

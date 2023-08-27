@@ -1,16 +1,16 @@
 extends Node
 
 const recipes = [
-	preload("res://Resources/Recipes/Bomb.tres"),
-	preload("res://Resources/Recipes/QuickBomb.tres"),
-	preload("res://Resources/Recipes/Potion.tres"),
-	preload("res://Resources/Recipes/SlowPotion.tres"),
+	preload("res://Resources/Recipes/RecipesList/Bomb.tres"),
+	preload("res://Resources/Recipes/RecipesList/QuickBomb.tres"),
+	preload("res://Resources/Recipes/RecipesList/Potion.tres"),
+	preload("res://Resources/Recipes/RecipesList/SlowPotion.tres"),
 ]
 
 const INGREDIENTS = {
-	"coal": preload("res://Resources/Ingredients/Coal.tres"), 
-	"cristal": preload("res://Resources/Ingredients/Cristal.tres"), 
-	"wood": preload("res://Resources/Ingredients/Wood.tres")
+	"coal": preload("res://Resources/InventoryItems/Ingredients/Coal.tres"), 
+	"cristal": preload("res://Resources/InventoryItems/Ingredients/Cristal.tres"), 
+	"wood": preload("res://Resources/InventoryItems/Ingredients/Wood.tres"),
 }
 
 signal started()
