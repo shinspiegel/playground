@@ -11,6 +11,6 @@ region = Rect2(571, 475, 21, 20)
 script = ExtResource("1_7opt0")
 tick_time = 0.1
 duration = 0.0
-item_name = ""
+item_name = "Base Potion"
 icon = SubResource("AtlasTexture_oknvj")
 rarity = 0

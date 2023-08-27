@@ -10,6 +10,6 @@ region = Rect2(2.08165e-12, 2.08165e-12, 16, 16)
 [resource]
 resource_local_to_scene = true
 script = ExtResource("1_djwyc")
-item_name = ""
+item_name = "Cristal"
 icon = SubResource("AtlasTexture_01fxr")
 rarity = 0

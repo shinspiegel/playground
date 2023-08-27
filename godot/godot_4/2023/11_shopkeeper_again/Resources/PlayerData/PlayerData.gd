@@ -10,6 +10,9 @@ signal hotbar_changed()
 @export var health_max: int = 20
 @export var health_current: int = 20
 
+@export_group("stats", "stat_")
+@export var stat_speed: float = 500.0
+
 @export_group("Hot Bar", "hotbar_")
 @export var hotbar_zero: InventoryItem
 @export var hotbar_one: InventoryItem

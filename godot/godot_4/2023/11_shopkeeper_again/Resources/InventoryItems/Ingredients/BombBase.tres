@@ -10,6 +10,6 @@ region = Rect2(598, 526, 18, 20)
 [resource]
 script = ExtResource("1_1oyv4")
 time_to_explode = 3.0
-item_name = ""
+item_name = "Base Bomb"
 icon = SubResource("AtlasTexture_dhpkb")
 rarity = 0
