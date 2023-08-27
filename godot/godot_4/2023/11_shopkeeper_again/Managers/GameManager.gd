@@ -1,7 +1,7 @@
 extends Node
 
-const base_drop_item = preload("res://Entities/InteractableObjects/DropItem/DropItem.tscn")
-const base_bomb_item = preload("res://Entities/InteractableObjects/ExplosiveItem/ExplosiveItem.tscn")
+const drop_item_scene = preload("res://Entities/InteractableObjects/DropItem/DropItem.tscn")
+const bomb_item_scene = preload("res://Entities/InteractableObjects/ExplosiveItem/ExplosiveItem.tscn")
 
 signal inventory_opened()
 signal inventory_closed()
@@ -15,9 +15,9 @@ func close_inventory() -> void:
 	inventory_closed.emit()
 
 
-func spawn_item(item: InventoryItem, pos: Vector2 = Vector2.ZERO, scene: PackedScene = base_drop_item) -> void:
+func spawn_item(item: InventoryItem, pos: Vector2 = Vector2.ZERO, scene: PackedScene = drop_item_scene) -> void:
 	item_spawned.emit(item, pos, scene)
 
 
-func spawn_bomb(item: InventoryBomb, pos: Vector2 = Vector2.ZERO, scene: PackedScene = base_bomb_item) -> void:
+func spawn_bomb(item: InventoryBomb, pos: Vector2 = Vector2.ZERO, scene: PackedScene = bomb_item_scene) -> void:
 	item_spawned.emit(item, pos, scene)

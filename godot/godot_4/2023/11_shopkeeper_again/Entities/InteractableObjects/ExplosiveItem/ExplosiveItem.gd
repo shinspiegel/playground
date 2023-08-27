@@ -1,7 +1,7 @@
 class_name ExplosiveItem extends InteractableObject
 
 @export_group("Explosive Item")
-@export var player_data: PlayerData = preload("res://Resources/PlayerData/PlayerData.tres")
+@export var player_data: PlayerData
 @export var item: InventoryBomb
 
 @onready var timer: Timer = $Timer

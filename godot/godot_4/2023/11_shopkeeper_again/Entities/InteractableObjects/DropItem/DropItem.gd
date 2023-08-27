@@ -1,7 +1,7 @@
 class_name DropItem extends InteractableObject
 
 @export_group("Drop Item")
-@export var player_data: PlayerData = preload("res://Resources/PlayerData/PlayerData.tres")
+@export var player_data: PlayerData
 @export var item: InventoryItem
 
 
