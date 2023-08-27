@@ -1,14 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://vlk5jfkdc85o"]
+[gd_scene load_steps=7 format=3 uid="uid://vlk5jfkdc85o"]
 
 [ext_resource type="PackedScene" uid="uid://b55y6h54npqdk" path="res://Entities/Player/Player.tscn" id="1_5lr4u"]
 [ext_resource type="PackedScene" uid="uid://dhhchbkfgbk7b" path="res://Levels/BaseLevel.tscn" id="1_askou"]
 [ext_resource type="PackedScene" uid="uid://b7n4t0hc7lufb" path="res://Entities/InteractableObjects/Door/Door.tscn" id="2_p2k0u"]
 [ext_resource type="Script" path="res://Levels/AlchemyLab/AlchemyLab.gd" id="2_wsw88"]
 [ext_resource type="PackedScene" uid="uid://cqdckkm58keqv" path="res://Entities/InteractableObjects/CraftStation/CraftStation.tscn" id="3_0rdn8"]
-[ext_resource type="PackedScene" uid="uid://c4vm5txg8nqpk" path="res://Entities/InteractableObjects/DropItem/DropItem.tscn" id="6_fe5jf"]
 [ext_resource type="PackedScene" uid="uid://dm3qkxxagigj8" path="res://Entities/CraftDefinition/CraftDefinition.tscn" id="6_wiqr4"]
-[ext_resource type="PackedScene" uid="uid://dc2mak0ecqf45" path="res://Entities/InteractableObjects/ExplosiveItem/ExplosiveItem.tscn" id="7_g0t7m"]
-[ext_resource type="Resource" uid="uid://cnkwn05bvcfqm" path="res://Resources/Ingredients/base_bomb.tres" id="8_qd7vw"]
 
 [node name="AlchemyLab" node_paths=PackedStringArray("player") instance=ExtResource("1_askou")]
 texture_filter = 1
@@ -35,19 +32,3 @@ position = Vector2(968, 528)
 [node name="Door" parent="SortedObject" index="2" instance=ExtResource("2_p2k0u")]
 position = Vector2(132, 256)
 destination = "world_map"
-
-[node name="ExplosiveItem" parent="SortedObject" index="3" instance=ExtResource("7_g0t7m")]
-position = Vector2(682, 564)
-item = ExtResource("8_qd7vw")
-
-[node name="DropItem" parent="SortedObject" index="4" instance=ExtResource("6_fe5jf")]
-position = Vector2(224, 484)
-
-[node name="DropItem2" parent="SortedObject" index="5" instance=ExtResource("6_fe5jf")]
-position = Vector2(749, 343)
-
-[node name="DropItem3" parent="SortedObject" index="6" instance=ExtResource("6_fe5jf")]
-position = Vector2(454, 601)
-
-[node name="DropItem5" parent="SortedObject" index="7" instance=ExtResource("6_fe5jf")]
-position = Vector2(240, 700)
