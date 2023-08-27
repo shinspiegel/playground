@@ -20,4 +20,4 @@ func spawn_item(item: InventoryItem, pos: Vector2 = Vector2.ZERO, scene: PackedS
 
 
 func spawn_bomb(item: InventoryBomb, pos: Vector2 = Vector2.ZERO, scene: PackedScene = base_bomb_item) -> void:
-	item_spawned.emit(item, pos, base_bomb_item)
+	item_spawned.emit(item, pos, scene)
