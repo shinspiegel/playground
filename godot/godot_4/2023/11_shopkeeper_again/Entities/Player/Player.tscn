@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://Entities/Player/Player.gd" id="1_ymq7c"]
 [ext_resource type="Resource" uid="uid://bst3hk2ql5uhn" path="res://Resources/PlayerData/PlayerData.tres" id="2_0dk82"]
-[ext_resource type="Texture2D" uid="uid://cj7psibwjry08" path="res://Assets/Graphics/Pixel-RPG_Prototype_v003/Extras/Shadow.png" id="2_cvtie"]
-[ext_resource type="Texture2D" uid="uid://5n6ifwdcw1at" path="res://Assets/Graphics/Protoype_base.png" id="2_yfvtf"]
+[ext_resource type="Texture2D" uid="uid://bb3n7t40etou5" path="res://Assets/Graphics/Pixel-RPG_Prototype_v003/Extras/Shadow.png" id="2_cvtie"]
+[ext_resource type="Texture2D" uid="uid://diafbn5ol2kej" path="res://Assets/Graphics/Protoype_base.png" id="2_yfvtf"]
 [ext_resource type="PackedScene" uid="uid://1nnw4qoibolx" path="res://Entities/Interactives/Interactor.tscn" id="4_ntgkn"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xs1of"]

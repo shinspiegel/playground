@@ -1,8 +1,8 @@
 [gd_scene load_steps=3 format=3 uid="uid://bv744m3pmb0m1"]
 
 [ext_resource type="Script" path="res://Managers/CraftManager.gd" id="1_sdc0a"]
-[ext_resource type="Resource" uid="uid://xu485ypkge27" path="res://Resources/Recipes/BaseCraftDefinition.tres" id="2_4gxtv"]
+[ext_resource type="Resource" uid="uid://rbxuhrj8jfmg" path="res://Resources/Recipes/BaseCraftDefinition.tres" id="2_l1e3m"]
 
 [node name="CraftManager" type="Node"]
 script = ExtResource("1_sdc0a")
-craft_definition = ExtResource("2_4gxtv")
+craft_definition = ExtResource("2_l1e3m")

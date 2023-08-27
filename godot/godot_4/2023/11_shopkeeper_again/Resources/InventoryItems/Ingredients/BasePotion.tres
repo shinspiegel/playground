@@ -1,10 +1,10 @@
 [gd_resource type="Resource" script_class="InventoryPotion" load_steps=4 format=3 uid="uid://dyk2ts0r04l0b"]
 
 [ext_resource type="Script" path="res://Resources/InventoryItems/InventoryPotion.gd" id="1_7opt0"]
-[ext_resource type="Texture2D" uid="uid://cvfb3ghpqsiom" path="res://Assets/Graphics/Icons/Food_Microwave.png" id="1_vpp5c"]
+[ext_resource type="Texture2D" uid="uid://c5v37rowtq7m" path="res://Assets/Graphics/Icons/Food_Microwave.png" id="1_10r8q"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_oknvj"]
-atlas = ExtResource("1_vpp5c")
+atlas = ExtResource("1_10r8q")
 region = Rect2(571, 475, 21, 20)
 
 [resource]

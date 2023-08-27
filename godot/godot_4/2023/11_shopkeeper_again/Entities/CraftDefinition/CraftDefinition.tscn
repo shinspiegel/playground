@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://Entities/CraftDefinition/CraftDefinition.gd" id="1_g8ejd"]
 [ext_resource type="PackedScene" uid="uid://68gjo82w5dh" path="res://Entities/CraftDefinition/UI_Elements/IngredientButton.tscn" id="2_3vekh"]
-[ext_resource type="Texture2D" uid="uid://xuxe6tgr8u5t" path="res://Assets/icon.svg" id="3_22ro8"]
-[ext_resource type="Texture2D" uid="uid://dowy1qn7ahjel" path="res://Assets/UI Elements/Download/GUI.png" id="4_bg8py"]
+[ext_resource type="Texture2D" uid="uid://2vjm1r5njom4" path="res://Assets/icon.svg" id="3_22ro8"]
+[ext_resource type="Texture2D" uid="uid://b78lgpxvmun08" path="res://Assets/UI Elements/Download/GUI.png" id="4_bg8py"]
 
 [node name="CraftDefinition" type="Control"]
 layout_mode = 3

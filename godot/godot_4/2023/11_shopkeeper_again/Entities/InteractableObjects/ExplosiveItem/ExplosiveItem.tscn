@@ -4,10 +4,10 @@
 [ext_resource type="Script" path="res://Entities/InteractableObjects/ExplosiveItem/ExplosiveItem.gd" id="2_wuw3x"]
 [ext_resource type="Shader" path="res://Shaders/PerfectOutline.gdshader" id="2_xsd7y"]
 [ext_resource type="Resource" uid="uid://bst3hk2ql5uhn" path="res://Resources/PlayerData/PlayerData.tres" id="3_6exa4"]
-[ext_resource type="Texture2D" uid="uid://cj7psibwjry08" path="res://Assets/Graphics/Pixel-RPG_Prototype_v003/Extras/Shadow.png" id="3_ni1nm"]
-[ext_resource type="Texture2D" uid="uid://cjx4dvl84ygur" path="res://Assets/Graphics/16x16_base_item.png" id="5_ap2se"]
+[ext_resource type="Texture2D" uid="uid://bb3n7t40etou5" path="res://Assets/Graphics/Pixel-RPG_Prototype_v003/Extras/Shadow.png" id="3_ni1nm"]
+[ext_resource type="Texture2D" uid="uid://clo5c36832ec" path="res://Assets/Graphics/16x16_base_item.png" id="5_ap2se"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_gyhtq"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_sscry"]
 atlas = ExtResource("3_ni1nm")
 region = Rect2(10, 21, 12, 4)
 
@@ -90,7 +90,7 @@ item = null
 [node name="Shadow" type="Sprite2D" parent="." index="0"]
 position = Vector2(2.08165e-12, -19)
 scale = Vector2(4, 4)
-texture = SubResource("AtlasTexture_gyhtq")
+texture = SubResource("AtlasTexture_sscry")
 
 [node name="Sprite2D" parent="." index="1"]
 material = SubResource("ShaderMaterial_u74jy")

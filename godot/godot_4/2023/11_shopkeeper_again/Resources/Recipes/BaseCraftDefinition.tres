@@ -1,7 +1,7 @@
-[gd_resource type="Resource" script_class="CraftDefinitionEntry" load_steps=2 format=3 uid="uid://xu485ypkge27"]
+[gd_resource type="Resource" script_class="CraftDefinitionEntry" load_steps=2 format=3 uid="uid://rbxuhrj8jfmg"]
 
 [ext_resource type="Script" path="res://Resources/Recipes/CraftDefinition.gd" id="1_f73u1"]
 
 [resource]
 script = ExtResource("1_f73u1")
-ingredients = Array[Resource("res://Resources/InventoryItems/Ingredient.gd")]([])
+ingredients = Array[Resource("res://Resources/InventoryItems/InventoryIngredient.gd")]([])

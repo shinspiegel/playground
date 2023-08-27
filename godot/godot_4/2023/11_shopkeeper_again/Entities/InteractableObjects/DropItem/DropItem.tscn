@@ -1,14 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://c4vm5txg8nqpk"]
+[gd_scene load_steps=11 format=3 uid="uid://c4vm5txg8nqpk"]
 
 [ext_resource type="PackedScene" uid="uid://1sgnnal1cpka" path="res://Entities/InteractableObjects/InteractableObject.tscn" id="1_1asd4"]
 [ext_resource type="Script" path="res://Entities/InteractableObjects/DropItem/DropItem.gd" id="2_mkfxf"]
-[ext_resource type="Resource" uid="uid://bst3hk2ql5uhn" path="res://Resources/PlayerData/PlayerData.tres" id="3_kjgvr"]
-[ext_resource type="Texture2D" uid="uid://cj7psibwjry08" path="res://Assets/Graphics/Pixel-RPG_Prototype_v003/Extras/Shadow.png" id="5_berfy"]
 [ext_resource type="Shader" path="res://Shaders/PerfectOutline.gdshader" id="6_vw0xo"]
-[ext_resource type="Texture2D" uid="uid://cjx4dvl84ygur" path="res://Assets/Graphics/16x16_base_item.png" id="7_ncos7"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3hbel"]
-atlas = ExtResource("5_berfy")
 region = Rect2(10, 21, 12, 4)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8glqg"]
@@ -101,7 +97,7 @@ _data = {
 
 [node name="DropItem" instance=ExtResource("1_1asd4")]
 script = ExtResource("2_mkfxf")
-player_data = ExtResource("3_kjgvr")
+player_data = null
 item = null
 
 [node name="Shadow" type="Sprite2D" parent="." index="0"]
@@ -112,7 +108,6 @@ texture = SubResource("AtlasTexture_3hbel")
 [node name="Sprite2D" parent="." index="1"]
 material = SubResource("ShaderMaterial_8glqg")
 position = Vector2(0, -64)
-texture = ExtResource("7_ncos7")
 
 [node name="Interactable" parent="." index="2"]
 position = Vector2(0, -43)

@@ -1,9 +1,9 @@
 [gd_scene load_steps=6 format=3 uid="uid://68gjo82w5dh"]
 
-[ext_resource type="Texture2D" uid="uid://cf3dqfh84s58a" path="res://Assets/UI Elements/UpdatedElements/64_64_base_button_normal.png" id="1_rsxkj"]
-[ext_resource type="Texture2D" uid="uid://t8y2ptgta5d4" path="res://Assets/UI Elements/UpdatedElements/64x64_base_button_hover.png" id="2_agp7c"]
-[ext_resource type="Texture2D" uid="uid://dmdwl31cdfk0l" path="res://Assets/UI Elements/UpdatedElements/64_64_base_button_pressed.png" id="2_otnuk"]
-[ext_resource type="Texture2D" uid="uid://do1y3am6c722o" path="res://Assets/UI Elements/UpdatedElements/64x64_base_button_disabled.png" id="3_4lh54"]
+[ext_resource type="Texture2D" uid="uid://sbpi82l8te42" path="res://Assets/UI Elements/UpdatedElements/64_64_base_button_normal.png" id="1_rsxkj"]
+[ext_resource type="Texture2D" uid="uid://bkrry73mfw3sp" path="res://Assets/UI Elements/UpdatedElements/64x64_base_button_hover.png" id="2_agp7c"]
+[ext_resource type="Texture2D" uid="uid://c05gbtyyt0v5" path="res://Assets/UI Elements/UpdatedElements/64_64_base_button_pressed.png" id="2_otnuk"]
+[ext_resource type="Texture2D" uid="uid://b1n348ydliged" path="res://Assets/UI Elements/UpdatedElements/64x64_base_button_disabled.png" id="3_4lh54"]
 [ext_resource type="Script" path="res://Entities/CraftDefinition/UI_Elements/IngredientButton.gd" id="5_mvguo"]
 
 [node name="IngredientButton" type="TextureButton"]

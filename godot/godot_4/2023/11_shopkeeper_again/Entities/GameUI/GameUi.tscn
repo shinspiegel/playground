@@ -1,9 +1,8 @@
-[gd_scene load_steps=15 format=3 uid="uid://cpvv3jnlwq2qf"]
+[gd_scene load_steps=14 format=3 uid="uid://cpvv3jnlwq2qf"]
 
 [ext_resource type="Script" path="res://Entities/GameUI/GameUi.gd" id="1_50x7v"]
-[ext_resource type="Texture2D" uid="uid://chngdrnnvacup" path="res://Assets/UI Elements/Download/GUI.png" id="2_bs57i"]
+[ext_resource type="Texture2D" uid="uid://b78lgpxvmun08" path="res://Assets/UI Elements/Download/GUI.png" id="2_bs57i"]
 [ext_resource type="Resource" uid="uid://bst3hk2ql5uhn" path="res://Resources/PlayerData/PlayerData.tres" id="2_relme"]
-[ext_resource type="Texture2D" uid="uid://fef06hwnflmx" path="res://Assets/icon.svg" id="4_lb807"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_m6dn5"]
 load_path = "res://.godot/imported/GUI.png-80eaddc7cb35c6309d29128d7420e8c0.ctex"
@@ -155,20 +154,17 @@ grow_vertical = 0
 [node name="HotbarZero" type="TextureRect" parent="MarginContainer/HotbarArea/EquipamentIcons"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
-texture = ExtResource("4_lb807")
 expand_mode = 4
 stretch_mode = 5
 
 [node name="HotbarOne" type="TextureRect" parent="MarginContainer/HotbarArea/EquipamentIcons"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
-texture = ExtResource("4_lb807")
 expand_mode = 4
 stretch_mode = 5
 
 [node name="HotbarTwo" type="TextureRect" parent="MarginContainer/HotbarArea/EquipamentIcons"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
-texture = ExtResource("4_lb807")
 expand_mode = 4
 stretch_mode = 5

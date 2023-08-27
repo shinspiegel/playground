@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://btqan1boilcq7"]
+[gd_scene load_steps=6 format=3 uid="uid://btqan1boilcq7"]
 
-[ext_resource type="Texture2D" uid="uid://btp3awfrqupp0" path="res://Assets/UI Elements/UpdatedElements/256x64_base_button_normal.png" id="1_vbt26"]
-[ext_resource type="Texture2D" uid="uid://cdro4qpjkxfo6" path="res://Assets/UI Elements/UpdatedElements/256x64_base_button_hover.png" id="2_qet6o"]
+[ext_resource type="Texture2D" uid="uid://du7sb35xdskp1" path="res://Assets/UI Elements/UpdatedElements/256x64_base_button_normal.png" id="1_vbt26"]
+[ext_resource type="Texture2D" uid="uid://bx1jtd4bagqmp" path="res://Assets/UI Elements/UpdatedElements/256x64_base_button_hover.png" id="2_qet6o"]
+[ext_resource type="Texture2D" uid="uid://dwir66wa3htkq" path="res://Assets/UI Elements/UpdatedElements/256x64_base_button_pressed.png" id="2_s2x0g"]
 [ext_resource type="Script" path="res://Entities/CraftDefinition/UI_Elements/CraftRecipeButton.gd" id="3_vcjw2"]
+[ext_resource type="Texture2D" uid="uid://ds72g6qllyfgh" path="res://Assets/UI Elements/UpdatedElements/256x64_base_button_disabled.png" id="4_uvkt8"]
 
 [node name="RecipeButton" type="TextureButton"]
 custom_minimum_size = Vector2(2.08165e-12, 64)
@@ -18,7 +20,9 @@ offset_bottom = 32.0
 grow_horizontal = 2
 grow_vertical = 2
 texture_normal = ExtResource("1_vbt26")
+texture_pressed = ExtResource("2_s2x0g")
 texture_hover = ExtResource("2_qet6o")
+texture_disabled = ExtResource("4_uvkt8")
 texture_focused = ExtResource("2_qet6o")
 script = ExtResource("3_vcjw2")
 
