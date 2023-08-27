@@ -8,6 +8,7 @@ class_name ExplosiveItem extends InteractableObject
 
 
 func _ready() -> void:
+	super._ready()
 	timer.timeout.connect(on_timeout)
 
 
@@ -23,4 +24,5 @@ func set_item(value: InventoryBomb) -> void:
 
 
 func on_timeout() -> void:
-	print_debug("Exploded!")
+	print_debug("Spawn explosion")
+	queue_free()

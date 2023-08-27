@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dc2mak0ecqf45"]
+[gd_scene load_steps=13 format=3 uid="uid://dc2mak0ecqf45"]
 
 [ext_resource type="PackedScene" uid="uid://1sgnnal1cpka" path="res://Entities/InteractableObjects/InteractableObject.tscn" id="1_sualf"]
 [ext_resource type="Script" path="res://Entities/InteractableObjects/ExplosiveItem/ExplosiveItem.gd" id="2_wuw3x"]
@@ -19,6 +19,68 @@ shader_parameter/line_thickness = 1.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mm7ih"]
 radius = 36.0
+
+[sub_resource type="Animation" id="Animation_dsfe7"]
+resource_name = "anim"
+length = 3.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2, 2.1, 2.2, 2.3, 2.4, 2.5, 2.6, 2.7, 2.8, 2.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -72), Vector2(0, -80), Vector2(2.08165e-12, -64), Vector2(-8, -72), Vector2(8, -72), Vector2(0, -72), Vector2(2.08165e-12, -64), Vector2(-8, -72), Vector2(0, -80), Vector2(8, -72), Vector2(2.08165e-12, -64), Vector2(-8, -72), Vector2(8, -72), Vector2(0, -80), Vector2(0, -72), Vector2(0, -80), Vector2(2.08165e-12, -64), Vector2(-8, -72), Vector2(8, -72), Vector2(0, -72), Vector2(2.08165e-12, -64), Vector2(-8, -72), Vector2(0, -80), Vector2(8, -72), Vector2(2.08165e-12, -64), Vector2(-8, -72), Vector2(8, -72), Vector2(0, -80), Vector2(0, -72), Vector2(8, -72)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:scale")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 1, 1.8, 2, 2.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(4, 4), Vector2(3.8, 3.8), Vector2(4.4, 4.4), Vector2(4, 4), Vector2(3.8, 3.8), Vector2(4.4, 4.4)]
+}
+
+[sub_resource type="Animation" id="Animation_a1isu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -72)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(4, 4)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mma3c"]
+_data = {
+"RESET": SubResource("Animation_a1isu"),
+"anim": SubResource("Animation_dsfe7")
+}
 
 [node name="ExplosiveItem" instance=ExtResource("1_sualf")]
 script = ExtResource("2_wuw3x")
@@ -41,3 +103,9 @@ shape = SubResource("CircleShape2D_mm7ih")
 
 [node name="Timer" type="Timer" parent="." index="3"]
 one_shot = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="4"]
+autoplay = "anim"
+libraries = {
+"": SubResource("AnimationLibrary_mma3c")
+}
