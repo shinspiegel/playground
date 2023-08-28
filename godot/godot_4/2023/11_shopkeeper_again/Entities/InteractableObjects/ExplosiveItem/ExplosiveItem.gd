@@ -1,7 +1,6 @@
 class_name ExplosiveItem extends InteractableObject
 
 @export_group("Explosive Item")
-@export var player_data: PlayerData
 @export var item: InventoryBomb
 
 @onready var timer: Timer = $Timer
@@ -13,7 +12,7 @@ func _ready() -> void:
 
 
 func _on_interact() -> void:
-	player_data.add_to_inventory(item)
+	PlayerData.add_to_inventory(item)
 	queue_free()
 
 

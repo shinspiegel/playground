@@ -1,11 +1,11 @@
 class_name Player extends CharacterBody2D
 
 @export var game_camera: Camera2D
-@export var player_data: PlayerData
 
 @onready var interactor: Interactor = $Interactor
 @onready var camera_mount: RemoteTransform2D = $CameraMount
 @onready var animation_tree: AnimationTree = $AnimationTree
+@onready var effects: Node = $Effects
 
 var __dir: Vector2 = Vector2.ZERO
 
@@ -30,9 +30,9 @@ func on_option_press() -> void:
 func on_action_press(action: String) -> void:
 	match action:
 		PlayerInput.CROSS: __check_for_interaction()
-		PlayerInput.SQUARE: player_data.use_hotbar_item(PlayerData.HOTBAR.zero, global_position)
-		PlayerInput.TRIANGLE: player_data.use_hotbar_item(PlayerData.HOTBAR.one, global_position)
-		PlayerInput.CIRCLE: player_data.use_hotbar_item(PlayerData.HOTBAR.two, global_position)
+		PlayerInput.SQUARE: PlayerData.use_hotbar_item(PlayerData.HOTBAR.ZERO, global_position)
+		PlayerInput.TRIANGLE: PlayerData.use_hotbar_item(PlayerData.HOTBAR.ONE, global_position)
+		PlayerInput.CIRCLE: PlayerData.use_hotbar_item(PlayerData.HOTBAR.TWO, global_position)
 
 
 func __update_dir() -> void:
@@ -41,9 +41,9 @@ func __update_dir() -> void:
 
 func __apply_direction() -> void:
 	if __dir: 
-		velocity = __dir * player_data.stat_speed
+		velocity = __dir * PlayerData.stat_speed
 	else: 
-		velocity = velocity.move_toward(Vector2.ZERO, player_data.stat_speed)
+		velocity = velocity.move_toward(Vector2.ZERO, PlayerData.stat_speed)
 
 
 func __apply_animation() -> void:

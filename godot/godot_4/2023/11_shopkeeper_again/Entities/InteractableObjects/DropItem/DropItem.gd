@@ -1,12 +1,11 @@
 class_name DropItem extends InteractableObject
 
 @export_group("Drop Item")
-@export var player_data: PlayerData
 @export var item: InventoryItem
 
 
 func _on_interact() -> void:
-	player_data.add_to_inventory(item)
+	PlayerData.add_to_inventory(item)
 	queue_free()
 
 

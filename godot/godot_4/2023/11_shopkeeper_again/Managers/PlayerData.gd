@@ -1,6 +1,6 @@
-class_name PlayerData extends Resource
+extends Node
 
-enum HOTBAR { zero, one, two }
+enum HOTBAR { ZERO, ONE, TWO }
 
 signal health_changed()
 signal inventory_changed()
@@ -10,7 +10,7 @@ signal hotbar_changed()
 @export var health_max: int = 20
 @export var health_current: int = 20
 
-@export_group("stats", "stat_")
+@export_group("Stats", "stat_")
 @export var stat_speed: float = 500.0
 
 @export_group("Hot Bar", "hotbar_")
@@ -46,9 +46,9 @@ func destroy_item(item: InventoryItem) -> void:
 
 func set_hotbar(item: InventoryItem, slot: HOTBAR) -> void:
 	match slot:
-		HOTBAR.zero: hotbar_zero = item
-		HOTBAR.one: hotbar_one = item
-		HOTBAR.two: hotbar_two = item
+		HOTBAR.ZERO: hotbar_zero = item
+		HOTBAR.ONE: hotbar_one = item
+		HOTBAR.TWO: hotbar_two = item
 	
 	hotbar_changed.emit()
 
@@ -57,9 +57,9 @@ func use_hotbar_item(slot: HOTBAR, pos: Vector2 = Vector2.ZERO) -> void:
 	var item: InventoryItem
 	
 	match slot:
-		HOTBAR.zero: item = hotbar_zero
-		HOTBAR.one: item = hotbar_one
-		HOTBAR.two: item = hotbar_two
+		HOTBAR.ZERO: item = hotbar_zero
+		HOTBAR.ONE: item = hotbar_one
+		HOTBAR.TWO: item = hotbar_two
 	
 	if item:
 		if item is InventoryBomb:
@@ -74,10 +74,13 @@ func use_hotbar_item(slot: HOTBAR, pos: Vector2 = Vector2.ZERO) -> void:
 
 
 func __auto_update_hotbar(item: InventoryItem) -> void:
-	if not hotbar_zero: return set_hotbar(item, HOTBAR.zero) 
-	if not hotbar_one: return set_hotbar(item, HOTBAR.one)
-	if not hotbar_two: return set_hotbar(item, HOTBAR.two)
+	if not hotbar_zero: 
+		set_hotbar(item, HOTBAR.ZERO) 
+	elif not hotbar_one: 
+		set_hotbar(item, HOTBAR.ONE)
+	elif not hotbar_two: 
+		set_hotbar(item, HOTBAR.TWO)
 
 
 func __use_potion_resource(item: InventoryPotion) -> void:
-	print_debug("Warn::Usage of resource [%s]" % [item])
+	print("Potion used::[%s]" % [item])

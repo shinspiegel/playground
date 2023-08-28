@@ -4,7 +4,6 @@ const inventory_item = preload("res://Entities/CraftDefinition/UI_Elements/Ingre
 
 signal item_selected(node: Control, item: InventoryItem)
 
-@export var player_data: PlayerData
 @export var item: InventoryItem
 
 @onready var back: Button = $Back
@@ -31,15 +30,15 @@ func on_option_pressed() -> void:
 
 
 func on_square_press() -> void:
-	if item: player_data.set_hotbar(item, PlayerData.HOTBAR.zero)
+	if item: PlayerData.set_hotbar(item, PlayerData.HOTBAR.ZERO)
 
 
 func on_triangle_press() -> void:
-	if item: player_data.set_hotbar(item, PlayerData.HOTBAR.one)
+	if item: PlayerData.set_hotbar(item, PlayerData.HOTBAR.ONE)
 
 
 func on_circle_press() -> void:
-	if item: player_data.set_hotbar(item, PlayerData.HOTBAR.two)
+	if item: PlayerData.set_hotbar(item, PlayerData.HOTBAR.TWO)
 
 
 func __clean_grid() -> void:
@@ -50,7 +49,7 @@ func __clean_grid() -> void:
 
 
 func __update_grid_container() -> void:
-	for entry in player_data.inventory:
+	for entry in PlayerData.inventory:
 		var node = inventory_item.instantiate()
 		node.icon = entry.icon
 		node.pressed.connect(func(): item_selected.emit(node, entry))

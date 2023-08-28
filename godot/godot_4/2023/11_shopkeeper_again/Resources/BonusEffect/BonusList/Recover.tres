@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="BonusEffect" load_steps=2 format=3 uid="uid://dw7dtkxcttigl"]
+
+[ext_resource type="Script" path="res://Resources/BonusEffect/BonusEffect.gd" id="1_y5bxo"]
+
+[resource]
+script = ExtResource("1_y5bxo")
+property = "health_current"
+amount = 3.0

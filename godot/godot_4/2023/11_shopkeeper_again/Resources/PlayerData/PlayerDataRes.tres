@@ -1,7 +1,7 @@
-[gd_resource type="Resource" script_class="PlayerData" load_steps=7 format=3 uid="uid://bst3hk2ql5uhn"]
+[gd_resource type="Resource" script_class="PlayerDataRes" load_steps=7 format=3 uid="uid://bst3hk2ql5uhn"]
 
 [ext_resource type="Resource" uid="uid://cq8yt7rsa066o" path="res://Resources/InventoryItems/Ingredients/Coal.tres" id="1_flmjg"]
-[ext_resource type="Script" path="res://Resources/PlayerData/PlayerData.gd" id="1_xqemp"]
+[ext_resource type="Script" path="res://Resources/PlayerData/PlayerDataRes.gd" id="1_xqemp"]
 [ext_resource type="Resource" uid="uid://dyk2ts0r04l0b" path="res://Resources/InventoryItems/Ingredients/BasePotion.tres" id="2_nivvn"]
 [ext_resource type="Resource" uid="uid://bpyy3qw5m1ogf" path="res://Resources/InventoryItems/Ingredients/Cristal.tres" id="2_t58gw"]
 [ext_resource type="Resource" uid="uid://cnkwn05bvcfqm" path="res://Resources/InventoryItems/Ingredients/BombBase.tres" id="3_xbf83"]
@@ -11,6 +11,7 @@
 script = ExtResource("1_xqemp")
 health_max = 20
 health_current = 10
+stat_speed = 500.0
 hotbar_zero = ExtResource("3_xbf83")
 hotbar_one = ExtResource("1_flmjg")
 hotbar_two = ExtResource("2_nivvn")

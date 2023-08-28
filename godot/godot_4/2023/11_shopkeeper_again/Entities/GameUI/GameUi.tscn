@@ -1,8 +1,7 @@
-[gd_scene load_steps=14 format=3 uid="uid://cpvv3jnlwq2qf"]
+[gd_scene load_steps=13 format=3 uid="uid://cpvv3jnlwq2qf"]
 
 [ext_resource type="Script" path="res://Entities/GameUI/GameUi.gd" id="1_50x7v"]
 [ext_resource type="Texture2D" uid="uid://b78lgpxvmun08" path="res://Assets/UI Elements/Download/GUI.png" id="2_bs57i"]
-[ext_resource type="Resource" uid="uid://bst3hk2ql5uhn" path="res://Resources/PlayerData/PlayerData.tres" id="2_relme"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_m6dn5"]
 load_path = "res://.godot/imported/GUI.png-80eaddc7cb35c6309d29128d7420e8c0.ctex"
@@ -47,7 +46,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_50x7v")
-player_data = ExtResource("2_relme")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1

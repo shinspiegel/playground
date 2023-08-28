@@ -1,0 +1,17 @@
+[gd_scene load_steps=8 format=3 uid="uid://cvkahguh11chr"]
+
+[ext_resource type="Script" path="res://Managers/PlayerData.gd" id="1_omy0t"]
+[ext_resource type="Resource" uid="uid://dahtyilgir1g0" path="res://Resources/InventoryItems/Ingredients/SamplePotion.tres" id="2_7kssk"]
+[ext_resource type="Resource" uid="uid://cnkwn05bvcfqm" path="res://Resources/InventoryItems/Ingredients/BombBase.tres" id="3_c1srb"]
+[ext_resource type="Resource" uid="uid://cq8yt7rsa066o" path="res://Resources/InventoryItems/Ingredients/Coal.tres" id="4_t06l5"]
+[ext_resource type="Resource" uid="uid://dyk2ts0r04l0b" path="res://Resources/InventoryItems/Ingredients/BasePotion.tres" id="5_r007o"]
+[ext_resource type="Resource" uid="uid://bpyy3qw5m1ogf" path="res://Resources/InventoryItems/Ingredients/Cristal.tres" id="6_rhci2"]
+[ext_resource type="Resource" uid="uid://ci5pi1bu0wmrf" path="res://Resources/InventoryItems/Ingredients/Wood.tres" id="7_rtoda"]
+
+[node name="PlayerData" type="Node"]
+script = ExtResource("1_omy0t")
+health_current = 10
+hotbar_zero = ExtResource("2_7kssk")
+hotbar_one = ExtResource("3_c1srb")
+hotbar_two = ExtResource("4_t06l5")
+inventory = Array[Resource("res://Resources/InventoryItems/InventoryItem.gd")]([ExtResource("5_r007o"), ExtResource("3_c1srb"), ExtResource("4_t06l5"), ExtResource("6_rhci2"), ExtResource("2_7kssk"), ExtResource("7_rtoda")])

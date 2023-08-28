@@ -3,7 +3,6 @@ class_name PlayerInventorySelected extends VBoxContainer
 signal canceled()
 signal dropped_item(item: InventoryItem)
 
-@export var player_data: PlayerData
 @export var item: InventoryItem
 
 @onready var selected_texture: TextureRect = $SelectedTexture
@@ -28,12 +27,12 @@ func set_item(value: InventoryItem) -> void:
 
 func on_drop() -> void:
 	dropped_item.emit(item)
-	player_data.destroy_item(item)
+	PlayerData.destroy_item(item)
 	GameManager.close_inventory()
 
 
 func on_destroy_item() -> void:
-	player_data.destroy_item(item)
+	PlayerData.destroy_item(item)
 	canceled.emit()
 
 

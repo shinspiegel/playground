@@ -9,8 +9,7 @@ region = Rect2(185, 132, 20, 24)
 
 [resource]
 script = ExtResource("1_04huq")
-tick_time = 0.1
-duration = 0.0
+effects = Array[Resource("res://Resources/BonusEffect/BonusEffect.gd")]([])
 item_name = "Sample Potion"
 icon = SubResource("AtlasTexture_pvi31")
 rarity = 0

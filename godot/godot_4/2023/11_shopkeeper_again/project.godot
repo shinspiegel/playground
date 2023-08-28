@@ -20,7 +20,8 @@ config/icon="res://Assets/icon.svg"
 GameManager="*res://Managers/GameManager.tscn"
 SceneManager="*res://Managers/SceneManager.tscn"
 CraftManager="*res://Managers/CraftManager.tscn"
-PlayerInput="*res://Managers/PlayerInput.gd"
+PlayerInput="*res://Managers/PlayerInput.tscn"
+PlayerData="*res://Managers/PlayerData.tscn"
 
 [display]
 
