@@ -22,7 +22,7 @@ func _exit_tree() -> void:
 
 
 func _on_interact() -> void:
-	print_debug("WARN::Not implemeted")
+	print_debug("WARN::Extend this class and implement this method.")
 
 
 func on_focus() -> void:

@@ -1,0 +1,54 @@
+[gd_scene load_steps=11 format=3 uid="uid://bl4x7jgy7tjq1"]
+
+[ext_resource type="PackedScene" uid="uid://1sgnnal1cpka" path="res://Entities/InteractableObjects/InteractableObject.tscn" id="1_rhxut"]
+[ext_resource type="Script" path="res://Entities/InteractableObjects/BreakableLoot/BreakableLoot.gd" id="2_a44hi"]
+[ext_resource type="Texture2D" uid="uid://bb3n7t40etou5" path="res://Assets/Graphics/Pixel-RPG_Prototype_v003/Extras/Shadow.png" id="3_c1kcf"]
+[ext_resource type="Shader" path="res://Shaders/PerfectOutline.gdshader" id="4_0gbtc"]
+[ext_resource type="Texture2D" uid="uid://bexwq1q40ivm2" path="res://Assets/Graphics/Pixel Art Top Down - Basic/Texture/TX Props.png" id="5_7oemd"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6qi5r"]
+atlas = ExtResource("3_c1kcf")
+region = Rect2(10, 21, 12, 4)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hdeei"]
+resource_local_to_scene = true
+shader = ExtResource("4_0gbtc")
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/line_thickness = 1.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2vbsq"]
+atlas = ExtResource("5_7oemd")
+region = Rect2(160, 151, 32, 40)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_r0qp4"]
+radius = 80.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_762xk"]
+radius = 40.0
+height = 112.0
+
+[node name="BreakableLoot" instance=ExtResource("1_rhxut")]
+script = ExtResource("2_a44hi")
+possible_loot = Array[Resource("res://Entities/InteractableObjects/BreakableLoot/BreakableLootEntry.gd")]([])
+
+[node name="Shadow" type="Sprite2D" parent="." index="0"]
+position = Vector2(0, 8)
+scale = Vector2(9.33333, 12)
+texture = SubResource("AtlasTexture_6qi5r")
+
+[node name="Sprite2D" parent="." index="1"]
+material = SubResource("ShaderMaterial_hdeei")
+position = Vector2(0, -48)
+texture = SubResource("AtlasTexture_2vbsq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable" index="0"]
+position = Vector2(0, 16)
+shape = SubResource("CircleShape2D_r0qp4")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." index="3"]
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" index="0"]
+position = Vector2(-5.68434e-14, -16)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_762xk")
