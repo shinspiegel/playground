@@ -7,6 +7,7 @@ signal inventory_opened()
 signal inventory_closed()
 signal item_spawned(item: Resource, pos: Vector2, scene: PackedScene)
 
+
 func open_inventory() -> void:
 	inventory_opened.emit()
 
@@ -21,3 +22,9 @@ func spawn_item(item: InventoryItem, pos: Vector2 = Vector2.ZERO, scene: PackedS
 
 func spawn_bomb(item: InventoryBomb, pos: Vector2 = Vector2.ZERO, scene: PackedScene = bomb_item_scene) -> void:
 	item_spawned.emit(item, pos, scene)
+
+
+func drop_random_item_at(pos: Vector2, list: Array[InventoryItem]) -> void:
+	list.shuffle()
+	var randomized = list[0].duplicate()
+	spawn_item(randomized, pos)

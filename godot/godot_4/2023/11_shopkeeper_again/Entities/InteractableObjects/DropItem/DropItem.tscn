@@ -1,10 +1,12 @@
-[gd_scene load_steps=11 format=3 uid="uid://c4vm5txg8nqpk"]
+[gd_scene load_steps=12 format=3 uid="uid://c4vm5txg8nqpk"]
 
 [ext_resource type="PackedScene" uid="uid://1sgnnal1cpka" path="res://Entities/InteractableObjects/InteractableObject.tscn" id="1_1asd4"]
 [ext_resource type="Script" path="res://Entities/InteractableObjects/DropItem/DropItem.gd" id="2_mkfxf"]
+[ext_resource type="Texture2D" uid="uid://bb3n7t40etou5" path="res://Assets/Graphics/Pixel-RPG_Prototype_v003/Extras/Shadow.png" id="3_6pqe4"]
 [ext_resource type="Shader" path="res://Shaders/PerfectOutline.gdshader" id="6_vw0xo"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3hbel"]
+atlas = ExtResource("3_6pqe4")
 region = Rect2(10, 21, 12, 4)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8glqg"]
@@ -97,7 +99,6 @@ _data = {
 
 [node name="DropItem" instance=ExtResource("1_1asd4")]
 script = ExtResource("2_mkfxf")
-player_data = null
 item = null
 
 [node name="Shadow" type="Sprite2D" parent="." index="0"]
@@ -113,6 +114,7 @@ position = Vector2(0, -64)
 position = Vector2(0, -43)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable" index="0"]
+visible = false
 position = Vector2(2.08165e-12, 24)
 shape = SubResource("CircleShape2D_76ax6")
 

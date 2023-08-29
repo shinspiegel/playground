@@ -42,3 +42,13 @@ func on_item_spawn(item: InventoryItem, pos: Vector2, scene: PackedScene) -> voi
 	
 	if node is ExplosiveItem:
 		node.set_item(item)
+	
+	var tween = get_tree().create_tween().set_ease(Tween.EASE_OUT)
+	tween.tween_property(
+		node, 
+		"global_position", 
+		Vector2(pos.x + randf_range(-20, 20), pos.y + randf_range(-20, 20)), 
+		0.3,
+	)
+	tween.play()
+

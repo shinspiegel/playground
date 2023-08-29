@@ -87,7 +87,7 @@ func on_effect_trigger(effect: BonusEffect) -> void:
 	match effect.affect_type:
 		"add":
 			match effect.property:
-				"health_current": change_health_by(effect.amount)
+				"health_current": change_health_by(floor(effect.amount))
 		"set":
 			pass
 		_:

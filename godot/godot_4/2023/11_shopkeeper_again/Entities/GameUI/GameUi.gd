@@ -20,7 +20,7 @@ func on_health_change() -> void:
 	
 	var tween = get_tree().create_tween()
 	tween.set_ease(Tween.EASE_OUT)
-	tween.tween_property(texture_progress_bar, "value", PlayerData.health_current, 1)
+	tween.tween_property(texture_progress_bar, "value", PlayerData.health_current, 0.3)
 	tween.play()
 
 
