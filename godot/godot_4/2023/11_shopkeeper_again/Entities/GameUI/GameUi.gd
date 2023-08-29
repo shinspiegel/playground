@@ -8,18 +8,24 @@ extends Control
 
 
 func _ready() -> void:
-	PlayerData.health_changed.connect(update_health)
-	PlayerData.hotbar_changed.connect(update_hotbar_icons)
-	update_health()
-	update_hotbar_icons()
+	PlayerData.health_changed.connect(on_health_change)
+	PlayerData.hotbar_changed.connect(on_hotbar_changed)
+	__set_progress_bar_initial()
+	on_hotbar_changed()
 
 
-func update_health() -> void:
-	texture_progress_bar.value = get_player_ratio()
+func on_health_change() -> void:
+	texture_progress_bar.max_value = PlayerData.health_max
 	label.text = "%s/%s" % [PlayerData.health_current, PlayerData.health_max]
+	
+	var tween = get_tree().create_tween()
+	tween.set_ease(Tween.EASE_OUT)
+	tween.tween_property(texture_progress_bar, "value", PlayerData.health_current, 1)
+	tween.play()
 
 
-func update_hotbar_icons() -> void:
+
+func on_hotbar_changed() -> void:
 	if PlayerData.hotbar_zero:
 		hotbar_zero.texture = PlayerData.hotbar_zero.icon
 	else: 
@@ -36,5 +42,7 @@ func update_hotbar_icons() -> void:
 		hotbar_two.texture = null
 
 
-func get_player_ratio() -> float:
-	return float(PlayerData.health_current) / float(PlayerData.health_max)
+func __set_progress_bar_initial() -> void:
+	texture_progress_bar.max_value = PlayerData.health_max
+	texture_progress_bar.value = PlayerData.health_current
+	label.text = "%s/%s" % [PlayerData.health_current, PlayerData.health_max]

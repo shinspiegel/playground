@@ -1,7 +1,9 @@
-[gd_resource type="Resource" script_class="InventoryPotion" load_steps=4 format=3 uid="uid://dahtyilgir1g0"]
+[gd_resource type="Resource" script_class="InventoryPotion" load_steps=6 format=3 uid="uid://dahtyilgir1g0"]
 
 [ext_resource type="Script" path="res://Resources/InventoryItems/InventoryPotion.gd" id="1_04huq"]
+[ext_resource type="Resource" uid="uid://dw7dtkxcttigl" path="res://Resources/BonusEffect/BonusList/Recover.tres" id="1_661x5"]
 [ext_resource type="Texture2D" uid="uid://c5v37rowtq7m" path="res://Assets/Graphics/Icons/Food_Microwave.png" id="1_mrclm"]
+[ext_resource type="Resource" uid="uid://c1a1kxhcbyru6" path="res://Resources/BonusEffect/BonusList/QuickRecover.tres" id="2_ahi2w"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pvi31"]
 atlas = ExtResource("1_mrclm")
@@ -9,7 +11,7 @@ region = Rect2(185, 132, 20, 24)
 
 [resource]
 script = ExtResource("1_04huq")
-effects = Array[Resource("res://Resources/BonusEffect/BonusEffect.gd")]([])
+effects = Array[Resource("res://Resources/BonusEffect/BonusEffect.gd")]([ExtResource("1_661x5"), ExtResource("2_ahi2w")])
 item_name = "Sample Potion"
 icon = SubResource("AtlasTexture_pvi31")
 rarity = 0

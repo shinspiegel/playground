@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="BonusEffect" load_steps=2 format=3 uid="uid://c1a1kxhcbyru6"]
+
+[ext_resource type="Script" path="res://Resources/BonusEffect/BonusEffect.gd" id="1_qamg1"]
+
+[resource]
+script = ExtResource("1_qamg1")
+property = "health_current"
+amount = 3.0
+duration = 0.0
+tick = 0.0
