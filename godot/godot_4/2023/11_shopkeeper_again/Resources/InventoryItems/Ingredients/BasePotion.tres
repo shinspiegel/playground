@@ -1,8 +1,9 @@
-[gd_resource type="Resource" script_class="InventoryPotion" load_steps=5 format=3 uid="uid://dyk2ts0r04l0b"]
+[gd_resource type="Resource" script_class="InventoryPotion" load_steps=6 format=3 uid="uid://dyk2ts0r04l0b"]
 
 [ext_resource type="Script" path="res://Resources/InventoryItems/InventoryPotion.gd" id="1_7opt0"]
 [ext_resource type="Resource" uid="uid://dw7dtkxcttigl" path="res://Resources/BonusEffect/BonusList/Recover.tres" id="1_8awk1"]
 [ext_resource type="Texture2D" uid="uid://c5v37rowtq7m" path="res://Assets/Graphics/Icons/Food_Microwave.png" id="1_10r8q"]
+[ext_resource type="PhysicsMaterial" uid="uid://xl2yyw1wnge8" path="res://Resources/InventoryItems/base_physics_material.tres" id="4_c6fkw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_oknvj"]
 atlas = ExtResource("1_10r8q")
@@ -14,3 +15,7 @@ effects = Array[Resource("res://Resources/BonusEffect/BonusEffect.gd")]([ExtReso
 item_name = "Base Potion"
 icon = SubResource("AtlasTexture_oknvj")
 rarity = 0
+spawn_force = 300.0
+spawn_direction = Vector2(0, 0)
+spawn_damp = 10.0
+spawn_physics_material = ExtResource("4_c6fkw")

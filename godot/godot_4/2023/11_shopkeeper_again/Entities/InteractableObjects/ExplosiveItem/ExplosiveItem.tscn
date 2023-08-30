@@ -1,11 +1,13 @@
-[gd_scene load_steps=13 format=3 uid="uid://dc2mak0ecqf45"]
+[gd_scene load_steps=14 format=3 uid="uid://dc2mak0ecqf45"]
 
 [ext_resource type="PackedScene" uid="uid://1sgnnal1cpka" path="res://Entities/InteractableObjects/InteractableObject.tscn" id="1_sualf"]
 [ext_resource type="Script" path="res://Entities/InteractableObjects/ExplosiveItem/ExplosiveItem.gd" id="2_wuw3x"]
 [ext_resource type="Shader" path="res://Shaders/PerfectOutline.gdshader" id="2_xsd7y"]
-[ext_resource type="Resource" uid="uid://rbxuhrj8jfmg" path="res://Resources/Recipes/BaseCraftDefinition.tres" id="3_6exa4"]
 [ext_resource type="Texture2D" uid="uid://bb3n7t40etou5" path="res://Assets/Graphics/Pixel-RPG_Prototype_v003/Extras/Shadow.png" id="3_ni1nm"]
 [ext_resource type="Texture2D" uid="uid://clo5c36832ec" path="res://Assets/Graphics/16x16_base_item.png" id="5_ap2se"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_jfixw"]
+bounce = 0.5
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sscry"]
 atlas = ExtResource("3_ni1nm")
@@ -19,6 +21,9 @@ shader_parameter/line_thickness = 1.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mm7ih"]
 radius = 36.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ce8f6"]
+radius = 21.0238
 
 [sub_resource type="Animation" id="Animation_a1isu"]
 length = 0.001
@@ -83,11 +88,12 @@ _data = {
 }
 
 [node name="ExplosiveItem" instance=ExtResource("1_sualf")]
+physics_material_override = SubResource("PhysicsMaterial_jfixw")
 script = ExtResource("2_wuw3x")
-player_data = ExtResource("3_6exa4")
 item = null
 
 [node name="Shadow" type="Sprite2D" parent="." index="0"]
+texture_filter = 1
 position = Vector2(2.08165e-12, -19)
 scale = Vector2(4, 4)
 texture = SubResource("AtlasTexture_sscry")
@@ -101,10 +107,14 @@ texture = ExtResource("5_ap2se")
 position = Vector2(0, -20)
 shape = SubResource("CircleShape2D_mm7ih")
 
-[node name="Timer" type="Timer" parent="." index="3"]
+[node name="CollisionShape2D" parent="." index="3"]
+position = Vector2(0, -20)
+shape = SubResource("CircleShape2D_ce8f6")
+
+[node name="Timer" type="Timer" parent="." index="4"]
 one_shot = true
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="4"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="5"]
 autoplay = "anim"
 libraries = {
 "": SubResource("AnimationLibrary_mma3c")

@@ -37,18 +37,15 @@ func on_item_spawn(item: InventoryItem, pos: Vector2, scene: PackedScene) -> voi
 	
 	node.global_position = pos
 	
+	if node is InteractableObject:
+		node.set_physics_material_override(item.spawn_physics_material)
+		node.set_linear_damp(item.spawn_damp)
+		node.apply_impulse(item.spawn_force * item.spawn_direction)
+	
 	if node is DropItem:
 		node.set_item(item)
 	
 	if node is ExplosiveItem:
 		node.set_item(item)
 	
-	var tween = get_tree().create_tween().set_ease(Tween.EASE_OUT)
-	tween.tween_property(
-		node, 
-		"global_position", 
-		Vector2(pos.x + randf_range(-20, 20), pos.y + randf_range(-20, 20)), 
-		0.3,
-	)
-	tween.play()
 

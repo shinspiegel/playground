@@ -1,9 +1,13 @@
-[gd_scene load_steps=12 format=3 uid="uid://c4vm5txg8nqpk"]
+[gd_scene load_steps=16 format=3 uid="uid://c4vm5txg8nqpk"]
 
 [ext_resource type="PackedScene" uid="uid://1sgnnal1cpka" path="res://Entities/InteractableObjects/InteractableObject.tscn" id="1_1asd4"]
 [ext_resource type="Script" path="res://Entities/InteractableObjects/DropItem/DropItem.gd" id="2_mkfxf"]
 [ext_resource type="Texture2D" uid="uid://bb3n7t40etou5" path="res://Assets/Graphics/Pixel-RPG_Prototype_v003/Extras/Shadow.png" id="3_6pqe4"]
+[ext_resource type="Texture2D" uid="uid://bsk6kcjurrn2h" path="res://Assets/Graphics/Items/16x16_base_item.png" id="5_ivq7i"]
 [ext_resource type="Shader" path="res://Shaders/PerfectOutline.gdshader" id="6_vw0xo"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_0txn4"]
+bounce = 0.5
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3hbel"]
 atlas = ExtResource("3_6pqe4")
@@ -15,8 +19,15 @@ shader = ExtResource("6_vw0xo")
 shader_parameter/line_color = Color(1, 1, 1, 1)
 shader_parameter/line_thickness = 1.0
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_nj5i6"]
+atlas = ExtResource("5_ivq7i")
+region = Rect2(0, 0, 16, 16)
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_76ax6"]
 radius = 48.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_x5b41"]
+radius = 26.0192
 
 [sub_resource type="Animation" id="Animation_o4h8v"]
 length = 0.001
@@ -98,10 +109,15 @@ _data = {
 }
 
 [node name="DropItem" instance=ExtResource("1_1asd4")]
+collision_layer = 16
+collision_mask = 4
+physics_material_override = SubResource("PhysicsMaterial_0txn4")
 script = ExtResource("2_mkfxf")
 item = null
+power = 300.0
 
 [node name="Shadow" type="Sprite2D" parent="." index="0"]
+texture_filter = 1
 position = Vector2(2.08165e-12, -19)
 scale = Vector2(4, 4)
 texture = SubResource("AtlasTexture_3hbel")
@@ -109,16 +125,20 @@ texture = SubResource("AtlasTexture_3hbel")
 [node name="Sprite2D" parent="." index="1"]
 material = SubResource("ShaderMaterial_8glqg")
 position = Vector2(0, -64)
+texture = SubResource("AtlasTexture_nj5i6")
 
 [node name="Interactable" parent="." index="2"]
 position = Vector2(0, -43)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable" index="0"]
-visible = false
 position = Vector2(2.08165e-12, 24)
 shape = SubResource("CircleShape2D_76ax6")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="3"]
+[node name="CollisionShape2D" parent="." index="3"]
+position = Vector2(0, -19)
+shape = SubResource("CircleShape2D_x5b41")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="4"]
 autoplay = "drop_item_animation"
 libraries = {
 "": SubResource("AnimationLibrary_kqvtp")

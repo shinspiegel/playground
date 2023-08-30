@@ -5,6 +5,7 @@
 [resource]
 script = ExtResource("1_y5bxo")
 property = "health_current"
+affect_type = "add"
 amount = 1.0
 duration = 3.0
 tick = 0.5

@@ -1,9 +1,10 @@
-[gd_resource type="Resource" script_class="InventoryPotion" load_steps=6 format=3 uid="uid://dahtyilgir1g0"]
+[gd_resource type="Resource" script_class="InventoryPotion" load_steps=7 format=3 uid="uid://dahtyilgir1g0"]
 
 [ext_resource type="Script" path="res://Resources/InventoryItems/InventoryPotion.gd" id="1_04huq"]
 [ext_resource type="Resource" uid="uid://dw7dtkxcttigl" path="res://Resources/BonusEffect/BonusList/Recover.tres" id="1_661x5"]
 [ext_resource type="Texture2D" uid="uid://c5v37rowtq7m" path="res://Assets/Graphics/Icons/Food_Microwave.png" id="1_mrclm"]
 [ext_resource type="Resource" uid="uid://c1a1kxhcbyru6" path="res://Resources/BonusEffect/BonusList/QuickRecover.tres" id="2_ahi2w"]
+[ext_resource type="PhysicsMaterial" uid="uid://xl2yyw1wnge8" path="res://Resources/InventoryItems/base_physics_material.tres" id="5_27vf3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pvi31"]
 atlas = ExtResource("1_mrclm")
@@ -15,3 +16,7 @@ effects = Array[Resource("res://Resources/BonusEffect/BonusEffect.gd")]([ExtReso
 item_name = "Sample Potion"
 icon = SubResource("AtlasTexture_pvi31")
 rarity = 0
+spawn_force = 300.0
+spawn_direction = Vector2(0, 0)
+spawn_damp = 10.0
+spawn_physics_material = ExtResource("5_27vf3")

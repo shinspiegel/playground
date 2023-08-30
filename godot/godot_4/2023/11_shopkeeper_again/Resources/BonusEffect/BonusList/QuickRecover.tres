@@ -5,6 +5,7 @@
 [resource]
 script = ExtResource("1_qamg1")
 property = "health_current"
+affect_type = "add"
 amount = 3.0
 duration = 0.0
 tick = 0.0

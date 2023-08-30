@@ -99,6 +99,7 @@ func on_effect_ended(effect: BonusEffect) -> void:
 
 
 func __use_bomb(item: InventoryBomb, pos: Vector2) -> void:
+	item.spawn_direction = PlayerInput.facing.normalized()
 	GameManager.spawn_bomb(item, pos)
 	destroy_item(item)
 
@@ -123,6 +124,7 @@ func __use_potion(item: InventoryPotion) -> void:
 
 
 func __use_inventory(item: InventoryItem, pos: Vector2) -> void:
+	item.spawn_direction = PlayerInput.facing.normalized()
 	GameManager.spawn_item(item, pos)
 	destroy_item(item)
 

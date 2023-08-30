@@ -18,6 +18,7 @@ size = Vector2(192, 64)
 size = Vector2(148, 200)
 
 [node name="Door" instance=ExtResource("1_snf10")]
+freeze = true
 script = ExtResource("1_u4s6g")
 destination = ""
 

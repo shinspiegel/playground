@@ -135,3 +135,11 @@ options={
 2d_physics/layer_2="enemies"
 2d_physics/layer_3="world"
 2d_physics/layer_4="hazards"
+2d_physics/layer_5="items"
+
+[physics]
+
+3d/default_gravity=2.08165e-12
+3d/default_gravity_vector=Vector3(2.08165e-12, 2.08165e-12, 2.08165e-12)
+2d/default_gravity=2.08165e-12
+2d/default_gravity_vector=Vector2(2.08165e-12, 2.08165e-12)

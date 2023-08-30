@@ -1,4 +1,4 @@
-class_name InteractableObject extends Node2D
+class_name InteractableObject extends RigidBody2D
 
 @export_group("Color")
 @export var outline_color: Color = Color(1,1,1)

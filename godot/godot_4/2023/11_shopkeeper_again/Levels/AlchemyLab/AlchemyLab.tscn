@@ -28,7 +28,9 @@ game_camera = NodePath("../../GameCamera")
 
 [node name="CraftStation" parent="SortedObject" index="1" instance=ExtResource("3_0rdn8")]
 position = Vector2(968, 528)
+lock_rotation = false
 
 [node name="Door" parent="SortedObject" index="2" instance=ExtResource("2_p2k0u")]
 position = Vector2(132, 256)
+lock_rotation = false
 destination = "world_map"
