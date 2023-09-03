@@ -5,7 +5,8 @@ class_name Player extends CharacterBody2D
 @onready var interactor: Interactor = $Interactor
 @onready var camera_mount: RemoteTransform2D = $CameraMount
 @onready var animation_tree: AnimationTree = $AnimationTree
-@onready var effects: Node = $Effects
+@onready var damage_receiver: DamageReceiver = $DamageReceiver
+@onready var damage_position: Marker2D = $DamagePosition
 
 var __dir: Vector2 = Vector2.ZERO
 
@@ -14,6 +15,7 @@ func _ready() -> void:
 	camera_mount.remote_path = game_camera.get_path()
 	PlayerInput.options_pressed.connect(on_option_press)
 	PlayerInput.action_pressed.connect(on_action_press)
+	damage_receiver.receive_damage.connect(on_receive_damage)
 
 
 func _physics_process(_delta: float) -> void:
@@ -33,6 +35,11 @@ func on_action_press(action: String) -> void:
 		PlayerInput.SQUARE: PlayerData.use_hotbar_item(PlayerData.HOTBAR.ZERO, global_position)
 		PlayerInput.TRIANGLE: PlayerData.use_hotbar_item(PlayerData.HOTBAR.ONE, global_position)
 		PlayerInput.CIRCLE: PlayerData.use_hotbar_item(PlayerData.HOTBAR.TWO, global_position)
+
+
+func on_receive_damage(dmg: Damage) -> void:
+	GameManager.spawn_damage_number(dmg, damage_position.global_position)
+	PlayerData.apply_damage(dmg)
 
 
 func __update_dir() -> void:

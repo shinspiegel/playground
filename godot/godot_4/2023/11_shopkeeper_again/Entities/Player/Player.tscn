@@ -1,9 +1,14 @@
-[gd_scene load_steps=28 format=3 uid="uid://b55y6h54npqdk"]
+[gd_scene load_steps=30 format=3 uid="uid://b55y6h54npqdk"]
 
 [ext_resource type="Script" path="res://Entities/Player/Player.gd" id="1_ymq7c"]
 [ext_resource type="Texture2D" uid="uid://bb3n7t40etou5" path="res://Assets/Graphics/Pixel-RPG_Prototype_v003/Extras/Shadow.png" id="2_cvtie"]
 [ext_resource type="Texture2D" uid="uid://diafbn5ol2kej" path="res://Assets/Graphics/Protoype_base.png" id="2_yfvtf"]
 [ext_resource type="PackedScene" uid="uid://1nnw4qoibolx" path="res://Entities/Interactives/Interactor.tscn" id="4_ntgkn"]
+[ext_resource type="PackedScene" uid="uid://bvyt7lodnwyh3" path="res://Entities/DamageAreas/DamageReceiver.tscn" id="5_6un0l"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1q2wj"]
+radius = 32.0
+height = 96.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xs1of"]
 radius = 22.0
@@ -241,7 +246,11 @@ collision_mask = 12
 motion_mode = 1
 script = ExtResource("1_ymq7c")
 
-[node name="Effects" type="Node" parent="."]
+[node name="DamageReceiver" parent="." instance=ExtResource("5_6un0l")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageReceiver"]
+position = Vector2(0, -56)
+shape = SubResource("CapsuleShape2D_1q2wj")
 
 [node name="Shadow" type="Sprite2D" parent="."]
 position = Vector2(0, -56)
@@ -280,3 +289,6 @@ active = true
 parameters/blend_position = 0.404511
 parameters/0/blend_position = Vector2(0, 0)
 parameters/1/blend_position = Vector2(-0.00239235, 0.8802)
+
+[node name="DamagePosition" type="Marker2D" parent="."]
+position = Vector2(0, -128)

@@ -4,6 +4,7 @@ class_name ExplosiveItem extends InteractableObject
 @export var item: InventoryBomb
 
 @onready var timer: Timer = $Timer
+@onready var explosion_area: Node2D = $ExplosionArea
 
 
 func _ready() -> void:
@@ -19,9 +20,21 @@ func _on_interact() -> void:
 func set_item(value: InventoryBomb) -> void:
 	item = value
 	sprite_2d.texture = value.icon
-	timer.start(value.time_to_explode)
+	timer.start(value.explosive_time)
+	__apply_explosion_area_effect()
 
 
 func on_timeout() -> void:
-	print_debug("Spawn explosion")
+	GameManager.spawn_explosion(item, global_position)
 	queue_free()
+
+
+func __apply_explosion_area_effect() -> void:
+	var tween = get_tree().create_tween()
+	tween.tween_property(
+		explosion_area, 
+		"scale", 
+		Vector2(item.explosive_area, item.explosive_area), 
+		item.explosive_time
+	)
+	tween.play()

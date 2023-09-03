@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dc2mak0ecqf45"]
+[gd_scene load_steps=15 format=3 uid="uid://dc2mak0ecqf45"]
 
 [ext_resource type="PackedScene" uid="uid://1sgnnal1cpka" path="res://Entities/InteractableObjects/InteractableObject.tscn" id="1_sualf"]
 [ext_resource type="Script" path="res://Entities/InteractableObjects/ExplosiveItem/ExplosiveItem.gd" id="2_wuw3x"]
@@ -87,6 +87,9 @@ _data = {
 "anim": SubResource("Animation_dsfe7")
 }
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_5qmxk"]
+radius = 32.0
+
 [node name="ExplosiveItem" instance=ExtResource("1_sualf")]
 physics_material_override = SubResource("PhysicsMaterial_jfixw")
 script = ExtResource("2_wuw3x")
@@ -119,3 +122,12 @@ autoplay = "anim"
 libraries = {
 "": SubResource("AnimationLibrary_mma3c")
 }
+
+[node name="ExplosionArea" type="Node2D" parent="." index="6"]
+position = Vector2(0, -20)
+metadata/_edit_group_ = true
+
+[node name="Area2D" type="Area2D" parent="ExplosionArea" index="0"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExplosionArea/Area2D" index="0"]
+shape = SubResource("CircleShape2D_5qmxk")

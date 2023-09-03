@@ -9,6 +9,23 @@ enum RARITY {common, uncommon, rare}
 
 @export_group("Spawn Variables", "spawn_")
 @export var spawn_force: float = 100.0
+@export_range(0.0, 1.0, 0.1) var spawn_force_rand_ratio: float = 0.5
 @export var spawn_direction: Vector2 = Vector2.ZERO
 @export var spawn_damp: float = 10.0
 @export var spawn_physics_material: PhysicsMaterial = preload("res://Resources/InventoryItems/base_physics_material.tres")
+
+
+func rand_direction() -> void:
+	spawn_direction = Vector2(randf_range(-1, 1), randf_range(-1, 1)).normalized()
+
+
+## Will use the `spawn_force_rand_ratio` to create the variation amount 
+## based on the `spawn_force`. This will be used as 
+## `force-variation` and `force+variation` for the randf_range function.
+func rand_spawn_force() -> void:
+	var variation_amount = spawn_force * spawn_force_rand_ratio
+	
+	spawn_force = randf_range(
+		spawn_force - variation_amount, 
+		spawn_force + variation_amount
+	)

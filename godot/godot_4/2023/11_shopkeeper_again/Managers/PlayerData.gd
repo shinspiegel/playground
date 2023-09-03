@@ -36,6 +36,10 @@ func change_health_by(value: int) -> void:
 	health_changed.emit()
 
 
+func apply_damage(damage: Damage) -> void: 
+	change_health_by(-damage.amount)
+
+
 func add_to_inventory(item: InventoryItem) -> void:
 	inventory.append(item)
 	__auto_update_hotbar(item)

@@ -54,3 +54,5 @@ format = 2
 
 [node name="SortedObject" type="Node2D" parent="."]
 y_sort_enabled = true
+
+[node name="DamageNumbers" type="Node2D" parent="."]

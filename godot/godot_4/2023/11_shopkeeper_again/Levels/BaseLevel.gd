@@ -4,6 +4,7 @@ class_name BaseLevel extends Node2D
 
 @onready var sorted_object: Node2D = $SortedObject
 @onready var background: Control = $Overlay/Background
+@onready var damage_numbers: Node2D = $DamageNumbers
 
 
 func _ready() -> void:
@@ -11,6 +12,7 @@ func _ready() -> void:
 	GameManager.inventory_opened.connect(on_inventory_opened)
 	GameManager.inventory_closed.connect(on_inventory_closed)
 	GameManager.item_spawned.connect(on_item_spawn)
+	GameManager.damage_spawned.connect(on_damage_spawn)
 
 
 func pause_sorted() -> void:
@@ -34,7 +36,6 @@ func on_inventory_closed() -> void:
 func on_item_spawn(item: InventoryItem, pos: Vector2, scene: PackedScene) -> void:
 	var node = scene.instantiate()
 	sorted_object.add_child(node)
-	
 	node.global_position = pos
 	
 	if node is InteractableObject:
@@ -48,4 +49,12 @@ func on_item_spawn(item: InventoryItem, pos: Vector2, scene: PackedScene) -> voi
 	if node is ExplosiveItem:
 		node.set_item(item)
 	
+	if node is Explosion:
+		node.set_item(item)
 
+
+func on_damage_spawn(damage: Damage, pos: Vector2, scene: PackedScene) -> void:
+	var node: DamageNumber = scene.instantiate()
+	node.damage = damage
+	node.global_position = pos
+	damage_numbers.add_child(node)

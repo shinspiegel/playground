@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://ciwuwbit4xbyg"]
+
+[ext_resource type="Script" path="res://Entities/DamageAreas/DamageInflictor.gd" id="1_f8o3l"]
+
+[node name="DamageInflictor" type="Area2D"]
+script = ExtResource("1_f8o3l")

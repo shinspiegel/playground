@@ -2,6 +2,7 @@ extends BaseLevel
 
 @onready var craft_definition: Control = $Overlay/CraftDefinition
 
+
 func _ready() -> void:
 	super._ready()
 	CraftManager.started.connect(on_craft_start)
