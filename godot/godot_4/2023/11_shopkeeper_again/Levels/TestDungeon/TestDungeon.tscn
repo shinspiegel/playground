@@ -1,18 +1,42 @@
-[gd_scene load_steps=7 format=3 uid="uid://cy8dnauits0qm"]
+[gd_scene load_steps=14 format=3 uid="uid://cy8dnauits0qm"]
 
 [ext_resource type="PackedScene" uid="uid://dhhchbkfgbk7b" path="res://Levels/BaseLevel.tscn" id="1_lbsw2"]
 [ext_resource type="PackedScene" uid="uid://b55y6h54npqdk" path="res://Entities/Player/Player.tscn" id="2_xknu8"]
 [ext_resource type="PackedScene" uid="uid://b7n4t0hc7lufb" path="res://Entities/InteractableObjects/Door/Door.tscn" id="3_fdj60"]
 [ext_resource type="PackedScene" uid="uid://bl4x7jgy7tjq1" path="res://Entities/InteractableObjects/BreakableLoot/BreakableLoot.tscn" id="4_ybtlp"]
+[ext_resource type="Resource" uid="uid://cv5m8ke8ltpni" path="res://Resources/InventoryItems/IngredientsGenerated/CaveCoral.tres" id="5_8a5kk"]
 [ext_resource type="Script" path="res://Resources/InventoryItems/PossibleLoot.gd" id="5_kjqin"]
+[ext_resource type="Resource" uid="uid://lcc674laoase" path="res://Resources/InventoryItems/IngredientsGenerated/AquaOre.tres" id="7_11qwl"]
+[ext_resource type="Resource" uid="uid://doijqb5i72t5h" path="res://Resources/InventoryItems/IngredientsGenerated/FireCore.tres" id="8_t1qj2"]
+[ext_resource type="Resource" uid="uid://bf3bqs8c2rqy3" path="res://Resources/InventoryItems/IngredientsGenerated/AnimalHide.tres" id="9_1wvfy"]
 
 [sub_resource type="Resource" id="Resource_ojekm"]
 script = ExtResource("5_kjqin")
-chance = 0.0
+chance = 0.75
+loot = ExtResource("5_8a5kk")
+
+[sub_resource type="Resource" id="Resource_022tv"]
+script = ExtResource("5_kjqin")
+chance = 0.5
+loot = ExtResource("7_11qwl")
+
+[sub_resource type="Resource" id="Resource_nr4b7"]
+script = ExtResource("5_kjqin")
+chance = 0.4
+loot = ExtResource("8_t1qj2")
+
+[sub_resource type="Resource" id="Resource_cq1st"]
+script = ExtResource("5_kjqin")
+chance = 0.1
+loot = ExtResource("9_1wvfy")
 
 [node name="TestDungeon" instance=ExtResource("1_lbsw2")]
 
+[node name="Background" parent="Overlay" index="1"]
+visible = true
+
 [node name="PlayerInventory" parent="Overlay" index="2" node_paths=PackedStringArray("player")]
+visible = true
 player = NodePath("../../SortedObject/Player")
 
 [node name="BaseTilemap" parent="." index="3"]
@@ -28,4 +52,25 @@ destination = "world_map"
 
 [node name="BreakableLoot" parent="SortedObject" index="2" instance=ExtResource("4_ybtlp")]
 position = Vector2(576, -8)
-possible_loot = Array[ExtResource("5_kjqin")]([SubResource("Resource_ojekm"), null, null, null])
+possible_loot = Array[ExtResource("5_kjqin")]([SubResource("Resource_ojekm"), SubResource("Resource_022tv"), SubResource("Resource_nr4b7"), SubResource("Resource_cq1st")])
+extra_push = 5.0
+
+[node name="BreakableLoot2" parent="SortedObject" index="3" instance=ExtResource("4_ybtlp")]
+position = Vector2(208, 248)
+possible_loot = Array[ExtResource("5_kjqin")]([SubResource("Resource_ojekm"), SubResource("Resource_022tv"), SubResource("Resource_nr4b7"), SubResource("Resource_cq1st")])
+extra_push = 3.0
+
+[node name="BreakableLoot4" parent="SortedObject" index="4" instance=ExtResource("4_ybtlp")]
+position = Vector2(1680, 32)
+possible_loot = Array[ExtResource("5_kjqin")]([SubResource("Resource_ojekm"), SubResource("Resource_022tv"), SubResource("Resource_nr4b7"), SubResource("Resource_cq1st")])
+extra_push = 3.0
+
+[node name="BreakableLoot3" parent="SortedObject" index="5" instance=ExtResource("4_ybtlp")]
+position = Vector2(616, 288)
+possible_loot = Array[ExtResource("5_kjqin")]([SubResource("Resource_ojekm"), SubResource("Resource_022tv"), SubResource("Resource_nr4b7"), SubResource("Resource_cq1st")])
+extra_push = 3.0
+
+[node name="BreakableLoot5" parent="SortedObject" index="6" instance=ExtResource("4_ybtlp")]
+position = Vector2(1672, 1112)
+possible_loot = Array[ExtResource("5_kjqin")]([SubResource("Resource_ojekm"), SubResource("Resource_022tv"), SubResource("Resource_nr4b7"), SubResource("Resource_cq1st")])
+extra_push = 3.0

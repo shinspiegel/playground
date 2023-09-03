@@ -1,8 +1,8 @@
-[gd_resource type="Resource" script_class="InventoryIngredient" load_steps=5 format=3]
+[gd_resource type="Resource" script_class="InventoryIngredient" load_steps=5 format=3 uid="uid://bf3bqs8c2rqy3"]
 
-[ext_resource type="Texture2D" path="res://Assets/Graphics/Items/16x16_base_item.png" id="1_pdy0o"]
+[ext_resource type="Texture2D" uid="uid://bsk6kcjurrn2h" path="res://Assets/Graphics/Items/16x16_base_item.png" id="1_pdy0o"]
 [ext_resource type="Script" path="res://Resources/InventoryItems/InventoryIngredient.gd" id="2_h38k6"]
-[ext_resource type="PhysicsMaterial" path="res://Resources/InventoryItems/base_physics_material.tres" id="3_83bfh"]
+[ext_resource type="PhysicsMaterial" uid="uid://xl2yyw1wnge8" path="res://Resources/InventoryItems/base_physics_material.tres" id="3_83bfh"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_e08ag"]
 atlas = ExtResource("1_pdy0o")
