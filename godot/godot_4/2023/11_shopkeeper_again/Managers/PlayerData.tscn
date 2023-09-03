@@ -11,5 +11,6 @@ health_current = 10
 hotbar_zero = ExtResource("2_7kssk")
 hotbar_one = ExtResource("3_c1srb")
 hotbar_two = ExtResource("4_t06l5")
+inventory = Array[Resource("res://Resources/InventoryItems/InventoryItem.gd")]([ExtResource("2_7kssk"), ExtResource("3_c1srb"), ExtResource("4_t06l5")])
 
 [node name="Effects" type="Node" parent="."]

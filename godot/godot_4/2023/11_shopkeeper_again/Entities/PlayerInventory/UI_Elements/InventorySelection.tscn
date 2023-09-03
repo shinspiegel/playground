@@ -3,26 +3,37 @@
 [ext_resource type="Script" path="res://Entities/PlayerInventory/UI_Elements/InventorySelection.gd" id="1_2oqnr"]
 [ext_resource type="PackedScene" uid="uid://68gjo82w5dh" path="res://Entities/CraftDefinition/UI_Elements/IngredientButton.tscn" id="1_3wdk7"]
 
-[node name="InventorySelection" type="VBoxContainer"]
+[node name="PlayerInventorySelection" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2oqnr")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
 anchors_preset = 13
 anchor_left = 0.5
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -4.0
-offset_right = 4.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 40
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
 theme_override_constants/separation = 20
 alignment = 1
-script = ExtResource("1_2oqnr")
 
-[node name="ScrollContainer" type="ScrollContainer" parent="."]
+[node name="ScrollContainer" type="ScrollContainer" parent="HBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(360, 300)
 layout_mode = 2
 follow_focus = true
 vertical_scroll_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="ScrollContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/VBoxContainer/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -31,14 +42,43 @@ theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="GridContainer" type="GridContainer" parent="ScrollContainer/MarginContainer"]
+[node name="GridContainer" type="GridContainer" parent="HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 columns = 5
 
-[node name="IngredientButton" parent="ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("1_3wdk7")]
+[node name="IngredientButton" parent="HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("1_3wdk7")]
 layout_mode = 2
 
-[node name="Back" type="Button" parent="."]
+[node name="Back" type="Button" parent="HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 64
 text = "Back"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer"]
+clip_contents = true
+custom_minimum_size = Vector2(448, 320)
+layout_mode = 2
+alignment = 1
+
+[node name="ItemName" type="Label" parent="HBoxContainer/VBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "Item Name"
+
+[node name="ItemRarity" type="Label" parent="HBoxContainer/VBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Rarity"
+
+[node name="ItemDescription" type="Label" parent="HBoxContainer/VBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Description of the item.
+With multiline things.
+And a very long phrase that will push the text to the side and will be wrapped to the next line."
+autowrap_mode = 2

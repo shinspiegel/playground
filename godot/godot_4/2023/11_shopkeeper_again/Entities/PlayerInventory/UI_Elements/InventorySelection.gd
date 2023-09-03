@@ -1,4 +1,4 @@
-class_name PlayerInventorySelection extends VBoxContainer
+class_name PlayerInventorySelection extends Control
 
 const inventory_item = preload("res://Entities/CraftDefinition/UI_Elements/IngredientButton.tscn")
 
@@ -6,8 +6,11 @@ signal item_selected(node: Control, item: InventoryItem)
 
 @export var item: InventoryItem
 
-@onready var back: Button = $Back
-@onready var grid_container: GridContainer = $ScrollContainer/MarginContainer/GridContainer
+@onready var back: Button = %Back
+@onready var grid_container: GridContainer = %GridContainer
+@onready var item_name: Label = %ItemName
+@onready var item_rarity: Label = %ItemRarity
+@onready var item_description: Label = %ItemDescription
 
 
 func _ready() -> void:
@@ -41,6 +44,11 @@ func on_circle_press() -> void:
 	if item: PlayerData.set_hotbar(item, PlayerData.HOTBAR.TWO)
 
 
+func on_item_focus(focused_item: InventoryItem) -> void:
+	item = focused_item
+	__update_side_text()
+
+
 func __clean_grid() -> void:
 	for child in grid_container.get_children():
 		# Need to remove on this frame, 
@@ -53,7 +61,7 @@ func __update_grid_container() -> void:
 		var node = inventory_item.instantiate()
 		node.icon = entry.icon
 		node.pressed.connect(func(): item_selected.emit(node, entry))
-		node.focus_entered.connect(func(): item = entry)
+		node.focus_entered.connect(func(): on_item_focus(entry))
 		grid_container.add_child(node)
 
 
@@ -62,3 +70,10 @@ func __initial_selection() -> void:
 		grid_container.get_child(0).grab_focus()
 	else:
 		back.grab_focus()
+
+
+func __update_side_text() -> void:
+	item_name.text = item.get_item_name()
+	item_rarity.text = item.get_type()
+	item_description.text = item.get_description()
+
