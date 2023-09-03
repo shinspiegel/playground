@@ -22,6 +22,7 @@ func on_item_select(_node: Control, item: InventoryItem) -> void:
 
 
 func on_drop_item(item: InventoryItem) -> void:
+	GameManager.close_inventory()
 	GameManager.spawn_item(item, player.global_position)
 
 

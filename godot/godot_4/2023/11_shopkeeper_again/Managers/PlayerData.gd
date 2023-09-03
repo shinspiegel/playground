@@ -58,6 +58,10 @@ func destroy_item(item: InventoryItem) -> void:
 
 
 func set_hotbar(item: InventoryItem, slot: HOTBAR) -> void:
+	if hotbar_zero == item: hotbar_zero = null
+	if hotbar_one == item: hotbar_one = null
+	if hotbar_two == item: hotbar_two = null
+	
 	match slot:
 		HOTBAR.ZERO: hotbar_zero = item
 		HOTBAR.ONE: hotbar_one = item

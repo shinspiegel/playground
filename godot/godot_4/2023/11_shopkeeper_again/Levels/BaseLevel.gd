@@ -34,6 +34,8 @@ func on_inventory_closed() -> void:
 
 
 func on_item_spawn(item: InventoryItem, pos: Vector2, scene: PackedScene) -> void:
+	if GameManager.is_inventory_open: return
+	
 	var node = scene.instantiate()
 	sorted_object.add_child(node)
 	node.global_position = pos

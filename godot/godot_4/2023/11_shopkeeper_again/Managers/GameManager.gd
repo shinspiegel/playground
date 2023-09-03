@@ -11,12 +11,17 @@ signal inventory_closed()
 signal item_spawned(item: Resource, pos: Vector2, scene: PackedScene)
 signal damage_spawned(damage: Damage, pos: Vector2, scene: PackedScene)
 
+var is_inventory_open: bool = false
+
+
 
 func open_inventory() -> void:
+	is_inventory_open = true
 	inventory_opened.emit()
 
 
 func close_inventory() -> void:
+	is_inventory_open = false
 	inventory_closed.emit()
 
 
