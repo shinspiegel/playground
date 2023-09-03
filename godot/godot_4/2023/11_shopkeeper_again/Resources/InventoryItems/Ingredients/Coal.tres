@@ -1,11 +1,13 @@
 [gd_resource type="Resource" script_class="InventoryIngredient" load_steps=5 format=3 uid="uid://cq8yt7rsa066o"]
 
-[ext_resource type="Texture2D" uid="uid://bsk6kcjurrn2h" path="res://Assets/Graphics/Items/16x16_base_item.png" id="1_xwycl"]
 [ext_resource type="Script" path="res://Resources/InventoryItems/InventoryIngredient.gd" id="2_0vb88"]
 [ext_resource type="PhysicsMaterial" uid="uid://xl2yyw1wnge8" path="res://Resources/InventoryItems/base_physics_material.tres" id="3_v0wkc"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ffv6e"]
-atlas = ExtResource("1_xwycl")
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_28wco"]
+load_path = "res://.godot/imported/16x16_base_item.png-db85afb67d9bcd71221fbfff1281f6b7.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3ueiq"]
+atlas = SubResource("CompressedTexture2D_28wco")
 region = Rect2(16, 0, 16, 16)
 
 [resource]
@@ -13,7 +15,7 @@ resource_local_to_scene = true
 script = ExtResource("2_0vb88")
 possible_bonus = Array[Resource("res://Resources/BonusEffect/BonusEffect.gd")]([])
 item_name = "Coal"
-icon = SubResource("AtlasTexture_ffv6e")
+icon = SubResource("AtlasTexture_3ueiq")
 rarity = 1
 spawn_force = 300.0
 spawn_force_rand_ratio = 0.5

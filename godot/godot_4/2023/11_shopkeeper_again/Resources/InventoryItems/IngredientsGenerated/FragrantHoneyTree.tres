@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="InventoryIngredient" load_steps=5 format=3]
+
+[ext_resource type="Texture2D" path="res://Assets/Graphics/Items/16x16_base_item.png" id="1_ixp81"]
+[ext_resource type="Script" path="res://Resources/InventoryItems/InventoryIngredient.gd" id="2_1aapr"]
+[ext_resource type="PhysicsMaterial" path="res://Resources/InventoryItems/base_physics_material.tres" id="3_7m0rl"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_snt3j"]
+atlas = ExtResource("1_ixp81")
+region = Rect2(0, 0, 16, 16)
+
+[resource]
+resource_name = "FragrantHoneyTree"
+script = ExtResource("2_1aapr")
+possible_bonus = Array[Resource("res://Resources/BonusEffect/BonusEffect.gd")]([])
+item_name = "Fragrant Honey Tree"
+icon = SubResource("AtlasTexture_snt3j")
+rarity = 0
+spawn_force = 100.0
+spawn_force_rand_ratio = 0.5
+spawn_direction = Vector2(0, 0)
+spawn_damp = 10.0
+spawn_physics_material = ExtResource("3_7m0rl")

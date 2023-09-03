@@ -30,7 +30,7 @@ height = 112.0
 [node name="BreakableLoot" instance=ExtResource("1_rhxut")]
 freeze = true
 script = ExtResource("2_a44hi")
-possible_loot = Array[Resource("res://Entities/InteractableObjects/BreakableLoot/BreakableLootEntry.gd")]([])
+possible_loot = Array[Resource("res://Resources/InventoryItems/PossibleLoot.gd")]([])
 
 [node name="Shadow" type="Sprite2D" parent="." index="0"]
 position = Vector2(0, 8)

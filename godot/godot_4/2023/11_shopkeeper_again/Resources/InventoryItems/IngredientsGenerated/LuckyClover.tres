@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="InventoryIngredient" load_steps=5 format=3]
+
+[ext_resource type="Texture2D" path="res://Assets/Graphics/Items/16x16_base_item.png" id="1_ivo0a"]
+[ext_resource type="Script" path="res://Resources/InventoryItems/InventoryIngredient.gd" id="2_6rivw"]
+[ext_resource type="PhysicsMaterial" path="res://Resources/InventoryItems/base_physics_material.tres" id="3_mhq0n"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1l1hr"]
+atlas = ExtResource("1_ivo0a")
+region = Rect2(0, 0, 16, 16)
+
+[resource]
+resource_name = "LuckyClover"
+script = ExtResource("2_6rivw")
+possible_bonus = Array[Resource("res://Resources/BonusEffect/BonusEffect.gd")]([])
+item_name = "Lucky Clover"
+icon = SubResource("AtlasTexture_1l1hr")
+rarity = 0
+spawn_force = 100.0
+spawn_force_rand_ratio = 0.5
+spawn_direction = Vector2(0, 0)
+spawn_damp = 10.0
+spawn_physics_material = ExtResource("3_mhq0n")

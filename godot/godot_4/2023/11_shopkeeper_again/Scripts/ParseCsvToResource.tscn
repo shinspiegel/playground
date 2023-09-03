@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cvybfwt413ta6"]
+
+[ext_resource type="Script" path="res://Scripts/ParseCsvToResource.gd" id="1_ulsx8"]
+
+[node name="Scripts" type="Node"]
+script = ExtResource("1_ulsx8")

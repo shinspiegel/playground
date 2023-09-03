@@ -10,6 +10,8 @@
 	- Singletons
 - ** Resources**
 	- Custom resources to be used
+- **Scripts**
+	- Usefull scripts to parse data or create resources needed in the game
 - **Shaders**
 	- All the shader material used
 - **Main.[tscn/gd]**
