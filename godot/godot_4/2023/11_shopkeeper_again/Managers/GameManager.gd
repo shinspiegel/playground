@@ -36,5 +36,6 @@ func spawn_bomb(item: InventoryBomb, pos: Vector2 = Vector2.ZERO, scene: PackedS
 func spawn_explosion(item: InventoryBomb, pos: Vector2 = Vector2.ZERO, scene: PackedScene = explosion_scene) -> void:
 	item_spawned.emit(item, pos, scene)
 
+
 func spawn_damage_number(damage: Damage, pos: Vector2 = Vector2.ZERO, scene: PackedScene = damage_number_scene) -> void:
 	damage_spawned.emit(damage, pos, scene)

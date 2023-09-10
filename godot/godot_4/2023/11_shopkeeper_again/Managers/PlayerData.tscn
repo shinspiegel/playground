@@ -1,16 +1,77 @@
-[gd_scene load_steps=5 format=3 uid="uid://cvkahguh11chr"]
+[gd_scene load_steps=17 format=3 uid="uid://cvkahguh11chr"]
 
 [ext_resource type="Script" path="res://Managers/PlayerData.gd" id="1_omy0t"]
 [ext_resource type="Resource" uid="uid://dahtyilgir1g0" path="res://Resources/InventoryItems/Ingredients/SamplePotion.tres" id="2_7kssk"]
 [ext_resource type="Resource" uid="uid://cnkwn05bvcfqm" path="res://Resources/InventoryItems/Ingredients/BombBase.tres" id="3_c1srb"]
 [ext_resource type="Resource" uid="uid://cq8yt7rsa066o" path="res://Resources/InventoryItems/Ingredients/Coal.tres" id="4_t06l5"]
+[ext_resource type="Script" path="res://Resources/Damage/Damage.gd" id="5_pr2r6"]
+[ext_resource type="Script" path="res://Resources/InventoryItems/InventoryBomb.gd" id="6_pafxn"]
+
+[sub_resource type="Resource" id="Resource_gsl2f"]
+script = ExtResource("5_pr2r6")
+damage_min = 1
+damage_max = 5
+critical_change = 0.1
+critical_multiplier = 2.0
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_hruej"]
+load_path = "res://.godot/imported/Food_Microwave.png-9aa08dd2b0c46f59071a4a14624db5ad.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8jtsy"]
+atlas = SubResource("CompressedTexture2D_hruej")
+region = Rect2(598, 526, 18, 20)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_571mi"]
+bounce = 0.2
+
+[sub_resource type="Resource" id="Resource_shuye"]
+script = ExtResource("6_pafxn")
+explosive_time = 3.0
+explosive_area = 5.0
+explosive_damage = SubResource("Resource_gsl2f")
+item_name = "Base Bomb"
+icon = SubResource("AtlasTexture_8jtsy")
+rarity = 0
+spawn_force = 300.0
+spawn_direction = Vector2(0, 0)
+spawn_damp = 10.0
+spawn_physics_material = SubResource("PhysicsMaterial_571mi")
+
+[sub_resource type="Resource" id="Resource_xhwhv"]
+script = ExtResource("5_pr2r6")
+damage_min = 1
+damage_max = 5
+critical_change = 0.1
+critical_multiplier = 2.0
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_4jelg"]
+load_path = "res://.godot/imported/Food_Microwave.png-9aa08dd2b0c46f59071a4a14624db5ad.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e46rv"]
+atlas = SubResource("CompressedTexture2D_4jelg")
+region = Rect2(598, 526, 18, 20)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_gwp6e"]
+bounce = 0.2
+
+[sub_resource type="Resource" id="Resource_3mbaw"]
+script = ExtResource("6_pafxn")
+explosive_time = 3.0
+explosive_area = 5.0
+explosive_damage = SubResource("Resource_xhwhv")
+item_name = "Base Bomb"
+icon = SubResource("AtlasTexture_e46rv")
+rarity = 0
+spawn_force = 300.0
+spawn_direction = Vector2(0, 0)
+spawn_damp = 10.0
+spawn_physics_material = SubResource("PhysicsMaterial_gwp6e")
 
 [node name="PlayerData" type="Node"]
 script = ExtResource("1_omy0t")
-health_current = 10
 hotbar_zero = ExtResource("2_7kssk")
 hotbar_one = ExtResource("3_c1srb")
 hotbar_two = ExtResource("4_t06l5")
-inventory = Array[Resource("res://Resources/InventoryItems/InventoryItem.gd")]([ExtResource("2_7kssk"), ExtResource("3_c1srb"), ExtResource("4_t06l5")])
+inventory = Array[Resource("res://Resources/InventoryItems/InventoryItem.gd")]([ExtResource("2_7kssk"), ExtResource("3_c1srb"), ExtResource("4_t06l5"), SubResource("Resource_shuye"), SubResource("Resource_3mbaw")])
 
 [node name="Effects" type="Node" parent="."]

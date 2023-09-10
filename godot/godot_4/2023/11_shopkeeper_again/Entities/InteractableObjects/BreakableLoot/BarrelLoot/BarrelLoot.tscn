@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://dnuowcrur41wi"]
+
+[ext_resource type="PackedScene" uid="uid://bl4x7jgy7tjq1" path="res://Entities/InteractableObjects/BreakableLoot/BreakableLoot.tscn" id="1_1e8dd"]
+[ext_resource type="Shader" path="res://Shaders/PerfectOutline.gdshader" id="2_bkx2u"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g1qnl"]
+resource_local_to_scene = true
+shader = ExtResource("2_bkx2u")
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/line_thickness = 1.0
+
+[node name="BreakableLoot" instance=ExtResource("1_1e8dd")]
+extra_push = 3.0
+
+[node name="Sprite2D" parent="." index="1"]
+material = SubResource("ShaderMaterial_g1qnl")

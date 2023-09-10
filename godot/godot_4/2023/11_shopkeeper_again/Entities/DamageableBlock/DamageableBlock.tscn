@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://d4lesgxq852cn"]
+
+[ext_resource type="Script" path="res://Entities/DamageableBlock/DamageableBlock.gd" id="1_5e6u0"]
+[ext_resource type="PackedScene" uid="uid://bvyt7lodnwyh3" path="res://Entities/DamageAreas/DamageReceiver.tscn" id="3_unb13"]
+
+[node name="DamageableBlock" type="StaticBody2D"]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_5e6u0")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(4, 4)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+[node name="DamageReceiver" parent="." instance=ExtResource("3_unb13")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageReceiver"]

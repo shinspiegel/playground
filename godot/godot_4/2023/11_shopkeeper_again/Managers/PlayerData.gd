@@ -90,8 +90,6 @@ func use_hotbar_item(slot: HOTBAR, pos: Vector2 = Vector2.ZERO) -> void:
 
 
 func on_effect_trigger(effect: BonusEffect) -> void:
-	print_debug("effect::[%s]" % [effect])
-	
 	match effect.affect_type:
 		"add":
 			match effect.property:

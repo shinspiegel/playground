@@ -16,7 +16,6 @@ item_name = ""
 icon = SubResource("AtlasTexture_0juf3")
 rarity = 0
 spawn_force = 300.0
-spawn_force_rand_ratio = 0.5
 spawn_direction = Vector2(0, 0)
 spawn_damp = 10.0
 spawn_physics_material = ExtResource("3_dntmv")

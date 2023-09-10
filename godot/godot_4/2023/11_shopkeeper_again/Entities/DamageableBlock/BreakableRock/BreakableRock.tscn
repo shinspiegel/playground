@@ -1,0 +1,40 @@
+[gd_scene load_steps=7 format=3 uid="uid://bjyvfrcxk5fh4"]
+
+[ext_resource type="PackedScene" uid="uid://d4lesgxq852cn" path="res://Entities/DamageableBlock/DamageableBlock.tscn" id="1_olifa"]
+[ext_resource type="Texture2D" uid="uid://bexwq1q40ivm2" path="res://Assets/Graphics/Pixel Art Top Down - Basic/Texture/TX Props.png" id="2_ex8p4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lyqv0"]
+atlas = ExtResource("2_ex8p4")
+region = Rect2(2, 429, 59, 44)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_htn6e"]
+radius = 44.0
+height = 232.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l2svx"]
+radius = 24.0
+height = 80.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h2k3i"]
+size = Vector2(216, 128)
+
+[node name="BreakableRock" instance=ExtResource("1_olifa")]
+health_max = 10
+
+[node name="Sprite2D" parent="." index="0"]
+position = Vector2(0, -44)
+texture = SubResource("AtlasTexture_lyqv0")
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(-2.84217e-14, -24)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_htn6e")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="." index="2"]
+position = Vector2(60, 16)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_l2svx")
+
+[node name="CollisionShape2D" parent="DamageReceiver" index="0"]
+position = Vector2(0, -52)
+shape = SubResource("RectangleShape2D_h2k3i")

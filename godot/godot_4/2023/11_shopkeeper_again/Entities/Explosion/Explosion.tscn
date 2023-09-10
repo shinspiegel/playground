@@ -519,8 +519,11 @@ script = ExtResource("1_obab3")
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_dfpud")
 autoplay = "default"
+frame = 20
 
 [node name="DamageInflictor" parent="." instance=ExtResource("3_53ydv")]
+collision_layer = 0
+collision_mask = 31
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DamageInflictor"]
 shape = SubResource("CircleShape2D_u7kta")

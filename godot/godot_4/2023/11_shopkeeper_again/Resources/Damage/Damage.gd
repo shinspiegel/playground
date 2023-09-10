@@ -17,10 +17,10 @@ func get_clone() -> Damage:
 	
 	if randf_range(0.0, 1.0) < critical_change: 
 		clone.is_critical = true
-		clone.amount = randi_range(damage_min, damage_max)
+		clone.amount = ceili(float(randi_range(damage_min, damage_max) * critical_multiplier))
 	else: 
 		clone.is_critical = false
-		clone.amount = ceili(float(randi_range(damage_min, damage_max) * critical_multiplier))
+		clone.amount = randi_range(damage_min, damage_max)
 	
 	return clone
 
