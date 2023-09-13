@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://cn14gxlpvuwwl"]
+
+[ext_resource type="Script" path="res://entities/bullet/bullet.gd" id="1_4oukh"]
+
+[node name="Bullet" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_4oukh")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(4, 4)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
