@@ -1,10 +1,10 @@
 class_name Bullet extends Area2D
 
 @export var direction: int = 1
-@export_range(0.0, 5.0, 0.1) var speed: float = 1.0
+@export_range(0.0, 10.0, 0.1) var speed: float = 1.5
 @onready var visible_on_screen_notifier_2d: VisibleOnScreenNotifier2D = $VisibleOnScreenNotifier2D
 
-var __multiplier: float = 3000.0
+var __multiplier: float = 1000.0
 
 
 func _ready() -> void:

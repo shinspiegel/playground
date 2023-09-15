@@ -3,9 +3,9 @@ class_name Player extends CharacterBody2D
 @export var camera: Camera2D
 @onready var remote_transform_2d: RemoteTransform2D = $RemoteTransform2D
 
-const SPEED = 8.0
-const JUMP_VELOCITY = -10.0
-const GRAVITY = 18.0
+const SPEED = 6.0
+const JUMP_VELOCITY = -8.0
+const GRAVITY = 20.0
 const MULTIPLIER = 100
 
 
