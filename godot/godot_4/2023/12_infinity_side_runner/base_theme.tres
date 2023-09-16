@@ -1,0 +1,7 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://dqnddu2ud5iww"]
+
+[ext_resource type="FontFile" uid="uid://c3ghwepcpdqq2" path="res://assets/downloaded/gameui/MinimalPixel v2.ttf" id="1_1svme"]
+
+[resource]
+default_font = ExtResource("1_1svme")
+default_font_size = 32

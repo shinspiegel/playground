@@ -18,3 +18,5 @@ scale = Vector2(4, 4)
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 
 [node name="DamageReceiver" parent="." instance=ExtResource("2_e6dxy")]
+collision_layer = 4
+collision_mask = 0
