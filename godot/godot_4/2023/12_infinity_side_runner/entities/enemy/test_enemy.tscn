@@ -1,0 +1,75 @@
+[gd_scene load_steps=10 format=3 uid="uid://b5k1djyhtj6qh"]
+
+[ext_resource type="PackedScene" uid="uid://d4g73rn7a73t0" path="res://entities/enemy/enemy.tscn" id="1_g716e"]
+[ext_resource type="Script" path="res://entities/enemy/test_enemy.gd" id="2_vkgkg"]
+[ext_resource type="Texture2D" uid="uid://dgjmrxb851vvf" path="res://assets/downloaded/Super Grotto Escape Files/Characters/Enemies/spritesheet/lizard-move.png" id="3_fdvt3"]
+[ext_resource type="PackedScene" uid="uid://biw2vauvhunye" path="res://entities/bullet_spawner/bullet_spawner.tscn" id="4_w3cby"]
+[ext_resource type="PackedScene" uid="uid://dvi65r7mbkbqc" path="res://entities/bullet/test_enemy_bullet.tscn" id="5_n0s5r"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_x1n8g"]
+radius = 28.0
+height = 84.0
+
+[sub_resource type="Animation" id="Animation_ylom1"]
+resource_name = "anim"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 1, 0]
+}
+
+[sub_resource type="Animation" id="Animation_5ecck"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kls4i"]
+_data = {
+"RESET": SubResource("Animation_5ecck"),
+"anim": SubResource("Animation_ylom1")
+}
+
+[node name="TestEnemy" instance=ExtResource("1_g716e")]
+script = ExtResource("2_vkgkg")
+
+[node name="Sprite2D" parent="." index="0"]
+position = Vector2(7, -64)
+texture = ExtResource("3_fdvt3")
+hframes = 3
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(0, -42)
+shape = SubResource("CapsuleShape2D_x1n8g")
+
+[node name="VisibleOnScreenNotifier2D" parent="." index="2"]
+position = Vector2(0, -42)
+scale = Vector2(2.5, 4)
+
+[node name="AnimationPlayer" parent="." index="3"]
+autoplay = "anim"
+libraries = {
+"": SubResource("AnimationLibrary_kls4i")
+}
+
+[node name="BulletSpawner" parent="." index="4" instance=ExtResource("4_w3cby")]
+position = Vector2(-82, -64)
+bullet_scene = ExtResource("5_n0s5r")

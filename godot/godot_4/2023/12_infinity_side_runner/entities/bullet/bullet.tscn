@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://cn14gxlpvuwwl"]
+[gd_scene load_steps=3 format=3 uid="uid://cn14gxlpvuwwl"]
 
 [ext_resource type="Script" path="res://entities/bullet/bullet.gd" id="1_4oukh"]
+[ext_resource type="PackedScene" uid="uid://djouf78b7ygc8" path="res://entities/damages/damage_inflictor.tscn" id="2_pr4he"]
 
 [node name="Bullet" type="Area2D"]
 collision_layer = 0
@@ -13,3 +14,5 @@ scale = Vector2(4, 4)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[node name="DamageInflictor" parent="." instance=ExtResource("2_pr4he")]

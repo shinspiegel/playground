@@ -1,7 +1,7 @@
 class_name BulletSpawner extends Node2D
 
 @export var bullet_scene: PackedScene
-@export var delay: float = 0.3
+@export var delay: float = 1.0
 @onready var timer: Timer = $Timer
 
 

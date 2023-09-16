@@ -1,11 +1,16 @@
-[gd_scene load_steps=7 format=3 uid="uid://cnesk3rtl7eix"]
+[gd_scene load_steps=9 format=3 uid="uid://cnesk3rtl7eix"]
 
 [ext_resource type="PackedScene" uid="uid://cn14gxlpvuwwl" path="res://entities/bullet/bullet.tscn" id="1_cuqwq"]
 [ext_resource type="Texture2D" uid="uid://kcgrb1omqb3m" path="res://assets/downloaded/Super Grotto Escape Files/Fx/Spritesheets/player-shoot.png" id="2_0k1hk"]
+[ext_resource type="Script" path="res://entities/damages/damage.gd" id="2_6vf2q"]
+
+[sub_resource type="Resource" id="Resource_eywyd"]
+script = ExtResource("2_6vf2q")
+amount = 10
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yalxa"]
-radius = 14.0
-height = 44.0
+radius = 21.0
+height = 62.0
 
 [sub_resource type="Animation" id="Animation_npnkg"]
 length = 0.001
@@ -46,9 +51,12 @@ _data = {
 }
 
 [node name="PlayerBullet" instance=ExtResource("1_cuqwq")]
+collision_mask = 6
+damage = SubResource("Resource_eywyd")
 
 [node name="Sprite2D" parent="." index="0"]
 position = Vector2(-6, -2)
+scale = Vector2(6, 6)
 texture = ExtResource("2_0k1hk")
 hframes = 4
 

@@ -14,6 +14,11 @@ config/name="Infinity Side Runner"
 config/features=PackedStringArray("4.1", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+GameManager="*res://managers/game_manager.gd"
+PlayerData="*res://managers/player_data.gd"
+
 [display]
 
 window/size/viewport_width=1920
@@ -28,6 +33,7 @@ project/assembly_name="Infinity Side Runner"
 
 2d_physics/layer_1="player"
 2d_physics/layer_2="world"
+2d_physics/layer_3="enemy"
 
 [rendering]
 

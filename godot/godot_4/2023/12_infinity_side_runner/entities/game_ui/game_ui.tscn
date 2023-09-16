@@ -1,0 +1,43 @@
+[gd_scene load_steps=6 format=3 uid="uid://lrnr4shffwgu"]
+
+[ext_resource type="Texture2D" uid="uid://b6s12e828mubf" path="res://assets/downloaded/Pixel UI pack 3/04.png" id="1_nuefv"]
+[ext_resource type="Script" path="res://entities/game_ui/game_ui.gd" id="1_skell"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4briw"]
+atlas = ExtResource("1_nuefv")
+region = Rect2(288, 128, 48, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eup8x"]
+atlas = ExtResource("1_nuefv")
+region = Rect2(0, 128, 48, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_krhq3"]
+atlas = ExtResource("1_nuefv")
+region = Rect2(48, 128, 48, 16)
+
+[node name="GameUI" type="CanvasLayer"]
+script = ExtResource("1_skell")
+
+[node name="Control" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="Control" type="Control" parent="Control"]
+layout_mode = 2
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="Control/Control"]
+layout_mode = 1
+offset_right = 48.0
+offset_bottom = 16.0
+scale = Vector2(4, 4)
+value = 50.0
+texture_under = SubResource("AtlasTexture_4briw")
+texture_over = SubResource("AtlasTexture_eup8x")
+texture_progress = SubResource("AtlasTexture_krhq3")
