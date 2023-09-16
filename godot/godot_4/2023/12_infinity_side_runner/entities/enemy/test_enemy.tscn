@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://b5k1djyhtj6qh"]
+[gd_scene load_steps=16 format=3 uid="uid://b5k1djyhtj6qh"]
 
 [ext_resource type="PackedScene" uid="uid://d4g73rn7a73t0" path="res://entities/enemy/enemy.tscn" id="1_g716e"]
 [ext_resource type="Script" path="res://entities/enemy/test_enemy.gd" id="2_vkgkg"]
@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://c3rhcf68xnm27" path="res://entities/effects/explosion_sfx.tscn" id="3_us7wn"]
 [ext_resource type="PackedScene" uid="uid://biw2vauvhunye" path="res://entities/bullet_spawner/bullet_spawner.tscn" id="4_w3cby"]
 [ext_resource type="PackedScene" uid="uid://dvi65r7mbkbqc" path="res://entities/bullet/test_enemy_bullet.tscn" id="5_n0s5r"]
+[ext_resource type="PackedScene" uid="uid://djouf78b7ygc8" path="res://entities/damages/damage_inflictor.tscn" id="7_pf32o"]
+[ext_resource type="Script" path="res://entities/damages/damage.gd" id="8_3vdlp"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_x1n8g"]
 radius = 28.0
@@ -53,6 +55,13 @@ _data = {
 radius = 30.0
 height = 88.0
 
+[sub_resource type="Resource" id="Resource_rxsij"]
+script = ExtResource("8_3vdlp")
+amount = 3
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cpucg"]
+radius = 29.0172
+
 [node name="TestEnemy" instance=ExtResource("1_g716e")]
 script = ExtResource("2_vkgkg")
 die_effect = ExtResource("3_us7wn")
@@ -83,4 +92,11 @@ shape = SubResource("CapsuleShape2D_7gpt7")
 [node name="BulletSpawner" parent="." index="5" instance=ExtResource("4_w3cby")]
 position = Vector2(-82, -64)
 bullet_scene = ExtResource("5_n0s5r")
-delay = 5.0
+delay = 2.0
+
+[node name="DamageInflictor" parent="." index="6" instance=ExtResource("7_pf32o")]
+damage = SubResource("Resource_rxsij")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageInflictor" index="0"]
+position = Vector2(0, -48)
+shape = SubResource("CircleShape2D_cpucg")
