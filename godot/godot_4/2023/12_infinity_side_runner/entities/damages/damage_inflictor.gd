@@ -9,4 +9,4 @@ func _ready() -> void:
 
 func on_area_enter(area: Area2D) -> void:
 	if area is DamageReceiver:
-		area.hit(damage.get_clone())
+		area.hit(damage)

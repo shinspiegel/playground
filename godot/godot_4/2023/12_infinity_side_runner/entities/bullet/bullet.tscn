@@ -16,3 +16,7 @@ scale = Vector2(4, 4)
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 
 [node name="DamageInflictor" parent="." instance=ExtResource("2_pr4he")]
+collision_layer = 0
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageInflictor"]

@@ -10,6 +10,21 @@
 radius = 28.0
 height = 84.0
 
+[sub_resource type="Animation" id="Animation_5ecck"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
 [sub_resource type="Animation" id="Animation_ylom1"]
 resource_name = "anim"
 length = 0.5
@@ -25,21 +40,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 1, 0]
-}
-
-[sub_resource type="Animation" id="Animation_5ecck"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_kls4i"]
@@ -70,6 +70,8 @@ libraries = {
 "": SubResource("AnimationLibrary_kls4i")
 }
 
-[node name="BulletSpawner" parent="." index="4" instance=ExtResource("4_w3cby")]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageReceiver" index="0"]
+
+[node name="BulletSpawner" parent="." index="5" instance=ExtResource("4_w3cby")]
 position = Vector2(-82, -64)
 bullet_scene = ExtResource("5_n0s5r")

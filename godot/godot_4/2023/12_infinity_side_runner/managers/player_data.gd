@@ -10,6 +10,10 @@ func _ready() -> void:
 	health = max_health
 
 
-func change_player_health(amount: int) -> void:
+func change_health(amount: int) -> void:
 	health = clampi(health + amount, 0, max_health)
 	health_changed.emit()
+
+
+func deal_damage(amount: int) -> void:
+	change_health(-amount)

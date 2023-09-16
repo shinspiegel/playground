@@ -24,6 +24,7 @@ PlayerData="*res://managers/player_data.gd"
 window/size/viewport_width=1920
 window/size/viewport_height=900
 window/stretch/mode="viewport"
+window/vsync/vsync_mode=0
 
 [dotnet]
 

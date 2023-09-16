@@ -16,7 +16,7 @@ func _physics_process(delta: float) -> void:
 	global_position.x += direction * (speed * __multiplier) * delta
 
 
-func on_body_entered(body: Node2D) -> void:
+func on_body_entered(_body: Node2D) -> void:
 	queue_free()
 
 

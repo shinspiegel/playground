@@ -1,19 +1,24 @@
-[gd_scene load_steps=6 format=3 uid="uid://lrnr4shffwgu"]
+[gd_scene load_steps=7 format=3 uid="uid://lrnr4shffwgu"]
 
-[ext_resource type="Texture2D" uid="uid://b6s12e828mubf" path="res://assets/downloaded/Pixel UI pack 3/04.png" id="1_nuefv"]
 [ext_resource type="Script" path="res://entities/game_ui/game_ui.gd" id="1_skell"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_4briw"]
-atlas = ExtResource("1_nuefv")
-region = Rect2(288, 128, 48, 16)
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_vpxqw"]
+load_path = "res://.godot/imported/04.png-5fb70d1568cbea4337a4dd77407de670.ctex"
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_eup8x"]
-atlas = ExtResource("1_nuefv")
-region = Rect2(0, 128, 48, 16)
+[sub_resource type="AtlasTexture" id="AtlasTexture_qu8pw"]
+atlas = SubResource("CompressedTexture2D_vpxqw")
+region = Rect2(294, 131, 38, 10)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_krhq3"]
-atlas = ExtResource("1_nuefv")
-region = Rect2(48, 128, 48, 16)
+[sub_resource type="AtlasTexture" id="AtlasTexture_umo8r"]
+atlas = SubResource("CompressedTexture2D_vpxqw")
+region = Rect2(6, 131, 38, 11)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_w4lev"]
+load_path = "res://.godot/imported/04.png-5fb70d1568cbea4337a4dd77407de670.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e15xc"]
+atlas = SubResource("CompressedTexture2D_w4lev")
+region = Rect2(57, 133, 32, 5)
 
 [node name="GameUI" type="CanvasLayer"]
 script = ExtResource("1_skell")
@@ -34,10 +39,12 @@ layout_mode = 2
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="Control/Control"]
 layout_mode = 1
-offset_right = 48.0
-offset_bottom = 16.0
+offset_right = 38.0
+offset_bottom = 11.0
 scale = Vector2(4, 4)
-value = 50.0
-texture_under = SubResource("AtlasTexture_4briw")
-texture_over = SubResource("AtlasTexture_eup8x")
-texture_progress = SubResource("AtlasTexture_krhq3")
+max_value = 10.0
+value = 10.0
+texture_under = SubResource("AtlasTexture_qu8pw")
+texture_over = SubResource("AtlasTexture_umo8r")
+texture_progress = SubResource("AtlasTexture_e15xc")
+texture_progress_offset = Vector2(3, 2)

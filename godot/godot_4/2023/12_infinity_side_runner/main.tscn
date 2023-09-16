@@ -131,10 +131,11 @@ sources/0 = SubResource("TileSetAtlasSource_s1dxa")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(549, 828)
-position_smoothing_enabled = true
+position_smoothing_speed = 4.0
+drag_vertical_enabled = true
 drag_top_margin = 0.6
 drag_right_margin = 0.0
-drag_bottom_margin = 0.9
+drag_bottom_margin = 0.3
 editor_draw_drag_margin = true
 
 [node name="Player" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("1_5jabu")]

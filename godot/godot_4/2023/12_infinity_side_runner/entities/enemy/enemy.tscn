@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://d4g73rn7a73t0"]
+[gd_scene load_steps=3 format=3 uid="uid://d4g73rn7a73t0"]
 
 [ext_resource type="Script" path="res://Enemy.gd" id="1_fv0st"]
+[ext_resource type="PackedScene" uid="uid://cljnodvftnlpv" path="res://entities/damages/damage_receiver.tscn" id="2_e6dxy"]
 
 [node name="Enemy" type="CharacterBody2D"]
 collision_layer = 4
@@ -15,3 +16,5 @@ scale = Vector2(4, 4)
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="DamageReceiver" parent="." instance=ExtResource("2_e6dxy")]

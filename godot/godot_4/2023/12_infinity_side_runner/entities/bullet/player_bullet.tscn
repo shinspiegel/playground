@@ -1,16 +1,20 @@
-[gd_scene load_steps=9 format=3 uid="uid://cnesk3rtl7eix"]
+[gd_scene load_steps=10 format=3 uid="uid://cnesk3rtl7eix"]
 
 [ext_resource type="PackedScene" uid="uid://cn14gxlpvuwwl" path="res://entities/bullet/bullet.tscn" id="1_cuqwq"]
 [ext_resource type="Texture2D" uid="uid://kcgrb1omqb3m" path="res://assets/downloaded/Super Grotto Escape Files/Fx/Spritesheets/player-shoot.png" id="2_0k1hk"]
 [ext_resource type="Script" path="res://entities/damages/damage.gd" id="2_6vf2q"]
 
-[sub_resource type="Resource" id="Resource_eywyd"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yalxa"]
+radius = 18.0
+height = 56.0
+
+[sub_resource type="Resource" id="Resource_0m7xt"]
 script = ExtResource("2_6vf2q")
 amount = 10
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yalxa"]
-radius = 21.0
-height = 62.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3vv8f"]
+radius = 23.0
+height = 84.0
 
 [sub_resource type="Animation" id="Animation_npnkg"]
 length = 0.001
@@ -52,7 +56,6 @@ _data = {
 
 [node name="PlayerBullet" instance=ExtResource("1_cuqwq")]
 collision_mask = 6
-damage = SubResource("Resource_eywyd")
 
 [node name="Sprite2D" parent="." index="0"]
 position = Vector2(-6, -2)
@@ -67,7 +70,15 @@ shape = SubResource("CapsuleShape2D_yalxa")
 [node name="VisibleOnScreenNotifier2D" parent="." index="2"]
 scale = Vector2(2, 2)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="3"]
+[node name="DamageInflictor" parent="." index="3"]
+collision_mask = 4
+damage = SubResource("Resource_0m7xt")
+
+[node name="CollisionShape2D" parent="DamageInflictor" index="0"]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_3vv8f")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="4"]
 autoplay = "animate"
 libraries = {
 "": SubResource("AnimationLibrary_qsomf")

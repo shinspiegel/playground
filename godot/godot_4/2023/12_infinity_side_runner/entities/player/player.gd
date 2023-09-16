@@ -4,11 +4,13 @@ const JUMP_KEY = "ui_accept"
 
 @export var camera: Camera2D
 @onready var remote_transform_2d: RemoteTransform2D = $RemoteTransform2D
+@onready var damage_receiver: Area2D = $DamageReceiver
 
 
 func _ready() -> void:
 	if camera:
 		remote_transform_2d.remote_path = camera.get_path()
+	damage_receiver.receive_damage.connect(on_damage_receive)
 
 
 func _physics_process(delta: float) -> void:
@@ -16,6 +18,10 @@ func _physics_process(delta: float) -> void:
 	__apply_jump()
 	__apply_move_forward()
 	move_and_slide()
+
+
+func on_damage_receive(damage: Damage) -> void:
+	PlayerData.deal_damage(damage.amount)
 
 
 func __apply_gravity(delta: float) -> void:
