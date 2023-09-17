@@ -13,7 +13,7 @@ func _ready() -> void:
 	PlayerData.reset()
 
 func on_start() -> void:
-	GameManager.change_scene("test")
+	GameManager.change_scene("base_level")
 
 
 func on_options() -> void:

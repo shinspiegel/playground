@@ -1,4 +1,4 @@
-class_name Enemy extends CharacterBody2D
+class_name BaseEnemy extends CharacterBody2D
 
 @export_group("Data")
 @export var health_max: int = 10
@@ -12,13 +12,21 @@ class_name Enemy extends CharacterBody2D
 
 @onready var visible_on_screen_notifier_2d: VisibleOnScreenNotifier2D = $VisibleOnScreenNotifier2D
 @onready var damage_receiver: DamageReceiver = $DamageReceiver
+@onready var conditional_process: Node2D = $ConditionalProcess
 
 
 func _ready() -> void:
 	visible_on_screen_notifier_2d.screen_entered.connect(__activate)
 	visible_on_screen_notifier_2d.screen_exited.connect(__deactivate)
+	
 	damage_receiver.receive_damage.connect(on_damage_receive)
+	
 	health = health_max
+	
+	if visible_on_screen_notifier_2d.is_on_screen():
+		__activate()
+	else:
+		__deactivate()
 
 
 func _physics_process(delta: float) -> void:
@@ -41,7 +49,9 @@ func on_damage_receive(damage: Damage) -> void:
 
 func __activate() -> void:
 	is_active = true
+	conditional_process.process_mode = Node.PROCESS_MODE_INHERIT
 
 
 func __deactivate() -> void:
 	is_active = false
+	conditional_process.process_mode = Node.PROCESS_MODE_DISABLED

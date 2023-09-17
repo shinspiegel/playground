@@ -1,11 +1,9 @@
-[gd_scene load_steps=16 format=3 uid="uid://b5k1djyhtj6qh"]
+[gd_scene load_steps=14 format=3 uid="uid://b5k1djyhtj6qh"]
 
-[ext_resource type="PackedScene" uid="uid://d4g73rn7a73t0" path="res://entities/enemy/enemy.tscn" id="1_g716e"]
-[ext_resource type="Script" path="res://entities/enemy/test_enemy.gd" id="2_vkgkg"]
+[ext_resource type="PackedScene" uid="uid://d4g73rn7a73t0" path="res://entities/enemy/base_enemy.tscn" id="1_0lpco"]
+[ext_resource type="Script" path="res://entities/enemy/enemy.gd" id="2_557wy"]
 [ext_resource type="Texture2D" uid="uid://dgjmrxb851vvf" path="res://assets/downloaded/Super Grotto Escape Files/Characters/Enemies/spritesheet/lizard-move.png" id="3_fdvt3"]
 [ext_resource type="PackedScene" uid="uid://c3rhcf68xnm27" path="res://entities/effects/explosion_sfx.tscn" id="3_us7wn"]
-[ext_resource type="PackedScene" uid="uid://biw2vauvhunye" path="res://entities/bullet_spawner/bullet_spawner.tscn" id="4_w3cby"]
-[ext_resource type="PackedScene" uid="uid://dvi65r7mbkbqc" path="res://entities/bullet/test_enemy_bullet.tscn" id="5_n0s5r"]
 [ext_resource type="PackedScene" uid="uid://djouf78b7ygc8" path="res://entities/damages/damage_inflictor.tscn" id="7_pf32o"]
 [ext_resource type="Script" path="res://entities/damages/damage.gd" id="8_3vdlp"]
 
@@ -62,8 +60,8 @@ amount = 3
 [sub_resource type="CircleShape2D" id="CircleShape2D_cpucg"]
 radius = 29.0172
 
-[node name="TestEnemy" instance=ExtResource("1_g716e")]
-script = ExtResource("2_vkgkg")
+[node name="TestEnemy" instance=ExtResource("1_0lpco")]
+script = ExtResource("2_557wy")
 die_effect = ExtResource("3_us7wn")
 
 [node name="Sprite2D" parent="." index="0"]
@@ -89,12 +87,7 @@ libraries = {
 position = Vector2(0, -45)
 shape = SubResource("CapsuleShape2D_7gpt7")
 
-[node name="BulletSpawner" parent="." index="5" instance=ExtResource("4_w3cby")]
-position = Vector2(-82, -64)
-bullet_scene = ExtResource("5_n0s5r")
-delay = 2.0
-
-[node name="DamageInflictor" parent="." index="6" instance=ExtResource("7_pf32o")]
+[node name="DamageInflictor" parent="." index="5" instance=ExtResource("7_pf32o")]
 damage = SubResource("Resource_rxsij")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DamageInflictor" index="0"]

@@ -38,4 +38,5 @@ func __apply_jump() -> void:
 
 
 func __apply_move_forward() -> void:
-	velocity.x = 1 * GameManager.SPEED * GameManager.MULTIPLIER
+	pass
+#	velocity.x = 1 * GameManager.SPEED * GameManager.MULTIPLIER

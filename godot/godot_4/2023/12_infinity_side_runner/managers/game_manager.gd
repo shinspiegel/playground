@@ -9,7 +9,7 @@ const MULTIPLIER = 100
 
 const levels = {
 	"title": preload("res://main.tscn"),
-	"test": preload("res://levels/test_level.tscn"),
+	"base_level": preload("res://levels/base_level.tscn")
 }
 
 
@@ -20,3 +20,7 @@ func change_scene(target: String) -> void:
 
 func create_node(scene: PackedScene, position: Vector2 = Vector2.ZERO) -> void:
 	created_node.emit(scene, position)
+
+
+func get_speed(delta: float = 1.0) -> float:
+	return SPEED * MULTIPLIER * delta

@@ -21,6 +21,7 @@ atlas = SubResource("CompressedTexture2D_w4lev")
 region = Rect2(57, 133, 32, 5)
 
 [node name="GameUI" type="CanvasLayer"]
+layer = 10
 script = ExtResource("1_skell")
 
 [node name="Control" type="MarginContainer" parent="."]

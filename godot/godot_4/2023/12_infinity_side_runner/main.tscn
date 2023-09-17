@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://del6qkgb3mgc8"]
+[gd_scene load_steps=9 format=3 uid="uid://del6qkgb3mgc8"]
 
 [ext_resource type="Theme" uid="uid://dqnddu2ud5iww" path="res://base_theme.tres" id="1_giprh"]
 [ext_resource type="Script" path="res://main.gd" id="2_abtlh"]
 [ext_resource type="Texture2D" uid="uid://5w8o0s8l0rsr" path="res://assets/downloaded/gameui/GUI_x4.png" id="2_gjcet"]
+[ext_resource type="FontFile" uid="uid://bmilccisfxyy0" path="res://assets/downloaded/Crang.ttf" id="3_xyl06"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2rqnk"]
 atlas = ExtResource("2_gjcet")
@@ -58,8 +59,18 @@ size_flags_vertical = 4
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 64
-text = "Untitle 
-Infinite Runner"
+text = "Untitle "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 0)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("3_xyl06")
+theme_override_font_sizes/font_size = 64
+text = "Infinite Runner"
 horizontal_alignment = 1
 vertical_alignment = 1
 

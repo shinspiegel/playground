@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://cb7cx5pmitapi"]
+
+[ext_resource type="Script" path="res://levels/base_level.gd" id="1_aa02s"]
+[ext_resource type="PackedScene" uid="uid://coy17veakn2wd" path="res://level_areas/city_areas/00_intro.tscn" id="2_3pbsk"]
+[ext_resource type="PackedScene" uid="uid://b1vgouqmpnh" path="res://entities/player/player.tscn" id="3_8x1eo"]
+[ext_resource type="PackedScene" uid="uid://c2uwmkl4hbk4o" path="res://entities/background/background.tscn" id="4_vqkrm"]
+[ext_resource type="PackedScene" uid="uid://lrnr4shffwgu" path="res://entities/game_ui/game_ui.tscn" id="5_cpx8v"]
+
+[node name="BaseLevel" type="Node2D"]
+script = ExtResource("1_aa02s")
+first_area_offset = Vector2(-400, 2.08165e-12)
+level_areas_list = Array[PackedScene]([ExtResource("2_3pbsk")])
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(480, -225)
+position_smoothing_speed = 4.0
+drag_vertical_enabled = true
+drag_top_margin = 0.6
+drag_right_margin = 0.0
+drag_bottom_margin = 0.3
+editor_draw_drag_margin = true
+
+[node name="Player" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("3_8x1eo")]
+camera = NodePath("../Camera2D")
+
+[node name="Background" parent="." instance=ExtResource("4_vqkrm")]
+
+[node name="GameUI" parent="." instance=ExtResource("5_cpx8v")]
+
+[node name="MapAreas" type="Node2D" parent="."]

@@ -1,13 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://dvi65r7mbkbqc"]
+[gd_scene load_steps=6 format=3 uid="uid://dvi65r7mbkbqc"]
 
 [ext_resource type="PackedScene" uid="uid://cn14gxlpvuwwl" path="res://entities/bullet/bullet.tscn" id="1_nmuum"]
 [ext_resource type="Script" path="res://entities/damages/damage.gd" id="2_nheuo"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_7s054"]
 load_path = "res://.godot/imported/player-shoot.png-4b6e64fefeaf8a15d101449127bd49db.ctex"
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_n5gqq"]
-radius = 16.0
 
 [sub_resource type="Resource" id="Resource_2np1p"]
 script = ExtResource("2_nheuo")
@@ -17,7 +14,6 @@ amount = 10
 radius = 22.0227
 
 [node name="TestEnemyBullet" instance=ExtResource("1_nmuum")]
-collision_mask = 3
 direction = -1
 
 [node name="Sprite2D" parent="." index="0"]
@@ -26,11 +22,8 @@ texture = SubResource("CompressedTexture2D_7s054")
 flip_h = true
 hframes = 4
 
-[node name="CollisionShape2D" parent="." index="1"]
-shape = SubResource("CircleShape2D_n5gqq")
-
-[node name="DamageInflictor" parent="." index="3"]
-collision_mask = 1
+[node name="DamageInflictor" parent="." index="2"]
+collision_mask = 3
 damage = SubResource("Resource_2np1p")
 
 [node name="CollisionShape2D" parent="DamageInflictor" index="0"]
