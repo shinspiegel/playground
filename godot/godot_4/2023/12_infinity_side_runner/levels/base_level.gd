@@ -6,6 +6,7 @@ class_name BaseLevel extends Node2D
 
 var __previous_area: LevelArea
 
+
 func _ready() -> void:
 	GameManager.created_node.connect(on_node_created)
 	PlayerData.health_zeroed.connect(on_player_die)

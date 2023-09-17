@@ -4,7 +4,7 @@ class_name BaseEnemy extends CharacterBody2D
 @export var health: int = 10
 
 @export_group("Animation Frame Start")
-@export_range(0.0, 10.0, 0.1) var animation_frame_start: float = 0.0
+@export_range(0.0, 2.0, 0.1) var animation_frame_start: float = 0.0
 
 @export_group("Enemy State")
 @export var is_active: bool = false
