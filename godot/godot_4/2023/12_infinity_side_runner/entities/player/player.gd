@@ -16,7 +16,6 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	__apply_gravity(delta)
 	__apply_jump()
-	__apply_move_forward()
 	move_and_slide()
 
 
@@ -31,12 +30,7 @@ func __apply_gravity(delta: float) -> void:
 
 func __apply_jump() -> void:
 	if Input.is_action_just_pressed(JUMP_KEY) and is_on_floor():
-		velocity.y = GameManager.JUMP_VELOCITY * GameManager.MULTIPLIER
+		velocity.y = GameManager.JUMP_VELOCITY * GameManager.MULTIPLIER * -1
 	
 	if Input.is_action_just_released(JUMP_KEY) and velocity.y <= 0:
 		velocity.y = 0
-
-
-func __apply_move_forward() -> void:
-	pass
-#	velocity.x = 1 * GameManager.SPEED * GameManager.MULTIPLIER

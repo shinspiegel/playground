@@ -1,8 +1,10 @@
 class_name BaseEnemy extends CharacterBody2D
 
-@export_group("Data")
 @export var health_max: int = 10
 @export var health: int = 10
+
+@export_group("Animation Frame Start")
+@export_range(0.0, 10.0, 0.1) var animation_frame_start: float = 0.0
 
 @export_group("Enemy State")
 @export var is_active: bool = false
@@ -13,6 +15,7 @@ class_name BaseEnemy extends CharacterBody2D
 @onready var visible_on_screen_notifier_2d: VisibleOnScreenNotifier2D = $VisibleOnScreenNotifier2D
 @onready var damage_receiver: DamageReceiver = $DamageReceiver
 @onready var conditional_process: Node2D = $ConditionalProcess
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 
 func _ready() -> void:
@@ -20,6 +23,8 @@ func _ready() -> void:
 	visible_on_screen_notifier_2d.screen_exited.connect(__deactivate)
 	
 	damage_receiver.receive_damage.connect(on_damage_receive)
+	
+	animation_player.seek(animation_frame_start)
 	
 	health = health_max
 	
@@ -43,7 +48,7 @@ func apply_gravity(delta: float) -> void:
 func on_damage_receive(damage: Damage) -> void:
 	health = clampi(health - damage.amount, 0, health_max)
 	if health <= 0:
-		GameManager.create_node(die_effect, global_position)
+		if die_effect: GameManager.create_node(die_effect, global_position)
 		queue_free()
 
 

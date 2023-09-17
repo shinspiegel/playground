@@ -3,7 +3,7 @@ extends Node
 signal created_node(scene: PackedScene, position: Vector2)
 
 const SPEED = 6.0
-const JUMP_VELOCITY = -12.0
+const JUMP_VELOCITY = 12.0
 const GRAVITY = 20.0
 const MULTIPLIER = 100
 

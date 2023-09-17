@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://entities/enemy/base_enemy.gd" id="1_y6anb"]
 [ext_resource type="PackedScene" uid="uid://cljnodvftnlpv" path="res://entities/damages/damage_receiver.tscn" id="2_fjvxx"]
 
-[node name="Enemy" type="CharacterBody2D"]
+[node name="BaseEnemy" type="CharacterBody2D"]
 collision_layer = 4
 collision_mask = 2
 script = ExtResource("1_y6anb")

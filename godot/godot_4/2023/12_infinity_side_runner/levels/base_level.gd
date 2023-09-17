@@ -4,6 +4,7 @@ class_name BaseLevel extends Node2D
 @export var level_areas_list: Array[PackedScene]
 @onready var map_areas: Node2D = $MapAreas
 
+var __previous_area: LevelArea
 
 func _ready() -> void:
 	GameManager.created_node.connect(on_node_created)
@@ -28,27 +29,19 @@ func on_node_created(scene: PackedScene, pos: Vector2) -> void:
 
 func __load_next_area() -> void:
 	if level_areas_list.size() > 0:
-		var list := __get_areas_only()
 		var area: LevelArea = level_areas_list.pop_back().instantiate()
 		area.load_next.connect(__load_next_area)
+		map_areas.add_child(area)
 		
-		if list.size() > 0:
-			map_areas.add_child(area)
-			area.global_position = list[0].mark_end.global_position - area.mark_start.global_position
-		else:
-			map_areas.add_child(area)
+		if not __previous_area:
 			area.global_position = first_area_offset - area.mark_start.global_position
+		else:
+			area.global_position = __previous_area.mark_end.global_position - area.mark_start.global_position
+		
+		__previous_area = area
 
 
 func __apply_speed_map_areas(delta: float) -> void:
 	for node in map_areas.get_children():
 		if node is Node2D: 
 			node.global_position.x -= GameManager.get_speed(delta)
-
-
-func __get_areas_only() -> Array[LevelArea]:
-	var list: Array[LevelArea] = []
-	for node in map_areas.get_children():
-		if node is LevelArea:
-			list.append(node)
-	return list

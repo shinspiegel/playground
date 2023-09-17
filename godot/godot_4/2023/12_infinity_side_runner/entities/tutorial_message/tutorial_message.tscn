@@ -5,7 +5,6 @@
 
 [node name="TutorialMessage" type="Area2D"]
 script = ExtResource("1_hc7pu")
-message = "Some message"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 20
