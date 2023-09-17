@@ -9,6 +9,7 @@ var __previous_area: LevelArea
 
 func _ready() -> void:
 	GameManager.created_node.connect(on_node_created)
+	GameManager.spawned_damage.connect(on_damage_spawn)
 	PlayerData.health_zeroed.connect(on_player_die)
 	level_areas_list.reverse()
 	__load_next_area()
@@ -24,6 +25,13 @@ func on_player_die() -> void:
  
 func on_node_created(scene: PackedScene, pos: Vector2) -> void:
 	var node: Node2D = scene.instantiate()
+	map_areas.add_child(node)
+	node.global_position = pos
+
+
+func on_damage_spawn(damage: Damage, pos: Vector2) -> void:
+	var node: DamageNumber = GameManager.scenes.damage.instantiate()
+	node.damage = damage
 	map_areas.add_child(node)
 	node.global_position = pos
 

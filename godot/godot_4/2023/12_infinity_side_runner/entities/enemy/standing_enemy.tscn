@@ -83,7 +83,10 @@ libraries = {
 position = Vector2(0, -45)
 shape = SubResource("CapsuleShape2D_7gpt7")
 
-[node name="DamageInflictor" parent="." index="5" instance=ExtResource("7_pf32o")]
+[node name="DamageNumberPos" parent="." index="6"]
+position = Vector2(0, -100)
+
+[node name="DamageInflictor" parent="." index="7" instance=ExtResource("7_pf32o")]
 damage = SubResource("Resource_rxsij")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DamageInflictor" index="0"]

@@ -16,6 +16,7 @@ class_name BaseEnemy extends CharacterBody2D
 @onready var damage_receiver: DamageReceiver = $DamageReceiver
 @onready var conditional_process: Node2D = $ConditionalProcess
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var damage_number_pos: Marker2D = $DamageNumberPos
 
 
 func _ready() -> void:
@@ -46,6 +47,7 @@ func apply_gravity(delta: float) -> void:
 
 
 func on_damage_receive(damage: Damage) -> void:
+	GameManager.spawn_damage_at(damage, damage_number_pos.global_position)
 	health = clampi(health - damage.amount, 0, health_max)
 	if health <= 0:
 		if die_effect: GameManager.create_node(die_effect, global_position)

@@ -5,6 +5,7 @@ const JUMP_KEY = "ui_accept"
 @export var camera: Camera2D
 @onready var remote_transform_2d: RemoteTransform2D = $RemoteTransform2D
 @onready var damage_receiver: Area2D = $DamageReceiver
+@onready var damage_number_pos: Marker2D = $DamageNumberPos
 
 
 func _ready() -> void:
@@ -21,6 +22,7 @@ func _physics_process(delta: float) -> void:
 
 func on_damage_receive(damage: Damage) -> void:
 	PlayerData.deal_damage(damage.amount)
+	GameManager.spawn_damage_at(damage, damage_number_pos.global_position)
 
 
 func __apply_gravity(delta: float) -> void:

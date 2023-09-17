@@ -88,12 +88,15 @@ libraries = {
 position = Vector2(0, -45)
 shape = SubResource("CapsuleShape2D_7gpt7")
 
-[node name="DamageInflictor" parent="." index="5" instance=ExtResource("3_h0lf8")]
+[node name="DamageNumberPos" parent="." index="6"]
+position = Vector2(0, -100)
+
+[node name="DamageInflictor" parent="." index="7" instance=ExtResource("3_h0lf8")]
 damage = SubResource("Resource_rxsij")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DamageInflictor" index="0"]
 position = Vector2(0, -48)
 shape = SubResource("CircleShape2D_cpucg")
 
-[node name="JumpColddownTimer" type="Timer" parent="." index="7"]
+[node name="JumpColddownTimer" type="Timer" parent="." index="8"]
 one_shot = true
