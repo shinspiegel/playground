@@ -12,6 +12,7 @@ func _ready() -> void:
 	quit.pressed.connect(on_quit)
 	PlayerData.reset()
 
+
 func on_start() -> void:
 	GameManager.change_scene("base_level")
 
