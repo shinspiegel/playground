@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Notas dos Alunos</title>
+    <link rel="stylesheet" href="reset.css" />
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
+    <h1>Adicionar nova nota</h1>
+
+    <!-- Este é o primeiro formulário -->
+    <form>
+      <label>
+        <span>Estudante</span>
+        <input
+          type="text"
+          autocomplete="off"
+          name="student"
+          placeholder="Digite o nome do estudante"
+          required
+        />
+      </label>
+      <label>
+        <span>Matéria</span>
+        <input
+          autocomplete="off"
+          type="text"
+          name="subject"
+          placeholder="Digite o nome da matéria ou disciplina"
+          required
+        />
+      </label>
+      <label>
+        <span>Tipo de Avaliação</span>
+        <input
+          type="text"
+          autocomplete="off"
+          name="type"
+          placeholder="Digite o tipo de nota que será usada"
+          required
+        />
+      </label>
+      <label>
+        <span>Nota</span>
+        <input
+          type="number"
+          autocomplete="off"
+          min="0"
+          max="100"
+          step="1"
+          name="value"
+          placeholder="Digite o valor da nota do aluno entre 0 e 100"
+          required
+        />
+      </label>
+
+      <button type="reset">Limpar</button>
+      <button type="submit">Enviar</button>
+    </form>
+
+    <!-- Aqui será listada as notas -->
+    <h2>Lista de Alunos e notas</h2>
+    <form>
+      <ul>
+        <li>
+          <span>Estudante</span>
+          <span>Matéria</span>
+          <span>Tipo</span>
+          <span>Nota</span>
+          <span>Ações</span>
+        </li>
+      </ul>
+    </form>
+
+    <script src="index.js"></script>
+  </body>
+</html>

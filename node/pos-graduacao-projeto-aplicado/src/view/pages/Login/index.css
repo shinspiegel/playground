@@ -1,0 +1,46 @@
+.loginPage {
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  padding: 1rem 5rem;
+}
+
+.loginPage-logoArea {
+  color: var(--primary);
+  text-align: center;
+}
+
+.loginPage-logoArea h1 {
+  font-size: 2.5rem;
+}
+
+.loginPage-form {
+  margin-top: 3rem;
+
+  width: 100%;
+  display: grid;
+  gap: 2.5rem;
+}
+
+.loginPage-recover {
+  letter-spacing: 1.2px;
+  margin-top: 1.5rem;
+  color: var(--primary);
+  font-size: 1.4rem;
+}
+
+@media screen and (min-width: 425px) {
+  .loginPage {
+    width: 42rem;
+    justify-self: center;
+    align-self: center;
+  }
+
+  .loginPage-logoArea {
+    margin-bottom: 5vh;
+  }
+}

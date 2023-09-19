@@ -1,0 +1,30 @@
+.groceryList {
+  min-height: 100%;
+  padding: 1rem 3rem;
+  margin-top: 8rem;
+}
+
+.groceryList-lastWeek {
+  position: fixed;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--secondary-bg);
+  padding: 1rem;
+  border-radius: 2rem;
+  text-align: center;
+}
+
+@media screen and (min-width: 425px) {
+  .groceryList {
+    justify-self: center;
+    width: 42rem;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .groceryList {
+    justify-self: center;
+    width: 70rem;
+  }
+}

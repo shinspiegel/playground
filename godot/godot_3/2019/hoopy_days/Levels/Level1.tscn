@@ -1,0 +1,63 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://Levels/Levels.tres" type="TileSet" id=1]
+[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://SFX/Chiptune_Adventures_1.ogg" type="AudioStream" id=3]
+[ext_resource path="res://Items/JumpPad.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Hazards/SpikeTrap.tscn" type="PackedScene" id=5]
+[ext_resource path="res://GUI/GUI.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Items/Coin.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Enemies/SpikeMan.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Enemies/Cloud.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Levels/Portal.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Levels/GameOver.tscn" type="PackedScene" id=11]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 1 )
+collision_layer = 2
+format = 1
+tile_data = PoolIntArray( 196666, 1, 0, 327750, 1, 0, 393248, 7, 0, 458756, 2, 0, 458788, 4, 0, 589858, 5, 0, 851967, 1, 0, 786451, 3, 0, 917505, 0, 0, 917520, 3, 0, 917547, 6, 0, 917597, 0, 0, 1114185, 2, 0, 1245243, 2, 0, 1310800, 2, 0, 1376322, 2, 0, 1441816, 0, 0, 1507344, 2, 0, 1507382, 2, 0, 1507414, 0, 0, 1572870, 2, 0, 1572886, 2, 0, 1572894, 2, 0, 1638412, 2, 0, 1638437, 1, 0, 1769519, 2, 0, 1835048, 2, 0 )
+
+[node name="Player" parent="." instance=ExtResource( 2 )]
+position = Vector2( 45.7601, 606.322 )
+
+[node name="BGM" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+autoplay = true
+
+[node name="JumpPads" type="Node" parent="."]
+editor/display_folded = true
+
+[node name="JumpPad" parent="JumpPads" instance=ExtResource( 4 )]
+position = Vector2( 686.166, 1508.66 )
+
+[node name="SpikeTrap" type="Node" parent="."]
+editor/display_folded = true
+
+[node name="SpikeTRap" parent="SpikeTrap" instance=ExtResource( 5 )]
+position = Vector2( 349.899, 874.748 )
+
+[node name="GUI" parent="." instance=ExtResource( 6 )]
+
+[node name="Coins" type="Node" parent="."]
+editor/display_folded = true
+
+[node name="Coin" parent="Coins" instance=ExtResource( 7 )]
+position = Vector2( 322.634, 379.436 )
+
+[node name="Coin2" parent="Coins" instance=ExtResource( 7 )]
+position = Vector2( 229.479, 824.762 )
+
+[node name="Node2D" parent="." instance=ExtResource( 8 )]
+position = Vector2( 1229.65, 1393.7 )
+
+[node name="Cloud" parent="." instance=ExtResource( 9 )]
+position = Vector2( 457.373, -284.503 )
+
+[node name="Portal" parent="." instance=ExtResource( 10 )]
+position = Vector2( 472.067, 1483.73 )
+NextLevel = ExtResource( 11 )
+[connection signal="coin_change" from="Player" to="GUI" method="_on_Player_coin_change"]
+[connection signal="life_change" from="Player" to="GUI" method="_on_Player_life_change"]

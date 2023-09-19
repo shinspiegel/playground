@@ -1,0 +1,59 @@
+.profilePage {
+  display: grid;
+
+  padding: 2rem;
+
+  grid-template-rows: auto 1fr auto auto;
+  gap: 1rem;
+}
+
+.profilePage h3 {
+  margin-top: 2rem;
+
+  text-align: center;
+
+  color: var(--primary);
+
+  font-size: 3rem;
+}
+
+.profilePage h3 span {
+  display: block;
+
+  letter-spacing: 0.6px;
+
+  font-size: 1.4rem;
+  font-weight: 300;
+}
+
+.profilePage form {
+  display: flex;
+  align-self: center;
+  flex-direction: column;
+}
+
+.profilePage form h4 {
+  text-align: center;
+  letter-spacing: 1px;
+
+  color: var(--primary);
+
+  font-size: 2rem;
+  font-weight: 200;
+}
+
+.profilePage form > *:not(:last-child) {
+  margin-bottom: 2.5rem;
+}
+
+.profilePage form > *:first-child {
+  margin-bottom: 2rem;
+}
+
+@media screen and (min-width: 425px) {
+  .profilePage {
+    width: 42rem;
+
+    justify-self: center;
+  }
+}

@@ -1,0 +1,59 @@
+.moves {
+  display: grid;
+  gap: 1rem;
+  justify-content: center;
+
+  @media screen and (min-width: 425px) {
+    margin: 0 auto;
+    max-width: 40rem;
+
+    @media screen and (min-width: 600px) {
+      max-width: 60rem;
+    }
+
+    @media screen and (min-width: 1024px) {
+      max-width: 100rem;
+
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-areas:
+        'info levelUp '
+        'creation  combat';
+    }
+
+    @media screen and (min-width: 1440px) {
+      max-width: 130rem;
+
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-template-areas:
+        'info  creation  combat'
+        'levelUp  creation  combat';
+    }
+
+    @media screen and (min-width: 1920px) {
+      max-width: 170rem;
+    }
+  }
+
+  &__article {
+    &--info {
+      @media screen and (min-width: 1024px) {
+        grid-area: info;
+      }
+    }
+    &--creation {
+      @media screen and (min-width: 1024px) {
+        grid-area: creation;
+      }
+    }
+    &--levelUp {
+      @media screen and (min-width: 1024px) {
+        grid-area: levelUp;
+      }
+    }
+    &--combat {
+      @media screen and (min-width: 1024px) {
+        grid-area: combat;
+      }
+    }
+  }
+}

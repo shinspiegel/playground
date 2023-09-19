@@ -1,0 +1,49 @@
+.baseButton-button {
+  background: none;
+  border: none;
+
+  --background: var(--primary-bg);
+  --text: var(--primary);
+
+  color: var(--text);
+  background-color: var(--background);
+
+  width: 100%;
+  min-height: 5rem;
+  padding: 1rem 2rem;
+  border-radius: 99rem;
+  border: 1px solid transparent;
+
+  font-size: 1.6rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+
+  transition: filter ease 0.3s;
+}
+
+.baseButton-button.secondary {
+  --background: var(--secondary-bg);
+  --text: var(--secondary);
+}
+
+.baseButton-button.accent {
+  --background: var(--accent-bg);
+  --text: var(--accent);
+}
+
+.baseButton-button.ghost {
+  background-color: transparent;
+  border-color: var(--background);
+  color: var(--background);
+}
+
+.baseButton-button:focus,
+.baseButton-button:hover {
+  backdrop-filter: brightness(130%);
+  filter: brightness(120%);
+}
+
+.baseButton-button:active {
+  backdrop-filter: brightness(90%);
+  filter: brightness(90%);
+}

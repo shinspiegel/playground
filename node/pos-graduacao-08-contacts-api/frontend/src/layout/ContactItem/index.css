@@ -1,0 +1,118 @@
+.contactItem {
+  display: grid;
+
+  padding: 10px;
+
+  border: 1px solid #d1d1d1;
+  border-radius: 4px;
+  background-color: #ddd;
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.15);
+}
+
+.contactItem > h2 {
+  margin-bottom: 8px;
+
+  letter-spacing: 1px;
+  text-transform: uppercase;
+
+  color: #3737dd;
+
+  font-size: 18px;
+  font-weight: 200;
+}
+
+.contactItem > h2 span {
+  font-size: 12px;
+}
+
+.contactItem > ul {
+  display: flex;
+  flex-wrap: wrap;
+
+  list-style: none;
+}
+
+.contactItem > ul span {
+  margin-right: 12px;
+}
+
+.contactItem > p {
+  margin-top: 10px;
+  margin-bottom: 6px;
+
+  color: #222;
+
+  font-size: 16px;
+}
+
+.contactItem > small {
+  color: #777;
+
+  font-size: 12px;
+}
+
+.contactItem > div {
+  justify-self: flex-end;
+}
+
+.contactItem > div button {
+  padding: 4px 12px;
+
+  transition: all ease 0.3s;
+  letter-spacing: 1px;
+
+  color: #3737dd;
+  border: 1px solid #3737dd;
+  border-radius: 100px;
+
+  font-size: 16px;
+}
+
+.contactItem > div button:hover {
+  color: white;
+  background-color: #3737dd;
+}
+
+.contactItem > div button:active {
+  filter: brightness(80%);
+}
+
+.contactItem > div button:not(:last-child) {
+  margin-right: 8px;
+}
+
+@media screen and (min-width: 1024px) {
+  .contactItem {
+    width: 100%;
+
+    grid-template:
+      'title title'
+      'tag tag'
+      'author button'
+      'publisher button';
+    grid-template-columns: 1fr auto;
+    grid-template-rows: 1fr auto;
+  }
+
+  .contactItem > h2 {
+    grid-area: title;
+  }
+
+  .contactItem > ul {
+    grid-area: tag;
+  }
+
+  .contactItem > p {
+    grid-area: author;
+  }
+
+  .contactItem > small {
+    grid-area: publisher;
+  }
+
+  .contactItem > div {
+    align-self: center;
+
+    grid-area: button;
+  }
+}

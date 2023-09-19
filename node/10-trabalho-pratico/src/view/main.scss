@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;900&display=swap');
+
+:root {
+  --color: #f3e;
+
+  --health: #f43;
+  --text: #050510;
+  --grey: #454549;
+  --light-grey: #d6d6d6;
+  --white: #fff;
+  --sans: 'Roboto', Arial, Helvetica, sans-serif;
+  --script: 'Dancing Script', cursive;
+}
+
+*,
+*::before,
+*::after {
+  position: relative;
+
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+
+  color: var(--text);
+  border: 0;
+  outline: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  letter-spacing: 2px;
+  text-transform: uppercase;
+
+  color: var(--grey);
+
+  font-weight: 300;
+}
+
+input {
+  background: transparent;
+
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    margin: 0;
+
+    -webkit-appearance: none;
+  }
+
+  &[type='number'] {
+    -moz-appearance: textfield;
+  }
+}
+
+html {
+  min-height: 100vh;
+
+  font-size: 62.5%;
+}
+
+body {
+  min-height: 100vh;
+
+  font-family: var(--sans);
+  font-size: 1.6rem;
+}

@@ -1,0 +1,32 @@
+.bottomMenuItem {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: flex-start;
+
+  width: 6rem;
+
+  box-shadow: none;
+}
+
+.bottomMenuItem > span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 6rem;
+  height: 6rem;
+  margin-bottom: 1rem;
+
+  color: var(--secondary-bg);
+  border: 3px solid var(--secondary-bg);
+  border-radius: 99rem;
+
+  font-size: 4rem;
+}
+
+.bottomMenuItem > label {
+  color: var(--primary-bg);
+
+  font-size: 1.4rem;
+}

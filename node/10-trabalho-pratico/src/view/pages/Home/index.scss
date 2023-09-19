@@ -1,0 +1,35 @@
+.home {
+  display: grid;
+  justify-content: center;
+
+  gap: 1rem;
+
+  @media screen and (min-width: 425px) {
+    max-width: 40rem;
+    margin: 0 auto;
+  }
+
+  @media screen and (min-width: 600px) {
+    gap: 2rem;
+    padding: 5rem 0;
+    max-width: 60rem;
+  }
+
+  @media screen and (min-width: 1024px) {
+    gap: 3rem;
+    padding: 5rem;
+    max-width: 100rem;
+
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  @media screen and (min-width: 1440px) {
+    max-width: 130rem;
+
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  @media screen and (min-width: 1920px) {
+    max-width: 170rem;
+  }
+}

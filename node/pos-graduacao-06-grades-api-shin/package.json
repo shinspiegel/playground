@@ -1,0 +1,42 @@
+{
+  "name": "backend",
+  "version": "0.1.1",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js",
+    "release": "standard-version",
+    "release:minor": "standard-version --release-as minor",
+    "release:major": "standard-version --release-as major"
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "standard-version": {
+    "scripts": {}
+  },
+  "jest": {
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/assetsTransformer.js",
+      "\\.(css|less)$": "<rootDir>/assetsTransformer.js"
+    }
+  },
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.8.7",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "better-docs": "^1.4.7",
+    "jest": "^24.9.0",
+    "jsdoc": "^3.6.3",
+    "nodemon": "^2.0.2",
+    "prettier": "^2.0.4",
+    "standard-version": "^7.1.0"
+  }
+}

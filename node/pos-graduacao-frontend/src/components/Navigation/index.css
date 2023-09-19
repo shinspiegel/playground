@@ -1,0 +1,103 @@
+nav.navigation {
+  width: 100%;
+  z-index: 100;
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  display: grid;
+  align-items: center;
+  justify-items: center;
+  grid-template-columns: auto 1fr auto;
+  grid-template-rows: 1fr auto;
+  grid-template-areas:
+    'arrowLeft week arrowRight'
+    'arrowLeft price arrowRight';
+
+  background-color: var(--primary);
+
+  box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.15);
+  padding: 1rem 0;
+}
+
+.navigation-arrowLeft,
+.navigation-arrowRight {
+  font-size: 4rem;
+  line-height: 3rem;
+  color: var(--accent-bg);
+}
+
+.navigation-arrowLeft:active,
+.navigation-arrowLeft:focus,
+.navigation-arrowRight:active,
+.navigation-arrowRight:focus {
+  box-shadow: none;
+}
+
+.navigation-arrowLeft {
+  grid-area: arrowLeft;
+}
+
+.navigation-arrowRight {
+  grid-area: arrowRight;
+}
+
+.navigation-weekDisplay {
+  grid-area: week;
+  font-size: 1.4rem;
+  color: var(--primary-bg);
+}
+
+.navigation-priceDisplay {
+  grid-area: price;
+
+  display: flex;
+  align-items: center;
+
+  color: var(--secondary-bg);
+  font-size: 2.5rem;
+}
+
+.navigation-priceDisplay .money {
+  font-size: 0.6em;
+  margin-right: 0.2em;
+}
+
+.navigation-priceDisplay .value {
+  font-weight: 700;
+  font-size: 1em;
+  margin-right: -0.1em;
+}
+
+.navigation-priceDisplay .cents {
+  font-size: 0.6em;
+  margin-top: 0.2em;
+  align-self: flex-start;
+}
+
+@media screen and (min-width: 425px) {
+  nav.navigation {
+    grid-template-columns: auto 2fr 1fr auto;
+    grid-template-rows: 1fr;
+    grid-template-areas: 'arrowLeft week price arrowRight';
+  }
+
+  .navigation-weekDisplay {
+    font-size: 2rem;
+  }
+
+  .navigation-priceDisplay {
+    font-size: 3rem;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .navigation-weekDisplay {
+    font-size: 2.2rem;
+    letter-spacing: 1px;
+  }
+
+  .navigation-priceDisplay {
+    font-size: 3.2rem;
+  }
+}

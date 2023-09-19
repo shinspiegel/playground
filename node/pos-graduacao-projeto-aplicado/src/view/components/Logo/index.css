@@ -1,0 +1,5 @@
+.imageLogo {
+  --logoSize: 2rem;
+  height: var(--logoSize);
+  width: var(--logoSize);
+}

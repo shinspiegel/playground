@@ -1,0 +1,26 @@
+.addBook {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+
+  min-height: calc(100vh - 100px);
+  padding: 20px;
+}
+
+.addBook h1 {
+  text-align: center;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+
+  color: orangered;
+
+  font-size: 28px;
+  font-weight: 200;
+}
+
+.addBook p {
+  margin-bottom: 20px;
+
+  color: #888;
+}

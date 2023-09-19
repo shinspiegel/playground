@@ -1,0 +1,35 @@
+.baseInput-label {
+  display: block;
+}
+
+.baseInput-span {
+  position: absolute;
+  top: -1.8rem;
+  left: 0;
+
+  font-size: 1.4rem;
+  color: var(--primary);
+}
+
+.baseInput-input {
+  background: none;
+  border: none;
+
+  background-color: var(--primary);
+  border-radius: 4px 99rem 99rem 99rem;
+
+  width: 100%;
+  height: 5rem;
+
+  padding: 1rem 2rem;
+}
+
+.baseInput-input:focus {
+  border: 1px solid var(--primary-bg);
+}
+
+.baseInput-input::placeholder {
+  color: var(--primary-bg);
+  font-size: 1.4rem;
+  font-style: italic;
+}

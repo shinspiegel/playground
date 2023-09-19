@@ -1,0 +1,159 @@
+.navigation {
+  position: fixed;
+  z-index: 10;
+  top: 0;
+  left: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  width: 28rem;
+  height: 100vh;
+  padding: 2rem;
+  padding-top: 8rem;
+
+  background-color: var(--white);
+  transform: translate(-100%);
+  transition: all ease 0.3s;
+
+  &--opened {
+    transform: translate(0%);
+  }
+
+  &__overlay {
+    position: fixed;
+    z-index: 9;
+    top: 0;
+    left: 0;
+
+    display: block;
+
+    width: 100vw;
+    height: 100vh;
+
+    transition: opacity ease 0.3s;
+    pointer-events: all;
+    pointer-events: none;
+
+    opacity: 0;
+    background-color: black;
+  }
+
+  &__hamburguer {
+    position: fixed;
+    z-index: 11;
+    top: 2rem;
+    left: 2rem;
+
+    width: var(--size);
+    height: var(--size);
+
+    transition: all ease 0.3s;
+
+    background-color: var(--color);
+    border: 0.5rem solid var(--color);
+
+    --size: 4rem;
+    --lineSize: 0.2rem;
+
+    &--opened {
+      transform: rotate(180deg);
+      background-color: transparent;
+      border: none;
+
+      .navigation {
+        &__hamburguerLine {
+          background-color: var(--color);
+
+          --space: 1.05rem;
+          --margin: -0.2rem;
+
+          &--one {
+            top: var(--space);
+            right: var(--margin);
+
+            width: 50%;
+
+            transform: rotate(60deg);
+          }
+          &--two {
+            top: 50%;
+
+            width: 90%;
+
+            transform: translateY(-50%);
+          }
+          &--three {
+            right: var(--margin);
+            bottom: var(--space);
+
+            width: 50%;
+
+            transform: rotate(-60deg);
+          }
+        }
+      }
+
+      & + .navigation__overlay {
+        pointer-events: all;
+
+        opacity: 0.7;
+      }
+    }
+  }
+
+  &__hamburguerLine {
+    position: absolute;
+
+    display: block;
+
+    width: 100%;
+    height: var(--lineSize);
+
+    transition: all ease 0.3s;
+
+    background-color: var(--white);
+
+    &--one {
+      top: 0;
+      right: 0;
+    }
+    &--two {
+      top: 50%;
+
+      transform: translateY(-50%);
+    }
+    &--three {
+      right: 0;
+      bottom: 0;
+    }
+  }
+
+  &__area {
+    list-style: none;
+  }
+
+  &__link {
+    color: var(--color);
+    font-size: 2rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 300;
+
+    &:not(:last-child) {
+      margin-bottom: 2rem;
+    }
+
+    > a {
+      display: block;
+
+      width: 100%;
+      height: 100%;
+      padding: 2rem 0;
+
+      text-decoration: none;
+
+      color: currentColor;
+    }
+  }
+}

@@ -1,0 +1,129 @@
+.bookItem {
+  display: grid;
+
+  padding: 10px;
+
+  border: 1px solid #d1d1d1;
+  border-radius: 4px;
+  background-color: #ddd;
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.15);
+}
+
+.bookItem > h2 {
+  margin-bottom: 8px;
+
+  letter-spacing: 1px;
+  text-transform: uppercase;
+
+  color: orangered;
+
+  font-size: 18px;
+  font-weight: 200;
+}
+
+.bookItem > h2 span {
+  font-size: 12px;
+}
+
+.bookItem > ul {
+  display: flex;
+  flex-wrap: wrap;
+
+  list-style: none;
+}
+
+.bookItem > ul > *:not(:last-child) {
+  margin-right: 10px;
+}
+
+.bookItem > ul li {
+  margin-bottom: 3px;
+  padding: 4px 8px;
+
+  color: white;
+  border-radius: 100px;
+  background-color: orangered;
+
+  font-size: 12px;
+}
+
+.bookItem > p {
+  margin-top: 10px;
+  margin-bottom: 6px;
+
+  color: #222;
+
+  font-size: 16px;
+}
+
+.bookItem > small {
+  color: #777;
+
+  font-size: 12px;
+}
+
+.bookItem > div {
+  justify-self: flex-end;
+}
+
+.bookItem > div button {
+  padding: 4px 12px;
+
+  transition: all ease 0.3s;
+  letter-spacing: 1px;
+
+  color: orangered;
+  border: 1px solid orangered;
+  border-radius: 100px;
+
+  font-size: 16px;
+}
+
+.bookItem > div button:hover {
+  color: white;
+  background-color: orangered;
+}
+
+.bookItem > div button:active {
+  filter: brightness(80%);
+}
+
+.bookItem > div button:not(:last-child) {
+  margin-right: 8px;
+}
+
+@media screen and (min-width: 1024px) {
+  .bookItem {
+    width: 100%;
+
+    grid-template:
+      'title title'
+      'tag tag'
+      'author button'
+      'publisher button';
+    grid-template-columns: 1fr auto;
+    grid-template-rows: 1fr auto;
+  }
+
+  .bookItem > h2 {
+    grid-area: title;
+  }
+
+  .bookItem > ul {
+    grid-area: tag;
+  }
+
+  .bookItem > p {
+    grid-area: author;
+  }
+
+  .bookItem > small {
+    grid-area: publisher;
+  }
+
+  .bookItem > div {
+    align-self: center;
+
+    grid-area: button;
+  }
+}

@@ -1,0 +1,12 @@
+.smallTitle {
+  margin-top: 1.6rem;
+  margin-bottom: 0.8rem;
+
+  &__value {
+    margin: 1rem;
+
+    color: var(--health);
+
+    font-weight: 900;
+  }
+}

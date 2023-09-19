@@ -1,0 +1,23 @@
+.productSelectName {
+  background: var(--primary-bg);
+  padding: 1rem;
+  border-radius: 99rem;
+}
+
+.productSelectName > input {
+  border: none;
+  background: none;
+  box-shadow: none;
+
+  text-align: center;
+  font-size: 1.8rem;
+  color: var(--primary);
+  border-bottom: 1px solid transparent;
+
+  transition: border ease 0.3s;
+}
+
+.productSelectName > input:focus,
+.productSelectName > input:active {
+  border-bottom: 1px solid var(--primary);
+}

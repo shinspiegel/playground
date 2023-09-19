@@ -1,0 +1,45 @@
+name: Repository Unit Test
+
+on:
+  pull_request:
+  push:
+    branches:
+      - master
+      - dev
+
+jobs:
+  test:
+    name: Run tests
+    runs-on: ubuntu-latest
+
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN}}
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Install nodejs
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+
+      - name: Install package.json
+        run: yarn
+
+      - name: Test Repository
+        run: yarn test --silent=true
+        env:
+          SERVICE_WORKER: false
+          MONGO_URI: ${{ secrets.MONGO_URI }}
+          SALT: ${{ secrets.SALT }}
+          SECRET: ${{ secrets.SECRET }}
+          SENDGRID_API_KEY: ${{ secrets.SENDGRID_API_KEY }}
+          PORT: ${{ secrets.PORT }}
+
+      - name: Check esLint
+        run: yarn lint
+
+      - name: Check commit message
+        uses: wagoid/commitlint-github-action@v1

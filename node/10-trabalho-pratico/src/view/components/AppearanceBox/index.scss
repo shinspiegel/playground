@@ -1,0 +1,16 @@
+.appearanceBox {
+  padding: 1rem;
+
+  &__optionsList {
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+  }
+
+  &__optionsBox {
+    list-style: none;
+
+    &:not(:last-child) {
+      margin-bottom: 3rem;
+    }
+  }
+}

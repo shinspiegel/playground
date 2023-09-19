@@ -1,0 +1,64 @@
+.productItemNew {
+  background-color: var(--secondary);
+  width: 100%;
+
+  display: grid;
+  grid-template-columns: 1fr auto;
+
+  border-radius: 99rem;
+  padding: 1rem;
+  padding-left: 2.5rem;
+}
+
+.productItemNew > input {
+  background: none;
+  border: none;
+  width: 100%;
+
+  color: var(--secondary-bg);
+  font-size: 1.8rem;
+  border-bottom: 1px solid var(--secondary-bg);
+  transition: all ease 0.3s;
+}
+
+.productItemNew > input:focus,
+.productItemNew > input:active {
+  box-shadow: none;
+  border-bottom: 1px solid var(--accent-bg);
+  color: var(--accent-bg);
+}
+
+.productItemNew > input:focus + .productItemNew-button,
+.productItemNew > input:active + .productItemNew-button {
+  color: var(--accent-bg);
+}
+
+.productItemNew > button {
+  font-size: 2.2rem;
+  line-height: 0rem;
+
+  margin-left: 1rem;
+  color: var(--secondary-bg);
+}
+
+@media screen and (min-width: 425px) {
+  .productItemNew > input,
+  .productItemNew > input::placeholder {
+    font-size: 2rem;
+  }
+
+  .productItemNew > button {
+    font-size: 2.2rem;
+  }
+}
+
+@media screen and (min-width: 425px) {
+  .productItemNew > input,
+  .productItemNew > input::placeholder {
+    font-size: 2.2rem;
+  }
+
+  .productItemNew > button {
+    font-size: 2.6rem;
+  }
+}

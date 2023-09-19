@@ -1,0 +1,48 @@
+.header {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  padding: 1rem;
+
+  &__input {
+    width: 100%;
+    margin-bottom: 1rem;
+
+    transition: all ease 0.1s;
+    text-align: center;
+    text-transform: capitalize;
+
+    color: var(--text);
+    border-bottom: 1px solid var(--text);
+
+    font-family: var(--script);
+    font-size: 3rem;
+
+    &::placeholder {
+      color: var(--grey);
+
+      font-family: var(--sans);
+      font-size: 2rem;
+      font-weight: 100;
+    }
+
+    &:focus {
+      color: var(--color);
+      border-bottom: 1px solid var(--color);
+    }
+  }
+
+  &__title {
+    font-size: 3rem;
+  }
+
+  &__small {
+    text-transform: initial;
+
+    color: var(--grey);
+
+    font-size: 1.2rem;
+    font-weight: 900;
+  }
+}

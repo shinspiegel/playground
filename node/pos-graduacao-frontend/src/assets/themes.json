@@ -1,0 +1,21 @@
+{
+  "defaultTheme": {
+    "--primary": "#ebd1da",
+    "--secondary": "#ecdad9",
+    "--accent": "#e9d3e8",
+
+    "--primary-bg": "#d81e5b",
+    "--secondary-bg": "#f0544f",
+    "--accent-bg": "#331832"
+  },
+
+  "lightTheme": {
+    "--primary": "#f1e7ea",
+    "--secondary": "#f1e0df",
+    "--accent": "#eee3ed",
+
+    "--primary-bg": "#ec4f84",
+    "--secondary-bg": "#db7774",
+    "--accent-bg": "#643463"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "name": "MeuMercado",
+  "short_name": "MeuMercado",
+  "description": "Sua lista de compras facilitada.",
+  "dir": "ltr",
+  "lang": "en",
+  "start_url": ".",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#992192",
+  "icons": [{ "src": "image-192.png", "sizes": "192x192", "type": "image/png" }]
+}

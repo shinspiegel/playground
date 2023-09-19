@@ -1,0 +1,35 @@
+.totalPrice {
+  z-index: 100;
+  position: fixed;
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+
+  background-color: var(--accent);
+  padding: 0.8rem 2.2rem;
+  border-radius: 99rem;
+
+  font-size: 2rem;
+  text-align: center;
+  color: var(--white);
+
+  display: flex;
+  align-items: center;
+}
+
+.totalPrice-money {
+  font-size: 0.6em;
+  margin-right: 0.5em;
+}
+
+.totalPrice-value {
+  font-weight: 700;
+  font-size: 1em;
+  margin-right: -0.05em;
+}
+
+.totalPrice-cents {
+  font-size: 0.8em;
+  margin-top: 0.05em;
+  align-self: flex-start;
+}

@@ -1,0 +1,45 @@
+{
+  "name": "06-api-express-typescript",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "npm run typescript:compile && node dist/index.js",
+    "dev": "npm run typescript:watch & npm run nodemon ",
+    "nodemon": "nodemon dist/index.js",
+    "typescript:compile": "rm -rf ./dist && tsc",
+    "typescript:watch": "rm -rf ./dist && tsc --watch"
+  },
+  "prettier": {
+    "printWidth": 120,
+    "singleQuote": true,
+    "trailingComma": "all",
+    "tabWidth": 2,
+    "useTabs": false,
+    "semi": true
+  },
+  "devDependencies": {
+    "@babel/core": "^7.10.2",
+    "@types/express": "^4.17.6",
+    "@types/mongoose": "^5.7.14",
+    "nodemon": "^2.0.3",
+    "tslint": "^6.1.1",
+    "typescript": "^3.8.3",
+    "eslint": "^6.8.0",
+    "@babel/plugin-transform-runtime": "^7.8.3",
+    "@babel/runtime": "^7.8.4",
+    "@commitlint/cli": "^8.3.5",
+    "@commitlint/config-conventional": "^8.3.4",
+    "@testing-library/jest-dom": "^4.2.4",
+    "@types/jest": "^24.0.25",
+    "babel-jest": "^24.9.0",
+    "parcel-bundler": "^1.12.4"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.9.17",
+    "morgan": "^1.10.0"
+  }
+}

@@ -1,0 +1,21 @@
+.listItem {
+  padding: 1rem;
+
+  &__list {
+    margin-top: 1rem;
+    padding-left: 2rem;
+  }
+
+  &__item {
+    list-style: circle;
+
+    &:not(:last-child) {
+      margin-bottom: 0.5rem;
+    }
+
+    ul {
+      padding-left: 2rem;
+      list-style: disc;
+    }
+  }
+}

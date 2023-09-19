@@ -1,0 +1,12 @@
+.subTitle {
+  border-bottom: 1px solid var(--text);
+  margin-bottom: 1rem;
+
+  &__value {
+    margin: 1rem;
+
+    color: var(--health);
+
+    font-weight: 900;
+  }
+}

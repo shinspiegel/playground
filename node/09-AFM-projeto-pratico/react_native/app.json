@@ -1,0 +1,12 @@
+{
+  "name": "pos-company-test",
+  "displayName": "pos-company-test",
+  "expo": {
+    "name": "pos-company-test",
+    "slug": "pos-company-test",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}

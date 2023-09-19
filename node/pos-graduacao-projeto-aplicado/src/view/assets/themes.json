@@ -1,0 +1,53 @@
+{
+  "defaultTheme": {
+    "--primary": "#ebd1da",
+    "--secondary": "#ecdad9",
+    "--accent": "#e9d3e8",
+
+    "--primary-bg": "#d81e5b",
+    "--secondary-bg": "#f0544f",
+    "--accent-bg": "#331832",
+
+    "--success": "#80e296",
+    "--danger": "#d12e56"
+  },
+
+  "lightTheme": {
+    "--primary": "#b12153",
+    "--secondary": "#650b31",
+    "--accent": "#e0770b",
+
+    "--primary-bg": "#dec4cc",
+    "--secondary-bg": "#ccb0be",
+    "--accent-bg": "#decab5",
+
+    "--success": "#80e296",
+    "--danger": "#d12e56"
+  },
+
+  "heartTheme": {
+    "--primary": "#ecd8e1",
+    "--secondary": "#e8d8db",
+    "--accent": "#ded0d5",
+
+    "--primary-bg": "#f30f73",
+    "--secondary-bg": "#ef0c2e",
+    "--accent-bg": "#7b0431",
+
+    "--success": "#2cbf4d",
+    "--danger": "#c12249"
+  },
+
+  "rustTheme": {
+    "--primary": "#dccbc5",
+    "--secondary": "#dad0be",
+    "--accent": "#c6dde0",
+
+    "--primary-bg": "#983c1d",
+    "--secondary-bg": "#6f4805",
+    "--accent-bg": "#087c8e",
+
+    "--success": "#2cbf4d",
+    "--danger": "#c12249"
+  }
+}

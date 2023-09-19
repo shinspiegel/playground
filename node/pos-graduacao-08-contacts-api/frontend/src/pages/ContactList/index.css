@@ -1,0 +1,58 @@
+.contactList {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+
+  min-height: calc(100vh - 100px);
+  padding: 20px;
+}
+
+.contactList > h2 {
+  margin-bottom: 20px;
+
+  text-align: center;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+
+  color: #3737dd;
+
+  font-size: 22px;
+  font-weight: 200;
+}
+
+.contactList > p {
+  text-align: center;
+
+  color: #555;
+}
+
+.contactList > ul {
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+  max-width: 1200px;
+  list-style: none;
+}
+
+.contactList > ul > * {
+  margin-bottom: 20px;
+}
+
+@media screen and (min-width: 768px) {
+  .contactList > ul {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .contactList > ul {
+    display: flex;
+
+    width: 100%;
+  }
+}

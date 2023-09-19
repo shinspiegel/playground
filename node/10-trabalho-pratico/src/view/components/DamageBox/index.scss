@@ -1,0 +1,19 @@
+.damageBox {
+  padding: 1rem;
+
+  &__instableText {
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: 100;
+    letter-spacing: 1px;
+    font-size: 1.8rem;
+    color: var(--health);
+  }
+
+  &__instableDescription {
+    display: block;
+    font-weight: 900;
+    text-align: center;
+    color: var(--health);
+  }
+}

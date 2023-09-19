@@ -1,0 +1,22 @@
+.editContact {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+
+  min-height: calc(100vh - 100px);
+  padding: 20px;
+}
+
+.editContact h1 {
+  margin-bottom: 20px;
+
+  text-align: center;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+
+  color: #3737dd;
+
+  font-size: 28px;
+  font-weight: 200;
+}

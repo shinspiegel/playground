@@ -1,0 +1,38 @@
+nav {
+  height: 100px;
+  padding: 20px;
+
+  background-color: #3737dd;
+}
+
+nav h1 {
+  margin-bottom: 10px;
+
+  text-align: center;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+
+  color: white;
+
+  font-size: 22px;
+}
+
+nav ul {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  list-style: none;
+}
+
+nav li {
+  color: white;
+}
+
+nav a {
+  color: currentColor;
+}
+
+nav li:not(:last-child) {
+  margin-right: 10px;
+}

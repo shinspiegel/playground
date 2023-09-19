@@ -1,0 +1,129 @@
+body {
+  padding: 20px;
+  background-color: orangered;
+}
+
+h1,
+h2 {
+  text-align: center;
+  margin-bottom: 24px;
+  color: whitesmoke;
+}
+
+h2 {
+  margin-top: 36px;
+}
+
+form {
+  background-color: whitesmoke;
+  padding: 32px;
+  border-radius: 4px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15), 0 20px 30px rgba(0, 0, 0, 0.1);
+
+  margin: 0 auto;
+  width: 100%;
+  max-width: 800px;
+
+  display: grid;
+  gap: 20px;
+}
+
+form label {
+  display: grid;
+}
+
+label span {
+  font-size: 13px;
+  color: darkslategrey;
+  margin-bottom: 10px;
+}
+
+label input {
+  border: none;
+  padding: 8px 0 4px;
+  background: none;
+  color: darkslategrey;
+  border-bottom: 1px solid darkslategrey;
+}
+
+form > button {
+  font-size: 14px;
+  padding: 16px;
+  border-radius: 4px;
+  transition: background ease 0.2s;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+form > button[type='reset'] {
+  border: 1px solid red;
+  color: red;
+}
+
+form > button[type='reset']:active,
+form > button[type='reset']:hover {
+  background: red;
+  color: white;
+}
+
+form > button[type='submit'] {
+  border: 1px solid olive;
+  color: olive;
+}
+
+form > button[type='submit']:active,
+form > button[type='submit']:hover {
+  background: olive;
+  color: white;
+}
+
+form nav {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-content: center;
+  align-items: center;
+  gap: 32px;
+}
+
+form ul {
+  list-style: none;
+}
+
+ul li:first-child {
+  font-weight: 700;
+}
+
+ul li:nth-child(odd) {
+  background-color: lightgrey;
+}
+
+ul li {
+  padding: 8px 4px;
+
+  display: grid;
+  grid-template-columns: 2fr 2fr 2fr 1fr 1fr;
+}
+
+ul li > button {
+  padding: 4px;
+  border-radius: 4px;
+  transition: background ease 0.2s;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+
+  border: 1px solid red;
+  color: red;
+}
+
+ul li > button:active,
+ul li > button:hover {
+  background: red;
+  color: white;
+}
+
+@media screen and (min-width: 768px) {
+  form:nth-child(1) {
+    grid-template-columns: 1fr 1fr;
+    gap: 36px;
+  }
+}

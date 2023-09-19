@@ -1,0 +1,73 @@
+.radioButton {
+  position: relative;
+
+  display: block;
+
+  margin-bottom: 1rem;
+  padding-left: calc(var(--size) + 1rem);
+
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+
+  font-size: 1.6rem;
+
+  --size: 2rem;
+
+  &__input {
+    position: absolute;
+
+    width: 0;
+    height: 0;
+
+    cursor: pointer;
+
+    opacity: 0;
+
+    &--checked {
+      + .radioButton__mark {
+        background-color: var(--color);
+
+        &::after {
+          display: block;
+        }
+      }
+    }
+  }
+
+  &__mark {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: var(--size);
+    height: var(--size);
+
+    border-radius: 50%;
+    background-color: var(--light-grey);
+
+    &::after {
+      position: absolute;
+      top: calc(var(--size) / 4);
+      left: calc(var(--size) / 4);
+
+      display: none;
+
+      width: calc(var(--size) / 2);
+      height: calc(var(--size) / 2);
+
+      content: '';
+
+      border-radius: 50%;
+      background: var(--white);
+    }
+  }
+
+  &:hover {
+    &__input + .radioButton__mark {
+      background-color: var(--light-grey);
+    }
+  }
+}
