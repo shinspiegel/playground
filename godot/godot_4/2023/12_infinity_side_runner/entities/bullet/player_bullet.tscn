@@ -8,6 +8,8 @@
 [sub_resource type="Resource" id="Resource_0m7xt"]
 script = ExtResource("2_6vf2q")
 amount = 10
+rand_min = 10
+rand_max = 20
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3vv8f"]
 radius = 23.0

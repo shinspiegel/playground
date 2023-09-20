@@ -62,7 +62,7 @@ radius = 29.0172
 [node name="SelfJumpingEnemy" instance=ExtResource("1_c31rm")]
 script = ExtResource("2_toysg")
 jump_colddown = 3.0
-jump_force = 12.0
+jump_force = 8.0
 first_jump_delay = 0.0
 
 [node name="Sprite2D" parent="." index="0"]

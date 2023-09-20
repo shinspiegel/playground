@@ -29,8 +29,8 @@ func on_node_created(scene: PackedScene, pos: Vector2) -> void:
 	node.global_position = pos
 
 
-func on_damage_spawn(damage: Damage, pos: Vector2) -> void:
-	var node: DamageNumber = GameManager.scenes.damage.instantiate()
+func on_damage_spawn(damage: Damage, pos: Vector2, scene: PackedScene) -> void:
+	var node: DamageNumber = scene.instantiate()
 	node.damage = damage
 	map_areas.add_child(node)
 	node.global_position = pos
