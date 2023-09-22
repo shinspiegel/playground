@@ -1,0 +1,265 @@
+[gd_scene load_steps=18 format=3 uid="uid://0oa10yrh8cf5"]
+
+[ext_resource type="Theme" uid="uid://dqnddu2ud5iww" path="res://base_theme.tres" id="1_mndds"]
+[ext_resource type="PackedScene" uid="uid://ccs6suwwyj337" path="res://screens/player_selection/element_button.tscn" id="2_ibu5l"]
+[ext_resource type="Script" path="res://screens/player_selection/player_selection.gd" id="2_lot8s"]
+[ext_resource type="Texture2D" uid="uid://dgtssjw8vqf17" path="res://assets/downloaded/Pixel UI pack 3/07.png" id="3_qo0o4"]
+[ext_resource type="Texture2D" uid="uid://b6s12e828mubf" path="res://assets/downloaded/Pixel UI pack 3/04.png" id="5_7ckae"]
+[ext_resource type="Texture2D" uid="uid://5w8o0s8l0rsr" path="res://assets/downloaded/gameui/GUI_x4.png" id="5_dtwll"]
+[ext_resource type="PackedScene" uid="uid://c2uwmkl4hbk4o" path="res://entities/background/background.tscn" id="6_uoig4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8g14y"]
+atlas = ExtResource("5_7ckae")
+region = Rect2(3, 201, 10, 29)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_p80hy"]
+load_path = "res://.godot/imported/04.png-5fb70d1568cbea4337a4dd77407de670.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xraav"]
+atlas = SubResource("CompressedTexture2D_p80hy")
+region = Rect2(134, 199, 4, 33)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_njn4c"]
+load_path = "res://.godot/imported/04.png-5fb70d1568cbea4337a4dd77407de670.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oaj5m"]
+atlas = SubResource("CompressedTexture2D_njn4c")
+region = Rect2(54, 199, 4, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5b0y5"]
+atlas = ExtResource("3_qo0o4")
+region = Rect2(0, 176, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l4r42"]
+atlas = ExtResource("3_qo0o4")
+region = Rect2(32, 176, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gi60q"]
+atlas = ExtResource("3_qo0o4")
+region = Rect2(64, 176, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c40rj"]
+atlas = ExtResource("3_qo0o4")
+region = Rect2(96, 176, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mvqdv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5b0y5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l4r42")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gi60q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c40rj")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="PlayerSelection" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_mndds")
+script = ExtResource("2_lot8s")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -199.5
+offset_top = -381.0
+offset_right = 199.5
+offset_bottom = -349.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Select Your Equipment"
+
+[node name="Container" type="GridContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -772.0
+offset_top = -279.0
+offset_right = 772.0
+offset_bottom = 245.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/h_separation = 16
+theme_override_constants/v_separation = 8
+columns = 3
+metadata/_edit_group_ = true
+
+[node name="ElementButton" parent="Container" instance=ExtResource("2_ibu5l")]
+layout_mode = 2
+
+[node name="ElementButton2" parent="Container" instance=ExtResource("2_ibu5l")]
+layout_mode = 2
+
+[node name="ElementButton3" parent="Container" instance=ExtResource("2_ibu5l")]
+layout_mode = 2
+
+[node name="ElementButton4" parent="Container" instance=ExtResource("2_ibu5l")]
+layout_mode = 2
+
+[node name="ElementButton5" parent="Container" instance=ExtResource("2_ibu5l")]
+layout_mode = 2
+
+[node name="ElementButton6" parent="Container" instance=ExtResource("2_ibu5l")]
+layout_mode = 2
+
+[node name="ElementButton7" parent="Container" instance=ExtResource("2_ibu5l")]
+layout_mode = 2
+
+[node name="ElementButton8" parent="Container" instance=ExtResource("2_ibu5l")]
+layout_mode = 2
+
+[node name="ElementButton9" parent="Container" instance=ExtResource("2_ibu5l")]
+layout_mode = 2
+
+[node name="ElementButton10" parent="Container" instance=ExtResource("2_ibu5l")]
+layout_mode = 2
+
+[node name="ElementButton11" parent="Container" instance=ExtResource("2_ibu5l")]
+layout_mode = 2
+
+[node name="ElementButton12" parent="Container" instance=ExtResource("2_ibu5l")]
+layout_mode = 2
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 34.0
+offset_top = -149.0
+offset_right = 105.0
+offset_bottom = 149.0
+grow_vertical = 2
+
+[node name="TextureRect2" type="NinePatchRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -4.0
+offset_top = 83.0
+offset_right = 75.0
+offset_bottom = 153.0
+grow_vertical = 2
+texture = ExtResource("5_dtwll")
+region_rect = Rect2(192, 384, 128, 128)
+patch_margin_left = 24
+patch_margin_top = 24
+patch_margin_right = 24
+patch_margin_bottom = 24
+
+[node name="Label" type="Label" parent="Control/TextureRect2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -24.5
+offset_top = -4.0
+offset_right = 3.5
+offset_bottom = 23.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.0588235, 0.0470588, 0.0784314, 1)
+theme_override_font_sizes/font_size = 24
+text = "99"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="Control/TextureRect2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 2.5
+offset_top = 6.0
+offset_right = 24.5
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.0588235, 0.0470588, 0.0784314, 1)
+theme_override_font_sizes/font_size = 12
+text = "/99"
+vertical_alignment = 2
+
+[node name="TextureRect" type="TextureRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -125.5
+offset_right = 9.0
+offset_bottom = -98.5
+grow_vertical = 2
+scale = Vector2(8, 8)
+texture = SubResource("AtlasTexture_8g14y")
+expand_mode = 4
+stretch_mode = 4
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="Control"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 21.0
+offset_top = -150.0
+offset_right = 25.0
+offset_bottom = -117.0
+grow_vertical = 2
+scale = Vector2(8, 8)
+value = 50.0
+fill_mode = 3
+texture_under = SubResource("AtlasTexture_xraav")
+texture_progress = SubResource("AtlasTexture_oaj5m")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -224.0
+offset_top = -146.0
+offset_right = 225.0
+offset_bottom = -85.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Start Game"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(909, 825)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_mvqdv")
+autoplay = "default"
+frame_progress = 0.745165
+centered = false
+offset = Vector2(2.08165e-12, 2.08165e-12)
+
+[node name="Background" parent="." instance=ExtResource("6_uoig4")]

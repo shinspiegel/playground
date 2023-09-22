@@ -14,7 +14,7 @@ func _ready() -> void:
 
 
 func on_start() -> void:
-	GameManager.change_scene("base_level")
+	GameManager.change_scene(GameManager.SCREENS.power_selection)
 
 
 func on_options() -> void:

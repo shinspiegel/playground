@@ -18,7 +18,8 @@ const LEVELS = {
 }
 
 const SCREENS = {
-	"title": preload("res://screens/start_screen.tscn")
+	"title": preload("res://screens/start_screen/start_screen.tscn"),
+	"power_selection": preload("res://screens/player_selection/player_selection.tscn"),
 }
 
 

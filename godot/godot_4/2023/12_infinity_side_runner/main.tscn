@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://del6qkgb3mgc8"]
 
 [ext_resource type="Theme" uid="uid://dqnddu2ud5iww" path="res://base_theme.tres" id="1_giprh"]
-[ext_resource type="PackedScene" uid="uid://k1w8554ibbo7" path="res://screens/start_screen.tscn" id="2_btdam"]
+[ext_resource type="PackedScene" uid="uid://k1w8554ibbo7" path="res://screens/start_screen/start_screen.tscn" id="2_btdam"]
 
 [node name="Main" type="Control"]
 layout_mode = 3

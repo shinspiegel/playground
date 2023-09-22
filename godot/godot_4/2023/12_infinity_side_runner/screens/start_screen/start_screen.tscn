@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://k1w8554ibbo7"]
 
 [ext_resource type="Theme" uid="uid://dqnddu2ud5iww" path="res://base_theme.tres" id="1_ymyex"]
-[ext_resource type="Script" path="res://screens/start_screen.gd" id="2_6co4f"]
+[ext_resource type="Script" path="res://screens/start_screen/start_screen.gd" id="2_6co4f"]
 [ext_resource type="FontFile" uid="uid://bmilccisfxyy0" path="res://assets/downloaded/Crang.ttf" id="3_61xlu"]
 [ext_resource type="Texture2D" uid="uid://5w8o0s8l0rsr" path="res://assets/downloaded/gameui/GUI_x4.png" id="4_cnuru"]
 
