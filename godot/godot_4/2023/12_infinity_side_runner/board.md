@@ -5,6 +5,7 @@ This is an infinity runner gamer.
 ### Todo
 
 -   **Hazards**
+    -   Breakable blocks
     -   Spikes
     -   Damage ground
     -   Shot up
@@ -41,6 +42,6 @@ This is an infinity runner gamer.
     -   Add cursor sfx on options
     -   Add cursor sfx on start menu
     -   Add cursor sfx on item selection
-	-   Add sfx for shoots
-	-   Add sfx for explosions
+    -   Add sfx for shoots
+    -   Add sfx for explosions
 -   **Remakes**
