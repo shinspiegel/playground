@@ -3,5 +3,6 @@
 	"godot_tools.editor_path": "/opt/homebrew/bin/godot",
 	"editor.insertSpaces": false,
 	"editor.tabSize": 4,
+	"editor.renderWhitespace": "all",
 	"workbench.colorTheme": "Transparent Color Theme"
 }
