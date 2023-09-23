@@ -14,7 +14,7 @@ func _ready() -> void:
 
 
 func on_press() -> void:
-	GameManager.change_scene(GameManager.LEVELS.base_level)
+	GameManager.change_scene("base_level")
 
 
 func on_focus(node: Control) -> void:

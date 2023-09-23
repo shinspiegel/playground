@@ -1,8 +1,8 @@
 extends Control
 
-@onready var start: TextureButton = %Start
-@onready var options: TextureButton = %Options
-@onready var quit: TextureButton = %Quit
+@onready var start: BaseButton = %Start
+@onready var options: BaseButton = %Options
+@onready var quit: BaseButton = %Quit
 
 
 func _ready() -> void:
@@ -14,11 +14,11 @@ func _ready() -> void:
 
 
 func on_start() -> void:
-	GameManager.change_scene(GameManager.SCREENS.power_selection)
+	GameManager.change_scene("power_selection")
 
 
 func on_options() -> void:
-	print_debug("WARN::Not implemented")
+	GameManager.change_scene("options")
 
 
 func on_quit() -> void:
