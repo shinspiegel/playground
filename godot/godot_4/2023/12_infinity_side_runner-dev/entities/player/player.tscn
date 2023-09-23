@@ -1,0 +1,89 @@
+[gd_scene load_steps=11 format=3 uid="uid://b1vgouqmpnh"]
+
+[ext_resource type="Script" path="res://entities/player/player.gd" id="1_hjpc4"]
+[ext_resource type="Texture2D" uid="uid://c3emx0mmqumr6" path="res://assets/downloaded/Super Grotto Escape Files/Characters/Player/spritesheets/player-run.png" id="2_4tdnr"]
+[ext_resource type="PackedScene" uid="uid://biw2vauvhunye" path="res://entities/bullet_spawner/bullet_spawner.tscn" id="3_wqaxt"]
+[ext_resource type="PackedScene" uid="uid://cnesk3rtl7eix" path="res://entities/bullet/player_bullet.tscn" id="4_chtle"]
+[ext_resource type="PackedScene" uid="uid://cljnodvftnlpv" path="res://entities/damages/damage_receiver.tscn" id="5_naxqi"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3j43t"]
+radius = 32.0
+height = 120.0
+
+[sub_resource type="Animation" id="Animation_x2yl3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_lf4rg"]
+resource_name = "run"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bbll2"]
+_data = {
+"RESET": SubResource("Animation_x2yl3"),
+"run": SubResource("Animation_lf4rg")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yv1dy"]
+size = Vector2(52, 88)
+
+[node name="Player" type="CharacterBody2D"]
+collision_mask = 2
+script = ExtResource("1_hjpc4")
+
+[node name="DamageNumberPos" type="Marker2D" parent="."]
+position = Vector2(2.08165e-12, -130)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -76)
+scale = Vector2(4, 4)
+texture = ExtResource("2_4tdnr")
+hframes = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -60)
+shape = SubResource("CapsuleShape2D_3j43t")
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="."]
+position = Vector2(480, -225)
+remote_path = NodePath("../../Camera2D")
+
+[node name="BulletSpawner" parent="." instance=ExtResource("3_wqaxt")]
+position = Vector2(59, -53)
+bullet_scene = ExtResource("4_chtle")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "run"
+libraries = {
+"": SubResource("AnimationLibrary_bbll2")
+}
+
+[node name="DamageReceiver" parent="." instance=ExtResource("5_naxqi")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageReceiver"]
+position = Vector2(0, -64)
+shape = SubResource("RectangleShape2D_yv1dy")

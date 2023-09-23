@@ -1,0 +1,7 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://dqnddu2ud5iww"]
+
+[ext_resource type="FontFile" uid="uid://csxk538mgfv14" path="res://assets/downloaded/VCR_OSD_MONO_1.001.ttf" id="1_f1sqw"]
+
+[resource]
+default_font = ExtResource("1_f1sqw")
+default_font_size = 32

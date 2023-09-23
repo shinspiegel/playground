@@ -1,0 +1,76 @@
+[gd_scene load_steps=9 format=3 uid="uid://lrnr4shffwgu"]
+
+[ext_resource type="Script" path="res://entities/game_ui/game_ui.gd" id="1_skell"]
+[ext_resource type="Theme" uid="uid://dqnddu2ud5iww" path="res://base_theme.tres" id="2_o1rrn"]
+[ext_resource type="Texture2D" uid="uid://djtenwy8uotp5" path="res://assets/downloaded/Pixel UI pack 3/06.png" id="3_kwpat"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_vpxqw"]
+load_path = "res://.godot/imported/04.png-5fb70d1568cbea4337a4dd77407de670.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qu8pw"]
+atlas = SubResource("CompressedTexture2D_vpxqw")
+region = Rect2(294, 131, 38, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_umo8r"]
+atlas = SubResource("CompressedTexture2D_vpxqw")
+region = Rect2(6, 131, 38, 11)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_w4lev"]
+load_path = "res://.godot/imported/04.png-5fb70d1568cbea4337a4dd77407de670.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e15xc"]
+atlas = SubResource("CompressedTexture2D_w4lev")
+region = Rect2(57, 133, 32, 5)
+
+[node name="GameUI" type="CanvasLayer"]
+layer = 10
+script = ExtResource("1_skell")
+
+[node name="Control" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_o1rrn")
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="Control" type="Control" parent="Control"]
+layout_mode = 2
+
+[node name="TextureRect" type="NinePatchRect" parent="Control/Control"]
+layout_mode = 0
+offset_right = 27.0
+offset_bottom = 11.0
+scale = Vector2(4, 4)
+texture = ExtResource("3_kwpat")
+region_rect = Rect2(226, 116, 27, 8)
+patch_margin_left = 8
+patch_margin_top = 4
+patch_margin_right = 8
+patch_margin_bottom = 4
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="Control/Control"]
+layout_mode = 1
+offset_left = 87.0
+offset_right = 125.0
+offset_bottom = 11.0
+scale = Vector2(4, 4)
+max_value = 10.0
+value = 10.0
+texture_under = SubResource("AtlasTexture_qu8pw")
+texture_over = SubResource("AtlasTexture_umo8r")
+texture_progress = SubResource("AtlasTexture_e15xc")
+texture_progress_offset = Vector2(3, 2)
+
+[node name="Label" type="Label" parent="Control/Control"]
+layout_mode = 1
+offset_left = 8.0
+offset_top = 6.0
+offset_right = 87.0
+offset_bottom = 38.0
+text = "9999"
+horizontal_alignment = 1

@@ -1,0 +1,102 @@
+[gd_scene load_steps=13 format=3 uid="uid://ddjmdtr5y6ekf"]
+
+[ext_resource type="PackedScene" uid="uid://d4g73rn7a73t0" path="res://entities/enemy/base_enemy.tscn" id="1_c31rm"]
+[ext_resource type="Texture2D" uid="uid://dgjmrxb851vvf" path="res://assets/downloaded/Super Grotto Escape Files/Characters/Enemies/spritesheet/lizard-move.png" id="2_jrgdy"]
+[ext_resource type="Script" path="res://entities/enemy/self_jumping_enemy.gd" id="2_toysg"]
+[ext_resource type="PackedScene" uid="uid://djouf78b7ygc8" path="res://entities/damages/damage_inflictor.tscn" id="3_h0lf8"]
+[ext_resource type="Script" path="res://entities/damages/damage.gd" id="4_80gf8"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_x1n8g"]
+radius = 28.0
+height = 84.0
+
+[sub_resource type="Animation" id="Animation_5ecck"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_ylom1"]
+resource_name = "anim"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 1, 0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kls4i"]
+_data = {
+"RESET": SubResource("Animation_5ecck"),
+"anim": SubResource("Animation_ylom1")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7gpt7"]
+radius = 30.0
+height = 88.0
+
+[sub_resource type="Resource" id="Resource_rxsij"]
+script = ExtResource("4_80gf8")
+amount = 3
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cpucg"]
+radius = 29.0172
+
+[node name="SelfJumpingEnemy" instance=ExtResource("1_c31rm")]
+script = ExtResource("2_toysg")
+jump_colddown = 3.0
+jump_force = 8.0
+first_jump_delay = 0.0
+
+[node name="Sprite2D" parent="." index="0"]
+position = Vector2(7, -64)
+texture = ExtResource("2_jrgdy")
+hframes = 3
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(0, -42)
+shape = SubResource("CapsuleShape2D_x1n8g")
+
+[node name="VisibleOnScreenNotifier2D" parent="." index="2"]
+position = Vector2(0, -42)
+scale = Vector2(2.5, 4)
+
+[node name="AnimationPlayer" parent="." index="3"]
+autoplay = "anim"
+libraries = {
+"": SubResource("AnimationLibrary_kls4i")
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageReceiver" index="0"]
+position = Vector2(0, -45)
+shape = SubResource("CapsuleShape2D_7gpt7")
+
+[node name="DamageNumberPos" parent="." index="6"]
+position = Vector2(0, -100)
+
+[node name="DamageInflictor" parent="." index="7" instance=ExtResource("3_h0lf8")]
+damage = SubResource("Resource_rxsij")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageInflictor" index="0"]
+position = Vector2(0, -48)
+shape = SubResource("CircleShape2D_cpucg")
+
+[node name="JumpColddownTimer" type="Timer" parent="." index="8"]
+one_shot = true
