@@ -24,7 +24,7 @@ func change_music_volume(value: float) -> void:
 	audio_stream_player.volume_db = __convert_float_to_db(value)
 
 
-func change_sfx_volume(value: float, save: bool = true) -> void:
+func change_sfx_volume(value: float) -> void:
 	sfx_volume = value
 
 

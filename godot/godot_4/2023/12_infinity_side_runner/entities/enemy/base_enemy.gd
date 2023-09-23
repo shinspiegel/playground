@@ -51,6 +51,7 @@ func on_damage_receive(damage: Damage) -> void:
 	health = clampi(health - damage.amount, 0, health_max)
 	if health <= 0:
 		if die_effect: GameManager.create_node(die_effect, global_position)
+		GameManager.invoque_shake(damage.shake)
 		queue_free()
 
 

@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://keagr77hcxuh"]
+
+[ext_resource type="Script" path="res://entities/game_camera/game_camera.gd" id="1_lsqy1"]
+
+[node name="GameCamera" type="Camera2D"]
+position = Vector2(480, -225)
+position_smoothing_speed = 4.0
+drag_vertical_enabled = true
+drag_top_margin = 0.6
+drag_right_margin = 0.0
+drag_bottom_margin = 0.3
+editor_draw_drag_margin = true
+script = ExtResource("1_lsqy1")

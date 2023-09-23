@@ -23,6 +23,7 @@ func _physics_process(delta: float) -> void:
 func on_damage_receive(damage: Damage) -> void:
 	PlayerData.deal_damage(damage.amount)
 	GameManager.spawn_damage_at(damage, damage_number_pos.global_position)
+	GameManager.invoque_shake(damage.shake)
 
 
 func __apply_gravity(delta: float) -> void:
