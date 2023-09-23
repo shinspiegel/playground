@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://b1vgouqmpnh"]
 
 [ext_resource type="Script" path="res://entities/player/player.gd" id="1_hjpc4"]
-[ext_resource type="Texture2D" uid="uid://c3emx0mmqumr6" path="res://assets/downloaded/Super Grotto Escape Files/Characters/Player/spritesheets/player-run.png" id="2_4tdnr"]
+[ext_resource type="Texture2D" uid="uid://c3emx0mmqumr6" path="res://assets/downloaded_slim/graphics/Super Grotto Escape Files/Characters/Player/spritesheets/player-run.png" id="2_4tdnr"]
 [ext_resource type="PackedScene" uid="uid://biw2vauvhunye" path="res://entities/bullet_spawner/bullet_spawner.tscn" id="3_wqaxt"]
 [ext_resource type="PackedScene" uid="uid://cnesk3rtl7eix" path="res://entities/bullet/player_bullet.tscn" id="4_chtle"]
 [ext_resource type="PackedScene" uid="uid://cljnodvftnlpv" path="res://entities/damages/damage_receiver.tscn" id="5_naxqi"]

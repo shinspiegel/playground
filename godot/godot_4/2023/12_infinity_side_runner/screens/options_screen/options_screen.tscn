@@ -1,8 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://db1o74wxh7uq8"]
+[gd_scene load_steps=9 format=3 uid="uid://db1o74wxh7uq8"]
 
 [ext_resource type="Theme" uid="uid://dqnddu2ud5iww" path="res://base_theme.tres" id="1_qtory"]
 [ext_resource type="Script" path="res://screens/options_screen/options_screen.gd" id="2_dqfus"]
 [ext_resource type="PackedScene" uid="uid://c2uwmkl4hbk4o" path="res://entities/background/background.tscn" id="2_tpbq3"]
+[ext_resource type="PackedScene" uid="uid://rqymm0oyyev5" path="res://entities/background_music/background_music.tscn" id="4_ndjbq"]
+[ext_resource type="Script" path="res://screens/screen_elements/custom_slider/custom_slider.gd" id="4_o5mpi"]
+[ext_resource type="AudioStream" uid="uid://bu1o6eqjwsk60" path="res://assets/downloaded_slim/sfx/cursor_style_2.wav" id="5_2ii28"]
+[ext_resource type="Script" path="res://screens/screen_elements/custom_button/custom_button.gd" id="6_36g4m"]
+[ext_resource type="AudioStream" uid="uid://bkngvl0xshcne" path="res://assets/downloaded_slim/sfx/confirm_style_2_001.wav" id="7_um8eq"]
 
 [node name="OptionsScreen" type="Control"]
 layout_mode = 3
@@ -16,14 +21,16 @@ script = ExtResource("2_dqfus")
 
 [node name="Background" parent="." instance=ExtResource("2_tpbq3")]
 
+[node name="BackgroundMusic" parent="." instance=ExtResource("4_ndjbq")]
+
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 13
 anchor_left = 0.5
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -6.5
-offset_right = 6.5
+offset_left = -150.0
+offset_right = 150.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 20
@@ -31,19 +38,21 @@ alignment = 1
 
 [node name="Label" type="Label" parent="VBoxContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 64
 text = "Options
 "
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
-custom_minimum_size = Vector2(300, 2.08165e-12)
+custom_minimum_size = Vector2(350, 2.08165e-12)
 layout_mode = 2
 size_flags_vertical = 4
 
 [node name="Label" type="Label" parent="VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
+theme_override_font_sizes/font_size = 32
 text = "Music"
 
 [node name="MusicSlider" type="HSlider" parent="VBoxContainer/HBoxContainer"]
@@ -53,15 +62,19 @@ size_flags_vertical = 1
 max_value = 1.0
 step = 0.1
 value = 1.0
+script = ExtResource("4_o5mpi")
+change_sfx = ExtResource("5_2ii28")
+focus_sfx = ExtResource("5_2ii28")
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
-custom_minimum_size = Vector2(300, 2.08165e-12)
+custom_minimum_size = Vector2(350, 2.08165e-12)
 layout_mode = 2
 size_flags_vertical = 4
 
 [node name="Label" type="Label" parent="VBoxContainer/HBoxContainer2"]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
+theme_override_font_sizes/font_size = 32
 text = "Effects"
 
 [node name="EffectsSlider" type="HSlider" parent="VBoxContainer/HBoxContainer2"]
@@ -71,7 +84,14 @@ size_flags_vertical = 1
 max_value = 1.0
 step = 0.1
 value = 1.0
+script = ExtResource("4_o5mpi")
+change_sfx = ExtResource("5_2ii28")
+focus_sfx = ExtResource("5_2ii28")
 
 [node name="BackButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 64
 text = "Back"
+script = ExtResource("6_36g4m")
+press_sfx = ExtResource("7_um8eq")
+focus_sfx = ExtResource("5_2ii28")

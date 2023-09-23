@@ -14,7 +14,8 @@ const SCENES = {
 }
 
 const LEVELS = {
-	"base_level": preload("res://levels/base_level.tscn")
+	"base_level": preload("res://levels/base_level.tscn"),
+	"city_level": preload("res://levels/city_level.tscn"),
 }
 
 const SCREENS = {

@@ -1,0 +1,13 @@
+[gd_scene load_steps=8 format=3 uid="uid://wi52iuuy3jmq"]
+
+[ext_resource type="PackedScene" uid="uid://cb7cx5pmitapi" path="res://levels/base_level.tscn" id="1_faurq"]
+[ext_resource type="PackedScene" uid="uid://coy17veakn2wd" path="res://level_areas/city_areas/00_intro.tscn" id="2_h74i3"]
+[ext_resource type="PackedScene" uid="uid://bdilr28wcigd2" path="res://level_areas/city_areas/01.tscn" id="3_ktnjf"]
+[ext_resource type="PackedScene" uid="uid://bfron544qhv1j" path="res://level_areas/city_areas/02.tscn" id="4_tvc47"]
+[ext_resource type="PackedScene" uid="uid://3ree77pjs16e" path="res://level_areas/city_areas/03.tscn" id="5_kojj0"]
+[ext_resource type="PackedScene" uid="uid://dgklncv8p683w" path="res://level_areas/city_areas/04.tscn" id="6_id0ic"]
+[ext_resource type="PackedScene" uid="uid://dbinjyjc2wjub" path="res://level_areas/city_areas/05.tscn" id="7_5r7ul"]
+
+[node name="CityLevel" instance=ExtResource("1_faurq")]
+first_area_offset = Vector2(-400, 2.08165e-12)
+level_areas_list = Array[PackedScene]([ExtResource("2_h74i3"), ExtResource("3_ktnjf"), ExtResource("4_tvc47"), ExtResource("5_kojj0"), ExtResource("6_id0ic"), ExtResource("7_5r7ul")])

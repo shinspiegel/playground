@@ -1,7 +1,22 @@
 [gd_scene load_steps=6 format=3 uid="uid://c4hhcvigl22bo"]
 
 [ext_resource type="PackedScene" uid="uid://bn6ksd55vy588" path="res://entities/effects/effect.tscn" id="1_icrf0"]
-[ext_resource type="Texture2D" uid="uid://c8g3td7e7o485" path="res://assets/downloaded/Super Grotto Escape Files/Fx/Spritesheets/player-shoot-hit.png" id="2_8eeqd"]
+[ext_resource type="Texture2D" uid="uid://c8g3td7e7o485" path="res://assets/downloaded_slim/graphics/Super Grotto Escape Files/Fx/Spritesheets/player-shoot-hit.png" id="2_gutqh"]
+
+[sub_resource type="Animation" id="Animation_7bvt1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
 
 [sub_resource type="Animation" id="Animation_8imtl"]
 resource_name = "new_animation"
@@ -19,21 +34,6 @@ tracks/0/keys = {
 "values": [0, 1, 2, 3]
 }
 
-[sub_resource type="Animation" id="Animation_7bvt1"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_n4px2"]
 _data = {
 "RESET": SubResource("Animation_7bvt1"),
@@ -49,5 +49,5 @@ libraries = {
 }
 
 [node name="Sprite2D" parent="." index="1"]
-texture = ExtResource("2_8eeqd")
+texture = ExtResource("2_gutqh")
 hframes = 4

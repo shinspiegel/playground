@@ -1,9 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://lp6j84qhdvoj"]
+[gd_scene load_steps=9 format=3 uid="uid://lp6j84qhdvoj"]
 
 [ext_resource type="Theme" uid="uid://dqnddu2ud5iww" path="res://base_theme.tres" id="1_v61jg"]
 [ext_resource type="Script" path="res://screens/start_screen/start.gd" id="2_nrq7g"]
 [ext_resource type="PackedScene" uid="uid://c2uwmkl4hbk4o" path="res://entities/background/background.tscn" id="3_vn01a"]
-[ext_resource type="FontFile" uid="uid://bmilccisfxyy0" path="res://assets/downloaded/Crang.ttf" id="4_buy8y"]
+[ext_resource type="FontFile" uid="uid://bmilccisfxyy0" path="res://assets/downloaded_slim/typeface/Crang.ttf" id="4_buy8y"]
+[ext_resource type="PackedScene" uid="uid://rqymm0oyyev5" path="res://entities/background_music/background_music.tscn" id="4_on1e6"]
+[ext_resource type="Script" path="res://screens/screen_elements/custom_button/custom_button.gd" id="5_oggwe"]
+[ext_resource type="AudioStream" uid="uid://bu1o6eqjwsk60" path="res://assets/downloaded_slim/sfx/cursor_style_2.wav" id="6_iaqv5"]
+[ext_resource type="AudioStream" uid="uid://bkngvl0xshcne" path="res://assets/downloaded_slim/sfx/confirm_style_2_001.wav" id="6_oexk2"]
 
 [node name="StartScreen" type="Control"]
 layout_mode = 3
@@ -17,6 +21,8 @@ script = ExtResource("2_nrq7g")
 
 [node name="Background" parent="." instance=ExtResource("3_vn01a")]
 
+[node name="BackgroundMusic" parent="." instance=ExtResource("4_on1e6")]
+
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 13
@@ -25,7 +31,7 @@ anchor_right = 0.5
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 80
+theme_override_constants/separation = 20
 alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer"]
@@ -49,20 +55,33 @@ text = "Infinity Runner"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Control" type="Control" parent="VBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(2.08165e-12, 80)
+layout_mode = 2
+
 [node name="Start" type="Button" parent="VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 64
 text = "Start"
+script = ExtResource("5_oggwe")
+press_sfx = ExtResource("6_oexk2")
+focus_sfx = ExtResource("6_iaqv5")
 
 [node name="Options" type="Button" parent="VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 64
 text = "Options"
+script = ExtResource("5_oggwe")
+press_sfx = ExtResource("6_oexk2")
+focus_sfx = ExtResource("6_iaqv5")
 
 [node name="Quit" type="Button" parent="VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 64
 text = "Quit"
+script = ExtResource("5_oggwe")
+press_sfx = ExtResource("6_oexk2")
+focus_sfx = ExtResource("6_iaqv5")

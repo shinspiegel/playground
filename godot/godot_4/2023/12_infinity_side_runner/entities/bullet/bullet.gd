@@ -1,5 +1,7 @@
 class_name Bullet extends Node2D
 
+@export var shoot_sfx: AudioStream
+@export_range(-1.0, 0.0, 0.1) var shoot_sfx_adjust: float = 0.0
 @export var direction: int = 1
 @export_range(0.0, 10.0, 0.1) var speed: float = 1.0
 @export var hit_effect: PackedScene
@@ -13,6 +15,7 @@ func _ready() -> void:
 	damage_inflictor.body_entered.connect(on_body_entered)
 	damage_inflictor.area_entered.connect(on_area_entered)
 	visible_on_screen_notifier_2d.screen_exited.connect(on_screen_exited)
+	AudioManager.play_sfx(shoot_sfx, shoot_sfx_adjust)
 
 
 func _physics_process(delta: float) -> void:

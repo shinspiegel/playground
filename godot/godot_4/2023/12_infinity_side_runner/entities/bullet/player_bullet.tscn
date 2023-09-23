@@ -1,15 +1,17 @@
-[gd_scene load_steps=10 format=3 uid="uid://cnesk3rtl7eix"]
+[gd_scene load_steps=11 format=3 uid="uid://cnesk3rtl7eix"]
 
 [ext_resource type="PackedScene" uid="uid://cn14gxlpvuwwl" path="res://entities/bullet/bullet.tscn" id="1_cuqwq"]
-[ext_resource type="Texture2D" uid="uid://kcgrb1omqb3m" path="res://assets/downloaded/Super Grotto Escape Files/Fx/Spritesheets/player-shoot.png" id="2_0k1hk"]
+[ext_resource type="Texture2D" uid="uid://kcgrb1omqb3m" path="res://assets/downloaded_slim/graphics/Super Grotto Escape Files/Fx/Spritesheets/player-shoot.png" id="2_0k1hk"]
 [ext_resource type="Script" path="res://entities/damages/damage.gd" id="2_6vf2q"]
+[ext_resource type="AudioStream" uid="uid://dkswywh0ylb7a" path="res://assets/final_assets/sfx/shoot_a.wav" id="2_strgl"]
 [ext_resource type="PackedScene" uid="uid://c4hhcvigl22bo" path="res://entities/effects/player_shoot_hit.tscn" id="2_wfgiy"]
 
 [sub_resource type="Resource" id="Resource_0m7xt"]
 script = ExtResource("2_6vf2q")
 amount = 10
-rand_min = 10
-rand_max = 20
+shake = 20.0
+rand_amount_min = 10
+rand_amount_max = 20
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3vv8f"]
 radius = 23.0
@@ -54,6 +56,8 @@ _data = {
 }
 
 [node name="PlayerBullet" instance=ExtResource("1_cuqwq")]
+shoot_sfx = ExtResource("2_strgl")
+shoot_sfx_adjust = -0.4
 hit_effect = ExtResource("2_wfgiy")
 
 [node name="Sprite2D" parent="." index="0"]

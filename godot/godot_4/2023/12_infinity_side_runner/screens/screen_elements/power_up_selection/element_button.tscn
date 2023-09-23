@@ -1,0 +1,149 @@
+[gd_scene load_steps=14 format=3 uid="uid://ccs6suwwyj337"]
+
+[ext_resource type="Theme" uid="uid://dqnddu2ud5iww" path="res://base_theme.tres" id="1_1085k"]
+[ext_resource type="Script" path="res://screens/screen_elements/power_up_selection/element_button.gd" id="2_57xvm"]
+[ext_resource type="Texture2D" uid="uid://cudossd4f3ifl" path="res://icon.svg" id="3_2kkss"]
+[ext_resource type="AudioStream" uid="uid://bu1o6eqjwsk60" path="res://assets/downloaded_slim/sfx/cursor_style_2.wav" id="3_7oa0n"]
+[ext_resource type="Texture2D" uid="uid://m0h544yxow6g" path="res://assets/downloaded_slim/graphics/Pixel UI pack 3/02.png" id="4_btnmt"]
+[ext_resource type="AudioStream" uid="uid://brx4ml6aupnn2" path="res://assets/downloaded_slim/sfx/confirm_style_2_005.wav" id="4_jplew"]
+[ext_resource type="AudioStream" uid="uid://bpm0im4qjlret" path="res://assets/downloaded_slim/sfx/back_style_2_007.wav" id="5_mcxj0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1og7v"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s84ms"]
+atlas = ExtResource("4_btnmt")
+region = Rect2(128, 128, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k14tu"]
+atlas = ExtResource("4_btnmt")
+region = Rect2(160, 128, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_516i7"]
+atlas = ExtResource("4_btnmt")
+region = Rect2(192, 128, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_02vxu"]
+atlas = ExtResource("4_btnmt")
+region = Rect2(224, 128, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tdvff"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s84ms")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k14tu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_516i7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_02vxu")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="ElementButton" type="Button"]
+custom_minimum_size = Vector2(512, 128)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_1085k")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_1og7v")
+toggle_mode = true
+flat = true
+script = ExtResource("2_57xvm")
+focus_sfx = ExtResource("3_7oa0n")
+toggle_in_sfx = ExtResource("4_jplew")
+toggle_out_sfx = ExtResource("5_mcxj0")
+
+[node name="HelperText" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -377.0
+grow_horizontal = 0
+grow_vertical = 2
+mouse_filter = 1
+color = Color(0.0588235, 0.0588235, 0.0588235, 1)
+
+[node name="SkillName" type="Label" parent="HelperText"]
+layout_mode = 1
+offset_left = 9.0
+offset_top = 7.0
+offset_right = 377.0
+offset_bottom = 44.0
+mouse_filter = 1
+theme_override_font_sizes/font_size = 24
+text = "Name"
+
+[node name="Description" type="Label" parent="HelperText"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 9.0
+offset_top = -89.0
+offset_right = 377.0
+grow_vertical = 0
+mouse_filter = 1
+theme_override_font_sizes/font_size = 16
+text = "This is a description for this equipment. This will help the player to understand the item"
+autowrap_mode = 2
+
+[node name="ImagWrapper" type="Control" parent="."]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -64.0
+offset_right = 128.0
+offset_bottom = 64.0
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="ColorRect" type="ColorRect" parent="ImagWrapper"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+color = Color(0.2, 0.2, 0.2, 1)
+
+[node name="TextureRect" type="TextureRect" parent="ImagWrapper"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_2kkss")
+expand_mode = 4
+stretch_mode = 5
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="ImagWrapper"]
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_tdvff")
+autoplay = "default"
+frame_progress = 0.0353011
+centered = false

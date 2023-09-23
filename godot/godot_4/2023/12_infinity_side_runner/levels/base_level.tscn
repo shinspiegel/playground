@@ -1,20 +1,16 @@
-[gd_scene load_steps=11 format=3 uid="uid://cb7cx5pmitapi"]
+[gd_scene load_steps=8 format=3 uid="uid://cb7cx5pmitapi"]
 
 [ext_resource type="Script" path="res://levels/base_level.gd" id="1_aa02s"]
-[ext_resource type="PackedScene" uid="uid://coy17veakn2wd" path="res://level_areas/city_areas/00_intro.tscn" id="2_3pbsk"]
+[ext_resource type="PackedScene" uid="uid://3ree77pjs16e" path="res://level_areas/city_areas/03.tscn" id="2_1107j"]
 [ext_resource type="PackedScene" uid="uid://b1vgouqmpnh" path="res://entities/player/player.tscn" id="3_8x1eo"]
-[ext_resource type="PackedScene" uid="uid://bdilr28wcigd2" path="res://level_areas/city_areas/01.tscn" id="3_r4pxr"]
-[ext_resource type="PackedScene" uid="uid://bfron544qhv1j" path="res://level_areas/city_areas/02.tscn" id="4_id1pc"]
 [ext_resource type="PackedScene" uid="uid://c2uwmkl4hbk4o" path="res://entities/background/background.tscn" id="4_vqkrm"]
-[ext_resource type="PackedScene" uid="uid://dgklncv8p683w" path="res://level_areas/city_areas/04.tscn" id="5_4is6d"]
 [ext_resource type="PackedScene" uid="uid://lrnr4shffwgu" path="res://entities/game_ui/game_ui.tscn" id="5_cpx8v"]
-[ext_resource type="PackedScene" uid="uid://dbinjyjc2wjub" path="res://level_areas/city_areas/05.tscn" id="6_41y0h"]
 [ext_resource type="PackedScene" uid="uid://keagr77hcxuh" path="res://entities/game_camera/game_camera.tscn" id="7_gkrs1"]
+[ext_resource type="PackedScene" uid="uid://rqymm0oyyev5" path="res://entities/background_music/background_music.tscn" id="11_qmiet"]
 
 [node name="BaseLevel" type="Node2D"]
 script = ExtResource("1_aa02s")
-first_area_offset = Vector2(-400, 2.08165e-12)
-level_areas_list = Array[PackedScene]([ExtResource("2_3pbsk"), ExtResource("3_r4pxr"), ExtResource("4_id1pc"), ExtResource("5_4is6d"), ExtResource("6_41y0h")])
+level_areas_list = Array[PackedScene]([ExtResource("2_1107j")])
 
 [node name="GameCamera" parent="." instance=ExtResource("7_gkrs1")]
 
@@ -24,5 +20,8 @@ camera = NodePath("../GameCamera")
 [node name="Background" parent="." instance=ExtResource("4_vqkrm")]
 
 [node name="GameUI" parent="." instance=ExtResource("5_cpx8v")]
+
+[node name="BackgroundMusic" parent="." instance=ExtResource("11_qmiet")]
+music = "game"
 
 [node name="MapAreas" type="Node2D" parent="."]
