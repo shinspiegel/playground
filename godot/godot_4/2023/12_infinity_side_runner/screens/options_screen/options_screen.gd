@@ -15,6 +15,7 @@ func _ready() -> void:
 
 
 func on_back() -> void:
+	AudioManager.save_audio_data()
 	GameManager.change_scene("title")
 
 

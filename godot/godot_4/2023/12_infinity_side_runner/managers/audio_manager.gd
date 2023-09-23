@@ -13,13 +13,23 @@ const MUSIC = {
 @onready var music: Node = $Music
 
 
+func _ready() -> void:
+	if UserStoredData:
+		change_music_volume(UserStoredData.get_audio_music_volume())
+		change_sfx_volume(UserStoredData.get_audio_sfx_volume())
+
+
 func change_music_volume(value: float) -> void:
 	music_volume = value
 	audio_stream_player.volume_db = __convert_float_to_db(value)
 
 
-func change_sfx_volume(value: float) -> void:
+func change_sfx_volume(value: float, save: bool = true) -> void:
 	sfx_volume = value
+
+
+func save_audio_data() -> void:
+	UserStoredData.save_options(music_volume, sfx_volume)
 
 
 func play_sfx(effect: AudioStream) -> void:
