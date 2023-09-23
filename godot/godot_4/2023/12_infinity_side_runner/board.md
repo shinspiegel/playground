@@ -4,27 +4,43 @@ This is an infinity runner gamer.
 
 ### Todo
 
-- [ ] **Juice** Camera shake
-- [ ] **Hazard:** Spikes  
-- [ ] **Hazard:** Damage ground  
-- [ ] **Hazard:** Shot up  
-- [ ] **Hazard:** Trigger and shot  
-- [ ] **Level:** City (5min gameplay)  
-- [ ] **Level:** City top building (5min gameplay)  
-- [ ] **Level:** Destroyed city (5min gameplay)  
-- [ ] **Level:** Portal (5min gameplay)  
-- [ ] **Enemy:** Jump with player  
-- [ ] **Enemy:** Shooter  
-- [ ] **Enemy:** Shoot and shoot back  
-- [ ] **Enemy:** Thrower (acid, bomb...)  
-- [ ] **Player:** Alternative shots  
-- [ ] **Player:** Speed power up  
-- [ ] **Player:** Jump power up  
-- [ ] **Player:** Shield power up  
+- **Hazards**
+  - Spikes
+  - Damage ground
+  - Shot up
+  - Trigger and shot
 
-### Doing
+- **Level:**
+  - City (5min gameplay)
+  - City top building (5min gameplay)
+  - Destroyed city (5min gameplay)
+  - Portal (5min gameplay)
 
+- **Enemy:**
+  - Jump with player
+  - Shooter
+  - Shoot and shoot back
+  - Thrower (acid, bomb...)
+
+- **Player:**
+  - Alternative shots
+  - Speed power up
+  - Jump power up
+  - Shield power up
+
+- **Sfx**
+  - Add sfx for shoots
+
+- **Remakes**
+  - Remake music
 
 ### DONE ✓
 
-
+- **Juice**
+  - Camera shake
+- **Hazards**
+- **Level:**
+- **Enemy:**
+- **Player:**
+- **Sfx**
+- **Remakes**
