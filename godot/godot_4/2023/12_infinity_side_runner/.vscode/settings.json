@@ -4,5 +4,6 @@
 	"editor.insertSpaces": false,
 	"editor.tabSize": 4,
 	"editor.renderWhitespace": "all",
-	"workbench.colorTheme": "Transparent Color Theme"
+	"workbench.colorTheme": "Transparent Color Theme",
+	"coddx.taskBoard.fileList": "board.md"
 }
