@@ -24,14 +24,11 @@ const SCREENS = {
 }
 
 
-func change_scene(target) -> void:
-	if target is String:
-		if LEVELS.has(target):
-			get_tree().change_scene_to_packed(LEVELS[target])
-		elif SCREENS.has(target):
-			get_tree().change_scene_to_packed(SCREENS[target])
-	elif target is PackedScene:
-		get_tree().change_scene_to_packed(target)
+func change_scene(target: String) -> void:
+	if LEVELS.has(target):
+		get_tree().change_scene_to_packed(LEVELS[target])
+	elif SCREENS.has(target):
+		get_tree().change_scene_to_packed(SCREENS[target])
 	else:
 		print_debug("WARN::Could not locate scene to change for [%s]" % [target])
 
