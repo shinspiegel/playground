@@ -21,6 +21,7 @@ config/icon="res://icon.svg"
 
 GameManager="*res://managers/game_manager.gd"
 PlayerData="*res://managers/player_data.gd"
+AudioManager="*res://managers/audio_manager.tscn"
 
 [display]
 
