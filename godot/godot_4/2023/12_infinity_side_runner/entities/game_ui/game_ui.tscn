@@ -2,21 +2,19 @@
 
 [ext_resource type="Script" path="res://entities/game_ui/game_ui.gd" id="1_skell"]
 [ext_resource type="Theme" uid="uid://36i1pye2gh1j" path="res://base_theme.tres" id="2_o1rrn"]
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_vpxqw"]
+[ext_resource type="Texture2D" uid="uid://cn5r7hc2xxg26" path="res://assets/downloaded_slim/graphics/Pixel UI pack 3/07_x4.png" id="3_nwvp7"]
+[ext_resource type="Texture2D" uid="uid://d16w0c4j88rj5" path="res://assets/downloaded_slim/graphics/Pixel UI pack 3/04.png" id="4_hy4w2"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qu8pw"]
-atlas = SubResource("CompressedTexture2D_vpxqw")
+atlas = ExtResource("4_hy4w2")
 region = Rect2(294, 131, 38, 10)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_umo8r"]
-atlas = SubResource("CompressedTexture2D_vpxqw")
+atlas = ExtResource("4_hy4w2")
 region = Rect2(6, 131, 38, 11)
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_w4lev"]
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_e15xc"]
-atlas = SubResource("CompressedTexture2D_w4lev")
+atlas = ExtResource("4_hy4w2")
 region = Rect2(57, 133, 32, 5)
 
 [node name="GameUI" type="CanvasLayer"]
@@ -40,14 +38,14 @@ layout_mode = 2
 
 [node name="TextureRect" type="NinePatchRect" parent="Control/Control"]
 layout_mode = 0
-offset_right = 27.0
-offset_bottom = 11.0
-scale = Vector2(4, 4)
-region_rect = Rect2(226, 116, 27, 8)
-patch_margin_left = 8
-patch_margin_top = 4
-patch_margin_right = 8
-patch_margin_bottom = 4
+offset_right = 109.0
+offset_bottom = 44.0
+texture = ExtResource("3_nwvp7")
+region_rect = Rect2(0, 144, 64, 32)
+patch_margin_left = 12
+patch_margin_top = 12
+patch_margin_right = 16
+patch_margin_bottom = 12
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="Control/Control"]
 layout_mode = 1
@@ -64,9 +62,11 @@ texture_progress_offset = Vector2(3, 2)
 
 [node name="Label" type="Label" parent="Control/Control"]
 layout_mode = 1
-offset_left = 8.0
+offset_left = 12.0
 offset_top = 6.0
 offset_right = 87.0
-offset_bottom = 38.0
+offset_bottom = 36.0
+theme_override_font_sizes/font_size = 24
 text = "9999"
 horizontal_alignment = 1
+vertical_alignment = 1

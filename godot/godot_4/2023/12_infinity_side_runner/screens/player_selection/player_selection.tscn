@@ -1,32 +1,15 @@
-[gd_scene load_steps=22 format=3 uid="uid://dium2203dke3i"]
+[gd_scene load_steps=16 format=3 uid="uid://dium2203dke3i"]
 
 [ext_resource type="Theme" uid="uid://36i1pye2gh1j" path="res://base_theme.tres" id="1_mndds"]
-[ext_resource type="PackedScene" uid="uid://b3td3xmv0u5bu" path="res://screens/screen_elements/power_up_selection/element_button.tscn" id="2_ibu5l"]
 [ext_resource type="Script" path="res://screens/player_selection/player_selection.gd" id="2_lot8s"]
-[ext_resource type="Texture2D" uid="uid://du6cwvf0njusq" path="res://assets/downloaded_slim/graphics/gameui/GUI_x4.png" id="4_22nmr"]
-[ext_resource type="Texture2D" uid="uid://d16w0c4j88rj5" path="res://assets/downloaded_slim/graphics/Pixel UI pack 3/04.png" id="5_egqtk"]
-[ext_resource type="Script" path="res://screens/screen_elements/custom_button/custom_button.gd" id="6_ixyqa"]
+[ext_resource type="PackedScene" uid="uid://b3td3xmv0u5bu" path="res://screen_elements/power_up_selection/element_button.tscn" id="3_h0g5h"]
+[ext_resource type="PackedScene" uid="uid://3hbqusscucdf" path="res://screen_elements/power_up_bar/power_up_bar.tscn" id="4_qtkbv"]
+[ext_resource type="Script" path="res://screen_elements/custom_button/custom_button.gd" id="5_ahlng"]
 [ext_resource type="PackedScene" uid="uid://brfeswvfnl1vs" path="res://entities/background/background.tscn" id="6_uoig4"]
 [ext_resource type="AudioStream" uid="uid://ds76u5itib2l7" path="res://assets/downloaded_slim/sfx/confirm_style_2_003.wav" id="7_dv7bi"]
 [ext_resource type="AudioStream" uid="uid://vhrbdhia416y" path="res://assets/downloaded_slim/sfx/cursor_style_2.wav" id="8_aqe5w"]
 [ext_resource type="Texture2D" uid="uid://cajpv7xjppva6" path="res://assets/downloaded_slim/graphics/Pixel UI pack 3/07.png" id="9_imfy7"]
 [ext_resource type="PackedScene" uid="uid://bbh35i1b05n45" path="res://entities/background_music/background_music.tscn" id="11_n4h4e"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_8g14y"]
-atlas = ExtResource("5_egqtk")
-region = Rect2(3, 201, 10, 29)
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_p80hy"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_xraav"]
-atlas = SubResource("CompressedTexture2D_p80hy")
-region = Rect2(134, 199, 4, 33)
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_njn4c"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_oaj5m"]
-atlas = SubResource("CompressedTexture2D_njn4c")
-region = Rect2(54, 199, 4, 33)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5b0y5"]
 atlas = ExtResource("9_imfy7")
@@ -109,136 +92,50 @@ theme_override_constants/v_separation = 8
 columns = 3
 metadata/_edit_group_ = true
 
-[node name="ElementButton" parent="Container" instance=ExtResource("2_ibu5l")]
+[node name="ElementButton" parent="Container" instance=ExtResource("3_h0g5h")]
 layout_mode = 2
 
-[node name="ElementButton2" parent="Container" instance=ExtResource("2_ibu5l")]
+[node name="ElementButton2" parent="Container" instance=ExtResource("3_h0g5h")]
 layout_mode = 2
 
-[node name="ElementButton3" parent="Container" instance=ExtResource("2_ibu5l")]
+[node name="ElementButton3" parent="Container" instance=ExtResource("3_h0g5h")]
 layout_mode = 2
 
-[node name="ElementButton4" parent="Container" instance=ExtResource("2_ibu5l")]
+[node name="ElementButton4" parent="Container" instance=ExtResource("3_h0g5h")]
 layout_mode = 2
 
-[node name="ElementButton5" parent="Container" instance=ExtResource("2_ibu5l")]
+[node name="ElementButton5" parent="Container" instance=ExtResource("3_h0g5h")]
 layout_mode = 2
 
-[node name="ElementButton6" parent="Container" instance=ExtResource("2_ibu5l")]
+[node name="ElementButton6" parent="Container" instance=ExtResource("3_h0g5h")]
 layout_mode = 2
 
-[node name="ElementButton7" parent="Container" instance=ExtResource("2_ibu5l")]
+[node name="ElementButton7" parent="Container" instance=ExtResource("3_h0g5h")]
 layout_mode = 2
 
-[node name="ElementButton8" parent="Container" instance=ExtResource("2_ibu5l")]
+[node name="ElementButton8" parent="Container" instance=ExtResource("3_h0g5h")]
 layout_mode = 2
 
-[node name="ElementButton9" parent="Container" instance=ExtResource("2_ibu5l")]
+[node name="ElementButton9" parent="Container" instance=ExtResource("3_h0g5h")]
 layout_mode = 2
 
-[node name="ElementButton10" parent="Container" instance=ExtResource("2_ibu5l")]
+[node name="ElementButton10" parent="Container" instance=ExtResource("3_h0g5h")]
 layout_mode = 2
 
-[node name="ElementButton11" parent="Container" instance=ExtResource("2_ibu5l")]
+[node name="ElementButton11" parent="Container" instance=ExtResource("3_h0g5h")]
 layout_mode = 2
 
-[node name="ElementButton12" parent="Container" instance=ExtResource("2_ibu5l")]
+[node name="ElementButton12" parent="Container" instance=ExtResource("3_h0g5h")]
 layout_mode = 2
 
-[node name="Control" type="Control" parent="."]
+[node name="Control" parent="." instance=ExtResource("4_qtkbv")]
 layout_mode = 1
 anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = 34.0
-offset_top = -149.0
-offset_right = 105.0
-offset_bottom = 149.0
-grow_vertical = 2
-
-[node name="TextureRect2" type="NinePatchRect" parent="Control"]
-layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = -4.0
-offset_top = 83.0
-offset_right = 75.0
-offset_bottom = 153.0
-grow_vertical = 2
-texture = ExtResource("4_22nmr")
-region_rect = Rect2(192, 384, 128, 128)
-patch_margin_left = 24
-patch_margin_top = 24
-patch_margin_right = 24
-patch_margin_bottom = 24
-
-[node name="Label" type="Label" parent="Control/TextureRect2"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -24.5
-offset_top = -4.0
-offset_right = 3.5
-offset_bottom = 23.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(0.0588235, 0.0470588, 0.0784314, 1)
-theme_override_font_sizes/font_size = 24
-text = "99"
-horizontal_alignment = 2
-vertical_alignment = 1
-
-[node name="Label2" type="Label" parent="Control/TextureRect2"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 2.5
-offset_top = 6.0
-offset_right = 24.5
-offset_bottom = 20.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(0.0588235, 0.0470588, 0.0784314, 1)
-theme_override_font_sizes/font_size = 12
-text = "/99"
-vertical_alignment = 2
-
-[node name="TextureRect" type="TextureRect" parent="Control"]
-layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_top = -125.5
-offset_right = 9.0
-offset_bottom = -98.5
-grow_vertical = 2
-scale = Vector2(8, 8)
-texture = SubResource("AtlasTexture_8g14y")
-expand_mode = 4
-stretch_mode = 4
-
-[node name="TextureProgressBar" type="TextureProgressBar" parent="Control"]
-layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = 21.0
-offset_top = -150.0
-offset_right = 25.0
-offset_bottom = -117.0
-grow_vertical = 2
-scale = Vector2(8, 8)
-value = 50.0
-fill_mode = 3
-texture_under = SubResource("AtlasTexture_xraav")
-texture_progress = SubResource("AtlasTexture_oaj5m")
+anchor_left = 0.0
+anchor_right = 0.0
+offset_left = 32.0
+offset_right = 103.0
+grow_horizontal = 1
 
 [node name="Button" type="Button" parent="."]
 layout_mode = 1
@@ -254,7 +151,7 @@ offset_bottom = -85.0
 grow_horizontal = 2
 grow_vertical = 0
 text = "Start Game"
-script = ExtResource("6_ixyqa")
+script = ExtResource("5_ahlng")
 press_sfx = ExtResource("7_dv7bi")
 focus_sfx = ExtResource("8_aqe5w")
 
