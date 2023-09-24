@@ -30,6 +30,7 @@ This is an infinity runner gamer.
 	- [ ] Thrower (acid, bomb...)
 - **Player:**
 	- [x] Damage while stoped
+	- [x] Create base power up resource
 	- [ ] Power up limits
 	- [ ] Alternative shots
 	- [ ] Speed power up

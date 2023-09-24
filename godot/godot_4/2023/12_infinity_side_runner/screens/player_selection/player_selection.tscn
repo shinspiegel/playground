@@ -1,8 +1,7 @@
-[gd_scene load_steps=16 format=3 uid="uid://dium2203dke3i"]
+[gd_scene load_steps=15 format=3 uid="uid://dium2203dke3i"]
 
 [ext_resource type="Theme" uid="uid://36i1pye2gh1j" path="res://base_theme.tres" id="1_mndds"]
 [ext_resource type="Script" path="res://screens/player_selection/player_selection.gd" id="2_lot8s"]
-[ext_resource type="PackedScene" uid="uid://b3td3xmv0u5bu" path="res://screen_elements/power_up_selection/element_button.tscn" id="3_h0g5h"]
 [ext_resource type="PackedScene" uid="uid://3hbqusscucdf" path="res://screen_elements/power_up_bar/power_up_bar.tscn" id="4_qtkbv"]
 [ext_resource type="Script" path="res://screen_elements/custom_button/custom_button.gd" id="5_ahlng"]
 [ext_resource type="AudioStream" uid="uid://ds76u5itib2l7" path="res://assets/final_assets/sfx/ui_sfx/confirm_style_2_003.wav" id="6_q6v2l"]
@@ -91,42 +90,6 @@ theme_override_constants/h_separation = 16
 theme_override_constants/v_separation = 8
 columns = 3
 metadata/_edit_group_ = true
-
-[node name="ElementButton" parent="Container" instance=ExtResource("3_h0g5h")]
-layout_mode = 2
-
-[node name="ElementButton2" parent="Container" instance=ExtResource("3_h0g5h")]
-layout_mode = 2
-
-[node name="ElementButton3" parent="Container" instance=ExtResource("3_h0g5h")]
-layout_mode = 2
-
-[node name="ElementButton4" parent="Container" instance=ExtResource("3_h0g5h")]
-layout_mode = 2
-
-[node name="ElementButton5" parent="Container" instance=ExtResource("3_h0g5h")]
-layout_mode = 2
-
-[node name="ElementButton6" parent="Container" instance=ExtResource("3_h0g5h")]
-layout_mode = 2
-
-[node name="ElementButton7" parent="Container" instance=ExtResource("3_h0g5h")]
-layout_mode = 2
-
-[node name="ElementButton8" parent="Container" instance=ExtResource("3_h0g5h")]
-layout_mode = 2
-
-[node name="ElementButton9" parent="Container" instance=ExtResource("3_h0g5h")]
-layout_mode = 2
-
-[node name="ElementButton10" parent="Container" instance=ExtResource("3_h0g5h")]
-layout_mode = 2
-
-[node name="ElementButton11" parent="Container" instance=ExtResource("3_h0g5h")]
-layout_mode = 2
-
-[node name="ElementButton12" parent="Container" instance=ExtResource("3_h0g5h")]
-layout_mode = 2
 
 [node name="Control" parent="." instance=ExtResource("4_qtkbv")]
 layout_mode = 1

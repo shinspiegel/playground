@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="PlayerPowerUp" load_steps=2 format=3 uid="uid://u4s2ewmkikjn"]
+
+[ext_resource type="Script" path="res://entities/player/power_ups/player_power_up.gd" id="1_20v0i"]
+
+[resource]
+script = ExtResource("1_20v0i")
+power_up = "Power Shot"
+description = "This is very powerfull"
+cost = 9

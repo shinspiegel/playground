@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="PlayerPowerUp" load_steps=2 format=3 uid="uid://cdofdcy1xfor4"]
+
+[ext_resource type="Script" path="res://entities/player/power_ups/player_power_up.gd" id="1_niixp"]
+
+[resource]
+script = ExtResource("1_niixp")
+power_up = "Power Shot"
+description = "This is a powerful shot!
+Use with care."
+cost = 5

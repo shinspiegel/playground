@@ -1,4 +1,4 @@
-class_name ElementButton extends Button
+class_name PowerUpItemSelection extends Button
 
 const texture_color_in = Color(1,1,1,1)
 const texture_color_out = Color(1,1,1,0.5)
@@ -51,7 +51,7 @@ func on_blur() -> void:
 func __connect_inner_signals() -> void:
 	focus_entered.connect(on_focus)
 	focus_exited.connect(on_blur)
-	toggled.connect(on_toggle)
+#	toggled.connect(on_toggle)
 
 
 func __define_initial_state() -> void:

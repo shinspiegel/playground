@@ -1,30 +1,30 @@
 [gd_scene load_steps=15 format=3 uid="uid://b3td3xmv0u5bu"]
 
-[ext_resource type="Theme" uid="uid://36i1pye2gh1j" path="res://base_theme.tres" id="1_vumth"]
-[ext_resource type="Script" path="res://screen_elements/power_up_selection/element_button.gd" id="2_hxk7c"]
-[ext_resource type="AudioStream" uid="uid://vhrbdhia416y" path="res://assets/final_assets/sfx/ui_sfx/cursor_style_2.wav" id="3_mrvhe"]
-[ext_resource type="AudioStream" uid="uid://bpvvukpjcquei" path="res://assets/final_assets/sfx/ui_sfx/confirm_style_2_005.wav" id="4_1ff6j"]
-[ext_resource type="AudioStream" uid="uid://dfcpaxmny84fj" path="res://assets/final_assets/sfx/ui_sfx/back_style_2_007.wav" id="5_qe6kn"]
-[ext_resource type="Texture2D" uid="uid://cngy1jdponugl" path="res://icon.svg" id="6_58po3"]
-[ext_resource type="Texture2D" uid="uid://dvqx7b30nggct" path="res://assets/downloaded_slim/graphics/Pixel UI pack 3/02.png" id="7_01o18"]
-[ext_resource type="Texture2D" uid="uid://cn5r7hc2xxg26" path="res://assets/downloaded_slim/graphics/Pixel UI pack 3/07_x4.png" id="8_ifnh6"]
+[ext_resource type="Theme" uid="uid://36i1pye2gh1j" path="res://base_theme.tres" id="1_yk21o"]
+[ext_resource type="Script" path="res://screen_elements/power_up_selection/power_up_item_selection.gd" id="2_yl0bt"]
+[ext_resource type="AudioStream" uid="uid://vhrbdhia416y" path="res://assets/final_assets/sfx/ui_sfx/cursor_style_2.wav" id="3_1kufu"]
+[ext_resource type="AudioStream" uid="uid://ds76u5itib2l7" path="res://assets/final_assets/sfx/ui_sfx/confirm_style_2_003.wav" id="4_4x34q"]
+[ext_resource type="AudioStream" uid="uid://dfcpaxmny84fj" path="res://assets/final_assets/sfx/ui_sfx/back_style_2_007.wav" id="5_cvom6"]
+[ext_resource type="Texture2D" uid="uid://cngy1jdponugl" path="res://icon.svg" id="6_75nxi"]
+[ext_resource type="Texture2D" uid="uid://dvqx7b30nggct" path="res://assets/downloaded_slim/graphics/Pixel UI pack 3/02.png" id="7_j2kba"]
+[ext_resource type="Texture2D" uid="uid://cn5r7hc2xxg26" path="res://assets/downloaded_slim/graphics/Pixel UI pack 3/07_x4.png" id="8_clpt4"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1og7v"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s84ms"]
-atlas = ExtResource("7_01o18")
+atlas = ExtResource("7_j2kba")
 region = Rect2(128, 128, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_k14tu"]
-atlas = ExtResource("7_01o18")
+atlas = ExtResource("7_j2kba")
 region = Rect2(160, 128, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_516i7"]
-atlas = ExtResource("7_01o18")
+atlas = ExtResource("7_j2kba")
 region = Rect2(192, 128, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_02vxu"]
-atlas = ExtResource("7_01o18")
+atlas = ExtResource("7_j2kba")
 region = Rect2(224, 128, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_tdvff"]
@@ -60,14 +60,14 @@ offset_right = 256.0
 offset_bottom = 64.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("1_vumth")
+theme = ExtResource("1_yk21o")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_1og7v")
 toggle_mode = true
 flat = true
-script = ExtResource("2_hxk7c")
-focus_sfx = ExtResource("3_mrvhe")
-toggle_in_sfx = ExtResource("4_1ff6j")
-toggle_out_sfx = ExtResource("5_qe6kn")
+script = ExtResource("2_yl0bt")
+focus_sfx = ExtResource("3_1kufu")
+toggle_in_sfx = ExtResource("4_4x34q")
+toggle_out_sfx = ExtResource("5_cvom6")
 
 [node name="HelperText" type="ColorRect" parent="."]
 layout_mode = 1
@@ -139,7 +139,7 @@ offset_right = -8.0
 offset_bottom = -8.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("6_58po3")
+texture = ExtResource("6_75nxi")
 expand_mode = 4
 stretch_mode = 5
 
@@ -155,7 +155,7 @@ layout_mode = 0
 offset_left = 448.0
 offset_right = 512.0
 offset_bottom = 40.0
-texture = ExtResource("8_ifnh6")
+texture = ExtResource("8_clpt4")
 region_rect = Rect2(0, 144, 64, 32)
 patch_margin_left = 12
 patch_margin_top = 12

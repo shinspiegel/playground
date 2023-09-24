@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="PlayerPowerUp" load_steps=2 format=3 uid="uid://cpge305nbr6d0"]
+
+[ext_resource type="Script" path="res://entities/player/power_ups/player_power_up.gd" id="1_0p716"]
+
+[resource]
+script = ExtResource("1_0p716")
+power_up = "High Jump"
+description = "This increases the hight of the jump."
+cost = 7
+is_selected = true
