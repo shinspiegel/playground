@@ -4,6 +4,8 @@ This is an infinity runner gamer.
 
 ### Todo
 
+- **Game Flow**
+	- [ ] Start -> Equip -> Play -> Die
 - **Screens**
 	- [x] Start Screen
 	- [x] Options Screen
