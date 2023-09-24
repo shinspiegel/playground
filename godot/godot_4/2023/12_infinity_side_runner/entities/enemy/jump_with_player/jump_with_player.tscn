@@ -1,0 +1,97 @@
+[gd_scene load_steps=13 format=3 uid="uid://65slf813mt26"]
+
+[ext_resource type="PackedScene" uid="uid://c7x0m7dovflyd" path="res://entities/enemy/base_enemy.tscn" id="1_o4v21"]
+[ext_resource type="Script" path="res://entities/enemy/jump_with_player/jump_with_player.gd" id="2_o05k5"]
+[ext_resource type="Texture2D" uid="uid://be5tgbtnkn6k6" path="res://assets/downloaded_slim/graphics/Super Grotto Escape Files/Characters/Enemies/spritesheet/crab-walk.png" id="2_w7b1g"]
+[ext_resource type="PackedScene" uid="uid://baed7kygfrast" path="res://entities/damages/damage_inflictor.tscn" id="4_0qhr5"]
+[ext_resource type="Script" path="res://entities/damages/damage.gd" id="5_f1v5i"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x4uda"]
+size = Vector2(96, 88)
+
+[sub_resource type="Animation" id="Animation_tw8sg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_0q5gj"]
+resource_name = "new_animation"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6vajo"]
+_data = {
+"RESET": SubResource("Animation_tw8sg"),
+"new_animation": SubResource("Animation_0q5gj")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j4rxm"]
+size = Vector2(156, 96)
+
+[sub_resource type="Resource" id="Resource_ny48y"]
+script = ExtResource("5_f1v5i")
+shake = 20.0
+rand_amount_min = 5
+rand_amount_max = 15
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dtd10"]
+size = Vector2(78, 87.5)
+
+[node name="JumpWithPlayer" instance=ExtResource("1_o4v21")]
+script = ExtResource("2_o05k5")
+jump_delay = 0.0
+jump_force = 8.0
+
+[node name="Sprite2D" parent="." index="0"]
+position = Vector2(0, -64)
+texture = ExtResource("2_w7b1g")
+hframes = 6
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(0, -44)
+shape = SubResource("RectangleShape2D_x4uda")
+
+[node name="VisibleOnScreenNotifier2D" parent="." index="2"]
+position = Vector2(0, -45)
+
+[node name="AnimationPlayer" parent="." index="3"]
+autoplay = "new_animation"
+libraries = {
+"": SubResource("AnimationLibrary_6vajo")
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageReceiver" index="1"]
+position = Vector2(-2, -48)
+shape = SubResource("RectangleShape2D_j4rxm")
+
+[node name="JumpTimer" type="Timer" parent="." index="7"]
+one_shot = true
+
+[node name="DamageInflictor" parent="." index="8" instance=ExtResource("4_0qhr5")]
+damage = SubResource("Resource_ny48y")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageInflictor" index="0"]
+position = Vector2(0, -44.25)
+shape = SubResource("RectangleShape2D_dtd10")

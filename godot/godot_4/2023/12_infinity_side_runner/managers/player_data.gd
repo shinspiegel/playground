@@ -1,5 +1,7 @@
 extends Node
 
+const JUMP_KEY = "ui_accept"
+
 signal health_changed
 signal health_zeroed
 signal health_maxed

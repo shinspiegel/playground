@@ -2,8 +2,6 @@ class_name Player extends CharacterBody2D
 
 signal collided_with_wall
 
-const JUMP_KEY = "ui_accept"
-
 @export var camera: Camera2D
 @onready var remote_transform_2d: RemoteTransform2D = $RemoteTransform2D
 @onready var damage_receiver: Area2D = $DamageReceiver
@@ -40,10 +38,10 @@ func __apply_gravity(delta: float) -> void:
 
 
 func __apply_jump() -> void:
-	if Input.is_action_just_pressed(JUMP_KEY) and is_on_floor():
+	if Input.is_action_just_pressed(PlayerData.JUMP_KEY) and is_on_floor():
 		velocity.y = GameManager.JUMP_VELOCITY * GameManager.MULTIPLIER * -1
 	
-	if Input.is_action_just_released(JUMP_KEY) and velocity.y <= 0:
+	if Input.is_action_just_released(PlayerData.JUMP_KEY) and velocity.y <= 0:
 		velocity.y = 0
 
 

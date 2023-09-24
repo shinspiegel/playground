@@ -16,7 +16,6 @@ This is an infinity runner gamer.
 - **Hazards**
 	- [x] Breakable blocks
 	- [x] Spikes
-	- [ ] Shot up
 	- [ ] Trigger and shot
 - **Level:**
 	- [ ] City (5min gameplay)
@@ -25,8 +24,8 @@ This is an infinity runner gamer.
 	- [ ] Portal (5min gameplay)
 - **Enemy:**
 	- [x] Standing
-	- [ ] Self Jumping
-	- [ ] Jump with player
+	- [x] Self Jumping
+	- [x] Jump with player
 	- [ ] Shooter
 	- [ ] Shoot and shoot back
 	- [ ] Thrower (acid, bomb...)

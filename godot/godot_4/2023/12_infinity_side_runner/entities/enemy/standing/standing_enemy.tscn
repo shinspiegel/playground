@@ -1,9 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://bx02uskx8gi1g"]
+[gd_scene load_steps=12 format=3 uid="uid://cae4twxucnqut"]
 
-[ext_resource type="PackedScene" uid="uid://c7x0m7dovflyd" path="res://entities/enemy/base_enemy.tscn" id="1_c31rm"]
-[ext_resource type="Script" path="res://entities/enemy/self_jumping_enemy.gd" id="2_toysg"]
-[ext_resource type="PackedScene" uid="uid://baed7kygfrast" path="res://entities/damages/damage_inflictor.tscn" id="3_h0lf8"]
-[ext_resource type="Script" path="res://entities/damages/damage.gd" id="4_80gf8"]
+[ext_resource type="PackedScene" uid="uid://c7x0m7dovflyd" path="res://entities/enemy/base_enemy.tscn" id="1_rw7bu"]
+[ext_resource type="Texture2D" uid="uid://ckthjtfq5g07a" path="res://assets/downloaded_slim/graphics/Super Grotto Escape Files/Characters/Enemies/spritesheet/lizard-move.png" id="2_2xlws"]
+[ext_resource type="PackedScene" uid="uid://baed7kygfrast" path="res://entities/damages/damage_inflictor.tscn" id="3_85ugy"]
+[ext_resource type="Script" path="res://entities/damages/damage.gd" id="4_uu78o"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_x1n8g"]
 radius = 28.0
@@ -52,8 +52,7 @@ radius = 30.0
 height = 88.0
 
 [sub_resource type="Resource" id="Resource_rxsij"]
-script = ExtResource("4_80gf8")
-amount = 3
+script = ExtResource("4_uu78o")
 shake = 20.0
 rand_amount_min = 10
 rand_amount_max = 20
@@ -61,14 +60,11 @@ rand_amount_max = 20
 [sub_resource type="CircleShape2D" id="CircleShape2D_cpucg"]
 radius = 29.0172
 
-[node name="SelfJumpingEnemy" instance=ExtResource("1_c31rm")]
-script = ExtResource("2_toysg")
-jump_colddown = 3.0
-jump_force = 8.0
-first_jump_delay = 0.0
+[node name="StandingEnemy" instance=ExtResource("1_rw7bu")]
 
 [node name="Sprite2D" parent="." index="0"]
 position = Vector2(7, -64)
+texture = ExtResource("2_2xlws")
 hframes = 3
 
 [node name="CollisionShape2D" parent="." index="1"]
@@ -77,7 +73,6 @@ shape = SubResource("CapsuleShape2D_x1n8g")
 
 [node name="VisibleOnScreenNotifier2D" parent="." index="2"]
 position = Vector2(0, -42)
-scale = Vector2(2.5, 4)
 
 [node name="AnimationPlayer" parent="." index="3"]
 autoplay = "anim"
@@ -92,12 +87,9 @@ shape = SubResource("CapsuleShape2D_7gpt7")
 [node name="DamageNumberPos" parent="." index="6"]
 position = Vector2(0, -100)
 
-[node name="DamageInflictor" parent="." index="7" instance=ExtResource("3_h0lf8")]
+[node name="DamageInflictor" parent="." index="7" instance=ExtResource("3_85ugy")]
 damage = SubResource("Resource_rxsij")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DamageInflictor" index="0"]
 position = Vector2(0, -48)
 shape = SubResource("CircleShape2D_cpucg")
-
-[node name="JumpColddownTimer" type="Timer" parent="." index="8"]
-one_shot = true
