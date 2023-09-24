@@ -5,9 +5,9 @@
 [ext_resource type="PackedScene" uid="uid://b3td3xmv0u5bu" path="res://screen_elements/power_up_selection/element_button.tscn" id="3_h0g5h"]
 [ext_resource type="PackedScene" uid="uid://3hbqusscucdf" path="res://screen_elements/power_up_bar/power_up_bar.tscn" id="4_qtkbv"]
 [ext_resource type="Script" path="res://screen_elements/custom_button/custom_button.gd" id="5_ahlng"]
+[ext_resource type="AudioStream" uid="uid://ds76u5itib2l7" path="res://assets/final_assets/sfx/ui_sfx/confirm_style_2_003.wav" id="6_q6v2l"]
 [ext_resource type="PackedScene" uid="uid://brfeswvfnl1vs" path="res://entities/background/background.tscn" id="6_uoig4"]
-[ext_resource type="AudioStream" uid="uid://ds76u5itib2l7" path="res://assets/downloaded_slim/sfx/confirm_style_2_003.wav" id="7_dv7bi"]
-[ext_resource type="AudioStream" uid="uid://vhrbdhia416y" path="res://assets/downloaded_slim/sfx/cursor_style_2.wav" id="8_aqe5w"]
+[ext_resource type="AudioStream" uid="uid://vhrbdhia416y" path="res://assets/final_assets/sfx/ui_sfx/cursor_style_2.wav" id="7_k5wkd"]
 [ext_resource type="Texture2D" uid="uid://cajpv7xjppva6" path="res://assets/downloaded_slim/graphics/Pixel UI pack 3/07.png" id="9_imfy7"]
 [ext_resource type="PackedScene" uid="uid://bbh35i1b05n45" path="res://entities/background_music/background_music.tscn" id="11_n4h4e"]
 
@@ -152,8 +152,8 @@ grow_horizontal = 2
 grow_vertical = 0
 text = "Start Game"
 script = ExtResource("5_ahlng")
-press_sfx = ExtResource("7_dv7bi")
-focus_sfx = ExtResource("8_aqe5w")
+press_sfx = ExtResource("6_q6v2l")
+focus_sfx = ExtResource("7_k5wkd")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(909, 825)

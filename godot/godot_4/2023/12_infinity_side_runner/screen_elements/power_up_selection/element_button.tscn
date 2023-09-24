@@ -1,12 +1,13 @@
-[gd_scene load_steps=14 format=3 uid="uid://b3td3xmv0u5bu"]
+[gd_scene load_steps=15 format=3 uid="uid://b3td3xmv0u5bu"]
 
 [ext_resource type="Theme" uid="uid://36i1pye2gh1j" path="res://base_theme.tres" id="1_vumth"]
 [ext_resource type="Script" path="res://screen_elements/power_up_selection/element_button.gd" id="2_hxk7c"]
-[ext_resource type="AudioStream" uid="uid://vhrbdhia416y" path="res://assets/downloaded_slim/sfx/cursor_style_2.wav" id="3_gmcji"]
-[ext_resource type="AudioStream" uid="uid://bpvvukpjcquei" path="res://assets/downloaded_slim/sfx/confirm_style_2_005.wav" id="4_qyarm"]
-[ext_resource type="AudioStream" uid="uid://dfcpaxmny84fj" path="res://assets/downloaded_slim/sfx/back_style_2_007.wav" id="5_xyaaf"]
+[ext_resource type="AudioStream" uid="uid://vhrbdhia416y" path="res://assets/final_assets/sfx/ui_sfx/cursor_style_2.wav" id="3_mrvhe"]
+[ext_resource type="AudioStream" uid="uid://bpvvukpjcquei" path="res://assets/final_assets/sfx/ui_sfx/confirm_style_2_005.wav" id="4_1ff6j"]
+[ext_resource type="AudioStream" uid="uid://dfcpaxmny84fj" path="res://assets/final_assets/sfx/ui_sfx/back_style_2_007.wav" id="5_qe6kn"]
 [ext_resource type="Texture2D" uid="uid://cngy1jdponugl" path="res://icon.svg" id="6_58po3"]
 [ext_resource type="Texture2D" uid="uid://dvqx7b30nggct" path="res://assets/downloaded_slim/graphics/Pixel UI pack 3/02.png" id="7_01o18"]
+[ext_resource type="Texture2D" uid="uid://cn5r7hc2xxg26" path="res://assets/downloaded_slim/graphics/Pixel UI pack 3/07_x4.png" id="8_ifnh6"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1og7v"]
 
@@ -53,10 +54,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+offset_left = -256.0
+offset_top = -64.0
+offset_right = 256.0
+offset_bottom = 64.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_vumth")
@@ -64,9 +65,9 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_1og7v")
 toggle_mode = true
 flat = true
 script = ExtResource("2_hxk7c")
-focus_sfx = ExtResource("3_gmcji")
-toggle_in_sfx = ExtResource("4_qyarm")
-toggle_out_sfx = ExtResource("5_xyaaf")
+focus_sfx = ExtResource("3_mrvhe")
+toggle_in_sfx = ExtResource("4_1ff6j")
+toggle_out_sfx = ExtResource("5_qe6kn")
 
 [node name="HelperText" type="ColorRect" parent="."]
 layout_mode = 1
@@ -75,6 +76,7 @@ anchor_left = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -377.0
+offset_top = 8.0
 grow_horizontal = 0
 grow_vertical = 2
 mouse_filter = 1
@@ -85,7 +87,7 @@ layout_mode = 1
 offset_left = 9.0
 offset_top = 7.0
 offset_right = 377.0
-offset_bottom = 44.0
+offset_bottom = 32.0
 mouse_filter = 1
 theme_override_font_sizes/font_size = 24
 text = "Name"
@@ -96,7 +98,7 @@ anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
 offset_left = 9.0
-offset_top = -89.0
+offset_top = -88.0
 offset_right = 377.0
 grow_vertical = 0
 mouse_filter = 1
@@ -147,3 +149,29 @@ sprite_frames = SubResource("SpriteFrames_tdvff")
 autoplay = "default"
 frame_progress = 0.0353011
 centered = false
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 0
+offset_left = 448.0
+offset_right = 512.0
+offset_bottom = 40.0
+texture = ExtResource("8_ifnh6")
+region_rect = Rect2(0, 144, 64, 32)
+patch_margin_left = 12
+patch_margin_top = 12
+patch_margin_right = 12
+patch_margin_bottom = 12
+
+[node name="Cost" type="Label" parent="NinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_font_sizes/font_size = 24
+text = "99"
+horizontal_alignment = 1
+vertical_alignment = 1

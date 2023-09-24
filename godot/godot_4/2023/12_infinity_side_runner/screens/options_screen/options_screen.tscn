@@ -4,10 +4,10 @@
 [ext_resource type="Script" path="res://screens/options_screen/options_screen.gd" id="2_dqfus"]
 [ext_resource type="PackedScene" uid="uid://brfeswvfnl1vs" path="res://entities/background/background.tscn" id="2_tpbq3"]
 [ext_resource type="PackedScene" uid="uid://bbh35i1b05n45" path="res://entities/background_music/background_music.tscn" id="4_ndjbq"]
-[ext_resource type="Script" path="res://screens/screen_elements/custom_slider/custom_slider.gd" id="4_o5mpi"]
-[ext_resource type="AudioStream" uid="uid://vhrbdhia416y" path="res://assets/downloaded_slim/sfx/cursor_style_2.wav" id="5_2ii28"]
-[ext_resource type="Script" path="res://screens/screen_elements/custom_button/custom_button.gd" id="6_36g4m"]
-[ext_resource type="AudioStream" uid="uid://dw2n7o5yifebc" path="res://assets/downloaded_slim/sfx/confirm_style_2_001.wav" id="7_um8eq"]
+[ext_resource type="Script" path="res://screen_elements/custom_slider/custom_slider.gd" id="5_ddayw"]
+[ext_resource type="Script" path="res://screen_elements/custom_button/custom_button.gd" id="6_cg288"]
+[ext_resource type="AudioStream" uid="uid://vhrbdhia416y" path="res://assets/final_assets/sfx/ui_sfx/cursor_style_2.wav" id="6_kixf5"]
+[ext_resource type="AudioStream" uid="uid://dfcpaxmny84fj" path="res://assets/final_assets/sfx/ui_sfx/back_style_2_007.wav" id="8_1g2hc"]
 
 [node name="OptionsScreen" type="Control"]
 layout_mode = 3
@@ -62,9 +62,9 @@ size_flags_vertical = 1
 max_value = 1.0
 step = 0.1
 value = 1.0
-script = ExtResource("4_o5mpi")
-change_sfx = ExtResource("5_2ii28")
-focus_sfx = ExtResource("5_2ii28")
+script = ExtResource("5_ddayw")
+change_sfx = ExtResource("6_kixf5")
+focus_sfx = ExtResource("6_kixf5")
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
 custom_minimum_size = Vector2(350, 2.08165e-12)
@@ -84,14 +84,14 @@ size_flags_vertical = 1
 max_value = 1.0
 step = 0.1
 value = 1.0
-script = ExtResource("4_o5mpi")
-change_sfx = ExtResource("5_2ii28")
-focus_sfx = ExtResource("5_2ii28")
+script = ExtResource("5_ddayw")
+change_sfx = ExtResource("6_kixf5")
+focus_sfx = ExtResource("6_kixf5")
 
 [node name="BackButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 64
 text = "Back"
-script = ExtResource("6_36g4m")
-press_sfx = ExtResource("7_um8eq")
-focus_sfx = ExtResource("5_2ii28")
+script = ExtResource("6_cg288")
+press_sfx = ExtResource("8_1g2hc")
+focus_sfx = ExtResource("6_kixf5")

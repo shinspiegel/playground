@@ -5,9 +5,9 @@
 [ext_resource type="PackedScene" uid="uid://brfeswvfnl1vs" path="res://entities/background/background.tscn" id="3_vn01a"]
 [ext_resource type="FontFile" uid="uid://ch3x40wbrf756" path="res://assets/downloaded_slim/typeface/Crang.ttf" id="4_buy8y"]
 [ext_resource type="PackedScene" uid="uid://bbh35i1b05n45" path="res://entities/background_music/background_music.tscn" id="4_on1e6"]
-[ext_resource type="Script" path="res://screens/screen_elements/custom_button/custom_button.gd" id="5_oggwe"]
-[ext_resource type="AudioStream" uid="uid://vhrbdhia416y" path="res://assets/downloaded_slim/sfx/cursor_style_2.wav" id="6_iaqv5"]
-[ext_resource type="AudioStream" uid="uid://dw2n7o5yifebc" path="res://assets/downloaded_slim/sfx/confirm_style_2_001.wav" id="6_oexk2"]
+[ext_resource type="Script" path="res://screen_elements/custom_button/custom_button.gd" id="6_j2vxr"]
+[ext_resource type="AudioStream" uid="uid://dw2n7o5yifebc" path="res://assets/final_assets/sfx/ui_sfx/confirm_style_2_001.wav" id="7_ngy4k"]
+[ext_resource type="AudioStream" uid="uid://vhrbdhia416y" path="res://assets/final_assets/sfx/ui_sfx/cursor_style_2.wav" id="8_m7lr2"]
 
 [node name="StartScreen" type="Control"]
 layout_mode = 3
@@ -64,24 +64,24 @@ unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 64
 text = "Start"
-script = ExtResource("5_oggwe")
-press_sfx = ExtResource("6_oexk2")
-focus_sfx = ExtResource("6_iaqv5")
+script = ExtResource("6_j2vxr")
+press_sfx = ExtResource("7_ngy4k")
+focus_sfx = ExtResource("8_m7lr2")
 
 [node name="Options" type="Button" parent="VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 64
 text = "Options"
-script = ExtResource("5_oggwe")
-press_sfx = ExtResource("6_oexk2")
-focus_sfx = ExtResource("6_iaqv5")
+script = ExtResource("6_j2vxr")
+press_sfx = ExtResource("7_ngy4k")
+focus_sfx = ExtResource("8_m7lr2")
 
 [node name="Quit" type="Button" parent="VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 64
 text = "Quit"
-script = ExtResource("5_oggwe")
-press_sfx = ExtResource("6_oexk2")
-focus_sfx = ExtResource("6_iaqv5")
+script = ExtResource("6_j2vxr")
+press_sfx = ExtResource("7_ngy4k")
+focus_sfx = ExtResource("8_m7lr2")
