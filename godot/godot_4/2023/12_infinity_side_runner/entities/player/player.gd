@@ -1,11 +1,14 @@
 class_name Player extends CharacterBody2D
 
+signal collided_with_wall
+
 const JUMP_KEY = "ui_accept"
 
 @export var camera: Camera2D
 @onready var remote_transform_2d: RemoteTransform2D = $RemoteTransform2D
 @onready var damage_receiver: Area2D = $DamageReceiver
 @onready var damage_number_pos: Marker2D = $DamageNumberPos
+@onready var wall_detection: Area2D = $WallDetection
 
 
 func _ready() -> void:
@@ -17,6 +20,7 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	__apply_gravity(delta)
 	__apply_jump()
+	__check_for_walls()
 	move_and_slide()
 
 
@@ -37,3 +41,9 @@ func __apply_jump() -> void:
 	
 	if Input.is_action_just_released(JUMP_KEY) and velocity.y <= 0:
 		velocity.y = 0
+
+
+func __check_for_walls() -> void:
+	for col in wall_detection.get_overlapping_bodies():
+		if col is TileMap:
+			collided_with_wall.emit()

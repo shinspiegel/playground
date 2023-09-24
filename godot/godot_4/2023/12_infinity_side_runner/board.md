@@ -4,10 +4,15 @@ This is an infinity runner gamer.
 
 ### Todo
 
+- **Screens**
+	- [x] Start Screen
+	- [x] Options Screen
+	- [ ] Select powerups screen
+	- [ ] Game over screen
 - **Juice**
 	- [x] Camera shake
 - **Hazards**
-	- [ ] Breakable blocks
+	- [x] Breakable blocks
 	- [ ] Spikes
 	- [ ] Damage ground
 	- [ ] Shot up
@@ -23,7 +28,7 @@ This is an infinity runner gamer.
 	- [ ] Shoot and shoot back
 	- [ ] Thrower (acid, bomb...)
 - **Player:**
-	- [ ] Damage while stoped
+	- [x] Damage while stoped
 	- [ ] Power up limits
 	- [ ] Alternative shots
 	- [ ] Speed power up

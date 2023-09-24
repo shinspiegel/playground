@@ -1,0 +1,55 @@
+[gd_scene load_steps=11 format=3 uid="uid://n3e2mkbes766"]
+
+[ext_resource type="Script" path="res://entities/breakable_block/breakable_block.gd" id="1_f838y"]
+[ext_resource type="PackedScene" uid="uid://b4ovdim2p6vd1" path="res://entities/damages/damage_receiver.tscn" id="3_4sd34"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_7sl5d"]
+load_path = "res://.godot/imported/tiles.png-603f94be191e5c0b0ed9b24ae28c11b4.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ifsps"]
+atlas = SubResource("CompressedTexture2D_7sl5d")
+region = Rect2(64, 32, 16, 16)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_7wf0e"]
+load_path = "res://.godot/imported/tiles.png-603f94be191e5c0b0ed9b24ae28c11b4.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yxk0w"]
+atlas = SubResource("CompressedTexture2D_7wf0e")
+region = Rect2(80, 32, 16, 16)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_0grvq"]
+load_path = "res://.godot/imported/tiles.png-603f94be191e5c0b0ed9b24ae28c11b4.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jl7vh"]
+atlas = SubResource("CompressedTexture2D_0grvq")
+region = Rect2(80, 16, 16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_flqbi"]
+size = Vector2(64, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t41ey"]
+size = Vector2(66, 66)
+
+[node name="BreakableBlock" type="StaticBody2D"]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1_f838y")
+breaking_amount = 0.25
+sprite_undamage_texture = SubResource("AtlasTexture_ifsps")
+sprite_damage_texture = SubResource("AtlasTexture_yxk0w")
+sprite_very_damage_texture = SubResource("AtlasTexture_jl7vh")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(4, 4)
+texture = SubResource("AtlasTexture_ifsps")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_flqbi")
+
+[node name="DamageReceiver" parent="." instance=ExtResource("3_4sd34")]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageReceiver"]
+shape = SubResource("RectangleShape2D_t41ey")

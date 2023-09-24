@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cwitwjhc7erih"]
+[gd_scene load_steps=12 format=3 uid="uid://cwitwjhc7erih"]
 
 [ext_resource type="Script" path="res://entities/player/player.gd" id="1_hjpc4"]
 [ext_resource type="Texture2D" uid="uid://bwhtynqqtjaji" path="res://assets/downloaded_slim/graphics/Super Grotto Escape Files/Characters/Player/spritesheets/player-run.png" id="2_4tdnr"]
@@ -51,6 +51,9 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yv1dy"]
 size = Vector2(52, 88)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bu62i"]
+size = Vector2(20, 60)
+
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 2
 script = ExtResource("1_hjpc4")
@@ -87,3 +90,13 @@ libraries = {
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DamageReceiver"]
 position = Vector2(0, -64)
 shape = SubResource("RectangleShape2D_yv1dy")
+
+[node name="WallDetection" type="Area2D" parent="."]
+position = Vector2(49, -63)
+collision_layer = 0
+collision_mask = 2
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallDetection"]
+position = Vector2(-26, -27)
+shape = SubResource("RectangleShape2D_bu62i")

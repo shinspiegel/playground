@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://1oex8vvubqgt"]
+
+[ext_resource type="PackedScene" uid="uid://130tsgknu03s" path="res://levels/base_level.tscn" id="1_gslw7"]
+[ext_resource type="PackedScene" uid="uid://ba66eeup5kens" path="res://level_areas/test_area.tscn" id="2_yrnte"]
+
+[node name="TestLevel" instance=ExtResource("1_gslw7")]
+level_areas_list = Array[PackedScene]([ExtResource("2_yrnte")])
+
+[node name="Player" parent="." index="1" node_paths=PackedStringArray("camera")]
+camera = NodePath("../GameCamera")
+
+[node name="DamageColddown" parent="Player" index="8"]
+one_shot = true

@@ -2,7 +2,7 @@ extends Node
 
 signal health_changed
 signal health_zeroed
-signal htealh_maxed
+signal health_maxed
 
 @export var max_health: int = 20
 @export var health: int = 20
@@ -16,7 +16,7 @@ func change_health(amount: int) -> void:
 	health = clampi(health + amount, 0, max_health)
 	health_changed.emit()
 	if health >= max_health:
-		htealh_maxed.emit()
+		health_maxed.emit()
 	
 	if health <= 0:
 		health_zeroed.emit()

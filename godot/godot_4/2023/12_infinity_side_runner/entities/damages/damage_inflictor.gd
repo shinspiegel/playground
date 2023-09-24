@@ -9,5 +9,6 @@ func _ready() -> void:
 
 func on_area_enter(area: Area2D) -> void:
 	if area is DamageReceiver:
-		damage.rand_amount()
-		area.hit(damage.duplicate(true))
+		var copy_damage = damage.duplicate(true)
+		copy_damage.rand_amount()
+		area.hit(copy_damage)

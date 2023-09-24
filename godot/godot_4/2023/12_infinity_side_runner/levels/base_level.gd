@@ -1,8 +1,13 @@
 class_name BaseLevel extends Node2D
 
+@export var wall_col_damage: Damage
 @export var first_area_offset: Vector2 = Vector2.ZERO
 @export var level_areas_list: Array[PackedScene]
+
 @onready var map_areas: Node2D = $MapAreas
+@onready var player: Player = $Player
+@onready var game_camera: GameCamera = $GameCamera
+@onready var damage_colddown: Timer = $Player/DamageColddown
 
 var __previous_area: LevelArea
 
@@ -11,6 +16,10 @@ func _ready() -> void:
 	GameManager.created_node.connect(on_node_created)
 	GameManager.spawned_damage.connect(on_damage_spawn)
 	PlayerData.health_zeroed.connect(on_player_die)
+	
+	player.camera = game_camera
+	player.collided_with_wall.connect(on_player_collide_wall)
+	
 	level_areas_list.reverse()
 	__load_next_area()
 
@@ -34,6 +43,12 @@ func on_damage_spawn(damage: Damage, pos: Vector2, scene: PackedScene) -> void:
 	node.damage = damage
 	map_areas.add_child(node)
 	node.global_position = pos
+
+
+func on_player_collide_wall() -> void:
+	if damage_colddown.time_left <= 0.0:
+		player.on_damage_receive(wall_col_damage)
+		damage_colddown.start()
 
 
 func __load_next_area() -> void:
