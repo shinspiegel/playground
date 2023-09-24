@@ -26,8 +26,7 @@ This is an infinity runner gamer.
 	- [x] Standing
 	- [x] Self Jumping
 	- [x] Jump with player
-	- [ ] Shooter
-	- [ ] Shoot and shoot back
+	- [x] Shooter
 	- [ ] Thrower (acid, bomb...)
 - **Player:**
 	- [x] Damage while stoped
@@ -42,5 +41,6 @@ This is an infinity runner gamer.
 	- [x] Add cursor sfx on item selection
 	- [x] Add sfx for shoots
 	- [x] Add sfx for explosions
+	- [ ] Remake (if needed) sfx
 - **Remakes**
 	- [ ] Remake music

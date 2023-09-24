@@ -1,0 +1,97 @@
+[gd_scene load_steps=14 format=3 uid="uid://bvjsm8sngorrq"]
+
+[ext_resource type="PackedScene" uid="uid://c7x0m7dovflyd" path="res://entities/enemy/base_enemy.tscn" id="1_bbt8k"]
+[ext_resource type="Texture2D" uid="uid://bxlqru4xkqxqo" path="res://assets/downloaded_slim/graphics/Super Grotto Escape Files/Characters/Enemies/spritesheet/lizard-shoot.png" id="2_io2gy"]
+[ext_resource type="PackedScene" uid="uid://d277tv4vce3w3" path="res://entities/bullet_spawner/bullet_spawner.tscn" id="4_77a2t"]
+[ext_resource type="PackedScene" uid="uid://baed7kygfrast" path="res://entities/damages/damage_inflictor.tscn" id="5_2nwsf"]
+[ext_resource type="PackedScene" uid="uid://dk5k86mtheem" path="res://entities/bullet/test_enemy_bullet.tscn" id="5_hayfg"]
+[ext_resource type="Script" path="res://entities/damages/damage.gd" id="6_yayk4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cbh1x"]
+size = Vector2(80, 104)
+
+[sub_resource type="Animation" id="Animation_7eq7c"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_rfhoa"]
+resource_name = "new_animation"
+length = 0.4
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_20t2v"]
+_data = {
+"RESET": SubResource("Animation_7eq7c"),
+"new_animation": SubResource("Animation_rfhoa")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_854ei"]
+size = Vector2(68, 104)
+
+[sub_resource type="Resource" id="Resource_x4oyg"]
+script = ExtResource("6_yayk4")
+shake = 30.0
+rand_amount_min = 5
+rand_amount_max = 15
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1u1ht"]
+size = Vector2(52, 88)
+
+[node name="ShooterEnemy" instance=ExtResource("1_bbt8k")]
+
+[node name="Sprite2D" parent="." index="0"]
+position = Vector2(8, -65)
+texture = ExtResource("2_io2gy")
+hframes = 4
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(0, -53)
+shape = SubResource("RectangleShape2D_cbh1x")
+
+[node name="VisibleOnScreenNotifier2D" parent="." index="2"]
+position = Vector2(0, -58)
+
+[node name="AnimationPlayer" parent="." index="3"]
+autoplay = "new_animation"
+libraries = {
+"": SubResource("AnimationLibrary_20t2v")
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageReceiver" index="1"]
+position = Vector2(0, -53)
+shape = SubResource("RectangleShape2D_854ei")
+
+[node name="DamageInflictor" parent="." index="7" instance=ExtResource("5_2nwsf")]
+collision_layer = 0
+damage = SubResource("Resource_x4oyg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageInflictor" index="0"]
+position = Vector2(-2, -45)
+shape = SubResource("RectangleShape2D_1u1ht")
+
+[node name="BulletSpawner" parent="." index="8" instance=ExtResource("4_77a2t")]
+position = Vector2(-46, -35)
+bullet_scene = ExtResource("5_hayfg")
