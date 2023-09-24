@@ -30,6 +30,10 @@ func on_damage_receive(damage: Damage) -> void:
 	GameManager.invoque_shake(damage.shake)
 
 
+func set_camera(cam: Camera2D) -> void:
+	remote_transform_2d.remote_path = cam.get_path()
+
+
 func __apply_gravity(delta: float) -> void:
 	if not is_on_floor():
 		velocity.y += GameManager.GRAVITY * delta * GameManager.MULTIPLIER
@@ -47,3 +51,4 @@ func __check_for_walls() -> void:
 	for col in wall_detection.get_overlapping_bodies():
 		if col is TileMap:
 			collided_with_wall.emit()
+

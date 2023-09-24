@@ -20,7 +20,7 @@ func _ready() -> void:
 	damage_receiver.receive_damage.connect(on_receive_damage)
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if Engine.is_editor_hint():
 		__update_sprite()
 

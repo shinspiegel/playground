@@ -1,0 +1,75 @@
+[gd_scene load_steps=8 format=3 uid="uid://cickkpplqb63t"]
+
+[ext_resource type="Theme" uid="uid://36i1pye2gh1j" path="res://base_theme.tres" id="1_vihdn"]
+[ext_resource type="Script" path="res://screens/game_over_screen/game_over.gd" id="2_12ugw"]
+[ext_resource type="PackedScene" uid="uid://brfeswvfnl1vs" path="res://entities/background/background.tscn" id="2_wd57x"]
+[ext_resource type="PackedScene" uid="uid://bbh35i1b05n45" path="res://entities/background_music/background_music.tscn" id="3_e7by6"]
+[ext_resource type="Script" path="res://screen_elements/custom_button/custom_button.gd" id="4_urjcn"]
+[ext_resource type="AudioStream" uid="uid://dw2n7o5yifebc" path="res://assets/final_assets/sfx/ui_sfx/confirm_style_2_001.wav" id="5_pavvx"]
+[ext_resource type="AudioStream" uid="uid://vhrbdhia416y" path="res://assets/final_assets/sfx/ui_sfx/cursor_style_2.wav" id="6_je7yk"]
+
+[node name="GameOver" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_vihdn")
+script = ExtResource("2_12ugw")
+
+[node name="Background" parent="." instance=ExtResource("2_wd57x")]
+
+[node name="BackgroundMusic" parent="." instance=ExtResource("3_e7by6")]
+
+[node name="PressColddown" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+autostart = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "Thanks for playing!"
+
+[node name="Control" type="Control" parent="VBoxContainer"]
+custom_minimum_size = Vector2(2.08165e-12, 80)
+layout_mode = 2
+
+[node name="Retry" type="Button" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "Retry"
+script = ExtResource("4_urjcn")
+press_sfx = ExtResource("5_pavvx")
+focus_sfx = ExtResource("6_je7yk")
+
+[node name="MainMenu" type="Button" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "Main menu"
+script = ExtResource("4_urjcn")
+press_sfx = ExtResource("5_pavvx")
+focus_sfx = ExtResource("6_je7yk")
+
+[node name="Quit" type="Button" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "Quit"
+script = ExtResource("4_urjcn")
+press_sfx = ExtResource("5_pavvx")
+focus_sfx = ExtResource("6_je7yk")

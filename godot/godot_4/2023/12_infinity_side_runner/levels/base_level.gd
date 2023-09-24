@@ -17,7 +17,7 @@ func _ready() -> void:
 	GameManager.spawned_damage.connect(on_damage_spawn)
 	PlayerData.health_zeroed.connect(on_player_die)
 	
-	player.camera = game_camera
+	player.set_camera(game_camera)
 	player.collided_with_wall.connect(on_player_collide_wall)
 	
 	level_areas_list.reverse()
@@ -29,7 +29,7 @@ func _physics_process(delta: float) -> void:
 
 
 func on_player_die() -> void:
-	GameManager.change_scene("title")
+	GameManager.change_scene("game_over")
 
  
 func on_node_created(scene: PackedScene, pos: Vector2) -> void:

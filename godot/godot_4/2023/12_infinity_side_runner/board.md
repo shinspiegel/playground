@@ -5,12 +5,12 @@ This is an infinity runner gamer.
 ### Todo
 
 - **Game Flow**
-	- [ ] Start -> Equip -> Play -> Die
+	- [x] Start -> Equip -> Play -> Die
 - **Screens**
 	- [x] Start Screen
 	- [x] Options Screen
 	- [ ] Select powerups screen
-	- [ ] Game over screen
+	- [x] Game over screen
 - **Juice**
 	- [x] Camera shake
 - **Hazards**
