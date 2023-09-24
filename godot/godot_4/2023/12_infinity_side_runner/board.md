@@ -15,8 +15,7 @@ This is an infinity runner gamer.
 	- [x] Camera shake
 - **Hazards**
 	- [x] Breakable blocks
-	- [ ] Spikes
-	- [ ] Damage ground
+	- [x] Spikes
 	- [ ] Shot up
 	- [ ] Trigger and shot
 - **Level:**
@@ -25,6 +24,8 @@ This is an infinity runner gamer.
 	- [ ] Destroyed city (5min gameplay)
 	- [ ] Portal (5min gameplay)
 - **Enemy:**
+	- [x] Standing
+	- [ ] Self Jumping
 	- [ ] Jump with player
 	- [ ] Shooter
 	- [ ] Shoot and shoot back

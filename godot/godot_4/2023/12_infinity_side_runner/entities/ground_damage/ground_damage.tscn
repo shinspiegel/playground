@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://b8i05rdywd2lh"]
+
+[ext_resource type="PackedScene" uid="uid://baed7kygfrast" path="res://entities/damages/damage_inflictor.tscn" id="1_ofmek"]
+[ext_resource type="Script" path="res://entities/damages/damage.gd" id="2_xt8r4"]
+
+[sub_resource type="Resource" id="Resource_jh7n3"]
+script = ExtResource("2_xt8r4")
+shake = 20.0
+rand_amount_min = 5
+rand_amount_max = 10
+
+[node name="GroundDamage" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+
+[node name="DamageInflictor" parent="." instance=ExtResource("1_ofmek")]
+damage = SubResource("Resource_jh7n3")

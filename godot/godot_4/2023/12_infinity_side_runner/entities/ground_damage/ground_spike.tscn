@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://cuuqqbomx76t6"]
+
+[ext_resource type="PackedScene" uid="uid://b8i05rdywd2lh" path="res://entities/ground_damage/ground_damage.tscn" id="1_k6b77"]
+[ext_resource type="Texture2D" uid="uid://d1gdguoa7al3w" path="res://assets/downloaded_slim/graphics/Platformer/Assets/Assets.png" id="2_157qd"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c5i55"]
+atlas = ExtResource("2_157qd")
+region = Rect2(79, 144, 16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1j110"]
+size = Vector2(64, 40)
+
+[node name="GroundSpike" instance=ExtResource("1_k6b77")]
+
+[node name="Sprite2D" parent="." index="0"]
+position = Vector2(0, -32)
+scale = Vector2(4, 4)
+texture = SubResource("AtlasTexture_c5i55")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageInflictor" index="0"]
+position = Vector2(0, -20)
+shape = SubResource("RectangleShape2D_1j110")
