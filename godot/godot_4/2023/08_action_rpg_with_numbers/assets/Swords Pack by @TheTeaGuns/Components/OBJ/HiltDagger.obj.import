@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://dx3iun1i4sd4"
+path="res://.godot/imported/HiltDagger.obj-b93ab26139f621c29a65b474255ae57f.mesh"
+
+[deps]
+
+files=["res://.godot/imported/HiltDagger.obj-b93ab26139f621c29a65b474255ae57f.mesh"]
+
+source_file="res://assets/Swords Pack by @TheTeaGuns/Components/OBJ/HiltDagger.obj"
+dest_files=["res://.godot/imported/HiltDagger.obj-b93ab26139f621c29a65b474255ae57f.mesh", "res://.godot/imported/HiltDagger.obj-b93ab26139f621c29a65b474255ae57f.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

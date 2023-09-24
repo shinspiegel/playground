@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://cyfe3ud833cwn"
+path="res://.godot/imported/altarStone.obj-03350702f832aa8da26ff33ab0f199ec.mesh"
+
+[deps]
+
+files=["res://.godot/imported/altarStone.obj-03350702f832aa8da26ff33ab0f199ec.mesh"]
+
+source_file="res://assets/kenney_graveyard-kit/Models/OBJ format/altarStone.obj"
+dest_files=["res://.godot/imported/altarStone.obj-03350702f832aa8da26ff33ab0f199ec.mesh", "res://.godot/imported/altarStone.obj-03350702f832aa8da26ff33ab0f199ec.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

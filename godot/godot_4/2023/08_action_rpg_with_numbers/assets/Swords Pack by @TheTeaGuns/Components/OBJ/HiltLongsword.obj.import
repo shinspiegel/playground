@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://pci1tbhy8uaw"
+path="res://.godot/imported/HiltLongsword.obj-548f538245522050fab1847c6c835cdc.mesh"
+
+[deps]
+
+files=["res://.godot/imported/HiltLongsword.obj-548f538245522050fab1847c6c835cdc.mesh"]
+
+source_file="res://assets/Swords Pack by @TheTeaGuns/Components/OBJ/HiltLongsword.obj"
+dest_files=["res://.godot/imported/HiltLongsword.obj-548f538245522050fab1847c6c835cdc.mesh", "res://.godot/imported/HiltLongsword.obj-548f538245522050fab1847c6c835cdc.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

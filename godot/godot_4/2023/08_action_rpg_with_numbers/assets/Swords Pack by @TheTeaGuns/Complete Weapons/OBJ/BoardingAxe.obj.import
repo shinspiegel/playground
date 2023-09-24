@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://0d4r88id6hcv"
+path="res://.godot/imported/BoardingAxe.obj-f8f03a04e6e2b36087e2471a7f2a94ca.mesh"
+
+[deps]
+
+files=["res://.godot/imported/BoardingAxe.obj-f8f03a04e6e2b36087e2471a7f2a94ca.mesh"]
+
+source_file="res://assets/Swords Pack by @TheTeaGuns/Complete Weapons/OBJ/BoardingAxe.obj"
+dest_files=["res://.godot/imported/BoardingAxe.obj-f8f03a04e6e2b36087e2471a7f2a94ca.mesh", "res://.godot/imported/BoardingAxe.obj-f8f03a04e6e2b36087e2471a7f2a94ca.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

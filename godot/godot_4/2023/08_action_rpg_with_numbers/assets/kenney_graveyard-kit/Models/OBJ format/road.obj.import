@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bpr5ybbp7dk1r"
+path="res://.godot/imported/road.obj-00bbb489e1a5271a0ad9af28a064287c.mesh"
+
+[deps]
+
+files=["res://.godot/imported/road.obj-00bbb489e1a5271a0ad9af28a064287c.mesh"]
+
+source_file="res://assets/kenney_graveyard-kit/Models/OBJ format/road.obj"
+dest_files=["res://.godot/imported/road.obj-00bbb489e1a5271a0ad9af28a064287c.mesh", "res://.godot/imported/road.obj-00bbb489e1a5271a0ad9af28a064287c.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

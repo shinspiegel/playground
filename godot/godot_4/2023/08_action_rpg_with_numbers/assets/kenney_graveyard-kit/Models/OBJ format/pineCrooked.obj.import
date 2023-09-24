@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://ci58l0fd8hy4g"
+path="res://.godot/imported/pineCrooked.obj-0df8a8b17dee6edf75ba065c41065c5e.mesh"
+
+[deps]
+
+files=["res://.godot/imported/pineCrooked.obj-0df8a8b17dee6edf75ba065c41065c5e.mesh"]
+
+source_file="res://assets/kenney_graveyard-kit/Models/OBJ format/pineCrooked.obj"
+dest_files=["res://.godot/imported/pineCrooked.obj-0df8a8b17dee6edf75ba065c41065c5e.mesh", "res://.godot/imported/pineCrooked.obj-0df8a8b17dee6edf75ba065c41065c5e.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

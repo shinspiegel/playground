@@ -1,7 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://coy17veakn2wd"]
+[gd_scene load_steps=5 format=3 uid="uid://bimxsaij2y4ow"]
 
-[ext_resource type="PackedScene" uid="uid://bi3c14ee0320t" path="res://level_areas/level_area.tscn" id="1_nyk00"]
-[ext_resource type="PackedScene" uid="uid://dlm6ocgbjo5df" path="res://entities/tutorial_message/tutorial_message.tscn" id="2_06gyv"]
+[ext_resource type="PackedScene" uid="uid://c7pnl4db36vqd" path="res://level_areas/level_area.tscn" id="1_nyk00"]
+[ext_resource type="PackedScene" uid="uid://badk155o2i2fg" path="res://entities/tutorial_message/tutorial_message.tscn" id="2_06gyv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pp61d"]
 size = Vector2(2816, 832)

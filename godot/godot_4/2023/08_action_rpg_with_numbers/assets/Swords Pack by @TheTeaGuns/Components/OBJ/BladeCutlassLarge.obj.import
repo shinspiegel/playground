@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://7qqsocjyd44i"
+path="res://.godot/imported/BladeCutlassLarge.obj-7d091f7400731c38bb69246327ea901f.mesh"
+
+[deps]
+
+files=["res://.godot/imported/BladeCutlassLarge.obj-7d091f7400731c38bb69246327ea901f.mesh"]
+
+source_file="res://assets/Swords Pack by @TheTeaGuns/Components/OBJ/BladeCutlassLarge.obj"
+dest_files=["res://.godot/imported/BladeCutlassLarge.obj-7d091f7400731c38bb69246327ea901f.mesh", "res://.godot/imported/BladeCutlassLarge.obj-7d091f7400731c38bb69246327ea901f.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

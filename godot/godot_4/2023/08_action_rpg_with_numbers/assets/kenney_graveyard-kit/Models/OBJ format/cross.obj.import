@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://dxskxyoe6i0mk"
+path="res://.godot/imported/cross.obj-ac8bb792b559106f7428fde4ee8518f3.mesh"
+
+[deps]
+
+files=["res://.godot/imported/cross.obj-ac8bb792b559106f7428fde4ee8518f3.mesh"]
+
+source_file="res://assets/kenney_graveyard-kit/Models/OBJ format/cross.obj"
+dest_files=["res://.godot/imported/cross.obj-ac8bb792b559106f7428fde4ee8518f3.mesh", "res://.godot/imported/cross.obj-ac8bb792b559106f7428fde4ee8518f3.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

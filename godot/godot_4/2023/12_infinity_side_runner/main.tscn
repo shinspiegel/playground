@@ -1,7 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://del6qkgb3mgc8"]
+[gd_scene load_steps=3 format=3 uid="uid://0qevtfabmrw7"]
 
-[ext_resource type="Theme" uid="uid://dqnddu2ud5iww" path="res://base_theme.tres" id="1_giprh"]
-[ext_resource type="PackedScene" uid="uid://lp6j84qhdvoj" path="res://screens/start_screen/start.tscn" id="2_goaxr"]
+[ext_resource type="Theme" uid="uid://36i1pye2gh1j" path="res://base_theme.tres" id="1_giprh"]
+[ext_resource type="PackedScene" uid="uid://b6qq3y3rn68qb" path="res://screens/start_screen/start.tscn" id="2_goaxr"]
 
 [node name="Main" type="Control"]
 layout_mode = 3

@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cbk7x4gv2puqg"
+path="res://.godot/imported/slow-travel.ogg-abeb644fcb70a3d12d9e86ea80b2b959.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/downloaded_slim/music/Space Music Pack/slow-travel.ogg"
+dest_files=["res://.godot/imported/slow-travel.ogg-abeb644fcb70a3d12d9e86ea80b2b959.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

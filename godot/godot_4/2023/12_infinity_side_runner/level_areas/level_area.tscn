@@ -1,7 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://bi3c14ee0320t"]
+[gd_scene load_steps=5 format=3 uid="uid://c7pnl4db36vqd"]
 
 [ext_resource type="Script" path="res://level_areas/level_area.gd" id="1_yie24"]
-[ext_resource type="Texture2D" uid="uid://rpeppsf8dhir" path="res://assets/downloaded_slim/graphics/Sidescroller Shooter - Central City/Assets/Tiles.png" id="2_vt367"]
+[ext_resource type="Texture2D" uid="uid://dxd6835xwtnqy" path="res://assets/downloaded_slim/graphics/Sidescroller Shooter - Central City/Assets/Tiles.png" id="2_vt367"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_s1dxa"]
 texture = ExtResource("2_vt367")

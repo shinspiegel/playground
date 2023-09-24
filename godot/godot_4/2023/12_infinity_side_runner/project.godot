@@ -43,6 +43,10 @@ project/assembly_name="Infinity Side Runner"
 2d_physics/layer_2="world"
 2d_physics/layer_3="enemy"
 
+[memory]
+
+limits/message_queue/max_size_mb=1024
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0

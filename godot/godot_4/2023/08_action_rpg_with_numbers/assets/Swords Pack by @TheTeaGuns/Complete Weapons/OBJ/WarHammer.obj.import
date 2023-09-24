@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://jex4y4gl11vw"
+path="res://.godot/imported/WarHammer.obj-50cc1482ccd52ef1f8573563b60ece0c.mesh"
+
+[deps]
+
+files=["res://.godot/imported/WarHammer.obj-50cc1482ccd52ef1f8573563b60ece0c.mesh"]
+
+source_file="res://assets/Swords Pack by @TheTeaGuns/Complete Weapons/OBJ/WarHammer.obj"
+dest_files=["res://.godot/imported/WarHammer.obj-50cc1482ccd52ef1f8573563b60ece0c.mesh", "res://.godot/imported/WarHammer.obj-50cc1482ccd52ef1f8573563b60ece0c.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

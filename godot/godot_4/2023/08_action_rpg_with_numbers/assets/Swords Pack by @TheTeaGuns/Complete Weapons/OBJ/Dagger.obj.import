@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://s1cltjauy5f7"
+path="res://.godot/imported/Dagger.obj-979b01cbab34f2314d397d06f1abfd69.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Dagger.obj-979b01cbab34f2314d397d06f1abfd69.mesh"]
+
+source_file="res://assets/Swords Pack by @TheTeaGuns/Complete Weapons/OBJ/Dagger.obj"
+dest_files=["res://.godot/imported/Dagger.obj-979b01cbab34f2314d397d06f1abfd69.mesh", "res://.godot/imported/Dagger.obj-979b01cbab34f2314d397d06f1abfd69.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

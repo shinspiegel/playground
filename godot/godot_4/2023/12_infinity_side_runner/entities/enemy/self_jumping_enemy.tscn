@@ -1,9 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://ddjmdtr5y6ekf"]
+[gd_scene load_steps=12 format=3 uid="uid://bx02uskx8gi1g"]
 
-[ext_resource type="PackedScene" uid="uid://d4g73rn7a73t0" path="res://entities/enemy/base_enemy.tscn" id="1_c31rm"]
-[ext_resource type="Texture2D" uid="uid://dgjmrxb851vvf" path="res://assets/downloaded/Super Grotto Escape Files/Characters/Enemies/spritesheet/lizard-move.png" id="2_jrgdy"]
+[ext_resource type="PackedScene" uid="uid://c7x0m7dovflyd" path="res://entities/enemy/base_enemy.tscn" id="1_c31rm"]
 [ext_resource type="Script" path="res://entities/enemy/self_jumping_enemy.gd" id="2_toysg"]
-[ext_resource type="PackedScene" uid="uid://djouf78b7ygc8" path="res://entities/damages/damage_inflictor.tscn" id="3_h0lf8"]
+[ext_resource type="PackedScene" uid="uid://baed7kygfrast" path="res://entities/damages/damage_inflictor.tscn" id="3_h0lf8"]
 [ext_resource type="Script" path="res://entities/damages/damage.gd" id="4_80gf8"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_x1n8g"]
@@ -55,6 +54,9 @@ height = 88.0
 [sub_resource type="Resource" id="Resource_rxsij"]
 script = ExtResource("4_80gf8")
 amount = 3
+shake = 20.0
+rand_amount_min = 10
+rand_amount_max = 20
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cpucg"]
 radius = 29.0172
@@ -67,7 +69,6 @@ first_jump_delay = 0.0
 
 [node name="Sprite2D" parent="." index="0"]
 position = Vector2(7, -64)
-texture = ExtResource("2_jrgdy")
 hframes = 3
 
 [node name="CollisionShape2D" parent="." index="1"]

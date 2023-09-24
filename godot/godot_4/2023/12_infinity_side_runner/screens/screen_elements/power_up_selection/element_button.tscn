@@ -1,12 +1,12 @@
-[gd_scene load_steps=14 format=3 uid="uid://ccs6suwwyj337"]
+[gd_scene load_steps=14 format=3 uid="uid://b3td3xmv0u5bu"]
 
-[ext_resource type="Theme" uid="uid://dqnddu2ud5iww" path="res://base_theme.tres" id="1_1085k"]
+[ext_resource type="Theme" uid="uid://36i1pye2gh1j" path="res://base_theme.tres" id="1_1085k"]
 [ext_resource type="Script" path="res://screens/screen_elements/power_up_selection/element_button.gd" id="2_57xvm"]
-[ext_resource type="Texture2D" uid="uid://cudossd4f3ifl" path="res://icon.svg" id="3_2kkss"]
-[ext_resource type="AudioStream" uid="uid://bu1o6eqjwsk60" path="res://assets/downloaded_slim/sfx/cursor_style_2.wav" id="3_7oa0n"]
-[ext_resource type="Texture2D" uid="uid://m0h544yxow6g" path="res://assets/downloaded_slim/graphics/Pixel UI pack 3/02.png" id="4_btnmt"]
-[ext_resource type="AudioStream" uid="uid://brx4ml6aupnn2" path="res://assets/downloaded_slim/sfx/confirm_style_2_005.wav" id="4_jplew"]
-[ext_resource type="AudioStream" uid="uid://bpm0im4qjlret" path="res://assets/downloaded_slim/sfx/back_style_2_007.wav" id="5_mcxj0"]
+[ext_resource type="Texture2D" uid="uid://cngy1jdponugl" path="res://icon.svg" id="3_2kkss"]
+[ext_resource type="AudioStream" uid="uid://vhrbdhia416y" path="res://assets/downloaded_slim/sfx/cursor_style_2.wav" id="3_7oa0n"]
+[ext_resource type="Texture2D" uid="uid://dvqx7b30nggct" path="res://assets/downloaded_slim/graphics/Pixel UI pack 3/02.png" id="4_btnmt"]
+[ext_resource type="AudioStream" uid="uid://bpvvukpjcquei" path="res://assets/downloaded_slim/sfx/confirm_style_2_005.wav" id="4_jplew"]
+[ext_resource type="AudioStream" uid="uid://dfcpaxmny84fj" path="res://assets/downloaded_slim/sfx/back_style_2_007.wav" id="5_mcxj0"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1og7v"]
 

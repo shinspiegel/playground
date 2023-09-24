@@ -1,0 +1,32 @@
+[remap]
+
+importer="scene"
+importer_version=1
+type="PackedScene"
+uid="uid://c7nqb2pxarmhv"
+path="res://.godot/imported/characterZombie.dae-614936e35e482f2f20295966727a3b01.scn"
+
+[deps]
+
+source_file="res://assets/kenney_graveyard-kit/Models/DAE format/characterZombie.dae"
+dest_files=["res://.godot/imported/characterZombie.dae-614936e35e482f2f20295966727a3b01.scn"]
+
+[params]
+
+nodes/root_type="Node3D"
+nodes/root_name="Scene Root"
+nodes/apply_root_scale=true
+nodes/root_scale=1.0
+meshes/ensure_tangents=true
+meshes/generate_lods=true
+meshes/create_shadow_meshes=true
+meshes/light_baking=1
+meshes/lightmap_texel_size=0.2
+skins/use_named_skins=true
+animation/import=true
+animation/fps=30
+animation/trimming=false
+animation/remove_immutable_tracks=true
+import_script/path=""
+_subresources={}
+gltf/embedded_image_handling=1

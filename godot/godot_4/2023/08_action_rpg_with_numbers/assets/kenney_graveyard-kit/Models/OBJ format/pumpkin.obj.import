@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://3iuhd5lrap46"
+path="res://.godot/imported/pumpkin.obj-03f041ee8adabb16e4c4e528d0a3de67.mesh"
+
+[deps]
+
+files=["res://.godot/imported/pumpkin.obj-03f041ee8adabb16e4c4e528d0a3de67.mesh"]
+
+source_file="res://assets/kenney_graveyard-kit/Models/OBJ format/pumpkin.obj"
+dest_files=["res://.godot/imported/pumpkin.obj-03f041ee8adabb16e4c4e528d0a3de67.mesh", "res://.godot/imported/pumpkin.obj-03f041ee8adabb16e4c4e528d0a3de67.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

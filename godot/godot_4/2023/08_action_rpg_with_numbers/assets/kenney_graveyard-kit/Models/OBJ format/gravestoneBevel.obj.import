@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bqsgdmc5o8hxm"
+path="res://.godot/imported/gravestoneBevel.obj-fc89a070d09a7d2da4edd6a798e932b6.mesh"
+
+[deps]
+
+files=["res://.godot/imported/gravestoneBevel.obj-fc89a070d09a7d2da4edd6a798e932b6.mesh"]
+
+source_file="res://assets/kenney_graveyard-kit/Models/OBJ format/gravestoneBevel.obj"
+dest_files=["res://.godot/imported/gravestoneBevel.obj-fc89a070d09a7d2da4edd6a798e932b6.mesh", "res://.godot/imported/gravestoneBevel.obj-fc89a070d09a7d2da4edd6a798e932b6.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

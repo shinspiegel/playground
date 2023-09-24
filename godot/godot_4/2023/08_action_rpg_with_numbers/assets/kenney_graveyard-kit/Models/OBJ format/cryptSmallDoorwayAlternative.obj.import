@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://dthjgab1o3vgl"
+path="res://.godot/imported/cryptSmallDoorwayAlternative.obj-611bdfd2096b353242dd2a42d459a87f.mesh"
+
+[deps]
+
+files=["res://.godot/imported/cryptSmallDoorwayAlternative.obj-611bdfd2096b353242dd2a42d459a87f.mesh"]
+
+source_file="res://assets/kenney_graveyard-kit/Models/OBJ format/cryptSmallDoorwayAlternative.obj"
+dest_files=["res://.godot/imported/cryptSmallDoorwayAlternative.obj-611bdfd2096b353242dd2a42d459a87f.mesh", "res://.godot/imported/cryptSmallDoorwayAlternative.obj-611bdfd2096b353242dd2a42d459a87f.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

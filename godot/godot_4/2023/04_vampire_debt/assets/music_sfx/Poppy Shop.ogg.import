@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://beo5qdahgtmap"
+path="res://.godot/imported/Poppy Shop.ogg-ac743963197660453438e2895e22736f.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/music_sfx/Poppy Shop.ogg"
+dest_files=["res://.godot/imported/Poppy Shop.ogg-ac743963197660453438e2895e22736f.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

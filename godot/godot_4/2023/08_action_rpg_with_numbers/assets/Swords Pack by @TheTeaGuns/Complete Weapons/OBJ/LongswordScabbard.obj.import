@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://ci2rm3vrp4wq3"
+path="res://.godot/imported/LongswordScabbard.obj-7916f7ecab8becdf797487c0a6f36e9f.mesh"
+
+[deps]
+
+files=["res://.godot/imported/LongswordScabbard.obj-7916f7ecab8becdf797487c0a6f36e9f.mesh"]
+
+source_file="res://assets/Swords Pack by @TheTeaGuns/Complete Weapons/OBJ/LongswordScabbard.obj"
+dest_files=["res://.godot/imported/LongswordScabbard.obj-7916f7ecab8becdf797487c0a6f36e9f.mesh", "res://.godot/imported/LongswordScabbard.obj-7916f7ecab8becdf797487c0a6f36e9f.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

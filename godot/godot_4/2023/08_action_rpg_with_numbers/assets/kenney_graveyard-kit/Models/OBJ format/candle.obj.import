@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://b3y2uc6hw7i3h"
+path="res://.godot/imported/candle.obj-9fbb2e810abbaa7668ab41fe84f5a8f7.mesh"
+
+[deps]
+
+files=["res://.godot/imported/candle.obj-9fbb2e810abbaa7668ab41fe84f5a8f7.mesh"]
+
+source_file="res://assets/kenney_graveyard-kit/Models/OBJ format/candle.obj"
+dest_files=["res://.godot/imported/candle.obj-9fbb2e810abbaa7668ab41fe84f5a8f7.mesh", "res://.godot/imported/candle.obj-9fbb2e810abbaa7668ab41fe84f5a8f7.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

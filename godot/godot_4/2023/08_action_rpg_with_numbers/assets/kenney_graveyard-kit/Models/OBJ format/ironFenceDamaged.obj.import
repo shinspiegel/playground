@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://xau46ufdq8ci"
+path="res://.godot/imported/ironFenceDamaged.obj-c1947b01b3e9406115de81e5bb3ab31e.mesh"
+
+[deps]
+
+files=["res://.godot/imported/ironFenceDamaged.obj-c1947b01b3e9406115de81e5bb3ab31e.mesh"]
+
+source_file="res://assets/kenney_graveyard-kit/Models/OBJ format/ironFenceDamaged.obj"
+dest_files=["res://.godot/imported/ironFenceDamaged.obj-c1947b01b3e9406115de81e5bb3ab31e.mesh", "res://.godot/imported/ironFenceDamaged.obj-c1947b01b3e9406115de81e5bb3ab31e.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

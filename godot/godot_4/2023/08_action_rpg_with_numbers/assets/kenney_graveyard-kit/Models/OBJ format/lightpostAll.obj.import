@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://pxx8fj2dts7"
+path="res://.godot/imported/lightpostAll.obj-f1de589227a89fabcfec7126cbbfd413.mesh"
+
+[deps]
+
+files=["res://.godot/imported/lightpostAll.obj-f1de589227a89fabcfec7126cbbfd413.mesh"]
+
+source_file="res://assets/kenney_graveyard-kit/Models/OBJ format/lightpostAll.obj"
+dest_files=["res://.godot/imported/lightpostAll.obj-f1de589227a89fabcfec7126cbbfd413.mesh", "res://.godot/imported/lightpostAll.obj-f1de589227a89fabcfec7126cbbfd413.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

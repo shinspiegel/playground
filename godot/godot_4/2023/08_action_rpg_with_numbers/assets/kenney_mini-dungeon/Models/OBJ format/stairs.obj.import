@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://b8b0bm314os6q"
+path="res://.godot/imported/stairs.obj-688447862c9b48dcbb905f36265fe863.mesh"
+
+[deps]
+
+files=["res://.godot/imported/stairs.obj-688447862c9b48dcbb905f36265fe863.mesh"]
+
+source_file="res://assets/kenney_mini-dungeon/Models/OBJ format/stairs.obj"
+dest_files=["res://.godot/imported/stairs.obj-688447862c9b48dcbb905f36265fe863.mesh", "res://.godot/imported/stairs.obj-688447862c9b48dcbb905f36265fe863.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

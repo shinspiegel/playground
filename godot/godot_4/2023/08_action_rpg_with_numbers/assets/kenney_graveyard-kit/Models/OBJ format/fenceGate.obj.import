@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://wibx5fouxkkf"
+path="res://.godot/imported/fenceGate.obj-38293ea87f18911364b9d46a4b033ac3.mesh"
+
+[deps]
+
+files=["res://.godot/imported/fenceGate.obj-38293ea87f18911364b9d46a4b033ac3.mesh"]
+
+source_file="res://assets/kenney_graveyard-kit/Models/OBJ format/fenceGate.obj"
+dest_files=["res://.godot/imported/fenceGate.obj-38293ea87f18911364b9d46a4b033ac3.mesh", "res://.godot/imported/fenceGate.obj-38293ea87f18911364b9d46a4b033ac3.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

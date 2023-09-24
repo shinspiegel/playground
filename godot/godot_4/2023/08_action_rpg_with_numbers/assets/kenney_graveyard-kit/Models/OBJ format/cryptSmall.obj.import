@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://2hie17otmu6r"
+path="res://.godot/imported/cryptSmall.obj-239961b329073c3caa3298ffa0805c70.mesh"
+
+[deps]
+
+files=["res://.godot/imported/cryptSmall.obj-239961b329073c3caa3298ffa0805c70.mesh"]
+
+source_file="res://assets/kenney_graveyard-kit/Models/OBJ format/cryptSmall.obj"
+dest_files=["res://.godot/imported/cryptSmall.obj-239961b329073c3caa3298ffa0805c70.mesh", "res://.godot/imported/cryptSmall.obj-239961b329073c3caa3298ffa0805c70.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

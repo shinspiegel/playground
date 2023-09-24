@@ -1,7 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://dlm6ocgbjo5df"]
+[gd_scene load_steps=3 format=3 uid="uid://badk155o2i2fg"]
 
 [ext_resource type="Script" path="res://entities/tutorial_message/tutorial_message.gd" id="1_hc7pu"]
-[ext_resource type="Theme" uid="uid://dqnddu2ud5iww" path="res://base_theme.tres" id="1_u72oi"]
+[ext_resource type="Theme" uid="uid://36i1pye2gh1j" path="res://base_theme.tres" id="1_u72oi"]
 
 [node name="TutorialMessage" type="Area2D"]
 script = ExtResource("1_hc7pu")

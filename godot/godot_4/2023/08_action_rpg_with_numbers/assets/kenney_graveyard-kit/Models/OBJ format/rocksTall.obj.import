@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://cywrdfjkr0blm"
+path="res://.godot/imported/rocksTall.obj-d46a6e1e2f265b3cac531991a8d41954.mesh"
+
+[deps]
+
+files=["res://.godot/imported/rocksTall.obj-d46a6e1e2f265b3cac531991a8d41954.mesh"]
+
+source_file="res://assets/kenney_graveyard-kit/Models/OBJ format/rocksTall.obj"
+dest_files=["res://.godot/imported/rocksTall.obj-d46a6e1e2f265b3cac531991a8d41954.mesh", "res://.godot/imported/rocksTall.obj-d46a6e1e2f265b3cac531991a8d41954.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

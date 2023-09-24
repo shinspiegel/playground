@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://ddkv3cxtordxc"
+path="res://.godot/imported/columnLarge.obj-1a81cff07add5642d9a622a97d69b69f.mesh"
+
+[deps]
+
+files=["res://.godot/imported/columnLarge.obj-1a81cff07add5642d9a622a97d69b69f.mesh"]
+
+source_file="res://assets/kenney_graveyard-kit/Models/OBJ format/columnLarge.obj"
+dest_files=["res://.godot/imported/columnLarge.obj-1a81cff07add5642d9a622a97d69b69f.mesh", "res://.godot/imported/columnLarge.obj-1a81cff07add5642d9a622a97d69b69f.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

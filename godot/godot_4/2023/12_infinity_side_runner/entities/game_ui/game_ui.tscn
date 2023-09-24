@@ -1,11 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://lrnr4shffwgu"]
+[gd_scene load_steps=8 format=3 uid="uid://dcrkwklbobt6p"]
 
 [ext_resource type="Script" path="res://entities/game_ui/game_ui.gd" id="1_skell"]
-[ext_resource type="Theme" uid="uid://dqnddu2ud5iww" path="res://base_theme.tres" id="2_o1rrn"]
-[ext_resource type="Texture2D" uid="uid://djtenwy8uotp5" path="res://assets/downloaded/Pixel UI pack 3/06.png" id="3_kwpat"]
+[ext_resource type="Theme" uid="uid://36i1pye2gh1j" path="res://base_theme.tres" id="2_o1rrn"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_vpxqw"]
-load_path = "res://.godot/imported/04.png-5fb70d1568cbea4337a4dd77407de670.ctex"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qu8pw"]
 atlas = SubResource("CompressedTexture2D_vpxqw")
@@ -16,7 +14,6 @@ atlas = SubResource("CompressedTexture2D_vpxqw")
 region = Rect2(6, 131, 38, 11)
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_w4lev"]
-load_path = "res://.godot/imported/04.png-5fb70d1568cbea4337a4dd77407de670.ctex"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_e15xc"]
 atlas = SubResource("CompressedTexture2D_w4lev")
@@ -46,7 +43,6 @@ layout_mode = 0
 offset_right = 27.0
 offset_bottom = 11.0
 scale = Vector2(4, 4)
-texture = ExtResource("3_kwpat")
 region_rect = Rect2(226, 116, 27, 8)
 patch_margin_left = 8
 patch_margin_top = 4

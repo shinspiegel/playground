@@ -1,12 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://cb7cx5pmitapi"]
+[gd_scene load_steps=8 format=3 uid="uid://130tsgknu03s"]
 
 [ext_resource type="Script" path="res://levels/base_level.gd" id="1_aa02s"]
-[ext_resource type="PackedScene" uid="uid://3ree77pjs16e" path="res://level_areas/city_areas/03.tscn" id="2_1107j"]
-[ext_resource type="PackedScene" uid="uid://b1vgouqmpnh" path="res://entities/player/player.tscn" id="3_8x1eo"]
-[ext_resource type="PackedScene" uid="uid://c2uwmkl4hbk4o" path="res://entities/background/background.tscn" id="4_vqkrm"]
-[ext_resource type="PackedScene" uid="uid://lrnr4shffwgu" path="res://entities/game_ui/game_ui.tscn" id="5_cpx8v"]
-[ext_resource type="PackedScene" uid="uid://keagr77hcxuh" path="res://entities/game_camera/game_camera.tscn" id="7_gkrs1"]
-[ext_resource type="PackedScene" uid="uid://rqymm0oyyev5" path="res://entities/background_music/background_music.tscn" id="11_qmiet"]
+[ext_resource type="PackedScene" uid="uid://bgwl83wmm53ak" path="res://level_areas/city_areas/03.tscn" id="2_1107j"]
+[ext_resource type="PackedScene" uid="uid://cwitwjhc7erih" path="res://entities/player/player.tscn" id="3_8x1eo"]
+[ext_resource type="PackedScene" uid="uid://brfeswvfnl1vs" path="res://entities/background/background.tscn" id="4_vqkrm"]
+[ext_resource type="PackedScene" uid="uid://dcrkwklbobt6p" path="res://entities/game_ui/game_ui.tscn" id="5_cpx8v"]
+[ext_resource type="PackedScene" uid="uid://mwsyw7cpkwj3" path="res://entities/game_camera/game_camera.tscn" id="7_gkrs1"]
+[ext_resource type="PackedScene" uid="uid://bbh35i1b05n45" path="res://entities/background_music/background_music.tscn" id="11_qmiet"]
 
 [node name="BaseLevel" type="Node2D"]
 script = ExtResource("1_aa02s")

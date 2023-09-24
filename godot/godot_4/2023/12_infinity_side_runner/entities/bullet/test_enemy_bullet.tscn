@@ -1,14 +1,16 @@
-[gd_scene load_steps=6 format=3 uid="uid://dvi65r7mbkbqc"]
+[gd_scene load_steps=6 format=3 uid="uid://dk5k86mtheem"]
 
-[ext_resource type="PackedScene" uid="uid://cn14gxlpvuwwl" path="res://entities/bullet/bullet.tscn" id="1_nmuum"]
+[ext_resource type="PackedScene" uid="uid://b2ueau8drsaps" path="res://entities/bullet/bullet.tscn" id="1_nmuum"]
 [ext_resource type="Script" path="res://entities/damages/damage.gd" id="2_nheuo"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_7s054"]
-load_path = "res://.godot/imported/player-shoot.png-4b6e64fefeaf8a15d101449127bd49db.ctex"
 
 [sub_resource type="Resource" id="Resource_2np1p"]
 script = ExtResource("2_nheuo")
 amount = 10
+shake = 20.0
+rand_amount_min = 10
+rand_amount_max = 20
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ekb6d"]
 radius = 22.0227

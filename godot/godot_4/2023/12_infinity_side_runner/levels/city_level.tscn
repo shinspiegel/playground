@@ -1,12 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://wi52iuuy3jmq"]
+[gd_scene load_steps=8 format=3 uid="uid://d2qnowcnkoqkc"]
 
-[ext_resource type="PackedScene" uid="uid://cb7cx5pmitapi" path="res://levels/base_level.tscn" id="1_faurq"]
-[ext_resource type="PackedScene" uid="uid://coy17veakn2wd" path="res://level_areas/city_areas/00_intro.tscn" id="2_h74i3"]
-[ext_resource type="PackedScene" uid="uid://bdilr28wcigd2" path="res://level_areas/city_areas/01.tscn" id="3_ktnjf"]
-[ext_resource type="PackedScene" uid="uid://bfron544qhv1j" path="res://level_areas/city_areas/02.tscn" id="4_tvc47"]
-[ext_resource type="PackedScene" uid="uid://3ree77pjs16e" path="res://level_areas/city_areas/03.tscn" id="5_kojj0"]
-[ext_resource type="PackedScene" uid="uid://dgklncv8p683w" path="res://level_areas/city_areas/04.tscn" id="6_id0ic"]
-[ext_resource type="PackedScene" uid="uid://dbinjyjc2wjub" path="res://level_areas/city_areas/05.tscn" id="7_5r7ul"]
+[ext_resource type="PackedScene" uid="uid://130tsgknu03s" path="res://levels/base_level.tscn" id="1_faurq"]
+[ext_resource type="PackedScene" uid="uid://bimxsaij2y4ow" path="res://level_areas/city_areas/00_intro.tscn" id="2_h74i3"]
+[ext_resource type="PackedScene" uid="uid://bkg5b8r6e2d2k" path="res://level_areas/city_areas/01.tscn" id="3_ktnjf"]
+[ext_resource type="PackedScene" uid="uid://cisfnbg1s77mh" path="res://level_areas/city_areas/02.tscn" id="4_tvc47"]
+[ext_resource type="PackedScene" uid="uid://bgwl83wmm53ak" path="res://level_areas/city_areas/03.tscn" id="5_kojj0"]
+[ext_resource type="PackedScene" uid="uid://b71qdeoqkg3gn" path="res://level_areas/city_areas/04.tscn" id="6_id0ic"]
+[ext_resource type="PackedScene" uid="uid://ck20j5wkadjvy" path="res://level_areas/city_areas/05.tscn" id="7_5r7ul"]
 
 [node name="CityLevel" instance=ExtResource("1_faurq")]
 first_area_offset = Vector2(-400, 2.08165e-12)

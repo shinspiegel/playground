@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://canfeuqmaao8x"
+path="res://.godot/imported/LongswordGold.obj-a62f8e4964fa2708c8b7943f8cc20e20.mesh"
+
+[deps]
+
+files=["res://.godot/imported/LongswordGold.obj-a62f8e4964fa2708c8b7943f8cc20e20.mesh"]
+
+source_file="res://assets/Swords Pack by @TheTeaGuns/Complete Weapons/OBJ/LongswordGold.obj"
+dest_files=["res://.godot/imported/LongswordGold.obj-a62f8e4964fa2708c8b7943f8cc20e20.mesh", "res://.godot/imported/LongswordGold.obj-a62f8e4964fa2708c8b7943f8cc20e20.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

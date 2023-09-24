@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://damculmn7rks3"
+path="res://.godot/imported/stoneWallColumn.obj-7a6147e91c75c864914c27214cda6681.mesh"
+
+[deps]
+
+files=["res://.godot/imported/stoneWallColumn.obj-7a6147e91c75c864914c27214cda6681.mesh"]
+
+source_file="res://assets/kenney_graveyard-kit/Models/OBJ format/stoneWallColumn.obj"
+dest_files=["res://.godot/imported/stoneWallColumn.obj-7a6147e91c75c864914c27214cda6681.mesh", "res://.godot/imported/stoneWallColumn.obj-7a6147e91c75c864914c27214cda6681.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

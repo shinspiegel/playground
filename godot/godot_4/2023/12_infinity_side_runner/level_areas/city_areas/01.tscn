@@ -1,7 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://bdilr28wcigd2"]
+[gd_scene load_steps=3 format=3 uid="uid://bkg5b8r6e2d2k"]
 
-[ext_resource type="PackedScene" uid="uid://bi3c14ee0320t" path="res://level_areas/level_area.tscn" id="1_wgvsf"]
-[ext_resource type="PackedScene" uid="uid://b5k1djyhtj6qh" path="res://entities/enemy/standing_enemy.tscn" id="2_w4mae"]
+[ext_resource type="PackedScene" uid="uid://c7pnl4db36vqd" path="res://level_areas/level_area.tscn" id="1_wgvsf"]
+[ext_resource type="PackedScene" uid="uid://cae4twxucnqut" path="res://entities/enemy/standing_enemy.tscn" id="2_w4mae"]
 
 [node name="LevelArea" instance=ExtResource("1_wgvsf")]
 

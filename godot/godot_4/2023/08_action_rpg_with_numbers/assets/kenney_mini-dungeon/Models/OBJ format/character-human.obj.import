@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://beyqgc1u3bngg"
+path="res://.godot/imported/character-human.obj-dc321e88aa83902cff3db641d63bcde5.mesh"
+
+[deps]
+
+files=["res://.godot/imported/character-human.obj-dc321e88aa83902cff3db641d63bcde5.mesh"]
+
+source_file="res://assets/kenney_mini-dungeon/Models/OBJ format/character-human.obj"
+dest_files=["res://.godot/imported/character-human.obj-dc321e88aa83902cff3db641d63bcde5.mesh", "res://.godot/imported/character-human.obj-dc321e88aa83902cff3db641d63bcde5.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

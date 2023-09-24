@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://cn2xnkmufjc8h"
+path="res://.godot/imported/urn.obj-3bc7ed8be0ed4ce3b735f86aceba8cba.mesh"
+
+[deps]
+
+files=["res://.godot/imported/urn.obj-3bc7ed8be0ed4ce3b735f86aceba8cba.mesh"]
+
+source_file="res://assets/kenney_graveyard-kit/Models/OBJ format/urn.obj"
+dest_files=["res://.godot/imported/urn.obj-3bc7ed8be0ed4ce3b735f86aceba8cba.mesh", "res://.godot/imported/urn.obj-3bc7ed8be0ed4ce3b735f86aceba8cba.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

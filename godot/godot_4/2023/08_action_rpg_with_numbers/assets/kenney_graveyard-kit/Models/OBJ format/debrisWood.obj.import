@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://hu2umpgultqu"
+path="res://.godot/imported/debrisWood.obj-2f792e23f1ba55f741c5e50ce56ff1bc.mesh"
+
+[deps]
+
+files=["res://.godot/imported/debrisWood.obj-2f792e23f1ba55f741c5e50ce56ff1bc.mesh"]
+
+source_file="res://assets/kenney_graveyard-kit/Models/OBJ format/debrisWood.obj"
+dest_files=["res://.godot/imported/debrisWood.obj-2f792e23f1ba55f741c5e50ce56ff1bc.mesh", "res://.godot/imported/debrisWood.obj-2f792e23f1ba55f741c5e50ce56ff1bc.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

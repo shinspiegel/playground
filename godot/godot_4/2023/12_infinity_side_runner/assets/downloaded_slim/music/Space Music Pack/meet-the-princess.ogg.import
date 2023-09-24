@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dq2myrrc6p8d"
+path="res://.godot/imported/meet-the-princess.ogg-c5bbf811e98fc77280672016ea252513.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/downloaded_slim/music/Space Music Pack/meet-the-princess.ogg"
+dest_files=["res://.godot/imported/meet-the-princess.ogg-c5bbf811e98fc77280672016ea252513.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

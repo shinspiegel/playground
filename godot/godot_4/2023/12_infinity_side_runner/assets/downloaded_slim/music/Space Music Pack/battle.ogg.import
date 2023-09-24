@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dxcqskh87wl6s"
+path="res://.godot/imported/battle.ogg-1010ad46f32c8a44c58c0656f19c7cef.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/downloaded_slim/music/Space Music Pack/battle.ogg"
+dest_files=["res://.godot/imported/battle.ogg-1010ad46f32c8a44c58c0656f19c7cef.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
