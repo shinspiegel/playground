@@ -13,6 +13,12 @@ This is an infinity runner gamer.
 	- [x] Game over screen
 - **Juice**
 	- [x] Camera shake
+	- [ ] Scene transition
+	- [ ] Die animation for player
+	- [ ] Freeze frame on receiving a hit
+	- [ ] Adding white flash for damage
+	- [ ] Squish when hit enemies
+	- [ ] Adding trailing for the shoots?
 - **Hazards**
 	- [x] Breakable blocks
 	- [x] Spikes
