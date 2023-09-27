@@ -1,0 +1,277 @@
+[gd_scene load_steps=24 format=3 uid="uid://c1n5wlvaadh18"]
+
+[ext_resource type="Script" path="res://managers/scene_manager.gd" id="1_itspf"]
+[ext_resource type="Theme" uid="uid://36i1pye2gh1j" path="res://base_theme.tres" id="2_00u2s"]
+[ext_resource type="Texture2D" uid="uid://cajpv7xjppva6" path="res://assets/downloaded_slim/graphics/Pixel UI pack 3/07.png" id="3_jkgni"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pg5c5"]
+atlas = ExtResource("3_jkgni")
+region = Rect2(128, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_axsj3"]
+atlas = ExtResource("3_jkgni")
+region = Rect2(112, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_008y8"]
+atlas = ExtResource("3_jkgni")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l7gdf"]
+atlas = ExtResource("3_jkgni")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_20bxb"]
+atlas = ExtResource("3_jkgni")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hcew8"]
+atlas = ExtResource("3_jkgni")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u26ut"]
+atlas = ExtResource("3_jkgni")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rj75t"]
+atlas = ExtResource("3_jkgni")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_get4i"]
+atlas = ExtResource("3_jkgni")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2r1i4"]
+atlas = ExtResource("3_jkgni")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_etsn5"]
+atlas = ExtResource("3_jkgni")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xn0gl"]
+atlas = ExtResource("3_jkgni")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uxu0g"]
+atlas = ExtResource("3_jkgni")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3jh8k"]
+atlas = ExtResource("3_jkgni")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xe5j8"]
+atlas = ExtResource("3_jkgni")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2mm3u"]
+atlas = ExtResource("3_jkgni")
+region = Rect2(112, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_16xd0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pg5c5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_axsj3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_008y8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l7gdf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_20bxb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hcew8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u26ut")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rj75t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_get4i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2r1i4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_etsn5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xn0gl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uxu0g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3jh8k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xe5j8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2mm3u")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="Animation" id="Animation_nab2k"]
+resource_name = "animate"
+length = 0.4
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect/Control:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ColorRect/Control/Control:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_1wjjn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect/Control:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ColorRect/Control/Control:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_twnao"]
+_data = {
+"RESET": SubResource("Animation_1wjjn"),
+"animate": SubResource("Animation_nab2k")
+}
+
+[node name="SceneManager" type="CanvasLayer"]
+script = ExtResource("1_itspf")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("2_00u2s")
+color = Color(0, 0, 0, 1)
+
+[node name="Control" type="Control" parent="ColorRect"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -330.0
+offset_top = -156.0
+offset_right = -40.0
+offset_bottom = -48.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Label" type="Label" parent="ColorRect/Control"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -190.0
+offset_top = -16.0
+offset_bottom = 16.0
+grow_horizontal = 0
+grow_vertical = 2
+text = "Loading..."
+
+[node name="Control" type="Control" parent="ColorRect/Control"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -20.0
+offset_right = 40.0
+offset_bottom = 20.0
+grow_vertical = 2
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="ColorRect/Control/Control"]
+position = Vector2(48, 18)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_16xd0")
+autoplay = "default"
+frame = 8
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_twnao")
+}
