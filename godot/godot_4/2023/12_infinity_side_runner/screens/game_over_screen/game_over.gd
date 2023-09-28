@@ -19,11 +19,11 @@ func on_timeout() -> void:
 
 
 func on_retry() -> void:
-	GameManager.change_scene("power_selection")
+	SceneManager.change_scene("power_selection")
 
 
 func on_main_menu() -> void:
-	GameManager.change_scene("start")
+	SceneManager.change_scene("start")
 
 
 func on_quit() -> void:

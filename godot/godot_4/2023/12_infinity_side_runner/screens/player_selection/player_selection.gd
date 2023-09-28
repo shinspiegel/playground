@@ -16,7 +16,7 @@ func _ready() -> void:
 
 
 func on_start_run_press() -> void:
-	GameManager.change_scene("city_level")
+	SceneManager.change_scene("city_level")
 
 
 func on_item_selection_focus(node: Control) -> void:

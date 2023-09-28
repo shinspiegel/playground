@@ -29,7 +29,7 @@ func _physics_process(delta: float) -> void:
 
 
 func on_player_die() -> void:
-	GameManager.change_scene("game_over")
+	SceneManager.change_scene("game_over")
 
  
 func on_node_created(scene: PackedScene, pos: Vector2) -> void:

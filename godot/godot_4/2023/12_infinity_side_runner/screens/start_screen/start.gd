@@ -10,15 +10,15 @@ func _ready() -> void:
 	start.pressed.connect(on_start)
 	options.pressed.connect(on_options)
 	quit.pressed.connect(on_quit)
-	PlayerData.reset()
+	PlayerData.reset_health()
 
 
 func on_start() -> void:
-	GameManager.change_scene("power_selection")
+	SceneManager.change_scene("power_selection")
 
 
 func on_options() -> void:
-	GameManager.change_scene("options")
+	SceneManager.change_scene("options")
 
 
 func on_quit() -> void:
