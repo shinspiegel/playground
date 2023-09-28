@@ -24,6 +24,7 @@ config/windows_native_icon="res://icon.ico"
 UserStoredData="*res://managers/user_stored_data.gd"
 GameManager="*res://managers/game_manager.gd"
 PlayerData="*res://managers/player_data.gd"
+PowerUpManager="*res://managers/power_up_manager.gd"
 AudioManager="*res://managers/audio_manager.tscn"
 SceneManager="*res://managers/scene_manager.tscn"
 

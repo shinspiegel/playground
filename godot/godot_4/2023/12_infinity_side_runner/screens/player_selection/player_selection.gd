@@ -30,7 +30,7 @@ func on_button_focus() -> void:
 
 
 func __create_item_nodes() -> void:
-	for power_up in PlayerData.get_power_up_list():
+	for power_up in PowerUpManager.get_list():
 		var node: PowerUpItemSelection = ITEM_SELECTION.instantiate()
 		
 		node.skill_name = power_up.power_up
@@ -44,7 +44,7 @@ func __create_item_nodes() -> void:
 
 
 func __toggle_power_up(power_up: PlayerPowerUp, node: PowerUpItemSelection, state: bool) -> void:
-	power_up.is_selected = state
+	power_up.change_selection(state)
 	node.set_pressed(state)
 	
 	# Validate that can toggle // if state == true

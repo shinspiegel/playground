@@ -13,7 +13,7 @@ This is an infinity runner gamer.
 	- [x] Game over screen
 - **Juice**
 	- [x] Camera shake
-	- [ ] Scene transition
+	- [x] Scene transition
 	- [ ] Die animation for player
 	- [ ] Freeze frame on receiving a hit
 	- [ ] Adding white flash for damage
