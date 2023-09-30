@@ -3,9 +3,7 @@ class_name PowerUpItemSelection extends Button
 const texture_color_in = Color(1,1,1,1)
 const texture_color_out = Color(1,1,1,0.5)
 
-@export var skill_name: String
-@export var descriptions: String
-@export var cost: int
+@export var power_up: PlayerPowerUp
 
 @export_group("Sound Effects")
 @export var focus_sfx: AudioStream
@@ -21,8 +19,8 @@ const texture_color_out = Color(1,1,1,0.5)
 
 func _ready() -> void:
 	__connect_inner_signals()
+	__set_data_from_power_up()
 	__define_initial_state()
-	__set_label_text()
 
 
 func on_toggle(state: bool) -> void:
@@ -63,7 +61,9 @@ func __define_initial_state() -> void:
 		texture_rect.modulate = texture_color_out
 
 
-func __set_label_text() -> void:
-	skill_name_label.text = skill_name
-	description_label.text = descriptions
-	cost_label.text = str(cost)
+func __set_data_from_power_up() -> void:
+	skill_name_label.text = power_up.power_up
+	description_label.text = power_up.description
+	cost_label.text = str(power_up.cost)
+	button_pressed = power_up.is_selected
+	texture_rect.texture = power_up.icon

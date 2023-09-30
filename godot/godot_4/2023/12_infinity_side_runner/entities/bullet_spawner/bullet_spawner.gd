@@ -1,4 +1,4 @@
-class_name BulletSpawner extends Node2D
+class_name BulletSpawner extends Marker2D
 
 @export var bullet_scene: PackedScene
 @export var delay: float = 1.0

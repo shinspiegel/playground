@@ -68,4 +68,4 @@ func __load_next_area() -> void:
 func __apply_speed_map_areas(delta: float) -> void:
 	for node in map_areas.get_children():
 		if node is Node2D: 
-			node.global_position.x -= GameManager.get_speed(delta)
+			node.global_position.x -= PlayerData.get_horizontal_speed(delta)

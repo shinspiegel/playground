@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="PlayerPowerUp" load_steps=3 format=3 uid="uid://y3ff6n3uxost"]
+
+[ext_resource type="Script" path="res://entities/player/power_ups/player_power_up.gd" id="1_7awii"]
+[ext_resource type="Texture2D" uid="uid://cngy1jdponugl" path="res://icon.svg" id="1_uk3rd"]
+
+[resource]
+script = ExtResource("1_7awii")
+icon = ExtResource("1_uk3rd")
+power_up = "Super speed"
+description = "Increase move speed by 30%"
+cost = 1
+is_selected = false
+extra_jump_power = 0.0
+extra_speed = 0.3

@@ -1,9 +1,0 @@
-[gd_resource type="Resource" script_class="PlayerPowerUp" load_steps=2 format=3 uid="uid://dc6hp0vi2rhaw"]
-
-[ext_resource type="Script" path="res://entities/player/power_ups/player_power_up.gd" id="1_0mlg4"]
-
-[resource]
-script = ExtResource("1_0mlg4")
-power_up = "Speed Up"
-description = "This increase the movement speed."
-cost = 7

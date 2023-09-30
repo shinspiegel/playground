@@ -1,9 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://cwitwjhc7erih"]
+[gd_scene load_steps=10 format=3 uid="uid://cwitwjhc7erih"]
 
 [ext_resource type="Script" path="res://entities/player/player.gd" id="1_hjpc4"]
 [ext_resource type="Texture2D" uid="uid://bwhtynqqtjaji" path="res://assets/downloaded_slim/graphics/Super Grotto Escape Files/Characters/Player/spritesheets/player-run.png" id="2_4tdnr"]
-[ext_resource type="PackedScene" uid="uid://d277tv4vce3w3" path="res://entities/bullet_spawner/bullet_spawner.tscn" id="3_wqaxt"]
-[ext_resource type="PackedScene" uid="uid://xbses8kpg5ex" path="res://entities/bullet/player_bullet.tscn" id="4_chtle"]
 [ext_resource type="PackedScene" uid="uid://b4ovdim2p6vd1" path="res://entities/damages/damage_receiver.tscn" id="5_naxqi"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3j43t"]
@@ -75,10 +73,6 @@ shape = SubResource("CapsuleShape2D_3j43t")
 position = Vector2(480, -225)
 remote_path = NodePath("../../Camera2D")
 
-[node name="BulletSpawner" parent="." instance=ExtResource("3_wqaxt")]
-position = Vector2(59, -53)
-bullet_scene = ExtResource("4_chtle")
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "run"
 libraries = {
@@ -100,3 +94,14 @@ metadata/_edit_group_ = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WallDetection"]
 position = Vector2(-26, -27)
 shape = SubResource("RectangleShape2D_bu62i")
+
+[node name="WeaponsAttachment" type="Node2D" parent="."]
+
+[node name="Front" type="Marker2D" parent="WeaponsAttachment"]
+position = Vector2(60, -50)
+
+[node name="Top" type="Marker2D" parent="WeaponsAttachment"]
+position = Vector2(0, -130)
+
+[node name="Back" type="Marker2D" parent="WeaponsAttachment"]
+position = Vector2(-35, -80)

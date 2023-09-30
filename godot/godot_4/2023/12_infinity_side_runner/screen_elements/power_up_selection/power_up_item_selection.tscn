@@ -1,11 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://b3td3xmv0u5bu"]
+[gd_scene load_steps=14 format=3 uid="uid://b3td3xmv0u5bu"]
 
 [ext_resource type="Theme" uid="uid://36i1pye2gh1j" path="res://base_theme.tres" id="1_yk21o"]
 [ext_resource type="Script" path="res://screen_elements/power_up_selection/power_up_item_selection.gd" id="2_yl0bt"]
 [ext_resource type="AudioStream" uid="uid://vhrbdhia416y" path="res://assets/final_assets/sfx/ui_sfx/cursor_style_2.wav" id="3_1kufu"]
 [ext_resource type="AudioStream" uid="uid://ds76u5itib2l7" path="res://assets/final_assets/sfx/ui_sfx/confirm_style_2_003.wav" id="4_4x34q"]
 [ext_resource type="AudioStream" uid="uid://dfcpaxmny84fj" path="res://assets/final_assets/sfx/ui_sfx/back_style_2_007.wav" id="5_cvom6"]
-[ext_resource type="Texture2D" uid="uid://cngy1jdponugl" path="res://icon.svg" id="6_75nxi"]
 [ext_resource type="Texture2D" uid="uid://dvqx7b30nggct" path="res://assets/downloaded_slim/graphics/Pixel UI pack 3/02.png" id="7_j2kba"]
 [ext_resource type="Texture2D" uid="uid://cn5r7hc2xxg26" path="res://assets/downloaded_slim/graphics/Pixel UI pack 3/07_x4.png" id="8_clpt4"]
 
@@ -139,7 +138,6 @@ offset_right = -8.0
 offset_bottom = -8.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("6_75nxi")
 expand_mode = 4
 stretch_mode = 5
 

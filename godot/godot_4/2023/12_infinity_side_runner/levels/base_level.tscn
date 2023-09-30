@@ -10,7 +10,6 @@
 
 [sub_resource type="Resource" id="Resource_ugdwv"]
 script = ExtResource("2_he4lv")
-amount = 1
 shake = 30.0
 rand_amount_min = 1
 rand_amount_max = 1

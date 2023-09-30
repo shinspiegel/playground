@@ -33,10 +33,7 @@ func __create_item_nodes() -> void:
 	for power_up in PlayerData.get_power_up_list():
 		var node: PowerUpItemSelection = ITEM_SELECTION.instantiate()
 		
-		node.skill_name = power_up.power_up
-		node.descriptions = power_up.description
-		node.cost = power_up.cost
-		node.set_pressed(power_up.is_selected)
+		node.power_up = power_up
 		node.focus_entered.connect(on_item_selection_focus.bind(node))
 		node.toggled.connect(__toggle_power_up.bind(power_up, node))
 		

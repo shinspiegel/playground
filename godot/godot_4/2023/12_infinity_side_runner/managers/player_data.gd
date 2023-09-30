@@ -7,30 +7,37 @@ signal health_maxed
 signal power_point_changed(power_points: int, max_power_points: int)
 
 const JUMP_KEY: String = "ui_accept"
+const SPEED: float = 6.0
+const JUMP_VELOCITY: float = 12.0
+const DEFAULT_EXTRA_RATIO: float = 1.0
+const INITIAL_POWER_POINT: int = 0
 
 const POWERUP_LIST: Array[PlayerPowerUp] = [
+	preload("res://entities/player/power_ups/basic_shooter.tres"),
+	preload("res://entities/player/power_ups/top_shooter.tres"),
 	preload("res://entities/player/power_ups/high_jump.tres"),
-	preload("res://entities/player/power_ups/power_shot.tres"),
-	preload("res://entities/player/power_ups/triple_shot.tres"),
-	preload("res://entities/player/power_ups/speed_up.tres"),
+	preload("res://entities/player/power_ups/super_high_jump.tres"),
+	preload("res://entities/player/power_ups/increase_speed.tres"),
+	preload("res://entities/player/power_ups/super_speed.tres"),
 ]
 
 @export var max_health: int = 20
 @export var health: int = 20
-@export var max_power_points: int = 50
+@export var max_power_points: int = 5
 @export var power_points: int = 0
+
+var __extra_jump_power: float = DEFAULT_EXTRA_RATIO
+var __extra_speed: float = DEFAULT_EXTRA_RATIO
 
 
 func _ready() -> void:
 	reset_health()
-	prepare_power_up_list()
 	__calculate_power_usage()
 
 
 #######################
 # Health Related Data #
 #######################
-
 
 func change_health(amount: int) -> void:
 	health = clampi(health + amount, 0, max_health)
@@ -51,16 +58,17 @@ func reset_health() -> void:
 	health = max_health
 
 
+func get_player_jump_velocity() -> float:
+	return JUMP_VELOCITY * GameManager.MULTIPLIER * __extra_jump_power * -1
+
+
+func get_horizontal_speed(delta: float = 1.0) -> float:
+	return SPEED * GameManager.MULTIPLIER * __extra_speed * delta
+
+
 #######################
 #  Power Up Related   #
 #######################
-
-
-func prepare_power_up_list() -> void:
-	pass
-#	for power in POWERUP_LIST:
-#		power.selection_change.connect(on_power_up_select.bind(power))
-
 
 func get_power_up_list() -> Array[PlayerPowerUp]:
 	return POWERUP_LIST
@@ -77,11 +85,15 @@ func toggle_power_up(power_up: PlayerPowerUp, state: bool) -> void:
 
 
 func __calculate_power_usage() -> void:
-	power_points = 0
+	power_points = INITIAL_POWER_POINT
+	__extra_jump_power = DEFAULT_EXTRA_RATIO
+	__extra_speed = DEFAULT_EXTRA_RATIO
 	
 	for power in POWERUP_LIST:
 		if power.is_selected:
 			power_points += power.cost
+			__extra_jump_power += power.extra_jump_power
+			__extra_speed += power.extra_speed
 
 
 func __emit_power_change() -> void:

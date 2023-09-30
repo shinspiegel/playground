@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="PlayerPowerUp" load_steps=4 format=3 uid="uid://dx0ch2u8k3eov"]
+
+[ext_resource type="PackedScene" uid="uid://1bbpc75asx0g" path="res://entities/player/power_up_scenes/basic_player_spawner.tscn" id="1_mmn01"]
+[ext_resource type="Texture2D" uid="uid://cngy1jdponugl" path="res://icon.svg" id="1_vt6ag"]
+[ext_resource type="Script" path="res://entities/player/power_ups/player_power_up.gd" id="2_xohiq"]
+
+[resource]
+script = ExtResource("2_xohiq")
+icon = ExtResource("1_vt6ag")
+power_up = "Basic Shooter"
+description = "The trusted side weapon."
+cost = 0
+is_selected = false
+extra_jump_power = 0.0
+extra_speed = 0.0
+extra_weapon = ExtResource("1_mmn01")
+extra_weapon_slot = "front"

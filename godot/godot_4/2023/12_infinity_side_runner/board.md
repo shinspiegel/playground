@@ -37,11 +37,11 @@ This is an infinity runner gamer.
 - **Player:**
 	- [x] Damage while stoped
 	- [x] Create base power up resource
-	- [ ] Power up limits
-	- [ ] Alternative shots
-	- [ ] Speed power up
-	- [ ] Jump power up
-	- [ ] Shield power up
+	- [x] Power up limits
+	- **Power Ups:**
+		- [ ] Make 4 different shots
+		- [ ] Add special effects for jump and speed
+		- [ ] Make heath regen and max health
 - **Sfx**
 	- [x] Add cursor sfx on options
 	- [x] Add cursor sfx on start menu
