@@ -4,6 +4,10 @@ This is an infinity runner gamer.
 
 ### Todo
 
+- **Boring Stuff**
+	- [ ] Define grafics and style
+	- [ ] Make the graphics
+	- [ ] Elevator pitch
 - **Game Flow**
 	- [x] Start -> Equip -> Play -> Die
 - **Screens**
@@ -39,9 +43,18 @@ This is an infinity runner gamer.
 	- [x] Create base power up resource
 	- [x] Power up limits
 	- **Power Ups:**
-		- [ ] Make 4 different shots
-		- [ ] Add special effects for jump and speed
-		- [ ] Make heath regen and max health
+		- [ ] Basic shot (9~15)
+		- [ ] Quick shot (3~5)
+		- [ ] Charger shot (20~40)
+		- [ ] Extra health
+		- [ ] Health regeneration
+		- [ ] Shield
+		- [ ] Move speed (10%~40%)
+		- [ ] Jump power (5~25%)
+		- [ ] ??? Extra damage? +2
+		- [ ] Dash on jump (jump + jump = dash)
+		- [ ] ??? Special??
+		- [ ] ??? Special??
 - **Sfx**
 	- [x] Add cursor sfx on options
 	- [x] Add cursor sfx on start menu

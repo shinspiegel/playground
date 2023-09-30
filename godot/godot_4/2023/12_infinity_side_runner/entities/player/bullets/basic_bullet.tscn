@@ -1,17 +1,16 @@
-[gd_scene load_steps=11 format=3 uid="uid://xbses8kpg5ex"]
+[gd_scene load_steps=11 format=3 uid="uid://cyry57410kqus"]
 
-[ext_resource type="PackedScene" uid="uid://b2ueau8drsaps" path="res://entities/bullet/bullet.tscn" id="1_cuqwq"]
-[ext_resource type="Texture2D" uid="uid://s26c41x7mre5" path="res://assets/downloaded_slim/graphics/Super Grotto Escape Files/Fx/Spritesheets/player-shoot.png" id="2_0k1hk"]
-[ext_resource type="Script" path="res://entities/damages/damage.gd" id="2_6vf2q"]
-[ext_resource type="AudioStream" uid="uid://q58erneukuge" path="res://assets/final_assets/sfx/shoot_a.wav" id="2_strgl"]
-[ext_resource type="PackedScene" uid="uid://ce0j7iljyj263" path="res://entities/effects/player_shoot_hit.tscn" id="2_wfgiy"]
+[ext_resource type="PackedScene" uid="uid://b2ueau8drsaps" path="res://entities/bullet/bullet.tscn" id="1_tgsbh"]
+[ext_resource type="AudioStream" uid="uid://q58erneukuge" path="res://assets/final_assets/sfx/shoot_a.wav" id="2_5oe48"]
+[ext_resource type="PackedScene" uid="uid://ce0j7iljyj263" path="res://entities/effects/player_shoot_hit.tscn" id="3_njrdr"]
+[ext_resource type="Texture2D" uid="uid://s26c41x7mre5" path="res://assets/downloaded_slim/graphics/Super Grotto Escape Files/Fx/Spritesheets/player-shoot.png" id="4_mmlx8"]
+[ext_resource type="Script" path="res://entities/damages/damage.gd" id="5_fa0ft"]
 
-[sub_resource type="Resource" id="Resource_0m7xt"]
-script = ExtResource("2_6vf2q")
-amount = 10
+[sub_resource type="Resource" id="Resource_c3f70"]
+script = ExtResource("5_fa0ft")
 shake = 20.0
-rand_amount_min = 10
-rand_amount_max = 20
+rand_amount_min = 9
+rand_amount_max = 15
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3vv8f"]
 radius = 23.0
@@ -55,15 +54,15 @@ _data = {
 "animate": SubResource("Animation_gol07")
 }
 
-[node name="PlayerBullet" instance=ExtResource("1_cuqwq")]
-shoot_sfx = ExtResource("2_strgl")
+[node name="PlayerBullet" instance=ExtResource("1_tgsbh")]
+shoot_sfx = ExtResource("2_5oe48")
 shoot_sfx_adjust = -0.4
-hit_effect = ExtResource("2_wfgiy")
+hit_effect = ExtResource("3_njrdr")
 
 [node name="Sprite2D" parent="." index="0"]
 position = Vector2(-6, -2)
 scale = Vector2(6, 6)
-texture = ExtResource("2_0k1hk")
+texture = ExtResource("4_mmlx8")
 hframes = 4
 
 [node name="VisibleOnScreenNotifier2D" parent="." index="1"]
@@ -71,7 +70,7 @@ scale = Vector2(2, 2)
 
 [node name="DamageInflictor" parent="." index="2"]
 collision_mask = 6
-damage = SubResource("Resource_0m7xt")
+damage = SubResource("Resource_c3f70")
 
 [node name="CollisionShape2D" parent="DamageInflictor" index="0"]
 rotation = 1.5708

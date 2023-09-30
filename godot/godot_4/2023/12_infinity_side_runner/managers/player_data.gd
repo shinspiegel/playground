@@ -14,11 +14,8 @@ const INITIAL_POWER_POINT: int = 0
 
 const POWERUP_LIST: Array[PlayerPowerUp] = [
 	preload("res://entities/player/power_ups/basic_shooter.tres"),
-	preload("res://entities/player/power_ups/top_shooter.tres"),
-	preload("res://entities/player/power_ups/high_jump.tres"),
-	preload("res://entities/player/power_ups/super_high_jump.tres"),
-	preload("res://entities/player/power_ups/increase_speed.tres"),
-	preload("res://entities/player/power_ups/super_speed.tres"),
+	preload("res://entities/player/power_ups/quick_shooter.tres"),
+	preload("res://entities/player/power_ups/charge_shoot.tres"),
 ]
 
 @export var max_health: int = 20

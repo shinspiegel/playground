@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://cprjakswlves3"]
+
+[ext_resource type="PackedScene" uid="uid://d277tv4vce3w3" path="res://entities/bullet_spawner/bullet_spawner.tscn" id="1_ppans"]
+[ext_resource type="PackedScene" uid="uid://ckpepdm0vwe6s" path="res://entities/player/bullets/charger_shoot.tscn" id="2_c6m8i"]
+
+[node name="ChargershotSpawner" type="Node2D"]
+
+[node name="BulletSpawner" parent="." instance=ExtResource("1_ppans")]
+bullet_scene = ExtResource("2_c6m8i")
+delay = 1.2

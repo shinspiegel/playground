@@ -19,6 +19,7 @@ func on_timeout() -> void:
 
 
 func on_retry() -> void:
+	PlayerData.reset_health()
 	SceneManager.change_scene("power_selection")
 
 

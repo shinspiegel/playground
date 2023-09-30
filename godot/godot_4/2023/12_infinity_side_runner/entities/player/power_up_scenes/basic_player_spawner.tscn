@@ -1,9 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://1bbpc75asx0g"]
-
-[ext_resource type="PackedScene" uid="uid://d277tv4vce3w3" path="res://entities/bullet_spawner/bullet_spawner.tscn" id="1_p3lcm"]
-[ext_resource type="PackedScene" uid="uid://xbses8kpg5ex" path="res://entities/bullet/player_bullet.tscn" id="2_rxlgx"]
-
-[node name="BasicPlayerSpawner" type="Node2D"]
-
-[node name="BulletSpawner" parent="." instance=ExtResource("1_p3lcm")]
-bullet_scene = ExtResource("2_rxlgx")
