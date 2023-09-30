@@ -44,11 +44,11 @@ This is an infinity runner gamer.
 	- [x] Power up limits
 	- **Power Ups:**
 		- [ ] Basic shot (9~15)
-		- [ ] Quick shot (3~5)
+		- [ ] Quick shot (2~4)
 		- [ ] Charger shot (20~40)
 		- [ ] Extra health
 		- [ ] Health regeneration
-		- [ ] Shield
+		- [ ] ??? Extra damage colddown?
 		- [ ] Move speed (10%~40%)
 		- [ ] Jump power (5~25%)
 		- [ ] ??? Extra damage? +2

@@ -11,6 +11,7 @@ signal collided_with_wall
 @onready var front: Marker2D = $WeaponsAttachment/Front
 @onready var top: Marker2D = $WeaponsAttachment/Top
 @onready var back: Marker2D = $WeaponsAttachment/Back
+@onready var damage_colddown: Timer = $DamageReceiver/DamageColddown
 
 
 func _ready() -> void:
@@ -27,9 +28,11 @@ func _physics_process(delta: float) -> void:
 
 
 func on_damage_receive(damage: Damage) -> void:
-	PlayerData.deal_damage(damage.amount)
-	GameManager.spawn_damage_at(damage, damage_number_pos.global_position)
-	GameManager.invoque_shake(damage.shake)
+	if damage_colddown.time_left <= 0.0:
+		PlayerData.deal_damage(damage.amount)
+		GameManager.spawn_damage_at(damage, damage_number_pos.global_position)
+		GameManager.invoque_shake(damage.shake)
+		damage_colddown.start(PlayerData.damage_colddown)
 
 
 func set_camera(cam: Camera2D) -> void:

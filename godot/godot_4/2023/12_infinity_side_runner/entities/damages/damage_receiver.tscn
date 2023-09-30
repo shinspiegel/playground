@@ -4,7 +4,3 @@
 
 [node name="DamageReceiver" type="Area2D"]
 script = ExtResource("1_m78eb")
-
-[node name="Colddown" type="Timer" parent="."]
-wait_time = 0.3
-one_shot = true

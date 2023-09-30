@@ -85,6 +85,9 @@ libraries = {
 position = Vector2(0, -64)
 shape = SubResource("RectangleShape2D_yv1dy")
 
+[node name="DamageColddown" type="Timer" parent="DamageReceiver"]
+one_shot = true
+
 [node name="WallDetection" type="Area2D" parent="."]
 position = Vector2(49, -63)
 collision_layer = 0

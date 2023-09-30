@@ -22,6 +22,7 @@ const POWERUP_LIST: Array[PlayerPowerUp] = [
 @export var health: int = 20
 @export var max_power_points: int = 5
 @export var power_points: int = 0
+@export var damage_colddown: float = 0.3
 
 var __extra_jump_power: float = DEFAULT_EXTRA_RATIO
 var __extra_speed: float = DEFAULT_EXTRA_RATIO
