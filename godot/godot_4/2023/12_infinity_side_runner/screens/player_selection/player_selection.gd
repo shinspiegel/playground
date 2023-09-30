@@ -30,23 +30,23 @@ func on_button_focus() -> void:
 
 
 func __create_item_nodes() -> void:
-	for power_up in PowerUpManager.get_list():
+	for power_up in PlayerData.get_power_up_list():
 		var node: PowerUpItemSelection = ITEM_SELECTION.instantiate()
 		
 		node.skill_name = power_up.power_up
 		node.descriptions = power_up.description
 		node.cost = power_up.cost
 		node.set_pressed(power_up.is_selected)
-		node.focus_entered.connect(func(): on_item_selection_focus(node))
-		node.toggled.connect(func(state: bool): __toggle_power_up(power_up, node, state))
+		node.focus_entered.connect(on_item_selection_focus.bind(node))
+		node.toggled.connect(__toggle_power_up.bind(power_up, node))
 		
 		container.add_child(node)
 
 
-func __toggle_power_up(power_up: PlayerPowerUp, node: PowerUpItemSelection, state: bool) -> void:
-	power_up.change_selection(state)
-	node.set_pressed(state)
-	
-	# Validate that can toggle // if state == true
-	node.on_toggle(state)
-	# toggle off!
+func __toggle_power_up(state: bool, power_up: PlayerPowerUp, node: PowerUpItemSelection) -> void:
+	if state and PlayerData.can_add_power_up(power_up):
+		PlayerData.toggle_power_up(power_up, true)
+		node.on_toggle(true)
+	else:
+		PlayerData.toggle_power_up(power_up, false)
+		node.on_toggle(false)

@@ -1,5 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://3hbqusscucdf"]
+[gd_scene load_steps=7 format=3 uid="uid://3hbqusscucdf"]
 
+[ext_resource type="Script" path="res://screen_elements/power_up_bar/power_up_bar.gd" id="1_hd6vl"]
 [ext_resource type="Texture2D" uid="uid://du6cwvf0njusq" path="res://assets/downloaded_slim/graphics/gameui/GUI_x4.png" id="1_qnu1f"]
 [ext_resource type="Texture2D" uid="uid://d16w0c4j88rj5" path="res://assets/downloaded_slim/graphics/Pixel UI pack 3/04.png" id="2_gki30"]
 
@@ -28,6 +29,7 @@ offset_right = 35.5
 offset_bottom = 149.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_hd6vl")
 
 [node name="TextureRect2" type="NinePatchRect" parent="."]
 layout_mode = 1
@@ -49,42 +51,26 @@ patch_margin_top = 24
 patch_margin_right = 24
 patch_margin_bottom = 24
 
-[node name="Label" type="Label" parent="TextureRect2"]
+[node name="CurrentLabel" type="Label" parent="TextureRect2"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -23.5
-offset_top = -9.0
-offset_right = 4.5
-offset_bottom = 28.0
+offset_left = -25.0
+offset_top = -10.0
+offset_right = 25.0
+offset_bottom = 27.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(0.0588235, 0.0470588, 0.0784314, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 24
 text = "99"
-horizontal_alignment = 2
+horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="Label2" type="Label" parent="TextureRect2"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 3.5
-offset_top = 3.0
-offset_right = 25.5
-offset_bottom = 23.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(0.0588235, 0.0470588, 0.0784314, 1)
-theme_override_font_sizes/font_size = 12
-text = "/99"
-vertical_alignment = 2
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
@@ -118,7 +104,9 @@ offset_bottom = -116.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(8, 8)
-value = 50.0
+max_value = 20.0
+value = 1.0
 fill_mode = 3
 texture_under = SubResource("AtlasTexture_xraav")
 texture_progress = SubResource("AtlasTexture_oaj5m")
+texture_progress_offset = Vector2(2.08165e-12, 2.08165e-12)
