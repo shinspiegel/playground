@@ -29,4 +29,4 @@ position = Vector2(3328, 192)
 position = Vector2(12, -444)
 
 [node name="RemoveNotifier" parent="Notifiers" index="1"]
-position = Vector2(3444, -476)
+position = Vector2(3227, -544)

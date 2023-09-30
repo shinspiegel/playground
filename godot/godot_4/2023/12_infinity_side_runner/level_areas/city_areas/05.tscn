@@ -47,7 +47,7 @@ position = Vector2(0, 128)
 position = Vector2(7296, 64)
 
 [node name="LoadNextNotifier" parent="Notifiers" index="0"]
-position = Vector2(9, -294)
+position = Vector2(47, -577)
 
 [node name="RemoveNotifier" parent="Notifiers" index="1"]
-position = Vector2(7394, -677)
+position = Vector2(7195, -757)

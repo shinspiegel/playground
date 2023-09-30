@@ -57,7 +57,9 @@ func on_player_collide_wall() -> void:
 func __load_next_area() -> void:
 	if __current_area_index < level_areas_list.size():
 		var area: LevelArea = level_areas_list[__current_area_index].instantiate()
+		
 		area.load_next.connect(__load_next_area)
+		
 		map_areas.add_child(area)
 		
 		if not __previous_area:

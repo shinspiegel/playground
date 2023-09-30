@@ -42,7 +42,7 @@ shape = SubResource("RectangleShape2D_oi5ld")
 metadata/_edit_lock_ = true
 
 [node name="LoadNextNotifier" parent="Notifiers" index="0"]
-position = Vector2(0, -6.10352e-05)
+position = Vector2(20, -392)
 
 [node name="RemoveNotifier" parent="Notifiers" index="1"]
-position = Vector2(8365, -50.0001)
+position = Vector2(8220, -89.0001)
