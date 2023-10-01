@@ -13,7 +13,7 @@ This is an infinity runner gamer.
 - **Screens**
 	- [x] Start Screen
 	- [x] Options Screen
-	- [ ] Select powerups screen
+	- [x] Select powerups screen
 	- [x] Game over screen
 - **Juice**
 	- [x] Camera shake
@@ -43,18 +43,18 @@ This is an infinity runner gamer.
 	- [x] Create base power up resource
 	- [x] Power up limits
 	- **Power Ups:**
-		- [ ] Basic shot (9~15)
-		- [ ] Quick shot (2~4)
-		- [ ] Charger shot (20~40)
+		- [x] Basic shot (9~15)
+		- [x] Quick shot (2~4)
+		- [x] Charger shot (20~40)
 		- [ ] Extra health
 		- [ ] Health regeneration
-		- [ ] ??? Extra damage colddown?
+		- [ ] Armor defense
 		- [ ] Move speed (10%~40%)
 		- [ ] Jump power (5~25%)
-		- [ ] ??? Extra damage? +2
+		- [ ] ??? Extra damage? +2 Static boost
 		- [ ] Dash on jump (jump + jump = dash)
-		- [ ] ??? Special??
-		- [ ] ??? Special??
+		- [ ] ??? Special something??
+		- [ ] ??? Special something??
 - **Sfx**
 	- [x] Add cursor sfx on options
 	- [x] Add cursor sfx on start menu
