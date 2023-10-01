@@ -11,6 +11,7 @@ power_up = "Charge Shoot"
 description = "Head mounted cannon.
 Makes you move little bit slower."
 cost = 1
+is_enabled = true
 is_selected = false
 extra_jump_power = 0.0
 extra_speed = -0.1

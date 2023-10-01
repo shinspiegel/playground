@@ -10,6 +10,7 @@ icon = ExtResource("2_uy6vv")
 power_up = "Basic Shooter"
 description = "The trusted side weapon."
 cost = 0
+is_enable = true
 is_selected = false
 extra_jump_power = 0.0
 extra_speed = 0.0

@@ -1,7 +1,8 @@
 class_name PowerUpItemSelection extends Button
 
-const texture_color_in = Color(1,1,1,1)
-const texture_color_out = Color(1,1,1,0.5)
+const texture_color_in  = Color(1.0, 1.0, 1.0, 1.0)
+const texture_color_out = Color(1.0, 1.0, 1.0, 0.5)
+const texture_color_dis = Color(0.5, 0.5, 0.5, 0.5)
 
 @export var power_up: PlayerPowerUp
 
@@ -24,46 +25,69 @@ func _ready() -> void:
 
 
 func on_toggle(state: bool) -> void:
-	if state:
-		animated_sprite_2d_2.show()
-		texture_rect.modulate = texture_color_in
-		AudioManager.play_sfx(toggle_in_sfx)
-	else:
-		animated_sprite_2d_2.hide()
-		texture_rect.modulate = texture_color_out
-		AudioManager.play_sfx(toggle_out_sfx)
+	if not is_disabled():
+		if state:
+			__set_effects(texture_color_in, true, toggle_in_sfx)
+			
+		else:
+			__set_effects(texture_color_out, false, toggle_out_sfx)
 
 
 func on_focus() -> void:
-	texture_rect.modulate = texture_color_in
-	AudioManager.play_sfx(focus_sfx)
+	__set_effects(texture_color_in, is_pressed(), focus_sfx)
 
 
 func on_blur() -> void:
 	if is_pressed():
-		texture_rect.modulate = texture_color_in
+		__set_effects(texture_color_in, true, null)
+		
 	else:
-		texture_rect.modulate = texture_color_out
+		__set_effects(texture_color_out, false, null)
 
 
 func __connect_inner_signals() -> void:
-	focus_entered.connect(on_focus)
-	focus_exited.connect(on_blur)
-#	toggled.connect(on_toggle)
+	if not is_disabled():
+		focus_entered.connect(on_focus)
+		focus_exited.connect(on_blur)
 
 
 func __define_initial_state() -> void:
 	if is_pressed():
-		animated_sprite_2d_2.show()
-		texture_rect.modulate = texture_color_in
+		__set_effects(texture_color_in, true, null)
+
+	elif is_disabled():
+		__set_effects(texture_color_dis, false, null)
+		
 	else:
-		animated_sprite_2d_2.hide()
-		texture_rect.modulate = texture_color_out
+		__set_effects(texture_color_out, false, null)
 
 
 func __set_data_from_power_up() -> void:
 	skill_name_label.text = power_up.power_up
 	description_label.text = power_up.description
 	cost_label.text = str(power_up.cost)
+	
 	button_pressed = power_up.is_selected
+	
+	if not power_up.is_enabled:
+		disabled = true
+		set_focus_mode(Control.FOCUS_NONE)
+	else:
+		disabled = false
+		set_focus_mode(Control.FOCUS_ALL)
+	
 	texture_rect.texture = power_up.icon
+
+
+func __set_effects(module_color: Color, enable_animate: bool = false, sfx_effect: AudioStream = null) -> void:
+	texture_rect.modulate = module_color
+	skill_name_label.modulate = module_color
+	description_label.modulate = module_color
+	
+	if enable_animate:
+		animated_sprite_2d_2.show()
+	else:
+		animated_sprite_2d_2.hide()
+	
+	if sfx_effect: 
+		AudioManager.play_sfx(sfx_effect)
