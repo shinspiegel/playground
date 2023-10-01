@@ -13,6 +13,7 @@ script = ExtResource("2_he4lv")
 shake = 30.0
 rand_amount_min = 1
 rand_amount_max = 1
+ignore_armor = true
 
 [node name="BaseLevel" type="Node2D"]
 script = ExtResource("1_aa02s")

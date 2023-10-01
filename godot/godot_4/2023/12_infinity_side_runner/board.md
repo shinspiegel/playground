@@ -46,9 +46,9 @@ This is an infinity runner gamer.
 		- [x] Basic shot (9~15)
 		- [x] Quick shot (2~4)
 		- [x] Charger shot (20~40)
-		- [ ] Extra health
-		- [ ] Health regeneration
-		- [ ] Armor defense
+		- [x] Extra health
+		- [x] Health regeneration
+		- [x] Armor defense
 		- [ ] Move speed (10%~40%)
 		- [ ] Jump power (5~25%)
 		- [ ] ??? Extra damage? +2 Static boost

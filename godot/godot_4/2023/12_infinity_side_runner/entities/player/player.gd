@@ -8,10 +8,11 @@ signal collided_with_wall
 @onready var damage_receiver: Area2D = $DamageReceiver
 @onready var damage_number_pos: Marker2D = $DamageNumberPos
 @onready var wall_detection: Area2D = $WallDetection
-@onready var front: Marker2D = $WeaponsAttachment/Front
-@onready var top: Marker2D = $WeaponsAttachment/Top
-@onready var back: Marker2D = $WeaponsAttachment/Back
+@onready var front_attachment: Marker2D = $WeaponsAttachment/Front
+@onready var top_attachment: Marker2D = $WeaponsAttachment/Top
+@onready var back_attachment: Marker2D = $WeaponsAttachment/Back
 @onready var damage_colddown: Timer = $DamageReceiver/DamageColddown
+@onready var effects_attachment: Node2D = $EffectsAttachment
 
 
 func _ready() -> void:
@@ -29,6 +30,7 @@ func _physics_process(delta: float) -> void:
 
 func on_damage_receive(damage: Damage) -> void:
 	if damage_colddown.time_left <= 0.0:
+		PlayerData.apply_armor_to_damage(damage)
 		PlayerData.deal_damage(damage.amount)
 		GameManager.spawn_damage_at(damage, damage_number_pos.global_position)
 		GameManager.invoque_shake(damage.shake)
@@ -71,10 +73,12 @@ func __setup_power_ups() -> void:
 	for power_up in PlayerData.get_power_up_list():
 		if power_up.is_selected:
 			if power_up.extra_weapon: 
-				__add_weapon_to_slot(power_up.extra_weapon, power_up.extra_weapon_slot)
+				__attach_weapon(power_up.extra_weapon, power_up.extra_weapon_slot)
+			if power_up.extra_effect:
+				__attach_effect(power_up.extra_effect)
 
 
-func __add_weapon_to_slot(scene: PackedScene, slot: String) -> void:
+func __attach_weapon(scene: PackedScene, slot: String) -> void:
 	var slot_to_attach = __get_slot_by_string(slot)
 	
 	if not slot_to_attach:
@@ -87,7 +91,12 @@ func __add_weapon_to_slot(scene: PackedScene, slot: String) -> void:
 
 func __get_slot_by_string(slot: String) -> Marker2D:
 	match slot:
-		"front": return front
-		"top": return top
-		"back": return back
+		"front": return front_attachment
+		"top": return top_attachment
+		"back": return back_attachment
 		_: return null
+
+
+func __attach_effect(scene: PackedScene) -> void:
+	var node: Node = scene.instantiate()
+	effects_attachment.add_child(node)

@@ -11,15 +11,24 @@ const SPEED: float = 6.0
 const JUMP_VELOCITY: float = 12.0
 const DEFAULT_EXTRA_RATIO: float = 1.0
 const INITIAL_POWER_POINT: int = 0
+const INITIAL_MAX_HEALTH: int = 20
+const INITIAL_ARMOR: int = 0
 
 const POWERUP_LIST: Array[PlayerPowerUp] = [
-	preload("res://entities/player/power_ups/basic_shooter.tres"),
-	preload("res://entities/player/power_ups/quick_shooter.tres"),
-	preload("res://entities/player/power_ups/charge_shoot.tres"),
+	# Offensive 
+	preload("res://entities/player/power_ups/offensive/basic_shooter.tres"),
+	preload("res://entities/player/power_ups/offensive/charge_shoot.tres"),
+	preload("res://entities/player/power_ups/offensive/quick_shooter.tres"),
+	
+	# Defensive
+	preload("res://entities/player/power_ups/defensive/extra_health.tres"),
+	preload("res://entities/player/power_ups/defensive/health_regen.tres"),
+	preload("res://entities/player/power_ups/defensive/armor_plating.tres"),
 ]
 
-@export var max_health: int = 20
-@export var health: int = 20
+@export var max_health: int = INITIAL_MAX_HEALTH
+@export var health: int = INITIAL_MAX_HEALTH
+@export var armor: int = 0
 @export var max_power_points: int = 5
 @export var power_points: int = 0
 @export var damage_colddown: float = 0.3
@@ -37,7 +46,7 @@ func _ready() -> void:
 # Health Related Data #
 #######################
 
-func change_health(amount: int) -> void:
+func change_health(amount: int) -> PlayerData:
 	health = clampi(health + amount, 0, max_health)
 	health_changed.emit()
 	
@@ -46,14 +55,28 @@ func change_health(amount: int) -> void:
 	
 	if health <= 0:
 		health_zeroed.emit()
+	
+	return self
 
 
-func deal_damage(amount: int) -> void:
+func apply_armor_to_damage(damage:Damage) -> Damage:
+	damage.amount = clampi(damage.amount - armor, 0, damage.amount)
+	return damage
+
+
+func heal_damage(amount: int) -> PlayerData:
+	change_health(amount)
+	return self
+
+
+func deal_damage(amount: int) -> PlayerData:
 	change_health(-amount)
+	return self
 
 
-func reset_health() -> void:
+func reset_health() -> PlayerData:
 	health = max_health
+	return self
 
 
 func get_player_jump_velocity() -> float:
@@ -83,7 +106,9 @@ func toggle_power_up(power_up: PlayerPowerUp, state: bool) -> void:
 
 
 func __calculate_power_usage() -> void:
+	max_health = INITIAL_MAX_HEALTH
 	power_points = INITIAL_POWER_POINT
+	armor = INITIAL_ARMOR
 	__extra_jump_power = DEFAULT_EXTRA_RATIO
 	__extra_speed = DEFAULT_EXTRA_RATIO
 	
@@ -92,6 +117,8 @@ func __calculate_power_usage() -> void:
 			power_points += power.cost
 			__extra_jump_power += power.extra_jump_power
 			__extra_speed += power.extra_speed
+			max_health += power.extra_health
+			armor += power.extra_armor
 
 
 func __emit_power_change() -> void:

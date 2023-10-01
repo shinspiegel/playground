@@ -98,6 +98,8 @@ metadata/_edit_group_ = true
 position = Vector2(-26, -27)
 shape = SubResource("RectangleShape2D_bu62i")
 
+[node name="EffectsAttachment" type="Node2D" parent="."]
+
 [node name="WeaponsAttachment" type="Node2D" parent="."]
 
 [node name="Front" type="Marker2D" parent="WeaponsAttachment"]

@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="PlayerPowerUp" load_steps=4 format=3 uid="uid://4qu5auq163id"]
+
+[ext_resource type="PackedScene" uid="uid://bbbyqkq4l4olo" path="res://entities/player/power_up_scenes/quick_shot_spawner.tscn" id="1_gaiuc"]
+[ext_resource type="Texture2D" uid="uid://cngy1jdponugl" path="res://icon.svg" id="2_akl1l"]
+[ext_resource type="Script" path="res://entities/player/power_ups/player_power_up.gd" id="3_rggjs"]
+
+[resource]
+script = ExtResource("3_rggjs")
+icon = ExtResource("2_akl1l")
+power_up = "Quick shooter"
+description = "Machine gun!"
+cost = 0
+is_enabled = true
+is_selected = false
+extra_health = 0
+extra_armor = 0
+extra_jump_power = 0.0
+extra_speed = 0.0
+extra_weapon = ExtResource("1_gaiuc")
+extra_weapon_slot = "front"

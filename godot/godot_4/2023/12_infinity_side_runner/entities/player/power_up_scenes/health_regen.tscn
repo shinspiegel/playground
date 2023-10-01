@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://dntd78blr073r"]
+
+[ext_resource type="Script" path="res://entities/player/power_up_scenes/health_regen.gd" id="1_k5io8"]
+
+[node name="HealthRegen" type="Node2D"]
+script = ExtResource("1_k5io8")
+
+[node name="RegenColddown" type="Timer" parent="."]
+one_shot = true

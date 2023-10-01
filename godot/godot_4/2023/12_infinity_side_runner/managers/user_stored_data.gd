@@ -13,6 +13,7 @@ var __audio_config_file: ConfigFile = ConfigFile.new()
 func _ready() -> void:
 	if not __audio_config_file.load(__audio.path) == OK:
 		save_options(1.0, 1.0)
+	
 
 
 func save_options(music: float, sfx: float) -> void:
