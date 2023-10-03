@@ -170,16 +170,23 @@ With a silhouette that weaves the essence of eras past, present, and future, Ela
 
 # Music todo-list
 
-- [ ] Main menu (Elara's Prelude)
+- [x] Main menu (Elara's Prelude)
 - [ ] Item selection (Echoes of Elara)
 - Eras:
-	- [ ] Ancient Dynasties: Desert Serenade
-	- [ ] Spellbound Shires: Whispers of the Woodlands
-	- [ ] Neon Nexus: Pulse of the Grid
+	- [x] Ancient Dynasties: Desert Serenade
+	- [x] Spellbound Shires: Whispers of the Woodlands
+	- [x] Neon Nexus: Pulse of the Grid
 
 # Sfx todo-list
 
-- ? What SFX do I need?
+- **Player**
+	- [x] Damaged
+	- [x] Jump
+- **Power Ups**
+	- [x] Neon Crossbow (3 types)
+	- [x] Dart Shooter (3 types)
+	- [x] Gear Cannon (1 types)
+	- [x] Repair Nanobots
 
 # Generic todo-list
 
