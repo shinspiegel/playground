@@ -19,17 +19,16 @@ ignore_armor = true
 script = ExtResource("1_aa02s")
 wall_col_damage = SubResource("Resource_ugdwv")
 
-[node name="GameCamera" parent="." instance=ExtResource("7_gkrs1")]
-
-[node name="Player" parent="." instance=ExtResource("3_8x1eo")]
-
-[node name="DamageColddown" type="Timer" parent="Player"]
-
 [node name="Background" parent="." instance=ExtResource("4_vqkrm")]
 
 [node name="GameUI" parent="." instance=ExtResource("5_cpx8v")]
 
 [node name="BackgroundMusic" parent="." instance=ExtResource("11_qmiet")]
-music = "game"
+
+[node name="GameCamera" parent="." instance=ExtResource("7_gkrs1")]
+
+[node name="Player" parent="." instance=ExtResource("3_8x1eo")]
+
+[node name="DamageColddown" type="Timer" parent="Player"]
 
 [node name="MapAreas" type="Node2D" parent="."]

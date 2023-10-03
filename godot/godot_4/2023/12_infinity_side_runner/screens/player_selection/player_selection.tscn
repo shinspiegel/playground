@@ -56,6 +56,10 @@ grow_vertical = 2
 theme = ExtResource("1_mndds")
 script = ExtResource("2_lot8s")
 
+[node name="Background" parent="." instance=ExtResource("6_uoig4")]
+
+[node name="BackgroundMusic" parent="." instance=ExtResource("11_n4h4e")]
+
 [node name="Label" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = 8
@@ -126,7 +130,3 @@ autoplay = "default"
 frame_progress = 0.745165
 centered = false
 offset = Vector2(2.08165e-12, 2.08165e-12)
-
-[node name="Background" parent="." instance=ExtResource("6_uoig4")]
-
-[node name="BackgroundMusic" parent="." instance=ExtResource("11_n4h4e")]

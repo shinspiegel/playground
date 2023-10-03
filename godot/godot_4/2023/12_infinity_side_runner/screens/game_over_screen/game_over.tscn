@@ -21,6 +21,7 @@ script = ExtResource("2_12ugw")
 [node name="Background" parent="." instance=ExtResource("2_wd57x")]
 
 [node name="BackgroundMusic" parent="." instance=ExtResource("3_e7by6")]
+music = "game_over"
 
 [node name="PressColddown" type="Timer" parent="."]
 wait_time = 2.0
