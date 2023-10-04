@@ -40,7 +40,7 @@ layout_mode = 2
 [node name="Label" type="Label" parent="VBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 48
-text = "Untitle"
+text = "Chrono "
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -51,7 +51,7 @@ theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 8
 theme_override_fonts/font = ExtResource("4_buy8y")
 theme_override_font_sizes/font_size = 64
-text = "Infinity Runner"
+text = "Resurgence"
 horizontal_alignment = 1
 vertical_alignment = 1
 

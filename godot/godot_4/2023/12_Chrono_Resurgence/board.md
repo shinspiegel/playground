@@ -5,18 +5,9 @@
 	- [x] Run (4 frames)
 	- [x] Jump (3 frames)
 - **Power Ups** (16x16)
-	- [ ] Neon Crossbow
-	- [ ] Dart Shooter
-	- [ ] Gear Cannon
-	- [ ] Vigor Amulet
-	- [ ] Repair Nanobots
-	- [ ] Metallic Armor
-	- [ ] Speed Boots
-	- [ ] Steam Pack
-	- [ ] Temporal Treads
-	- [ ] Glitch Dash
-	- [ ] Time Echo
-	- [ ] Chrono Stasis
+	- [x] Neon Crossbow
+	- [x] Dart Shooter
+	- [x] Gear Cannon
 - **Power Up Icons** (64x64px)
 	- [ ] Neon Crossbow
 	- [ ] Dart Shooter
@@ -33,7 +24,7 @@
  **Eras**:
 	- **Ancient Dynasties**
 		- _Level_
-			- [ ] Tilemap
+			- [x] Tilemap
 			- [ ] Sandstone Tile: Weathered, desert-worn, stackable blocks.
 			- [ ] Pyramid Edge: Sloped, golden-highlighted, stone facade.
 			- [ ] Papyrus Patch: Ground cover, reed clusters, river's edge.
@@ -86,12 +77,12 @@
 # Game UI
 
 - **Screens**
-    - [ ] Start Scren
-    - [ ] Options screen
-    - [ ] Item Selection
-    - [ ] Game Over
+	- [ ] Start Scren
+	- [ ] Options screen
+	- [ ] Item Selection
+	- [ ] Game Over
 - **Elements**
-    - [ ] Overlay UI (Health, stuff overlay on levels)
+	- [ ] Overlay UI (Health, stuff overlay on levels)
 
 # Music todo-list
 
