@@ -36,7 +36,12 @@ window/vsync/vsync_mode=0
 
 [dotnet]
 
-project/assembly_name="Infinity Side Runner"
+project/assembly_name="Chrono Resurgence"
+
+[filesystem]
+
+import/blender/enabled=false
+import/fbx/enabled=false
 
 [layer_names]
 

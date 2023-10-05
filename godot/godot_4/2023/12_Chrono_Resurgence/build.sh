@@ -4,6 +4,7 @@
 # [$2]: Game Name
 
 NAME="Untitle Infinity Runner"
+CONFIG="./export_presets.cfg"
 VERSION=$(head -n 1 VERSION.txt)
 DATE="$(date +%s)"
 FULL_HASH="$(git log -n 1 --pretty=format:"%H")"
@@ -16,6 +17,13 @@ fi
 if [ "$1" ]; then
 	VERSION="$1"
 fi
+
+update_version() {
+	OLD_VERSION="$1"
+	NEW_VERSION="$2"
+
+	sed -i '' "s/$OLD_VERSION/$NEW_VERSION/g" $CONFIG
+}
 
 # [$1] Named OS type in the export screen
 # [$2] Filename to be generated
@@ -35,15 +43,18 @@ godot_build() {
 	# Zip the file
 	echo "INFO:: Zipped file $ZIP_FILENAME"
 	zip -q -r "./dist/$DATE/$ZIP_FILENAME" "$BUILD_PATH"
-	
+
 	# Remove folder with unzip
 	echo "INFO:: Cleaning files"
 	rm -rf "$BUILD_PATH"
 	echo ""
 }
 
-godot_build		"html5"		"index.html"
-godot_build		"linux"		"$NAME.x86_64"
-godot_build		"macos"		"$NAME.dmg"
-godot_build		"win"		"$NAME.exe"
+update_version "0.0.0.0" $VERSION
 
+godot_build "html5" "index.html"
+godot_build "linux" "$NAME.x86_64"
+godot_build "macos" "$NAME.dmg"
+godot_build "win" "$NAME.exe"
+
+update_version $VERSION "0.0.0.0"
