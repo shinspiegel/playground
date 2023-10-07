@@ -1,11 +1,11 @@
 [gd_resource type="Resource" script_class="PlayerPowerUp" load_steps=3 format=3 uid="uid://b88a6nkrkv4cm"]
 
-[ext_resource type="Texture2D" uid="uid://cngy1jdponugl" path="res://icon.svg" id="2_pbic0"]
+[ext_resource type="Texture2D" uid="uid://if0qx6cacn5o" path="res://chrono_resurgence_icon.svg" id="1_jwmsj"]
 [ext_resource type="Script" path="res://entities/player/power_ups/player_power_up.gd" id="3_vlvtu"]
 
 [resource]
 script = ExtResource("3_vlvtu")
-icon = ExtResource("2_pbic0")
+icon = ExtResource("1_jwmsj")
 power_up = "Extra Health"
 description = "More build, more health!"
 cost = 0

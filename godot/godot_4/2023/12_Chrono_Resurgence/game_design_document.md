@@ -22,10 +22,6 @@ With a silhouette that weaves the essence of eras past, present, and future, Ela
 
 **Description**: A period characterized by vast kingdoms, ornate temples, golden sand dunes, and bustling marketplaces. This era is ruled by mighty pharaohs and emperors. With towering statues, mysterious pyramids, and treacherous tombs, this era provides a backdrop of grandeur and wonder.
 
-- **Colors**:
-	- Sunlit Sand: #E6C57E
-	- Temple Gold: #D4AF37
-	- Oasis Blue: #1E88E5
 - **Enemies**:
 	- Sand Sentinel: Statuesque guardians carved from the ancient stones. They stand motionless, waiting for intruders, occasionally swiping with their large stone arms if anyone approaches.
 	- Desert Hopper: A larger-than-life scarab beetle that hops unpredictably in the sand, challenging players with its erratic movement.
@@ -43,10 +39,6 @@ With a silhouette that weaves the essence of eras past, present, and future, Ela
 
 **Description**: Set against a tapestry of castles, cobblestone villages, and enchanted forests. Knights, dragons, and wizards roam the land. The environment includes tall castle towers, misty woodlands, and sprawling fields, offering both danger and magic in equal measure.
 
-- **Colors**:
-	- Castle Stone: #A9A9A9
-	- Enchanted Green: #007F5F
-	- Royal Purple: #6B5B95
 - **Enemies**:
 	- Stone Knight: Once-armored knights turned to stone, standing as eternal sentinels. They threaten with their weapons when Elara nears.
 	- Forest Fae: Ethereal, tiny creatures with wings that glow. They surprise with their sudden ascents from the ground.
@@ -65,10 +57,6 @@ With a silhouette that weaves the essence of eras past, present, and future, Ela
 
 **Description**: Skyscrapers reach for the heavens in a cityscape dominated by neon lights, flying cars, and advanced tech. This era is marked by its stark contrast between the ultra-modern urban environment and the remnants of nature, all against a backdrop of a sky with multiple moons or nearby planets.
 
-- **Colors**:
-	- Neon Electric Purple: #AA00FF
-	- Urban Silver: #B0C4DE
-	- Galactic Violet: #8A2BE2
 - **Enemies**:
 	- Cyber Sentinel: Advanced robotic entities equipped with motion-detecting sensors. They react instantly with mechanical precision to nearby movement.
 	- Hover Drone: Anti-gravity drones that hover up and down periodically, scanning for threats with their advanced technology.

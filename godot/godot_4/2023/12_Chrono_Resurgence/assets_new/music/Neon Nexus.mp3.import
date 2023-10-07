@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://ckiqp47ccm5p5"
+path="res://.godot/imported/Neon Nexus.mp3-0f8491dcef622014b2d5102c126b33dc.mp3str"
+
+[deps]
+
+source_file="res://assets_new/music/Neon Nexus.mp3"
+dest_files=["res://.godot/imported/Neon Nexus.mp3-0f8491dcef622014b2d5102c126b33dc.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

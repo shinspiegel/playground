@@ -1,0 +1,10 @@
+[gd_scene load_steps=4 format=3 uid="uid://bnw2oupg4ie2q"]
+
+[ext_resource type="PackedScene" uid="uid://130tsgknu03s" path="res://levels/base_level.tscn" id="1_drka3"]
+[ext_resource type="PackedScene" uid="uid://d1g6bd6kej004" path="res://entities/background/desert_background.tscn" id="2_j4vtb"]
+[ext_resource type="PackedScene" uid="uid://bjf00bhbacfs5" path="res://level_areas/desert_areas/00.tscn" id="2_yeulu"]
+
+[node name="DesertLevel" instance=ExtResource("1_drka3")]
+level_areas_list = Array[PackedScene]([ExtResource("2_yeulu")])
+
+[node name="DesertBackground" parent="." index="0" instance=ExtResource("2_j4vtb")]

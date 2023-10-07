@@ -1,11 +1,11 @@
 [gd_resource type="Resource" script_class="PlayerPowerUp" load_steps=3 format=3 uid="uid://dne513qs32s2f"]
 
-[ext_resource type="Texture2D" uid="uid://cngy1jdponugl" path="res://icon.svg" id="2_8ht26"]
+[ext_resource type="Texture2D" uid="uid://if0qx6cacn5o" path="res://chrono_resurgence_icon.svg" id="1_tdb5a"]
 [ext_resource type="Script" path="res://entities/player/power_ups/player_power_up.gd" id="3_impbd"]
 
 [resource]
 script = ExtResource("3_impbd")
-icon = ExtResource("2_8ht26")
+icon = ExtResource("1_tdb5a")
 power_up = "Amor Plating"
 description = "Extra armor to reduce incoming damage."
 cost = 0

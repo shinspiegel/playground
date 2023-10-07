@@ -25,20 +25,15 @@
 	- **Ancient Dynasties**
 		- _Level_
 			- [x] Tilemap
-			- [ ] Sandstone Tile: Weathered, desert-worn, stackable blocks.
-			- [ ] Pyramid Edge: Sloped, golden-highlighted, stone facade.
-			- [ ] Papyrus Patch: Ground cover, reed clusters, river's edge.
-			- [ ] Obelisk Shard: Tall, hieroglyph-carved, shadow-casting structure.
+			- [x] Ancient Rubble
+			- [x] Pharaoh's Spikes
+			- [x] Sandstone Sliders
+			- [x] Dune Drops
 		- _Enemies_ (4 frames per enemy):
 			- [ ] Sand Sentinel
 			- [ ] Desert Hopper
 			- [ ] Mimic Mummy
 			- [ ] Pharaoh's Conjurer
-		- _Hazards_:
-			- [ ] Ancient Rubble
-			- [ ] Pharaoh's Spikes
-			- [ ] Sandstone Sliders
-			- [ ] Dune Drops
 	- **Spellbound Shires**
 		- _Level_
 			- [ ] Tilemap
@@ -51,11 +46,6 @@
 			- [ ] Forest Fae
 			- [ ] Shadow Jester
 			- [ ] Wizard's Acolyte
-		- _Hazards_:
-			- [ ] Mystic Blocks
-			- [ ] Thorn of the Enchanted
-			- [ ] Enchanted Elevators
-			- [ ] Will-o'-the-Wisp Ledge
 	- **Neon Nexus**
 		- _Level_
 			- [ ] Tilemap
@@ -68,11 +58,6 @@
 			- [ ] Hover Drone
 			- [ ] Neon Mimic
 			- [ ] Laser Enforcer
-		- _Hazards_:
-			- [ ] Holo-Blocks
-			- [ ] Laser Lines
-			- [ ] Magnetic Movers
-			- [ ] Pixel Drop Panels
 
 # Game UI
 

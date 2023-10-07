@@ -2,7 +2,7 @@ extends Node
 
 const LEVELS = {
 	"base_level": preload("res://levels/base_level.tscn"),
-	"city_level": preload("res://levels/city_level.tscn"),
+	"ancient_dynasties": preload("res://levels/desert_level.tscn"),
 }
 
 const SCREENS = {

@@ -15,9 +15,9 @@ run/main_scene="res://main.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
 boot_splash/bg_color=Color(0, 0, 0, 1)
 boot_splash/show_image=false
-config/icon="res://icon.svg"
-config/macos_native_icon="res://icon.icns"
-config/windows_native_icon="res://icon.ico"
+config/icon="res://icons/icon_base.png"
+config/macos_native_icon="res://icons/icon_macos.icns"
+config/windows_native_icon="res://icons/icon_win.ico"
 
 [autoload]
 

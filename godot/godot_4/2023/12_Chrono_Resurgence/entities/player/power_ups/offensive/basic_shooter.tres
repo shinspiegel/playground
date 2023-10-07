@@ -1,17 +1,19 @@
 [gd_resource type="Resource" script_class="PlayerPowerUp" load_steps=4 format=3 uid="uid://dx0ch2u8k3eov"]
 
 [ext_resource type="PackedScene" uid="uid://1bbpc75asx0g" path="res://entities/player/power_up_scenes/basic_shot_spawner.tscn" id="1_c4rve"]
-[ext_resource type="Texture2D" uid="uid://cngy1jdponugl" path="res://icon.svg" id="1_vt6ag"]
+[ext_resource type="Texture2D" uid="uid://if0qx6cacn5o" path="res://chrono_resurgence_icon.svg" id="2_0xadp"]
 [ext_resource type="Script" path="res://entities/player/power_ups/player_power_up.gd" id="2_xohiq"]
 
 [resource]
 script = ExtResource("2_xohiq")
-icon = ExtResource("1_vt6ag")
+icon = ExtResource("2_0xadp")
 power_up = "Basic Shooter"
 description = "The trusted side weapon."
 cost = 0
-is_enable = true
+is_enabled = true
 is_selected = false
+extra_health = 0
+extra_armor = 0
 extra_jump_power = 0.0
 extra_speed = 0.0
 extra_weapon = ExtResource("1_c4rve")

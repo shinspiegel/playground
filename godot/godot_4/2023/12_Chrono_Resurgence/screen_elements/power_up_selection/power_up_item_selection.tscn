@@ -2,24 +2,25 @@
 
 [ext_resource type="Theme" uid="uid://36i1pye2gh1j" path="res://base_theme.tres" id="1_yk21o"]
 [ext_resource type="Script" path="res://screen_elements/power_up_selection/power_up_item_selection.gd" id="2_yl0bt"]
-[ext_resource type="AudioStream" uid="uid://vhrbdhia416y" path="res://assets/final_assets/sfx/ui_sfx/cursor_style_2.wav" id="3_1kufu"]
-[ext_resource type="Texture2D" uid="uid://cngy1jdponugl" path="res://icon.svg" id="3_5tawy"]
-[ext_resource type="AudioStream" uid="uid://ds76u5itib2l7" path="res://assets/final_assets/sfx/ui_sfx/confirm_style_2_003.wav" id="4_4x34q"]
+[ext_resource type="AudioStream" uid="uid://vhrbdhia416y" path="res://assets_new/sfx/ui_sfx/cursor_style_2.wav" id="3_1kufu"]
+[ext_resource type="AudioStream" uid="uid://ds76u5itib2l7" path="res://assets_new/sfx/ui_sfx/confirm_style_2_003.wav" id="4_4x34q"]
 [ext_resource type="Script" path="res://entities/player/power_ups/player_power_up.gd" id="4_ct8a4"]
-[ext_resource type="AudioStream" uid="uid://dfcpaxmny84fj" path="res://assets/final_assets/sfx/ui_sfx/back_style_2_007.wav" id="5_cvom6"]
+[ext_resource type="AudioStream" uid="uid://dfcpaxmny84fj" path="res://assets_new/sfx/ui_sfx/back_style_2_007.wav" id="5_cvom6"]
 [ext_resource type="Texture2D" uid="uid://dvqx7b30nggct" path="res://assets/downloaded_slim/graphics/Pixel UI pack 3/02.png" id="7_j2kba"]
+[ext_resource type="Texture2D" uid="uid://if0qx6cacn5o" path="res://chrono_resurgence_icon.svg" id="7_y0wl5"]
 [ext_resource type="Texture2D" uid="uid://cn5r7hc2xxg26" path="res://assets/downloaded_slim/graphics/Pixel UI pack 3/07_x4.png" id="8_clpt4"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1og7v"]
 
 [sub_resource type="Resource" id="Resource_bvdns"]
 script = ExtResource("4_ct8a4")
-icon = ExtResource("3_5tawy")
 power_up = "Name Test"
 description = "Test Description"
 cost = 99
 is_enabled = true
 is_selected = false
+extra_health = 0
+extra_armor = 0
 extra_jump_power = 0.0
 extra_speed = 0.0
 extra_weapon_slot = "front"
@@ -161,6 +162,7 @@ offset_right = -8.0
 offset_bottom = -8.0
 grow_horizontal = 2
 grow_vertical = 2
+texture = ExtResource("7_y0wl5")
 expand_mode = 4
 stretch_mode = 5
 

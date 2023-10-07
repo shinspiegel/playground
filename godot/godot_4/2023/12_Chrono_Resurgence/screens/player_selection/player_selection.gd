@@ -2,6 +2,8 @@ extends Control
 
 const ITEM_SELECTION = preload("res://screen_elements/power_up_selection/power_up_item_selection.tscn")
 
+@export var target_level: String = "desert"
+
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var container: GridContainer = $Container
 @onready var button: BaseButton = $Button
@@ -16,7 +18,7 @@ func _ready() -> void:
 
 
 func on_start_run_press() -> void:
-	SceneManager.change_scene("city_level")
+	SceneManager.change_scene(target_level)
 
 
 func on_item_selection_focus(node: Control) -> void:
