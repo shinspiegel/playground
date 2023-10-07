@@ -1,7 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://1bbpc75asx0g"]
+[gd_scene load_steps=3 format=3 uid="uid://5pikni5kdewm"]
 
-[ext_resource type="PackedScene" uid="uid://d277tv4vce3w3" path="res://entities/bullet_spawner/bullet_spawner.tscn" id="1_oi4cw"]
-[ext_resource type="PackedScene" uid="uid://cyry57410kqus" path="res://entities/player/bullets/basic_bullet.tscn" id="2_xh3aj"]
+[ext_resource type="PackedScene" uid="uid://b4o4jmhylcafx" path="res://entities/bullet_spawner/bullet_spawner.tscn" id="1_oi4cw"]
+[ext_resource type="PackedScene" uid="uid://51vgvlrfe0o2" path="res://entities/player/bullets/basic_bullet.tscn" id="2_xh3aj"]
 
 [node name="BasicPlayerSpawner" type="Node2D"]
 

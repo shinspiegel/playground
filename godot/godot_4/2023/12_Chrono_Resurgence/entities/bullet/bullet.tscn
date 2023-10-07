@@ -1,7 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://b2ueau8drsaps"]
+[gd_scene load_steps=3 format=3 uid="uid://crcgxxhb20md3"]
 
 [ext_resource type="Script" path="res://entities/bullet/bullet.gd" id="1_4oukh"]
-[ext_resource type="PackedScene" uid="uid://baed7kygfrast" path="res://entities/damages/damage_inflictor.tscn" id="2_pr4he"]
+[ext_resource type="PackedScene" uid="uid://botey7dn8iuyb" path="res://entities/damages/damage_inflictor.tscn" id="2_pr4he"]
 
 [node name="Bullet" type="Node2D"]
 script = ExtResource("1_4oukh")

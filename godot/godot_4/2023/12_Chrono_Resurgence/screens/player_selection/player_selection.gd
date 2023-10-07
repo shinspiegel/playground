@@ -2,18 +2,20 @@ extends Control
 
 const ITEM_SELECTION = preload("res://screen_elements/power_up_selection/power_up_item_selection.tscn")
 
-@export var target_level: String = "desert"
+@export var target_level: String = "ancient_dynasties"
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var container: GridContainer = $Container
-@onready var button: BaseButton = $Button
+@onready var start_button: Button = %StartButton
+@onready var options: Button = %Options
 
 
 func _ready() -> void:
 	__create_item_nodes()
-	button.focus_entered.connect(on_button_focus)
-	button.pressed.connect(on_start_run_press)
-	button.grab_focus()
+	options.pressed.connect(on_options_press)
+	start_button.focus_entered.connect(on_button_focus)
+	start_button.pressed.connect(on_start_run_press)
+	start_button.grab_focus()
 	animated_sprite_2d.hide()
 
 
@@ -29,6 +31,10 @@ func on_item_selection_focus(node: Control) -> void:
 
 func on_button_focus() -> void:
 	animated_sprite_2d.hide()
+
+
+func on_options_press() -> void:
+	SceneManager.change_scene("options")
 
 
 func __create_item_nodes() -> void:

@@ -1,8 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://c7x0m7dovflyd"]
+[gd_scene load_steps=4 format=3 uid="uid://180xq5v47akn"]
 
 [ext_resource type="Script" path="res://entities/enemy/base_enemy.gd" id="1_y6anb"]
-[ext_resource type="PackedScene" uid="uid://l1cndk4xwhpd" path="res://entities/effects/explosion_sfx.tscn" id="2_40d2d"]
-[ext_resource type="PackedScene" uid="uid://b4ovdim2p6vd1" path="res://entities/damages/damage_receiver.tscn" id="2_fjvxx"]
+[ext_resource type="PackedScene" uid="uid://bbjkj8vi54m5p" path="res://entities/effects/explosion_sfx.tscn" id="2_40d2d"]
+[ext_resource type="PackedScene" uid="uid://bo7qkfe1un2id" path="res://entities/damages/damage_receiver.tscn" id="2_fjvxx"]
 
 [node name="BaseEnemy" type="CharacterBody2D"]
 collision_layer = 4

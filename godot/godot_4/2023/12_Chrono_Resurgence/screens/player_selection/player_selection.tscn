@@ -1,14 +1,14 @@
-[gd_scene load_steps=15 format=3 uid="uid://dium2203dke3i"]
+[gd_scene load_steps=15 format=3 uid="uid://dvvgemqqu750s"]
 
-[ext_resource type="Theme" uid="uid://36i1pye2gh1j" path="res://base_theme.tres" id="1_mndds"]
+[ext_resource type="Theme" uid="uid://c7sp8p8sgruph" path="res://base_theme.tres" id="1_mndds"]
 [ext_resource type="Script" path="res://screens/player_selection/player_selection.gd" id="2_lot8s"]
-[ext_resource type="PackedScene" uid="uid://3hbqusscucdf" path="res://screen_elements/power_up_bar/power_up_bar.tscn" id="4_qtkbv"]
+[ext_resource type="PackedScene" uid="uid://bvmxm6py00wcl" path="res://screen_elements/power_up_bar/power_up_bar.tscn" id="4_qtkbv"]
 [ext_resource type="Script" path="res://screen_elements/custom_button/custom_button.gd" id="5_ahlng"]
-[ext_resource type="PackedScene" uid="uid://brfeswvfnl1vs" path="res://entities/background/background.tscn" id="6_uoig4"]
-[ext_resource type="AudioStream" uid="uid://ds76u5itib2l7" path="res://assets_new/sfx/ui_sfx/confirm_style_2_003.wav" id="7_iv610"]
-[ext_resource type="AudioStream" uid="uid://vhrbdhia416y" path="res://assets_new/sfx/ui_sfx/cursor_style_2.wav" id="8_2i2ww"]
-[ext_resource type="Texture2D" uid="uid://cajpv7xjppva6" path="res://assets/downloaded_slim/graphics/Pixel UI pack 3/07.png" id="9_imfy7"]
-[ext_resource type="PackedScene" uid="uid://bbh35i1b05n45" path="res://entities/background_music/background_music.tscn" id="11_n4h4e"]
+[ext_resource type="PackedScene" uid="uid://dlr231gvtgpvq" path="res://entities/background/background.tscn" id="6_uoig4"]
+[ext_resource type="AudioStream" uid="uid://bwc5xhnh0w5s8" path="res://assets_new/sfx/ui_sfx/confirm_style_2_003.wav" id="7_iv610"]
+[ext_resource type="AudioStream" uid="uid://ckov52qenfsqx" path="res://assets_new/sfx/ui_sfx/cursor_style_2.wav" id="8_2i2ww"]
+[ext_resource type="Texture2D" uid="uid://388t367kklvj" path="res://assets/downloaded_slim/graphics/Pixel UI pack 3/07.png" id="9_imfy7"]
+[ext_resource type="PackedScene" uid="uid://dbnsvurfupbpa" path="res://entities/background_music/background_music.tscn" id="11_n4h4e"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5b0y5"]
 atlas = ExtResource("9_imfy7")
@@ -118,6 +118,7 @@ offset_right = 225.0
 offset_bottom = -85.0
 grow_horizontal = 2
 grow_vertical = 0
+focus_neighbor_left = NodePath("../Options")
 text = "Start Game"
 script = ExtResource("5_ahlng")
 press_sfx = ExtResource("7_iv610")
@@ -134,6 +135,9 @@ offset_top = -146.0
 offset_right = 173.0
 offset_bottom = -85.0
 grow_vertical = 0
+focus_neighbor_left = NodePath("../StartButton")
+focus_neighbor_top = NodePath("../StartButton")
+focus_neighbor_right = NodePath("../StartButton")
 text = "Options"
 script = ExtResource("5_ahlng")
 press_sfx = ExtResource("7_iv610")

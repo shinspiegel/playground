@@ -1,6 +1,6 @@
-[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://cph6340w5bwbk"]
+[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://c2rsg6yxx8ex5"]
 
-[ext_resource type="Texture2D" uid="uid://i5wnjednlpxj" path="res://assets_new/graphics/eras/ancient_dynasties/ancient_dynasties.png" id="1_tl40a"]
+[ext_resource type="Texture2D" uid="uid://n53t6jnxl7g0" path="res://assets_new/graphics/eras/ancient_dynasties/ancient_dynasties.png" id="1_tl40a"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0xlew"]
 texture = ExtResource("1_tl40a")

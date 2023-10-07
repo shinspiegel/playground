@@ -1,7 +1,7 @@
-[gd_resource type="Resource" script_class="PlayerPowerUp" load_steps=4 format=3 uid="uid://dx0ch2u8k3eov"]
+[gd_resource type="Resource" script_class="PlayerPowerUp" load_steps=4 format=3 uid="uid://baiqubi347eox"]
 
-[ext_resource type="PackedScene" uid="uid://1bbpc75asx0g" path="res://entities/player/power_up_scenes/basic_shot_spawner.tscn" id="1_c4rve"]
-[ext_resource type="Texture2D" uid="uid://if0qx6cacn5o" path="res://chrono_resurgence_icon.svg" id="2_0xadp"]
+[ext_resource type="PackedScene" uid="uid://5pikni5kdewm" path="res://entities/player/power_up_scenes/basic_shot_spawner.tscn" id="1_c4rve"]
+[ext_resource type="Texture2D" uid="uid://4y56dypr3dut" path="res://chrono_resurgence_icon.svg" id="2_0xadp"]
 [ext_resource type="Script" path="res://entities/player/power_ups/player_power_up.gd" id="2_xohiq"]
 
 [resource]

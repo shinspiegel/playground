@@ -1,9 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://ckpepdm0vwe6s"]
+[gd_scene load_steps=11 format=3 uid="uid://bceu06bpd2y60"]
 
-[ext_resource type="PackedScene" uid="uid://b2ueau8drsaps" path="res://entities/bullet/bullet.tscn" id="1_siah1"]
-[ext_resource type="AudioStream" uid="uid://q58erneukuge" path="res://assets/final_assets/sfx/shoot_a.wav" id="2_5ki77"]
-[ext_resource type="PackedScene" uid="uid://ce0j7iljyj263" path="res://entities/effects/player_shoot_hit.tscn" id="3_vomj3"]
-[ext_resource type="Texture2D" uid="uid://s26c41x7mre5" path="res://assets/downloaded_slim/graphics/Super Grotto Escape Files/Fx/Spritesheets/player-shoot.png" id="4_dsttt"]
+[ext_resource type="PackedScene" uid="uid://crcgxxhb20md3" path="res://entities/bullet/bullet.tscn" id="1_siah1"]
+[ext_resource type="AudioStream" uid="uid://boxb3cm4i5204" path="res://assets/final_assets/sfx/shoot_a.wav" id="2_5ki77"]
+[ext_resource type="PackedScene" uid="uid://ca4pgxlb86sbh" path="res://entities/effects/player_shoot_hit.tscn" id="3_vomj3"]
+[ext_resource type="Texture2D" uid="uid://ctfuiw6e7o54n" path="res://assets/downloaded_slim/graphics/Super Grotto Escape Files/Fx/Spritesheets/player-shoot.png" id="4_dsttt"]
 [ext_resource type="Script" path="res://entities/damages/damage.gd" id="5_xg56y"]
 
 [sub_resource type="Resource" id="Resource_p0d4n"]
@@ -11,6 +11,7 @@ script = ExtResource("5_xg56y")
 shake = 20.0
 rand_amount_min = 20
 rand_amount_max = 40
+ignore_armor = false
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3vv8f"]
 radius = 23.0

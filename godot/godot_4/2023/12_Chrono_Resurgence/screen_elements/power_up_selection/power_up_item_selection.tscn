@@ -1,14 +1,14 @@
-[gd_scene load_steps=19 format=3 uid="uid://b3td3xmv0u5bu"]
+[gd_scene load_steps=19 format=3 uid="uid://qpco76bdy6ow"]
 
-[ext_resource type="Theme" uid="uid://36i1pye2gh1j" path="res://base_theme.tres" id="1_yk21o"]
+[ext_resource type="Theme" uid="uid://c7sp8p8sgruph" path="res://base_theme.tres" id="1_yk21o"]
 [ext_resource type="Script" path="res://screen_elements/power_up_selection/power_up_item_selection.gd" id="2_yl0bt"]
-[ext_resource type="AudioStream" uid="uid://vhrbdhia416y" path="res://assets_new/sfx/ui_sfx/cursor_style_2.wav" id="3_1kufu"]
-[ext_resource type="AudioStream" uid="uid://ds76u5itib2l7" path="res://assets_new/sfx/ui_sfx/confirm_style_2_003.wav" id="4_4x34q"]
+[ext_resource type="AudioStream" uid="uid://ckov52qenfsqx" path="res://assets_new/sfx/ui_sfx/cursor_style_2.wav" id="3_1kufu"]
+[ext_resource type="AudioStream" uid="uid://bwc5xhnh0w5s8" path="res://assets_new/sfx/ui_sfx/confirm_style_2_003.wav" id="4_4x34q"]
 [ext_resource type="Script" path="res://entities/player/power_ups/player_power_up.gd" id="4_ct8a4"]
-[ext_resource type="AudioStream" uid="uid://dfcpaxmny84fj" path="res://assets_new/sfx/ui_sfx/back_style_2_007.wav" id="5_cvom6"]
-[ext_resource type="Texture2D" uid="uid://dvqx7b30nggct" path="res://assets/downloaded_slim/graphics/Pixel UI pack 3/02.png" id="7_j2kba"]
-[ext_resource type="Texture2D" uid="uid://if0qx6cacn5o" path="res://chrono_resurgence_icon.svg" id="7_y0wl5"]
-[ext_resource type="Texture2D" uid="uid://cn5r7hc2xxg26" path="res://assets/downloaded_slim/graphics/Pixel UI pack 3/07_x4.png" id="8_clpt4"]
+[ext_resource type="AudioStream" uid="uid://djwg7ya3p0b3t" path="res://assets_new/sfx/ui_sfx/back_style_2_007.wav" id="5_cvom6"]
+[ext_resource type="Texture2D" uid="uid://dbeqkvd4f1wfp" path="res://assets/downloaded_slim/graphics/Pixel UI pack 3/02.png" id="7_j2kba"]
+[ext_resource type="Texture2D" uid="uid://4y56dypr3dut" path="res://chrono_resurgence_icon.svg" id="7_y0wl5"]
+[ext_resource type="Texture2D" uid="uid://db1thhpvvkp8p" path="res://assets/downloaded_slim/graphics/Pixel UI pack 3/07_x4.png" id="8_clpt4"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1og7v"]
 

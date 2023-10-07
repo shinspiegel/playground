@@ -1,10 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://bvjsm8sngorrq"]
+[gd_scene load_steps=14 format=3 uid="uid://be7ht4up6vvle"]
 
-[ext_resource type="PackedScene" uid="uid://c7x0m7dovflyd" path="res://entities/enemy/base_enemy.tscn" id="1_bbt8k"]
-[ext_resource type="Texture2D" uid="uid://bxlqru4xkqxqo" path="res://assets/downloaded_slim/graphics/Super Grotto Escape Files/Characters/Enemies/spritesheet/lizard-shoot.png" id="2_io2gy"]
-[ext_resource type="PackedScene" uid="uid://d277tv4vce3w3" path="res://entities/bullet_spawner/bullet_spawner.tscn" id="4_77a2t"]
-[ext_resource type="PackedScene" uid="uid://baed7kygfrast" path="res://entities/damages/damage_inflictor.tscn" id="5_2nwsf"]
-[ext_resource type="PackedScene" uid="uid://dk5k86mtheem" path="res://entities/bullet/test_enemy_bullet.tscn" id="5_hayfg"]
+[ext_resource type="PackedScene" uid="uid://180xq5v47akn" path="res://entities/enemy/base_enemy.tscn" id="1_bbt8k"]
+[ext_resource type="Texture2D" uid="uid://cmlj45528ertv" path="res://assets/downloaded_slim/graphics/Super Grotto Escape Files/Characters/Enemies/spritesheet/lizard-shoot.png" id="2_io2gy"]
+[ext_resource type="PackedScene" uid="uid://b4o4jmhylcafx" path="res://entities/bullet_spawner/bullet_spawner.tscn" id="4_77a2t"]
+[ext_resource type="PackedScene" uid="uid://botey7dn8iuyb" path="res://entities/damages/damage_inflictor.tscn" id="5_2nwsf"]
+[ext_resource type="PackedScene" uid="uid://be43th7w4rpxv" path="res://entities/bullet/test_enemy_bullet.tscn" id="5_hayfg"]
 [ext_resource type="Script" path="res://entities/damages/damage.gd" id="6_yayk4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cbh1x"]
@@ -56,6 +56,7 @@ script = ExtResource("6_yayk4")
 shake = 30.0
 rand_amount_min = 5
 rand_amount_max = 15
+ignore_armor = false
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1u1ht"]
 size = Vector2(52, 88)
@@ -80,7 +81,7 @@ libraries = {
 "": SubResource("AnimationLibrary_20t2v")
 }
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageReceiver" index="1"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageReceiver" index="0"]
 position = Vector2(0, -53)
 shape = SubResource("RectangleShape2D_854ei")
 

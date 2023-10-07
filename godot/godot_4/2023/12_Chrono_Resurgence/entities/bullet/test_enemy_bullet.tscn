@@ -1,7 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://dk5k86mtheem"]
+[gd_scene load_steps=6 format=3 uid="uid://be43th7w4rpxv"]
 
-[ext_resource type="PackedScene" uid="uid://b2ueau8drsaps" path="res://entities/bullet/bullet.tscn" id="1_nmuum"]
-[ext_resource type="Texture2D" uid="uid://s26c41x7mre5" path="res://assets/downloaded_slim/graphics/Super Grotto Escape Files/Fx/Spritesheets/player-shoot.png" id="2_2q4a0"]
+[ext_resource type="PackedScene" uid="uid://crcgxxhb20md3" path="res://entities/bullet/bullet.tscn" id="1_nmuum"]
+[ext_resource type="Texture2D" uid="uid://ctfuiw6e7o54n" path="res://assets/downloaded_slim/graphics/Super Grotto Escape Files/Fx/Spritesheets/player-shoot.png" id="2_2q4a0"]
 [ext_resource type="Script" path="res://entities/damages/damage.gd" id="2_nheuo"]
 
 [sub_resource type="Resource" id="Resource_2np1p"]
@@ -9,6 +9,7 @@ script = ExtResource("2_nheuo")
 shake = 20.0
 rand_amount_min = 10
 rand_amount_max = 20
+ignore_armor = false
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ekb6d"]
 radius = 22.0227

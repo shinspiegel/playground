@@ -16,7 +16,7 @@ func _ready() -> void:
 
 func on_back() -> void:
 	AudioManager.save_audio_data()
-	SceneManager.change_scene("start")
+	SceneManager.change_scene_previous()
 
 
 func on_music_change(value: float) -> void:

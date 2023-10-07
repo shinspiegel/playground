@@ -1,7 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://cprjakswlves3"]
+[gd_scene load_steps=3 format=3 uid="uid://bprb354xdpxxu"]
 
-[ext_resource type="PackedScene" uid="uid://d277tv4vce3w3" path="res://entities/bullet_spawner/bullet_spawner.tscn" id="1_ppans"]
-[ext_resource type="PackedScene" uid="uid://ckpepdm0vwe6s" path="res://entities/player/bullets/charger_shoot.tscn" id="2_c6m8i"]
+[ext_resource type="PackedScene" uid="uid://b4o4jmhylcafx" path="res://entities/bullet_spawner/bullet_spawner.tscn" id="1_ppans"]
+[ext_resource type="PackedScene" uid="uid://bceu06bpd2y60" path="res://entities/player/bullets/charger_shoot.tscn" id="2_c6m8i"]
 
 [node name="ChargershotSpawner" type="Node2D"]
 

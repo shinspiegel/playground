@@ -1,8 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://cwitwjhc7erih"]
+[gd_scene load_steps=10 format=3 uid="uid://cck2aqwr572kk"]
 
 [ext_resource type="Script" path="res://entities/player/player.gd" id="1_hjpc4"]
-[ext_resource type="Texture2D" uid="uid://bwhtynqqtjaji" path="res://assets/downloaded_slim/graphics/Super Grotto Escape Files/Characters/Player/spritesheets/player-run.png" id="2_4tdnr"]
-[ext_resource type="PackedScene" uid="uid://b4ovdim2p6vd1" path="res://entities/damages/damage_receiver.tscn" id="5_naxqi"]
+[ext_resource type="Texture2D" uid="uid://ctm7fr8ymhh4" path="res://assets/downloaded_slim/graphics/Super Grotto Escape Files/Characters/Player/spritesheets/player-run.png" id="2_4tdnr"]
+[ext_resource type="PackedScene" uid="uid://bo7qkfe1un2id" path="res://entities/damages/damage_receiver.tscn" id="5_naxqi"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3j43t"]
 radius = 32.0
@@ -50,10 +50,11 @@ _data = {
 size = Vector2(52, 88)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bu62i"]
-size = Vector2(20, 60)
+size = Vector2(20, 34)
 
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 2
+floor_max_angle = 0.872665
 script = ExtResource("1_hjpc4")
 
 [node name="DamageNumberPos" type="Marker2D" parent="."]
@@ -95,7 +96,7 @@ collision_mask = 2
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WallDetection"]
-position = Vector2(-26, -27)
+position = Vector2(-26, -40)
 shape = SubResource("RectangleShape2D_bu62i")
 
 [node name="EffectsAttachment" type="Node2D" parent="."]

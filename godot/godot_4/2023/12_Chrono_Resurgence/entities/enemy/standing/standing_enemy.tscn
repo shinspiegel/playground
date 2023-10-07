@@ -1,8 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://cae4twxucnqut"]
+[gd_scene load_steps=12 format=3 uid="uid://0oe0t5sx54mm"]
 
-[ext_resource type="PackedScene" uid="uid://c7x0m7dovflyd" path="res://entities/enemy/base_enemy.tscn" id="1_rw7bu"]
-[ext_resource type="Texture2D" uid="uid://ckthjtfq5g07a" path="res://assets/downloaded_slim/graphics/Super Grotto Escape Files/Characters/Enemies/spritesheet/lizard-move.png" id="2_2xlws"]
-[ext_resource type="PackedScene" uid="uid://baed7kygfrast" path="res://entities/damages/damage_inflictor.tscn" id="3_85ugy"]
+[ext_resource type="PackedScene" uid="uid://180xq5v47akn" path="res://entities/enemy/base_enemy.tscn" id="1_rw7bu"]
+[ext_resource type="Texture2D" uid="uid://bksmvbggdr3mv" path="res://assets/downloaded_slim/graphics/Super Grotto Escape Files/Characters/Enemies/spritesheet/lizard-move.png" id="2_2xlws"]
+[ext_resource type="PackedScene" uid="uid://botey7dn8iuyb" path="res://entities/damages/damage_inflictor.tscn" id="3_85ugy"]
 [ext_resource type="Script" path="res://entities/damages/damage.gd" id="4_uu78o"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_x1n8g"]
@@ -56,6 +56,7 @@ script = ExtResource("4_uu78o")
 shake = 20.0
 rand_amount_min = 10
 rand_amount_max = 20
+ignore_armor = false
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cpucg"]
 radius = 29.0172

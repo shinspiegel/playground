@@ -1,11 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://130tsgknu03s"]
+[gd_scene load_steps=8 format=3 uid="uid://dbp5nhosen1xk"]
 
 [ext_resource type="Script" path="res://levels/base_level.gd" id="1_aa02s"]
 [ext_resource type="Script" path="res://entities/damages/damage.gd" id="2_he4lv"]
-[ext_resource type="PackedScene" uid="uid://cwitwjhc7erih" path="res://entities/player/player.tscn" id="3_8x1eo"]
-[ext_resource type="PackedScene" uid="uid://dcrkwklbobt6p" path="res://entities/game_ui/game_ui.tscn" id="5_cpx8v"]
-[ext_resource type="PackedScene" uid="uid://mwsyw7cpkwj3" path="res://entities/game_camera/game_camera.tscn" id="7_gkrs1"]
-[ext_resource type="PackedScene" uid="uid://bbh35i1b05n45" path="res://entities/background_music/background_music.tscn" id="11_qmiet"]
+[ext_resource type="PackedScene" uid="uid://cck2aqwr572kk" path="res://entities/player/player.tscn" id="3_8x1eo"]
+[ext_resource type="PackedScene" uid="uid://btbpewmxaagv7" path="res://entities/game_ui/game_ui.tscn" id="5_cpx8v"]
+[ext_resource type="PackedScene" uid="uid://dn55cysiks0ls" path="res://entities/game_camera/game_camera.tscn" id="7_gkrs1"]
+[ext_resource type="PackedScene" uid="uid://dbnsvurfupbpa" path="res://entities/background_music/background_music.tscn" id="11_qmiet"]
 
 [sub_resource type="Resource" id="Resource_ugdwv"]
 script = ExtResource("2_he4lv")

@@ -1,9 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://65slf813mt26"]
+[gd_scene load_steps=13 format=3 uid="uid://ch0sx8kn6ju7o"]
 
-[ext_resource type="PackedScene" uid="uid://c7x0m7dovflyd" path="res://entities/enemy/base_enemy.tscn" id="1_o4v21"]
+[ext_resource type="PackedScene" uid="uid://180xq5v47akn" path="res://entities/enemy/base_enemy.tscn" id="1_o4v21"]
 [ext_resource type="Script" path="res://entities/enemy/jump_with_player/jump_with_player.gd" id="2_o05k5"]
-[ext_resource type="Texture2D" uid="uid://be5tgbtnkn6k6" path="res://assets/downloaded_slim/graphics/Super Grotto Escape Files/Characters/Enemies/spritesheet/crab-walk.png" id="2_w7b1g"]
-[ext_resource type="PackedScene" uid="uid://baed7kygfrast" path="res://entities/damages/damage_inflictor.tscn" id="4_0qhr5"]
+[ext_resource type="Texture2D" uid="uid://cptmsqby3ooxf" path="res://assets/downloaded_slim/graphics/Super Grotto Escape Files/Characters/Enemies/spritesheet/crab-walk.png" id="2_w7b1g"]
+[ext_resource type="PackedScene" uid="uid://botey7dn8iuyb" path="res://entities/damages/damage_inflictor.tscn" id="4_0qhr5"]
 [ext_resource type="Script" path="res://entities/damages/damage.gd" id="5_f1v5i"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x4uda"]
@@ -55,6 +55,7 @@ script = ExtResource("5_f1v5i")
 shake = 20.0
 rand_amount_min = 5
 rand_amount_max = 15
+ignore_armor = false
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dtd10"]
 size = Vector2(78, 87.5)
@@ -82,7 +83,7 @@ libraries = {
 "": SubResource("AnimationLibrary_6vajo")
 }
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageReceiver" index="1"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageReceiver" index="0"]
 position = Vector2(-2, -48)
 shape = SubResource("RectangleShape2D_j4rxm")
 

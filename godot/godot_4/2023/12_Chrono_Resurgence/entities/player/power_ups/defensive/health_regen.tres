@@ -1,7 +1,7 @@
-[gd_resource type="Resource" script_class="PlayerPowerUp" load_steps=4 format=3 uid="uid://ddbit7gc56hu6"]
+[gd_resource type="Resource" script_class="PlayerPowerUp" load_steps=4 format=3 uid="uid://duqowaqo1v3ln"]
 
-[ext_resource type="PackedScene" uid="uid://dntd78blr073r" path="res://entities/player/power_up_scenes/health_regen.tscn" id="1_nby3s"]
-[ext_resource type="Texture2D" uid="uid://if0qx6cacn5o" path="res://chrono_resurgence_icon.svg" id="2_3cs3p"]
+[ext_resource type="PackedScene" uid="uid://cqamhjtcsuaca" path="res://entities/player/power_up_scenes/health_regen.tscn" id="1_nby3s"]
+[ext_resource type="Texture2D" uid="uid://4y56dypr3dut" path="res://chrono_resurgence_icon.svg" id="2_3cs3p"]
 [ext_resource type="Script" path="res://entities/player/power_ups/player_power_up.gd" id="3_eomuo"]
 
 [resource]

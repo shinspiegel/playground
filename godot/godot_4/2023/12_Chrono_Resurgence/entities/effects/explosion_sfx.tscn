@@ -1,8 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://l1cndk4xwhpd"]
+[gd_scene load_steps=7 format=3 uid="uid://bbjkj8vi54m5p"]
 
-[ext_resource type="PackedScene" uid="uid://f83eo5a0acct" path="res://entities/effects/effect.tscn" id="1_xmot6"]
-[ext_resource type="AudioStream" uid="uid://beyhbiyb28p75" path="res://assets/final_assets/sfx/sound_b.wav" id="2_wodgl"]
-[ext_resource type="Texture2D" uid="uid://bwjqm7m481ae2" path="res://assets/downloaded_slim/graphics/Super Grotto Escape Files/Fx/Spritesheets/explosion.png" id="3_owtq8"]
+[ext_resource type="PackedScene" uid="uid://ctyxiy51qrih8" path="res://entities/effects/effect.tscn" id="1_xmot6"]
+[ext_resource type="AudioStream" uid="uid://db8w8l2qssvsl" path="res://assets/final_assets/sfx/sound_b.wav" id="2_wodgl"]
+[ext_resource type="Texture2D" uid="uid://bgk5u48ux6aq8" path="res://assets/downloaded_slim/graphics/Super Grotto Escape Files/Fx/Spritesheets/explosion.png" id="3_owtq8"]
 
 [sub_resource type="Animation" id="Animation_nt66i"]
 length = 0.001

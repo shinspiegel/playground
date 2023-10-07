@@ -1,7 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://d1g6bd6kej004"]
+[gd_scene load_steps=3 format=3 uid="uid://c0cj8xtkktjhk"]
 
-[ext_resource type="PackedScene" uid="uid://brfeswvfnl1vs" path="res://entities/background/background.tscn" id="1_b5c0l"]
-[ext_resource type="Texture2D" uid="uid://eruukv5x42kw" path="res://assets_new/graphics/eras/ancient_dynasties/desert_background.png" id="2_2fsrb"]
+[ext_resource type="PackedScene" uid="uid://dlr231gvtgpvq" path="res://entities/background/background.tscn" id="1_b5c0l"]
+[ext_resource type="Texture2D" uid="uid://cu8b1c6q6aaww" path="res://assets_new/graphics/eras/ancient_dynasties/desert_background.png" id="2_2fsrb"]
 
 [node name="DesertBackground" instance=ExtResource("1_b5c0l")]
 
