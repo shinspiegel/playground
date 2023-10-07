@@ -30,8 +30,8 @@
 			- [x] Sandstone Sliders
 			- [x] Dune Drops
 		- _Enemies_ (4 frames per enemy):
-			- [ ] Sand Sentinel
-			- [ ] Desert Hopper
+			- [x] Sand Sentinel
+			- [x] Desert Hopper
 			- [ ] Mimic Mummy
 			- [ ] Pharaoh's Conjurer
 	- **Spellbound Shires**
