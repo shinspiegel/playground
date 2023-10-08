@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://byagn00gnpa8g"
-path="res://.godot/imported/1c006216-7a1e-4dc3-b4a3-d731bea26ca2.jpg-cad8498067ec92970267de0261e5dea6.ctex"
+uid="uid://mwrsnidr6vcj"
+path="res://.godot/imported/pharaoh_bullet.png-f1c22c84003d58571c2e0b0e57cb4c8e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets_new/graphics/eras/ancient_dynasties/1c006216-7a1e-4dc3-b4a3-d731bea26ca2.jpg"
-dest_files=["res://.godot/imported/1c006216-7a1e-4dc3-b4a3-d731bea26ca2.jpg-cad8498067ec92970267de0261e5dea6.ctex"]
+source_file="res://assets_new/graphics/eras/ancient_dynasties/pharaoh_bullet.png"
+dest_files=["res://.godot/imported/pharaoh_bullet.png-f1c22c84003d58571c2e0b0e57cb4c8e.ctex"]
 
 [params]
 

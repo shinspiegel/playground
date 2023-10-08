@@ -1,12 +1,12 @@
 [gd_scene load_steps=10 format=3 uid="uid://cck2aqwr572kk"]
 
 [ext_resource type="Script" path="res://entities/player/player.gd" id="1_hjpc4"]
-[ext_resource type="Texture2D" uid="uid://ctm7fr8ymhh4" path="res://assets/downloaded_slim/graphics/Super Grotto Escape Files/Characters/Player/spritesheets/player-run.png" id="2_4tdnr"]
+[ext_resource type="Texture2D" uid="uid://bbcc030opcky7" path="res://assets_new/graphics/elara/elara.png" id="2_7fg2g"]
 [ext_resource type="PackedScene" uid="uid://bo7qkfe1un2id" path="res://entities/damages/damage_receiver.tscn" id="5_naxqi"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3j43t"]
-radius = 32.0
-height = 120.0
+radius = 14.0
+height = 62.0
 
 [sub_resource type="Animation" id="Animation_x2yl3"]
 length = 0.001
@@ -25,7 +25,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_lf4rg"]
 resource_name = "run"
-length = 0.6
+length = 0.4
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -34,10 +34,10 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [0, 1, 2, 3, 4, 5]
+"values": [0, 1, 2, 3]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_bbll2"]
@@ -47,10 +47,10 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yv1dy"]
-size = Vector2(52, 88)
+size = Vector2(32, 60)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bu62i"]
-size = Vector2(20, 34)
+size = Vector2(20, 32)
 
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 2
@@ -58,16 +58,17 @@ floor_max_angle = 0.872665
 script = ExtResource("1_hjpc4")
 
 [node name="DamageNumberPos" type="Marker2D" parent="."]
-position = Vector2(2.08165e-12, -130)
+position = Vector2(2.08165e-12, -73)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, -76)
+position = Vector2(0, -32)
 scale = Vector2(4, 4)
-texture = ExtResource("2_4tdnr")
-hframes = 6
+texture = ExtResource("2_7fg2g")
+hframes = 4
+vframes = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -60)
+position = Vector2(0, -31)
 shape = SubResource("CapsuleShape2D_3j43t")
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="."]
@@ -83,20 +84,19 @@ libraries = {
 [node name="DamageReceiver" parent="." instance=ExtResource("5_naxqi")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DamageReceiver"]
-position = Vector2(0, -64)
+position = Vector2(0, -30)
 shape = SubResource("RectangleShape2D_yv1dy")
 
 [node name="DamageColddown" type="Timer" parent="DamageReceiver"]
 one_shot = true
 
 [node name="WallDetection" type="Area2D" parent="."]
-position = Vector2(49, -63)
+position = Vector2(14, -44)
 collision_layer = 0
 collision_mask = 2
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WallDetection"]
-position = Vector2(-26, -40)
 shape = SubResource("RectangleShape2D_bu62i")
 
 [node name="EffectsAttachment" type="Node2D" parent="."]
@@ -104,10 +104,10 @@ shape = SubResource("RectangleShape2D_bu62i")
 [node name="WeaponsAttachment" type="Node2D" parent="."]
 
 [node name="Front" type="Marker2D" parent="WeaponsAttachment"]
-position = Vector2(60, -50)
+position = Vector2(29, -28)
 
 [node name="Top" type="Marker2D" parent="WeaponsAttachment"]
-position = Vector2(0, -130)
+position = Vector2(29, -65)
 
 [node name="Back" type="Marker2D" parent="WeaponsAttachment"]
-position = Vector2(-35, -80)
+position = Vector2(-33, -30)

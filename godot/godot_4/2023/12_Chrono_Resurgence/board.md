@@ -32,8 +32,8 @@
 		- _Enemies_ (4 frames per enemy):
 			- [x] Sand Sentinel
 			- [x] Desert Hopper
-			- [ ] Mimic Mummy
-			- [ ] Pharaoh's Conjurer
+			- [x] Mimic Mummy
+			- [x] Pharaoh's Conjurer
 	- **Spellbound Shires**
 		- _Level_
 			- [ ] Tilemap
