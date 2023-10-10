@@ -1,6 +1,7 @@
 # Prototype phase
 
 - [ ] Create `main` scene
+	- [x] 
 - [ ] Create `tilemap`
 - [ ] Create `StateMachine`
 	- [ ] Create `BaseState`
