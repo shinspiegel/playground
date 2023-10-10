@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://scc5u2xgjmev"
+path="res://.godot/imported/An Easy Flight.ogg-7745a0267f1759e352f0077851d3a3d3.oggvorbisstr"
+
+[deps]
+
+source_file="res://music/An Easy Flight.ogg"
+dest_files=["res://.godot/imported/An Easy Flight.ogg-7745a0267f1759e352f0077851d3a3d3.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

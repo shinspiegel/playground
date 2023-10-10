@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://5lptdvggc7ou"
+path="res://.godot/imported/Star Dance.ogg-81c00be22ba7dcbafb1662be110c412d.oggvorbisstr"
+
+[deps]
+
+source_file="res://music/Star Dance.ogg"
+dest_files=["res://.godot/imported/Star Dance.ogg-81c00be22ba7dcbafb1662be110c412d.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

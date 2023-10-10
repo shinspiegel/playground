@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://df5syrhoj8pig"
+path="res://.godot/imported/Star Eyes and Glimmer.ogg-26ff7c3151beed750d240d70fda08453.oggvorbisstr"
+
+[deps]
+
+source_file="res://music/Star Eyes and Glimmer.ogg"
+dest_files=["res://.godot/imported/Star Eyes and Glimmer.ogg-26ff7c3151beed750d240d70fda08453.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bdf5be4y3cvgo"
+path="res://.godot/imported/Grooves That Kill.ogg-0205380c228dcd3bb1149a3bf4b748fc.oggvorbisstr"
+
+[deps]
+
+source_file="res://music/Grooves That Kill.ogg"
+dest_files=["res://.godot/imported/Grooves That Kill.ogg-0205380c228dcd3bb1149a3bf4b748fc.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://gw1xu8osvqon"
+path="res://.godot/imported/Modern Futuristic City.ogg-ad0a3bf6c596a40f5e1a4e17c196d2ca.oggvorbisstr"
+
+[deps]
+
+source_file="res://music/Modern Futuristic City.ogg"
+dest_files=["res://.godot/imported/Modern Futuristic City.ogg-ad0a3bf6c596a40f5e1a4e17c196d2ca.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
