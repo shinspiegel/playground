@@ -1,8 +1,14 @@
 # Prototype phase
 
-- [ ] Create `main` scene
-	- [x] 
-- [ ] Create `tilemap`
+- [x] Create `main` scene
+	- [x] Set screen size
+- [x] Create `tilemap`
+	- [x] Cave
+	- [x] Desert
+	- [x] Dungeon
+	- [x] GrassLand
+	- [x] SnowLand
+	- [x] Stronghold
 - [ ] Create `StateMachine`
 	- [ ] Create `BaseState`
 - [ ] Create the `BaseCharacter`
