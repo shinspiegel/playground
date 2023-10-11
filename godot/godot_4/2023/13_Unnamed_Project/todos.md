@@ -9,8 +9,8 @@
 	- [x] GrassLand
 	- [x] SnowLand
 	- [x] Stronghold
-- [ ] Create `StateMachine`
-	- [ ] Create `BaseState`
+- [x] Create `StateMachine`
+	- [x] Create `BaseState`
 - [ ] Create the `BaseCharacter`
 - [ ] Extend `BaseCharacter` the `King` (player)
 	- [ ] Allow movement
