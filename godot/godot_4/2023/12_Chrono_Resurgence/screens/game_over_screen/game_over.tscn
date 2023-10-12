@@ -5,8 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://dlr231gvtgpvq" path="res://entities/background/background.tscn" id="2_wd57x"]
 [ext_resource type="PackedScene" uid="uid://dbnsvurfupbpa" path="res://entities/background_music/background_music.tscn" id="3_e7by6"]
 [ext_resource type="Script" path="res://screen_elements/custom_button/custom_button.gd" id="4_urjcn"]
-[ext_resource type="AudioStream" uid="uid://cienmr8cmgmnl" path="res://assets_new/sfx/ui_sfx/confirm_style_2_001.wav" id="5_pavvx"]
-[ext_resource type="AudioStream" uid="uid://ckov52qenfsqx" path="res://assets_new/sfx/ui_sfx/cursor_style_2.wav" id="6_je7yk"]
+[ext_resource type="AudioStream" uid="uid://cienmr8cmgmnl" path="res://assets/sfx/ui_sfx/confirm_style_2_001.wav" id="5_pavvx"]
+[ext_resource type="AudioStream" uid="uid://ckov52qenfsqx" path="res://assets/sfx/ui_sfx/cursor_style_2.wav" id="6_je7yk"]
 
 [node name="GameOver" type="Control"]
 layout_mode = 3

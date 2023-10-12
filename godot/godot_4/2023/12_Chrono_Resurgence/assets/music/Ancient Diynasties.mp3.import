@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://vqlehjbcdlin"
+path="res://.godot/imported/Ancient Diynasties.mp3-098e294c291829b4aa4604e7a6943e9e.mp3str"
+
+[deps]
+
+source_file="res://assets/music/Ancient Diynasties.mp3"
+dest_files=["res://.godot/imported/Ancient Diynasties.mp3-098e294c291829b4aa4604e7a6943e9e.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

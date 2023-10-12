@@ -1,11 +1,11 @@
 [gd_resource type="TileSet" load_steps=13 format=3 uid="uid://ck8qkufpyl23u"]
 
-[ext_resource type="Texture2D" uid="uid://r0qt0s00w03n" path="res://assets_new/tileset/Multi_Platformer_Tileset_v2/Cave/Terrain/Cave_Terrain_Tileset.png" id="1_togc0"]
-[ext_resource type="Texture2D" uid="uid://oup6pkgyux25" path="res://assets_new/tileset/Multi_Platformer_Tileset_v2/Dungeon/Terrain/Dungeon_Terrain_Tileset.png" id="2_77l3o"]
-[ext_resource type="Texture2D" uid="uid://dp6ywt66vi4fc" path="res://assets_new/tileset/Multi_Platformer_Tileset_v2/Desert/Terrain/Desert_Terrain_Tileset.png" id="3_jql7u"]
-[ext_resource type="Texture2D" uid="uid://b43dtpmfu3bqx" path="res://assets_new/tileset/Multi_Platformer_Tileset_v2/GrassLand/Terrain/Grassland_Terrain_Tileset.png" id="4_wl334"]
-[ext_resource type="Texture2D" uid="uid://034lm2sy45ik" path="res://assets_new/tileset/Multi_Platformer_Tileset_v2/SnowLand/Terrain/SnowLand_Terrain_Tileset.png" id="5_0ylca"]
-[ext_resource type="Texture2D" uid="uid://b1jvofatipvv1" path="res://assets_new/tileset/Multi_Platformer_Tileset_v2/Stronghold/Terrain/Stronghold_Terrain_Tileset.png" id="6_r2hbh"]
+[ext_resource type="Texture2D" uid="uid://r0qt0s00w03n" path="res://assets/tileset/Multi_Platformer_Tileset_v2/Cave/Terrain/Cave_Terrain_Tileset.png" id="1_togc0"]
+[ext_resource type="Texture2D" uid="uid://oup6pkgyux25" path="res://assets/tileset/Multi_Platformer_Tileset_v2/Dungeon/Terrain/Dungeon_Terrain_Tileset.png" id="2_77l3o"]
+[ext_resource type="Texture2D" uid="uid://dp6ywt66vi4fc" path="res://assets/tileset/Multi_Platformer_Tileset_v2/Desert/Terrain/Desert_Terrain_Tileset.png" id="3_jql7u"]
+[ext_resource type="Texture2D" uid="uid://b43dtpmfu3bqx" path="res://assets/tileset/Multi_Platformer_Tileset_v2/GrassLand/Terrain/Grassland_Terrain_Tileset.png" id="4_wl334"]
+[ext_resource type="Texture2D" uid="uid://034lm2sy45ik" path="res://assets/tileset/Multi_Platformer_Tileset_v2/SnowLand/Terrain/SnowLand_Terrain_Tileset.png" id="5_0ylca"]
+[ext_resource type="Texture2D" uid="uid://b1jvofatipvv1" path="res://assets/tileset/Multi_Platformer_Tileset_v2/Stronghold/Terrain/Stronghold_Terrain_Tileset.png" id="6_r2hbh"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rf8kq"]
 texture = ExtResource("1_togc0")

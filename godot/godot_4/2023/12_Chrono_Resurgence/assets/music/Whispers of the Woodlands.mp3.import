@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://x2lrmp5tqrja"
+path="res://.godot/imported/Whispers of the Woodlands.mp3-afc30c6f0c78c719be38d355b77a77d1.mp3str"
+
+[deps]
+
+source_file="res://assets/music/Whispers of the Woodlands.mp3"
+dest_files=["res://.godot/imported/Whispers of the Woodlands.mp3-afc30c6f0c78c719be38d355b77a77d1.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
