@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dm7g6oinkgxpt" path="res://level_areas/desert_areas/00.tscn" id="2_yeulu"]
 
 [node name="DesertLevel" instance=ExtResource("1_drka3")]
+first_area_offset = Vector2(-200, 2.08165e-12)
 level_areas_list = Array[PackedScene]([ExtResource("2_yeulu")])
 
 [node name="DesertBackground" parent="." index="0" instance=ExtResource("2_j4vtb")]

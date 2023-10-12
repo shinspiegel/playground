@@ -1,12 +1,12 @@
 [gd_scene load_steps=10 format=3 uid="uid://cck2aqwr572kk"]
 
 [ext_resource type="Script" path="res://entities/player/player.gd" id="1_hjpc4"]
-[ext_resource type="Texture2D" uid="uid://bbcc030opcky7" path="res://assets_new/graphics/elara/elara.png" id="2_7fg2g"]
+[ext_resource type="Texture2D" uid="uid://xici4jfp06o7" path="res://assets_new/graphics/elara/elara_redu.png" id="2_h4rfc"]
 [ext_resource type="PackedScene" uid="uid://bo7qkfe1un2id" path="res://entities/damages/damage_receiver.tscn" id="5_naxqi"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3j43t"]
-radius = 14.0
-height = 62.0
+radius = 40.0
+height = 128.0
 
 [sub_resource type="Animation" id="Animation_x2yl3"]
 length = 0.001
@@ -47,28 +47,27 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yv1dy"]
-size = Vector2(32, 60)
+size = Vector2(64, 128)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bu62i"]
-size = Vector2(20, 32)
+size = Vector2(48, 64)
 
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 2
-floor_max_angle = 0.872665
+floor_max_angle = 1.0472
 script = ExtResource("1_hjpc4")
 
 [node name="DamageNumberPos" type="Marker2D" parent="."]
-position = Vector2(2.08165e-12, -73)
+position = Vector2(0, -144)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, -32)
-scale = Vector2(4, 4)
-texture = ExtResource("2_7fg2g")
+position = Vector2(-16, -64)
+scale = Vector2(8, 8)
+texture = ExtResource("2_h4rfc")
 hframes = 4
-vframes = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -31)
+position = Vector2(0, -64)
 shape = SubResource("CapsuleShape2D_3j43t")
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="."]
@@ -84,14 +83,14 @@ libraries = {
 [node name="DamageReceiver" parent="." instance=ExtResource("5_naxqi")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DamageReceiver"]
-position = Vector2(0, -30)
+position = Vector2(0, -64)
 shape = SubResource("RectangleShape2D_yv1dy")
 
 [node name="DamageColddown" type="Timer" parent="DamageReceiver"]
 one_shot = true
 
 [node name="WallDetection" type="Area2D" parent="."]
-position = Vector2(14, -44)
+position = Vector2(24, -80)
 collision_layer = 0
 collision_mask = 2
 metadata/_edit_group_ = true
@@ -104,10 +103,10 @@ shape = SubResource("RectangleShape2D_bu62i")
 [node name="WeaponsAttachment" type="Node2D" parent="."]
 
 [node name="Front" type="Marker2D" parent="WeaponsAttachment"]
-position = Vector2(29, -28)
+position = Vector2(64, -64)
 
 [node name="Top" type="Marker2D" parent="WeaponsAttachment"]
-position = Vector2(29, -65)
+position = Vector2(48, -128)
 
 [node name="Back" type="Marker2D" parent="WeaponsAttachment"]
-position = Vector2(-33, -30)
+position = Vector2(-64, -64)

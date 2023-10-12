@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dkoqr1w1xo7o4"]
+[gd_scene load_steps=9 format=3 uid="uid://dkoqr1w1xo7o4"]
 
 [ext_resource type="Theme" uid="uid://c7sp8p8sgruph" path="res://base_theme.tres" id="1_qtory"]
 [ext_resource type="Script" path="res://screens/options_screen/options_screen.gd" id="2_dqfus"]
@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://dbnsvurfupbpa" path="res://entities/background_music/background_music.tscn" id="4_ndjbq"]
 [ext_resource type="Script" path="res://screen_elements/custom_slider/custom_slider.gd" id="5_ddayw"]
 [ext_resource type="Script" path="res://screen_elements/custom_button/custom_button.gd" id="6_cg288"]
+[ext_resource type="AudioStream" uid="uid://ckov52qenfsqx" path="res://assets_new/sfx/ui_sfx/cursor_style_2.wav" id="6_lac5l"]
+[ext_resource type="AudioStream" uid="uid://djwg7ya3p0b3t" path="res://assets_new/sfx/ui_sfx/back_style_2_007.wav" id="8_lbfbm"]
 
 [node name="OptionsScreen" type="Control"]
 layout_mode = 3
@@ -61,6 +63,8 @@ max_value = 1.0
 step = 0.1
 value = 1.0
 script = ExtResource("5_ddayw")
+change_sfx = ExtResource("6_lac5l")
+focus_sfx = ExtResource("6_lac5l")
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
 custom_minimum_size = Vector2(350, 2.08165e-12)
@@ -81,9 +85,13 @@ max_value = 1.0
 step = 0.1
 value = 1.0
 script = ExtResource("5_ddayw")
+change_sfx = ExtResource("6_lac5l")
+focus_sfx = ExtResource("6_lac5l")
 
 [node name="BackButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 64
 text = "Back"
 script = ExtResource("6_cg288")
+press_sfx = ExtResource("8_lbfbm")
+focus_sfx = ExtResource("6_lac5l")

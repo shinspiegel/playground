@@ -23,7 +23,6 @@ wall_col_damage = SubResource("Resource_ugdwv")
 [node name="BackgroundMusic" parent="." instance=ExtResource("11_qmiet")]
 
 [node name="GameCamera" parent="." instance=ExtResource("7_gkrs1")]
-zoom = Vector2(2, 2)
 
 [node name="Player" parent="." instance=ExtResource("3_8x1eo")]
 
