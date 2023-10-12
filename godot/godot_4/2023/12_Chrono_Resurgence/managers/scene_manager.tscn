@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://managers/scene_manager.gd" id="1_itspf"]
 [ext_resource type="Theme" uid="uid://c7sp8p8sgruph" path="res://base_theme.tres" id="2_00u2s"]
-[ext_resource type="Texture2D" uid="uid://388t367kklvj" path="res://assets/downloaded_slim/graphics/Pixel UI pack 3/07.png" id="3_jkgni"]
+[ext_resource type="Texture2D" uid="uid://388t367kklvj" path="res://assets_new/graphics/ui_elements/07.png" id="3_jkgni"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pg5c5"]
 atlas = ExtResource("3_jkgni")

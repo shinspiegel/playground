@@ -1,6 +1,6 @@
 [gd_resource type="Theme" load_steps=6 format=3 uid="uid://c7sp8p8sgruph"]
 
-[ext_resource type="FontFile" uid="uid://fhnoqhiudtug" path="res://assets/downloaded_slim/typeface/VCR_OSD_MONO_1.001.ttf" id="1_f1sqw"]
+[ext_resource type="FontFile" uid="uid://fhnoqhiudtug" path="res://assets_new/typeface/VCR_OSD_MONO_1.001.ttf" id="1_f1sqw"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t8xri"]
 bg_color = Color(0.364706, 0.364706, 0.364706, 1)

@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dlr231gvtgpvq" path="res://entities/background/background.tscn" id="6_uoig4"]
 [ext_resource type="AudioStream" uid="uid://bwc5xhnh0w5s8" path="res://assets_new/sfx/ui_sfx/confirm_style_2_003.wav" id="7_iv610"]
 [ext_resource type="AudioStream" uid="uid://ckov52qenfsqx" path="res://assets_new/sfx/ui_sfx/cursor_style_2.wav" id="8_2i2ww"]
-[ext_resource type="Texture2D" uid="uid://388t367kklvj" path="res://assets/downloaded_slim/graphics/Pixel UI pack 3/07.png" id="9_imfy7"]
+[ext_resource type="Texture2D" uid="uid://388t367kklvj" path="res://assets_new/graphics/ui_elements/07.png" id="9_imfy7"]
 [ext_resource type="PackedScene" uid="uid://dbnsvurfupbpa" path="res://entities/background_music/background_music.tscn" id="11_n4h4e"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5b0y5"]

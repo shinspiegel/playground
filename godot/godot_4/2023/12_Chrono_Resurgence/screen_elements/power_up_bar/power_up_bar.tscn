@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://bvmxm6py00wcl"]
 
 [ext_resource type="Script" path="res://screen_elements/power_up_bar/power_up_bar.gd" id="1_hd6vl"]
-[ext_resource type="Texture2D" uid="uid://dsl4afh511nwu" path="res://assets/downloaded_slim/graphics/gameui/GUI_x4.png" id="1_qnu1f"]
+[ext_resource type="Texture2D" uid="uid://dsl4afh511nwu" path="res://assets_new/graphics/ui_elements/GUI_x4.png" id="1_qnu1f"]
 [ext_resource type="Texture2D" uid="uid://gsdhd06y6ny2" path="res://assets/downloaded_slim/graphics/Pixel UI pack 3/04.png" id="2_gki30"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8g14y"]
