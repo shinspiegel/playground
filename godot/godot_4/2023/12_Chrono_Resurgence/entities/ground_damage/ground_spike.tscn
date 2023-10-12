@@ -1,10 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://dsxoa72cwj5qu"]
+[gd_scene load_steps=4 format=3 uid="uid://br6l32bup2pv7"]
 
-[ext_resource type="PackedScene" uid="uid://cl7ukm2gmfie" path="res://entities/ground_damage/ground_damage.tscn" id="1_k6b77"]
-[ext_resource type="Texture2D" uid="uid://rxqy83wweklq" path="res://assets/downloaded_slim/graphics/Platformer/Assets/Assets.png" id="2_157qd"]
+[ext_resource type="PackedScene" uid="uid://uoy7rwttgtu2" path="res://entities/ground_damage/ground_damage.tscn" id="1_k6b77"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_c5i55"]
-atlas = ExtResource("2_157qd")
 region = Rect2(79, 144, 16, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1j110"]

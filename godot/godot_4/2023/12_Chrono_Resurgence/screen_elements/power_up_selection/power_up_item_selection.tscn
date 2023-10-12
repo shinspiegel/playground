@@ -1,14 +1,13 @@
-[gd_scene load_steps=19 format=3 uid="uid://qpco76bdy6ow"]
+[gd_scene load_steps=19 format=3 uid="uid://dfbsd7yrlqe6"]
 
-[ext_resource type="Theme" uid="uid://c7sp8p8sgruph" path="res://base_theme.tres" id="1_yk21o"]
+[ext_resource type="Theme" uid="uid://27eu6vn47mvd" path="res://base_theme.tres" id="1_yk21o"]
 [ext_resource type="Script" path="res://screen_elements/power_up_selection/power_up_item_selection.gd" id="2_yl0bt"]
-[ext_resource type="AudioStream" uid="uid://ckov52qenfsqx" path="res://assets_new/sfx/ui_sfx/cursor_style_2.wav" id="3_1kufu"]
-[ext_resource type="AudioStream" uid="uid://bwc5xhnh0w5s8" path="res://assets_new/sfx/ui_sfx/confirm_style_2_003.wav" id="4_4x34q"]
+[ext_resource type="AudioStream" uid="uid://c3nuqxqmjnmfg" path="res://assets/sfx/ui_sfx/cursor_style_2.wav" id="4_0so1a"]
 [ext_resource type="Script" path="res://entities/player/power_ups/player_power_up.gd" id="4_ct8a4"]
-[ext_resource type="AudioStream" uid="uid://djwg7ya3p0b3t" path="res://assets_new/sfx/ui_sfx/back_style_2_007.wav" id="5_cvom6"]
-[ext_resource type="Texture2D" uid="uid://dbeqkvd4f1wfp" path="res://assets/downloaded_slim/graphics/Pixel UI pack 3/02.png" id="7_j2kba"]
-[ext_resource type="Texture2D" uid="uid://4y56dypr3dut" path="res://chrono_resurgence_icon.svg" id="7_y0wl5"]
-[ext_resource type="Texture2D" uid="uid://db1thhpvvkp8p" path="res://assets/downloaded_slim/graphics/Pixel UI pack 3/07_x4.png" id="8_clpt4"]
+[ext_resource type="AudioStream" uid="uid://bjkcla7dbapyt" path="res://assets/sfx/ui_sfx/confirm_style_2_003.wav" id="5_b6x2n"]
+[ext_resource type="AudioStream" uid="uid://c872y2b5dunyx" path="res://assets/sfx/ui_sfx/back_style_2_007.wav" id="6_a3cvb"]
+[ext_resource type="Texture2D" uid="uid://c81rcys7md8fw" path="res://chrono_resurgence_icon.svg" id="7_y0wl5"]
+[ext_resource type="Texture2D" uid="uid://bauxbcjb5w2dp" path="res://assets/graphics/ui_elements/GUI_x4.png" id="8_b1jtw"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1og7v"]
 
@@ -25,20 +24,23 @@ extra_jump_power = 0.0
 extra_speed = 0.0
 extra_weapon_slot = "front"
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_m5tsq"]
+load_path = "res://.godot/imported/02.png-f51470929e45bf77c9b163fbf1a1a57b.ctex"
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_s84ms"]
-atlas = ExtResource("7_j2kba")
+atlas = SubResource("CompressedTexture2D_m5tsq")
 region = Rect2(128, 128, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_k14tu"]
-atlas = ExtResource("7_j2kba")
+atlas = SubResource("CompressedTexture2D_m5tsq")
 region = Rect2(160, 128, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_516i7"]
-atlas = ExtResource("7_j2kba")
+atlas = SubResource("CompressedTexture2D_m5tsq")
 region = Rect2(192, 128, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_02vxu"]
-atlas = ExtResource("7_j2kba")
+atlas = SubResource("CompressedTexture2D_m5tsq")
 region = Rect2(224, 128, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_tdvff"]
@@ -88,9 +90,9 @@ toggle_mode = true
 flat = true
 script = ExtResource("2_yl0bt")
 power_up = SubResource("Resource_bvdns")
-focus_sfx = ExtResource("3_1kufu")
-toggle_in_sfx = ExtResource("4_4x34q")
-toggle_out_sfx = ExtResource("5_cvom6")
+focus_sfx = ExtResource("4_0so1a")
+toggle_in_sfx = ExtResource("5_b6x2n")
+toggle_out_sfx = ExtResource("6_a3cvb")
 
 [node name="HelperText" type="ColorRect" parent="."]
 layout_mode = 1
@@ -181,8 +183,8 @@ anchor_right = 1.0
 offset_left = -64.0
 offset_bottom = 40.0
 grow_horizontal = 0
-texture = ExtResource("8_clpt4")
-region_rect = Rect2(0, 144, 64, 32)
+texture = ExtResource("8_b1jtw")
+region_rect = Rect2(388, 148, 96, 88)
 patch_margin_left = 12
 patch_margin_top = 12
 patch_margin_right = 12

@@ -1,7 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://ca4pgxlb86sbh"]
+[gd_scene load_steps=5 format=3 uid="uid://dadh1o5n2pcqc"]
 
-[ext_resource type="PackedScene" uid="uid://ctyxiy51qrih8" path="res://entities/effects/effect.tscn" id="1_icrf0"]
-[ext_resource type="Texture2D" uid="uid://bnu4wx42xwblu" path="res://assets/downloaded_slim/graphics/Super Grotto Escape Files/Fx/Spritesheets/player-shoot-hit.png" id="2_gutqh"]
+[ext_resource type="PackedScene" uid="uid://jh4x5qjmbinm" path="res://entities/effects/effect.tscn" id="1_icrf0"]
 
 [sub_resource type="Animation" id="Animation_7bvt1"]
 length = 0.001
@@ -49,5 +48,4 @@ libraries = {
 }
 
 [node name="Sprite2D" parent="." index="1"]
-texture = ExtResource("2_gutqh")
 hframes = 4

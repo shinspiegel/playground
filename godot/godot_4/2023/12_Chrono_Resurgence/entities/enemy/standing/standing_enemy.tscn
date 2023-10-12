@@ -1,8 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://0oe0t5sx54mm"]
+[gd_scene load_steps=11 format=3 uid="uid://bm87f6jefje7g"]
 
-[ext_resource type="PackedScene" uid="uid://180xq5v47akn" path="res://entities/enemy/base_enemy.tscn" id="1_rw7bu"]
-[ext_resource type="Texture2D" uid="uid://bksmvbggdr3mv" path="res://assets/downloaded_slim/graphics/Super Grotto Escape Files/Characters/Enemies/spritesheet/lizard-move.png" id="2_2xlws"]
-[ext_resource type="PackedScene" uid="uid://botey7dn8iuyb" path="res://entities/damages/damage_inflictor.tscn" id="3_85ugy"]
+[ext_resource type="PackedScene" uid="uid://cylcj8v5mnwnd" path="res://entities/enemy/base_enemy.tscn" id="1_rw7bu"]
+[ext_resource type="PackedScene" uid="uid://dvb401xt4f2gy" path="res://entities/damages/damage_inflictor.tscn" id="3_85ugy"]
 [ext_resource type="Script" path="res://entities/damages/damage.gd" id="4_uu78o"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_x1n8g"]
@@ -65,7 +64,6 @@ radius = 29.0172
 
 [node name="Sprite2D" parent="." index="0"]
 position = Vector2(7, -64)
-texture = ExtResource("2_2xlws")
 hframes = 3
 
 [node name="CollisionShape2D" parent="." index="1"]

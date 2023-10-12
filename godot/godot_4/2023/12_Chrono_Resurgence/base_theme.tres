@@ -1,6 +1,6 @@
-[gd_resource type="Theme" load_steps=6 format=3 uid="uid://c7sp8p8sgruph"]
+[gd_resource type="Theme" load_steps=6 format=3 uid="uid://27eu6vn47mvd"]
 
-[ext_resource type="FontFile" uid="uid://fhnoqhiudtug" path="res://assets/typeface/VCR_OSD_MONO_1.001.ttf" id="1_f1sqw"]
+[ext_resource type="FontFile" uid="uid://bevtj4mjm3g0m" path="res://assets/typeface/VCR_OSD_MONO_1.001.ttf" id="1_rcvnm"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t8xri"]
 bg_color = Color(0.364706, 0.364706, 0.364706, 1)
@@ -51,7 +51,7 @@ corner_radius_bottom_right = 16
 corner_radius_bottom_left = 16
 
 [resource]
-default_font = ExtResource("1_f1sqw")
+default_font = ExtResource("1_rcvnm")
 default_font_size = 32
 Button/colors/font_color = Color(1, 1, 1, 1)
 Button/colors/font_disabled_color = Color(0, 0, 0, 1)

@@ -1,8 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://cck2aqwr572kk"]
+[gd_scene load_steps=10 format=3 uid="uid://cp5385df1w1kk"]
 
 [ext_resource type="Script" path="res://entities/player/player.gd" id="1_hjpc4"]
-[ext_resource type="Texture2D" uid="uid://xici4jfp06o7" path="res://assets/graphics/elara/elara_redu.png" id="2_h4rfc"]
-[ext_resource type="PackedScene" uid="uid://bo7qkfe1un2id" path="res://entities/damages/damage_receiver.tscn" id="5_naxqi"]
+[ext_resource type="Texture2D" uid="uid://c82q4u0r6vygw" path="res://assets/graphics/elara/elara_redu.png" id="2_h4rfc"]
+[ext_resource type="PackedScene" uid="uid://ccosq7xapjkvv" path="res://entities/damages/damage_receiver.tscn" id="5_naxqi"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3j43t"]
 radius = 40.0

@@ -1,16 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://cc1bxlase7bax"]
+[gd_scene load_steps=4 format=3 uid="uid://ckiqicinri7e6"]
 
-[ext_resource type="PackedScene" uid="uid://dbp5nhosen1xk" path="res://levels/base_level.tscn" id="1_gslw7"]
-[ext_resource type="PackedScene" uid="uid://cuwafm54fyh78" path="res://level_areas/test_area.tscn" id="2_yrnte"]
-[ext_resource type="PackedScene" uid="uid://dlr231gvtgpvq" path="res://entities/background/background.tscn" id="3_1p71x"]
+[ext_resource type="PackedScene" uid="uid://cpv5et5v1vvm4" path="res://levels/base_level.tscn" id="1_gslw7"]
+[ext_resource type="PackedScene" uid="uid://brtvps3sx6457" path="res://level_areas/test_area.tscn" id="2_yrnte"]
+[ext_resource type="PackedScene" uid="uid://2yf6eu7w80n2" path="res://entities/background/background.tscn" id="3_1p71x"]
 
 [node name="TestLevel" instance=ExtResource("1_gslw7")]
 level_areas_list = Array[PackedScene]([ExtResource("2_yrnte")])
 
 [node name="Background" parent="." index="0" instance=ExtResource("3_1p71x")]
-
-[node name="Player" parent="." index="4" node_paths=PackedStringArray("camera")]
-camera = NodePath("../GameCamera")
-
-[node name="DamageColddown" parent="Player" index="9"]
-one_shot = true

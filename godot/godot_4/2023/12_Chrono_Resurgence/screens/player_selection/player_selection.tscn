@@ -1,14 +1,14 @@
-[gd_scene load_steps=15 format=3 uid="uid://dvvgemqqu750s"]
+[gd_scene load_steps=15 format=3 uid="uid://cwhdhi285ojx2"]
 
-[ext_resource type="Theme" uid="uid://c7sp8p8sgruph" path="res://base_theme.tres" id="1_mndds"]
+[ext_resource type="Theme" uid="uid://27eu6vn47mvd" path="res://base_theme.tres" id="1_mndds"]
 [ext_resource type="Script" path="res://screens/player_selection/player_selection.gd" id="2_lot8s"]
-[ext_resource type="PackedScene" uid="uid://bvmxm6py00wcl" path="res://screen_elements/power_up_bar/power_up_bar.tscn" id="4_qtkbv"]
+[ext_resource type="PackedScene" uid="uid://c2014ib6or5w0" path="res://screen_elements/power_up_bar/power_up_bar.tscn" id="4_qtkbv"]
 [ext_resource type="Script" path="res://screen_elements/custom_button/custom_button.gd" id="5_ahlng"]
-[ext_resource type="PackedScene" uid="uid://dlr231gvtgpvq" path="res://entities/background/background.tscn" id="6_uoig4"]
-[ext_resource type="AudioStream" uid="uid://bwc5xhnh0w5s8" path="res://assets/sfx/ui_sfx/confirm_style_2_003.wav" id="7_iv610"]
-[ext_resource type="AudioStream" uid="uid://ckov52qenfsqx" path="res://assets/sfx/ui_sfx/cursor_style_2.wav" id="8_2i2ww"]
-[ext_resource type="Texture2D" uid="uid://388t367kklvj" path="res://assets/graphics/ui_elements/07.png" id="9_imfy7"]
-[ext_resource type="PackedScene" uid="uid://dbnsvurfupbpa" path="res://entities/background_music/background_music.tscn" id="11_n4h4e"]
+[ext_resource type="PackedScene" uid="uid://2yf6eu7w80n2" path="res://entities/background/background.tscn" id="6_uoig4"]
+[ext_resource type="AudioStream" uid="uid://bjkcla7dbapyt" path="res://assets/sfx/ui_sfx/confirm_style_2_003.wav" id="7_iv610"]
+[ext_resource type="AudioStream" uid="uid://c3nuqxqmjnmfg" path="res://assets/sfx/ui_sfx/cursor_style_2.wav" id="8_2i2ww"]
+[ext_resource type="Texture2D" uid="uid://fygso7b7vybr" path="res://assets/graphics/ui_elements/07.png" id="9_imfy7"]
+[ext_resource type="PackedScene" uid="uid://d3taxctv7hbep" path="res://entities/background_music/background_music.tscn" id="11_n4h4e"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5b0y5"]
 atlas = ExtResource("9_imfy7")

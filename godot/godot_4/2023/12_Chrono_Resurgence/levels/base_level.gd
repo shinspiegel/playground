@@ -5,11 +5,11 @@ const START_AREA_INDEX: int = 0
 @export var wall_col_damage: Damage
 @export var first_area_offset: Vector2 = Vector2.ZERO
 @export var level_areas_list: Array[PackedScene]
+@export var player2: Player
+@export var game_camera: GameCamera
+@export var wall_damage_colddown: Timer
+@export var map_areas: Node2D
 
-@onready var map_areas: Node2D = $MapAreas
-@onready var player: Player = $Player
-@onready var game_camera: GameCamera = $GameCamera
-@onready var damage_colddown: Timer = $Player/DamageColddown
 
 var __previous_area: LevelArea
 var __current_area_index: int = 0
@@ -21,8 +21,8 @@ func _ready() -> void:
 	GameManager.spawned_damage.connect(on_damage_spawn)
 	PlayerData.health_zeroed.connect(on_player_die)
 	
-	player.set_camera(game_camera)
-	player.collided_with_wall.connect(on_player_collide_wall)
+	player2.set_camera(game_camera)
+	player2.collided_with_wall.connect(on_player_collide_wall)
 	
 	__load_next_area()
 
@@ -49,9 +49,9 @@ func on_damage_spawn(damage: Damage, pos: Vector2, scene: PackedScene) -> void:
 
 
 func on_player_collide_wall() -> void:
-	if damage_colddown.time_left <= 0.0:
-		player.on_damage_receive(wall_col_damage)
-		damage_colddown.start()
+	if wall_damage_colddown.time_left <= 0.0:
+		player2.on_damage_receive(wall_col_damage)
+		wall_damage_colddown.start()
 
 
 func __load_next_area() -> void:

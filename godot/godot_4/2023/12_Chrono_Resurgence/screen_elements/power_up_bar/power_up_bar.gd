@@ -1,6 +1,6 @@
 extends Control
 
-@onready var current_label: Label = $TextureRect2/CurrentLabel
+@onready var current_label: Label = $CurrentLabel
 @onready var texture_progress_bar: TextureProgressBar = $TextureProgressBar
 
 

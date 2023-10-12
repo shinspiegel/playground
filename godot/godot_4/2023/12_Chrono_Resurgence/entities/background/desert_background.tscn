@@ -1,7 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://c0cj8xtkktjhk"]
+[gd_scene load_steps=3 format=3 uid="uid://sp0dbxru15i5"]
 
-[ext_resource type="PackedScene" uid="uid://dlr231gvtgpvq" path="res://entities/background/background.tscn" id="1_b5c0l"]
-[ext_resource type="Texture2D" uid="uid://cu8b1c6q6aaww" path="res://assets_new/graphics/eras/ancient_dynasties/desert_background.png" id="2_2fsrb"]
+[ext_resource type="PackedScene" uid="uid://2yf6eu7w80n2" path="res://entities/background/background.tscn" id="1_b5c0l"]
+[ext_resource type="Texture2D" uid="uid://bamwu5hdaokun" path="res://assets/tileset/Multi_Platformer_Tileset_v2/Desert/Background/Desert_Background_Guide.png" id="2_ngd1g"]
 
 [node name="DesertBackground" instance=ExtResource("1_b5c0l")]
 
@@ -15,6 +15,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_2fsrb")
+texture = ExtResource("2_ngd1g")
 expand_mode = 2
 stretch_mode = 6

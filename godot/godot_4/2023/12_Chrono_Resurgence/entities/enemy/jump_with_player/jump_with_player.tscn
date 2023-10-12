@@ -1,9 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://ch0sx8kn6ju7o"]
+[gd_scene load_steps=12 format=3 uid="uid://j4g66hhpr6c0"]
 
-[ext_resource type="PackedScene" uid="uid://180xq5v47akn" path="res://entities/enemy/base_enemy.tscn" id="1_o4v21"]
+[ext_resource type="PackedScene" uid="uid://cylcj8v5mnwnd" path="res://entities/enemy/base_enemy.tscn" id="1_o4v21"]
 [ext_resource type="Script" path="res://entities/enemy/jump_with_player/jump_with_player.gd" id="2_o05k5"]
-[ext_resource type="Texture2D" uid="uid://cptmsqby3ooxf" path="res://assets/downloaded_slim/graphics/Super Grotto Escape Files/Characters/Enemies/spritesheet/crab-walk.png" id="2_w7b1g"]
-[ext_resource type="PackedScene" uid="uid://botey7dn8iuyb" path="res://entities/damages/damage_inflictor.tscn" id="4_0qhr5"]
+[ext_resource type="PackedScene" uid="uid://dvb401xt4f2gy" path="res://entities/damages/damage_inflictor.tscn" id="4_0qhr5"]
 [ext_resource type="Script" path="res://entities/damages/damage.gd" id="5_f1v5i"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x4uda"]
@@ -67,7 +66,6 @@ jump_force = 8.0
 
 [node name="Sprite2D" parent="." index="0"]
 position = Vector2(0, -64)
-texture = ExtResource("2_w7b1g")
 hframes = 6
 
 [node name="CollisionShape2D" parent="." index="1"]

@@ -1,7 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://be43th7w4rpxv"]
+[gd_scene load_steps=5 format=3 uid="uid://bej1r25sy5c0"]
 
-[ext_resource type="PackedScene" uid="uid://crcgxxhb20md3" path="res://entities/bullet/bullet.tscn" id="1_nmuum"]
-[ext_resource type="Texture2D" uid="uid://ctfuiw6e7o54n" path="res://assets/downloaded_slim/graphics/Super Grotto Escape Files/Fx/Spritesheets/player-shoot.png" id="2_2q4a0"]
+[ext_resource type="PackedScene" uid="uid://dk0qv4w76s4vf" path="res://entities/bullet/bullet.tscn" id="1_nmuum"]
 [ext_resource type="Script" path="res://entities/damages/damage.gd" id="2_nheuo"]
 
 [sub_resource type="Resource" id="Resource_2np1p"]
@@ -19,7 +18,6 @@ direction = -1
 
 [node name="Sprite2D" parent="." index="0"]
 position = Vector2(5, -2)
-texture = ExtResource("2_2q4a0")
 flip_h = true
 hframes = 4
 

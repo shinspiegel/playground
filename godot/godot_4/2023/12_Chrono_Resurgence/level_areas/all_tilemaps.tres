@@ -1,14 +1,14 @@
-[gd_resource type="TileSet" load_steps=13 format=3 uid="uid://ck8qkufpyl23u"]
+[gd_resource type="TileSet" load_steps=13 format=3 uid="uid://dwr2wja1hs87p"]
 
-[ext_resource type="Texture2D" uid="uid://r0qt0s00w03n" path="res://assets/tileset/Multi_Platformer_Tileset_v2/Cave/Terrain/Cave_Terrain_Tileset.png" id="1_togc0"]
-[ext_resource type="Texture2D" uid="uid://oup6pkgyux25" path="res://assets/tileset/Multi_Platformer_Tileset_v2/Dungeon/Terrain/Dungeon_Terrain_Tileset.png" id="2_77l3o"]
-[ext_resource type="Texture2D" uid="uid://dp6ywt66vi4fc" path="res://assets/tileset/Multi_Platformer_Tileset_v2/Desert/Terrain/Desert_Terrain_Tileset.png" id="3_jql7u"]
-[ext_resource type="Texture2D" uid="uid://b43dtpmfu3bqx" path="res://assets/tileset/Multi_Platformer_Tileset_v2/GrassLand/Terrain/Grassland_Terrain_Tileset.png" id="4_wl334"]
-[ext_resource type="Texture2D" uid="uid://034lm2sy45ik" path="res://assets/tileset/Multi_Platformer_Tileset_v2/SnowLand/Terrain/SnowLand_Terrain_Tileset.png" id="5_0ylca"]
-[ext_resource type="Texture2D" uid="uid://b1jvofatipvv1" path="res://assets/tileset/Multi_Platformer_Tileset_v2/Stronghold/Terrain/Stronghold_Terrain_Tileset.png" id="6_r2hbh"]
+[ext_resource type="Texture2D" uid="uid://b7tjuk0fj7a2f" path="res://assets/tileset/Multi_Platformer_Tileset_v2/Cave/Terrain/Cave_Terrain_Tileset.png" id="1_8krbc"]
+[ext_resource type="Texture2D" uid="uid://blb6m334ixwwg" path="res://assets/tileset/Multi_Platformer_Tileset_v2/Dungeon/Terrain/Dungeon_Terrain_Tileset.png" id="2_8espf"]
+[ext_resource type="Texture2D" uid="uid://c0b43v824yyuy" path="res://assets/tileset/Multi_Platformer_Tileset_v2/Desert/Terrain/Desert_Terrain_Tileset.png" id="3_3d8pv"]
+[ext_resource type="Texture2D" uid="uid://bb4dtdu13xuoh" path="res://assets/tileset/Multi_Platformer_Tileset_v2/GrassLand/Terrain/Grassland_Terrain_Tileset.png" id="4_ty80h"]
+[ext_resource type="Texture2D" uid="uid://8wilokfhtn5f" path="res://assets/tileset/Multi_Platformer_Tileset_v2/SnowLand/Terrain/SnowLand_Terrain_Tileset.png" id="5_dg7lh"]
+[ext_resource type="Texture2D" uid="uid://43tdo6jtp5ag" path="res://assets/tileset/Multi_Platformer_Tileset_v2/Stronghold/Terrain/Stronghold_Terrain_Tileset.png" id="6_o7bi4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rf8kq"]
-texture = ExtResource("1_togc0")
+texture = ExtResource("1_8krbc")
 0:0/0 = 0
 0:0/0/terrain_set = 0
 0:0/0/terrain = 2
@@ -893,7 +893,7 @@ texture = ExtResource("1_togc0")
 15:6/0/physics_layer_0/angular_velocity = 0.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_uv0b8"]
-texture = ExtResource("2_77l3o")
+texture = ExtResource("2_8espf")
 0:0/0 = 0
 0:0/0/terrain_set = 0
 0:0/0/terrain = 0
@@ -1712,7 +1712,7 @@ texture = ExtResource("2_77l3o")
 15:6/0/physics_layer_0/angular_velocity = 0.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5exrt"]
-texture = ExtResource("3_jql7u")
+texture = ExtResource("3_3d8pv")
 0:0/0 = 0
 0:0/0/terrain_set = 0
 0:0/0/terrain = 4
@@ -2684,7 +2684,7 @@ texture = ExtResource("3_jql7u")
 16:6/0/terrains_peering_bit/top_side = 5
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_324be"]
-texture = ExtResource("4_wl334")
+texture = ExtResource("4_ty80h")
 0:0/0 = 0
 0:0/0/terrain_set = 0
 0:0/0/terrain = 6
@@ -3600,7 +3600,7 @@ texture = ExtResource("4_wl334")
 16:6/0/physics_layer_0/angular_velocity = 0.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_j5bwg"]
-texture = ExtResource("5_0ylca")
+texture = ExtResource("5_dg7lh")
 0:0/0 = 0
 0:0/0/terrain_set = 0
 0:0/0/terrain = 8
@@ -4501,7 +4501,7 @@ texture = ExtResource("5_0ylca")
 15:6/0/physics_layer_0/angular_velocity = 0.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_r6dpb"]
-texture = ExtResource("6_r2hbh")
+texture = ExtResource("6_o7bi4")
 0:0/0 = 0
 0:0/0/terrain_set = 0
 0:0/0/terrain = 10

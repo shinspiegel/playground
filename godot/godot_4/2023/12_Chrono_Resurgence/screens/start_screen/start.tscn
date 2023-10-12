@@ -1,13 +1,13 @@
-[gd_scene load_steps=9 format=3 uid="uid://cgrtixom1m2gi"]
+[gd_scene load_steps=9 format=3 uid="uid://b50oiuu56mw44"]
 
-[ext_resource type="Theme" uid="uid://c7sp8p8sgruph" path="res://base_theme.tres" id="1_v61jg"]
+[ext_resource type="Theme" uid="uid://27eu6vn47mvd" path="res://base_theme.tres" id="1_v61jg"]
 [ext_resource type="Script" path="res://screens/start_screen/start.gd" id="2_nrq7g"]
-[ext_resource type="PackedScene" uid="uid://dlr231gvtgpvq" path="res://entities/background/background.tscn" id="3_vn01a"]
-[ext_resource type="FontFile" uid="uid://im7fnccqak7l" path="res://assets/typeface/Crang.ttf" id="4_buy8y"]
-[ext_resource type="PackedScene" uid="uid://dbnsvurfupbpa" path="res://entities/background_music/background_music.tscn" id="4_on1e6"]
+[ext_resource type="PackedScene" uid="uid://2yf6eu7w80n2" path="res://entities/background/background.tscn" id="3_vn01a"]
+[ext_resource type="FontFile" uid="uid://c3gnengq3ga40" path="res://assets/typeface/Crang.ttf" id="4_buy8y"]
+[ext_resource type="PackedScene" uid="uid://d3taxctv7hbep" path="res://entities/background_music/background_music.tscn" id="4_on1e6"]
 [ext_resource type="Script" path="res://screen_elements/custom_button/custom_button.gd" id="6_j2vxr"]
-[ext_resource type="AudioStream" uid="uid://cienmr8cmgmnl" path="res://assets/sfx/ui_sfx/confirm_style_2_001.wav" id="7_ngy4k"]
-[ext_resource type="AudioStream" uid="uid://ckov52qenfsqx" path="res://assets/sfx/ui_sfx/cursor_style_2.wav" id="8_m7lr2"]
+[ext_resource type="AudioStream" uid="uid://c3auq3jxqlb2o" path="res://assets/sfx/ui_sfx/confirm_style_2_001.wav" id="7_ngy4k"]
+[ext_resource type="AudioStream" uid="uid://c3nuqxqmjnmfg" path="res://assets/sfx/ui_sfx/cursor_style_2.wav" id="8_m7lr2"]
 
 [node name="StartScreen" type="Control"]
 layout_mode = 3

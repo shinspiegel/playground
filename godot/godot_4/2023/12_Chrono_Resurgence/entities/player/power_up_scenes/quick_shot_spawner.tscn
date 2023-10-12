@@ -1,7 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://bnsesk4urd06s"]
+[gd_scene load_steps=6 format=3 uid="uid://di6pv76geoo3k"]
 
-[ext_resource type="PackedScene" uid="uid://b4o4jmhylcafx" path="res://entities/bullet_spawner/bullet_spawner.tscn" id="1_uupd7"]
-[ext_resource type="PackedScene" uid="uid://b24lk4j2y74kc" path="res://entities/player/bullets/quick_bullet.tscn" id="2_50gwg"]
+[ext_resource type="PackedScene" uid="uid://chff8pgrs1xgw" path="res://entities/bullet_spawner/bullet_spawner.tscn" id="1_uupd7"]
+[ext_resource type="PackedScene" uid="uid://cqyru61utk3av" path="res://entities/player/bullets/quick_bullet.tscn" id="2_50gwg"]
 
 [sub_resource type="Animation" id="Animation_010ct"]
 length = 0.001

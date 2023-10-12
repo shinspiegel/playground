@@ -1,7 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://snyweppj62h2"]
+[gd_scene load_steps=3 format=3 uid="uid://chdwcpjy8hgjj"]
 
-[ext_resource type="PackedScene" uid="uid://bdp2ij8todjks" path="res://level_areas/level_area.tscn" id="1_wgvsf"]
-[ext_resource type="PackedScene" uid="uid://0oe0t5sx54mm" path="res://entities/enemy/standing/standing_enemy.tscn" id="2_w4mae"]
+[ext_resource type="PackedScene" uid="uid://o3kkqm83ya6d" path="res://level_areas/level_area.tscn" id="1_wgvsf"]
+[ext_resource type="PackedScene" uid="uid://bm87f6jefje7g" path="res://entities/enemy/standing/standing_enemy.tscn" id="2_w4mae"]
 
 [node name="CityLevel01" instance=ExtResource("1_wgvsf")]
 

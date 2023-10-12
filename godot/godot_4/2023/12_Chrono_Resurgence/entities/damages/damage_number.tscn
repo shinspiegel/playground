@@ -1,6 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://bt10igbvarbet"]
+[gd_scene load_steps=6 format=3 uid="uid://ve5vhj70khf1"]
 
-[ext_resource type="Theme" uid="uid://c7sp8p8sgruph" path="res://base_theme.tres" id="1_bhkvs"]
+[ext_resource type="Theme" uid="uid://27eu6vn47mvd" path="res://base_theme.tres" id="1_bhkvs"]
 [ext_resource type="Script" path="res://entities/damages/damage_number.gd" id="1_ihdnc"]
 
 [sub_resource type="Animation" id="Animation_dy35r"]

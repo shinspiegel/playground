@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://b4o4jmhylcafx"]
+[gd_scene load_steps=2 format=3 uid="uid://chff8pgrs1xgw"]
 
 [ext_resource type="Script" path="res://entities/bullet_spawner/bullet_spawner.gd" id="1_i5pwn"]
 

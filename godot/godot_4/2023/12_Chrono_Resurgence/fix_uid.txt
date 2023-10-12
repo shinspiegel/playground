@@ -1,0 +1,19 @@
+A workaround I found I would like to share
+I found a working fix for this which can resolve the problem for an entire project, its quite slow to do, but it has worked in our case to clear up all our UID issues. (this goes without saying but I'll say it: MAKE BACKUPS before you do this)
+
+Use a regex find and replace (in my case I used CLion with the regex box checked) to remove all the UIDs with a space at the start of uid:// (ENSURE you keep the space at the start of uid= regex pattern)
+ uid=\"uid://.*?\"
+Then use this pattern without the space to nuke it from all the other places its used (ensure no space at start of regex pattern)
+uid=\"uid://.*?\"
+Open the engine with your project.
+Set message queue to a very large size (required for large projects) - I used 819200kb because memory is cheap.
+image
+Reboot editor and project
+File -> Quick Open -> Select all scenes with shift select the top and bottom for all scenes.
+Wait about 5 minutes until all the scenes open.
+File -> Save all scenes
+You're not done yet.
+Open the file browser -> Search for all .tres files
+Click each .tres individually and click the save icon individually for each file (this took me ages but it worked)
+Now it's important, repeat step 8 again
+You should have a bunch of changes to .import/.tres reboot your editor and check for any UID errors in the console they should be gone.

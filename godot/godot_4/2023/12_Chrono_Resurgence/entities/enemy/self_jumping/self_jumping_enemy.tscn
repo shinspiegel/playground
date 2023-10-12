@@ -1,9 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://bg6gphgwf638g"]
+[gd_scene load_steps=12 format=3 uid="uid://mwjw5jd4bjdv"]
 
-[ext_resource type="PackedScene" uid="uid://180xq5v47akn" path="res://entities/enemy/base_enemy.tscn" id="1_13dpm"]
+[ext_resource type="PackedScene" uid="uid://cylcj8v5mnwnd" path="res://entities/enemy/base_enemy.tscn" id="1_13dpm"]
 [ext_resource type="Script" path="res://entities/enemy/self_jumping/self_jumping_enemy.gd" id="2_lbd05"]
-[ext_resource type="Texture2D" uid="uid://bksmvbggdr3mv" path="res://assets/downloaded_slim/graphics/Super Grotto Escape Files/Characters/Enemies/spritesheet/lizard-move.png" id="3_nyf4j"]
-[ext_resource type="PackedScene" uid="uid://botey7dn8iuyb" path="res://entities/damages/damage_inflictor.tscn" id="4_4j62x"]
+[ext_resource type="PackedScene" uid="uid://dvb401xt4f2gy" path="res://entities/damages/damage_inflictor.tscn" id="4_4j62x"]
 [ext_resource type="Script" path="res://entities/damages/damage.gd" id="5_0ngc5"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_x1n8g"]
@@ -71,7 +70,6 @@ die_effect = null
 
 [node name="Sprite2D" parent="." index="0"]
 position = Vector2(7, -64)
-texture = ExtResource("3_nyf4j")
 hframes = 3
 
 [node name="CollisionShape2D" parent="." index="1"]

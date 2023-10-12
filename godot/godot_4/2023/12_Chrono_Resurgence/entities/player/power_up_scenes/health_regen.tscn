@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://cqamhjtcsuaca"]
+[gd_scene load_steps=2 format=3 uid="uid://dofxprp4tjtcr"]
 
 [ext_resource type="Script" path="res://entities/player/power_up_scenes/health_regen.gd" id="1_k5io8"]
 

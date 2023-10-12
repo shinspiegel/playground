@@ -1,7 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://co5wl4rb47j3f"]
+[gd_scene load_steps=3 format=3 uid="uid://suwy6kiogs7y"]
 
-[ext_resource type="PackedScene" uid="uid://bdp2ij8todjks" path="res://level_areas/level_area.tscn" id="1_srhh5"]
-[ext_resource type="PackedScene" uid="uid://bg6gphgwf638g" path="res://entities/enemy/self_jumping/self_jumping_enemy.tscn" id="3_plxew"]
+[ext_resource type="PackedScene" uid="uid://o3kkqm83ya6d" path="res://level_areas/level_area.tscn" id="1_srhh5"]
+[ext_resource type="PackedScene" uid="uid://mwjw5jd4bjdv" path="res://entities/enemy/self_jumping/self_jumping_enemy.tscn" id="3_plxew"]
 
 [node name="CityLevel05" instance=ExtResource("1_srhh5")]
 

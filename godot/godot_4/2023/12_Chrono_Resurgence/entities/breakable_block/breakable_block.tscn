@@ -1,7 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://brdawxwicv1u5"]
+[gd_scene load_steps=11 format=3 uid="uid://d34rte4kqgiq5"]
 
 [ext_resource type="Script" path="res://entities/breakable_block/breakable_block.gd" id="1_f838y"]
-[ext_resource type="PackedScene" uid="uid://bo7qkfe1un2id" path="res://entities/damages/damage_receiver.tscn" id="3_4sd34"]
+[ext_resource type="PackedScene" uid="uid://ccosq7xapjkvv" path="res://entities/damages/damage_receiver.tscn" id="3_4sd34"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_7sl5d"]
 load_path = "res://.godot/imported/tiles.png-603f94be191e5c0b0ed9b24ae28c11b4.ctex"

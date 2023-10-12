@@ -1,6 +1,6 @@
-[gd_resource type="Resource" script_class="PlayerPowerUp" load_steps=3 format=3 uid="uid://1nig8s1gt4yv"]
+[gd_resource type="Resource" script_class="PlayerPowerUp" load_steps=3 format=3 uid="uid://dtmtrkxxod04p"]
 
-[ext_resource type="Texture2D" uid="uid://4y56dypr3dut" path="res://chrono_resurgence_icon.svg" id="1_jwmsj"]
+[ext_resource type="Texture2D" uid="uid://c81rcys7md8fw" path="res://chrono_resurgence_icon.svg" id="1_jwmsj"]
 [ext_resource type="Script" path="res://entities/player/power_ups/player_power_up.gd" id="3_vlvtu"]
 
 [resource]

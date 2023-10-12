@@ -1,10 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://be7ht4up6vvle"]
+[gd_scene load_steps=13 format=3 uid="uid://cl7x15yd57wvn"]
 
-[ext_resource type="PackedScene" uid="uid://180xq5v47akn" path="res://entities/enemy/base_enemy.tscn" id="1_bbt8k"]
-[ext_resource type="Texture2D" uid="uid://cmlj45528ertv" path="res://assets/downloaded_slim/graphics/Super Grotto Escape Files/Characters/Enemies/spritesheet/lizard-shoot.png" id="2_io2gy"]
-[ext_resource type="PackedScene" uid="uid://b4o4jmhylcafx" path="res://entities/bullet_spawner/bullet_spawner.tscn" id="4_77a2t"]
-[ext_resource type="PackedScene" uid="uid://botey7dn8iuyb" path="res://entities/damages/damage_inflictor.tscn" id="5_2nwsf"]
-[ext_resource type="PackedScene" uid="uid://be43th7w4rpxv" path="res://entities/bullet/test_enemy_bullet.tscn" id="5_hayfg"]
+[ext_resource type="PackedScene" uid="uid://cylcj8v5mnwnd" path="res://entities/enemy/base_enemy.tscn" id="1_bbt8k"]
+[ext_resource type="PackedScene" uid="uid://chff8pgrs1xgw" path="res://entities/bullet_spawner/bullet_spawner.tscn" id="4_77a2t"]
+[ext_resource type="PackedScene" uid="uid://dvb401xt4f2gy" path="res://entities/damages/damage_inflictor.tscn" id="5_2nwsf"]
+[ext_resource type="PackedScene" uid="uid://bej1r25sy5c0" path="res://entities/bullet/test_enemy_bullet.tscn" id="5_hayfg"]
 [ext_resource type="Script" path="res://entities/damages/damage.gd" id="6_yayk4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cbh1x"]
@@ -65,7 +64,6 @@ size = Vector2(52, 88)
 
 [node name="Sprite2D" parent="." index="0"]
 position = Vector2(8, -65)
-texture = ExtResource("2_io2gy")
 hframes = 4
 
 [node name="CollisionShape2D" parent="." index="1"]
