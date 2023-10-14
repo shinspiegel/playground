@@ -1,0 +1,7 @@
+name=Lights Out
+author=PossiblyAxolotl
+description=I just finished my work for the night, time for bed.
+bundleID=com.PossiblyAxolotl.lights
+version=0.0.1
+imagepath=launcher
+buildNumber=00001imagePath=launcher
