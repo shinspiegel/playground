@@ -10,9 +10,9 @@ const START_AREA_INDEX: int = 0
 @export var wall_damage_colddown: Timer
 @export var map_areas: Node2D
 
-
 var __previous_area: LevelArea
 var __current_area_index: int = 0
+
 
 func _ready() -> void:
 	__current_area_index = START_AREA_INDEX

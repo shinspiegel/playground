@@ -54,7 +54,9 @@ size = Vector2(48, 64)
 
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 2
-floor_max_angle = 1.0472
+floor_stop_on_slope = false
+floor_block_on_wall = false
+floor_max_angle = 3.14159
 script = ExtResource("1_hjpc4")
 
 [node name="DamageNumberPos" type="Marker2D" parent="."]
@@ -67,6 +69,7 @@ texture = ExtResource("2_h4rfc")
 hframes = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0, -64)
 shape = SubResource("CapsuleShape2D_3j43t")
 
@@ -81,6 +84,7 @@ libraries = {
 }
 
 [node name="DamageReceiver" parent="." instance=ExtResource("5_naxqi")]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DamageReceiver"]
 position = Vector2(0, -64)
@@ -90,6 +94,7 @@ shape = SubResource("RectangleShape2D_yv1dy")
 one_shot = true
 
 [node name="WallDetection" type="Area2D" parent="."]
+visible = false
 position = Vector2(24, -80)
 collision_layer = 0
 collision_mask = 2
@@ -99,8 +104,10 @@ metadata/_edit_group_ = true
 shape = SubResource("RectangleShape2D_bu62i")
 
 [node name="EffectsAttachment" type="Node2D" parent="."]
+visible = false
 
 [node name="WeaponsAttachment" type="Node2D" parent="."]
+visible = false
 
 [node name="Front" type="Marker2D" parent="WeaponsAttachment"]
 position = Vector2(64, -64)

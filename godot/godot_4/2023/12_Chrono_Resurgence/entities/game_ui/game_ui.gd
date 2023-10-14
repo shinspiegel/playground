@@ -12,4 +12,4 @@ func _ready() -> void:
 func update_health_bar() -> void:
 	texture_progress_bar.max_value = PlayerData.max_health
 	texture_progress_bar.value = PlayerData.health
-	label.text = str(PlayerData.health)
+	label.text = "%s/%s" % [PlayerData.health, PlayerData.max_health]

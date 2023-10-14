@@ -1,14 +1,14 @@
 [gd_resource type="Resource" script_class="PlayerPowerUp" load_steps=4 format=3 uid="uid://demjw2bvggjrq"]
 
-[ext_resource type="PackedScene" uid="uid://dpy8s737kdnt" path="res://entities/player/power_up_scenes/basic_shot_spawner.tscn" id="1_c4rve"]
+[ext_resource type="PackedScene" uid="uid://dpy8s737kdnt" path="res://entities/player/power_up_scenes/neon_crossbow_spawner.tscn" id="1_c4rve"]
 [ext_resource type="Texture2D" uid="uid://c81rcys7md8fw" path="res://chrono_resurgence_icon.svg" id="2_0xadp"]
 [ext_resource type="Script" path="res://entities/player/power_ups/player_power_up.gd" id="2_xohiq"]
 
 [resource]
 script = ExtResource("2_xohiq")
 icon = ExtResource("2_0xadp")
-power_up = "Basic Shooter"
-description = "The trusted side weapon."
+power_up = "Neon Crossbow"
+description = "A chrono crafted cross with the power of the time stasis."
 cost = 0
 is_enabled = true
 is_selected = false
