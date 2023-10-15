@@ -7,6 +7,5 @@
     "Lua.workspace.library": [ "/Users/shin/Developer/PlaydateSDK/CoreLibs" ],
     "Lua.runtime.nonstandardSymbol": [ "+=", "-=", "*=", "/=" ],
     "playdate-debug.sdkPath": "/Users/shin/Developer/PlaydateSDK",
-    "playdate-debug.productName": "My_Game",
     "playdate-debug.outputPath": "build"
 }

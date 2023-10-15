@@ -1,0 +1,34 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Build",
+            "type": "shell",
+            "command": "make",
+            "args": [ "build" ], 
+            "group": { "kind": "build", "isDefault": true },
+            "presentation": { "reveal": "always", "panel": "shared" }
+        },
+        {
+            "label": "Compile",
+            "type": "shell",
+            "command": "make",
+            "args": [ "compile" ], 
+            "presentation": { "reveal": "always", "panel": "shared" }
+        },
+        {
+            "label": "Run Latest",
+            "type": "shell",
+            "command": "make",
+            "args": [ "run_latest" ], 
+            "presentation": { "reveal": "always", "panel": "shared" }
+        },
+        {
+            "label": "Clean",
+            "type": "shell",
+            "command": "make",
+            "args": [ "clean" ], 
+            "presentation": { "reveal": "always", "panel": "shared" }
+        },
+    ]
+}

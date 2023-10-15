@@ -2,32 +2,19 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "type": "pdc",
-            "problemMatcher": [
-                "$pdc-lua",
-                "$pdc-external"
-            ],
-            "label": "Playdate: Build"
+            "label": "Build",
+            "type": "shell",
+            "command": "make",
+            "args": [ "compile" ], 
+            "group": { "kind": "build", "isDefault": true },
+            "presentation": { "reveal": "always", "panel": "new" }
         },
         {
-            "type": "playdate-simulator",
-            "problemMatcher": [
-                "$pdc-external"
-            ],
-            "label": "Playdate: Run"
+            "label": "Run Latest",
+            "type": "shell",
+            "command": "make",
+            "args": [ "run_latest" ], 
+            "presentation": { "reveal": "always", "panel": "new" }
         },
-        {
-            "label": "Playdate: Build and Run",
-            "dependsOn": [
-                "Playdate: Build",
-                "Playdate: Run"
-            ],
-            "dependsOrder": "sequence",
-            "problemMatcher": [],
-            "group": {
-                "kind": "build",
-                "isDefault": true
-            }
-        }
     ]
 }

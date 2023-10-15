@@ -1,0 +1,7 @@
+name=BuildingBlock
+author=ShinSpiegel
+description=My base template
+bundleID=me.jeferson.playdate
+version=0.0.0
+buildNumber=0
+imagePath=system_assets
