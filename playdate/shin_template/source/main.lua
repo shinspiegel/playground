@@ -1,4 +1,5 @@
-local gfx = playdate.graphics
+local pd <const> = playdate
+local gfx <const> = playdate.graphics
 
 gfx.setColor(gfx.kColorBlack)
 
