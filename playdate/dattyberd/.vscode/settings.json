@@ -1,0 +1,11 @@
+{
+    "editor.tabSize": 4,
+    "Lua.diagnostics.globals": [
+        "import",
+        "playdate"
+    ],
+    "Lua.workspace.library": [ "/Users/shin/Developer/PlaydateSDK/CoreLibs" ],
+    "Lua.runtime.nonstandardSymbol": [ "+=", "-=", "*=", "/=" ],
+    "playdate-debug.sdkPath": "/Users/shin/Developer/PlaydateSDK",
+    "playdate-debug.outputPath": "build"
+}
