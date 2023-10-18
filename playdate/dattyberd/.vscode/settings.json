@@ -4,8 +4,14 @@
         "import",
         "playdate"
     ],
-    "Lua.workspace.library": [ "/Users/shin/Developer/PlaydateSDK/CoreLibs" ],
+    "Lua.workspace.library": [ 
+        "/Users/shin/Developer/PlaydateSDK/CoreLibs", 
+    ],
     "Lua.runtime.nonstandardSymbol": [ "+=", "-=", "*=", "/=" ],
     "playdate-debug.sdkPath": "/Users/shin/Developer/PlaydateSDK",
-    "playdate-debug.outputPath": "build"
+    "playdate-debug.outputPath": "build",
+    "Lua.diagnostics.disable": [
+        "undefined-global",
+        "undefined-field"
+    ]
 }

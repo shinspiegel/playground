@@ -1,18 +1,17 @@
-import "CoreLibs/sprites"
 import "CoreLibs/object"
-import "CoreLibs/sprites"
 import "CoreLibs/graphics"
+import "CoreLibs/sprites"
+import "CoreLibs/timer"
 
-import "circle"
+import "player"
 
 local pd <const> = playdate
 local gfx <const> = playdate.graphics
 
 
-function playdate.update()
-    playdate.drawFPS(0, 0)
-    gfx.sprite.update()
+Player(30, 120)
 
-    local c = Circle(200, 100, 20)
-    c:add()
+function pd.update()
+    gfx.sprite.update()
+    pd.timer.updateTimers()
 end
