@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="PlayerPowerUp" load_steps=4 format=3 uid="uid://c28tq1jfykk7d"]
+
+[ext_resource type="PackedScene" uid="uid://di6pv76geoo3k" path="res://entities/player/power_up_scenes/dart_shooter_spawner.tscn" id="1_b7arr"]
+[ext_resource type="Texture2D" uid="uid://c81rcys7md8fw" path="res://chrono_resurgence_icon.svg" id="2_nkohb"]
+[ext_resource type="Script" path="res://entities/player/power_ups/player_power_up.gd" id="3_vbgdv"]
+
+[resource]
+script = ExtResource("3_vbgdv")
+icon = ExtResource("2_nkohb")
+power_up = "Dart Shotter"
+description = "Shots quick dart of time fracture."
+cost = 0
+is_enabled = true
+is_selected = false
+extra_health = 0
+extra_armor = 0
+extra_jump_power = 0.0
+extra_speed = 0.0
+extra_weapon = ExtResource("1_b7arr")
+extra_weapon_slot = "front"

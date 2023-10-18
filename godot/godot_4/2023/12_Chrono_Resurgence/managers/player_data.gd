@@ -16,9 +16,9 @@ const INITIAL_ARMOR: int = 0
 
 const POWERUP_LIST: Array[PlayerPowerUp] = [
 	# Offensive 
-	preload("res://entities/player/power_ups/offensive/basic_shooter.tres"), 
-	preload("res://entities/player/power_ups/offensive/charge_shoot.tres"), 
-	preload("res://entities/player/power_ups/offensive/quick_shooter.tres"),
+	preload("res://entities/player/power_ups/offensive/neon_crossbow.tres"), 
+	preload("res://entities/player/power_ups/offensive/dark_shooter.tres"), 
+	preload("res://entities/player/power_ups/offensive/gear_cannon.tres"),
 	
 	# Defensive
 	preload("res://entities/player/power_ups/defensive/extra_health.tres"),

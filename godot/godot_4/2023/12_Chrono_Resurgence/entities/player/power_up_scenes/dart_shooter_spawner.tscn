@@ -1,0 +1,118 @@
+[gd_scene load_steps=11 format=3 uid="uid://di6pv76geoo3k"]
+
+[ext_resource type="Texture2D" uid="uid://dmno0ti47to5g" path="res://assets/graphics/elara/weapons_effects.png" id="1_f380f"]
+[ext_resource type="PackedScene" uid="uid://chff8pgrs1xgw" path="res://entities/bullet_spawner/bullet_spawner.tscn" id="2_a8c86"]
+[ext_resource type="PackedScene" uid="uid://cqyru61utk3av" path="res://entities/player/bullets/quick_bullet.tscn" id="3_i510h"]
+
+[sub_resource type="Animation" id="Animation_010ct"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_vdrw0"]
+resource_name = "new_animation"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(2, 0.5),
+"update": 0,
+"values": [Vector2(2.08165e-12, -10), Vector2(2.08165e-12, 10)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [3.48787e-16, -0.0523599]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2jbii"]
+_data = {
+"RESET": SubResource("Animation_010ct"),
+"new_animation": SubResource("Animation_vdrw0")
+}
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_esphx"]
+atlas = ExtResource("1_f380f")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i85i0"]
+atlas = ExtResource("1_f380f")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ponhr"]
+atlas = ExtResource("1_f380f")
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3x52v"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_esphx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i85i0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ponhr")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="QuickShotSpawner" type="Node2D"]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "new_animation"
+libraries = {
+"": SubResource("AnimationLibrary_2jbii")
+}
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Node2D"]
+position = Vector2(0, -4)
+scale = Vector2(8, 8)
+sprite_frames = SubResource("SpriteFrames_3x52v")
+autoplay = "default"
+frame = 1
+frame_progress = 0.658027
+
+[node name="BulletSpawner" parent="Node2D" instance=ExtResource("2_a8c86")]
+position = Vector2(27, 0)
+bullet_scene = ExtResource("3_i510h")
+delay = 0.2

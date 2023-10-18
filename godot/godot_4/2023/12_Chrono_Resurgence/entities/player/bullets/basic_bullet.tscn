@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://j4ecwxtys3xr"]
+[gd_scene load_steps=10 format=3 uid="uid://j4ecwxtys3xr"]
 
 [ext_resource type="PackedScene" uid="uid://dk0qv4w76s4vf" path="res://entities/bullet/bullet.tscn" id="1_tgsbh"]
+[ext_resource type="Texture2D" uid="uid://tb5dyepft5sx" path="res://assets/graphics/elara/elara_bullets.png" id="3_evk7l"]
 [ext_resource type="PackedScene" uid="uid://dadh1o5n2pcqc" path="res://entities/effects/player_shoot_hit.tscn" id="3_njrdr"]
 [ext_resource type="Script" path="res://entities/damages/damage.gd" id="5_fa0ft"]
 
@@ -12,8 +13,8 @@ rand_amount_max = 15
 ignore_armor = false
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3vv8f"]
-radius = 23.0
-height = 84.0
+radius = 14.0
+height = 46.0
 
 [sub_resource type="Animation" id="Animation_npnkg"]
 length = 0.001
@@ -58,9 +59,11 @@ shoot_sfx_adjust = -0.4
 hit_effect = ExtResource("3_njrdr")
 
 [node name="Sprite2D" parent="." index="0"]
-position = Vector2(-6, -2)
+position = Vector2(2, 3)
 scale = Vector2(6, 6)
+texture = ExtResource("3_evk7l")
 hframes = 4
+vframes = 3
 
 [node name="VisibleOnScreenNotifier2D" parent="." index="1"]
 scale = Vector2(2, 2)

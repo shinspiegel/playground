@@ -44,6 +44,10 @@ text = "Options
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Control2" type="Control" parent="VBoxContainer"]
+custom_minimum_size = Vector2(2.08165e-12, 40)
+layout_mode = 2
+
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
 custom_minimum_size = Vector2(350, 2.08165e-12)
 layout_mode = 2
@@ -87,6 +91,10 @@ value = 1.0
 script = ExtResource("5_ddayw")
 change_sfx = ExtResource("6_lac5l")
 focus_sfx = ExtResource("6_lac5l")
+
+[node name="Control" type="Control" parent="VBoxContainer"]
+custom_minimum_size = Vector2(2.08165e-12, 40)
+layout_mode = 2
 
 [node name="BackButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
