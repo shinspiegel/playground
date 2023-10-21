@@ -19,30 +19,33 @@ const texture_color_dis = Color(0.5, 0.5, 0.5, 0.5)
 
 
 func _ready() -> void:
+	__connect_player_data_signal()
 	__connect_inner_signals()
 	__set_data_from_power_up()
 	__define_initial_state()
 
 
-func on_toggle(state: bool) -> void:
-	if not is_disabled():
-		if state:
+func on_focus() -> void:
+	__set_effects(texture_color_in, power_up.is_selected, focus_sfx)
+
+
+func on_blur() -> void:
+	if power_up.is_selected:
+		__set_effects(texture_color_in, true, null)
+	else:
+		__set_effects(texture_color_out, false, null)
+
+
+func on_point_change(_point: int, _max_point: int) -> void:
+	if power_up.is_enabled:
+		if power_up.is_selected:
 			__set_effects(texture_color_in, true, toggle_in_sfx)
-			
 		else:
 			__set_effects(texture_color_out, false, toggle_out_sfx)
 
 
-func on_focus() -> void:
-	__set_effects(texture_color_in, is_pressed(), focus_sfx)
-
-
-func on_blur() -> void:
-	if is_pressed():
-		__set_effects(texture_color_in, true, null)
-		
-	else:
-		__set_effects(texture_color_out, false, null)
+func __connect_player_data_signal() -> void:
+	PlayerData.power_point_changed.connect(on_point_change)
 
 
 func __connect_inner_signals() -> void:
@@ -52,7 +55,7 @@ func __connect_inner_signals() -> void:
 
 
 func __define_initial_state() -> void:
-	if is_pressed():
+	if power_up.is_selected:
 		__set_effects(texture_color_in, true, null)
 
 	elif is_disabled():
@@ -69,12 +72,12 @@ func __set_data_from_power_up() -> void:
 	
 	button_pressed = power_up.is_selected
 	
-	if not power_up.is_enabled:
-		disabled = true
-		set_focus_mode(Control.FOCUS_NONE)
-	else:
-		disabled = false
+	if power_up.is_enabled:
 		set_focus_mode(Control.FOCUS_ALL)
+		disabled = false
+	else:
+		set_focus_mode(Control.FOCUS_NONE)
+		disabled = true
 	
 	icon_texture.texture = power_up.icon
 

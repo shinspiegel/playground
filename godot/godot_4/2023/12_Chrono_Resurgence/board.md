@@ -101,6 +101,8 @@
 	- [x] Start Screen
 	- [x] Options Screen
 	- [x] Select powerups screen
+		- [ ] Add sound for can't add power up
+		- [ ] Add effect for can't add power up
 	- [x] Game over screen
 - **Juice**
 	- [x] Camera shake

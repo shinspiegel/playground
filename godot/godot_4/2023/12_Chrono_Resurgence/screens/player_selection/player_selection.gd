@@ -43,15 +43,13 @@ func __create_item_nodes() -> void:
 		
 		node.power_up = power_up
 		node.focus_entered.connect(on_item_selection_focus.bind(node))
-		node.toggled.connect(__toggle_power_up.bind(power_up, node))
+		node.toggled.connect(__toggle_power_up.bind(power_up))
 		
 		container.add_child(node)
 
 
-func __toggle_power_up(state: bool, power_up: PlayerPowerUp, node: PowerUpItemSelection) -> void:
+func __toggle_power_up(state: bool, power_up: PlayerPowerUp) -> void:
 	if state and PlayerData.can_add_power_up(power_up):
 		PlayerData.toggle_power_up(power_up, true)
-		node.on_toggle(true)
 	else:
 		PlayerData.toggle_power_up(power_up, false)
-		node.on_toggle(false)
