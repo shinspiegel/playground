@@ -1,15 +1,21 @@
-[gd_resource type="Resource" script_class="PlayerPowerUp" load_steps=4 format=3 uid="uid://dgmdhqvv5vppt"]
+[gd_resource type="Resource" script_class="PlayerPowerUp" load_steps=5 format=3 uid="uid://dgmdhqvv5vppt"]
 
 [ext_resource type="PackedScene" uid="uid://rh0slq0pj0g4" path="res://entities/player/power_up_scenes/gear_cannon_spawner.tscn" id="1_1i5jf"]
-[ext_resource type="Texture2D" uid="uid://c81rcys7md8fw" path="res://chrono_resurgence_icon.svg" id="2_ukt8r"]
 [ext_resource type="Script" path="res://entities/player/power_ups/player_power_up.gd" id="3_xpp8l"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_7dymj"]
+load_path = "res://.godot/imported/item_selection.png-b228fd69edf4ace9941166ca636018d5.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yf1gk"]
+atlas = SubResource("CompressedTexture2D_7dymj")
+region = Rect2(64, 32, 32, 32)
 
 [resource]
 script = ExtResource("3_xpp8l")
-icon = ExtResource("2_ukt8r")
+icon = SubResource("AtlasTexture_yf1gk")
 power_up = "Gear Cannon"
 description = "This is a heavy gear cannon that compresses time stasis into high fracture time energy."
-cost = 0
+cost = 4
 is_enabled = true
 is_selected = false
 extra_health = 0

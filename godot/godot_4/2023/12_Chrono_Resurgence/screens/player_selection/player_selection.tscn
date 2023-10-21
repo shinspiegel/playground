@@ -106,6 +106,7 @@ grow_horizontal = 1
 
 [node name="StartButton" type="Button" parent="."]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(2.08165e-12, 100)
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5

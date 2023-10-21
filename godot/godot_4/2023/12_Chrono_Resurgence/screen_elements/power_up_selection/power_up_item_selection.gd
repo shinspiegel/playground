@@ -12,7 +12,7 @@ const texture_color_dis = Color(0.5, 0.5, 0.5, 0.5)
 @export var toggle_out_sfx: AudioStream
 
 @onready var animated_sprite_2d_2: AnimatedSprite2D = $ImagWrapper/AnimatedSprite2D2
-@onready var texture_rect: TextureRect = $ImagWrapper/TextureRect
+@onready var icon_texture: TextureRect = $ImagWrapper/IconTexture
 @onready var skill_name_label: Label = $HelperText/SkillName
 @onready var description_label: Label = $HelperText/Description
 @onready var cost_label: Label = $NinePatchRect/Cost
@@ -76,11 +76,11 @@ func __set_data_from_power_up() -> void:
 		disabled = false
 		set_focus_mode(Control.FOCUS_ALL)
 	
-	texture_rect.texture = power_up.icon
+	icon_texture.texture = power_up.icon
 
 
 func __set_effects(module_color: Color, enable_animate: bool = false, sfx_effect: AudioStream = null) -> void:
-	texture_rect.modulate = module_color
+	icon_texture.modulate = module_color
 	skill_name_label.modulate = module_color
 	description_label.modulate = module_color
 	

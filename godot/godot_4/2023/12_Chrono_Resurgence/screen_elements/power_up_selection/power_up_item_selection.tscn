@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://dfbsd7yrlqe6"]
+[gd_scene load_steps=20 format=3 uid="uid://dfbsd7yrlqe6"]
 
 [ext_resource type="Theme" uid="uid://27eu6vn47mvd" path="res://base_theme.tres" id="1_yk21o"]
 [ext_resource type="Script" path="res://screen_elements/power_up_selection/power_up_item_selection.gd" id="2_yl0bt"]
@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://entities/player/power_ups/player_power_up.gd" id="4_ct8a4"]
 [ext_resource type="AudioStream" uid="uid://bjkcla7dbapyt" path="res://assets/sfx/ui_sfx/confirm_style_2_003.wav" id="5_b6x2n"]
 [ext_resource type="AudioStream" uid="uid://c872y2b5dunyx" path="res://assets/sfx/ui_sfx/back_style_2_007.wav" id="6_a3cvb"]
-[ext_resource type="Texture2D" uid="uid://c81rcys7md8fw" path="res://chrono_resurgence_icon.svg" id="7_y0wl5"]
+[ext_resource type="Texture2D" uid="uid://dtbm8hlujfoog" path="res://assets/graphics/elara/item_selection.png" id="7_jseyk"]
 [ext_resource type="Texture2D" uid="uid://bauxbcjb5w2dp" path="res://assets/graphics/ui_elements/GUI_x4.png" id="8_b1jtw"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1og7v"]
@@ -23,6 +23,10 @@ extra_armor = 0
 extra_jump_power = 0.0
 extra_speed = 0.0
 extra_weapon_slot = "front"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p5smp"]
+atlas = ExtResource("7_jseyk")
+region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_m5tsq"]
 load_path = "res://.godot/imported/02.png-f51470929e45bf77c9b163fbf1a1a57b.ctex"
@@ -143,17 +147,16 @@ offset_bottom = 64.0
 grow_vertical = 2
 mouse_filter = 1
 
-[node name="ColorRect" type="ColorRect" parent="ImagWrapper"]
+[node name="Background" type="TextureRect" parent="ImagWrapper"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 1
-color = Color(0.2, 0.2, 0.2, 1)
+texture = SubResource("AtlasTexture_p5smp")
 
-[node name="TextureRect" type="TextureRect" parent="ImagWrapper"]
+[node name="IconTexture" type="TextureRect" parent="ImagWrapper"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -164,7 +167,6 @@ offset_right = -8.0
 offset_bottom = -8.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("7_y0wl5")
 expand_mode = 4
 stretch_mode = 5
 

@@ -1,15 +1,21 @@
-[gd_resource type="Resource" script_class="PlayerPowerUp" load_steps=4 format=3 uid="uid://demjw2bvggjrq"]
+[gd_resource type="Resource" script_class="PlayerPowerUp" load_steps=5 format=3 uid="uid://demjw2bvggjrq"]
 
 [ext_resource type="PackedScene" uid="uid://dpy8s737kdnt" path="res://entities/player/power_up_scenes/neon_crossbow_spawner.tscn" id="1_c4rve"]
-[ext_resource type="Texture2D" uid="uid://c81rcys7md8fw" path="res://chrono_resurgence_icon.svg" id="2_0xadp"]
 [ext_resource type="Script" path="res://entities/player/power_ups/player_power_up.gd" id="2_xohiq"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_p868n"]
+load_path = "res://.godot/imported/item_selection.png-b228fd69edf4ace9941166ca636018d5.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sl7vv"]
+atlas = SubResource("CompressedTexture2D_p868n")
+region = Rect2(0, 32, 32, 32)
 
 [resource]
 script = ExtResource("2_xohiq")
-icon = ExtResource("2_0xadp")
+icon = SubResource("AtlasTexture_sl7vv")
 power_up = "Neon Crossbow"
 description = "A chrono crafted cross with the power of the time stasis."
-cost = 0
+cost = 2
 is_enabled = true
 is_selected = false
 extra_health = 0
