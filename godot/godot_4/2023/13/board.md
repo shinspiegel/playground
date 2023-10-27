@@ -3,7 +3,7 @@
 ## Prototype
 
 - [x] Base project config (pixel art, 4x)
-- [ ] Start Menu
+- [x] Start Menu
 - [ ] Game Over
 - [ ] Player
 	- [ ] Idle
