@@ -1,5 +1,17 @@
 # Graphics todo-list
 
+- Dois botões,
+    - Pula e escudo
+- No chao
+    - Segurar escudo
+    - Segurar pulo
+- No ar:
+    - No ar escudo faz algo
+    - No ar pular faz algo
+    
+---
+
+
 - **Elara** (16x16)
 	- [x] Elara main design
 	- [x] Run (4 frames)
