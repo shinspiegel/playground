@@ -1,8 +1,9 @@
-[gd_scene load_steps=15 format=3 uid="uid://b3d0ifnv0o77v"]
+[gd_scene load_steps=16 format=3 uid="uid://b3d0ifnv0o77v"]
 
 [ext_resource type="Script" path="res://entities/player/player.gd" id="1_7i6co"]
 [ext_resource type="Shader" path="res://entities/player/outline.gdshader" id="1_rduao"]
 [ext_resource type="Texture2D" uid="uid://m0a6sap4un6n" path="res://assets/base_template/template_character.png" id="2_4j1cx"]
+[ext_resource type="PackedScene" uid="uid://cqvxq82pdejbh" path="res://entities/state_machine/state_machine.tscn" id="4_p74ua"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_etf22"]
 shader = ExtResource("1_rduao")
@@ -172,3 +173,5 @@ shape = SubResource("RectangleShape2D_fdqgu")
 libraries = {
 "": SubResource("AnimationLibrary_uehj6")
 }
+
+[node name="StateMachine" parent="." instance=ExtResource("4_p74ua")]

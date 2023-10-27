@@ -6,14 +6,14 @@
 - [x] Start Menu
 - [x] Game Over
 - [x] Level selection
+- [x] Statemanager
+	- [x] State
 - [ ] Player
-	- [x] Base scene
+	- [x] Base class
 	- [ ] Idle
 	- [ ] Move
 	- [ ] Jump / Fall
 	- [ ] Shoot
-- [ ] Statemanager
-	- [ ] State
 - [ ] Enemies
 - [ ] Hazards
 - [ ] Level (2 levels)
