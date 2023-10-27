@@ -4,7 +4,8 @@
 
 - [x] Base project config (pixel art, 4x)
 - [x] Start Menu
-- [ ] Game Over
+- [x] Game Over
+- [x] Level selection
 - [ ] Player
 	- [ ] Idle
 	- [ ] Move
@@ -12,7 +13,6 @@
 	- [ ] Shoot
 - [ ] Statemanager
 	- [ ] State
-- [ ] Level selection
 - [ ] Enemies
 - [ ] Hazards
 - [ ] Level (2 levels)
