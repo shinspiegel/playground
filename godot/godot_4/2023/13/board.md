@@ -7,6 +7,7 @@
 - [x] Game Over
 - [x] Level selection
 - [ ] Player
+	- [x] Base scene
 	- [ ] Idle
 	- [ ] Move
 	- [ ] Jump / Fall
