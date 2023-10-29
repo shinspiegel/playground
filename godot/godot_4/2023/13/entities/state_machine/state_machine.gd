@@ -1,5 +1,7 @@
 class_name StateMachine extends Node2D
 
+signal state_changed(state: String)
+
 @export var initial_state: BaseState
 
 var __states = {}
@@ -26,20 +28,23 @@ func _physics_process(delta: float) -> void:
 		__current_state.physics_process(delta)
 
 
-func change_to(next: String) -> void:
-	if __states.get(next.to_lower()):
+func change_to(next_state: String) -> void:
+	if __states.get(next_state.to_lower()):
 		if __current_state:
 			__current_state.exit()
 		
-		__current_state = __states.get(next.to_lower())
+		__current_state = __states.get(next_state.to_lower())
 		__current_state.enter()
+		state_changed.emit(next_state)
+	else:
+		print_debug("Could not find state for: [%s]" % [next_state])
 
 
 func __add_states() -> void:
 	for node in get_children():
 		if node is BaseState:
 			__states[node.name.to_lower()] = node
-			node.ended.connect(change_to)
+			node.next_state.connect(change_to)
 
 
 func __enter_initial_state() -> void:

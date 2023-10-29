@@ -1,9 +1,15 @@
-[gd_scene load_steps=16 format=3 uid="uid://b3d0ifnv0o77v"]
+[gd_scene load_steps=23 format=3 uid="uid://b3d0ifnv0o77v"]
 
 [ext_resource type="Script" path="res://entities/player/player.gd" id="1_7i6co"]
 [ext_resource type="Shader" path="res://entities/player/outline.gdshader" id="1_rduao"]
 [ext_resource type="Texture2D" uid="uid://m0a6sap4un6n" path="res://assets/base_template/template_character.png" id="2_4j1cx"]
+[ext_resource type="Script" path="res://entities/player/player_inputs.gd" id="2_5esyq"]
 [ext_resource type="PackedScene" uid="uid://cqvxq82pdejbh" path="res://entities/state_machine/state_machine.tscn" id="4_p74ua"]
+[ext_resource type="Script" path="res://entities/player/animation_player.gd" id="5_n3kph"]
+[ext_resource type="Script" path="res://entities/player/player_states/idle.gd" id="7_d7l53"]
+[ext_resource type="Script" path="res://entities/player/player_states/move.gd" id="8_s8wjd"]
+[ext_resource type="Script" path="res://entities/player/player_states/jump.gd" id="9_hfbdm"]
+[ext_resource type="Script" path="res://entities/player/player_states/fall.gd" id="10_6cssk"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_etf22"]
 shader = ExtResource("1_rduao")
@@ -153,9 +159,16 @@ _data = {
 "move": SubResource("Animation_x05kf")
 }
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("animation")]
+[sub_resource type="CircleShape2D" id="CircleShape2D_0hpxw"]
+radius = 28.0179
+
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("state_machine", "inputs")]
 script = ExtResource("1_7i6co")
-animation = NodePath("AnimationPlayer")
+state_machine = NodePath("StateMachine")
+inputs = NodePath("PlayerInputs")
+
+[node name="PlayerInputs" type="Node" parent="."]
+script = ExtResource("2_5esyq")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_etf22")
@@ -173,5 +186,38 @@ shape = SubResource("RectangleShape2D_fdqgu")
 libraries = {
 "": SubResource("AnimationLibrary_uehj6")
 }
+script = ExtResource("5_n3kph")
 
-[node name="StateMachine" parent="." instance=ExtResource("4_p74ua")]
+[node name="StateMachine" parent="." node_paths=PackedStringArray("initial_state") instance=ExtResource("4_p74ua")]
+initial_state = NodePath("Idle")
+
+[node name="Idle" type="Node2D" parent="StateMachine" node_paths=PackedStringArray("player", "animation_player", "inputs")]
+script = ExtResource("7_d7l53")
+player = NodePath("../..")
+animation_player = NodePath("../../AnimationPlayer")
+inputs = NodePath("../../PlayerInputs")
+
+[node name="Move" type="Node2D" parent="StateMachine" node_paths=PackedStringArray("player", "animation_player", "inputs")]
+script = ExtResource("8_s8wjd")
+player = NodePath("../..")
+animation_player = NodePath("../../AnimationPlayer")
+inputs = NodePath("../../PlayerInputs")
+
+[node name="Jump" type="Node2D" parent="StateMachine" node_paths=PackedStringArray("player", "animation_player", "inputs")]
+script = ExtResource("9_hfbdm")
+player = NodePath("../..")
+animation_player = NodePath("../../AnimationPlayer")
+inputs = NodePath("../../PlayerInputs")
+
+[node name="Fall" type="Node2D" parent="StateMachine" node_paths=PackedStringArray("player", "animation_player", "inputs")]
+script = ExtResource("10_6cssk")
+player = NodePath("../..")
+animation_player = NodePath("../../AnimationPlayer")
+inputs = NodePath("../../PlayerInputs")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(77, -64)
+gizmo_extents = 30.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Marker2D"]
+shape = SubResource("CircleShape2D_0hpxw")

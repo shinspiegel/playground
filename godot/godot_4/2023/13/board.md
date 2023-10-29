@@ -8,11 +8,11 @@
 - [x] Level selection
 - [x] Statemanager
 	- [x] State
-- [ ] Player
+- [x] Player
 	- [x] Base class
-	- [ ] Idle
-	- [ ] Move
-	- [ ] Jump / Fall
+	- [x] Idle
+	- [x] Move
+	- [x] Jump / Fall
 	- [ ] Shoot
 - [ ] Enemies
 - [ ] Hazards

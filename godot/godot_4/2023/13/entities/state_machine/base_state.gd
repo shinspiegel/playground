@@ -1,7 +1,8 @@
 class_name BaseState extends Node2D
 
-signal ended(next_state: String)
+signal next_state(state: String)
 
+@export var state_machine: StateMachine
 
 func enter() -> void:
 	pass
@@ -11,13 +12,13 @@ func exit() -> void:
 	pass
 
 
-func process(delta: float) -> void:
+func process(_delta: float) -> void:
 	pass
 
 
-func physics_process(delta: float) -> void:
+func physics_process(_delta: float) -> void:
 	pass
 
 
-func input(event: InputEvent) -> void:
+func input(_event: InputEvent) -> void:
 	pass
