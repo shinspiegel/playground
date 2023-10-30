@@ -10,15 +10,15 @@ func enter() -> void:
 	animation_player.jump_down()
 
 
-func process(_delta: float) -> void:
+func physics_process(delta: float) -> void:
 	if player.is_on_floor():
 		if inputs.is_horizontal_zero():
 			next_state.emit("idle")
+			return
 		else:
 			next_state.emit("move")
-
-
-func physics_process(delta: float) -> void:
+			return
+	
 	player.apply_gravity(delta)
 	player.apply_horizontal_force(inputs.direction, air_friction)
 	player.move_and_slide()

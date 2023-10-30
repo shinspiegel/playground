@@ -6,19 +6,21 @@ extends BaseState
 
 
 func enter() -> void:
+	player.velocity.y = 0
 	animation_player.move()
 
 
-func process(_delta: float) -> void:
+func physics_process(_delta: float) -> void:
 	if inputs.jump_press:
 		next_state.emit("jump")
-	elif not player.is_on_floor():
-		next_state.emit("fall")
-	elif inputs.is_horizontal_zero():
+		return 
+	if inputs.is_horizontal_zero():
 		next_state.emit("idle")
-
-
-func physics_process(delta: float) -> void:
-	player.apply_gravity(delta)
+		return 
+	if not player.is_on_floor_coyote():
+		next_state.emit("fall")
+		return 
+	
 	player.apply_horizontal_force(inputs.direction)
 	player.move_and_slide()
+

@@ -18,6 +18,7 @@
 - [ ] Enemies
 - [ ] Hazards
 - [ ] Level (2 levels)
+	- [ ] Camera (with follow to area)
 	- [ ] LevelArea
 	- [ ] Transition between areas
 	- [ ] Each level will have 5 areas (with camera movemente)

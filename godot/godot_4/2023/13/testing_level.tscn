@@ -2,20 +2,20 @@
 
 [ext_resource type="PackedScene" uid="uid://b3d0ifnv0o77v" path="res://entities/player/player.tscn" id="1_mmadc"]
 [ext_resource type="PackedScene" uid="uid://xt5ky4f0bleg" path="res://entities/debug/debug.tscn" id="2_cijjh"]
-
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_bccp0"]
+[ext_resource type="TileSet" uid="uid://gfuqqc5g7e4a" path="res://entities/tilemaps/template_tilemap.tres" id="3_t5ceb"]
 
 [node name="TestingLevel" type="Node2D"]
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-position = Vector2(946, 960)
-metadata/_edit_group_ = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-shape = SubResource("WorldBoundaryShape2D_bccp0")
-
 [node name="Player" parent="." instance=ExtResource("1_mmadc")]
-position = Vector2(956, 818)
+position = Vector2(64, 1024)
 
-[node name="Debug" parent="." node_paths=PackedStringArray("player") instance=ExtResource("2_cijjh")]
+[node name="Camera2D" type="Camera2D" parent="Player"]
+
+[node name="TileMap" type="TileMap" parent="."]
+scale = Vector2(2, 2)
+tile_set = ExtResource("3_t5ceb")
+format = 2
+layer_0/tile_data = PackedInt32Array(524288, 655360, 0, 589824, 589824, 3, 589825, 393216, 3, 589826, 131072, 3, 589827, 131072, 3, 589828, 131072, 3, 589829, 131072, 3, 589830, 327680, 3, 589831, 589824, 3, 589832, 393216, 3, 589833, 131072, 3, 589834, 131072, 3, 589835, 131072, 3, 589836, 131072, 3, 589837, 131072, 3, 589838, 327680, 3, 262143, 0, 1, 327679, 0, 1, 393215, 0, 1, 458751, 0, 1, 524287, 0, 1, 589823, 262144, 1, 655359, 524288, 3, -65537, 0, 0, -1, 0, 1, 65535, 0, 1, 131071, 0, 1, 196607, 0, 1, 589839, 589824, 3, 524303, 327680, 1, 458767, 524288, 1, 393231, 524288, 1, 327695, 524288, 1, 262159, 524288, 1, 196623, 524288, 1, 131087, 524288, 1, 65551, 524288, 0, 65552, 720896, 0, 131088, 720896, 2, 196624, 720896, 2, 262160, 720896, 2, 327696, 720896, 2, 393232, 720896, 2, 458768, 720896, 2, 524304, 720896, 2, 589840, 720896, 3, 524289, 720896, 0, 524294, 524288, 0, 524295, 655360, 0, 524296, 720896, 0, 524302, 524288, 0)
+
+[node name="DebugLayer" parent="." node_paths=PackedStringArray("player") instance=ExtResource("2_cijjh")]
 player = NodePath("../Player")
