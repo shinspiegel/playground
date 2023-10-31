@@ -40,6 +40,9 @@ func change_to(next_state: String) -> void:
 		print_debug("Could not find state for: [%s]" % [next_state])
 
 
+## Private Methods
+
+
 func __add_states() -> void:
 	for node in get_children():
 		if node is BaseState:

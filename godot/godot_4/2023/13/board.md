@@ -15,7 +15,7 @@
 	- [x] Idle
 	- [x] Move
 	- [x] Jump / Fall
-	- [ ] Hit
+	- [x] Hit
 	- [ ] Shoot
 - [ ] Enemies
 - [ ] Hazards
