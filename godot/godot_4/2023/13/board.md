@@ -9,12 +9,13 @@
 - [x] Statemanager
 	- [x] State
 - [ ] Test Level
-- [ ] Damageables
+- [x] Damageables
 - [x] Player
 	- [x] Base class
 	- [x] Idle
 	- [x] Move
 	- [x] Jump / Fall
+	- [ ] Hit
 	- [ ] Shoot
 - [ ] Enemies
 - [ ] Hazards
