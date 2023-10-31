@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://5r7llmwb5dhe"]
+
+[ext_resource type="Script" path="res://level_areas/base_area/base_area.gd" id="1_et1x4"]
+[ext_resource type="TileSet" uid="uid://gfuqqc5g7e4a" path="res://entities/tilemaps/template_tilemap.tres" id="1_gxbfb"]
+
+[node name="BaseArea" type="Node2D"]
+script = ExtResource("1_et1x4")
+
+[node name="TileMap" type="TileMap" parent="."]
+scale = Vector2(2, 2)
+tile_set = ExtResource("1_gxbfb")
+format = 2
+
+[node name="EntryArea" type="Area2D" parent="."]
+
+[node name="Limiter" type="Node2D" parent="."]
+
+[node name="TopLeft" type="Marker2D" parent="Limiter"]
+position = Vector2(-256, -256)
+
+[node name="BottomRight" type="Marker2D" parent="Limiter"]
+position = Vector2(2304, 1280)

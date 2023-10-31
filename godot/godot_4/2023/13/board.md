@@ -9,6 +9,7 @@
 - [x] Statemanager
 	- [x] State
 - [ ] Test Level
+- [ ] Damageables
 - [x] Player
 	- [x] Base class
 	- [x] Idle
@@ -18,9 +19,9 @@
 - [ ] Enemies
 - [ ] Hazards
 - [ ] Level (2 levels)
-	- [ ] Camera (with follow to area)
-	- [ ] LevelArea
-	- [ ] Transition between areas
+	- [x] Camera (with follow to area)
+	- [x] LevelArea
+	- [x] Transition between areas
 	- [ ] Each level will have 5 areas (with camera movemente)
 	- [ ] Boss pattern
 - [ ] Final stage

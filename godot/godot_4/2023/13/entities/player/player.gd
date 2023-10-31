@@ -1,17 +1,25 @@
 class_name Player extends CharacterBody2D
 
 const MULTIPLIER = 100.0
-const SPEED = 12.0 * MULTIPLIER
-const JUMP_VELOCITY = 18.0 * MULTIPLIER
+const SPEED = 10.0 * MULTIPLIER
+const JUMP_VELOCITY = 20.0 * MULTIPLIER
 const GRAVITY = 60 * MULTIPLIER
 const ACCELERATION = 0.2
 
+@export var camera: Camera2D
 @export var state_machine: StateMachine
 @export var inputs: PlayerInputs
 @export var coyote_timer: Timer
+@export var camera_holder: RemoteTransform2D
+
 
 var __facing: int = 1
 var __airborne: bool = false
+
+
+func _ready() -> void:
+	if camera:
+		camera_holder.set_remote_node(camera.get_path())
 
 
 func _process(_delta: float) -> void:

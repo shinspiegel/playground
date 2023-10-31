@@ -162,12 +162,13 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_0hpxw"]
 radius = 28.0179
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("state_machine", "inputs", "coyote_timer")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("state_machine", "inputs", "coyote_timer", "camera_holder")]
 collision_mask = 10
 script = ExtResource("1_7i6co")
 state_machine = NodePath("StateMachine")
 inputs = NodePath("PlayerInputs")
 coyote_timer = NodePath("CoyoteTimer")
+camera_holder = NodePath("CameraHolder")
 
 [node name="PlayerInputs" type="Node" parent="."]
 script = ExtResource("2_5esyq")
@@ -193,6 +194,8 @@ libraries = {
 "": SubResource("AnimationLibrary_uehj6")
 }
 script = ExtResource("5_n3kph")
+
+[node name="CameraHolder" type="RemoteTransform2D" parent="."]
 
 [node name="StateMachine" parent="." node_paths=PackedStringArray("initial_state") instance=ExtResource("4_p74ua")]
 initial_state = NodePath("Idle")
