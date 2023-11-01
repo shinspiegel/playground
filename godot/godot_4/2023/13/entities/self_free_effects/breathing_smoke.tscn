@@ -1,0 +1,69 @@
+[gd_scene load_steps=6 format=3 uid="uid://ldv57llccb75"]
+
+[ext_resource type="PackedScene" uid="uid://bfbbhdl6j8pic" path="res://entities/self_free_effects/self_free_effect.tscn" id="1_vjpnw"]
+[ext_resource type="Texture2D" uid="uid://dv1dmcvckamv3" path="res://assets/smoke_effect/smoke_effect.png" id="2_8prj0"]
+
+[sub_resource type="Animation" id="Animation_cyqth"]
+resource_name = "new_animation"
+length = 0.35
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.35),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_0a0g2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_umky8"]
+_data = {
+"RESET": SubResource("Animation_0a0g2"),
+"new_animation": SubResource("Animation_cyqth")
+}
+
+[node name="BreathingSmoke" instance=ExtResource("1_vjpnw")]
+
+[node name="Sprite2D" parent="." index="0"]
+position = Vector2(8, -4)
+texture = ExtResource("2_8prj0")
+hframes = 8
+
+[node name="AnimationPlayer" parent="." index="1"]
+libraries = {
+"": SubResource("AnimationLibrary_umky8")
+}
+autoplay = "new_animation"

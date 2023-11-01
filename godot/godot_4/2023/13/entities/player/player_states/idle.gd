@@ -9,6 +9,11 @@ func enter() -> void:
 	animation_player.idle()
 	player.velocity.x = 0
 	player.velocity.y = 0
+	player.start_breathing()
+
+
+func exit() -> void:
+	player.stop_breathing()
 
 
 func physics_process(_delta: float) -> void:

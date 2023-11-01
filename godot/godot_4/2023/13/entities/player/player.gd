@@ -7,12 +7,25 @@ const GRAVITY = 60 * MULTIPLIER
 const ACCELERATION = 0.2
 
 @export var camera: Camera2D
-@export var state_machine: StateMachine
-@export var inputs: PlayerInputs
-@export var coyote_timer: Timer
+
+@export_group("Extra Information")
 @export var camera_holder: RemoteTransform2D
+@export var inputs: PlayerInputs
+
+@export_group("State Machine")
+@export var state_machine: StateMachine
+
+@export_group("Coyote Info", "coyote_")
+@export var coyote_timer: Timer
+
+@export_group("Damage Receiver", "damage_")
 @export var damage_receiver: DamageReceiver
 @export var damage_coldown: Timer
+
+@export_group("Breathing Smoke Effect", "smoke_")
+@export var smoke_scene: PackedScene
+@export var smoke_colddown: Timer
+@export var smoke_position: Node2D
 
 var __facing: int = 1
 var __airborne: bool = false
@@ -21,6 +34,7 @@ var __airborne: bool = false
 func _ready() -> void:
 	if camera: camera_holder.set_remote_node(camera.get_path())
 	if damage_receiver: damage_receiver.receive_damage.connect(on_receive_damage)
+	if smoke_colddown and smoke_scene: smoke_colddown.timeout.connect(on_smoke_timeout)
 
 
 func _process(_delta: float) -> void:
@@ -50,12 +64,29 @@ func is_on_floor_coyote() -> bool:
 	return true
 
 
+func start_breathing() -> void:
+	smoke_colddown.start()
+
+
+func stop_breathing() -> void:
+	smoke_colddown.stop()
+
+
 func on_receive_damage(damage: Damage) -> void:
 	if damage_coldown.is_stopped():
 		damage_coldown.start()
 		state_machine.change_to("hurt")
 		__apply_damage(damage)
 
+
+func on_smoke_timeout() -> void:
+	#TODO: Create a singleton for adding scenes
+	var smoke: SelfFreeEffect = smoke_scene.instantiate()
+	get_tree().root.add_child(smoke)
+	smoke.global_position = smoke_position.global_position
+	smoke.set_direction(inputs.last_direction)
+	smoke_colddown.start()
+	
 
 ## Private Methods
 

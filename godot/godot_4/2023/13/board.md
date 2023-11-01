@@ -17,12 +17,13 @@
 	- [x] Jump / Fall
 	- [x] Hit
 	- [ ] Shoot
+	- [x] Player Graphics
 - [ ] Enemies
 - [ ] Hazards
-- [ ] Level (2 levels)
+- [ ] Level Generic
 	- [x] Camera (with follow to area)
 	- [x] LevelArea
 	- [x] Transition between areas
 	- [ ] Each level will have 5 areas (with camera movemente)
-	- [ ] Boss pattern
+	- [ ] Boss pattern 
 - [ ] Final stage
