@@ -1,16 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://dtb8rr22ch578"]
+[gd_scene load_steps=7 format=3 uid="uid://dtb8rr22ch578"]
 
 [ext_resource type="Script" path="res://entities/hideable_area/hidable_area.gd" id="1_2xvlx"]
-[ext_resource type="Shader" path="res://shaders/outline.gdshader" id="2_kty1o"]
+[ext_resource type="PackedScene" uid="uid://b4yckp4tkxqy3" path="res://outlined_sprite_2d/outlined_sprite_2d.tscn" id="2_kgs28"]
 [ext_resource type="Texture2D" uid="uid://prq5pkwjp4oj" path="res://assets/base_template/placeholder_texture.png" id="3_cijb2"]
 [ext_resource type="Theme" uid="uid://ky8em2i7hglk" path="res://screens/base_theme.tres" id="4_vrcky"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_11njr"]
-shader = ExtResource("2_kty1o")
-shader_parameter/line_color = Color(1, 1, 1, 1)
-shader_parameter/line_thickness = 1.0
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_6i1sa"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_bj7f2"]
 atlas = ExtResource("3_cijb2")
 region = Rect2(40, 8, 32, 48)
 
@@ -20,11 +15,10 @@ size = Vector2(72, 136)
 [node name="HidableArea" type="Area2D"]
 script = ExtResource("1_2xvlx")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-material = SubResource("ShaderMaterial_11njr")
+[node name="OutlinedSprite2D" parent="." instance=ExtResource("2_kgs28")]
 position = Vector2(0, -64)
-scale = Vector2(4, 4)
-texture = SubResource("AtlasTexture_6i1sa")
+texture = SubResource("AtlasTexture_bj7f2")
+initial_thickness = 0.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -64)

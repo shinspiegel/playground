@@ -1,0 +1,25 @@
+[gd_scene load_steps=6 format=3 uid="uid://b7oe6t8ttmyll"]
+
+[ext_resource type="PackedScene" uid="uid://b4yckp4tkxqy3" path="res://outlined_sprite_2d/outlined_sprite_2d.tscn" id="1_0o6sq"]
+[ext_resource type="Script" path="res://entities/checkpoint/checkpoint.gd" id="1_i7b6w"]
+[ext_resource type="Texture2D" uid="uid://prq5pkwjp4oj" path="res://assets/base_template/placeholder_texture.png" id="2_jfirs"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7os2a"]
+atlas = ExtResource("2_jfirs")
+region = Rect2(8, 8, 32, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gf60i"]
+size = Vector2(96, 80)
+
+[node name="CheckPoint" type="Area2D" node_paths=PackedStringArray("sprite")]
+script = ExtResource("1_i7b6w")
+sprite = NodePath("OutlinedSprite2D")
+
+[node name="OutlinedSprite2D" parent="." instance=ExtResource("1_0o6sq")]
+position = Vector2(0, -36)
+texture = SubResource("AtlasTexture_7os2a")
+initial_thickness = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -40)
+shape = SubResource("RectangleShape2D_gf60i")

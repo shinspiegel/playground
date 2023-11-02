@@ -10,7 +10,7 @@ const ACCELERATION = 0.2
 
 @export_group("Extra Information")
 @export var inputs: PlayerInputs
-@export var sprite: Sprite2D
+@export var sprite: OutlinedSprite2D
 
 @export_group("Camera Details", "camera_")
 @export var camera_holder: RemoteTransform2D
@@ -44,7 +44,7 @@ func _ready() -> void:
 	if camera: camera_holder.set_remote_node(camera.get_path())
 	if damage_receiver: damage_receiver.receive_damage.connect(on_receive_damage)
 	if smoke_colddown and smoke_scene: smoke_colddown.timeout.connect(on_smoke_timeout)
-	if sprite: __update_outline(1.0)
+	if sprite: sprite.enable()
 
 
 func _process(_delta: float) -> void:
@@ -96,8 +96,12 @@ func start_breathing() -> void: smoke_colddown.start()
 func stop_breathing() -> void: smoke_colddown.stop()
 
 
-func enable_outline() -> void: __tween_countour(0.0, 1.0)
-func disable_outline() -> void: __tween_countour(1.0, 0.0)
+func enable_outline() -> void: 
+	sprite.enable()
+
+
+func disable_outline() -> void: 
+	sprite.disable()
 
 
 func on_receive_damage(damage: Damage) -> void:
@@ -144,15 +148,6 @@ func __apply_damage(damage: Damage) -> void:
 	
 	velocity.x = horizontal_dir * SPEED * (damage.impact * MULTIPLIER)
 	velocity.y = -(vertical_dir * SPEED * (damage.impact / 10.0))
-
-
-func __tween_countour(from: float, to: float) -> void:
-	var tween = get_tree().create_tween();
-	tween.tween_method(__update_outline, from, to, __duration);
-
-
-func __update_outline(value: float) -> void:
-	sprite.material.set_shader_parameter("line_thickness", value)
 
 
 func __update_camera_distance(delta: float) -> void:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://b3d0ifnv0o77v"]
+[gd_scene load_steps=28 format=3 uid="uid://b3d0ifnv0o77v"]
 
 [ext_resource type="Script" path="res://entities/player/player.gd" id="1_7i6co"]
 [ext_resource type="Script" path="res://entities/player/player_inputs.gd" id="2_5esyq"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://drd3k8fpxmhl6" path="res://assets/cipher/chiper.png" id="4_qpvg7"]
 [ext_resource type="Script" path="res://entities/player/animation_player.gd" id="5_n3kph"]
 [ext_resource type="Script" path="res://entities/damageables/damage_receiver.gd" id="6_4hxgy"]
+[ext_resource type="Script" path="res://outlined_sprite_2d/outlined_sprite_2d.gd" id="6_bxtn5"]
 [ext_resource type="Script" path="res://entities/player/player_states/idle.gd" id="7_d7l53"]
 [ext_resource type="Script" path="res://entities/player/player_states/move.gd" id="8_s8wjd"]
 [ext_resource type="Script" path="res://entities/player/player_states/jump.gd" id="9_hfbdm"]
@@ -40,7 +41,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Markers/SmakePosition:position")
+tracks/1/path = NodePath("Markers/SmokePosition:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -68,7 +69,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Markers/SmakePosition:position")
+tracks/1/path = NodePath("Markers/SmokePosition:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -96,7 +97,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Markers/SmakePosition:position")
+tracks/1/path = NodePath("Markers/SmokePosition:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -124,7 +125,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Markers/SmakePosition:position")
+tracks/1/path = NodePath("Markers/SmokePosition:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -152,7 +153,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Markers/SmakePosition:position")
+tracks/1/path = NodePath("Markers/SmokePosition:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -180,7 +181,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Markers/SmakePosition:position")
+tracks/1/path = NodePath("Markers/SmokePosition:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -208,7 +209,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Markers/SmakePosition:position")
+tracks/1/path = NodePath("Markers/SmokePosition:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -237,7 +238,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Markers/SmakePosition:position")
+tracks/1/path = NodePath("Markers/SmokePosition:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -275,7 +276,7 @@ damage_receiver = NodePath("DamageReceiver")
 damage_coldown = NodePath("DamageReceiver/DamageColdown")
 smoke_scene = ExtResource("2_dguj2")
 smoke_colddown = NodePath("Timers/SmokeColddown")
-smoke_position = NodePath("Markers/SmakePosition")
+smoke_position = NodePath("Markers/SmokePosition")
 
 [node name="Timers" type="Node" parent="."]
 
@@ -296,6 +297,7 @@ scale = Vector2(4, 4)
 texture = ExtResource("4_qpvg7")
 hframes = 10
 vframes = 5
+script = ExtResource("6_bxtn5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -64)
@@ -364,5 +366,5 @@ one_shot = true
 
 [node name="Markers" type="Node2D" parent="."]
 
-[node name="SmakePosition" type="Marker2D" parent="Markers"]
+[node name="SmokePosition" type="Marker2D" parent="Markers"]
 position = Vector2(2.08165e-12, 2.08165e-12)

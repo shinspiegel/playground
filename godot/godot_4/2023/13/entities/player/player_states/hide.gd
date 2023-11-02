@@ -16,6 +16,6 @@ func exit() -> void:
 	player.enable_outline()
 
 
-func process(delta: float) -> void:
+func process(_delta: float) -> void:
 	if inputs.is_hide_just_pressed and min_hide_timer.is_stopped():
 		next_state.emit("idle")

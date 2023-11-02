@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://b4yckp4tkxqy3"]
+
+[ext_resource type="Shader" path="res://shaders/outline.gdshader" id="1_5citq"]
+[ext_resource type="Script" path="res://outlined_sprite_2d/outlined_sprite_2d.gd" id="1_e3m7c"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_l0psf"]
+resource_local_to_scene = true
+shader = ExtResource("1_5citq")
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/line_thickness = 1.0
+
+[node name="OutlinedSprite2D" type="Sprite2D"]
+material = SubResource("ShaderMaterial_l0psf")
+scale = Vector2(4, 4)
+script = ExtResource("1_e3m7c")

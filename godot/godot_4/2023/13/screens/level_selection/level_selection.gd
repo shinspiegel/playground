@@ -13,11 +13,11 @@ func _ready() -> void:
 
 
 func on_first() -> void:
-	get_tree().change_scene_to_file("res://testing_level.tscn")
+	get_tree().change_scene_to_file("res://levels/testing_level.tscn")
 
 
 func on_second() -> void:
-	get_tree().change_scene_to_file("res://testing_level.tscn")
+	get_tree().change_scene_to_file("res://levels/testing_level.tscn")
 
 
 func on_back() -> void:

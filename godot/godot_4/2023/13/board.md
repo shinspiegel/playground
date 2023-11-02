@@ -7,7 +7,7 @@
 - [x] Game Over
 - [x] Level selection
 - [x] Statemanager
-	- [x] State
+	- [x] BaseState
 - [x] Input mapping
 - [x] Damageables
 	- [x] Damage 
@@ -19,19 +19,23 @@
 		- [x] Move
 		- [x] Jump / Fall
 		- [x] Hit
-		- [ ] Hide
+		- [x] Hide
 		- [ ] Interact (Hack?)
 		- [ ] Jab
 - [ ] Enemies
 	- [ ] BaseEnemy
-	- [ ] Watchguard
-	- [ ] Hovering drone
-	- [ ] Turret
+		- [ ] Mutated animal
+		- [ ] Watchguard
+		- [ ] Hovering drone
+		- [ ] Turret
 - [ ] Hazards
+	- [ ] Spikes
+	- [ ] Laser
 - [ ] Level Generic
 	- [x] Camera (with follow to area)
 	- [x] LevelArea
 	- [x] Transition between areas
+	- [ ] Reset on the area
 	- [ ] Each level will have 5 areas (with camera movemente)
 	- [ ] Boss pattern 
 - [ ] Levels
@@ -39,3 +43,11 @@
 		- [ ] Tilemap
 		- [ ] Objects
 		- [ ] Hide spots
+	- [ ] Cybernetic FActory
+		- [ ] Tilemap
+		- [ ] Objects
+		- [ ] Hide spots
+	- [ ] Megacorp tower
+		- [ ] Tilemap
+		- [ ] Object
+		- [ ] Hide sports
