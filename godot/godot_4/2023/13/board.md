@@ -8,7 +8,7 @@
 - [x] Level selection
 - [x] Statemanager
 	- [x] State
-- [ ] Input mapping
+- [x] Input mapping
 - [x] Damageables
 	- [x] Damage 
 	- [x] DamageGenerator class

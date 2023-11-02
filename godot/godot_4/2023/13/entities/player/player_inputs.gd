@@ -6,7 +6,7 @@ var direction: float = 0.0
 var last_direction: float = 0.0
 
 
-func _process(_delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	__reset()
 	__apply_input_axis()
 	__apply_jump()
@@ -19,17 +19,17 @@ func is_horizontal_zero() -> bool:
 
 
 func __apply_input_axis() -> void:
-	direction = Input.get_axis("ui_left", "ui_right")
+	direction = Input.get_axis("left", "right")
 	
 	if not direction == 0.0: 
 		last_direction = direction
 
 
 func __apply_jump() -> void:
-	if Input.is_action_just_pressed("ui_accept") or Input.is_action_just_pressed("ui_up"):
+	if Input.is_action_just_pressed("jump"):
 		jump_press = true
 	
-	if Input.is_action_just_released("ui_accept") or Input.is_action_just_released("ui_up"):
+	if Input.is_action_just_released("jump"):
 		jump_release = true
 	
 

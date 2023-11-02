@@ -294,7 +294,6 @@ scale = Vector2(4, 4)
 texture = ExtResource("4_qpvg7")
 hframes = 10
 vframes = 5
-frame = 7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
@@ -356,4 +355,4 @@ inputs = NodePath("../../PlayerInputs")
 [node name="Markers" type="Node2D" parent="."]
 
 [node name="SmakePosition" type="Marker2D" parent="Markers"]
-position = Vector2(28, -96)
+position = Vector2(2.08165e-12, 2.08165e-12)
