@@ -12,14 +12,14 @@ player = NodePath("../Player")
 
 [node name="GameCamera" parent="." instance=ExtResource("2_3y53q")]
 
-[node name="Player" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("1_mmadc")]
-camera = NodePath("../GameCamera")
-
 [node name="Areas" type="Node2D" parent="."]
 
 [node name="Area_1" parent="Areas" node_paths=PackedStringArray("game_camera") instance=ExtResource("4_8wr2l")]
 position = Vector2(-256, -1664)
 game_camera = NodePath("../../GameCamera")
+
+[node name="Player" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("1_mmadc")]
+camera = NodePath("../GameCamera")
 
 [node name="Background" type="CanvasLayer" parent="."]
 layer = -10

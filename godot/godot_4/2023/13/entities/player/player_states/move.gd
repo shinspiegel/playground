@@ -11,7 +11,7 @@ func enter() -> void:
 
 
 func physics_process(_delta: float) -> void:
-	if inputs.jump_press:
+	if inputs.is_jump_just_pressed:
 		next_state.emit("jump")
 		return 
 	if inputs.is_horizontal_zero():
@@ -20,7 +20,9 @@ func physics_process(_delta: float) -> void:
 	if not player.is_on_floor_coyote():
 		next_state.emit("fall")
 		return 
+	if player.can_hide() and inputs.is_hide_just_pressed:
+		next_state.emit("hide")
+		return
 	
 	player.apply_horizontal_force(inputs.direction)
 	player.move_and_slide()
-

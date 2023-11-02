@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://b3d0ifnv0o77v"]
+[gd_scene load_steps=27 format=3 uid="uid://b3d0ifnv0o77v"]
 
 [ext_resource type="Script" path="res://entities/player/player.gd" id="1_7i6co"]
 [ext_resource type="Script" path="res://entities/player/player_inputs.gd" id="2_5esyq"]
@@ -13,6 +13,7 @@
 [ext_resource type="Script" path="res://entities/player/player_states/jump.gd" id="9_hfbdm"]
 [ext_resource type="Script" path="res://entities/player/player_states/fall.gd" id="10_6cssk"]
 [ext_resource type="Script" path="res://entities/player/player_states/hurt.gd" id="12_jyrrv"]
+[ext_resource type="Script" path="res://entities/player/player_states/hide.gd" id="14_ylxse"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_etf22"]
 shader = ExtResource("3_gjwci")
@@ -262,11 +263,12 @@ _data = {
 radius = 23.0
 height = 96.0
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("camera_holder", "inputs", "state_machine", "coyote_timer", "damage_receiver", "damage_coldown", "smoke_colddown", "smoke_position")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("camera_holder", "inputs", "sprite", "state_machine", "coyote_timer", "damage_receiver", "damage_coldown", "smoke_colddown", "smoke_position")]
 collision_mask = 10
 script = ExtResource("1_7i6co")
 camera_holder = NodePath("CameraHolder")
 inputs = NodePath("PlayerInputs")
+sprite = NodePath("Sprite2D")
 state_machine = NodePath("StateMachine")
 coyote_timer = NodePath("Timers/CoyoteTimer")
 damage_receiver = NodePath("DamageReceiver")
@@ -351,6 +353,16 @@ script = ExtResource("12_jyrrv")
 player = NodePath("../..")
 animation_player = NodePath("../../AnimationPlayer")
 inputs = NodePath("../../PlayerInputs")
+
+[node name="Hide" type="Node2D" parent="StateMachine" node_paths=PackedStringArray("player", "animation_player", "inputs", "min_hide_timer")]
+script = ExtResource("14_ylxse")
+player = NodePath("../..")
+animation_player = NodePath("../../AnimationPlayer")
+inputs = NodePath("../../PlayerInputs")
+min_hide_timer = NodePath("MinHideTimer")
+
+[node name="MinHideTimer" type="Timer" parent="StateMachine/Hide"]
+one_shot = true
 
 [node name="Markers" type="Node2D" parent="."]
 

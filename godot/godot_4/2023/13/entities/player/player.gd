@@ -11,6 +11,7 @@ const ACCELERATION = 0.2
 @export_group("Extra Information")
 @export var camera_holder: RemoteTransform2D
 @export var inputs: PlayerInputs
+@export var sprite: Sprite2D
 
 @export_group("State Machine")
 @export var state_machine: StateMachine
@@ -29,12 +30,16 @@ const ACCELERATION = 0.2
 
 var __facing: int = 1
 var __airborne: bool = false
+var __is_hide_enabled: bool = false
+var __is_hidden: bool = false
+var __duration: float = 0.2
 
 
 func _ready() -> void:
 	if camera: camera_holder.set_remote_node(camera.get_path())
 	if damage_receiver: damage_receiver.receive_damage.connect(on_receive_damage)
 	if smoke_colddown and smoke_scene: smoke_colddown.timeout.connect(on_smoke_timeout)
+	if sprite: __update_outline(1.0)
 
 
 func _process(_delta: float) -> void:
@@ -64,12 +69,29 @@ func is_on_floor_coyote() -> bool:
 	return true
 
 
-func start_breathing() -> void:
-	smoke_colddown.start()
+func get_current_state() -> BaseState:
+	return state_machine.get_current_state()
 
 
-func stop_breathing() -> void:
-	smoke_colddown.stop()
+func get_state_name() -> String:
+	return state_machine.get_current_state().name.to_lower()
+
+
+func set_hidden(value: bool) -> void: __is_hidden = value
+func is_hidden() -> bool: return __is_hidden
+
+
+func enable_hide() -> void: __is_hide_enabled = true
+func disable_hide() -> void: __is_hide_enabled = false
+func can_hide() -> bool: return __is_hide_enabled
+
+
+func start_breathing() -> void: smoke_colddown.start()
+func stop_breathing() -> void: smoke_colddown.stop()
+
+
+func enable_outline() -> void: __tween_countour(0.0, 1.0)
+func disable_outline() -> void: __tween_countour(1.0, 0.0)
 
 
 func on_receive_damage(damage: Damage) -> void:
@@ -116,3 +138,12 @@ func __apply_damage(damage: Damage) -> void:
 	
 	velocity.x = horizontal_dir * SPEED * (damage.impact * MULTIPLIER)
 	velocity.y = -(vertical_dir * SPEED * (damage.impact / 10.0))
+
+
+func __tween_countour(from: float, to: float) -> void:
+	var tween = get_tree().create_tween();
+	tween.tween_method(__update_outline, from, to, __duration);
+
+
+func __update_outline(value: float) -> void:
+	sprite.material.set_shader_parameter("line_thickness", value)

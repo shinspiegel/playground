@@ -40,6 +40,9 @@ func change_to(next_state: String) -> void:
 		print_debug("Could not find state for: [%s]" % [next_state])
 
 
+func get_current_state() -> BaseState: 
+	return __current_state
+
 ## Private Methods
 
 

@@ -25,7 +25,7 @@ func physics_process(delta: float) -> void:
 ## Private Methods
 
 func __reset_jump_force() -> void:
-	if inputs.jump_release and player.velocity.y < 0:
+	if inputs.is_jump_just_released and player.velocity.y < 0:
 		player.velocity.y = 0
 
 
