@@ -8,17 +8,25 @@
 - [x] Level selection
 - [x] Statemanager
 	- [x] State
-- [ ] Test Level
+- [ ] Input mapping
 - [x] Damageables
+	- [x] Damage 
+	- [x] DamageGenerator class
 - [x] Player
-	- [x] Base class
-	- [x] Idle
-	- [x] Move
-	- [x] Jump / Fall
-	- [x] Hit
-	- [ ] Shoot
 	- [x] Player Graphics
+	- [x] Base class
+		- [x] Idle
+		- [x] Move
+		- [x] Jump / Fall
+		- [x] Hit
+		- [ ] Hide
+		- [ ] Interact (Hack?)
+		- [ ] Jab
 - [ ] Enemies
+	- [ ] BaseEnemy
+	- [ ] Watchguard
+	- [ ] Hovering drone
+	- [ ] Turret
 - [ ] Hazards
 - [ ] Level Generic
 	- [x] Camera (with follow to area)
@@ -26,4 +34,8 @@
 	- [x] Transition between areas
 	- [ ] Each level will have 5 areas (with camera movemente)
 	- [ ] Boss pattern 
-- [ ] Final stage
+- [ ] Levels
+	- [ ] City slums
+		- [ ] Tilemap
+		- [ ] Objects
+		- [ ] Hide spots
