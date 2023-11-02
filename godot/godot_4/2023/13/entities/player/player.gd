@@ -9,9 +9,14 @@ const ACCELERATION = 0.2
 @export var camera: Camera2D
 
 @export_group("Extra Information")
-@export var camera_holder: RemoteTransform2D
 @export var inputs: PlayerInputs
 @export var sprite: Sprite2D
+
+@export_group("Camera Details", "camera_")
+@export var camera_holder: RemoteTransform2D
+@export var camera_min_velocity: float = 100
+@export var camera_max_distance: float = 900
+@export_range(0.0, 1.0, 0.1) var camera_speed_weight: float = 0.1
 
 @export_group("State Machine")
 @export var state_machine: StateMachine
@@ -46,8 +51,9 @@ func _process(_delta: float) -> void:
 	__flip()
 
 
-func _physics_process(_delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	__start_coyote_timer()
+	__update_camera_distance(delta)
 
 
 func apply_gravity(delta: float, ratio: float = 1.0) -> void:
@@ -147,3 +153,13 @@ func __tween_countour(from: float, to: float) -> void:
 
 func __update_outline(value: float) -> void:
 	sprite.material.set_shader_parameter("line_thickness", value)
+
+
+func __update_camera_distance(delta: float) -> void:
+	if abs(velocity.x) > camera_min_velocity:
+		var ratio =  abs(velocity.x) / SPEED
+		var dist = ratio * camera_max_distance
+		camera_holder.position.x = lerpf(camera_holder.position.x, dist * camera_max_distance * delta, camera_speed_weight / 100)
+		camera_holder.position.x = clampf(camera_holder.position.x, 0, camera_max_distance)
+	else:
+		camera_holder.position.x = lerpf(camera_holder.position.x, 0, camera_speed_weight)

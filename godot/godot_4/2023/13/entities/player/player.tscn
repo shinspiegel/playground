@@ -263,12 +263,12 @@ _data = {
 radius = 23.0
 height = 96.0
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("camera_holder", "inputs", "sprite", "state_machine", "coyote_timer", "damage_receiver", "damage_coldown", "smoke_colddown", "smoke_position")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("inputs", "sprite", "camera_holder", "state_machine", "coyote_timer", "damage_receiver", "damage_coldown", "smoke_colddown", "smoke_position")]
 collision_mask = 10
 script = ExtResource("1_7i6co")
-camera_holder = NodePath("CameraHolder")
 inputs = NodePath("PlayerInputs")
 sprite = NodePath("Sprite2D")
+camera_holder = NodePath("CameraHolder")
 state_machine = NodePath("StateMachine")
 coyote_timer = NodePath("Timers/CoyoteTimer")
 damage_receiver = NodePath("DamageReceiver")
@@ -298,7 +298,6 @@ hframes = 10
 vframes = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(0, -64)
 shape = SubResource("RectangleShape2D_fdqgu")
 
@@ -311,7 +310,6 @@ script = ExtResource("5_n3kph")
 [node name="CameraHolder" type="RemoteTransform2D" parent="."]
 
 [node name="DamageReceiver" type="Area2D" parent="."]
-visible = false
 script = ExtResource("6_4hxgy")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DamageReceiver"]
