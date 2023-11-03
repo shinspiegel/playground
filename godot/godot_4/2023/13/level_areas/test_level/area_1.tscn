@@ -1,12 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://b73pv8y545tic"]
+[gd_scene load_steps=6 format=3 uid="uid://b73pv8y545tic"]
 
 [ext_resource type="PackedScene" uid="uid://bwtgatlxd8y4d" path="res://level_areas/base_area/base_area.tscn" id="1_tbq6f"]
+[ext_resource type="PackedScene" uid="uid://baybjw4q1klds" path="res://entities/checkpoint/checkpoint.tscn" id="2_ptxhc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uw8f3"]
 size = Vector2(256, 640)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lh05f"]
 size = Vector2(288, 256)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d1uxn"]
+size = Vector2(256, 256)
 
 [node name="Area_1" instance=ExtResource("1_tbq6f")]
 
@@ -21,8 +25,15 @@ shape = SubResource("RectangleShape2D_uw8f3")
 position = Vector2(2320, 2560)
 shape = SubResource("RectangleShape2D_lh05f")
 
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="EntryArea" index="2"]
+position = Vector2(1408, 2560)
+shape = SubResource("RectangleShape2D_d1uxn")
+
 [node name="TopLeft" parent="Limiter" index="0"]
 position = Vector2(-128, -128)
 
 [node name="BottomRight" parent="Limiter" index="1"]
 position = Vector2(2560, 3072)
+
+[node name="CheckPoint" parent="." index="3" instance=ExtResource("2_ptxhc")]
+position = Vector2(1408, 2688)

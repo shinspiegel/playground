@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://b6h4dtp2nafng"]
+[gd_scene load_steps=8 format=3 uid="uid://b6h4dtp2nafng"]
 
 [ext_resource type="PackedScene" uid="uid://bwtgatlxd8y4d" path="res://level_areas/base_area/base_area.tscn" id="1_etvub"]
 [ext_resource type="PackedScene" uid="uid://c28vdy1400ldy" path="res://entities/hideable_area/hidable_area.tscn" id="2_tol7x"]
@@ -9,6 +9,9 @@ size = Vector2(765, 384)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_400fv"]
 size = Vector2(256, 896)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6ypp8"]
+size = Vector2(688, 256)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3jjj4"]
 size = Vector2(128, 768)
@@ -29,7 +32,11 @@ shape = SubResource("RectangleShape2D_uw8f3")
 position = Vector2(128, 576)
 shape = SubResource("RectangleShape2D_400fv")
 
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="EntryArea" index="2"]
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="EntryArea" index="2"]
+position = Vector2(680, 896)
+shape = SubResource("RectangleShape2D_6ypp8")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="EntryArea" index="3"]
 position = Vector2(11968, 1280)
 shape = SubResource("RectangleShape2D_3jjj4")
 

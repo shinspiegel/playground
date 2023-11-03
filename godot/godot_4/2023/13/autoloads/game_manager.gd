@@ -1,7 +1,10 @@
 extends Node
 
 signal player_died()
-@export var delay_after_death: float = 2
+
+@export var delay_after_death: float = 1
+@export var game_data: GameData
+
 
 var __last_checkpoint: CheckPoint
 
@@ -15,10 +18,15 @@ func reload_level() -> void:
 
 func set_checkpoint(check: CheckPoint) -> void:
 	if not __last_checkpoint == check:
-		if __last_checkpoint:
+		if not __last_checkpoint == null:
 			__last_checkpoint.disable()
 		
 		__last_checkpoint = check
+		game_data.last_checkpoint_pos = check.global_position
+
+
+func get_last_checkpoint_pos() -> Vector2:
+	return game_data.last_checkpoint_pos
 
 
 func spawn_effect(effect_scene: PackedScene, position: Vector2 = Vector2.ZERO, direction: float = 1.0) -> void:

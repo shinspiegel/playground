@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" path="res://entities/player/player.gd" id="1_7i6co"]
 [ext_resource type="Script" path="res://entities/player/player_inputs.gd" id="2_5esyq"]
-[ext_resource type="PackedScene" path="res://entities/self_free_effects/breathing_smoke.tscn" id="2_dguj2"]
+[ext_resource type="PackedScene" uid="uid://cjlw8f3xikk0" path="res://entities/self_free_effects/breathing_smoke.tscn" id="2_dguj2"]
 [ext_resource type="Shader" path="res://shaders/outline.gdshader" id="3_gjwci"]
-[ext_resource type="PackedScene" path="res://entities/state_machine/state_machine.tscn" id="4_p74ua"]
+[ext_resource type="PackedScene" uid="uid://dwoi3wwclj4d3" path="res://entities/state_machine/state_machine.tscn" id="4_p74ua"]
 [ext_resource type="Texture2D" uid="uid://ckcxmihu4gnxf" path="res://assets/cipher/chiper.png" id="4_qpvg7"]
 [ext_resource type="Script" path="res://entities/player/animation_player.gd" id="5_n3kph"]
 [ext_resource type="Script" path="res://entities/damageables/damage_receiver.gd" id="6_4hxgy"]
@@ -16,7 +16,7 @@
 [ext_resource type="Script" path="res://entities/player/player_states/hurt.gd" id="12_jyrrv"]
 [ext_resource type="Script" path="res://entities/player/player_states/hide.gd" id="14_ylxse"]
 [ext_resource type="Script" path="res://entities/player/player_states/die.gd" id="16_j0vgq"]
-[ext_resource type="PackedScene" path="res://entities/self_free_effects/player_death.tscn" id="17_563eg"]
+[ext_resource type="PackedScene" uid="uid://dkxy25mc8k8yi" path="res://entities/self_free_effects/player_death.tscn" id="17_563eg"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_etf22"]
 shader = ExtResource("3_gjwci")
