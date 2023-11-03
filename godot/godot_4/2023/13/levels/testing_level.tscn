@@ -1,13 +1,15 @@
-[gd_scene load_steps=6 format=3 uid="uid://b271cweut640a"]
+[gd_scene load_steps=7 format=3 uid="uid://da36m4eycope8"]
 
 [ext_resource type="Script" path="res://levels/base_level.gd" id="1_msgty"]
-[ext_resource type="PackedScene" uid="uid://xt5ky4f0bleg" path="res://entities/debug/debug.tscn" id="1_px0xy"]
-[ext_resource type="PackedScene" uid="uid://bf3uaallscs73" path="res://entities/game_camera/game_camera.tscn" id="2_vttku"]
-[ext_resource type="PackedScene" uid="uid://chgwwxicfmp78" path="res://level_areas/test_level/area_0.tscn" id="3_xh2ug"]
-[ext_resource type="PackedScene" uid="uid://cqu8s8d325x2w" path="res://level_areas/test_level/area_1.tscn" id="4_wp351"]
+[ext_resource type="PackedScene" uid="uid://curd2b6ulrvo2" path="res://entities/debug/debug.tscn" id="1_px0xy"]
+[ext_resource type="PackedScene" uid="uid://rga41emy20jf" path="res://entities/game_camera/game_camera.tscn" id="2_vttku"]
+[ext_resource type="PackedScene" path="res://level_areas/test_level/area_0.tscn" id="3_xh2ug"]
+[ext_resource type="PackedScene" path="res://level_areas/test_level/area_1.tscn" id="4_wp351"]
+[ext_resource type="PackedScene" uid="uid://rj2d1eft2ic0" path="res://entities/player/player.tscn" id="5_8ucqa"]
 
-[node name="TestingLevel" type="Node2D" node_paths=PackedStringArray("camera", "initial_player_pos")]
+[node name="TestingLevel" type="Node2D" node_paths=PackedStringArray("player", "camera", "initial_player_pos")]
 script = ExtResource("1_msgty")
+player = NodePath("Player")
 camera = NodePath("GameCamera")
 initial_player_pos = NodePath("InitialPlayerPosition")
 
@@ -41,3 +43,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.0784314, 0.0784314, 0.0784314, 1)
+
+[node name="Player" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("5_8ucqa")]
+camera = NodePath("../GameCamera")

@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://pikufy1yw340"]
+
+[ext_resource type="Script" path="res://autoloads/game_manager.gd" id="1_sx3qv"]
+
+[node name="GameManager" type="Node"]
+script = ExtResource("1_sx3qv")
+
+[node name="PlayerDeathDelay" type="Timer" parent="."]

@@ -13,12 +13,12 @@ func _ready() -> void:
 
 
 func on_first() -> void:
-	get_tree().change_scene_to_file("res://levels/testing_level.tscn")
+	SceneManager.change_to_file("res://levels/testing_level.tscn", 0.1)
 
 
 func on_second() -> void:
-	get_tree().change_scene_to_file("res://levels/testing_level.tscn")
+	SceneManager.change_to_file("res://levels/testing_level.tscn", 0.1)
 
 
 func on_back() -> void:
-	get_tree().change_scene_to_file("res://screens/start_menu/start_menu.tscn")
+	SceneManager.change_to_file("res://screens/start_menu/start_menu.tscn", 0.1)

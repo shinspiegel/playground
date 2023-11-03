@@ -1,7 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://5r7llmwb5dhe"]
+[gd_scene load_steps=3 format=3 uid="uid://bwtgatlxd8y4d"]
 
 [ext_resource type="Script" path="res://level_areas/base_area/base_area.gd" id="1_et1x4"]
-[ext_resource type="TileSet" uid="uid://gfuqqc5g7e4a" path="res://entities/tilemaps/template_tilemap.tres" id="1_gxbfb"]
+[ext_resource type="TileSet" uid="uid://cug1nfmb8yidy" path="res://entities/tilemaps/template_tilemap.tres" id="1_gxbfb"]
 
 [node name="BaseArea" type="Node2D"]
 script = ExtResource("1_et1x4")

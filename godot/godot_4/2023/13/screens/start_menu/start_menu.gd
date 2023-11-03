@@ -11,8 +11,8 @@ func _ready() -> void:
 
 
 func on_start() -> void:
-	get_tree().change_scene_to_file("res://screens/level_selection/level_selection.tscn")
+	SceneManager.change_to_file("res://screens/level_selection/level_selection.tscn", 0.1)
 
 
 func on_quit() -> void:
-	get_tree().quit()
+	SceneManager.quit()

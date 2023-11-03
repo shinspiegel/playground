@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://b4yckp4tkxqy3"]
+[gd_scene load_steps=4 format=3 uid="uid://cmixdakm7cg0m"]
 
 [ext_resource type="Shader" path="res://shaders/outline.gdshader" id="1_5citq"]
 [ext_resource type="Script" path="res://outlined_sprite_2d/outlined_sprite_2d.gd" id="1_e3m7c"]

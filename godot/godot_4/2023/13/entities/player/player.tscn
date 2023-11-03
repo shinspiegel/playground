@@ -1,11 +1,11 @@
-[gd_scene load_steps=28 format=3 uid="uid://b3d0ifnv0o77v"]
+[gd_scene load_steps=31 format=3 uid="uid://rj2d1eft2ic0"]
 
 [ext_resource type="Script" path="res://entities/player/player.gd" id="1_7i6co"]
 [ext_resource type="Script" path="res://entities/player/player_inputs.gd" id="2_5esyq"]
-[ext_resource type="PackedScene" uid="uid://ldv57llccb75" path="res://entities/self_free_effects/breathing_smoke.tscn" id="2_dguj2"]
+[ext_resource type="PackedScene" path="res://entities/self_free_effects/breathing_smoke.tscn" id="2_dguj2"]
 [ext_resource type="Shader" path="res://shaders/outline.gdshader" id="3_gjwci"]
-[ext_resource type="PackedScene" uid="uid://cqvxq82pdejbh" path="res://entities/state_machine/state_machine.tscn" id="4_p74ua"]
-[ext_resource type="Texture2D" uid="uid://drd3k8fpxmhl6" path="res://assets/cipher/chiper.png" id="4_qpvg7"]
+[ext_resource type="PackedScene" path="res://entities/state_machine/state_machine.tscn" id="4_p74ua"]
+[ext_resource type="Texture2D" uid="uid://ckcxmihu4gnxf" path="res://assets/cipher/chiper.png" id="4_qpvg7"]
 [ext_resource type="Script" path="res://entities/player/animation_player.gd" id="5_n3kph"]
 [ext_resource type="Script" path="res://entities/damageables/damage_receiver.gd" id="6_4hxgy"]
 [ext_resource type="Script" path="res://outlined_sprite_2d/outlined_sprite_2d.gd" id="6_bxtn5"]
@@ -15,6 +15,8 @@
 [ext_resource type="Script" path="res://entities/player/player_states/fall.gd" id="10_6cssk"]
 [ext_resource type="Script" path="res://entities/player/player_states/hurt.gd" id="12_jyrrv"]
 [ext_resource type="Script" path="res://entities/player/player_states/hide.gd" id="14_ylxse"]
+[ext_resource type="Script" path="res://entities/player/player_states/die.gd" id="16_j0vgq"]
+[ext_resource type="PackedScene" path="res://entities/self_free_effects/player_death.tscn" id="17_563eg"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_etf22"]
 shader = ExtResource("3_gjwci")
@@ -49,6 +51,22 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(2.08165e-12, 2.08165e-12)]
+}
+
+[sub_resource type="Animation" id="Animation_k2am7"]
+resource_name = "die"
+length = 0.9
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [40, 41, 42, 43, 44, 45, 46, 47, 48]
 }
 
 [sub_resource type="Animation" id="Animation_08q20"]
@@ -251,6 +269,7 @@ tracks/1/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_uehj6"]
 _data = {
 "RESET": SubResource("Animation_ib8ny"),
+"die": SubResource("Animation_k2am7"),
 "hurt": SubResource("Animation_08q20"),
 "idle": SubResource("Animation_xu8ys"),
 "jab": SubResource("Animation_beh4a"),
@@ -297,6 +316,7 @@ scale = Vector2(4, 4)
 texture = ExtResource("4_qpvg7")
 hframes = 10
 vframes = 5
+frame = 48
 script = ExtResource("6_bxtn5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -363,6 +383,12 @@ min_hide_timer = NodePath("MinHideTimer")
 
 [node name="MinHideTimer" type="Timer" parent="StateMachine/Hide"]
 one_shot = true
+
+[node name="Die" type="Node2D" parent="StateMachine" node_paths=PackedStringArray("player", "inputs")]
+script = ExtResource("16_j0vgq")
+player = NodePath("../..")
+die_effect = ExtResource("17_563eg")
+inputs = NodePath("../../PlayerInputs")
 
 [node name="Markers" type="Node2D" parent="."]
 

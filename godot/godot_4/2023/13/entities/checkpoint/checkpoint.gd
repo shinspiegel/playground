@@ -17,5 +17,7 @@ func disable() -> void:
 
 func on_body_enter(body: Node2D) -> void:
 	if body is Player:
-		print_debug("WARN::Missing implementation")
+		GameManager.set_checkpoint(self)
+		if not sprite.is_outlined():
+			enable()
 

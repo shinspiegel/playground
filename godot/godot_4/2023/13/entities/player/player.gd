@@ -37,7 +37,6 @@ var __facing: int = 1
 var __airborne: bool = false
 var __is_hide_enabled: bool = false
 var __is_hidden: bool = false
-var __duration: float = 0.2
 
 
 func _ready() -> void:
@@ -104,6 +103,14 @@ func disable_outline() -> void:
 	sprite.disable()
 
 
+func die() -> void:
+	GameManager.player_died.emit()
+	queue_free()
+
+
+## Signal Methods
+
+
 func on_receive_damage(damage: Damage) -> void:
 	if damage_coldown.is_stopped():
 		damage_coldown.start()
@@ -112,13 +119,8 @@ func on_receive_damage(damage: Damage) -> void:
 
 
 func on_smoke_timeout() -> void:
-	#TODO: Create a singleton for adding scenes
-	var smoke: SelfFreeEffect = smoke_scene.instantiate()
-	get_tree().root.add_child(smoke)
-	smoke.global_position = smoke_position.global_position
-	smoke.set_direction(inputs.last_direction)
-	smoke_colddown.start()
-	
+	GameManager.spawn_effect(smoke_scene, smoke_position.global_position, inputs.last_direction)
+
 
 ## Private Methods
 

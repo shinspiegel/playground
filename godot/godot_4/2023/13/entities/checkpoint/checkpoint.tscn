@@ -1,8 +1,15 @@
-[gd_scene load_steps=6 format=3 uid="uid://b7oe6t8ttmyll"]
+[gd_scene load_steps=8 format=3 uid="uid://baybjw4q1klds"]
 
-[ext_resource type="PackedScene" uid="uid://b4yckp4tkxqy3" path="res://outlined_sprite_2d/outlined_sprite_2d.tscn" id="1_0o6sq"]
+[ext_resource type="PackedScene" path="res://outlined_sprite_2d/outlined_sprite_2d.tscn" id="1_0o6sq"]
 [ext_resource type="Script" path="res://entities/checkpoint/checkpoint.gd" id="1_i7b6w"]
-[ext_resource type="Texture2D" uid="uid://prq5pkwjp4oj" path="res://assets/base_template/placeholder_texture.png" id="2_jfirs"]
+[ext_resource type="Texture2D" uid="uid://6mb0gja25wlo" path="res://assets/base_template/placeholder_texture.png" id="2_jfirs"]
+[ext_resource type="Shader" path="res://shaders/outline.gdshader" id="3_h4v43"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5w5n4"]
+resource_local_to_scene = true
+shader = ExtResource("3_h4v43")
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/line_thickness = 1.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7os2a"]
 atlas = ExtResource("2_jfirs")
@@ -16,6 +23,7 @@ script = ExtResource("1_i7b6w")
 sprite = NodePath("OutlinedSprite2D")
 
 [node name="OutlinedSprite2D" parent="." instance=ExtResource("1_0o6sq")]
+material = SubResource("ShaderMaterial_5w5n4")
 position = Vector2(0, -36)
 texture = SubResource("AtlasTexture_7os2a")
 initial_thickness = 0.0

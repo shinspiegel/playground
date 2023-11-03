@@ -1,6 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://fndgvhxatnyu"]
+[gd_scene load_steps=3 format=3 uid="uid://djnjq0c00f4hr"]
 
-[ext_resource type="Theme" uid="uid://ky8em2i7hglk" path="res://screens/base_theme.tres" id="1_jgl0q"]
+[ext_resource type="Theme" uid="uid://584vptm8xiwf" path="res://screens/base_theme.tres" id="1_jgl0q"]
 [ext_resource type="Script" path="res://screens/level_selection/level_selection.gd" id="2_1gp6o"]
 
 [node name="LevelSelection" type="Control"]

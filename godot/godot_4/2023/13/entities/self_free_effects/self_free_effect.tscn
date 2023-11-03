@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://bfbbhdl6j8pic"]
+[gd_scene load_steps=2 format=3 uid="uid://drjqafhgxa7fv"]
 
 [ext_resource type="Script" path="res://entities/self_free_effects/self_free_effect.gd" id="1_88t80"]
 

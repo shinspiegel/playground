@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://cqvxq82pdejbh"]
+[gd_scene load_steps=2 format=3 uid="uid://dwoi3wwclj4d3"]
 
 [ext_resource type="Script" path="res://entities/state_machine/state_machine.gd" id="1_ltyju"]
 

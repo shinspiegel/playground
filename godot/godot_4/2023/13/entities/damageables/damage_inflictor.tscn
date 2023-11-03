@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://dvb401xt4f2gy"]
+[gd_scene load_steps=4 format=3 uid="uid://ch35wenkyos1o"]
 
 [ext_resource type="Script" path="res://entities/damageables/damage_inflictor.gd" id="1_4xiln"]
 [ext_resource type="Script" path="res://entities/damageables/damage_generator.gd" id="2_4s2kh"]
@@ -7,6 +7,7 @@
 script = ExtResource("2_4s2kh")
 max_damage = 10
 min_damage = 5
+impact = 10
 critical_change = 0.1
 critical_multiplier = 2.0
 

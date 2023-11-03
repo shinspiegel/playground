@@ -14,6 +14,10 @@ func _ready() -> void:
 	__update_outline(initial_thickness)
 
 
+func is_outlined() -> bool:
+	return __is_outlined
+
+
 func enable() -> void:
 	if not __is_outlined:
 		if smooth: __tween_countour(0.0, thickness)
