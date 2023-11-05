@@ -7,8 +7,9 @@
 [ext_resource type="PackedScene" uid="uid://b73pv8y545tic" path="res://level_areas/test_level/area_1.tscn" id="4_wp351"]
 [ext_resource type="PackedScene" uid="uid://rj2d1eft2ic0" path="res://entities/player/player.tscn" id="5_8ucqa"]
 
-[node name="TestingLevel" type="Node2D" node_paths=PackedStringArray("camera", "initial_player_pos")]
+[node name="TestingLevel" type="Node2D" node_paths=PackedStringArray("debug", "camera", "initial_player_pos")]
 script = ExtResource("1_msgty")
+debug = NodePath("DebugLayer")
 player_scene = ExtResource("5_8ucqa")
 camera = NodePath("GameCamera")
 initial_player_pos = NodePath("InitialPlayerPosition")

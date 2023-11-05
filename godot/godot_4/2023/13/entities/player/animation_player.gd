@@ -19,8 +19,15 @@ func jump_up() -> void: change_to("jump_up")
 func jump_top() -> void:change_to("jump_top")
 func jump_down() -> void: change_to("jump_down")
 func hurt() -> void: change_to("hurt")
+func attack() -> void: change_to("jab")
+
+
+func reset_attack() -> void: 
+	if current_animation == "jab":
+		seek(0.0, true)
 
 
 func on_animation_finished(anim: String) -> void:
 	if anim == "hurt":
 		hurt_ended.emit()
+

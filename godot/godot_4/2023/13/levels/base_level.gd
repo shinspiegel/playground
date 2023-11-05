@@ -1,5 +1,6 @@
 class_name BaseLevel extends Node2D
 
+@export var debug: Debugger
 @export var player_scene: PackedScene
 @export var camera: GameCamera
 @export var initial_player_pos: Marker2D
@@ -24,6 +25,9 @@ func __spawn_player() -> void:
 		pos = initial_player_pos.global_position
 	
 	var player = player_scene.instantiate()
+	
+	if debug:
+		debug.set_player(player)
 	
 	if player is Player:
 		player.camera = camera

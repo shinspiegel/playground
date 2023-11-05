@@ -29,5 +29,8 @@ func physics_process(_delta: float) -> void:
 	if player.can_hide() and inputs.is_hide_just_pressed:
 		next_state.emit("hide")
 		return
+	if inputs.is_attack_just_pressed:
+		next_state.emit("jab")
+		return
 	
 	player.move_and_slide()
