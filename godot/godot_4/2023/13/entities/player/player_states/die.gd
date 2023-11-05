@@ -7,4 +7,5 @@ extends BaseState
 
 func enter() -> void:
 	GameManager.spawn_effect(die_effect, player.global_position, inputs.last_direction)
-	player.die()
+	GameManager.player_died.emit()
+	player.queue_free()

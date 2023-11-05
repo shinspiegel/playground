@@ -20,6 +20,7 @@
 		- [x] Jump / Fall
 		- [x] Hit
 		- [x] Hide
+		- [x] Die
 		- [ ] Interact (Hack?)
 		- [ ] Jab
 - [ ] Enemies

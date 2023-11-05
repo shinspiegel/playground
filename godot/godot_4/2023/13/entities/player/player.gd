@@ -103,11 +103,6 @@ func disable_outline() -> void:
 	sprite.disable()
 
 
-func die() -> void:
-	GameManager.player_died.emit()
-	queue_free()
-
-
 ## Signal Methods
 
 

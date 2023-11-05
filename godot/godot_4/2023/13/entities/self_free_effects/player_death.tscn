@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://dkxy25mc8k8yi"]
 
-[ext_resource type="PackedScene" path="res://entities/self_free_effects/self_free_effect.tscn" id="1_i6lqq"]
+[ext_resource type="PackedScene" uid="uid://drjqafhgxa7fv" path="res://entities/self_free_effects/self_free_effect.tscn" id="1_i6lqq"]
 [ext_resource type="Texture2D" uid="uid://ckcxmihu4gnxf" path="res://assets/cipher/chiper.png" id="2_8hv5o"]
 
 [sub_resource type="Animation" id="Animation_m7egs"]
@@ -20,7 +20,6 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_ohvf2"]
 resource_name = "new_animation"
-length = 0.9
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -28,10 +27,10 @@ tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [40, 41, 42, 43, 44, 45, 46, 47, 48]
+"values": [50, 51, 52, 53, 54, 55, 56, 57, 58, 59]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_eytx8"]
@@ -46,7 +45,7 @@ _data = {
 position = Vector2(0, -64)
 texture = ExtResource("2_8hv5o")
 hframes = 10
-vframes = 5
+vframes = 6
 frame = 40
 
 [node name="AnimationPlayer" parent="." index="1"]
