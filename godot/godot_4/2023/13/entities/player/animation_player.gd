@@ -1,7 +1,7 @@
 class_name PlayerAnimation extends AnimationPlayer
 
 signal hurt_ended()
-
+signal attack_ended()
 
 func _ready() -> void:
 	animation_finished.connect(on_animation_finished)
@@ -30,4 +30,6 @@ func reset_attack() -> void:
 func on_animation_finished(anim: String) -> void:
 	if anim == "hurt":
 		hurt_ended.emit()
-
+	
+	if anim == "jab":
+		attack_ended.emit()
