@@ -43,5 +43,5 @@ func on_body_exit(body: Node2D) -> void:
 
 
 func __tween_helper_text(color: Color) -> void:
-	var tween = get_tree().create_tween();
+	var tween = create_tween();
 	tween.tween_property(helper_text, "modulate", color, duration)

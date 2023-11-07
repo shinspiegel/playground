@@ -12,6 +12,7 @@ func _ready() -> void:
 
 ## Private Methods
 
+
 func __spawn_player() -> void:
 	var pos: Vector2 = GameManager.get_last_checkpoint_pos()
 	

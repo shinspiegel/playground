@@ -35,7 +35,7 @@ func disable() -> void:
 ## Private Methods
 
 func __tween_countour(from: float, to: float) -> void:
-	var tween = get_tree().create_tween();
+	var tween = create_tween();
 	tween.tween_method(__update_outline, from, to, duration);
 
 

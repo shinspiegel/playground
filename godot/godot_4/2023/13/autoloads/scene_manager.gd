@@ -10,6 +10,7 @@ var __is_loading_visible: bool = false
 var __next_scene_path: String = ""
 var __loading_scene_status = ResourceLoader.THREAD_LOAD_INVALID_RESOURCE
 var __progress: Array[float] = []
+var __scene_delay: float = 0.5
 
 func _ready() -> void:
 	control.modulate = Color(1,1,1,0)
@@ -28,10 +29,11 @@ func reload(delay: float = 0.5) -> void:
 	hide_loading()
 
 
-func change_to_file(filepath: String, _delay: float = 0.5) -> void:
+func change_to_file(filepath: String, delay: float = 0.5) -> void:
 	show_loading()
 	await loading_entered
 	__next_scene_path = filepath
+	__scene_delay = delay
 	ResourceLoader.load_threaded_request(filepath)
 	__loading_scene_status = ResourceLoader.THREAD_LOAD_IN_PROGRESS
 
@@ -70,6 +72,7 @@ func __check_loading_state() -> void:
 	if __loading_scene_status == ResourceLoader.THREAD_LOAD_LOADED:
 		var scene_packed = ResourceLoader.load_threaded_get(__next_scene_path)
 		get_tree().change_scene_to_packed(scene_packed)
+		await get_tree().create_timer(__scene_delay).timeout
 		hide_loading()
 
 

@@ -10,6 +10,7 @@ var __can_exit: bool = false
 
 func enter() -> void:
 	__can_exit = false
+	animation_player.idle()
 	player.disable_outline()
 	player.set_hidden(true)
 	await get_tree().create_timer(hide_delay).timeout

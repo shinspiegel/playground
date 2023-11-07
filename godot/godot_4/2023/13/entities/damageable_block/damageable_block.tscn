@@ -1,7 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://drrvseqwjhcdl"]
+[gd_scene load_steps=8 format=3 uid="uid://drrvseqwjhcdl"]
 
+[ext_resource type="Script" path="res://entities/damageable_block/damageable_block.gd" id="1_aemgv"]
 [ext_resource type="PackedScene" uid="uid://d0urqj3208mm5" path="res://entities/damageables/health.tscn" id="1_n21wr"]
 [ext_resource type="Texture2D" uid="uid://6mb0gja25wlo" path="res://assets/base_template/placeholder_texture.png" id="2_fjwmg"]
+[ext_resource type="PackedScene" uid="uid://qvagmawrbvl3" path="res://entities/health_bar/health_bar.tscn" id="2_mk8vs"]
 [ext_resource type="PackedScene" uid="uid://bpbglcb0neq7d" path="res://entities/damageables/damage_receiver.tscn" id="3_su4xm"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wh8mo"]
@@ -11,9 +13,16 @@ region = Rect2(40, 8, 32, 48)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fiwpa"]
 size = Vector2(64, 128)
 
-[node name="DamageableBlock" type="Node2D"]
+[node name="DamageableBlock" type="Node2D" node_paths=PackedStringArray("health", "damage_receiver")]
+script = ExtResource("1_aemgv")
+health = NodePath("Health")
+damage_receiver = NodePath("DamageReceiver")
 
 [node name="Health" parent="." instance=ExtResource("1_n21wr")]
+
+[node name="HealthBar" parent="." node_paths=PackedStringArray("health") instance=ExtResource("2_mk8vs")]
+position = Vector2(0, -144)
+health = NodePath("../Health")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -64)
@@ -21,6 +30,7 @@ scale = Vector2(4, 4)
 texture = SubResource("AtlasTexture_wh8mo")
 
 [node name="DamageReceiver" parent="." instance=ExtResource("3_su4xm")]
+collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DamageReceiver"]
 position = Vector2(0, -64)

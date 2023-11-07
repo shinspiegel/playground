@@ -13,6 +13,14 @@ func _ready() -> void:
 	reset()
 
 
+func get_current_value() -> int:
+	return __current_health
+
+
+func get_max_value() -> int:
+	return max_health
+
+
 func deal_damage(damage: Damage) -> void:
 	change_health(-damage.amount)
 

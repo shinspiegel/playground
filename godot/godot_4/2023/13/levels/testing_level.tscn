@@ -1,10 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://da36m4eycope8"]
+[gd_scene load_steps=7 format=3 uid="uid://da36m4eycope8"]
 
 [ext_resource type="Script" path="res://levels/base_level.gd" id="1_msgty"]
 [ext_resource type="PackedScene" uid="uid://curd2b6ulrvo2" path="res://entities/debug/debug.tscn" id="1_px0xy"]
 [ext_resource type="PackedScene" uid="uid://rga41emy20jf" path="res://entities/game_camera/game_camera.tscn" id="2_vttku"]
 [ext_resource type="PackedScene" uid="uid://b6h4dtp2nafng" path="res://level_areas/test_level/area_0.tscn" id="3_xh2ug"]
-[ext_resource type="PackedScene" uid="uid://b73pv8y545tic" path="res://level_areas/test_level/area_1.tscn" id="4_wp351"]
 [ext_resource type="PackedScene" uid="uid://rj2d1eft2ic0" path="res://entities/player/player.tscn" id="5_8ucqa"]
 [ext_resource type="PackedScene" uid="uid://bhoqi3c5qh8oa" path="res://entities/level_ui/level_ui.tscn" id="7_tl7he"]
 
@@ -38,13 +37,5 @@ color = Color(0.0784314, 0.0784314, 0.0784314, 1)
 [node name="Areas" type="Node2D" parent="."]
 
 [node name="Area_2" parent="Areas" node_paths=PackedStringArray("game_camera") instance=ExtResource("3_xh2ug")]
-position = Vector2(-448, -1664)
-game_camera = NodePath("../../GameCamera")
-
-[node name="Area_1" parent="Areas" node_paths=PackedStringArray("game_camera") instance=ExtResource("4_wp351")]
-position = Vector2(-3136, -3328)
-game_camera = NodePath("../../GameCamera")
-
-[node name="Area_3" parent="Areas" node_paths=PackedStringArray("game_camera") instance=ExtResource("4_wp351")]
-position = Vector2(-5824, -5120)
+position = Vector2(-704, -1664)
 game_camera = NodePath("../../GameCamera")
