@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=3 uid="uid://drrvseqwjhcdl"]
+
+[ext_resource type="PackedScene" uid="uid://d0urqj3208mm5" path="res://entities/damageables/health.tscn" id="1_n21wr"]
+[ext_resource type="Texture2D" uid="uid://6mb0gja25wlo" path="res://assets/base_template/placeholder_texture.png" id="2_fjwmg"]
+[ext_resource type="PackedScene" uid="uid://bpbglcb0neq7d" path="res://entities/damageables/damage_receiver.tscn" id="3_su4xm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wh8mo"]
+atlas = ExtResource("2_fjwmg")
+region = Rect2(40, 8, 32, 48)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fiwpa"]
+size = Vector2(64, 128)
+
+[node name="DamageableBlock" type="Node2D"]
+
+[node name="Health" parent="." instance=ExtResource("1_n21wr")]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -64)
+scale = Vector2(4, 4)
+texture = SubResource("AtlasTexture_wh8mo")
+
+[node name="DamageReceiver" parent="." instance=ExtResource("3_su4xm")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageReceiver"]
+position = Vector2(0, -64)
+shape = SubResource("RectangleShape2D_fiwpa")

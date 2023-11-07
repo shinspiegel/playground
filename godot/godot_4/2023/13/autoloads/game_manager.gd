@@ -1,6 +1,7 @@
 extends Node
 
 signal player_died()
+signal player_health_changed(current: int, max_health: int)
 
 @export var delay_after_death: float = 1
 @export var game_data: GameData

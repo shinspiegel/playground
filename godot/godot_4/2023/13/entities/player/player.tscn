@@ -1,9 +1,10 @@
-[gd_scene load_steps=34 format=3 uid="uid://rj2d1eft2ic0"]
+[gd_scene load_steps=35 format=3 uid="uid://rj2d1eft2ic0"]
 
 [ext_resource type="Script" path="res://entities/player/player.gd" id="1_7i6co"]
 [ext_resource type="Script" path="res://entities/player/player_inputs.gd" id="2_5esyq"]
 [ext_resource type="PackedScene" uid="uid://cjlw8f3xikk0" path="res://entities/self_free_effects/breathing_smoke.tscn" id="2_dguj2"]
 [ext_resource type="Shader" path="res://shaders/outline.gdshader" id="3_gjwci"]
+[ext_resource type="PackedScene" uid="uid://d0urqj3208mm5" path="res://entities/damageables/health.tscn" id="3_xy538"]
 [ext_resource type="PackedScene" uid="uid://dwoi3wwclj4d3" path="res://entities/state_machine/state_machine.tscn" id="4_p74ua"]
 [ext_resource type="Texture2D" uid="uid://ckcxmihu4gnxf" path="res://assets/cipher/chiper.png" id="4_qpvg7"]
 [ext_resource type="Script" path="res://entities/player/animation_player.gd" id="5_n3kph"]
@@ -360,9 +361,10 @@ height = 88.0
 radius = 23.0
 height = 96.0
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("inputs", "sprite", "camera_holder", "state_machine", "coyote_timer", "damage_receiver", "damage_coldown", "smoke_colddown", "smoke_position")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("health", "inputs", "sprite", "camera_holder", "state_machine", "coyote_timer", "damage_receiver", "damage_coldown", "smoke_colddown", "smoke_position")]
 collision_mask = 10
 script = ExtResource("1_7i6co")
+health = NodePath("Health")
 inputs = NodePath("PlayerInputs")
 sprite = NodePath("Sprite2D")
 camera_holder = NodePath("CameraHolder")
@@ -382,6 +384,9 @@ one_shot = true
 
 [node name="SmokeColddown" type="Timer" parent="Timers"]
 one_shot = true
+
+[node name="Health" parent="." instance=ExtResource("3_xy538")]
+max_health = 30
 
 [node name="PlayerInputs" type="Node" parent="."]
 script = ExtResource("2_5esyq")
@@ -416,8 +421,9 @@ position = Vector2(80, -72)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_3pcgr")
 
-[node name="DamageReceiver" type="Area2D" parent="."]
+[node name="DamageReceiver" type="Area2D" parent="." node_paths=PackedStringArray("health")]
 script = ExtResource("6_4hxgy")
+health = NodePath("../Health")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DamageReceiver"]
 position = Vector2(0, -79)

@@ -8,6 +8,9 @@ const ACCELERATION = 0.2
 
 @export var camera: Camera2D
 
+@export_group("Heath")
+@export var health: Health
+
 @export_group("Extra Information")
 @export var inputs: PlayerInputs
 @export var sprite: OutlinedSprite2D
@@ -40,10 +43,21 @@ var __is_hidden: bool = false
 
 
 func _ready() -> void:
-	if camera: camera_holder.set_remote_node(camera.get_path())
-	if damage_receiver: damage_receiver.receive_damage.connect(on_receive_damage)
-	if smoke_colddown and smoke_scene: smoke_colddown.timeout.connect(on_smoke_timeout)
-	if sprite: sprite.enable()
+	if camera: 
+		camera_holder.set_remote_node(camera.get_path())
+	
+	if damage_receiver: 
+		damage_receiver.receive_damage.connect(on_receive_damage)
+	
+	if smoke_colddown and smoke_scene: 
+		smoke_colddown.timeout.connect(on_smoke_timeout)
+	
+	if sprite: 
+		sprite.enable()
+	
+	if health: 
+		health.changed.connect(on_player_health_change)
+		health.reset()
 
 
 func _process(_delta: float) -> void:
@@ -115,6 +129,10 @@ func on_receive_damage(damage: Damage) -> void:
 
 func on_smoke_timeout() -> void:
 	GameManager.spawn_effect(smoke_scene, smoke_position.global_position, inputs.last_direction)
+
+
+func on_player_health_change(curr: int, max_value: int) -> void:
+	GameManager.player_health_changed.emit(curr, max_value)
 
 
 ## Private Methods

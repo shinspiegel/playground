@@ -5,15 +5,9 @@ class_name BaseLevel extends Node2D
 @export var camera: GameCamera
 @export var initial_player_pos: Marker2D
 
-var __player: Player
 
 func _ready() -> void:
 	__spawn_player()
-
-
-func _physics_process(_delta: float) -> void:
-	if Input.is_action_just_pressed("ui_cancel"):
-		__player.state_machine.change_to("die")
 
 
 ## Private Methods
@@ -33,7 +27,4 @@ func __spawn_player() -> void:
 		player.camera = camera
 		player.global_position = pos
 		
-		## REMOVE IT
-		__player = player
-	
 	add_child(player)
