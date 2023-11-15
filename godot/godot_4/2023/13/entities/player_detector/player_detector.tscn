@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://ba0pkxak0jxqu"]
+
+[ext_resource type="Script" path="res://entities/player_detector/player_detector.gd" id="1_odk37"]
+
+[node name="PlayerDetector" type="Area2D"]
+input_pickable = false
+script = ExtResource("1_odk37")
