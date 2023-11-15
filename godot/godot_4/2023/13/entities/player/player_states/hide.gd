@@ -25,3 +25,8 @@ func exit() -> void:
 func process(_delta: float) -> void:
 	if inputs.is_hide_just_pressed and __can_exit:
 		state_ended.emit("idle")
+		return
+	
+	if inputs.is_jump_just_pressed and __can_exit:
+		state_ended.emit("jump")
+		return
