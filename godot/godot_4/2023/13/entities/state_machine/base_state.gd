@@ -2,8 +2,6 @@ class_name BaseState extends Node2D
 
 signal state_ended(next_state: String)
 
-@export var state_machine: StateMachine
-
 func enter() -> void:
 	pass
 
