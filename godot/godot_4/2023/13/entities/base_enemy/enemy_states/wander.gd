@@ -5,10 +5,17 @@ extends BaseState
 @export var animation_player: AnimationPlayer
 @export var floor_ray: RayCast2D
 @export var wall_ray: RayCast2D
+@export var player_detector: PlayerDetector
+
+@export_group("State Change", "next_")
+@export var next_not_floor: BaseState
+@export var next_wall_collide: BaseState
+@export var next_player_detected: BaseState
 
 
 func enter() -> void:
 	animation_player.play(name)
+	player_detector.player_sighted.connect(on_player_sight)
 	
 	var dir := 1
 	if not enemy.facing_right:
@@ -20,6 +27,7 @@ func enter() -> void:
 
 func exit() -> void:
 	inputs.reset()
+	player_detector.player_sighted.disconnect(on_player_sight)
 
 
 func physics_process(delta: float) -> void:
@@ -28,7 +36,7 @@ func physics_process(delta: float) -> void:
 	enemy.move_and_slide()
 	
 	if not floor_ray.is_colliding():
-		state_ended.emit("idle")
+		state_ended.emit(next_not_floor.name)
 		return
 	
 	if wall_ray.is_colliding():
@@ -37,5 +45,9 @@ func physics_process(delta: float) -> void:
 		else:
 			inputs.set_direction(-1)
 		
-		state_ended.emit("idle")
+		state_ended.emit(next_wall_collide.name)
 		return 
+
+
+func on_player_sight() -> void:
+	state_ended.emit(next_player_detected.name)

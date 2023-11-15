@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://c5gsjxddudcep"]
+[gd_scene load_steps=13 format=3 uid="uid://c5gsjxddudcep"]
 
 [ext_resource type="PackedScene" uid="uid://bgt5h0f3fl6jx" path="res://entities/base_enemy/base_enemy.tscn" id="1_dax2r"]
 [ext_resource type="Script" path="res://entities/base_enemy/enemies/wander_enemy.gd" id="2_ky8ok"]
 [ext_resource type="Texture2D" uid="uid://wbjajn0lpkh4" path="res://assets/base_template/template_spriteless.png" id="3_2vmmu"]
+[ext_resource type="PackedScene" uid="uid://ba0pkxak0jxqu" path="res://entities/player_detector/player_detector.tscn" id="4_ah5ky"]
 [ext_resource type="Script" path="res://entities/base_enemy/enemy_states/idle.gd" id="4_mvpl4"]
 [ext_resource type="Script" path="res://entities/base_enemy/enemy_states/wander.gd" id="5_n6lss"]
 [ext_resource type="Script" path="res://entities/state_machine/base_state.gd" id="6_pbwv2"]
@@ -76,7 +77,6 @@ libraries = {
 [node name="Timers" type="Node" parent="." index="2"]
 
 [node name="IdleColddown" type="Timer" parent="Timers" index="0"]
-wait_time = 5.0
 one_shot = true
 
 [node name="Sprite2D" parent="." index="3"]
@@ -90,12 +90,22 @@ shape = SubResource("RectangleShape2D_jkhnl")
 
 [node name="Sensors" type="Node2D" parent="." index="5"]
 
-[node name="FrontFloorRay" type="RayCast2D" parent="Sensors" index="0"]
+[node name="PlayerDetector" parent="Sensors" index="0" node_paths=PackedStringArray("external_origin_point", "excluded_list") instance=ExtResource("4_ah5ky")]
+collision_layer = 65535
+collision_mask = 65535
+external_origin_point = NodePath("../..")
+excluded_list = [NodePath("../..")]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Sensors/PlayerDetector" index="0"]
+position = Vector2(64, -128)
+polygon = PackedVector2Array(0, 0, 192, -256, 448, -256, 448, 256, 192, 256)
+
+[node name="FrontFloorRay" type="RayCast2D" parent="Sensors" index="1"]
 position = Vector2(96, -16)
 target_position = Vector2(0, 32)
 collision_mask = 2
 
-[node name="FrontWallRay" type="RayCast2D" parent="Sensors" index="1"]
+[node name="FrontWallRay" type="RayCast2D" parent="Sensors" index="2"]
 position = Vector2(96, -16)
 target_position = Vector2(32, 0)
 collision_mask = 2
@@ -103,20 +113,26 @@ collision_mask = 2
 [node name="StateMachine" parent="." index="6" node_paths=PackedStringArray("initial_state")]
 initial_state = NodePath("Idle")
 
-[node name="Idle" type="Node2D" parent="StateMachine" index="0" node_paths=PackedStringArray("enemy", "next_state", "idle_colddown", "animation_player")]
+[node name="Idle" type="Node2D" parent="StateMachine" index="0" node_paths=PackedStringArray("enemy", "idle_colddown", "animation_player", "player_detector", "next_idle_timeout", "next_player_detection")]
 script = ExtResource("4_mvpl4")
 enemy = NodePath("../..")
-next_state = NodePath("../Wander")
 idle_colddown = NodePath("../../Timers/IdleColddown")
 animation_player = NodePath("../../AnimationPlayer")
+player_detector = NodePath("../../Sensors/PlayerDetector")
+next_idle_timeout = NodePath("../Wander")
+next_player_detection = NodePath("../Chase")
 
-[node name="Wander" type="Node2D" parent="StateMachine" index="1" node_paths=PackedStringArray("enemy", "inputs", "animation_player", "floor_ray", "wall_ray")]
+[node name="Wander" type="Node2D" parent="StateMachine" index="1" node_paths=PackedStringArray("enemy", "inputs", "animation_player", "floor_ray", "wall_ray", "player_detector", "next_not_floor", "next_wall_collide", "next_player_detected")]
 script = ExtResource("5_n6lss")
 enemy = NodePath("../..")
 inputs = NodePath("../../EnemyInputs")
 animation_player = NodePath("../../AnimationPlayer")
 floor_ray = NodePath("../../Sensors/FrontFloorRay")
 wall_ray = NodePath("../../Sensors/FrontWallRay")
+player_detector = NodePath("../../Sensors/PlayerDetector")
+next_not_floor = NodePath("../Idle")
+next_wall_collide = NodePath("../Idle")
+next_player_detected = NodePath("../Chase")
 
 [node name="Chase" type="Node2D" parent="StateMachine" index="2"]
 script = ExtResource("6_pbwv2")
