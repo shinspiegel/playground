@@ -17,6 +17,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
+Constants="*res://autoloads/constants.gd"
 GameManager="*res://autoloads/game_manager.tscn"
 SceneManager="*res://autoloads/scene_manager.tscn"
 

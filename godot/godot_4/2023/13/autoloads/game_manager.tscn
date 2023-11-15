@@ -1,14 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://pikufy1yw340"]
+[gd_scene load_steps=3 format=3 uid="uid://pikufy1yw340"]
 
 [ext_resource type="Script" path="res://autoloads/game_manager.gd" id="1_sx3qv"]
-[ext_resource type="Script" path="res://autoloads/game_data.gd" id="2_cmgh1"]
-
-[sub_resource type="Resource" id="Resource_bphfy"]
-script = ExtResource("2_cmgh1")
-last_checkpoint_pos = Vector2(0, 0)
+[ext_resource type="Resource" uid="uid://c7yyfu6nlla1u" path="res://autoloads/game_manager_resource.tres" id="2_tkjcs"]
 
 [node name="GameManager" type="Node"]
 script = ExtResource("1_sx3qv")
-game_data = SubResource("Resource_bphfy")
+game_data = ExtResource("2_tkjcs")
 
 [node name="PlayerDeathDelay" type="Timer" parent="."]

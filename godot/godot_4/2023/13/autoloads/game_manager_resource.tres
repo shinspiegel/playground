@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="GameData" load_steps=2 format=3 uid="uid://c7yyfu6nlla1u"]
+
+[ext_resource type="Script" path="res://autoloads/game_data.gd" id="1_rekto"]
+
+[resource]
+script = ExtResource("1_rekto")
+last_checkpoint_pos = Vector2(0, 0)
