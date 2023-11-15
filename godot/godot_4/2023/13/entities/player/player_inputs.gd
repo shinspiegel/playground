@@ -1,25 +1,13 @@
-class_name PlayerInputs extends Node
-
-var is_jump_just_pressed: bool = false
-var is_jump_just_released: bool = false
-var is_hide_just_pressed: bool = false
-var is_attack_just_pressed: bool = false
-var is_interact_just_pressed: bool = false
-var direction: float = 0.0
-var last_direction: float = 0.0
+class_name PlayerInputs extends BaseInputs
 
 
 func _physics_process(_delta: float) -> void:
-	__reset()
+	reset()
 	__apply_input_axis()
 	__apply_attack()
 	__apply_jump()
 	__apply_hide()
 	__apply_interact()
-
-
-func is_horizontal_zero() -> bool:
-	return direction == 0.0
 
 
 ## Private Methods
@@ -54,10 +42,3 @@ func __apply_interact() -> void:
 func __apply_attack() -> void:
 	if Input.is_action_just_pressed("attack"):
 		is_attack_just_pressed = true
-
-func __reset() -> void:
-	is_jump_just_pressed = false
-	is_jump_just_released = false
-	is_hide_just_pressed = false
-	is_attack_just_pressed = false
-	direction = 0.0

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://ckcklji2kjya6"]
+
+[ext_resource type="Script" path="res://entities/base_enemy/enemy_inputs/enemy_inputs.gd" id="1_7chsl"]
+
+[node name="EnemyInputs" type="Node"]
+script = ExtResource("1_7chsl")

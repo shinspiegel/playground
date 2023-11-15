@@ -38,4 +38,4 @@ func __change_jump_animation() -> void:
 
 func __should_change_state() -> void:
 	if player.velocity.y > 0:
-		next_state.emit("fall")
+		state_ended.emit("fall")

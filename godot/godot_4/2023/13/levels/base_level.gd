@@ -16,7 +16,7 @@ func _ready() -> void:
 func __spawn_player() -> void:
 	var pos: Vector2 = GameManager.get_last_checkpoint_pos()
 	
-	if pos == null:
+	if pos == Vector2.ZERO:
 		pos = initial_player_pos.global_position
 	
 	var player = player_scene.instantiate()

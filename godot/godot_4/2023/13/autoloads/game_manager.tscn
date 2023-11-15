@@ -6,7 +6,6 @@
 [sub_resource type="Resource" id="Resource_bphfy"]
 script = ExtResource("2_cmgh1")
 last_checkpoint_pos = Vector2(0, 0)
-last_checkpoint_name = ""
 
 [node name="GameManager" type="Node"]
 script = ExtResource("1_sx3qv")

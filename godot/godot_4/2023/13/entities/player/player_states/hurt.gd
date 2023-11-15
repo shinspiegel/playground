@@ -22,4 +22,4 @@ func physics_process(delta: float) -> void:
 
 
 func on_hurt_ended() -> void:
-	next_state.emit("idle")
+	state_ended.emit("idle")

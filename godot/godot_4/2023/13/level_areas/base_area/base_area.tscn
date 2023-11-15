@@ -13,6 +13,8 @@ format = 2
 
 [node name="Interactables" type="Node2D" parent="."]
 
+[node name="Enemies" type="Node2D" parent="."]
+
 [node name="EntryArea" type="Area2D" parent="."]
 
 [node name="Limiter" type="Node2D" parent="."]

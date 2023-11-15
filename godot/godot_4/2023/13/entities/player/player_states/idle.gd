@@ -18,19 +18,19 @@ func exit() -> void:
 
 func physics_process(_delta: float) -> void:
 	if inputs.is_jump_just_pressed:
-		next_state.emit("jump")
+		state_ended.emit("jump")
 		return 
 	if not inputs.direction == 0.0:
-		next_state.emit("move")
+		state_ended.emit("move")
 		return 
 	if not player.is_on_floor_coyote():
-		next_state.emit("Fall")
+		state_ended.emit("Fall")
 		return
 	if player.can_hide() and inputs.is_hide_just_pressed:
-		next_state.emit("hide")
+		state_ended.emit("hide")
 		return
 	if inputs.is_attack_just_pressed:
-		next_state.emit("jab")
+		state_ended.emit("jab")
 		return
 	
 	player.move_and_slide()

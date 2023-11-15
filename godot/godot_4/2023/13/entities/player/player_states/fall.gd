@@ -13,10 +13,10 @@ func enter() -> void:
 func physics_process(delta: float) -> void:
 	if player.is_on_floor():
 		if inputs.is_horizontal_zero():
-			next_state.emit("idle")
+			state_ended.emit("idle")
 			return
 		else:
-			next_state.emit("move")
+			state_ended.emit("move")
 			return
 	
 	player.apply_gravity(delta)

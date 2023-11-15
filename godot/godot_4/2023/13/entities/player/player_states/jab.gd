@@ -24,4 +24,4 @@ func physics_process(_delta: float) -> void:
 
 
 func on_attack_end() -> void:
-	next_state.emit("idle")
+	state_ended.emit("idle")

@@ -1,0 +1,140 @@
+[gd_scene load_steps=12 format=3 uid="uid://c5gsjxddudcep"]
+
+[ext_resource type="PackedScene" uid="uid://bgt5h0f3fl6jx" path="res://entities/base_enemy/base_enemy.tscn" id="1_dax2r"]
+[ext_resource type="Script" path="res://entities/base_enemy/enemies/wander_enemy.gd" id="2_ky8ok"]
+[ext_resource type="Texture2D" uid="uid://wbjajn0lpkh4" path="res://assets/base_template/template_spriteless.png" id="3_2vmmu"]
+[ext_resource type="Script" path="res://entities/base_enemy/enemy_states/idle.gd" id="4_mvpl4"]
+[ext_resource type="Script" path="res://entities/base_enemy/enemy_states/wander.gd" id="5_n6lss"]
+[ext_resource type="Script" path="res://entities/state_machine/base_state.gd" id="6_pbwv2"]
+
+[sub_resource type="Animation" id="Animation_wdpg0"]
+resource_name = "Idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4]
+}
+
+[sub_resource type="Animation" id="Animation_fj231"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_c2536"]
+resource_name = "Wander"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_riehd"]
+_data = {
+"Idle": SubResource("Animation_wdpg0"),
+"RESET": SubResource("Animation_fj231"),
+"Wander": SubResource("Animation_c2536")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jkhnl"]
+size = Vector2(128, 192)
+
+[node name="WanderEnemy" instance=ExtResource("1_dax2r")]
+script = ExtResource("2_ky8ok")
+
+[node name="AnimationPlayer" parent="." index="0"]
+libraries = {
+"": SubResource("AnimationLibrary_riehd")
+}
+
+[node name="Timers" type="Node" parent="." index="2"]
+
+[node name="IdleColddown" type="Timer" parent="Timers" index="0"]
+wait_time = 5.0
+one_shot = true
+
+[node name="Sprite2D" parent="." index="3"]
+position = Vector2(0, -96)
+texture = ExtResource("3_2vmmu")
+hframes = 5
+
+[node name="CollisionShape2D" parent="." index="4"]
+position = Vector2(0, -96)
+shape = SubResource("RectangleShape2D_jkhnl")
+
+[node name="Sensors" type="Node2D" parent="." index="5"]
+
+[node name="FrontFloorRay" type="RayCast2D" parent="Sensors" index="0"]
+position = Vector2(96, -16)
+target_position = Vector2(0, 32)
+collision_mask = 2
+
+[node name="FrontWallRay" type="RayCast2D" parent="Sensors" index="1"]
+position = Vector2(96, -16)
+target_position = Vector2(32, 0)
+collision_mask = 2
+
+[node name="StateMachine" parent="." index="6" node_paths=PackedStringArray("initial_state")]
+initial_state = NodePath("Idle")
+
+[node name="Idle" type="Node2D" parent="StateMachine" index="0" node_paths=PackedStringArray("enemy", "next_state", "idle_colddown", "animation_player", "state_machine")]
+script = ExtResource("4_mvpl4")
+enemy = NodePath("../..")
+next_state = NodePath("../Wander")
+idle_colddown = NodePath("../../Timers/IdleColddown")
+animation_player = NodePath("../../AnimationPlayer")
+state_machine = NodePath("..")
+
+[node name="Wander" type="Node2D" parent="StateMachine" index="1" node_paths=PackedStringArray("enemy", "inputs", "animation_player", "floor_ray", "wall_ray", "state_machine")]
+script = ExtResource("5_n6lss")
+enemy = NodePath("../..")
+inputs = NodePath("../../EnemyInputs")
+animation_player = NodePath("../../AnimationPlayer")
+floor_ray = NodePath("../../Sensors/FrontFloorRay")
+wall_ray = NodePath("../../Sensors/FrontWallRay")
+state_machine = NodePath("..")
+
+[node name="Chase" type="Node2D" parent="StateMachine" index="2" node_paths=PackedStringArray("state_machine")]
+script = ExtResource("6_pbwv2")
+state_machine = NodePath("..")
+
+[node name="Label" type="Label" parent="." index="7"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -64.0
+offset_top = -224.0
+offset_right = 64.0
+offset_bottom = -201.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "State::[null]"
+horizontal_alignment = 1
+vertical_alignment = 1

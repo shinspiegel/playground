@@ -32,10 +32,11 @@ color = Color(0.0784314, 0.0784314, 0.0784314, 1)
 
 [node name="GameCamera" parent="." instance=ExtResource("2_vttku")]
 
-[node name="InitialPlayerPosition" type="Marker2D" parent="."]
-
 [node name="Areas" type="Node2D" parent="."]
 
 [node name="Area_2" parent="Areas" node_paths=PackedStringArray("game_camera") instance=ExtResource("3_xh2ug")]
 position = Vector2(-704, -1664)
 game_camera = NodePath("../../GameCamera")
+
+[node name="InitialPlayerPosition" type="Marker2D" parent="."]
+position = Vector2(512, 0)

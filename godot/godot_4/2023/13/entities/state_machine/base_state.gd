@@ -1,6 +1,6 @@
 class_name BaseState extends Node2D
 
-signal next_state(state: String)
+signal state_ended(next_state: String)
 
 @export var state_machine: StateMachine
 

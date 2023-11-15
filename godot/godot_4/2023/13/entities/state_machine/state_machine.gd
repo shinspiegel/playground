@@ -50,7 +50,7 @@ func __add_states() -> void:
 	for node in get_children():
 		if node is BaseState:
 			__states[node.name.to_lower()] = node
-			node.next_state.connect(change_to)
+			node.state_ended.connect(change_to)
 
 
 func __enter_initial_state() -> void:

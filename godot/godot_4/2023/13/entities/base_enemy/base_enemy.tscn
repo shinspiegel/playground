@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://bgt5h0f3fl6jx"]
+
+[ext_resource type="PackedScene" uid="uid://dwoi3wwclj4d3" path="res://entities/state_machine/state_machine.tscn" id="1_rbkfh"]
+[ext_resource type="Script" path="res://entities/base_enemy/base_enemy.gd" id="1_s8v22"]
+[ext_resource type="PackedScene" uid="uid://ckcklji2kjya6" path="res://entities/base_enemy/enemy_inputs/enemy_inputs.tscn" id="2_0emc3"]
+
+[node name="BaseEnemy" type="CharacterBody2D" node_paths=PackedStringArray("inputs")]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_s8v22")
+inputs = NodePath("EnemyInputs")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="EnemyInputs" parent="." instance=ExtResource("2_0emc3")]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(4, 4)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+[node name="StateMachine" parent="." instance=ExtResource("1_rbkfh")]
