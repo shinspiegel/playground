@@ -29,15 +29,16 @@ func _physics_process(delta: float) -> void:
 
 
 func change_to(next_state: String) -> void:
-	if __states.get(next_state.to_lower()):
-		if __current_state:
-			__current_state.exit()
-		
-		__current_state = __states.get(next_state.to_lower())
-		__current_state.enter()
-		state_changed.emit(next_state)
-	else:
-		print_debug("Could not find state for: [%s]" % [next_state])
+	if not __states.get(next_state.to_lower()):
+		print_debug("Could not find state for: [%s], using initial: [%s]" % [next_state, initial_state.name.to_lower()])
+		next_state = initial_state.name.to_lower()
+	
+	if __current_state:
+		__current_state.exit()
+	
+	__current_state = __states.get(next_state.to_lower())
+	__current_state.enter()
+	state_changed.emit(next_state)
 
 
 func get_current_state() -> BaseState: 
@@ -58,5 +59,7 @@ func __enter_initial_state() -> void:
 		__current_state = initial_state
 	elif __states.size() > 0:
 		__current_state = __states.values()[0]
+	else:
+		print_debug("WARN::No initial state, this may crash the game.")
 	
 	__current_state.enter()
