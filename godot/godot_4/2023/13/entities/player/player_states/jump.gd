@@ -7,7 +7,7 @@ extends BaseState
 
 func enter() -> void:
 	animation_player.jump_up()
-	player.velocity.y = -player.JUMP_VELOCITY
+	player.velocity.y = -Constants.JUMP_VELOCITY
 
 
 func process(_delta: float) -> void:

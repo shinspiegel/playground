@@ -66,6 +66,7 @@ size = Vector2(128, 192)
 
 [node name="WanderEnemy" instance=ExtResource("1_dax2r")]
 script = ExtResource("2_ky8ok")
+speed_ratio = 0.5
 
 [node name="AnimationPlayer" parent="." index="0"]
 libraries = {
@@ -102,26 +103,23 @@ collision_mask = 2
 [node name="StateMachine" parent="." index="6" node_paths=PackedStringArray("initial_state")]
 initial_state = NodePath("Idle")
 
-[node name="Idle" type="Node2D" parent="StateMachine" index="0" node_paths=PackedStringArray("enemy", "next_state", "idle_colddown", "animation_player", "state_machine")]
+[node name="Idle" type="Node2D" parent="StateMachine" index="0" node_paths=PackedStringArray("enemy", "next_state", "idle_colddown", "animation_player")]
 script = ExtResource("4_mvpl4")
 enemy = NodePath("../..")
 next_state = NodePath("../Wander")
 idle_colddown = NodePath("../../Timers/IdleColddown")
 animation_player = NodePath("../../AnimationPlayer")
-state_machine = NodePath("..")
 
-[node name="Wander" type="Node2D" parent="StateMachine" index="1" node_paths=PackedStringArray("enemy", "inputs", "animation_player", "floor_ray", "wall_ray", "state_machine")]
+[node name="Wander" type="Node2D" parent="StateMachine" index="1" node_paths=PackedStringArray("enemy", "inputs", "animation_player", "floor_ray", "wall_ray")]
 script = ExtResource("5_n6lss")
 enemy = NodePath("../..")
 inputs = NodePath("../../EnemyInputs")
 animation_player = NodePath("../../AnimationPlayer")
 floor_ray = NodePath("../../Sensors/FrontFloorRay")
 wall_ray = NodePath("../../Sensors/FrontWallRay")
-state_machine = NodePath("..")
 
-[node name="Chase" type="Node2D" parent="StateMachine" index="2" node_paths=PackedStringArray("state_machine")]
+[node name="Chase" type="Node2D" parent="StateMachine" index="2"]
 script = ExtResource("6_pbwv2")
-state_machine = NodePath("..")
 
 [node name="Label" type="Label" parent="." index="7"]
 anchors_preset = 7

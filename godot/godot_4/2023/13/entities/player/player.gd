@@ -1,11 +1,5 @@
 class_name Player extends CharacterBody2D
 
-const MULTIPLIER = 100.0
-const SPEED = 10.0 * MULTIPLIER
-const JUMP_VELOCITY = 20.0 * MULTIPLIER
-const GRAVITY = 60 * MULTIPLIER
-const ACCELERATION = 0.2
-
 @export var camera: Camera2D
 
 @export_group("Heath")
@@ -70,7 +64,7 @@ func _physics_process(delta: float) -> void:
 
 
 func apply_gravity(delta: float, ratio: float = 1.0) -> void:
-	velocity.y += GRAVITY * delta * ratio
+	velocity.y += Constants.GRAVITY * delta * ratio
 
 
 func is_horizontal_zero() -> bool:
@@ -78,8 +72,8 @@ func is_horizontal_zero() -> bool:
 
 
 func apply_horizontal_force(direction: float, friction: float = 1.0, ratio: float = 1.0) -> void:
-	velocity.x = lerp(velocity.x, direction * SPEED * friction * ratio, ACCELERATION)
-	velocity.x = clamp(velocity.x, -SPEED, SPEED)
+	velocity.x = lerp(velocity.x, direction * Constants.SPEED * friction * ratio, Constants.ACCELERATION)
+	velocity.x = clamp(velocity.x, -Constants.SPEED, Constants.SPEED)
 
 
 func is_on_floor_coyote() -> bool:
@@ -161,13 +155,13 @@ func __apply_damage(damage: Damage) -> void:
 	var horizontal_dir = clampf(global_position.x - damage.source_position.x, -1, 1)
 	var vertical_dir = clampf(damage.source_position.y - global_position.y, -1, 1)
 	
-	velocity.x = horizontal_dir * SPEED * (damage.impact * MULTIPLIER)
-	velocity.y = -(vertical_dir * SPEED * (damage.impact / 10.0))
+	velocity.x = horizontal_dir * Constants.SPEED * (damage.impact * Constants.MULTIPLIER)
+	velocity.y = -(vertical_dir * Constants.SPEED * (damage.impact / 10.0))
 
 
 func __update_camera_distance(delta: float) -> void:
 	if abs(velocity.x) > camera_min_velocity:
-		var ratio =  abs(velocity.x) / SPEED
+		var ratio =  abs(velocity.x) / Constants.SPEED
 		var dist = ratio * camera_max_distance
 		camera_holder.position.x = lerpf(camera_holder.position.x, dist * camera_max_distance * delta, camera_speed_weight / 100)
 		camera_holder.position.x = clampf(camera_holder.position.x, 0, camera_max_distance)
