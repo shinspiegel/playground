@@ -1,0 +1,9 @@
+{
+	"[http]": { "editor.insertSpaces": true, },
+	"editor.defaultFormatter": "golang.go",
+	"editor.formatOnSave": false,
+	"editor.insertSpaces": false,
+	"editor.renderWhitespace": "boundary",
+	"editor.tabSize": 4,
+	"gopls": { "ui.semanticTokens": true, "formatting.gofumpt": true }
+}
