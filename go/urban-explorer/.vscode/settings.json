@@ -1,7 +1,9 @@
 {
     "workbench.colorTheme": "Transparent Color Theme",
     "editor.tabSize": 4,
+    "editor.renderWhitespace": "all",
     "cSpell.words": [
-        "sqlite"
+        "sqlite",
+        "urbanexplorer"
     ],
 }
