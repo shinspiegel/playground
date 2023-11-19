@@ -2,6 +2,7 @@ package repository
 
 import (
 	"database/sql"
+	"os"
 
 	_ "github.com/mattn/go-sqlite3"
 )
@@ -11,7 +12,8 @@ type Database struct {
 }
 
 func NewDatabase() (*Database, error) {
-	db, err := sql.Open("sqlite3", "database.sqlite")
+	dbPath := os.Getenv("HOST")
+	db, err := sql.Open("sqlite3", dbPath)
 	if err != nil {
 		return nil, err
 	}
