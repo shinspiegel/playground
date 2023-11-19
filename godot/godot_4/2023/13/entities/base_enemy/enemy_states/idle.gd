@@ -1,18 +1,22 @@
 extends BaseState
 
 @export var enemy: BaseEnemy
-@export var idle_colddown: Timer
 @export var animation_player: AnimationPlayer
 @export var player_detector: PlayerDetector
+@export var anim_name: String = ""
 
-@export_group("State Change", "next_")
-@export var next_idle_timeout: BaseState
-@export var next_player_detection: BaseState
-
+@export_group("Idle Config", "idle_")
+@export var idle_colddown: Timer
+@export var idle_next_state_timeout: BaseState
+@export var idle_next_state_player_sighted: BaseState
 
 
 func enter() -> void:
-	animation_player.play(name)
+	if anim_name.is_empty():
+		animation_player.play(name)
+	else:
+		animation_player.play(anim_name)
+
 	idle_colddown.start()
 	enemy.velocity = Vector2.ZERO
 	idle_colddown.timeout.connect(on_time_out)
@@ -25,8 +29,8 @@ func exit() -> void:
 
 
 func on_time_out() -> void:
-	state_ended.emit(next_idle_timeout.name)
+	state_ended.emit(idle_next_state_timeout.name)
 
 
 func on_player_sight() -> void:
-	state_ended.emit(next_player_detection.name)
+	state_ended.emit(idle_next_state_player_sighted.name)

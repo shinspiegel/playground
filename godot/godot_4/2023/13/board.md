@@ -29,6 +29,7 @@
 		- [ ] Watchguard
 		- [ ] Hovering drone
 		- [ ] Turret
+		- [ ] Alert Camera
 - [ ] Hazards
 	- [ ] Spikes
 	- [ ] Laser

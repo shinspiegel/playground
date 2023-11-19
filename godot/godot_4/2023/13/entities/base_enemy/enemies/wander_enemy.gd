@@ -3,7 +3,6 @@ extends BaseEnemy
 @onready var state_machine: StateMachine = $StateMachine
 @onready var label: Label = $Label
 
-
 func _ready() -> void:
 	super._ready()
 	state_machine.state_changed.connect(on_state_change)

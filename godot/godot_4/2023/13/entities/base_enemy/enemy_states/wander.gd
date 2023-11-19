@@ -3,6 +3,9 @@ extends BaseState
 @export var enemy: BaseEnemy
 @export var inputs: EnemyInput
 @export var animation_player: AnimationPlayer
+@export var anim_name: String = ""
+
+@export_group("Sensors")
 @export var floor_ray: RayCast2D
 @export var wall_ray: RayCast2D
 @export var player_detector: PlayerDetector
@@ -14,9 +17,13 @@ extends BaseState
 
 
 func enter() -> void:
-	animation_player.play(name)
+	if anim_name.is_empty():
+		animation_player.play(name)
+	else:
+		animation_player.play(anim_name)
+
 	player_detector.player_sighted.connect(on_player_sight)
-	
+
 	var dir := 1
 	if not enemy.facing_right:
 		dir *= -1
@@ -34,19 +41,19 @@ func physics_process(delta: float) -> void:
 	enemy.apply_gravity(delta)
 	enemy.apply_horizontal_force()
 	enemy.move_and_slide()
-	
+
 	if not floor_ray.is_colliding():
 		state_ended.emit(next_not_floor.name)
 		return
-	
+
 	if wall_ray.is_colliding():
 		if inputs.last_direction < 0:
 			inputs.set_direction(1)
 		else:
 			inputs.set_direction(-1)
-		
+
 		state_ended.emit(next_wall_collide.name)
-		return 
+		return
 
 
 func on_player_sight() -> void:

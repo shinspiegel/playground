@@ -21,7 +21,7 @@ func set_checkpoint(check: CheckPoint) -> void:
 	if not __last_checkpoint == check:
 		if not __last_checkpoint == null:
 			__last_checkpoint.disable()
-		
+
 		__last_checkpoint = check
 		game_data.last_checkpoint_pos = check.global_position
 
@@ -33,10 +33,10 @@ func get_last_checkpoint_pos() -> Vector2:
 func spawn_effect(effect_scene: PackedScene, position: Vector2 = Vector2.ZERO, direction: float = 1.0) -> void:
 	var effect = effect_scene.instantiate()
 	effect.global_position = position
-	
+
 	if effect is SelfFreeEffect:
 		effect.set_direction(direction)
-	
+
 	get_tree().root.add_child(effect)
 
 
