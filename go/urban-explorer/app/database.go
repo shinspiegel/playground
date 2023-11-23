@@ -25,6 +25,10 @@ func (db *Database) Query(query string) (*sql.Rows, error) {
 	return db.conn.Query(query)
 }
 
+func (db *Database) Prepare(query string) (*sql.Stmt, error) {
+	return db.conn.Prepare(query)
+}
+
 func (db *Database) Close() error {
 	return db.conn.Close()
 }
