@@ -35,10 +35,10 @@ func (r *AlbumRepo) GetAlbums() []models.Album {
 		rowData := models.Album{}
 
 		if err := rows.Scan(
-			rowData.ID,
-			rowData.Title,
-			rowData.Artist,
-			rowData.Price,
+			&rowData.ID,
+			&rowData.Title,
+			&rowData.Artist,
+			&rowData.Price,
 		); err != nil {
 			log.Fatal(err)
 		}
@@ -53,17 +53,19 @@ func (r *AlbumRepo) GetAlbums() []models.Album {
 	return list
 }
 
-func (r *AlbumRepo) GetAlbumByID() []models.Album {
+func (r *AlbumRepo) GetAlbumByID(id int64) []models.Album {
 	db, err := database.NewSQLite()
 	if err != nil {
 		log.Fatal(err)
 	}
 	defer db.Close()
 
-	rows, err := db.Query(`
+	rows, err := db.Query(`	
 		SELECT id, title, artist, price 
 		FROM albums
-	`)
+		WHERE id = ?`,
+		id,
+	)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -75,10 +77,10 @@ func (r *AlbumRepo) GetAlbumByID() []models.Album {
 		rowData := models.Album{}
 
 		if err := rows.Scan(
-			rowData.ID,
-			rowData.Title,
-			rowData.Artist,
-			rowData.Price,
+			&rowData.ID,
+			&rowData.Title,
+			&rowData.Artist,
+			&rowData.Price,
 		); err != nil {
 			log.Fatal(err)
 		}
@@ -93,41 +95,32 @@ func (r *AlbumRepo) GetAlbumByID() []models.Album {
 	return list
 }
 
-func (r *AlbumRepo) InsertAlbum(album *models.Album) (*models.Album, error) {
+func (r *AlbumRepo) InsertAlbum(album *models.Album) *models.Album {
 	db, err := database.NewSQLite()
 	if err != nil {
 		log.Fatal(err)
 	}
 	defer db.Close()
 
-	stmt, err := db.Prepare(`
+	rows, err := db.Query(`
 		INSERT INTO albums
 			(title, artist, price)
 		VALUES
 			(?, ?, ?)
 		RETURNING
-			id
-	`)
-	if err != nil {
-		return nil, err
-	}
-	defer stmt.Close()
-
-	result, err := stmt.Exec(
+			id`,
 		album.Title,
 		album.Artist,
 		album.Price,
 	)
+
 	if err != nil {
-		return nil, err
+		log.Fatal(err)
 	}
+	defer rows.Close()
 
-	id, err := result.LastInsertId()
-	if err != nil {
-		return nil, err
-	}
+	rows.Next()
+	rows.Scan(&album.ID)
 
-	album.ID = id
-
-	return album, nil
+	return album
 }

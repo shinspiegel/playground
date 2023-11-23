@@ -21,8 +21,8 @@ func NewSQLite() (*Database, error) {
 	return &Database{conn: db}, nil
 }
 
-func (db *Database) Query(query string) (*sql.Rows, error) {
-	return db.conn.Query(query)
+func (db *Database) Query(query string, args ...any) (*sql.Rows, error) {
+	return db.conn.Query(query, args...)
 }
 
 func (db *Database) Prepare(query string) (*sql.Stmt, error) {
