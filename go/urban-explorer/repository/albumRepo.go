@@ -108,6 +108,9 @@ func (r *AlbumRepo) InsertAlbum(album *models.Album) (*models.Album, error) {
 		RETURNING
 			id
 	`)
+	if err != nil {
+		return nil, err
+	}
 	defer stmt.Close()
 
 	result, err := stmt.Exec(
