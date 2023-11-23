@@ -1,4 +1,4 @@
-package repository
+package app
 
 import (
 	"database/sql"
@@ -12,7 +12,7 @@ type Database struct {
 }
 
 func NewDatabase() (*Database, error) {
-	dbPath := os.Getenv("HOST")
+	dbPath := os.Getenv("DATABASE")
 	db, err := sql.Open("sqlite3", dbPath)
 	if err != nil {
 		return nil, err

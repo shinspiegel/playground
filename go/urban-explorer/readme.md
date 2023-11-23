@@ -1,3 +1,3 @@
 # Starting Server on Local
 
-`go run main.go`
+`go run main.go -env ./.env`

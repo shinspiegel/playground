@@ -1,9 +1,12 @@
 package repository
 
-import "log"
+import (
+	"log"
+	"urban-explorer/app"
+)
 
 func GetAlbums() {
-	db, err := NewDatabase()
+	db, err := app.NewDatabase()
 
 	if err != nil {
 		log.Fatal(err)

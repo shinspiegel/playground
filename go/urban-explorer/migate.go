@@ -2,11 +2,12 @@ package main
 
 import (
 	"log"
+	"urban-explorer/app"
 	"urban-explorer/repository"
 )
 
 func main() {
-	db, err := repository.NewDatabase()
+	db, err := app.NewDatabase()
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -17,7 +18,7 @@ func main() {
 	selectUsers(db)
 }
 
-func createUserTabe(db *repository.Database) {
+func createUserTabe(db *app.Database) {
 	rows, err := db.Query(`
 		CREATE TABLE IF NOT EXISTS users (
 			id INTEGER PRIMARY KEY AUTOINCREMENT,
