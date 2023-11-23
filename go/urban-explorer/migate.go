@@ -1,12 +1,13 @@
 package main
 
 import (
+	"fmt"
 	"log"
-	"urban-explorer/app"
+	"urban-explorer/database"
 )
 
 func main() {
-	db, err := app.NewDatabase()
+	db, err := database.NewSQLite()
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -22,10 +23,14 @@ func main() {
 	`)
 }
 
-func query(db *app.Database, query string) {
+func query(db *database.Database, query string) {
 	rows, err := db.Query(query)
 	if err != nil {
 		log.Fatal(err)
 	}
 	defer rows.Close()
+
+	for rows.Next() {
+		fmt.Println("%v", rows)
+	}
 }

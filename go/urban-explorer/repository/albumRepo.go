@@ -2,12 +2,19 @@ package repository
 
 import (
 	"log"
-	"urban-explorer/app"
+	"urban-explorer/database"
 	"urban-explorer/models"
 )
 
-func GetAlbums() []models.Album {
-	db, err := app.NewDatabase()
+type AlbumRepo struct {
+}
+
+func NewAlbumRepo() *AlbumRepo {
+	return &AlbumRepo{}
+}
+
+func (r *AlbumRepo) GetAlbums() []models.Album {
+	db, err := database.NewSQLite()
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -15,7 +22,7 @@ func GetAlbums() []models.Album {
 
 	rows, err := db.Query(`
 		SELECT id, title, artist, price 
-		FROM users
+		FROM albums
 	`)
 	if err != nil {
 		log.Fatal(err)
@@ -46,8 +53,48 @@ func GetAlbums() []models.Album {
 	return list
 }
 
-func InsertAlbum(album *models.Album) (*models.Album, error) {
-	db, err := app.NewDatabase()
+func (r *AlbumRepo) GetAlbumByID() []models.Album {
+	db, err := database.NewSQLite()
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer db.Close()
+
+	rows, err := db.Query(`
+		SELECT id, title, artist, price 
+		FROM albums
+	`)
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer rows.Close()
+
+	list := []models.Album{}
+
+	for rows.Next() {
+		rowData := models.Album{}
+
+		if err := rows.Scan(
+			rowData.ID,
+			rowData.Title,
+			rowData.Artist,
+			rowData.Price,
+		); err != nil {
+			log.Fatal(err)
+		}
+
+		list = append(list, rowData)
+	}
+
+	if err := rows.Err(); err != nil {
+		log.Fatal(err)
+	}
+
+	return list
+}
+
+func (r *AlbumRepo) InsertAlbum(album *models.Album) (*models.Album, error) {
+	db, err := database.NewSQLite()
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -80,5 +127,4 @@ func InsertAlbum(album *models.Album) (*models.Album, error) {
 	album.ID = id
 
 	return album, nil
-
 }

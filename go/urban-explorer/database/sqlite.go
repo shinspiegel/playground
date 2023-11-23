@@ -1,4 +1,4 @@
-package app
+package database
 
 import (
 	"database/sql"
@@ -11,7 +11,7 @@ type Database struct {
 	conn *sql.DB
 }
 
-func NewDatabase() (*Database, error) {
+func NewSQLite() (*Database, error) {
 	dbPath := os.Getenv("DATABASE")
 	db, err := sql.Open("sqlite3", dbPath)
 	if err != nil {

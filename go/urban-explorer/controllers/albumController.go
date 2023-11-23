@@ -7,35 +7,30 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-var albums = []models.Album{
-	{ID: "1", Title: "Blue Train", Artist: "John Coltrane", Price: 56.99},
-	{ID: "2", Title: "Jeru", Artist: "Gerry Mulligan", Price: 17.99},
-	{ID: "3", Title: "Sarah Vaughan and Clifford Brown", Artist: "Sarah Vaughan", Price: 39.99},
+var albums = []models.Album{}
+
+type AlbumRepository interface {
+	GetAlbums() []models.Album
 }
 
-func GetAlbums(c *gin.Context) {
-	c.IndentedJSON(http.StatusOK, albums)
+type AlbumController struct {
+	repository AlbumRepository
 }
 
-func PostAlbums(c *gin.Context) {
-	var newAlbum models.Album
-
-	if err := c.BindJSON(&newAlbum); err != nil {
-		return
+func NewAlbumController(repository AlbumRepository) *AlbumController {
+	return &AlbumController{
+		repository: repository,
 	}
-
-	albums = append(albums, newAlbum)
-	c.IndentedJSON(http.StatusCreated, newAlbum)
 }
 
-func GetAlbumByID(c *gin.Context) {
-	id := c.Param("id")
+func (ct *AlbumController) GetAlbums(c *gin.Context) {
+	c.IndentedJSON(http.StatusOK, ct.repository.GetAlbums())
+}
 
-	for _, a := range albums {
-		if a.ID == id {
-			c.IndentedJSON(http.StatusOK, a)
-			return
-		}
-	}
-	c.IndentedJSON(http.StatusNotFound, gin.H{"message": "album not found"})
+func (ct *AlbumController) GetAlbumById(c *gin.Context) {
+	c.IndentedJSON(http.StatusOK, ct.repository.GetAlbums())
+}
+
+func (ct *AlbumController) PostAlbum(c *gin.Context) {
+	c.IndentedJSON(http.StatusOK, ct.repository.GetAlbums())
 }
