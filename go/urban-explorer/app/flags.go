@@ -8,12 +8,13 @@ type Flags struct {
 }
 
 func NewFlags() *Flags {
-	f := Flags{
-		EnvFile: *flag.String("env", "", "Path to the .env file"),
-		IsTest:  *flag.Bool("test", false, "Test Environment"),
-	}
+	envFile := flag.String("env", "", "Path to the .env file")
+	isTest := flag.Bool("test", false, "Test Environment")
 
 	flag.Parse()
 
-	return &f
+	return &Flags{
+		EnvFile: *envFile,
+		IsTest:  *isTest,
+	}
 }
