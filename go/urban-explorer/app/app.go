@@ -1,23 +1,27 @@
 package app
 
 import (
+	"log"
 	"os"
 	"urban-explorer/controllers"
 	"urban-explorer/repository"
 
 	"github.com/gin-gonic/gin"
+	"github.com/joho/godotenv"
 )
 
 type App struct {
 	router *gin.Engine
+	flags  Flags
 }
 
 func NewApp() *App {
-	ReadEnv()
-
 	app := App{
 		router: gin.Default(),
+		flags:  *NewFlags(),
 	}
+
+	app.readEnv()
 
 	app.addAlbumRoutes()
 
@@ -29,6 +33,15 @@ func (app *App) Run() {
 	port := os.Getenv("PORT")
 
 	app.router.Run(host + ":" + port)
+}
+
+func (app *App) readEnv() {
+	if app.flags.EnvFile != "" {
+		err := godotenv.Load(app.flags.EnvFile)
+		if err != nil {
+			log.Fatalf("Fail to load ['%v'] the environment.", app.flags.EnvFile)
+		}
+	}
 }
 
 func (app *App) addAlbumRoutes() {
