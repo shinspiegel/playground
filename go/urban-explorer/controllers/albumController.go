@@ -24,30 +24,38 @@ func NewAlbumController(repository AlbumRepository) *AlbumController {
 	}
 }
 
-func (ct *AlbumController) GetAlbums(c *gin.Context) {
-	c.IndentedJSON(http.StatusOK, ct.repository.GetAlbums())
+func (c *AlbumController) GetAlbums(ctx *gin.Context) {
+	ctx.IndentedJSON(http.StatusOK, c.repository.GetAlbums())
 }
 
-func (ct *AlbumController) GetAlbumById(c *gin.Context) {
-	idParam := c.Param("id")
+func (c *AlbumController) GetAlbumById(ctx *gin.Context) {
+	idParam := ctx.Param("id")
 	id, err := strconv.ParseInt(idParam, 10, 64)
 
 	if err != nil {
-		c.String(http.StatusBadRequest, "Invalid id. ID should be a number.")
+		ctx.String(http.StatusBadRequest, "Invalid id. ID should be a number.")
 		return
 	}
 
-	c.IndentedJSON(http.StatusOK, ct.repository.GetAlbumByID(id))
+	ctx.IndentedJSON(http.StatusOK, c.repository.GetAlbumByID(id))
 }
 
-func (ct *AlbumController) PostAlbum(c *gin.Context) {
+func (c *AlbumController) PostAlbum(ctx *gin.Context) {
 	album := models.Album{}
-	err := c.BindJSON(&album)
+	err := ctx.BindJSON(&album)
 
 	if err != nil {
-		c.String(http.StatusBadRequest, "Invalid JSON body.")
+		ctx.String(http.StatusBadRequest, "Invalid JSON body.")
 		return
 	}
 
-	c.IndentedJSON(http.StatusOK, ct.repository.InsertAlbum(&album))
+	ctx.IndentedJSON(http.StatusOK, c.repository.InsertAlbum(&album))
+}
+
+func (c *AlbumController) UpdateAlbum(ctx *gin.Context) {
+	ctx.String(http.StatusNotImplemented, "Not implemented")
+}
+
+func (c *AlbumController) DeleteAlbumById(ctx *gin.Context) {
+	ctx.String(http.StatusNotImplemented, "Not implemented")
 }

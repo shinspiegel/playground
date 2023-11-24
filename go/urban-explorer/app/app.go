@@ -2,6 +2,8 @@ package app
 
 import (
 	"os"
+	"urban-explorer/controllers"
+	"urban-explorer/repository"
 
 	"github.com/gin-gonic/gin"
 )
@@ -10,22 +12,14 @@ type App struct {
 	router *gin.Engine
 }
 
-type AlbumController interface {
-	GetAlbums(c *gin.Context)
-	GetAlbumById(c *gin.Context)
-	PostAlbum(c *gin.Context)
-}
-
-func NewApp(abc AlbumController) *App {
+func NewApp() *App {
 	ReadEnv()
 
 	app := App{
 		router: gin.Default(),
 	}
 
-	app.router.GET("/albums", abc.GetAlbums)
-	app.router.GET("/albums/:id", abc.GetAlbumById)
-	app.router.POST("/albums", abc.PostAlbum)
+	app.addAlbumRoutes()
 
 	return &app
 }
@@ -35,4 +29,15 @@ func (app *App) Run() {
 	port := os.Getenv("PORT")
 
 	app.router.Run(host + ":" + port)
+}
+
+func (app *App) addAlbumRoutes() {
+	albumRepo := repository.NewAlbumRepo()
+	albumController := controllers.NewAlbumController(albumRepo)
+
+	app.router.GET("/albums", albumController.GetAlbums)
+	app.router.GET("/albums/:id", albumController.GetAlbumById)
+	app.router.PUT("/albums/:id", albumController.UpdateAlbum)
+	app.router.DELETE("/albums/:id", albumController.DeleteAlbumById)
+	app.router.POST("/albums", albumController.PostAlbum)
 }

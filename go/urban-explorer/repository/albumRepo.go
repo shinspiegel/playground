@@ -124,3 +124,11 @@ func (r *AlbumRepo) InsertAlbum(album *models.Album) *models.Album {
 
 	return album
 }
+
+func (r *AlbumRepo) Update(album *models.Album) *models.Album {
+	return album
+}
+
+func (r *AlbumRepo) DeleteById(id int64) {
+
+}
