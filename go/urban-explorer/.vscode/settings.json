@@ -1,12 +1,14 @@
 {
-    "editor.tabSize": 4,
-    "editor.renderWhitespace": "all",
-    "cSpell.words": [
-        "AUTOINCREMENT",
-        "godotenv",
-        "gonic",
-        "joho",
-        "sqlite",
-        "urbanexplorer"
-    ],
+	"editor.tabSize": 4,
+	"editor.renderWhitespace": "all",
+	"editor.useTabStops": true,
+	"editor.insertSpaces": false,
+	"cSpell.words": [
+		"AUTOINCREMENT",
+		"godotenv",
+		"gonic",
+		"joho",
+		"sqlite",
+		"urbanexplorer"
+	],
 }
