@@ -9,9 +9,11 @@ import (
 )
 
 type AlbumRepository interface {
-	GetAlbums() []models.Album
-	GetAlbumByID(int64) []models.Album
-	InsertAlbum(album *models.Album) *models.Album
+	GetAll() []models.Album
+	GetById(int64) []models.Album
+	Insert(album *models.Album) *models.Album
+	Update(album *models.Album) *models.Album
+	DeleteById(int64) *models.Album
 }
 
 type AlbumController struct {
@@ -25,19 +27,17 @@ func NewAlbumController(repository AlbumRepository) *AlbumController {
 }
 
 func (c *AlbumController) GetAlbums(ctx *gin.Context) {
-	ctx.IndentedJSON(http.StatusOK, c.repository.GetAlbums())
+	ctx.IndentedJSON(http.StatusOK, c.repository.GetAll())
 }
 
 func (c *AlbumController) GetAlbumById(ctx *gin.Context) {
-	idParam := ctx.Param("id")
-	id, err := strconv.ParseInt(idParam, 10, 64)
-
+	id, err := strconv.ParseInt(ctx.Param("id"), 10, 64)
 	if err != nil {
 		ctx.String(http.StatusBadRequest, "Invalid id. ID should be a number.")
 		return
 	}
 
-	ctx.IndentedJSON(http.StatusOK, c.repository.GetAlbumByID(id))
+	ctx.IndentedJSON(http.StatusOK, c.repository.GetById(id))
 }
 
 func (c *AlbumController) PostAlbum(ctx *gin.Context) {
@@ -49,13 +49,26 @@ func (c *AlbumController) PostAlbum(ctx *gin.Context) {
 		return
 	}
 
-	ctx.IndentedJSON(http.StatusOK, c.repository.InsertAlbum(&album))
+	ctx.IndentedJSON(http.StatusOK, c.repository.Insert(&album))
 }
 
 func (c *AlbumController) UpdateAlbum(ctx *gin.Context) {
-	ctx.String(http.StatusNotImplemented, "Not implemented")
+	album := models.Album{}
+	err := ctx.BindJSON(album)
+
+	if err != nil {
+		ctx.String(http.StatusBadRequest, "Invalid JSON body.")
+	}
+
+	ctx.IndentedJSON(http.StatusOK, c.repository.Update(&album))
 }
 
 func (c *AlbumController) DeleteAlbumById(ctx *gin.Context) {
-	ctx.String(http.StatusNotImplemented, "Not implemented")
+	id, err := strconv.ParseInt(ctx.Param("id"), 10, 64)
+	if err != nil {
+		ctx.String(http.StatusBadRequest, "Invalid id. Id should be a number.")
+		return
+	}
+
+	ctx.IndentedJSON(http.StatusOK, c.repository.DeleteById(id))
 }

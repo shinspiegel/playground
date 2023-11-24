@@ -13,7 +13,7 @@ func NewAlbumRepo() *AlbumRepo {
 	return &AlbumRepo{}
 }
 
-func (r *AlbumRepo) GetAlbums() []models.Album {
+func (r *AlbumRepo) GetAll() []models.Album {
 	db, err := database.NewSQLite()
 	if err != nil {
 		log.Fatal(err)
@@ -53,7 +53,7 @@ func (r *AlbumRepo) GetAlbums() []models.Album {
 	return list
 }
 
-func (r *AlbumRepo) GetAlbumByID(id int64) []models.Album {
+func (r *AlbumRepo) GetById(id int64) []models.Album {
 	db, err := database.NewSQLite()
 	if err != nil {
 		log.Fatal(err)
@@ -95,7 +95,7 @@ func (r *AlbumRepo) GetAlbumByID(id int64) []models.Album {
 	return list
 }
 
-func (r *AlbumRepo) InsertAlbum(album *models.Album) *models.Album {
+func (r *AlbumRepo) Insert(album *models.Album) *models.Album {
 	db, err := database.NewSQLite()
 	if err != nil {
 		log.Fatal(err)
@@ -129,6 +129,6 @@ func (r *AlbumRepo) Update(album *models.Album) *models.Album {
 	return album
 }
 
-func (r *AlbumRepo) DeleteById(id int64) {
-
+func (r *AlbumRepo) DeleteById(id int64) *models.Album {
+	return &models.Album{}
 }
