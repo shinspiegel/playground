@@ -1,6 +1,7 @@
 package repository
 
 import (
+	"database/sql"
 	"log"
 	"urban-explorer/database"
 	"urban-explorer/models"
@@ -62,8 +63,9 @@ func (r *AlbumRepo) GetById(id int64) []models.Album {
 	rows := db.Query(`	
 		SELECT id, title, artist, price 
 		FROM albums
-		WHERE id = ?`,
-		id,
+		WHERE id = :id
+		`,
+		sql.Named("id", id),
 	)
 	defer rows.Close()
 
@@ -99,12 +101,13 @@ func (r *AlbumRepo) Insert(album *models.Album) *models.Album {
 		INSERT INTO albums
 			(title, artist, price)
 		VALUES
-			(?, ?, ?)
+			(:title, :artist, :price)
 		RETURNING
-			id`,
-		album.Title,
-		album.Artist,
-		album.Price,
+			id
+		`,
+		sql.Named("title", album.Title),
+		sql.Named("artist", album.Artist),
+		sql.Named("price", album.Price),
 	)
 
 	defer rows.Close()
@@ -116,9 +119,38 @@ func (r *AlbumRepo) Insert(album *models.Album) *models.Album {
 }
 
 func (r *AlbumRepo) Update(album *models.Album) *models.Album {
+	db := r.getDB()
+	defer db.Close()
+
+	rows := db.Query(`
+		UPDATE albums
+		SET title = :title, artist = :artist, price = :price
+		WHERE id = :id
+	`,
+		sql.Named("id", album.ID),
+		sql.Named("title", album.Title),
+		sql.Named("artist", album.Artist),
+		sql.Named("price", album.Price),
+	)
+	defer rows.Close()
+
+	if err := rows.Err(); err != nil {
+		log.Fatal(err)
+	}
+
 	return album
 }
 
 func (r *AlbumRepo) DeleteById(id int64) *models.Album {
+	db := r.getDB()
+	defer db.Close()
+
+	db.Query(`
+		DELETE FROM albums
+		WHERE id = :id
+	`,
+		sql.Named("id", id),
+	)
+
 	return &models.Album{}
 }

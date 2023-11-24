@@ -49,15 +49,16 @@ func (c *AlbumController) PostAlbum(ctx *gin.Context) {
 		return
 	}
 
-	ctx.IndentedJSON(http.StatusOK, c.repository.Insert(&album))
+	ctx.IndentedJSON(http.StatusCreated, c.repository.Insert(&album))
 }
 
 func (c *AlbumController) UpdateAlbum(ctx *gin.Context) {
 	album := models.Album{}
-	err := ctx.BindJSON(album)
+	err := ctx.BindJSON(&album)
 
 	if err != nil {
 		ctx.String(http.StatusBadRequest, "Invalid JSON body.")
+		return
 	}
 
 	ctx.IndentedJSON(http.StatusOK, c.repository.Update(&album))
