@@ -23,9 +23,9 @@ func (r *UserRepo) IsEmailUsed(email *string) bool {
 	defer db.Close()
 
 	result := db.Exec(`
-		SELECT 
+		SELECT
 			email
-		FROM 
+		FROM
 			users
 		WHERE
 			email = :email

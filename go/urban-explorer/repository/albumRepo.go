@@ -19,8 +19,10 @@ func (r *AlbumRepo) GetAll() []models.Album {
 	defer db.Close()
 
 	rows := db.Query(`
-		SELECT id, title, artist, price 
-		FROM albums
+		SELECT
+			id, title, artist, price
+		FROM
+			albums
 	`)
 	defer rows.Close()
 
@@ -53,9 +55,12 @@ func (r *AlbumRepo) GetById(id int64) []models.Album {
 	defer db.Close()
 
 	rows := db.Query(`	
-		SELECT id, title, artist, price 
-		FROM albums
-		WHERE id = :id
+		SELECT
+			id, title, artist, price
+		FROM
+			albums
+		WHERE
+			id = :id
 		`,
 		sql.Named("id", id),
 	)
@@ -115,9 +120,12 @@ func (r *AlbumRepo) Update(album *models.Album) *models.Album {
 	defer db.Close()
 
 	rows := db.Query(`
-		UPDATE albums
-		SET title = :title, artist = :artist, price = :price
-		WHERE id = :id
+		UPDATE
+			albums
+		SET
+			title = :title, artist = :artist, price = :price
+		WHERE
+			id = :id
 	`,
 		sql.Named("id", album.ID),
 		sql.Named("title", album.Title),
@@ -138,8 +146,10 @@ func (r *AlbumRepo) DeleteById(id int64) {
 	defer db.Close()
 
 	db.Exec(`
-		DELETE FROM albums
-		WHERE id = :id
+		DELETE FROM
+			albums
+		WHERE
+			id = :id
 	`,
 		sql.Named("id", id),
 	)
