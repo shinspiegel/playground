@@ -14,16 +14,8 @@ func NewAlbumRepo() *AlbumRepo {
 	return &AlbumRepo{}
 }
 
-func (r *AlbumRepo) getDB() *database.Database {
-	db, err := database.NewSQLite()
-	if err != nil {
-		log.Fatal(err)
-	}
-	return db
-}
-
 func (r *AlbumRepo) GetAll() []models.Album {
-	db := r.getDB()
+	db := database.New()
 	defer db.Close()
 
 	rows := db.Query(`
@@ -57,7 +49,7 @@ func (r *AlbumRepo) GetAll() []models.Album {
 }
 
 func (r *AlbumRepo) GetById(id int64) []models.Album {
-	db := r.getDB()
+	db := database.New()
 	defer db.Close()
 
 	rows := db.Query(`	
@@ -94,7 +86,7 @@ func (r *AlbumRepo) GetById(id int64) []models.Album {
 }
 
 func (r *AlbumRepo) Insert(album *models.Album) *models.Album {
-	db := r.getDB()
+	db := database.New()
 	defer db.Close()
 
 	rows := db.Query(`
@@ -119,7 +111,7 @@ func (r *AlbumRepo) Insert(album *models.Album) *models.Album {
 }
 
 func (r *AlbumRepo) Update(album *models.Album) *models.Album {
-	db := r.getDB()
+	db := database.New()
 	defer db.Close()
 
 	rows := db.Query(`
@@ -142,7 +134,7 @@ func (r *AlbumRepo) Update(album *models.Album) *models.Album {
 }
 
 func (r *AlbumRepo) DeleteById(id int64) {
-	db := r.getDB()
+	db := database.New()
 	defer db.Close()
 
 	db.Exec(`

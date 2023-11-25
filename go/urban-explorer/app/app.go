@@ -5,6 +5,7 @@ import (
 	"os"
 	"urban-explorer/controllers"
 	"urban-explorer/repository"
+	"urban-explorer/services"
 
 	"github.com/gin-gonic/gin"
 	"github.com/joho/godotenv"
@@ -16,41 +17,53 @@ type App struct {
 }
 
 func NewApp() *App {
-	app := App{
+	a := App{
 		router: gin.Default(),
 		flags:  *NewFlags(),
 	}
 
-	app.readEnv()
+	a.readEnv()
 
-	app.addAlbumRoutes()
+	a.addAlbumRoutes()
+	a.addUserRoutes()
 
-	return &app
+	return &a
 }
 
-func (app *App) Run() {
+func (a *App) Run() {
 	host := os.Getenv("HOST")
 	port := os.Getenv("PORT")
 
-	app.router.Run(host + ":" + port)
+	a.router.Run(host + ":" + port)
 }
 
-func (app *App) readEnv() {
-	if app.flags.EnvFile != "" {
-		err := godotenv.Load(app.flags.EnvFile)
+func (a *App) readEnv() {
+	if a.flags.EnvFile != "" {
+		err := godotenv.Load(a.flags.EnvFile)
 		if err != nil {
-			log.Fatalf("Fail to load ['%v'] the environment.", app.flags.EnvFile)
+			log.Fatalf("Fail to load ['%v'] the environment.", a.flags.EnvFile)
 		}
 	}
 }
 
-func (app *App) addAlbumRoutes() {
-	albumRepo := repository.NewAlbumRepo()
-	albumController := controllers.NewAlbumController(albumRepo)
+func (a *App) addAlbumRoutes() {
+	r := repository.NewAlbumRepo()
+	c := controllers.NewAlbumController(r)
 
-	app.router.GET("/albums", albumController.GetAlbums)
-	app.router.GET("/albums/:id", albumController.GetAlbumById)
-	app.router.PUT("/albums/:id", albumController.UpdateAlbum)
-	app.router.DELETE("/albums/:id", albumController.DeleteAlbumById)
-	app.router.POST("/albums", albumController.PostAlbum)
+	a.router.GET("/albums", c.GetAlbums)
+	a.router.GET("/albums/:id", c.GetAlbumById)
+	a.router.PUT("/albums/:id", c.UpdateAlbum)
+	a.router.DELETE("/albums/:id", c.DeleteAlbumById)
+	a.router.POST("/albums", c.PostAlbum)
+}
+
+func (a *App) addUserRoutes() {
+	r := repository.NewUserRepo()
+	s := services.NewUserService()
+	c := controllers.NewUserController(r, s)
+
+	a.router.POST("/users/login", c.Login)
+	a.router.POST("/users/register", c.Register)
+	a.router.POST("/users/:user_id/recover", c.Recover)
+	a.router.POST("/users/:user_id/recover/:recover_code", c.RecoverCode)
 }

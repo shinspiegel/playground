@@ -12,7 +12,15 @@ type Database struct {
 	conn *sql.DB
 }
 
-func NewSQLite() (*Database, error) {
+func New() *Database {
+	db, err := newSQLite()
+	if err != nil {
+		log.Fatal(err)
+	}
+	return db
+}
+
+func newSQLite() (*Database, error) {
 	dbPath := os.Getenv("DATABASE")
 	db, err := sql.Open("sqlite3", dbPath)
 	if err != nil {
