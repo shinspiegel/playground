@@ -57,15 +57,15 @@ func (app *App) addAlbumRoutes() {
 	app.router.POST("/albums", controller.PostAlbum)
 }
 
-func (a *App) addUserRoutes() {
+func (app *App) addUserRoutes() {
 	repo := repository.NewUserRepo()
 	passService := services.NewPasswordService()
 	jwtService := services.NewJwtService()
 	userService := services.NewUserService(repo, passService, jwtService)
 	controller := controllers.NewUserController(userService)
 
-	a.router.POST("/users/login", controller.Login)
-	a.router.POST("/users/register", controller.Register)
-	a.router.POST("/users/:user_id/recover", controller.Recover)
-	a.router.POST("/users/:user_id/recover/:recover_code", controller.RecoverCode)
+	app.router.POST("/users/login", controller.Login)
+	app.router.POST("/users/register", controller.Register)
+	app.router.POST("/users/:user_id/recover", controller.Recover)
+	app.router.POST("/users/:user_id/recover/:recover_code", controller.RecoverCode)
 }
