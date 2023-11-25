@@ -59,8 +59,8 @@ func (a *App) addAlbumRoutes() {
 
 func (a *App) addUserRoutes() {
 	r := repository.NewUserRepo()
-	s := services.NewUserService()
-	c := controllers.NewUserController(r, s)
+	s := services.NewUserService(r)
+	c := controllers.NewUserController(s)
 
 	a.router.POST("/users/login", c.Login)
 	a.router.POST("/users/register", c.Register)

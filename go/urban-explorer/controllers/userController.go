@@ -10,33 +10,49 @@ import (
 type UserRepo interface{}
 
 type UserService interface {
-	Login(name *string, password *string) *dto.TokenResponse
-	Register(name *string, password *string) *dto.TokenResponse
+	Login(name *string, password *string) (*dto.TokenResponse, error)
+	Register(name *string, password *string) (*dto.TokenResponse, error)
 }
 
 type UserController struct {
-	repository UserRepo
-	service    UserService
+	service UserService
 }
 
-func NewUserController(r UserRepo, s UserService) *UserController {
+func NewUserController(s UserService) *UserController {
 	return &UserController{
-		repository: r,
-		service:    s,
+		service: s,
 	}
 }
 
 func (c *UserController) Login(ctx *gin.Context) {
 	body := dto.LoginBody{}
 	ctx.BindJSON(&body)
-	res := c.service.Login(&body.Email, &body.Password)
+	res, err := c.service.Login(&body.Email, &body.Password)
+	if err != nil {
+		ctx.IndentedJSON(
+			http.StatusBadRequest,
+			dto.NewErrorResponse(
+				http.StatusBadRequest,
+				err.Error(),
+			),
+		)
+	}
 	ctx.IndentedJSON(http.StatusCreated, res)
 }
 
 func (c *UserController) Register(ctx *gin.Context) {
 	body := dto.RegisterBody{}
 	ctx.BindJSON(&body)
-	res := c.service.Register(&body.Email, &body.Password)
+	res, err := c.service.Register(&body.Email, &body.Password)
+	if err != nil {
+		ctx.IndentedJSON(
+			http.StatusBadRequest,
+			dto.NewErrorResponse(
+				http.StatusBadRequest,
+				err.Error(),
+			),
+		)
+	}
 	ctx.IndentedJSON(http.StatusCreated, res)
 }
 
