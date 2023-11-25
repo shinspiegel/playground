@@ -17,24 +17,24 @@ type App struct {
 }
 
 func NewApp() *App {
-	a := App{
+	app := App{
 		router: gin.Default(),
 		flags:  *NewFlags(),
 	}
 
-	a.readEnv()
+	app.readEnv()
 
-	a.addAlbumRoutes()
-	a.addUserRoutes()
+	app.addAlbumRoutes()
+	app.addUserRoutes()
 
-	return &a
+	return &app
 }
 
-func (a *App) Run() {
+func (app *App) Run() {
 	host := os.Getenv("HOST")
 	port := os.Getenv("PORT")
 
-	a.router.Run(host + ":" + port)
+	app.router.Run(host + ":" + port)
 }
 
 func (a *App) readEnv() {
@@ -46,24 +46,26 @@ func (a *App) readEnv() {
 	}
 }
 
-func (a *App) addAlbumRoutes() {
-	r := repository.NewAlbumRepo()
-	c := controllers.NewAlbumController(r)
+func (app *App) addAlbumRoutes() {
+	repo := repository.NewAlbumRepo()
+	controller := controllers.NewAlbumController(repo)
 
-	a.router.GET("/albums", c.GetAlbums)
-	a.router.GET("/albums/:id", c.GetAlbumById)
-	a.router.PUT("/albums/:id", c.UpdateAlbum)
-	a.router.DELETE("/albums/:id", c.DeleteAlbumById)
-	a.router.POST("/albums", c.PostAlbum)
+	app.router.GET("/albums", controller.GetAlbums)
+	app.router.GET("/albums/:id", controller.GetAlbumById)
+	app.router.PUT("/albums/:id", controller.UpdateAlbum)
+	app.router.DELETE("/albums/:id", controller.DeleteAlbumById)
+	app.router.POST("/albums", controller.PostAlbum)
 }
 
 func (a *App) addUserRoutes() {
-	r := repository.NewUserRepo()
-	s := services.NewUserService(r)
-	c := controllers.NewUserController(s)
+	repo := repository.NewUserRepo()
+	passService := services.NewPasswordService()
+	jwtService := services.NewJwtService()
+	userService := services.NewUserService(repo, passService, jwtService)
+	controller := controllers.NewUserController(userService)
 
-	a.router.POST("/users/login", c.Login)
-	a.router.POST("/users/register", c.Register)
-	a.router.POST("/users/:user_id/recover", c.Recover)
-	a.router.POST("/users/:user_id/recover/:recover_code", c.RecoverCode)
+	a.router.POST("/users/login", controller.Login)
+	a.router.POST("/users/register", controller.Register)
+	a.router.POST("/users/:user_id/recover", controller.Recover)
+	a.router.POST("/users/:user_id/recover/:recover_code", controller.RecoverCode)
 }

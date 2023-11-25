@@ -7,12 +7,16 @@ import (
 )
 
 type UserService struct {
-	repository repository.IUserRepo
+	repository  repository.IUserRepo
+	passService IPasswordService
+	jwtService  IJwtService
 }
 
-func NewUserService(r repository.IUserRepo) *UserService {
+func NewUserService(r repository.IUserRepo, s IPasswordService, j IJwtService) *UserService {
 	return &UserService{
-		repository: r,
+		repository:  r,
+		passService: s,
+		jwtService:  j,
 	}
 }
 
@@ -26,9 +30,19 @@ func (s *UserService) Register(email *string, password *string) (*dto.TokenRespo
 		return nil, errors.New("email already in use")
 	}
 
-	// Generate salt
-	// Generate hash_password
-	// Save on the database
+	hashPassword, err := s.passService.Hash(*password)
+	if err != nil {
+		return nil, errors.New("failed to hash password")
+	}
 
-	return &dto.TokenResponse{}, nil
+	user := s.repository.InsertUser(email, &hashPassword)
+
+	token, err := s.jwtService.Generate(user.ID)
+	if err != nil {
+		return nil, errors.New("failed to generate JWT token")
+	}
+
+	return &dto.TokenResponse{
+		Token: token,
+	}, nil
 }
