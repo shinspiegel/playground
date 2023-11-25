@@ -13,7 +13,7 @@ type AlbumRepository interface {
 	GetById(int64) []models.Album
 	Insert(album *models.Album) *models.Album
 	Update(album *models.Album) *models.Album
-	DeleteById(int64) *models.Album
+	DeleteById(int64)
 }
 
 type AlbumController struct {
@@ -70,6 +70,6 @@ func (c *AlbumController) DeleteAlbumById(ctx *gin.Context) {
 		ctx.String(http.StatusBadRequest, "Invalid id. Id should be a number.")
 		return
 	}
-
-	ctx.IndentedJSON(http.StatusOK, c.repository.DeleteById(id))
+	c.repository.DeleteById(id)
+	ctx.Status(http.StatusOK)
 }

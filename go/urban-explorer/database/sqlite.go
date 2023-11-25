@@ -31,6 +31,15 @@ func (db *Database) Query(query string, args ...any) *sql.Rows {
 	return rows
 }
 
+func (db *Database) Exec(query string, args ...any) sql.Result {
+	result, err := db.conn.Exec(query, args...)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	return result
+}
+
 func (db *Database) Prepare(query string) *sql.Stmt {
 	stmt, err := db.conn.Prepare(query)
 	if err != nil {

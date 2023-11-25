@@ -33,5 +33,5 @@ Content-Type: {{contentType}}
 }
 
 ###
-DELETE {{host}}/albums/2 HTTP/1.1
+DELETE {{host}}/albums/3 HTTP/1.1
 Content-Type: {{contentType}}

@@ -141,16 +141,14 @@ func (r *AlbumRepo) Update(album *models.Album) *models.Album {
 	return album
 }
 
-func (r *AlbumRepo) DeleteById(id int64) *models.Album {
+func (r *AlbumRepo) DeleteById(id int64) {
 	db := r.getDB()
 	defer db.Close()
 
-	db.Query(`
+	db.Exec(`
 		DELETE FROM albums
 		WHERE id = :id
 	`,
 		sql.Named("id", id),
 	)
-
-	return &models.Album{}
 }
