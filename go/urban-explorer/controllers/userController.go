@@ -31,11 +31,9 @@ func (c *UserController) Login(ctx *gin.Context) {
 	if err != nil {
 		ctx.IndentedJSON(
 			http.StatusBadRequest,
-			dto.NewErrorResponse(
-				http.StatusBadRequest,
-				err.Error(),
-			),
+			dto.NewErrorResponse(http.StatusBadRequest, err.Error()),
 		)
+		return
 	}
 	ctx.IndentedJSON(http.StatusCreated, res)
 }
@@ -47,11 +45,9 @@ func (c *UserController) Register(ctx *gin.Context) {
 	if err != nil {
 		ctx.IndentedJSON(
 			http.StatusBadRequest,
-			dto.NewErrorResponse(
-				http.StatusBadRequest,
-				err.Error(),
-			),
+			dto.NewErrorResponse(http.StatusBadRequest, err.Error()),
 		)
+		return
 	}
 	ctx.IndentedJSON(http.StatusCreated, res)
 }

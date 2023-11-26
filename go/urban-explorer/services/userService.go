@@ -26,7 +26,7 @@ func (s *UserService) Login(email *string, password *string) (*dto.TokenResponse
 
 func (s *UserService) Register(email *string, password *string) (*dto.TokenResponse, error) {
 	isEmailUsed := s.repository.IsEmailUsed(email)
-	if !isEmailUsed {
+	if isEmailUsed {
 		return nil, errors.New("email already in use")
 	}
 

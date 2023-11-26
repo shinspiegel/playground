@@ -2,7 +2,6 @@ package repository
 
 import (
 	"database/sql"
-	"log"
 	"urban-explorer/database"
 	"urban-explorer/models"
 )
@@ -22,7 +21,7 @@ func (r *UserRepo) IsEmailUsed(email *string) bool {
 	db := database.New()
 	defer db.Close()
 
-	result := db.Exec(`
+	rows := db.Query(`
 		SELECT
 			email
 		FROM
@@ -32,17 +31,9 @@ func (r *UserRepo) IsEmailUsed(email *string) bool {
 	`,
 		sql.Named("email", email),
 	)
+	defer rows.Close()
 
-	count, err := result.RowsAffected()
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	if count > 0 {
-		return true
-	}
-
-	return false
+	return rows.Next()
 }
 
 func (r *UserRepo) InsertUser(email *string, hashPassword *string) *models.User {
