@@ -2,6 +2,8 @@ package repository
 
 import (
 	"database/sql"
+	"errors"
+	"urban-explorer/constants"
 	"urban-explorer/database"
 	"urban-explorer/models"
 )
@@ -9,6 +11,7 @@ import (
 type IUserRepo interface {
 	IsEmailUsed(email *string) bool
 	InsertUser(email *string, hashPassword *string) *models.User
+	GetUserByEmail(email *string) (*models.User, error)
 }
 
 type UserRepo struct{}
@@ -34,6 +37,34 @@ func (r *UserRepo) IsEmailUsed(email *string) bool {
 	defer rows.Close()
 
 	return rows.Next()
+}
+
+func (r *UserRepo) GetUserByEmail(email *string) (*models.User, error) {
+	db := database.New()
+	defer db.Close()
+
+	rows := db.Query(`
+		SELECT
+			id, email, password_hash
+		FROM
+			users
+		WHERE
+			email = :email
+		`,
+		sql.Named("email", email),
+	)
+	defer rows.Close()
+
+	if rows.Next() {
+		user := models.User{}
+		rows.Scan(
+			&user.ID,
+			&user.Email,
+			&user.Password,
+		)
+		return &user, nil
+	}
+	return nil, errors.New(constants.EmailNotFound)
 }
 
 func (r *UserRepo) InsertUser(email *string, hashPassword *string) *models.User {

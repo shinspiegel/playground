@@ -3,8 +3,8 @@ package services
 import "golang.org/x/crypto/bcrypt"
 
 type IPasswordService interface {
-	Hash(pass string) (string, error)
-	Check(pass string, hashPass string) bool
+	Hash(password string) (string, error)
+	Check(password string, hashedPassword string) bool
 }
 
 type PasswordService struct{}
