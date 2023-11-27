@@ -2,7 +2,8 @@ package controllers
 
 import (
 	"net/http"
-	"urban-explorer/controllers/dto"
+	"strconv"
+	"urban-explorer/dto"
 
 	"github.com/gin-gonic/gin"
 )
@@ -12,6 +13,7 @@ type UserRepo interface{}
 type UserService interface {
 	Login(name *string, password *string) (*dto.TokenResponse, error)
 	Register(name *string, password *string) (*dto.TokenResponse, error)
+	Recover(userId *int64) error
 }
 
 type UserController struct {
@@ -53,7 +55,17 @@ func (c *UserController) Register(ctx *gin.Context) {
 }
 
 func (c *UserController) Recover(ctx *gin.Context) {
-	ctx.String(http.StatusNotImplemented, "Not implemented")
+	id, err := strconv.ParseInt(ctx.Param("user_id"), 10, 64)
+	if err != nil {
+		ctx.IndentedJSON(
+			http.StatusInternalServerError,
+			dto.NewErrorResponse(http.StatusInternalServerError, err.Error()),
+		)
+		return
+	}
+
+	c.service.Recover(&id)
+	ctx.Status(http.StatusAccepted)
 }
 
 func (c *UserController) RecoverCode(ctx *gin.Context) {

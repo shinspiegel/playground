@@ -1,7 +1,7 @@
 package mocks
 
 import (
-	"urban-explorer/controllers/dto"
+	"urban-explorer/dto"
 
 	"github.com/stretchr/testify/mock"
 )

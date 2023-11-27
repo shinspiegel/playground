@@ -61,11 +61,12 @@ func (app *App) addUserRoutes() {
 	repo := repository.NewUserRepo()
 	passService := services.NewPasswordService()
 	jwtService := services.NewJwtService()
-	userService := services.NewUserService(repo, passService, jwtService)
+	randService := services.NewRandomNumberService()
+	userService := services.NewUserService(repo, passService, jwtService, randService)
 	controller := controllers.NewUserController(userService)
 
 	app.router.POST("/users/login", controller.Login)
 	app.router.POST("/users/register", controller.Register)
-	app.router.POST("/users/:user_id/recover", controller.Recover)
+	app.router.GET("/users/:user_id/recover", controller.Recover)
 	app.router.POST("/users/:user_id/recover/:recover_code", controller.RecoverCode)
 }

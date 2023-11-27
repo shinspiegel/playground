@@ -3,27 +3,6 @@
 @host = {{hostname}}:{{port}}
 @contentType = application/json
 
-### USER DEFINED ROUTES
-###
-POST {{host}}/users/register HTTP/1.1
-Content-Type: {{contentType}}
-
-{
-	"email": "test2@test.com",
-	"password": "123456"
-}
-
-
-### 
-POST {{host}}/users/login HTTP/1.1
-Content-Type: {{contentType}}
-
-{
-	"email": "test@test.com",
-	"password": "123456"
-}
-
-
 ###
 GET {{host}}/albums HTTP/1.1
 Content-Type: {{contentType}}

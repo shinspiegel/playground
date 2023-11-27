@@ -2,8 +2,9 @@ package services
 
 import (
 	"errors"
+	"fmt"
 	"urban-explorer/constants"
-	"urban-explorer/controllers/dto"
+	"urban-explorer/dto"
 	"urban-explorer/repository"
 )
 
@@ -11,13 +12,15 @@ type UserService struct {
 	repository  repository.IUserRepo
 	passService IPasswordService
 	jwtService  IJwtService
+	randService IRandomNumberService
 }
 
-func NewUserService(r repository.IUserRepo, s IPasswordService, j IJwtService) *UserService {
+func NewUserService(repo repository.IUserRepo, pass IPasswordService, jwt IJwtService, rand IRandomNumberService) *UserService {
 	return &UserService{
-		repository:  r,
-		passService: s,
-		jwtService:  j,
+		repository:  repo,
+		passService: pass,
+		jwtService:  jwt,
+		randService: rand,
 	}
 }
 
@@ -63,4 +66,21 @@ func (s *UserService) Register(email *string, password *string) (*dto.TokenRespo
 	return &dto.TokenResponse{
 		Token: token,
 	}, nil
+}
+
+func (s *UserService) Recover(userId *int64) error {
+	_, err := s.repository.GetUserById(userId)
+	if err != nil {
+		return err
+	}
+
+	rand := s.randService.generate(6)
+	fmt.Println("RESET PASS" + rand)
+
+	err = s.repository.AddRecoverCodeTo(userId, rand)
+	if err != nil {
+		return err
+	}
+
+	return nil
 }
