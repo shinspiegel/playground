@@ -1,15 +1,24 @@
 package dto
 
-type LoginBody struct {
+type UserLoginBody struct {
 	Email    string `json:"email"`
 	Password string `json:"password"`
 }
 
-type RegisterBody struct {
+type UserRegisterBody struct {
 	Email    string `json:"email"`
 	Password string `json:"password"`
 }
 
-type TokenResponse struct {
+type UserRecoverBody struct {
+	Email string `json:"email"`
+}
+
+type UserRecoverPassReset struct {
+	Email    string `json:"email"`
+	Password string `json:"password"`
+}
+
+type UserTokenResponse struct {
 	Token string `json:"token"`
 }

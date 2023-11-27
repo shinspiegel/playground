@@ -2,32 +2,24 @@ package controllers
 
 import (
 	"net/http"
-	"strconv"
 	"urban-explorer/dto"
+	"urban-explorer/services"
 
 	"github.com/gin-gonic/gin"
 )
 
-type UserRepo interface{}
-
-type UserService interface {
-	Login(name *string, password *string) (*dto.TokenResponse, error)
-	Register(name *string, password *string) (*dto.TokenResponse, error)
-	Recover(userId *int64) error
-}
-
 type UserController struct {
-	service UserService
+	service services.IUserService
 }
 
-func NewUserController(s UserService) *UserController {
+func NewUserController(s services.IUserService) *UserController {
 	return &UserController{
 		service: s,
 	}
 }
 
 func (c *UserController) Login(ctx *gin.Context) {
-	body := dto.LoginBody{}
+	body := dto.UserLoginBody{}
 	ctx.BindJSON(&body)
 	res, err := c.service.Login(&body.Email, &body.Password)
 	if err != nil {
@@ -41,7 +33,7 @@ func (c *UserController) Login(ctx *gin.Context) {
 }
 
 func (c *UserController) Register(ctx *gin.Context) {
-	body := dto.RegisterBody{}
+	body := dto.UserRegisterBody{}
 	ctx.BindJSON(&body)
 	res, err := c.service.Register(&body.Email, &body.Password)
 	if err != nil {
@@ -55,7 +47,9 @@ func (c *UserController) Register(ctx *gin.Context) {
 }
 
 func (c *UserController) Recover(ctx *gin.Context) {
-	id, err := strconv.ParseInt(ctx.Param("user_id"), 10, 64)
+	body := dto.UserRecoverBody{}
+	ctx.BindJSON(&body)
+	err := c.service.Recover(&body.Email)
 	if err != nil {
 		ctx.IndentedJSON(
 			http.StatusInternalServerError,
@@ -64,10 +58,22 @@ func (c *UserController) Recover(ctx *gin.Context) {
 		return
 	}
 
-	c.service.Recover(&id)
 	ctx.Status(http.StatusAccepted)
 }
 
 func (c *UserController) RecoverCode(ctx *gin.Context) {
-	ctx.String(http.StatusNotImplemented, "Not implemented")
+	body := dto.UserRecoverPassReset{}
+	recoverCode := ctx.Param("recover_code")
+	ctx.BindJSON(&body)
+
+	res, err := c.service.ResetPass(&body.Email, &recoverCode, &body.Password)
+	if err != nil {
+		ctx.IndentedJSON(
+			http.StatusInternalServerError,
+			dto.NewErrorResponse(http.StatusInternalServerError, err.Error()),
+		)
+		return
+	}
+
+	ctx.IndentedJSON(http.StatusOK, res)
 }

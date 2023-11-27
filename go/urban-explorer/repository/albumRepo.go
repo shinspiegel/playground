@@ -18,12 +18,15 @@ func (r *AlbumRepo) GetAll() []models.Album {
 	db := database.New()
 	defer db.Close()
 
-	rows := db.Query(`
+	rows, err := db.Query(`
 		SELECT
 			id, title, artist, price
 		FROM
 			albums
 	`)
+	if err != nil {
+		return []models.Album{}
+	}
 	defer rows.Close()
 
 	list := []models.Album{}
@@ -54,7 +57,7 @@ func (r *AlbumRepo) GetById(id int64) []models.Album {
 	db := database.New()
 	defer db.Close()
 
-	rows := db.Query(`	
+	rows, err := db.Query(`	
 		SELECT
 			id, title, artist, price
 		FROM
@@ -64,6 +67,9 @@ func (r *AlbumRepo) GetById(id int64) []models.Album {
 		`,
 		sql.Named("id", id),
 	)
+	if err != nil {
+		return []models.Album{}
+	}
 	defer rows.Close()
 
 	list := []models.Album{}
@@ -94,7 +100,7 @@ func (r *AlbumRepo) Insert(album *models.Album) *models.Album {
 	db := database.New()
 	defer db.Close()
 
-	rows := db.Query(`
+	rows, err := db.Query(`
 		INSERT INTO albums
 			(title, artist, price)
 		VALUES
@@ -106,7 +112,9 @@ func (r *AlbumRepo) Insert(album *models.Album) *models.Album {
 		sql.Named("artist", album.Artist),
 		sql.Named("price", album.Price),
 	)
-
+	if err != nil {
+		return &models.Album{}
+	}
 	defer rows.Close()
 
 	rows.Next()
@@ -119,7 +127,7 @@ func (r *AlbumRepo) Update(album *models.Album) *models.Album {
 	db := database.New()
 	defer db.Close()
 
-	rows := db.Query(`
+	rows, err := db.Query(`
 		UPDATE
 			albums
 		SET
@@ -132,6 +140,9 @@ func (r *AlbumRepo) Update(album *models.Album) *models.Album {
 		sql.Named("artist", album.Artist),
 		sql.Named("price", album.Price),
 	)
+	if err != nil {
+		return &models.Album{}
+	}
 	defer rows.Close()
 
 	if err := rows.Err(); err != nil {

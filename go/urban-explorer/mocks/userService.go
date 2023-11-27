@@ -10,12 +10,12 @@ type UserServiceMock struct {
 	mock.Mock
 }
 
-func (m *UserServiceMock) Login(email *string, password *string) (*dto.TokenResponse, error) {
+func (m *UserServiceMock) Login(email *string, password *string) (*dto.UserTokenResponse, error) {
 	args := m.Called(email, password)
-	return args.Get(0).(*dto.TokenResponse), args.Error(1)
+	return args.Get(0).(*dto.UserTokenResponse), args.Error(1)
 }
 
-func (m *UserServiceMock) Register(email *string, password *string) (*dto.TokenResponse, error) {
+func (m *UserServiceMock) Register(email *string, password *string) (*dto.UserTokenResponse, error) {
 	args := m.Called(email, password)
-	return args.Get(0).(*dto.TokenResponse), args.Error(1)
+	return args.Get(0).(*dto.UserTokenResponse), args.Error(1)
 }

@@ -67,6 +67,6 @@ func (app *App) addUserRoutes() {
 
 	app.router.POST("/users/login", controller.Login)
 	app.router.POST("/users/register", controller.Register)
-	app.router.GET("/users/:user_id/recover", controller.Recover)
-	app.router.POST("/users/:user_id/recover/:recover_code", controller.RecoverCode)
+	app.router.GET("/users/recover", controller.Recover)
+	app.router.POST("/users/recover/:recover_code", controller.RecoverCode)
 }

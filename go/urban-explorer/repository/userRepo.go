@@ -3,18 +3,17 @@ package repository
 import (
 	"database/sql"
 	"errors"
-	"log"
 	"urban-explorer/constants"
 	"urban-explorer/database"
 	"urban-explorer/models"
 )
 
 type IUserRepo interface {
-	IsEmailUsed(email *string) bool
-	InsertUser(email *string, hashPassword *string) *models.User
+	IsEmailUsed(email *string) (bool, error)
+	InsertUser(email *string, hashPassword *string) (*models.User, error)
 	GetUserByEmail(email *string) (*models.User, error)
-	GetUserById(userId *int64) (*models.User, error)
-	AddRecoverCodeTo(userId *int64, recoverCode string) error
+	AddRecoverCodeBy(userId *int64, recoverCode *string) (bool, error)
+	UpdatePassword(userId *int64, hashPassword *string) (bool, error)
 }
 
 type UserRepo struct{}
@@ -23,11 +22,11 @@ func NewUserRepo() *UserRepo {
 	return &UserRepo{}
 }
 
-func (r *UserRepo) IsEmailUsed(email *string) bool {
+func (r *UserRepo) IsEmailUsed(email *string) (bool, error) {
 	db := database.New()
 	defer db.Close()
 
-	rows := db.Query(`
+	rows, err := db.Query(`
 		SELECT
 			email
 		FROM
@@ -37,18 +36,21 @@ func (r *UserRepo) IsEmailUsed(email *string) bool {
 	`,
 		sql.Named("email", email),
 	)
+	if err != nil {
+		return false, err
+	}
 	defer rows.Close()
 
-	return rows.Next()
+	return rows.Next(), nil
 }
 
 func (r *UserRepo) GetUserByEmail(email *string) (*models.User, error) {
 	db := database.New()
 	defer db.Close()
 
-	rows := db.Query(`
+	rows, err := db.Query(`
 		SELECT
-			id, email, password_hash
+			id, email, password_hash, recover_code
 		FROM
 			users
 		WHERE
@@ -56,6 +58,9 @@ func (r *UserRepo) GetUserByEmail(email *string) (*models.User, error) {
 		`,
 		sql.Named("email", email),
 	)
+	if err != nil {
+		return nil, err
+	}
 	defer rows.Close()
 
 	if rows.Next() {
@@ -64,28 +69,34 @@ func (r *UserRepo) GetUserByEmail(email *string) (*models.User, error) {
 			&user.ID,
 			&user.Email,
 			&user.Password,
+			&user.RecoverCode,
 		)
 		return &user, nil
 	}
 	return nil, errors.New(constants.EmailNotFound)
 }
 
-func (r *UserRepo) InsertUser(email *string, hashPassword *string) *models.User {
+func (r *UserRepo) InsertUser(email *string, hashPassword *string) (*models.User, error) {
 	db := database.New()
 	defer db.Close()
 
-	rows := db.Query(`
+	rows, err := db.Query(`
 		INSERT INTO users
-			(email, password_hash)
+			(email, password_hash, recover_code)
 		VALUES
-			(:email, :password_hash)
+			(:email, :password_hash, :recover_code)
 		RETURNING
 			id, email, password_hash
 	`,
 		sql.Named("email", email),
 		sql.Named("password_hash", hashPassword),
+		sql.Named("recover_code", nil),
 	)
+	if err != nil {
+		return nil, err
+	}
 	defer rows.Close()
+
 	user := models.User{}
 	rows.Next()
 	rows.Scan(
@@ -94,65 +105,68 @@ func (r *UserRepo) InsertUser(email *string, hashPassword *string) *models.User 
 		&user.Password,
 	)
 
-	return &user
-}
-
-func (r *UserRepo) GetUserById(userId *int64) (*models.User, error) {
-	db := database.New()
-	defer db.Close()
-
-	rows := db.Query(`
-		SELECT
-			id, email, password_hash
-		FROM
-			users
-		WHERE
-			id = :id
-	`,
-		sql.Named("id", userId),
-	)
-
-	if !rows.Next() {
-		return nil, errors.New(constants.UserNotFound)
-	}
-
-	user := models.User{}
-	if err := rows.Scan(
-		&user.ID,
-		&user.Email,
-		&user.Password,
-	); err != nil {
-		log.Fatal(err)
-	}
-
 	return &user, nil
 }
 
-func (r *UserRepo) AddRecoverCodeTo(userId *int64, recoverCode string) error {
+func (r *UserRepo) AddRecoverCodeBy(userId *int64, recoverCode *string) (bool, error) {
 	db := database.New()
 	defer db.Close()
 
-	res := db.Exec(`
-		INSERT INTO users
-			(recover_code)
-		VALUES
-			(:recover_code)
+	res, err := db.Exec(`
+		UPDATE 
+			users
+		SET 
+			recover_code = :recover_code
 		WHERE
 			id = :id
 	`,
 		sql.Named("id", userId),
 		sql.Named("recover_code", recoverCode),
 	)
+	if err != nil {
+		return false, err
+	}
 
 	count, err := res.RowsAffected()
 
 	if err != nil {
-		return err
+		return false, err
 	}
 
 	if count <= 0 {
-		return errors.New(constants.FailedToInsertRecover)
+		return false, errors.New(constants.FailedToInsertRecover)
 	}
 
-	return nil
+	return true, nil
+}
+
+func (r *UserRepo) UpdatePassword(userId *int64, hashPassword *string) (bool, error) {
+	db := database.New()
+	defer db.Close()
+
+	res, err := db.Exec(`
+		UPDATE
+			users
+		SET
+			password_hash = :password_hash
+		WHERE
+			id = :id
+	`,
+		sql.Named("id", userId),
+		sql.Named("password_hash", hashPassword),
+	)
+	if err != nil {
+		return false, err
+	}
+
+	count, err := res.RowsAffected()
+	if err != nil {
+		return false, err
+	}
+
+	if count <= 0 {
+		return false, errors.New(constants.FailedToUpdatePassword)
+	}
+
+	return true, nil
 }
