@@ -5,3 +5,7 @@ type User struct {
 	Name  string
 	Email string
 }
+
+func NewUser() *User {
+	return &User{}
+}

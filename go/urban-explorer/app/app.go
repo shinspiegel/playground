@@ -24,6 +24,7 @@ func NewApp() *App {
 	app.loadTemplates()
 
 	app.add404Routes()
+	app.addIndexRoutes()
 	app.addAuthRoutes()
 	app.addDashboardRoutes()
 	app.addUserRoutes()
@@ -43,8 +44,14 @@ func (a *App) add404Routes() {
 	a.router.NoRoute(func(g *gin.Context) { g.HTML(http.StatusOK, "404.html", gin.H{}) })
 }
 
+func (a *App) addIndexRoutes() {
+	a.router.GET("/", func(g *gin.Context) { controllers.NewIndexController().Index(g) })
+}
+
 func (a *App) addAuthRoutes() {
 	a.router.GET("/login", func(g *gin.Context) { controllers.NewAuthController().Login(g) })
+	a.router.POST("/login", func(g *gin.Context) { controllers.NewAuthController().CheckLogin(g) })
+
 	a.router.GET("/register", func(g *gin.Context) { controllers.NewAuthController().Register(g) })
 }
 
