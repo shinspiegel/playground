@@ -1,6 +1,7 @@
 package app
 
 import (
+	"net/http"
 	"os"
 	"urban-explorer/config"
 	"urban-explorer/controllers"
@@ -22,6 +23,7 @@ func NewApp() *App {
 	config.ReadEnv(&app.flags.EnvFile)
 	app.loadTemplates()
 
+	app.add404Routes()
 	app.addAuthRoutes()
 	app.addDashboardRoutes()
 	app.addUserRoutes()
@@ -35,6 +37,10 @@ func (a *App) Run() {
 
 func (a *App) loadTemplates() {
 	a.router.LoadHTMLGlob("views/*.html")
+}
+
+func (a *App) add404Routes() {
+	a.router.NoRoute(func(g *gin.Context) { g.HTML(http.StatusOK, "404.html", gin.H{}) })
 }
 
 func (a *App) addAuthRoutes() {
