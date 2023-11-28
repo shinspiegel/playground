@@ -7,7 +7,6 @@ import (
 	"urban-explorer/repository"
 	"urban-explorer/services"
 
-	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 	"github.com/joho/godotenv"
 )
@@ -24,7 +23,6 @@ func NewApp() *App {
 	}
 
 	app.readEnv()
-	app.setupCors()
 
 	app.addAlbumRoutes()
 	app.addUserRoutes()
@@ -38,14 +36,6 @@ func (app *App) Run() {
 	port := os.Getenv("PORT")
 
 	app.router.Run(host + ":" + port)
-}
-
-func (app *App) setupCors() {
-	config := cors.DefaultConfig()
-	config.AllowOrigins = []string{
-		"http://localhost:4321",
-	}
-	app.router.Use(cors.New(config))
 }
 
 func (app *App) readEnv() {
