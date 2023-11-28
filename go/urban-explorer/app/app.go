@@ -36,5 +36,5 @@ func (a *App) loadTemplates() {
 }
 
 func (a *App) addUserRoutes() {
-	a.router.GET("/user", controllers.GetUser)
+	a.router.GET("/user", func(g *gin.Context) { controllers.NewUserController().GetUser(g) })
 }
