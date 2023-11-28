@@ -1,9 +1,4 @@
 {
-	"workbench.colorTheme": "Transparent Color Theme",
-	"editor.tabSize": 4,
-	"editor.renderWhitespace": "all",
-	"editor.useTabStops": true,
-	"editor.insertSpaces": false,
 	"cSpell.words": [
 		"AUTOINCREMENT",
 		"dgrijalva",
@@ -11,6 +6,15 @@
 		"gonic",
 		"joho",
 		"sqlite",
+		"tmpl",
 		"urbanexplorer"
 	],
+	"editor.insertSpaces": false,
+	"editor.renderWhitespace": "all",
+	"editor.tabSize": 4,
+	"editor.useTabStops": true,
+	"files.associations": {
+		"*.tmpl": "html"
+	},
+	"workbench.colorTheme": "Transparent Color Theme",
 }
