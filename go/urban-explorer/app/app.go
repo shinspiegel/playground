@@ -20,6 +20,7 @@ func NewApp() *App {
 	}
 
 	config.ReadEnv(&app.flags.EnvFile)
+	app.loadTemplates()
 
 	app.addUserRoutes()
 
