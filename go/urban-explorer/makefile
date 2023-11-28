@@ -3,7 +3,7 @@ MAIN_SOURCE_FILE=main.go
 BUILD_FILE=./bin/$(BINARY_NAME) # Final path for the binary
 
 # Go commands
-GO_DEV=go run main.go --env "./.env"
+GO_DEV=go run main.go --env ./.env --dev
 GO_BUILD=go build
 GO_CLEAN=go clean
 GO_TEST=go test

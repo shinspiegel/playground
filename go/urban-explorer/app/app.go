@@ -2,6 +2,7 @@ package app
 
 import (
 	"log"
+	"net/http"
 	"os"
 	"urban-explorer/controllers"
 	"urban-explorer/repository"
@@ -23,6 +24,10 @@ func NewApp() *App {
 	}
 
 	app.readEnv()
+	app.setup404()
+	app.loadPages()
+
+	app.addPagesRoutes()
 
 	app.addAlbumRoutes()
 	app.addUserRoutes()
@@ -45,6 +50,23 @@ func (app *App) readEnv() {
 			log.Fatalf("Fail to load ['%v'] the environment.", app.flags.EnvFile)
 		}
 	}
+}
+
+func (app *App) loadPages() {
+	app.router.LoadHTMLGlob("templates/*")
+}
+
+func (app *App) setup404() {
+	app.router.NoRoute(func(ctx *gin.Context) { ctx.HTML(http.StatusNotFound, "404.tmpl", gin.H{}) })
+}
+
+func (app *App) addPagesRoutes() {
+	controller := controllers.NewPagesController()
+
+	app.router.GET("/", controller.Index)
+	app.router.GET("/login", controller.Login)
+	app.router.GET("/register", controller.Register)
+	app.router.GET("/dashboard", controller.Dashboard)
 }
 
 func (app *App) addAlbumRoutes() {
