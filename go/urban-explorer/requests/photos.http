@@ -1,0 +1,15 @@
+@hostname = http://localhost
+@port = 8080
+@host = {{hostname}}:{{port}}
+@contentType = application/json
+
+### 
+POST {{host}}/photos HTTP/1.1
+Content-Type: multipart/form-data; boundary=---WebKitFormBoundary7MA4YWxkTrZu0gW
+
+-----WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="image"; filename="1.png"
+Content-Type: image/png
+
+< ./_test_image.jpg
+-----WebKitFormBoundary7MA4YWxkTrZu0gW

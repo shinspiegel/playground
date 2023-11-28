@@ -22,10 +22,14 @@ func NewApp() *App {
 		flags:  *NewFlags(),
 	}
 
+	app.router.LoadHTMLGlob("templates/pages/*")
 	app.readEnv()
+
+	app.addPageRoutes()
 
 	app.addAlbumRoutes()
 	app.addUserRoutes()
+	app.addPhotoRoutes()
 
 	return &app
 }
@@ -46,15 +50,21 @@ func (a *App) readEnv() {
 	}
 }
 
+func (app *App) addPageRoutes() {
+	controller := controllers.NewPagesController()
+
+	app.router.GET("/", controller.Index)
+}
+
 func (app *App) addAlbumRoutes() {
 	repo := repository.NewAlbumRepo()
 	controller := controllers.NewAlbumController(repo)
 
-	app.router.GET("/albums", controller.GetAlbums)
-	app.router.GET("/albums/:id", controller.GetAlbumById)
-	app.router.PUT("/albums/:id", controller.UpdateAlbum)
-	app.router.DELETE("/albums/:id", controller.DeleteAlbumById)
-	app.router.POST("/albums", controller.PostAlbum)
+	app.router.GET("/api/albums", controller.GetAlbums)
+	app.router.GET("/api/albums/:id", controller.GetAlbumById)
+	app.router.PUT("/api/albums/:id", controller.UpdateAlbum)
+	app.router.DELETE("/api/albums/:id", controller.DeleteAlbumById)
+	app.router.POST("/api/albums", controller.PostAlbum)
 }
 
 func (app *App) addUserRoutes() {
@@ -65,8 +75,16 @@ func (app *App) addUserRoutes() {
 	userService := services.NewUserService(repo, passService, jwtService, randService)
 	controller := controllers.NewUserController(userService)
 
-	app.router.POST("/users/login", controller.Login)
-	app.router.POST("/users/register", controller.Register)
-	app.router.GET("/users/recover", controller.Recover)
-	app.router.POST("/users/recover/:recover_code", controller.RecoverCode)
+	app.router.POST("/api/users/login", controller.Login)
+	app.router.POST("/api/users/register", controller.Register)
+	app.router.GET("/api/users/recover", controller.Recover)
+	app.router.POST("/api/users/recover/:recover_code", controller.RecoverCode)
+}
+
+func (app *App) addPhotoRoutes() {
+	repo := repository.NewPhotoRepo()
+	service := services.NewPhotoService(repo)
+	controller := controllers.NewPhotosController(service)
+
+	app.router.POST("/api/photos", controller.Photos)
 }

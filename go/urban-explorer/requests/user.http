@@ -1,6 +1,6 @@
 @hostname = http://localhost
 @port = 8080
-@host = {{hostname}}:{{port}}
+@host = {{hostname}}:{{port}}/api
 @contentType = application/json
 
 ### USER DEFINED ROUTES

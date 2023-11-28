@@ -4,6 +4,11 @@
 @contentType = application/json
 
 ###
+GET {{host}} HTTP/1.1
+Content-Type: text/html
+
+
+###
 GET {{host}}/albums HTTP/1.1
 Content-Type: {{contentType}}
 
