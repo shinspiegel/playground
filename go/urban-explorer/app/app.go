@@ -22,6 +22,8 @@ func NewApp() *App {
 	config.ReadEnv(&app.flags.EnvFile)
 	app.loadTemplates()
 
+	app.addAuthRoutes()
+	app.addDashboardRoutes()
 	app.addUserRoutes()
 
 	return &app
@@ -35,6 +37,15 @@ func (a *App) loadTemplates() {
 	a.router.LoadHTMLGlob("views/*.html")
 }
 
+func (a *App) addAuthRoutes() {
+	a.router.GET("/login", func(g *gin.Context) { controllers.NewAuthController().Login(g) })
+	a.router.GET("/register", func(g *gin.Context) { controllers.NewAuthController().Register(g) })
+}
+
 func (a *App) addUserRoutes() {
 	a.router.GET("/user", func(g *gin.Context) { controllers.NewUserController().GetUser(g) })
+}
+
+func (a *App) addDashboardRoutes() {
+	a.router.GET("/dashboard", func(g *gin.Context) { controllers.NewDashboardController().Dashboard(g) })
 }
