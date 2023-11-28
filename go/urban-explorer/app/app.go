@@ -27,7 +27,6 @@ func NewApp() *App {
 	app.addIndexRoutes()
 	app.addAuthRoutes()
 	app.addDashboardRoutes()
-	app.addUserRoutes()
 
 	return &app
 }
@@ -53,10 +52,6 @@ func (a *App) addAuthRoutes() {
 	a.router.POST("/login", func(g *gin.Context) { controllers.NewAuthController().CheckLogin(g) })
 
 	a.router.GET("/register", func(g *gin.Context) { controllers.NewAuthController().Register(g) })
-}
-
-func (a *App) addUserRoutes() {
-	a.router.GET("/user", func(g *gin.Context) { controllers.NewUserController().GetUser(g) })
 }
 
 func (a *App) addDashboardRoutes() {
