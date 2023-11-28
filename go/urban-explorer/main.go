@@ -1,9 +1,20 @@
 package main
 
 import (
-	"urban-explorer/app"
+	"urban-explorer/config"
+	"urban-explorer/controllers"
+
+	"github.com/gin-gonic/gin"
 )
 
 func main() {
-	app.NewApp().Run()
+	flags := config.NewFlags()
+	config.ReadEnv(&flags.EnvFile)
+
+	router := gin.Default()
+	router.LoadHTMLGlob("views/*.html")
+
+	router.GET("/user", controllers.GetUser)
+
+	router.Run(":8080")
 }
