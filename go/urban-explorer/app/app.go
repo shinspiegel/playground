@@ -7,6 +7,7 @@ import (
 	"urban-explorer/repository"
 	"urban-explorer/services"
 
+	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 	"github.com/joho/godotenv"
 )
@@ -22,10 +23,8 @@ func NewApp() *App {
 		flags:  *NewFlags(),
 	}
 
-	app.router.LoadHTMLGlob("templates/pages/*")
 	app.readEnv()
-
-	app.addPageRoutes()
+	app.setupCors()
 
 	app.addAlbumRoutes()
 	app.addUserRoutes()
@@ -41,19 +40,21 @@ func (app *App) Run() {
 	app.router.Run(host + ":" + port)
 }
 
-func (a *App) readEnv() {
-	if a.flags.EnvFile != "" {
-		err := godotenv.Load(a.flags.EnvFile)
-		if err != nil {
-			log.Fatalf("Fail to load ['%v'] the environment.", a.flags.EnvFile)
-		}
+func (app *App) setupCors() {
+	config := cors.DefaultConfig()
+	config.AllowOrigins = []string{
+		"http://localhost:4321",
 	}
+	app.router.Use(cors.New(config))
 }
 
-func (app *App) addPageRoutes() {
-	controller := controllers.NewPagesController()
-
-	app.router.GET("/", controller.Index)
+func (app *App) readEnv() {
+	if app.flags.EnvFile != "" {
+		err := godotenv.Load(app.flags.EnvFile)
+		if err != nil {
+			log.Fatalf("Fail to load ['%v'] the environment.", app.flags.EnvFile)
+		}
+	}
 }
 
 func (app *App) addAlbumRoutes() {

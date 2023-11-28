@@ -10,7 +10,8 @@
 			"program": "${workspaceFolder}",
 			"args": [
 				"--env",
-				"./.env"
+				"./.env",
+				"--dev"
 			]
 		},
 	]
