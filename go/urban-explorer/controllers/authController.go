@@ -1,7 +1,9 @@
 package controllers
 
 import (
+	"log"
 	"net/http"
+	"urban-explorer/models"
 
 	"github.com/gin-gonic/gin"
 )
@@ -17,7 +19,17 @@ func (c *AuthController) Login(ctx *gin.Context) {
 }
 
 func (c *AuthController) CheckLogin(ctx *gin.Context) {
-	ctx.Redirect(http.StatusFound, "/dashboard")
+	// password := ctx.Request.FormValue("password")
+
+	// fmt.Print(email, password)
+	user, err := models.FindUserByEmail(ctx.Request.FormValue("email"))
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	// Compare password with hash
+	// Redirect or send back to login with failed state
+	// ctx.Redirect(http.StatusFound, "/dashboard")
 }
 
 func (c *AuthController) Register(ctx *gin.Context) {
