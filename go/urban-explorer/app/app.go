@@ -20,6 +20,7 @@ type AppServices struct {
 	jwt      services.IJwtService
 	password services.IPasswordService
 	rand     services.IRandomNumberService
+	auth     services.IAuthService
 }
 
 func NewApp() *App {
@@ -48,6 +49,7 @@ func (a *App) loadServices() {
 	a.services.jwt = services.NewJwtService()
 	a.services.password = services.NewPasswordService()
 	a.services.rand = services.NewRandomNumberService()
+	a.services.auth = services.NewAuthService(a.services.password)
 }
 
 func (a *App) loadTemplates() {
@@ -63,10 +65,27 @@ func (a *App) addIndexRoutes() {
 }
 
 func (a *App) addAuthRoutes() {
-	a.router.GET("/login", func(g *gin.Context) { controllers.NewAuthController().Login(g) })
-	a.router.POST("/login", func(g *gin.Context) { controllers.NewAuthController().CheckLogin(g) })
-
-	a.router.GET("/register", func(g *gin.Context) { controllers.NewAuthController().Register(g) })
+	a.router.GET("/login", func(g *gin.Context) {
+		controllers.NewAuthController(
+			a.services.auth,
+			a.services.jwt,
+			a.flags,
+		).Login(g)
+	})
+	a.router.POST("/login", func(g *gin.Context) {
+		controllers.NewAuthController(
+			a.services.auth,
+			a.services.jwt,
+			a.flags,
+		).CheckLogin(g)
+	})
+	a.router.GET("/register", func(g *gin.Context) {
+		controllers.NewAuthController(
+			a.services.auth,
+			a.services.jwt,
+			a.flags,
+		).Register(g)
+	})
 }
 
 func (a *App) addDashboardRoutes() {

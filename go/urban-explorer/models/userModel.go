@@ -6,14 +6,14 @@ import (
 	"urban-explorer/database"
 )
 
-type User struct {
-	ID           int
+type UserModel struct {
+	ID           int64
 	Email        string `json:"email"`
 	PasswordHash string
 	RecoverCode  string
 }
 
-func FindUserByEmail(email string) (*User, error) {
+func FindUserByEmail(email string) (*UserModel, error) {
 	db := database.New()
 	defer db.Close()
 
@@ -31,7 +31,7 @@ func FindUserByEmail(email string) (*User, error) {
 		return nil, err
 	}
 
-	user := User{}
+	user := UserModel{}
 
 	hasUser := rows.Next()
 	if !hasUser {

@@ -16,5 +16,5 @@
 	"files.associations": {
 		"*.tmpl": "html"
 	},
-	"workbench.colorTheme": "Transparent Color Theme",
+	"workbench.colorTheme": "Catppuccin Frappé",
 }

@@ -10,7 +10,16 @@
 <body>
 	<h1>Urban Explorer - Login</h1>
 
-	<form action="/login" method="post">
+	<nav>
+		<ul>
+			<li><a href="/login">Login</a></li>
+			<li><a href="/register">Register</a></li>
+			<li><a href="/dashboard">Dashboard</a></li>
+		</ul>
+	</nav>
+
+
+	<form action="/login" method="post" class="{{if .hasError}}error{{end}}">
 		<div>
 			<label>
 				<span>Email</span>
@@ -27,6 +36,11 @@
 			<button type="submit">Submit</button>
 			<button type="reset">Reset</button>
 		</div>
+		{{if .hasError}}
+
+		<div>{{.error}}</div>
+
+		{{end}}
 	</form>
 </body>
 
