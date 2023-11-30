@@ -46,6 +46,7 @@ func NewApp() *App {
 	app.addIndexRoutes()
 	app.addAuthRoutes()
 	app.addDashboardRoutes()
+	app.addTripRoutes()
 
 	return &app
 }
@@ -64,7 +65,12 @@ func (a *App) loadServices() {
 	a.services.password = services.NewPasswordService()
 	a.services.random = services.NewRandomNumberService()
 	a.services.cookie = services.NewCookiesService()
-	a.services.auth = services.NewAuthService(a.services.password, a.services.jwt, a.repos.user)
+	a.services.auth = services.NewAuthService(
+		a.services.password,
+		a.services.jwt,
+		a.services.cookie,
+		a.repos.user,
+	)
 }
 
 func (a *App) loadTemplates() {
@@ -107,7 +113,16 @@ func (a *App) addDashboardRoutes() {
 func (a *App) getDashboardController(context *gin.Context) *controllers.DashboardController {
 	return controllers.NewDashboardController(
 		context,
-		a.services.cookie,
-		a.services.jwt,
+		a.services.auth,
+	)
+}
+
+func (a *App) addTripRoutes() {
+	a.router.GET("/create-trip", func(ctx *gin.Context) { a.getTripController(ctx).CreateTrip() })
+}
+
+func (a *App) getTripController(context *gin.Context) *controllers.TripController {
+	return controllers.NewTripController(
+		context,
 	)
 }

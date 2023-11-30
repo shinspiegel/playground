@@ -3,24 +3,35 @@ package services
 import (
 	"errors"
 	"urban-explorer/repositories"
+
+	"github.com/gin-gonic/gin"
 )
 
 type IAuthService interface {
 	Login(email, password string) (*string, error)
 	Register(email, password string) (*string, error)
+	ValidateContext(ctx *gin.Context) error
 }
 
 type AuthService struct {
-	jwtService  IJwtService
-	passService IPasswordService
-	userRepo    repositories.IUserRepository
+	cookiesService ICookiesService
+	jwtService     IJwtService
+	passService    IPasswordService
+	userRepo       repositories.IUserRepository
 }
 
-func NewAuthService(passService IPasswordService, jwtService IJwtService, userRepo repositories.IUserRepository) *AuthService {
+func NewAuthService(
+	passService IPasswordService,
+	jwtService IJwtService,
+	cookiesService ICookiesService,
+
+	userRepo repositories.IUserRepository,
+) *AuthService {
 	return &AuthService{
-		passService: passService,
-		jwtService:  jwtService,
-		userRepo:    userRepo,
+		passService:    passService,
+		jwtService:     jwtService,
+		cookiesService: cookiesService,
+		userRepo:       userRepo,
 	}
 }
 
@@ -68,4 +79,25 @@ func (s *AuthService) Register(email, password string) (*string, error) {
 	}
 
 	return &token, nil
+}
+
+func (s AuthService) ValidateContext(ctx *gin.Context) error {
+	token, err := s.cookiesService.GetJwtCookie(ctx)
+	if err != nil {
+		return err
+	}
+
+	claim, err := s.jwtService.Validate(token)
+	if err != nil {
+		s.cookiesService.CleanCookies(ctx)
+		return err
+	}
+
+	err = claim.Valid()
+	if err != nil {
+		s.cookiesService.CleanCookies(ctx)
+		return err
+	}
+
+	return nil
 }

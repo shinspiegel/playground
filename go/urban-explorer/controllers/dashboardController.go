@@ -8,42 +8,23 @@ import (
 )
 
 type DashboardController struct {
-	context        *gin.Context
-	cookiesService services.ICookiesService
-	jwtService     services.IJwtService
+	context     *gin.Context
+	authService services.IAuthService
 }
 
 func NewDashboardController(
 	ctx *gin.Context,
-	cookieService services.ICookiesService,
-	jwtService services.IJwtService,
+	authService services.IAuthService,
 ) *DashboardController {
 	return &DashboardController{
-		context:        ctx,
-		cookiesService: cookieService,
-		jwtService:     jwtService,
+		context: ctx,
 	}
 }
 
 func (c *DashboardController) Dashboard() {
-	token, err := c.cookiesService.GetJwtCookie(c.context)
+	err := c.authService.ValidateContext(c.context)
 	if err != nil {
 		c.context.Redirect(http.StatusMovedPermanently, "/login")
-		return
-	}
-
-	claim, err := c.jwtService.Validate(token)
-	if err != nil {
-		c.cookiesService.CleanCookies(c.context)
-		c.context.Redirect(http.StatusMovedPermanently, "/login")
-		return
-	}
-
-	err = claim.Valid()
-	if err != nil {
-		c.cookiesService.CleanCookies(c.context)
-		c.context.Redirect(http.StatusMovedPermanently, "/login")
-		return
 	}
 
 	c.context.HTML(http.StatusOK, "dashboard.html", gin.H{})
