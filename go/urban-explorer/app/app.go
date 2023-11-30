@@ -70,7 +70,7 @@ func (a *App) loadServices() {
 }
 
 func (a *App) loadTemplates() {
-	a.router.LoadHTMLGlob("views/*.html")
+	a.router.LoadHTMLGlob("templates/*.html")
 }
 
 func (a *App) add404Routes() {
