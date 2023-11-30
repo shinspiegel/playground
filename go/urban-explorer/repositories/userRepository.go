@@ -87,7 +87,7 @@ func (m *UserRepository) Insert(email, passwordHash string) (*models.UserModel, 
 	`,
 		sql.Named("email", email),
 		sql.Named("password_hash", passwordHash),
-		sql.Named("password_hash", nil),
+		sql.Named("recover_code", nil),
 	)
 	if err != nil {
 		return nil, err

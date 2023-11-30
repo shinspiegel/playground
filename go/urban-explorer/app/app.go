@@ -13,7 +13,7 @@ import (
 
 type App struct {
 	router   *gin.Engine
-	flags    config.Flags
+	Flags    config.Flags
 	services AppServices
 	repos    AppRepos
 }
@@ -21,8 +21,9 @@ type App struct {
 type AppServices struct {
 	jwt      services.IJwtService
 	password services.IPasswordService
-	rand     services.IRandomNumberService
+	random   services.IRandomNumberService
 	auth     services.IAuthService
+	cookie   services.ICookiesService
 }
 
 type AppRepos struct {
@@ -32,10 +33,10 @@ type AppRepos struct {
 func NewApp() *App {
 	app := App{
 		router: gin.Default(),
-		flags:  *config.NewFlags(),
+		Flags:  *config.NewFlags(),
 	}
 
-	config.ReadEnv(&app.flags.EnvFile)
+	config.ReadEnv(&app.Flags.EnvFile)
 	// Order is important
 	app.loadTemplates()
 	app.loadRepositories()
@@ -61,12 +62,9 @@ func (a *App) loadServices() {
 	// TODO: Change for test/dev env
 	a.services.jwt = services.NewJwtService()
 	a.services.password = services.NewPasswordService()
-	a.services.rand = services.NewRandomNumberService()
-	a.services.auth = services.NewAuthService(
-		a.services.password,
-		a.services.jwt,
-		a.repos.user,
-	)
+	a.services.random = services.NewRandomNumberService()
+	a.services.cookie = services.NewCookiesService()
+	a.services.auth = services.NewAuthService(a.services.password, a.services.jwt, a.repos.user)
 }
 
 func (a *App) loadTemplates() {
@@ -78,36 +76,38 @@ func (a *App) add404Routes() {
 }
 
 func (a *App) addIndexRoutes() {
-	a.router.GET("/", func(ctx *gin.Context) { controllers.NewIndexController(ctx).Index() })
+	a.router.GET("/", func(ctx *gin.Context) { a.getIndexController(ctx).Index() })
+}
+
+func (a *App) getIndexController(context *gin.Context) *controllers.IndexController {
+	return controllers.NewIndexController(context)
 }
 
 func (a *App) addAuthRoutes() {
-	a.router.GET("/login", func(context *gin.Context) {
-		controllers.NewAuthController(
-			context,
-			a.services.auth,
-			a.services.jwt,
-			a.flags,
-		).Login()
-	})
-	a.router.POST("/login", func(context *gin.Context) {
-		controllers.NewAuthController(
-			context,
-			a.services.auth,
-			a.services.jwt,
-			a.flags,
-		).CheckLogin()
-	})
-	a.router.GET("/register", func(context *gin.Context) {
-		controllers.NewAuthController(
-			context,
-			a.services.auth,
-			a.services.jwt,
-			a.flags,
-		).Register()
-	})
+	a.router.GET("/login", func(ctx *gin.Context) { a.getAuthController(ctx).GetLogin() })
+	a.router.POST("/login", func(ctx *gin.Context) { a.getAuthController(ctx).CheckLogin() })
+	a.router.GET("/register", func(ctx *gin.Context) { a.getAuthController(ctx).GetRegister() })
+	a.router.POST("/register", func(ctx *gin.Context) { a.getAuthController(ctx).CreateNewUser() })
+}
+
+func (a *App) getAuthController(context *gin.Context) *controllers.AuthController {
+	return controllers.NewAuthController(
+		context,
+		a.services.auth,
+		a.services.jwt,
+		a.services.cookie,
+		a.Flags,
+	)
 }
 
 func (a *App) addDashboardRoutes() {
-	a.router.GET("/dashboard", func(ctx *gin.Context) { controllers.NewDashboardController(ctx).Dashboard() })
+	a.router.GET("/dashboard", func(ctx *gin.Context) { a.getDashboardController(ctx).Dashboard() })
+}
+
+func (a *App) getDashboardController(context *gin.Context) *controllers.DashboardController {
+	return controllers.NewDashboardController(
+		context,
+		a.services.cookie,
+		a.services.jwt,
+	)
 }
