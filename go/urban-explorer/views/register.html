@@ -17,6 +17,30 @@
 			<li><a href="/dashboard">Dashboard</a></li>
 		</ul>
 	</nav>
+
+	<form action="/register" method="post" class="{{if .hasError}}error{{end}}">
+		<div>
+			<label>
+				<span>Email</span>
+				<input type="email" name="email" />
+			</label>
+
+			<label>
+				<span>Password</span>
+				<input type="password" name="password" />
+			</label>
+		</div>
+
+		<div>
+			<button type="submit">Submit</button>
+			<button type="reset">Reset</button>
+		</div>
+		{{if .hasError}}
+
+		<div>{{.error}}</div>
+
+		{{end}}
+	</form>
 </body>
 
 </html>

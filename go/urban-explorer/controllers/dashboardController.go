@@ -6,12 +6,16 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-type DashboardController struct{}
-
-func NewDashboardController() *DashboardController {
-	return &DashboardController{}
+type DashboardController struct {
+	context *gin.Context
 }
 
-func (c *DashboardController) Dashboard(ctx *gin.Context) {
-	ctx.HTML(http.StatusOK, "dashboard.html", gin.H{})
+func NewDashboardController(ctx *gin.Context) *DashboardController {
+	return &DashboardController{
+		context: ctx,
+	}
+}
+
+func (c *DashboardController) Dashboard() {
+	c.context.HTML(http.StatusOK, "dashboard.html", gin.H{})
 }

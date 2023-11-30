@@ -6,12 +6,16 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-type IndexController struct{}
-
-func NewIndexController() *IndexController {
-	return &IndexController{}
+type IndexController struct {
+	context *gin.Context
 }
 
-func (c *IndexController) Index(ctx *gin.Context) {
-	ctx.HTML(http.StatusOK, "index.html", gin.H{})
+func NewIndexController(ctx *gin.Context) *IndexController {
+	return &IndexController{
+		context: ctx,
+	}
+}
+
+func (c *IndexController) Index() {
+	c.context.HTML(http.StatusOK, "index.html", gin.H{})
 }
