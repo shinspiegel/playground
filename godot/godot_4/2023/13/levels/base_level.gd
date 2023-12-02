@@ -15,17 +15,17 @@ func _ready() -> void:
 
 func __spawn_player() -> void:
 	var pos: Vector2 = GameManager.get_last_checkpoint_pos()
-	
+
 	if pos == Vector2.ZERO:
 		pos = initial_player_pos.global_position
-	
+
 	var player = player_scene.instantiate()
-	
+
 	if debug:
 		debug.set_player(player)
-	
+
 	if player is Player:
 		player.camera = camera
 		player.global_position = pos
-		
+
 	add_child(player)

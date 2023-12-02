@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://c5gsjxddudcep"]
+[gd_scene load_steps=15 format=3 uid="uid://c5gsjxddudcep"]
 
 [ext_resource type="PackedScene" uid="uid://bgt5h0f3fl6jx" path="res://entities/base_enemy/base_enemy.tscn" id="1_dax2r"]
 [ext_resource type="Script" path="res://entities/base_enemy/enemies/wander_enemy.gd" id="2_ky8ok"]
@@ -7,6 +7,22 @@
 [ext_resource type="Script" path="res://entities/base_enemy/enemy_states/idle.gd" id="4_mvpl4"]
 [ext_resource type="Script" path="res://entities/base_enemy/enemy_states/wander.gd" id="5_n6lss"]
 [ext_resource type="Script" path="res://entities/base_enemy/enemy_states/chase.gd" id="7_sf6hq"]
+
+[sub_resource type="Animation" id="Animation_ehnpn"]
+resource_name = "Chase"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4]
+}
 
 [sub_resource type="Animation" id="Animation_wdpg0"]
 resource_name = "Idle"
@@ -55,22 +71,6 @@ tracks/0/keys = {
 "values": [0, 1, 2, 3, 4]
 }
 
-[sub_resource type="Animation" id="Animation_ehnpn"]
-resource_name = "Chase"
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = false
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3, 4]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_riehd"]
 _data = {
 "Chase": SubResource("Animation_ehnpn"),
@@ -81,6 +81,10 @@ _data = {
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jkhnl"]
 size = Vector2(128, 192)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3e436"]
+radius = 376.0
+height = 2000.0
 
 [node name="WanderEnemy" instance=ExtResource("1_dax2r")]
 script = ExtResource("2_ky8ok")
@@ -111,27 +115,38 @@ shape = SubResource("RectangleShape2D_jkhnl")
 
 [node name="Sensors" type="Node2D" parent="." index="5"]
 
-[node name="PlayerDetector" parent="Sensors" index="0" node_paths=PackedStringArray("external_origin_point", "excluded_list") instance=ExtResource("4_ah5ky")]
+[node name="WanderPlayerDetector" parent="Sensors" index="0" node_paths=PackedStringArray("external_origin_point", "excluded_list") instance=ExtResource("4_ah5ky")]
 collision_layer = 65535
 collision_mask = 65535
 external_origin_point = NodePath("../..")
 excluded_list = [NodePath("../..")]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Sensors/PlayerDetector" index="0"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Sensors/WanderPlayerDetector" index="0"]
 position = Vector2(64, -128)
-polygon = PackedVector2Array(0, 0, 192, -256, 448, -256, 448, 256, 192, 256)
+polygon = PackedVector2Array(0, 128, 0, -64, 832, -512, 824, 648)
 
-[node name="FrontFloorRay" type="RayCast2D" parent="Sensors" index="1"]
+[node name="ChasePlayerDetector" parent="Sensors" index="1" node_paths=PackedStringArray("external_origin_point", "excluded_list") instance=ExtResource("4_ah5ky")]
+collision_layer = 65535
+collision_mask = 65535
+external_origin_point = NodePath("../..")
+excluded_list = [NodePath("../..")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sensors/ChasePlayerDetector" index="0"]
+position = Vector2(1000, -96)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_3e436")
+
+[node name="FrontFloorRay" type="RayCast2D" parent="Sensors" index="2"]
 position = Vector2(96, -16)
 target_position = Vector2(0, 32)
 collision_mask = 2
 
-[node name="FrontWallRay" type="RayCast2D" parent="Sensors" index="2"]
+[node name="FrontWallRay" type="RayCast2D" parent="Sensors" index="3"]
 position = Vector2(96, -16)
 target_position = Vector2(32, 0)
 collision_mask = 2
 
-[node name="Polygon2D" type="Polygon2D" parent="Sensors" index="3"]
+[node name="Polygon2D" type="Polygon2D" parent="Sensors" index="4"]
 color = Color(1, 0.74902, 0, 1)
 polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
@@ -142,7 +157,7 @@ initial_state = NodePath("Idle")
 script = ExtResource("4_mvpl4")
 enemy = NodePath("../..")
 animation_player = NodePath("../../AnimationPlayer")
-player_detector = NodePath("../../Sensors/PlayerDetector")
+player_detector = NodePath("../../Sensors/WanderPlayerDetector")
 idle_colddown = NodePath("../../Timers/IdleColddown")
 idle_next_state_timeout = NodePath("../Wander")
 idle_next_state_player_sighted = NodePath("../Chase")
@@ -154,7 +169,7 @@ inputs = NodePath("../../EnemyInputs")
 animation_player = NodePath("../../AnimationPlayer")
 floor_ray = NodePath("../../Sensors/FrontFloorRay")
 wall_ray = NodePath("../../Sensors/FrontWallRay")
-player_detector = NodePath("../../Sensors/PlayerDetector")
+player_detector = NodePath("../../Sensors/WanderPlayerDetector")
 next_not_floor = NodePath("../Idle")
 next_wall_collide = NodePath("../Idle")
 next_player_detected = NodePath("../Chase")
@@ -164,7 +179,7 @@ script = ExtResource("7_sf6hq")
 enemy = NodePath("../..")
 inputs = NodePath("../../EnemyInputs")
 animation_player = NodePath("../../AnimationPlayer")
-player_detector = NodePath("../../Sensors/PlayerDetector")
+player_detector = NodePath("../../Sensors/ChasePlayerDetector")
 foil_timer = NodePath("../../Timers/ChaseColddown")
 foil_next_state = NodePath("../Idle")
 debug_marker = NodePath("../../Sensors/Polygon2D")

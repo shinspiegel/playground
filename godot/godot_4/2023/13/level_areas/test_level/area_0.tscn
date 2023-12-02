@@ -23,7 +23,7 @@ position = Vector2(1344, 1408)
 position = Vector2(1024, 1664)
 
 [node name="WanderEnemy" parent="Enemies" index="0" instance=ExtResource("4_lvyqj")]
-position = Vector2(1960, 1664)
+position = Vector2(1920, 1664)
 facing_right = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EntryArea" index="0"]

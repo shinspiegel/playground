@@ -55,7 +55,7 @@ func on_player_sighted() -> void:
 
 
 func on_timeout() -> void:
-	state_ended.emit()
+	state_ended.emit(foil_next_state.name)
 
 
 ## Private Methods
