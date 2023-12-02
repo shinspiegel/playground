@@ -1,12 +1,12 @@
 package main
 
 import (
-	"advent-of-code-2023/day1"
+	"advent-of-code-2023/day2"
 	"advent-of-code-2023/reader"
 	"fmt"
 )
 
 func main() {
-	res := day1.PartTwo(reader.GetDay1())
+	res := day2.PartOne(reader.GetDay2(), &day2.Cube{Red: 12, Green: 13, Blue: 14})
 	fmt.Println(res)
 }
