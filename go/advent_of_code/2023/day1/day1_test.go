@@ -7,10 +7,19 @@ import (
 )
 
 func TestPartOne(t *testing.T) {
-	sample := reader.GetFromFile(*reader.GetPwd() + "/sample.txt")
+	sample := reader.GetFromFile("sample_part_one")
 
 	res := day1.PartOne(sample)
 	if res != 142 {
-		t.Error("Not equal!")
+		t.Errorf("Failed! [%v]", res)
+	}
+}
+
+func TestPartTwo(t *testing.T) {
+	sample := reader.GetFromFile("sample_part_two")
+
+	res := day1.PartTwo(sample)
+	if res != 281 {
+		t.Errorf("Failed! [%v]", res)
 	}
 }

@@ -7,6 +7,6 @@ import (
 )
 
 func main() {
-	res := day1.PartOne(reader.GetDay1())
+	res := day1.PartTwo(reader.GetDay1())
 	fmt.Println(res)
 }
