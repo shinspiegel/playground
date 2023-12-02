@@ -20,4 +20,10 @@ func TestPartOne(t *testing.T) {
 	}
 }
 
-func TestPartTwo(t *testing.T) {}
+func TestPartTwo(t *testing.T) {
+	sample := reader.GetFromFile("sample")
+	res := day2.PartTwo(sample)
+	if res != 2286 {
+		t.Errorf("Failed! [%v]", res)
+	}
+}

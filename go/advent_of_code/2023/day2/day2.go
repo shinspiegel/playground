@@ -88,4 +88,40 @@ func PartOne(data *string, total *Cube) int64 {
 	return sum
 }
 
-func PartTwo() {}
+func PartTwo(data *string) int64 {
+	lines := strings.Split(*data, "\n")
+	sum := int64(0)
+
+	for _, line := range lines {
+		minCube := &Cube{}
+		split := strings.Split(line, ": ")
+		games := strings.Split(split[1], "; ")
+
+		for _, game := range games {
+			dice := strings.Split(game, ", ")
+
+			for _, die := range dice {
+				color := strings.Split(die, " ")[1]
+				amount, err := strconv.ParseInt(strings.Split(die, " ")[0], 10, 64)
+
+				if err != nil {
+					log.Fatal(err)
+				}
+
+				if color == "blue" && minCube.Blue <= amount {
+					minCube.Blue = amount
+				}
+				if color == "green" && minCube.Green <= amount {
+					minCube.Green = amount
+				}
+				if color == "red" && minCube.Red <= amount {
+					minCube.Red = amount
+				}
+			}
+		}
+
+		sum += (minCube.Blue * minCube.Green * minCube.Red)
+	}
+
+	return sum
+}

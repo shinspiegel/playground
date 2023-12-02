@@ -6,7 +6,7 @@ import (
 )
 
 func GetDay1() *string {
-	return GetFromFile("day1/input.txt")
+	return GetFromFile("day1/input")
 }
 
 func GetDay2() *string {
