@@ -19,8 +19,8 @@ func main() {
 	d2p2 := day2.PartTwo(reader.GetDay2())
 	fmt.Printf("Day 2, Part 2::[%v]\n", d2p2)
 
-	d3p1 := day3.PartOne(reader.GetDay2())
+	d3p1 := day3.PartOne(reader.GetDay3())
 	fmt.Printf("Day 3, Part 1::[%v]\n", d3p1)
-	d3p2 := day3.PartTwo(reader.GetDay2())
-	fmt.Printf("Day 3, Part 2::[%v]\n", d3p2)
+	d3p2 := day3.PartTwo(reader.GetDay3())
+	fmt.Printf("Day 3, Part 2::[%v] :: SHAME!\n", d3p2)
 }
