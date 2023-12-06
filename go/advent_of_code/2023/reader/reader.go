@@ -17,6 +17,10 @@ func GetDay3() *string {
 	return GetFromFile("day3/input")
 }
 
+func GetDay4() *string {
+	return GetFromFile("day4/input")
+}
+
 func GetFromFile(path string) *string {
 	bytes, err := os.ReadFile(path)
 	if err != nil {

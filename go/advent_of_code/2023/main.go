@@ -4,6 +4,7 @@ import (
 	"advent-of-code-2023/day1"
 	"advent-of-code-2023/day2"
 	"advent-of-code-2023/day3"
+	"advent-of-code-2023/day4"
 	"advent-of-code-2023/reader"
 	"fmt"
 )
@@ -23,4 +24,9 @@ func main() {
 	fmt.Printf("Day 3, Part 1::[%v]\n", d3p1)
 	d3p2 := day3.PartTwo(reader.GetDay3())
 	fmt.Printf("Day 3, Part 2::[%v] :: SHAME!\n", d3p2)
+
+	d4p1 := day4.PartOne(*reader.GetDay4())
+	fmt.Printf("Day 4, Part 1::[%v]\n", d4p1)
+	d4p2 := day4.PartTwo(*reader.GetDay4())
+	fmt.Printf("Day 4, Part 2::[%v]\n", d4p2)
 }
