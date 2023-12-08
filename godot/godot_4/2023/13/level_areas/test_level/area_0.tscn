@@ -1,9 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://b6h4dtp2nafng"]
+[gd_scene load_steps=6 format=3 uid="uid://b6h4dtp2nafng"]
 
 [ext_resource type="PackedScene" uid="uid://bwtgatlxd8y4d" path="res://level_areas/base_area/base_area.tscn" id="1_etvub"]
 [ext_resource type="PackedScene" uid="uid://c28vdy1400ldy" path="res://entities/hideable_area/hidable_area.tscn" id="2_tol7x"]
 [ext_resource type="PackedScene" uid="uid://drrvseqwjhcdl" path="res://entities/damageable_block/damageable_block.tscn" id="3_rdrca"]
-[ext_resource type="PackedScene" uid="uid://c5gsjxddudcep" path="res://entities/base_enemy/enemies/wander_enemy.tscn" id="4_lvyqj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uw8f3"]
 size = Vector2(765, 384)
@@ -21,10 +20,6 @@ position = Vector2(1344, 1408)
 
 [node name="DamageableBlock" parent="Interactables" index="1" instance=ExtResource("3_rdrca")]
 position = Vector2(1024, 1664)
-
-[node name="WanderEnemy" parent="Enemies" index="0" instance=ExtResource("4_lvyqj")]
-position = Vector2(1920, 1664)
-facing_right = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EntryArea" index="0"]
 position = Vector2(513.5, 1472)
