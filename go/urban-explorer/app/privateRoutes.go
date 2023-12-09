@@ -38,5 +38,6 @@ func (a *App) PrivateRoute(ctx *gin.Context) {
 	}
 
 	ctx.Request.Header.Add("user_id", strconv.FormatInt(claim.UserID, 10))
+
 	ctx.Next()
 }

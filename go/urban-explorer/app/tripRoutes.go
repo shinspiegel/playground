@@ -1,6 +1,19 @@
 package app
 
+import (
+	"urban-explorer/controllers"
+
+	"github.com/gin-gonic/gin"
+)
+
 func (a *App) AddTripsRoutes() {
-	a.router.POST("/trips/new", a.PrivateRoute, a.NotImplemented)
-	a.router.POST("/trips/:trip_id/photos/add", a.PrivateRoute, a.NotImplemented)
+	a.router.POST("/trips/new", a.PrivateRoute, func(ctx *gin.Context) { a.getTripController(ctx).AddPhoto() })
+	a.router.POST("/trips/:trip_id/photos/add", a.PrivateRoute, func(ctx *gin.Context) { a.getTripController(ctx).AddPhoto() })
+}
+
+func (a *App) getTripController(ctx *gin.Context) *controllers.TripController {
+	return controllers.NewTripController(
+		ctx,
+		a.services.trip,
+	)
 }

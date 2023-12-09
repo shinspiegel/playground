@@ -4,8 +4,6 @@ import (
 	"net/http"
 	"os"
 	"urban-explorer/config"
-	"urban-explorer/repositories"
-	"urban-explorer/services"
 
 	"github.com/gin-gonic/gin"
 )
@@ -15,18 +13,6 @@ type App struct {
 	Flags    config.Flags
 	services AppServices
 	repos    AppRepos
-}
-
-type AppServices struct {
-	jwt      services.IJwtService
-	password services.IPasswordService
-	random   services.IRandomNumberService
-	auth     services.IAuthService
-	cookie   services.ICookiesService
-}
-
-type AppRepos struct {
-	user repositories.IUserRepository
 }
 
 func NewApp() *App {
