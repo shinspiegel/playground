@@ -44,7 +44,6 @@ func NewApp() *App {
 	// Load all routes for the app
 	app.Add404Routes()
 	app.AddAuthRoutes()
-	app.AddUserRoutes()
 	app.AddTripsRoutes()
 	app.AddPhotosRoutes()
 

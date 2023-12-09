@@ -3,6 +3,7 @@ package app
 import (
 	"fmt"
 	"net/http"
+	"strconv"
 
 	"github.com/gin-gonic/gin"
 )
@@ -30,11 +31,12 @@ func (a *App) PrivateRoute(ctx *gin.Context) {
 		token = bearerToken
 	}
 
-	_, err = a.services.jwt.Validate(token)
+	claim, err := a.services.jwt.Validate(token)
 	if err != nil {
 		ctx.JSON(http.StatusUnauthorized, gin.H{"error": err.Error()})
 		return
 	}
 
+	ctx.Request.Header.Add("user_id", strconv.FormatInt(claim.UserID, 10))
 	ctx.Next()
 }
