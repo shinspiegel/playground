@@ -37,19 +37,19 @@ var __is_hidden: bool = false
 
 
 func _ready() -> void:
-	if camera: 
+	if camera:
 		camera_holder.set_remote_node(camera.get_path())
-	
-	if damage_receiver: 
+
+	if damage_receiver:
 		damage_receiver.receive_damage.connect(on_receive_damage)
-	
-	if smoke_colddown and smoke_scene: 
+
+	if smoke_colddown and smoke_scene:
 		smoke_colddown.timeout.connect(on_smoke_timeout)
-	
-	if sprite: 
+
+	if sprite:
 		sprite.enable()
-	
-	if health: 
+
+	if health:
 		health.changed.connect(on_player_health_change)
 		health.reset()
 
@@ -103,11 +103,11 @@ func start_breathing() -> void: smoke_colddown.start()
 func stop_breathing() -> void: smoke_colddown.stop()
 
 
-func enable_outline() -> void: 
+func enable_outline() -> void:
 	sprite.enable()
 
 
-func disable_outline() -> void: 
+func disable_outline() -> void:
 	sprite.disable()
 
 
@@ -154,7 +154,7 @@ func __start_coyote_timer() -> void:
 func __apply_damage(damage: Damage) -> void:
 	var horizontal_dir = clampf(global_position.x - damage.source_position.x, -1, 1)
 	var vertical_dir = clampf(damage.source_position.y - global_position.y, -1, 1)
-	
+
 	velocity.x = horizontal_dir * Constants.SPEED * (damage.impact * Constants.MULTIPLIER)
 	velocity.y = -(vertical_dir * Constants.SPEED * (damage.impact / 10.0))
 
