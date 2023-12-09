@@ -4,7 +4,6 @@ import (
 	"net/http"
 	"os"
 	"urban-explorer/config"
-	"urban-explorer/controllers"
 	"urban-explorer/repositories"
 	"urban-explorer/services"
 
@@ -37,92 +36,26 @@ func NewApp() *App {
 	}
 
 	config.ReadEnv(&app.Flags.EnvFile)
+
 	// Order is important
-	app.loadTemplates()
-	app.loadRepositories()
-	app.loadServices()
+	app.LoadRepositories()
+	app.LoadServices()
 
-	app.add404Routes()
-	app.addIndexRoutes()
-	app.addAuthRoutes()
-	app.addDashboardRoutes()
-	app.addTripRoutes()
+	// Load all routes for the app
+	app.Add404Routes()
+	app.AddAuthRoutes()
+	app.AddUserRoutes()
+	app.AddTripsRoutes()
+	app.AddPhotosRoutes()
 
+	// Start the app
 	return &app
 }
 
 func (a *App) Run() {
 	a.router.Run(os.Getenv("HOST") + ":" + os.Getenv("PORT"))
 }
-func (a *App) loadRepositories() {
-	// TODO: change for test/dev env
-	a.repos.user = repositories.NewUserRepository()
-}
 
-func (a *App) loadServices() {
-	// TODO: Change for test/dev env
-	a.services.jwt = services.NewJwtService()
-	a.services.password = services.NewPasswordService()
-	a.services.random = services.NewRandomNumberService()
-	a.services.cookie = services.NewCookiesService()
-	a.services.auth = services.NewAuthService(
-		a.services.password,
-		a.services.jwt,
-		a.services.cookie,
-		a.repos.user,
-	)
-}
-
-func (a *App) loadTemplates() {
-	a.router.LoadHTMLGlob("templates/*.html")
-}
-
-func (a *App) add404Routes() {
-	a.router.NoRoute(func(g *gin.Context) { g.HTML(http.StatusOK, "404.html", gin.H{}) })
-}
-
-func (a *App) addIndexRoutes() {
-	a.router.GET("/", func(ctx *gin.Context) { a.getIndexController(ctx).Index() })
-}
-
-func (a *App) getIndexController(context *gin.Context) *controllers.IndexController {
-	return controllers.NewIndexController(context)
-}
-
-func (a *App) addAuthRoutes() {
-	a.router.GET("/login", func(ctx *gin.Context) { a.getAuthController(ctx).GetLogin() })
-	a.router.POST("/login", func(ctx *gin.Context) { a.getAuthController(ctx).CheckLogin() })
-	a.router.GET("/register", func(ctx *gin.Context) { a.getAuthController(ctx).GetRegister() })
-	a.router.POST("/register", func(ctx *gin.Context) { a.getAuthController(ctx).CreateNewUser() })
-}
-
-func (a *App) getAuthController(context *gin.Context) *controllers.AuthController {
-	return controllers.NewAuthController(
-		context,
-		a.services.auth,
-		a.services.jwt,
-		a.services.cookie,
-		a.Flags,
-	)
-}
-
-func (a *App) addDashboardRoutes() {
-	a.router.GET("/dashboard", func(ctx *gin.Context) { a.getDashboardController(ctx).Dashboard() })
-}
-
-func (a *App) getDashboardController(context *gin.Context) *controllers.DashboardController {
-	return controllers.NewDashboardController(
-		context,
-		a.services.auth,
-	)
-}
-
-func (a *App) addTripRoutes() {
-	a.router.GET("/create-trip", func(ctx *gin.Context) { a.getTripController(ctx).CreateTrip() })
-}
-
-func (a *App) getTripController(context *gin.Context) *controllers.TripController {
-	return controllers.NewTripController(
-		context,
-	)
+func (a *App) NotImplemented(ctx *gin.Context) {
+	ctx.String(http.StatusNotImplemented, "not implemented")
 }

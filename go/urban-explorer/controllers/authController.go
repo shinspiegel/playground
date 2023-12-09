@@ -32,12 +32,8 @@ func NewAuthController(
 	}
 }
 
-func (c *AuthController) GetLogin() {
-	c.context.HTML(http.StatusOK, "login.html", gin.H{})
-}
-
-func (c *AuthController) GetRegister() {
-	c.context.HTML(http.StatusOK, "register.html", gin.H{})
+type checkLoginResponse struct {
+	Token string `json:"token"`
 }
 
 func (c *AuthController) CheckLogin() {
@@ -46,12 +42,16 @@ func (c *AuthController) CheckLogin() {
 		c.context.Request.FormValue("password"),
 	)
 	if err != nil {
-		c.renderErrorOn("login.html", err)
+		c.renderErrorOn(err)
 		return
 	}
 
 	c.cookiesService.SetJwtCookie(c.context, token)
-	c.context.Redirect(http.StatusFound, "/dashboard")
+	c.context.JSON(http.StatusOK, checkLoginResponse{Token: *token})
+}
+
+type createUserResponse struct {
+	Token string `json:"token"`
 }
 
 func (c *AuthController) CreateNewUser() {
@@ -60,21 +60,14 @@ func (c *AuthController) CreateNewUser() {
 		c.context.Request.FormValue("password"),
 	)
 	if err != nil {
-		c.renderErrorOn("register.html", err)
+		c.renderErrorOn(err)
 		return
 	}
 
 	c.cookiesService.SetJwtCookie(c.context, token)
-	c.context.Redirect(http.StatusFound, "/dashboard")
+	c.context.JSON(http.StatusCreated, createUserResponse{Token: *token})
 }
 
-func (c *AuthController) renderErrorOn(page string, err error) {
-	c.context.HTML(
-		http.StatusBadRequest,
-		page,
-		gin.H{
-			"error":    err.Error(),
-			"hasError": true,
-		},
-	)
+func (c *AuthController) renderErrorOn(err error) {
+	c.context.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 }
