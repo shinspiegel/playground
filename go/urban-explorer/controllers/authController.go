@@ -42,7 +42,7 @@ func (c *AuthController) CheckLogin() {
 		c.context.Request.FormValue("password"),
 	)
 	if err != nil {
-		c.renderErrorOn(err)
+		BadRequest(c.context, err)
 		return
 	}
 
@@ -60,14 +60,10 @@ func (c *AuthController) CreateNewUser() {
 		c.context.Request.FormValue("password"),
 	)
 	if err != nil {
-		c.renderErrorOn(err)
+		BadRequest(c.context, err)
 		return
 	}
 
 	c.cookiesService.SetJwtCookie(c.context, token)
 	c.context.JSON(http.StatusCreated, createUserResponse{Token: *token})
-}
-
-func (c *AuthController) renderErrorOn(err error) {
-	c.context.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 }

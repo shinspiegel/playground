@@ -17,7 +17,10 @@ func (a *App) LoadServices() {
 	a.services.password = services.NewPasswordService()
 	a.services.random = services.NewRandomNumberService()
 	a.services.cookie = services.NewCookiesService()
-	a.services.trip = services.NewTripService()
+
+	a.services.trip = services.NewTripService(
+		a.repos.trip,
+	)
 
 	a.services.auth = services.NewAuthService(
 		a.services.password,

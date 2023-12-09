@@ -1,9 +1,10 @@
 package app
 
 import (
+	"errors"
 	"fmt"
-	"net/http"
 	"strconv"
+	"urban-explorer/controllers"
 
 	"github.com/gin-gonic/gin"
 )
@@ -20,7 +21,7 @@ func (a *App) PrivateRoute(ctx *gin.Context) {
 	}
 
 	if cookieToken == "" && bearerToken == "" {
-		ctx.JSON(http.StatusUnauthorized, gin.H{"error": "invalid or empty auth token"})
+		controllers.Unauthorized(ctx, errors.New("invalid or empty auth token"))
 		return
 	}
 
@@ -33,7 +34,7 @@ func (a *App) PrivateRoute(ctx *gin.Context) {
 
 	claim, err := a.services.jwt.Validate(token)
 	if err != nil {
-		ctx.JSON(http.StatusUnauthorized, gin.H{"error": err.Error()})
+		controllers.Unauthorized(ctx, err)
 		return
 	}
 
