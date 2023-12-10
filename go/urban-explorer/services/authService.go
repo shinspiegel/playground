@@ -2,36 +2,38 @@ package services
 
 import (
 	"errors"
+	"fmt"
 	"urban-explorer/repositories"
-
-	"github.com/gin-gonic/gin"
 )
 
 type IAuthService interface {
 	Login(email, password string) (*string, error)
 	Register(email, password string) (*string, error)
-	ValidateContext(ctx *gin.Context) error
+	Recover(email string) (*string, error)
+	RecoverCode(code string, email string, password string) (*string, error)
 }
 
 type AuthService struct {
 	cookiesService ICookiesService
 	jwtService     IJwtService
 	passService    IPasswordService
+	randService    IRandomNumberService
 	userRepo       repositories.IUserRepository
 }
 
 func NewAuthService(
-	passService IPasswordService,
-	jwtService IJwtService,
-	cookiesService ICookiesService,
-
-	userRepo repositories.IUserRepository,
+	ps IPasswordService,
+	js IJwtService,
+	cs ICookiesService,
+	rs IRandomNumberService,
+	ur repositories.IUserRepository,
 ) *AuthService {
 	return &AuthService{
-		passService:    passService,
-		jwtService:     jwtService,
-		cookiesService: cookiesService,
-		userRepo:       userRepo,
+		passService:    ps,
+		jwtService:     js,
+		cookiesService: cs,
+		randService:    rs,
+		userRepo:       ur,
 	}
 }
 
@@ -81,23 +83,20 @@ func (s *AuthService) Register(email, password string) (*string, error) {
 	return &token, nil
 }
 
-func (s AuthService) ValidateContext(ctx *gin.Context) error {
-	token, err := s.cookiesService.GetJwtCookie(ctx)
+func (s *AuthService) Recover(email string) (*string, error) {
+	recoverCode := s.randService.generate(8)
+
+	_, err := s.userRepo.UpdateRecoverByEmail(email, recoverCode)
 	if err != nil {
-		return err
+		return nil, err
 	}
 
-	claim, err := s.jwtService.Validate(token)
-	if err != nil {
-		s.cookiesService.CleanCookies(ctx)
-		return err
-	}
+	// TODO: Create email sender
+	fmt.Println("CODE::" + recoverCode)
 
-	err = claim.Valid()
-	if err != nil {
-		s.cookiesService.CleanCookies(ctx)
-		return err
-	}
+	return &recoverCode, nil
+}
 
-	return nil
+func (s *AuthService) RecoverCode(code string, email string, password string) (*string, error) {
+	return nil, nil
 }

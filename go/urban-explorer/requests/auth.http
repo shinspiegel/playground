@@ -7,16 +7,6 @@
 
 
 
-###
-POST {{host}}/auth/register HTTP/1.1
-Content-Type: {{appJson}}
-
-{
-	"email": "test@test.com",
-	"password": "123456"
-}
-
-
 
 ###
 POST {{host}}/auth/register HTTP/1.1
@@ -68,6 +58,18 @@ Content-Type: {{appJson}}
 {
 	"email": "test@test.com"
 }
+
+
+
+###
+POST {{host}}/auth/recover HTTP/1.1
+Content-Type: {{multiForm}}
+
+--{{boundaries}}
+Content-Disposition: form-data; name="email"
+
+test@test.com
+--{{boundaries}}--
 
 
 

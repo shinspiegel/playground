@@ -31,6 +31,7 @@ func (a *App) LoadServices() {
 		a.services.password,
 		a.services.jwt,
 		a.services.cookie,
+		a.services.random,
 		a.repos.user,
 	)
 

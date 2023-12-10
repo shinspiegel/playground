@@ -9,8 +9,8 @@ import (
 func (a *App) AddAuthRoutes() {
 	a.router.POST("auth/login", func(ctx *gin.Context) { a.getAuthController(ctx).Login() })
 	a.router.POST("auth/register", func(ctx *gin.Context) { a.getAuthController(ctx).Register() })
-	a.router.POST("auth/recover", a.NotImplemented)
-	a.router.POST("auth/recover/:code", a.NotImplemented)
+	a.router.POST("auth/recover", func(ctx *gin.Context) { a.getAuthController(ctx).Recover() })
+	a.router.POST("auth/recover/:code", func(ctx *gin.Context) { a.getAuthController(ctx).RecoverCode() })
 }
 
 func (a *App) getAuthController(context *gin.Context) *controllers.AuthController {

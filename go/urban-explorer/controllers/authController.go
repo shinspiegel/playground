@@ -112,3 +112,38 @@ func (c *AuthController) Register() {
 	c.cookiesService.SetJwtCookie(c.context, token)
 	c.context.JSON(http.StatusCreated, registerResponse{Token: *token})
 }
+
+type recoverBody struct {
+	Email string `json:"email"`
+}
+
+func (c *AuthController) Recover() {
+	body := recoverBody{}
+
+	switch contentType := c.context.ContentType(); contentType {
+	case "application/json":
+		c.context.BindJSON(&body)
+
+	case "multipart/form-data":
+		body.Email = c.context.Request.FormValue("email")
+
+	default:
+		BadRequest(c.context, errors.New("invalid content type"))
+		return
+	}
+
+	if body.Email == "" {
+		BadRequest(c.context, errors.New("missing or invalid 'email' property"))
+	}
+
+	_, err := c.authService.Recover(body.Email)
+	if err != nil {
+		InternalServerError(c.context, err)
+	}
+
+	c.context.Status(http.StatusAccepted)
+}
+
+func (c *AuthController) RecoverCode() {
+	c.context.String(http.StatusNotImplemented, "not implemented")
+}
