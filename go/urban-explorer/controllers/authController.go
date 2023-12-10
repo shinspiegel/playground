@@ -144,6 +144,42 @@ func (c *AuthController) Recover() {
 	c.context.Status(http.StatusAccepted)
 }
 
+type recoverCodeBody struct {
+	Email    string `json:"email"`
+	Password string `json:"password"`
+}
+
+type recoverCodeResponse struct {
+	Token string `json:"token"`
+}
+
 func (c *AuthController) RecoverCode() {
-	c.context.String(http.StatusNotImplemented, "not implemented")
+	code := c.context.Param("recover_code")
+	body := recoverCodeBody{}
+
+	switch contentType := c.context.ContentType(); contentType {
+	case "application/json":
+		c.context.BindJSON(&body)
+
+	case "multipart/form-data":
+		body.Email = c.context.Request.FormValue("email")
+		body.Password = c.context.Request.FormValue("password")
+
+	default:
+		BadRequest(c.context, errors.New("invalid content type"))
+		return
+	}
+
+	if body.Email == "" || body.Password == "" {
+		BadRequest(c.context, errors.New("missing or invalid 'email' or 'password' property"))
+		return
+	}
+
+	token, err := c.authService.RecoverCode(code, body.Email, body.Password)
+	if err != nil {
+		BadRequest(c.context, err)
+		return
+	}
+
+	c.context.JSON(http.StatusOK, recoverCodeResponse{Token: *token})
 }

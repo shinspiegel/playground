@@ -3,6 +3,7 @@ package services
 import (
 	"errors"
 	"fmt"
+	"strings"
 	"urban-explorer/repositories"
 )
 
@@ -98,5 +99,29 @@ func (s *AuthService) Recover(email string) (*string, error) {
 }
 
 func (s *AuthService) RecoverCode(code string, email string, password string) (*string, error) {
-	return nil, nil
+	user, err := s.userRepo.FindByEmail(email)
+	if err != nil {
+		return nil, err
+	}
+
+	if strings.Compare(user.RecoverCode, code) == 0 {
+		return nil, errors.New("invalid or missing recovery code")
+	}
+
+	passwordHash, err := s.passService.Hash(password)
+	if err != nil {
+		return nil, err
+	}
+
+	user, err = s.userRepo.UpdateUserPassword(user.ID, passwordHash)
+	if err != nil {
+		return nil, err
+	}
+
+	token, err := s.jwtService.Generate(user.ID)
+	if err != nil {
+		return nil, err
+	}
+
+	return &token, nil
 }

@@ -74,7 +74,7 @@ test@test.com
 
 
 ###
-POST {{host}}/auth/recover/897081 HTTP/1.1
+POST {{host}}/auth/recover/00496537 HTTP/1.1
 Content-Type: {{appJson}}
 
 {

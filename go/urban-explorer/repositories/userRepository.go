@@ -14,6 +14,7 @@ type IUserRepository interface {
 	IsEmailInUse(email string) (bool, error)
 	AddUserOnPhoto(photo *models.PhotoModel) (*models.PhotoModel, error)
 	UpdateRecoverByEmail(email string, code string) (*models.UserModel, error)
+	UpdateUserPassword(userId int64, passwordHash string) (*models.UserModel, error)
 }
 
 type UserRepository struct{}
@@ -181,6 +182,44 @@ func (r *UserRepository) UpdateRecoverByEmail(email string, code string) (*model
 	isSaved := rows.Next()
 	if !isSaved {
 		return nil, errors.New("failed to add recover code")
+	}
+
+	user := models.UserModel{}
+	rows.Scan(
+		&user.ID,
+		&user.Email,
+		&user.PasswordHash,
+		&user.RecoverCode,
+	)
+
+	return &user, nil
+}
+
+func (r *UserRepository) UpdateUserPassword(userId int64, passwordHash string) (*models.UserModel, error) {
+	db := database.New()
+	defer db.Close()
+
+	rows, err := db.Query(`
+		UPDATE users
+		SET 
+			password_hash=:password_hash, recover_code=:recover_code
+		WHERE
+			id=:id
+		RETURNING
+			id, email, password_hash, recover_code
+	`,
+		sql.Named("id", userId),
+		sql.Named("password_hash", passwordHash),
+		sql.Named("recover_code", nil),
+	)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+
+	isSaved := rows.Next()
+	if !isSaved {
+		return nil, errors.New("failed to update user password")
 	}
 
 	user := models.UserModel{}
