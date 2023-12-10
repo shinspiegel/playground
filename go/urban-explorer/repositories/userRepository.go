@@ -50,7 +50,7 @@ func (r *UserRepository) FindByEmail(email string) (*models.UserModel, error) {
 		&user.ID,
 		&user.Email,
 		&user.PasswordHash,
-		&user.PasswordHash,
+		&user.RecoverCode,
 	)
 
 	return &user, nil
