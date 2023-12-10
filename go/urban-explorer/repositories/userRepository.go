@@ -9,8 +9,10 @@ import (
 
 type IUserRepository interface {
 	FindByEmail(email string) (*models.UserModel, error)
+	FindById(id int64) (*models.UserModel, error)
 	Insert(email, passwordHash string) (*models.UserModel, error)
 	IsEmailInUse(email string) (bool, error)
+	AddUserOnPhoto(photo *models.PhotoModel) (*models.PhotoModel, error)
 }
 
 type UserRepository struct{}
@@ -108,4 +110,48 @@ func (m *UserRepository) Insert(email, passwordHash string) (*models.UserModel, 
 	)
 
 	return &user, nil
+}
+
+func (r *UserRepository) FindById(id int64) (*models.UserModel, error) {
+	db := database.New()
+	defer db.Close()
+
+	rows, err := db.Query(`
+		SELECT
+			id, email, password_hash, recover_code
+		FROM
+			users
+		WHERE
+			id = :id
+	`,
+		sql.Named("id", id),
+	)
+	if err != nil {
+		return nil, err
+	}
+
+	hasUser := rows.Next()
+	if !hasUser {
+		return nil, errors.New("user id not found")
+	}
+	user := models.UserModel{}
+	rows.Scan(
+		&user.ID,
+		&user.Email,
+		&user.PasswordHash,
+		&user.PasswordHash,
+	)
+
+	return &user, nil
+}
+
+func (r *UserRepository) AddUserOnPhoto(photo *models.PhotoModel) (*models.PhotoModel, error) {
+	user, err := r.FindById(photo.Id)
+	if err != nil {
+		return nil, err
+	}
+
+	photo.User = user
+
+	return photo, nil
 }

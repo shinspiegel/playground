@@ -3,12 +3,14 @@ package app
 import "urban-explorer/services"
 
 type AppServices struct {
-	jwt      services.IJwtService
-	password services.IPasswordService
-	random   services.IRandomNumberService
-	auth     services.IAuthService
-	cookie   services.ICookiesService
-	trip     services.ITripService
+	jwt       services.IJwtService
+	password  services.IPasswordService
+	random    services.IRandomNumberService
+	auth      services.IAuthService
+	cookie    services.ICookiesService
+	trip      services.ITripService
+	photo     services.IPhotoService
+	formImage services.IFormImageService
 }
 
 func (a *App) LoadServices() {
@@ -17,6 +19,7 @@ func (a *App) LoadServices() {
 	a.services.password = services.NewPasswordService()
 	a.services.random = services.NewRandomNumberService()
 	a.services.cookie = services.NewCookiesService()
+	a.services.formImage = services.NewFormImageService()
 
 	a.services.trip = services.NewTripService(
 		a.repos.trip,
@@ -27,5 +30,10 @@ func (a *App) LoadServices() {
 		a.services.jwt,
 		a.services.cookie,
 		a.repos.user,
+	)
+
+	a.services.photo = services.NewPhotoService(
+		a.repos.photo,
+		a.services.formImage,
 	)
 }

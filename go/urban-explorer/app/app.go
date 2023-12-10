@@ -31,7 +31,6 @@ func NewApp() *App {
 	app.Add404Routes()
 	app.AddAuthRoutes()
 	app.AddTripsRoutes()
-	app.AddPhotosRoutes()
 
 	// Start the app
 	return &app

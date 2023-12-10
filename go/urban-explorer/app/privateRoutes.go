@@ -3,7 +3,6 @@ package app
 import (
 	"errors"
 	"fmt"
-	"strconv"
 	"urban-explorer/controllers"
 
 	"github.com/gin-gonic/gin"
@@ -38,7 +37,7 @@ func (a *App) PrivateRoute(ctx *gin.Context) {
 		return
 	}
 
-	ctx.Request.Header.Add("user_id", strconv.FormatInt(claim.UserID, 10))
+	controllers.SetUserId(ctx, claim.UserID)
 
 	ctx.Next()
 }

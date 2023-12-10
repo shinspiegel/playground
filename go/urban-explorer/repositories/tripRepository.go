@@ -9,6 +9,8 @@ import (
 
 type ITripRepository interface {
 	CreateTrip(name string, userId int64) (*models.TripModel, error)
+	FindById(id int64) (*models.TripModel, error)
+	AddTripToPhoto(photo *models.PhotoModel) (*models.PhotoModel, error)
 }
 
 type TripRepository struct{}
@@ -50,4 +52,46 @@ func (r *TripRepository) CreateTrip(name string, userId int64) (*models.TripMode
 	)
 
 	return &trip, nil
+}
+
+func (r *TripRepository) FindById(id int64) (*models.TripModel, error) {
+	db := database.New()
+	defer db.Close()
+
+	rows, err := db.Query(`
+		SELECT
+			id, user_id, name
+		FROM
+			trips
+		WHERE
+			id = :id
+	`,
+		sql.Named("id", id),
+	)
+	if err != nil {
+		return nil, err
+	}
+
+	hasUser := rows.Next()
+	if !hasUser {
+		return nil, errors.New("user id not found")
+	}
+	trip := models.TripModel{}
+	rows.Scan(
+		&trip.Id,
+		&trip.User_id,
+		&trip.Name,
+	)
+
+	return &trip, nil
+}
+
+func (r *TripRepository) AddTripToPhoto(photo *models.PhotoModel) (*models.PhotoModel, error) {
+	trip, err := r.FindById(photo.TripId)
+	if err != nil {
+		return nil, err
+	}
+
+	photo.Trip = trip
+	return photo, nil
 }

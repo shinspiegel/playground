@@ -2,9 +2,12 @@
 	"cSpell.words": [
 		"AUTOINCREMENT",
 		"dgrijalva",
+		"exif",
 		"godotenv",
+		"goexif",
 		"gonic",
 		"joho",
+		"rwcarlsen",
 		"sqlite",
 		"tmpl",
 		"urbanexplorer"
