@@ -10,7 +10,7 @@ func (a *App) AddTripsRoutes() {
 	a.router.POST(
 		"/trips/new",
 		a.PrivateRoute,
-		func(ctx *gin.Context) { a.getTripController(ctx).AddPhoto() },
+		func(ctx *gin.Context) { a.getTripController(ctx).NewTrip() },
 	)
 	a.router.POST(
 		"/trips/:trip_id/photos/add",

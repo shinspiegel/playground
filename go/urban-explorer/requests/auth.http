@@ -1,0 +1,81 @@
+@hostname = http://localhost
+@port = 8080
+@host = {{hostname}}:{{port}}
+@appJson = application/json
+@boundaries = BOUNDARIES
+@multiForm = multipart/form-data; boundary={{boundaries}}
+
+
+
+###
+POST {{host}}/auth/register HTTP/1.1
+Content-Type: {{appJson}}
+
+{
+	"email": "test@test.com",
+	"password": "123456"
+}
+
+
+
+###
+POST {{host}}/auth/register HTTP/1.1
+Content-Type: {{multiForm}}
+
+--{{boundaries}}
+Content-Disposition: form-data; name="email"
+
+test@test.com
+--{{boundaries}}
+Content-Disposition: form-data; name="password"
+
+123456
+--{{boundaries}}--
+
+
+
+### 
+POST {{host}}/auth/login HTTP/1.1
+Content-Type: {{appJson}}
+
+{
+	"email": "test@test.com",
+	"password": "123456"
+}
+
+
+
+###
+POST {{host}}/auth/login HTTP/1.1
+Content-Type: {{multiForm}}
+
+--{{boundaries}}
+Content-Disposition: form-data; name="email"
+
+test@test.com
+--{{boundaries}}
+Content-Disposition: form-data; name="password"
+
+123456
+--{{boundaries}}--
+
+
+
+### 
+POST {{host}}/auth/recover HTTP/1.1
+Content-Type: {{appJson}}
+
+{
+	"email": "test@test.com"
+}
+
+
+
+###
+POST {{host}}/auth/recover/897081 HTTP/1.1
+Content-Type: {{appJson}}
+
+{
+	"email": "test@test.com",
+	"password": "123456"
+}

@@ -1,6 +1,7 @@
 package controllers
 
 import (
+	"errors"
 	"net/http"
 	"urban-explorer/config"
 	"urban-explorer/services"
@@ -32,38 +33,82 @@ func NewAuthController(
 	}
 }
 
-type checkLoginResponse struct {
+type loginBody struct {
+	Email    string `json:"email"`
+	Password string `json:"password"`
+}
+
+type loginResponse struct {
 	Token string `json:"token"`
 }
 
-func (c *AuthController) CheckLogin() {
-	token, err := c.authService.Login(
-		c.context.Request.FormValue("email"),
-		c.context.Request.FormValue("password"),
-	)
+func (c *AuthController) Login() {
+	body := loginBody{}
+
+	switch contentType := c.context.ContentType(); contentType {
+	case "application/json":
+		c.context.BindJSON(&body)
+
+	case "multipart/form-data":
+		body.Email = c.context.Request.FormValue("email")
+		body.Password = c.context.Request.FormValue("password")
+
+	default:
+		BadRequest(c.context, errors.New("invalid content type"))
+		return
+	}
+
+	if body.Email == "" || body.Password == "" {
+		BadRequest(c.context, errors.New("missing or empty email or password"))
+		return
+	}
+
+	token, err := c.authService.Login(body.Email, body.Password)
 	if err != nil {
 		BadRequest(c.context, err)
 		return
 	}
 
 	c.cookiesService.SetJwtCookie(c.context, token)
-	c.context.JSON(http.StatusOK, checkLoginResponse{Token: *token})
+	c.context.JSON(http.StatusOK, loginResponse{Token: *token})
 }
 
-type createUserResponse struct {
+type registerBody struct {
+	Email    string `json:"email"`
+	Password string `json:"password"`
+}
+
+type registerResponse struct {
 	Token string `json:"token"`
 }
 
-func (c *AuthController) CreateNewUser() {
-	token, err := c.authService.Register(
-		c.context.Request.FormValue("email"),
-		c.context.Request.FormValue("password"),
-	)
+func (c *AuthController) Register() {
+	body := registerBody{}
+
+	switch contentType := c.context.ContentType(); contentType {
+	case "application/json":
+		c.context.BindJSON(&body)
+
+	case "multipart/form-data":
+		body.Email = c.context.Request.FormValue("email")
+		body.Password = c.context.Request.FormValue("password")
+
+	default:
+		BadRequest(c.context, errors.New("invalid content type"))
+		return
+	}
+
+	if body.Email == "" || body.Password == "" {
+		BadRequest(c.context, errors.New("missing or empty email or password"))
+		return
+	}
+
+	token, err := c.authService.Register(body.Email, body.Password)
 	if err != nil {
 		BadRequest(c.context, err)
 		return
 	}
 
 	c.cookiesService.SetJwtCookie(c.context, token)
-	c.context.JSON(http.StatusCreated, createUserResponse{Token: *token})
+	c.context.JSON(http.StatusCreated, registerResponse{Token: *token})
 }

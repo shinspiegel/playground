@@ -37,7 +37,7 @@ func (c *TripController) NewTrip() {
 	body := NewTripBody{}
 	err = c.context.BindJSON(&body)
 	if err != nil {
-		BadRequest(c.context, err)
+		BadRequest(c.context, errors.New("invalid body. 'name' is required"))
 		return
 	}
 
