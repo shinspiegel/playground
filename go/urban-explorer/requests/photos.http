@@ -1,0 +1,11 @@
+@hostname = http://localhost
+@port = 8080
+@host = {{hostname}}:{{port}}
+@appJson = application/json
+@boundaries = BOUNDARIES
+@multiForm = multipart/form-data; boundary={{boundaries}}
+
+
+
+###
+GET {{host}}/photos/1 HTTP/1.1

@@ -26,11 +26,7 @@ func NewApp() *App {
 	// Order is important
 	app.LoadRepositories()
 	app.LoadServices()
-
-	// Load all routes for the app
-	app.Add404Routes()
-	app.AddAuthRoutes()
-	app.AddTripsRoutes()
+	app.LoadRoutes()
 
 	// Start the app
 	return &app
