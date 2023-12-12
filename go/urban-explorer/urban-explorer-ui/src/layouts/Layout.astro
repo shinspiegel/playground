@@ -1,0 +1,81 @@
+---
+interface Props {
+	title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content="Astro description" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+	</head>
+	<body>
+		<slot />
+	</body>
+</html>
+
+<style is:global lang="scss">
+	:root {
+		--background: #131213;
+		--text: #e2ecee;
+		--primary: #84abee;
+		--secondary: #888f92;
+	}
+
+	* {
+		padding: 0;
+		margin: 0;
+		box-sizing: border-box;
+		font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+		color: var(--text);
+
+		&:focus {
+			outline: none;
+		}
+	}
+
+	html {
+		background: var(--background);
+		font-size: 62.5%;
+	}
+
+	body {
+		font-size: 1.6rem;
+	}
+
+	button {
+		background: var(--background);
+		border: 1px solid var(--primary);
+		padding: 0.4rem;
+		transition: all 0.2s ease-in-out;
+
+		&:hover,
+		&:focus {
+			background: var(--primary);
+			color: var(--background);
+		}
+
+		&[type="reset"] {
+			border: 1px solid transparent;
+		}
+	}
+
+	input {
+		background: var(--background);
+		border: 1px solid var(--primary);
+		padding: 0.4rem;
+		width: 100%;
+		transition: all 0.2s ease-in-out;
+
+		&:focus {
+			border: 1px solid var(--text);
+		}
+	}
+</style>

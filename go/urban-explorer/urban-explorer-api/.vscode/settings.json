@@ -22,4 +22,10 @@
 		"*.tmpl": "html"
 	},
 	"workbench.colorTheme": "Catppuccin Frappé",
+	"workbench.colorCustomizations": {
+		"activityBar.foreground": "#000000",
+		"activityBar.background": "#ff7b00",
+		"activityBar.activeBackground": "#ffffff",
+		"activityBar.inactiveForeground": "#000000",
+	}
 }

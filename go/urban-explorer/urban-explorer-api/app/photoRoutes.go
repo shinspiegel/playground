@@ -7,11 +7,7 @@ import (
 )
 
 func (a *App) AddPhotosRoutes() {
-	a.router.GET(
-		"/photos/:photo_id",
-		a.PrivateRoute,
-		func(c *gin.Context) { a.getPhotosController(c).GetById() },
-	)
+	a.router.GET("/api/photos/:photo_id", a.PrivateRoute, func(c *gin.Context) { a.getPhotosController(c).GetById() })
 }
 
 func (a *App) getPhotosController(ctx *gin.Context) *controllers.PhotoController {

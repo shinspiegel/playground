@@ -46,7 +46,7 @@ func (s *AuthService) Login(email, password string) (*string, error) {
 
 	isValid := s.passService.Check(password, user.PasswordHash)
 	if !isValid {
-		return nil, errors.New("invalid password")
+		return nil, errors.New("invalid email or password")
 	}
 
 	token, err := s.jwtService.Generate(user.ID)

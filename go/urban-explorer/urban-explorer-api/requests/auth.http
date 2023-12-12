@@ -1,6 +1,6 @@
 @hostname = http://localhost
 @port = 8080
-@host = {{hostname}}:{{port}}
+@host = {{hostname}}:{{port}}/api
 @appJson = application/json
 @boundaries = BOUNDARIES
 @multiForm = multipart/form-data; boundary={{boundaries}}

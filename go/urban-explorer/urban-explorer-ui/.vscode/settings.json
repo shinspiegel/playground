@@ -1,0 +1,16 @@
+{
+	"cSpell.words": [],
+	"editor.insertSpaces": false,
+	"editor.renderWhitespace": "all",
+	"editor.tabSize": 4,
+	"editor.useTabStops": true,
+	"prettier.tabWidth": 4,
+	"prettier.useTabs": true,
+	"workbench.colorTheme": "Catppuccin Frappé",
+	"workbench.colorCustomizations": {
+		"activityBar.foreground": "#000000",
+		"activityBar.background": "#253adc",
+		"activityBar.activeBackground": "#ffffff",
+		"activityBar.inactiveForeground": "#000000",
+	}
+}

@@ -5,6 +5,7 @@ import (
 	"os"
 	"urban-explorer/config"
 
+	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 )
 
@@ -23,6 +24,9 @@ func NewApp() *App {
 
 	config.ReadEnv(&app.Flags.EnvFile)
 
+	// App base configs
+	app.enableCors()
+
 	// Order is important
 	app.LoadRepositories()
 	app.LoadServices()
@@ -38,4 +42,17 @@ func (a *App) Run() {
 
 func (a *App) NotImplemented(ctx *gin.Context) {
 	ctx.String(http.StatusNotImplemented, "not implemented")
+}
+
+func (a *App) enableCors() {
+	config := cors.DefaultConfig()
+
+	config.AllowCredentials = true
+	config.AllowOrigins = []string{
+		"http://localhost:8080",
+		"http://localhost:4321",
+		"https://jeferson.me",
+	}
+
+	a.router.Use(cors.New(config))
 }

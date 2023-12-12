@@ -1,0 +1,26 @@
+---
+import LoginForm from "../components/LoginForm.astro";
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="Urban Explorer">
+	<main>
+		<h3>Login</h3>
+		<LoginForm client:load />
+	</main>
+</Layout>
+
+<style lang="scss">
+	main {
+		height: 100vh;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}
+
+	h3 {
+		font-size: 3rem;
+		margin-bottom: 3rem;
+	}
+</style>
