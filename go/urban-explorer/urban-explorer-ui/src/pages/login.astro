@@ -1,14 +1,14 @@
 ---
 import LoginForm from "../components/LoginForm.astro";
-import Layout from "../layouts/Layout.astro";
+import PublicLayout from "../layouts/PublicLayout.astro";
 ---
 
-<Layout title="Urban Explorer">
+<PublicLayout title="Login">
 	<main>
 		<h3>Login</h3>
 		<LoginForm client:load />
 	</main>
-</Layout>
+</PublicLayout>
 
 <style lang="scss">
 	main {
@@ -24,3 +24,18 @@ import Layout from "../layouts/Layout.astro";
 		margin-bottom: 3rem;
 	}
 </style>
+
+<script>
+	import { AUTH_CHECK_URL } from "../constants/routes";
+
+	fetch(AUTH_CHECK_URL, { credentials: "include" })
+		.then((res) => {
+			if (res.ok) {
+				window.location.replace("/dashboard");
+			}
+		})
+		.catch((err) => {
+			console.error(err);
+			window.location.replace("/login");
+		});
+</script>

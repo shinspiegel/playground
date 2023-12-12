@@ -1,11 +1,12 @@
 ---
 import Navigation from "../components/Navigation.astro";
-import Layout from "../layouts/Layout.astro";
+import PublicLayout from "../layouts/PublicLayout.astro";
 ---
 
-<Layout title="Welcome to Astro.">
+<PublicLayout title="Welcome to Urban Explorer" overrideTitle={true}>
 	<Navigation />
 	<main>
-		<h1>Page</h1>
+		<h1>Urban Explorer</h1>
+		<p>This is the space for me to display where I've explored so far.</p>
 	</main>
-</Layout>
+</PublicLayout>

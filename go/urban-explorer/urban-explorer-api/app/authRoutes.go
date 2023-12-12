@@ -7,6 +7,7 @@ import (
 )
 
 func (a *App) AddAuthRoutes() {
+	a.router.GET("api/auth/check", a.PrivateRoute, func(ctx *gin.Context) { a.getAuthController(ctx).Check() })
 	a.router.POST("api/auth/login", func(ctx *gin.Context) { a.getAuthController(ctx).Login() })
 	a.router.POST("api/auth/register", func(ctx *gin.Context) { a.getAuthController(ctx).Register() })
 	a.router.POST("api/auth/recover", func(ctx *gin.Context) { a.getAuthController(ctx).Recover() })

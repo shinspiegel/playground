@@ -1,9 +1,10 @@
 ---
-import Layout from "../layouts/Layout.astro";
+import PrivateLayout from "../layouts/PrivateLayout.astro";
 ---
 
-<Layout title="Welcome to Astro.">
+<PrivateLayout title="Dashboard">
 	<main>
 		<h1>Dashboard</h1>
+		<a href="/trip/new">New Trip</a>
 	</main>
-</Layout>
+</PrivateLayout>

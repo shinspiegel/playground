@@ -1,0 +1,14 @@
+---
+import Layout from "./Layout.astro";
+
+interface Props {
+	title?: string;
+	overrideTitle?: boolean;
+}
+
+const { title, overrideTitle } = Astro.props;
+---
+
+<Layout title={title} overrideTitle={overrideTitle}>
+	<slot />
+</Layout>

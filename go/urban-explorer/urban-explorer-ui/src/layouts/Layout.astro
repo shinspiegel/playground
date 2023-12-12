@@ -1,9 +1,19 @@
 ---
 interface Props {
-	title: string;
+	title?: string;
+	overrideTitle?: boolean;
 }
 
-const { title } = Astro.props;
+const { title = "", overrideTitle = false } = Astro.props;
+
+let pageTitle = "Urban Explorer";
+if (title) {
+	if (overrideTitle) {
+		pageTitle = title;
+	} else {
+		pageTitle += ` - ${title}`;
+	}
+}
 ---
 
 <!doctype html>
@@ -14,7 +24,7 @@ const { title } = Astro.props;
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
+		<title>{pageTitle}</title>
 	</head>
 	<body>
 		<slot />
@@ -23,10 +33,16 @@ const { title } = Astro.props;
 
 <style is:global lang="scss">
 	:root {
-		--background: #131213;
-		--text: #e2ecee;
-		--primary: #84abee;
+		--background: #161416;
+		--background-shade: #131213;
+		--background-tint: #323032;
+		--text: #cfd7d9;
+		--primary: #7da2e2;
+		--primary-shade: #6272c4;
+		--primary-tint: #a4cdef;
 		--secondary: #888f92;
+		--secondary-shade: #616469;
+		--secondary-tint: #a8bbc0;
 	}
 
 	* {
@@ -51,31 +67,31 @@ const { title } = Astro.props;
 	}
 
 	button {
-		background: var(--background);
-		border: 1px solid var(--primary);
+		color: var(--background);
+		background: var(--primary-tint);
+		border: 1px solid transparent;
+		border-radius: 4px;
 		padding: 0.4rem;
 		transition: all 0.2s ease-in-out;
 
 		&:hover,
 		&:focus {
-			background: var(--primary);
-			color: var(--background);
-		}
-
-		&[type="reset"] {
-			border: 1px solid transparent;
+			background: var(--primary-shade);
+			border: 1px solid var(--text);
+			outline: 2px solid var(--primary);
 		}
 	}
 
 	input {
-		background: var(--background);
-		border: 1px solid var(--primary);
+		color: var(--background);
+		background: var(--text);
+		border: 1px solid var(--text);
 		padding: 0.4rem;
 		width: 100%;
 		transition: all 0.2s ease-in-out;
 
 		&:focus {
-			border: 1px solid var(--text);
+			border: 1px solid var(--primary-shade);
 		}
 	}
 </style>

@@ -183,3 +183,7 @@ func (c *AuthController) RecoverCode() {
 
 	c.context.JSON(http.StatusOK, recoverCodeResponse{Token: *token})
 }
+
+func (c *AuthController) Check() {
+	c.context.Status(http.StatusOK)
+}

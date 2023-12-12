@@ -11,7 +11,7 @@ import (
 func (a *App) PrivateRoute(ctx *gin.Context) {
 	var token string
 
-	bearerToken := ctx.GetHeader("authorization")
+	authToken := ctx.GetHeader("authorization")
 
 	cookieToken, err := a.services.cookie.GetJwtCookie(ctx)
 	if err != nil {
@@ -19,7 +19,7 @@ func (a *App) PrivateRoute(ctx *gin.Context) {
 		fmt.Println("WARN::" + err.Error())
 	}
 
-	if cookieToken == "" && bearerToken == "" {
+	if cookieToken == "" && authToken == "" {
 		a.services.cookie.CleanCookies(ctx)
 		controllers.Unauthorized(ctx, errors.New("invalid or empty auth token"))
 		ctx.Done()
@@ -29,8 +29,8 @@ func (a *App) PrivateRoute(ctx *gin.Context) {
 	if cookieToken != "" {
 		token = cookieToken
 	}
-	if bearerToken != "" {
-		token = bearerToken
+	if authToken != "" {
+		token = authToken
 	}
 
 	claim, err := a.services.jwt.Validate(token)
