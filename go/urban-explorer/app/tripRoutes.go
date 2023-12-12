@@ -17,7 +17,6 @@ func (a *App) AddTripsRoutes() {
 		a.PrivateRoute,
 		func(ctx *gin.Context) { a.getTripController(ctx).AddPhoto() },
 	)
-
 	a.router.POST(
 		"/trips/:trip_id/publish",
 		a.PrivateRoute,

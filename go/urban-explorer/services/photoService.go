@@ -1,6 +1,7 @@
 package services
 
 import (
+	"errors"
 	"mime/multipart"
 	"urban-explorer/models"
 	"urban-explorer/repositories"
@@ -15,14 +16,16 @@ type IPhotoService interface {
 }
 
 type PhotoService struct {
-	repo      repositories.IPhotoRepository
-	formImage IFormImageService
+	photoRepo        repositories.IPhotoRepository
+	formImageService IFormImageService
+	imageService     IImageService
 }
 
-func NewPhotoService(r repositories.IPhotoRepository, fs IFormImageService) *PhotoService {
+func NewPhotoService(r repositories.IPhotoRepository, fs IFormImageService, is IImageService) *PhotoService {
 	return &PhotoService{
-		repo:      r,
-		formImage: fs,
+		photoRepo:        r,
+		formImageService: fs,
+		imageService:     is,
 	}
 }
 
@@ -31,14 +34,25 @@ func (s *PhotoService) AddPhoto(
 	tripId int64,
 	image *multipart.FileHeader,
 ) (*models.PhotoModel, error) {
-	lat, long, err := s.formImage.GetLatLong(image)
-	if err != nil {
-		return nil, err
+	if image.Header.Get("Content-Type") != "image/jpeg" {
+		return nil, errors.New("image must be jpeg")
 	}
-	timestamp, err := s.formImage.GetTimestamp(image)
+
+	lat, long, err := s.formImageService.GetLatLong(image)
 	if err != nil {
 		return nil, err
 	}
 
-	return s.repo.CreatePhoto(userId, tripId, lat, long, timestamp)
+	timestamp, err := s.formImageService.GetTimestamp(image)
+	if err != nil {
+		return nil, err
+	}
+
+	resizeOpt := ResizeOptions{Height: 500, Width: 500, Quality: 70}
+	imageBytes, err := s.imageService.ResizeForDB(image, &resizeOpt)
+	if err != nil {
+		return nil, err
+	}
+
+	return s.photoRepo.CreatePhoto(userId, tripId, lat, long, timestamp, *imageBytes)
 }

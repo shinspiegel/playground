@@ -38,5 +38,6 @@ func (a *App) LoadServices() {
 	a.services.photo = services.NewPhotoService(
 		a.repos.photo,
 		a.services.formImage,
+		a.services.image,
 	)
 }

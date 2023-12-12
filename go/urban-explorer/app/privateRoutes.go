@@ -20,7 +20,9 @@ func (a *App) PrivateRoute(ctx *gin.Context) {
 	}
 
 	if cookieToken == "" && bearerToken == "" {
+		a.services.cookie.CleanCookies(ctx)
 		controllers.Unauthorized(ctx, errors.New("invalid or empty auth token"))
+		ctx.Done()
 		return
 	}
 
@@ -33,7 +35,9 @@ func (a *App) PrivateRoute(ctx *gin.Context) {
 
 	claim, err := a.services.jwt.Validate(token)
 	if err != nil {
+		a.services.cookie.CleanCookies(ctx)
 		controllers.Unauthorized(ctx, err)
+		ctx.Done()
 		return
 	}
 

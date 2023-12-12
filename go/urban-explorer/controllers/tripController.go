@@ -56,6 +56,7 @@ func (c *TripController) AddPhoto() {
 		InternalServerError(c.context, err)
 		return
 	}
+
 	tripId, err := strconv.ParseInt(c.context.Param("trip_id"), 10, 64)
 	if err != nil {
 		BadRequest(c.context, errors.New("invalid trip id"))

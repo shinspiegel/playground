@@ -7,34 +7,29 @@
 
 
 
-### @name login
-POST {{host}}/auth/login HTTP/1.1
-Content-Type: {{appJson}}
-
-{
-	"email": "test@test.com",
-	"password": "123456"
-}
-
-
-
-
 ###
 POST {{host}}/trips/new HTTP/1.1
 Content-Type: {{appJson}}
-Authorization: 
 
 {
 	"name": "New trip"
 }
 
 
+
 ###
-POST {{host}}/trips/:trip_id/photos/add HTTP/1.1
-Content-Type: {{appJson}}
+POST {{host}}/trips/4/photos/add HTTP/1.1
+Content-Type: {{multiForm}}
+
+--{{boundaries}}
+Content-Disposition: form-data; name="image"; filename="1.jpg"
+Content-Type: image/jpeg
+
+< ./_test_image.jpg
+--{{boundaries}}--
+
 
 
 ###
 POST {{host}}/trips/:trip_id/publish HTTP/1.1
 Content-Type: {{appJson}}
-
