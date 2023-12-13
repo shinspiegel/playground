@@ -6,5 +6,40 @@ import PrivateLayout from "../layouts/PrivateLayout.astro";
 	<main>
 		<h1>Dashboard</h1>
 		<a href="/trip/new">New Trip</a>
+
+		<form>
+			<h3>Trip Name</h3>
+			<label>
+				<div>New Trip</div>
+				<input type="text" name="name" required />
+			</label>
+
+			<button>Create New Trip</button>
+
+			<div id="error-view"></div>
+		</form>
 	</main>
 </PrivateLayout>
+
+<script>
+	import { TRIPS_NEW_URL } from "../constants/routes";
+	const form = document.querySelector("form");
+	if (form)
+		form.addEventListener("submit", (e) => {
+			e.preventDefault();
+			fetch(TRIPS_NEW_URL, {
+				method: "POST",
+				credentials: "include",
+				body: new FormData(form),
+			})
+				.then((res) => res.json())
+				.then((data) => {
+					if ("error" in data) throw data;
+					window.location.replace(`/trips/${data.id}`);
+				})
+				.catch((err) => {
+					const el = document.getElementById("error-view");
+					if (el) el.innerText = err?.message ?? "";
+				});
+		});
+</script>

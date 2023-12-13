@@ -4,6 +4,7 @@ import (
 	"errors"
 	"net/http"
 	"strconv"
+	"strings"
 	"urban-explorer/services"
 
 	"github.com/gin-gonic/gin"
@@ -35,9 +36,23 @@ func (c *TripController) NewTrip() {
 	}
 
 	body := NewTripBody{}
-	err = c.context.BindJSON(&body)
-	if err != nil {
-		BadRequest(c.context, errors.New("invalid body. 'name' is required"))
+
+	switch contentType := c.context.ContentType(); contentType {
+	case "application/json":
+		c.context.BindJSON(&body)
+
+	case "multipart/form-data":
+		body.Name = c.context.Request.FormValue("name")
+
+	default:
+		BadRequest(c.context, errors.New("invalid content type"))
+		return
+	}
+
+	body.Name = strings.Trim(body.Name, " ")
+
+	if body.Name == "" {
+		BadRequest(c.context, errors.New("name property can't be empty"))
 		return
 	}
 

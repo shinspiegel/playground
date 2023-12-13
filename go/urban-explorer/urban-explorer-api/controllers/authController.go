@@ -3,6 +3,7 @@ package controllers
 import (
 	"errors"
 	"net/http"
+	"strings"
 	"urban-explorer/config"
 	"urban-explorer/services"
 
@@ -58,6 +59,9 @@ func (c *AuthController) Login() {
 		return
 	}
 
+	body.Email = strings.Trim(body.Email, " ")
+	body.Password = strings.Trim(body.Password, " ")
+
 	if body.Email == "" || body.Password == "" {
 		BadRequest(c.context, errors.New("missing or empty email or password"))
 		return
@@ -98,6 +102,9 @@ func (c *AuthController) Register() {
 		return
 	}
 
+	body.Email = strings.Trim(body.Email, " ")
+	body.Password = strings.Trim(body.Password, " ")
+
 	if body.Email == "" || body.Password == "" {
 		BadRequest(c.context, errors.New("missing or empty email or password"))
 		return
@@ -131,6 +138,8 @@ func (c *AuthController) Recover() {
 		BadRequest(c.context, errors.New("invalid content type"))
 		return
 	}
+
+	body.Email = strings.Trim(body.Email, " ")
 
 	if body.Email == "" {
 		BadRequest(c.context, errors.New("missing or invalid 'email' property"))
@@ -169,6 +178,9 @@ func (c *AuthController) RecoverCode() {
 		BadRequest(c.context, errors.New("invalid content type"))
 		return
 	}
+
+	body.Email = strings.Trim(body.Email, " ")
+	body.Password = strings.Trim(body.Password, " ")
 
 	if body.Email == "" || body.Password == "" {
 		BadRequest(c.context, errors.New("missing or invalid 'email' or 'password' property"))

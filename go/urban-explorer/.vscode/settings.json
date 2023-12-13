@@ -1,0 +1,25 @@
+{
+	"cSpell.words": [
+		"AUTOINCREMENT",
+		"dgrijalva",
+		"exif",
+		"godotenv",
+		"goexif",
+		"gonic",
+		"joho",
+		"Lanczos",
+		"nfnt",
+		"rwcarlsen",
+		"sqlite",
+		"tmpl",
+		"urbanexplorer"
+	],
+	"editor.insertSpaces": false,
+	"editor.renderWhitespace": "all",
+	"editor.tabSize": 4,
+	"editor.useTabStops": true,
+	"files.associations": { "*.tmpl": "html" },
+	"prettier.tabWidth": 4,
+	"prettier.useTabs": true,
+	"workbench.colorTheme": "Catppuccin Frappé",
+}
