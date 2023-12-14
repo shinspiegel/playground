@@ -1,6 +1,7 @@
 import { PHOTOS_PHOTOID } from "../constants/apiRoutes";
 import { useReplace } from "../hooks/useReplace";
 import { Photo } from "../type";
+import { TripPhoto } from "./TripPhoto";
 
 type PhotoEntryProps = {
 	item: Photo;
@@ -16,7 +17,7 @@ export function PhotoEntry({ item }: PhotoEntryProps) {
 				{item.latitude} - {item.longitude}
 			</div>
 			<div>{item.timestamp}</div>
-			<img src={src} />
+			<TripPhoto photo={item} />
 		</div>
 	);
 }

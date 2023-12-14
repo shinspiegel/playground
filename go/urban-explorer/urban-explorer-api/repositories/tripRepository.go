@@ -11,6 +11,7 @@ type ITripRepository interface {
 	CreateTrip(name string, userId int64) (*models.TripModel, error)
 	FindById(tripId int64, userId int64) (*models.TripModel, error)
 	AddTripToPhoto(photo *models.PhotoModel) (*models.PhotoModel, error)
+	FindAllByUserId(userId int64) (*[]models.TripModel, error)
 }
 
 type TripRepository struct{}
@@ -95,4 +96,41 @@ func (r *TripRepository) AddTripToPhoto(photo *models.PhotoModel) (*models.Photo
 
 	photo.Trip = trip
 	return photo, nil
+}
+
+func (r *TripRepository) FindAllByUserId(userId int64) (*[]models.TripModel, error) {
+	db := database.New()
+	defer db.Close()
+
+	rows, err := db.Query(`
+		SELECT
+			id, user_id, name
+		FROM
+			trips
+		WHERE
+			user_id = :user_id
+	`,
+		sql.Named("user_id", userId),
+	)
+	if err != nil {
+		return nil, err
+	}
+
+	trips := []models.TripModel{}
+
+	for rows.Next() {
+		trip := models.TripModel{}
+		err := rows.Scan(
+			&trip.Id,
+			&trip.User_id,
+			&trip.Name,
+		)
+		if err != nil {
+			return nil, err
+		}
+
+		trips = append(trips, trip)
+	}
+
+	return &trips, nil
 }

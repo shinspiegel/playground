@@ -112,6 +112,8 @@ func (r *PhotoRepository) GetPhotosByTripId(userId int64, tripId int64) (*[]mode
 			photos
 		WHERE
 			trip_id = :trip_id AND user_id = :user_id
+		ORDER 
+			BY timestamp ASC
 		`,
 		sql.Named("user_id", userId),
 		sql.Named("trip_id", tripId),

@@ -8,6 +8,7 @@ import (
 type ITripService interface {
 	CreateTrip(name string, userId int64) (*models.TripModel, error)
 	GetById(tripId int64, userId int64) (*models.TripModel, error)
+	GetByUserId(userId int64) (*[]models.TripModel, error)
 }
 
 type TripService struct {
@@ -26,4 +27,8 @@ func (s *TripService) CreateTrip(name string, userId int64) (*models.TripModel, 
 
 func (s *TripService) GetById(tripId int64, userId int64) (*models.TripModel, error) {
 	return s.repo.FindById(tripId, userId)
+}
+
+func (s *TripService) GetByUserId(userId int64) (*[]models.TripModel, error) {
+	return s.repo.FindAllByUserId(userId)
 }

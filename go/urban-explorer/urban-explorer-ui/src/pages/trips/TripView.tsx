@@ -7,6 +7,7 @@ import { useReplace } from "../../hooks/useReplace";
 import { AddImageForm } from "../../components/AddImageForm";
 import { Trip } from "../../type";
 import { PhotosList } from "../../components/PhotosList";
+import { TripMap } from "../../components/TripMap";
 
 export function TripId() {
 	const { tripId } = useParams();
@@ -17,18 +18,19 @@ export function TripId() {
 		return <div>Loading</div>;
 	}
 
-	if (error || !tripId) {
+	if (error || !tripId || !data) {
 		return <div>Failed to load: {error} </div>;
 	}
 
 	return (
 		<PrivatePage>
 			<NavList />
-			<h1>Trip ({tripId})</h1>
+			<h1>{data.name}</h1>
 
 			<AddImageForm tripId={tripId} onAddImage={() => refresh()} />
+			<TripMap photos={data.photos} />
 
-			<PhotosList list={data?.photos?.sort((a, b) => a.timestamp - b.timestamp)} />
+			<PhotosList list={data.photos} />
 		</PrivatePage>
 	);
 }

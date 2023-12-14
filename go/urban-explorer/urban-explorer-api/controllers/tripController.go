@@ -126,3 +126,19 @@ func (c *TripController) GetById() {
 
 	c.context.JSON(http.StatusCreated, trip)
 }
+
+func (c *TripController) GetTrips() {
+	userId, err := GetUserId(c.context)
+	if err != nil {
+		BadRequest(c.context, errors.New("invalid user_id"))
+		return
+	}
+
+	trips, err := c.tripService.GetByUserId(userId)
+	if err != nil {
+		InternalServerError(c.context, err)
+		return
+	}
+
+	c.context.JSON(http.StatusCreated, *trips)
+}

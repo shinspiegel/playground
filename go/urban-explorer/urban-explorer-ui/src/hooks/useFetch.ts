@@ -16,7 +16,6 @@ export function useFetch<T>(url: string, init: RequestInit): UseFetch<T> {
 	useEffect(() => {
 		if (_refresh) {
 			console.log("Refresh");
-			setRefresh(false);
 			fetch(url, init)
 				.then((res) => res.json())
 				.then((resData) => {
@@ -26,11 +25,16 @@ export function useFetch<T>(url: string, init: RequestInit): UseFetch<T> {
 				.catch((err) => {
 					console.error(err);
 					setError(err?.message ?? "unknown error");
+				})
+				.finally(() => {
+					setRefresh(false);
+					setLoading(false);
 				});
 		}
 	}, [_refresh]);
 
 	function refresh() {
+		setLoading(true);
 		setRefresh(true);
 	}
 
