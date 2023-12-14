@@ -50,7 +50,7 @@ func (a *App) enableCors() {
 	config.AllowCredentials = true
 	config.AllowOrigins = []string{
 		"http://localhost:8080",
-		"http://localhost:4321",
+		"http://localhost:5173",
 		"https://jeferson.me",
 	}
 

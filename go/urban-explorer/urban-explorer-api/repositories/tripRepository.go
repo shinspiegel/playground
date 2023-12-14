@@ -9,7 +9,7 @@ import (
 
 type ITripRepository interface {
 	CreateTrip(name string, userId int64) (*models.TripModel, error)
-	FindById(id int64) (*models.TripModel, error)
+	FindById(tripId int64, userId int64) (*models.TripModel, error)
 	AddTripToPhoto(photo *models.PhotoModel) (*models.PhotoModel, error)
 }
 
@@ -54,7 +54,7 @@ func (r *TripRepository) CreateTrip(name string, userId int64) (*models.TripMode
 	return &trip, nil
 }
 
-func (r *TripRepository) FindById(id int64) (*models.TripModel, error) {
+func (r *TripRepository) FindById(tripId int64, userId int64) (*models.TripModel, error) {
 	db := database.New()
 	defer db.Close()
 
@@ -64,9 +64,10 @@ func (r *TripRepository) FindById(id int64) (*models.TripModel, error) {
 		FROM
 			trips
 		WHERE
-			id = :id
+			id = :trip_id AND user_id = :user_id
 	`,
-		sql.Named("id", id),
+		sql.Named("trip_id", tripId),
+		sql.Named("user_id", userId),
 	)
 	if err != nil {
 		return nil, err
@@ -87,7 +88,7 @@ func (r *TripRepository) FindById(id int64) (*models.TripModel, error) {
 }
 
 func (r *TripRepository) AddTripToPhoto(photo *models.PhotoModel) (*models.PhotoModel, error) {
-	trip, err := r.FindById(photo.TripId)
+	trip, err := r.FindById(photo.TripId, photo.UserId)
 	if err != nil {
 		return nil, err
 	}

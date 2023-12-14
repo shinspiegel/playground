@@ -5,9 +5,9 @@ type PhotoModel struct {
 	Latitude  float64    `json:"latitude"`
 	Longitude float64    `json:"longitude"`
 	Timestamp int64      `json:"timestamp"`
-	User      *UserModel `json:"user"`
-	Trip      *TripModel `json:"trip"`
-	TripId    int64
-	UserId    int64
-	JpegBytes []byte
+	User      *UserModel `json:"user,omitempty"`
+	Trip      *TripModel `json:"trip,omitempty"`
+	TripId    int64      `json:"-"`
+	UserId    int64      `json:"-"`
+	JpegBytes []byte     `json:"-"`
 }

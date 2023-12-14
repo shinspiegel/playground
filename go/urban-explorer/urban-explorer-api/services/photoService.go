@@ -10,6 +10,7 @@ import (
 type IPhotoService interface {
 	AddPhoto(userId int64, tripId int64, image *multipart.FileHeader) (*models.PhotoModel, error)
 	GetById(photoId int64, userId int64) (*models.PhotoModel, error)
+	AddPhotosToTrip(*models.TripModel) error
 }
 
 type PhotoService struct {
@@ -57,4 +58,14 @@ func (s *PhotoService) GetById(photoId int64, userId int64) (*models.PhotoModel,
 	}
 
 	return photo, nil
+}
+
+func (s *PhotoService) AddPhotosToTrip(trip *models.TripModel) error {
+	photos, err := s.photoRepo.GetPhotosByTripId(trip.User_id, trip.Id)
+	if err != nil {
+		return err
+	}
+
+	trip.Photos = photos
+	return nil
 }

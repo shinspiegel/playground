@@ -10,6 +10,7 @@ import (
 type IPhotoRepository interface {
 	CreatePhoto(userId int64, tripId int64, latitude float64, longitude float64, timestamp int64, jpegBuf []byte) (*models.PhotoModel, error)
 	GetById(photoId int64, userId int64) (*models.PhotoModel, error)
+	GetPhotosByTripId(userId int64, tripId int64) (*[]models.PhotoModel, error)
 }
 
 type PhotoRepository struct{}
@@ -98,4 +99,48 @@ func (r *PhotoRepository) GetById(photoId int64, userId int64) (*models.PhotoMod
 	)
 
 	return &photo, nil
+}
+
+func (r *PhotoRepository) GetPhotosByTripId(userId int64, tripId int64) (*[]models.PhotoModel, error) {
+	db := database.New()
+	defer db.Close()
+
+	rows, err := db.Query(`
+		SELECT 
+			id, user_id, trip_id, latitude, longitude, timestamp, jpeg_bytes
+		FROM
+			photos
+		WHERE
+			trip_id = :trip_id AND user_id = :user_id
+		`,
+		sql.Named("user_id", userId),
+		sql.Named("trip_id", tripId),
+	)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+
+	photos := []models.PhotoModel{}
+
+	for rows.Next() {
+		photo := models.PhotoModel{}
+		err := rows.Scan(
+			&photo.Id,
+			&photo.UserId,
+			&photo.TripId,
+			&photo.Latitude,
+			&photo.Longitude,
+			&photo.Timestamp,
+			&photo.JpegBytes,
+		)
+
+		if err != nil {
+			return nil, err
+		}
+
+		photos = append(photos, photo)
+	}
+
+	return &photos, nil
 }

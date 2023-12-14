@@ -75,6 +75,12 @@ func (c *TripController) AddPhoto() {
 	tripId, err := strconv.ParseInt(c.context.Param("trip_id"), 10, 64)
 	if err != nil {
 		BadRequest(c.context, errors.New("invalid trip id"))
+		return
+	}
+
+	if c.context.ContentType() != "multipart/form-data" {
+		BadRequest(c.context, errors.New("invalid Content-Type. Must be a 'multipart/form-data'"))
+		return
 	}
 
 	formFile, err := c.context.FormFile("image")
@@ -90,4 +96,33 @@ func (c *TripController) AddPhoto() {
 	}
 
 	c.context.JSON(http.StatusCreated, photo)
+}
+
+func (c *TripController) GetById() {
+	userId, err := GetUserId(c.context)
+	if err != nil {
+		BadRequest(c.context, errors.New("invalid user_id"))
+		return
+	}
+
+	tripId, err := strconv.ParseInt(c.context.Param("trip_id"), 10, 64)
+	if err != nil {
+		BadRequest(c.context, errors.New("invalid trip_id"))
+		return
+	}
+
+	trip, err := c.tripService.GetById(tripId, userId)
+	if err != nil {
+		InternalServerError(c.context, err)
+		return
+	}
+
+	if c.context.Query("include-photos") == "true" {
+		err = c.photoService.AddPhotosToTrip(trip)
+		if err != nil {
+			InternalServerError(c.context, err)
+		}
+	}
+
+	c.context.JSON(http.StatusCreated, trip)
 }
