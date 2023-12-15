@@ -1,4 +1,5 @@
 import { useDialog } from "../hooks/useDialog";
+import { useDeletePhotoByIdMutation } from "../redux/apiStore";
 import { Photo } from "../type";
 import { DialogWindow } from "./DialogWindow";
 import { TripPhoto } from "./TripPhoto";
@@ -9,6 +10,12 @@ type PhotoEntryProps = {
 
 export function PhotoEntry({ item }: PhotoEntryProps) {
 	const { isOpen, close, open } = useDialog();
+	const [del] = useDeletePhotoByIdMutation();
+
+	function onDelete() {
+		del(item.id);
+		close();
+	}
 
 	return (
 		<div>
@@ -21,7 +28,7 @@ export function PhotoEntry({ item }: PhotoEntryProps) {
 			<button onClick={open}>Delete Photo</button>
 
 			<DialogWindow isOpen={isOpen} onClose={close}>
-				<button onClick={() => {}}>Confirm deletion</button>
+				<button onClick={onDelete}>Confirm deletion</button>
 			</DialogWindow>
 		</div>
 	);

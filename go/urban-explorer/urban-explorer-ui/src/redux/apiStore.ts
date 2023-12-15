@@ -46,7 +46,7 @@ export const appApi = createApi({
 
 		tripById: builder.query<Trip, string>({
 			providesTags: [TRIP],
-			query: (tripId) => `trip/${tripId}`,
+			query: (tripId) => `trips/${tripId}?include-photos=true`,
 		}),
 
 		addPhotoToTrip: builder.mutation<Trip, { tripId: string; body: FormData }>({
@@ -55,6 +55,14 @@ export const appApi = createApi({
 				url: `trips/${tripId}/photo/add`,
 				method: "POST",
 				body,
+			}),
+		}),
+
+		deletePhotoById: builder.mutation<void, number>({
+			invalidatesTags: [TRIP],
+			query: (photoID) => ({
+				url: `photos/${photoID}`,
+				method: "DELETE",
 			}),
 		}),
 	}),
@@ -67,5 +75,6 @@ export const {
 	useTripsQuery,
 	useTripByIdQuery,
 	useAddPhotoToTripMutation,
+	useDeletePhotoByIdMutation,
 	//
 } = appApi;
