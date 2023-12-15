@@ -1,30 +1,21 @@
-import { useRef, useState } from "preact/hooks";
-import { TRIP_NEW_API } from "../constants/apiRoutes";
+import { useRef } from "preact/hooks";
 import { useNavigate } from "react-router-dom";
-import { TRIP } from "../routes";
+import { TRIP_TRIPID } from "../routes";
+import { useTripNewMutation } from "../redux/apiStore";
+import { ErrorDisplay } from "./ErrorDisplay";
+import { replaceURL } from "../functions/replaceURL";
 
 export function NewTripForm() {
-	const [err, setErr] = useState<string>();
+	const [newTrip, { isError, error }] = useTripNewMutation();
 	const ref = useRef<HTMLFormElement>(null);
 	const navigate = useNavigate();
 
 	function onSubmit(e: SubmitEvent) {
 		e.preventDefault();
 		if (!ref.current) return console.error("missing form");
-		fetch(TRIP_NEW_API, {
-			credentials: "include",
-			method: "POST",
-			body: new FormData(ref.current),
-		})
-			.then((res) => res.json())
-			.then((data) => {
-				if ("error" in data) throw data;
-				navigate(`${TRIP}/${data.id}`);
-			})
-			.catch((err) => {
-				console.error(err);
-				setErr(err?.message ?? "unknown error");
-			});
+		newTrip(new FormData(ref.current))
+			.unwrap()
+			.then((r) => navigate(replaceURL(TRIP_TRIPID, { tripId: r.id })));
 	}
 
 	return (
@@ -36,7 +27,7 @@ export function NewTripForm() {
 
 			<button type="submit">New Trip</button>
 
-			{err && <span>{err}</span>}
+			<ErrorDisplay isError={isError} error={error} />
 		</form>
 	);
 }

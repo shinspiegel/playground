@@ -1,25 +1,24 @@
 import { useParams } from "react-router-dom";
 import { NavList } from "../../components/NavList";
 import { PrivatePage } from "../../layout/PrivatePage";
-import { useFetch } from "../../hooks/useFetch";
-import { TRIP_TRIPID_API } from "../../constants/apiRoutes";
-import { useReplace } from "../../hooks/useReplace";
 import { AddImageForm } from "../../components/AddImageForm";
-import { Trip } from "../../type";
 import { PhotosList } from "../../components/PhotosList";
 import { TripMap } from "../../components/TripMap";
+import { useTripByIdQuery } from "../../redux/apiStore";
+import { skipToken } from "@reduxjs/toolkit/query";
+import { Loading } from "../../components/Loading";
+import { ErrorDisplay } from "../../components/ErrorDisplay";
 
 export function TripId() {
 	const { tripId } = useParams();
-	const url = useReplace(`${TRIP_TRIPID_API}?include-photos=true`, { tripId });
-	const { data, loading, error, refresh } = useFetch<Trip>(url, { credentials: "include" });
+	const { data, error, isLoading, isFetching, isError } = useTripByIdQuery(tripId ?? skipToken);
 
-	if (loading) {
-		return <div>Loading</div>;
+	if (isLoading || isFetching) {
+		return <Loading />;
 	}
 
-	if (error || !tripId || !data) {
-		return <div>Failed to load: {error} </div>;
+	if (isError || !data || !tripId) {
+		return <ErrorDisplay isError={isError} error={error} />;
 	}
 
 	return (
@@ -27,10 +26,10 @@ export function TripId() {
 			<NavList />
 			<h1>{data.name}</h1>
 
-			<AddImageForm tripId={tripId} onAddImage={() => refresh()} />
-			<TripMap photos={data.photos} />
+			<AddImageForm />
+			<TripMap />
 
-			<PhotosList list={data.photos} />
+			<PhotosList />
 		</PrivatePage>
 	);
 }

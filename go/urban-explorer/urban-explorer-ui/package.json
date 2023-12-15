@@ -9,8 +9,10 @@
 		"preview": "vite preview"
 	},
 	"dependencies": {
+		"@reduxjs/toolkit": "^2.0.1",
 		"pigeon-maps": "^0.21.3",
 		"preact": "^10.19.3",
+		"react-redux": "^9.0.4",
 		"react-router-dom": "^6.20.1"
 	},
 	"devDependencies": {

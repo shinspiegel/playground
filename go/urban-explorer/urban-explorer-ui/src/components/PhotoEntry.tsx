@@ -1,6 +1,6 @@
-import { PHOTOS_PHOTOID } from "../constants/apiRoutes";
-import { useReplace } from "../hooks/useReplace";
+import { useDialog } from "../hooks/useDialog";
 import { Photo } from "../type";
+import { DialogWindow } from "./DialogWindow";
 import { TripPhoto } from "./TripPhoto";
 
 type PhotoEntryProps = {
@@ -8,7 +8,7 @@ type PhotoEntryProps = {
 };
 
 export function PhotoEntry({ item }: PhotoEntryProps) {
-	const src = useReplace(PHOTOS_PHOTOID, { photoId: item.id });
+	const { isOpen, close, open } = useDialog();
 
 	return (
 		<div>
@@ -18,6 +18,11 @@ export function PhotoEntry({ item }: PhotoEntryProps) {
 			</div>
 			<div>{item.timestamp}</div>
 			<TripPhoto photo={item} />
+			<button onClick={open}>Delete Photo</button>
+
+			<DialogWindow isOpen={isOpen} onClose={close}>
+				<button onClick={() => {}}>Confirm deletion</button>
+			</DialogWindow>
 		</div>
 	);
 }

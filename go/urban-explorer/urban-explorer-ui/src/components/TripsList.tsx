@@ -1,17 +1,15 @@
-import { TRIP_API } from "../constants/apiRoutes";
-import { useFetch } from "../hooks/useFetch";
-import { Trip } from "../type";
+import { useTripsQuery } from "../redux/apiStore";
 import { Loading } from "./Loading";
 import { TripEntry } from "./TripEntry";
 
 export function TripsList() {
-	const { data, error, loading } = useFetch<Trip[]>(TRIP_API, { credentials: "include" });
+	const { data, isLoading, isError, isFetching } = useTripsQuery();
 
-	if (loading) {
+	if (isLoading || isFetching) {
 		return <Loading />;
 	}
 
-	if (error || !data) {
+	if (isError || !data) {
 		return <div>Error</div>;
 	}
 

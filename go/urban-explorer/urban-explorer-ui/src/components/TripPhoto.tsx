@@ -1,5 +1,4 @@
-import { PHOTOS_PHOTOID } from "../constants/apiRoutes";
-import { useReplace } from "../hooks/useReplace";
+import { BASE_API } from "../redux/apiStore";
 import { Photo } from "../type";
 
 type TripPhotoProps = {
@@ -7,7 +6,5 @@ type TripPhotoProps = {
 };
 
 export function TripPhoto({ photo }: TripPhotoProps) {
-	const src = useReplace(PHOTOS_PHOTOID, { photoId: photo.id });
-
-	return <img src={src} alt="trip photo" />;
+	return <img src={`${BASE_API}/photos/${photo.id}`} alt="trip photo" />;
 }
