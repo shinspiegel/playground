@@ -9,8 +9,10 @@ import (
 
 type IPhotoRepository interface {
 	CreatePhoto(userId int64, tripId int64, latitude float64, longitude float64, timestamp int64, jpegBuf []byte) (*models.PhotoModel, error)
-	GetById(photoId int64, userId int64) (*models.PhotoModel, error)
+	GetById(userId int64, photoId int64) (*models.PhotoModel, error)
 	GetPhotosByTripId(userId int64, tripId int64) (*[]models.PhotoModel, error)
+	DeleteById(userId int64, photoId int64) error
+	DeleteAllByTrip(userId int64, tripId int64) error
 }
 
 type PhotoRepository struct{}
@@ -62,7 +64,7 @@ func (r *PhotoRepository) CreatePhoto(userId int64, tripId int64, latitude float
 	return &photo, nil
 }
 
-func (r *PhotoRepository) GetById(photoId int64, userId int64) (*models.PhotoModel, error) {
+func (r *PhotoRepository) GetById(userId int64, photoId int64) (*models.PhotoModel, error) {
 	db := database.New()
 	defer db.Close()
 
@@ -145,4 +147,48 @@ func (r *PhotoRepository) GetPhotosByTripId(userId int64, tripId int64) (*[]mode
 	}
 
 	return &photos, nil
+}
+
+func (r *PhotoRepository) DeleteById(userId int64, photoId int64) error {
+	db := database.New()
+	defer db.Close()
+
+	_, err := db.Exec(`
+		DELETE 
+		FROM 
+			photos
+		WHERE
+			id = :photo_id AND user_id = :user_id
+	`,
+		sql.Named("photo_id", photoId),
+		sql.Named("user_id", userId),
+	)
+
+	if err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (r *PhotoRepository) DeleteAllByTrip(userId int64, tripId int64) error {
+	db := database.New()
+	defer db.Close()
+
+	_, err := db.Exec(`
+		DELETE 
+		FROM 
+			photos
+		WHERE
+			trip_id = :trip_id AND user_id = :user_id
+	`,
+		sql.Named("user_id", userId),
+		sql.Named("trip_id", tripId),
+	)
+
+	if err != nil {
+		return err
+	}
+
+	return nil
 }

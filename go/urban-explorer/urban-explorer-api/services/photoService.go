@@ -11,6 +11,7 @@ type IPhotoService interface {
 	AddPhoto(userId int64, tripId int64, image *multipart.FileHeader) (*models.PhotoModel, error)
 	GetById(photoId int64, userId int64) (*models.PhotoModel, error)
 	AddPhotosToTrip(*models.TripModel) error
+	DeleteById(userId int64, photoId int64) error
 }
 
 type PhotoService struct {
@@ -52,7 +53,7 @@ func (s *PhotoService) AddPhoto(userId int64, tripId int64, image *multipart.Fil
 }
 
 func (s *PhotoService) GetById(photoId int64, userId int64) (*models.PhotoModel, error) {
-	photo, err := s.photoRepo.GetById(photoId, userId)
+	photo, err := s.photoRepo.GetById(userId, photoId)
 	if err != nil {
 		return nil, err
 	}
@@ -67,5 +68,14 @@ func (s *PhotoService) AddPhotosToTrip(trip *models.TripModel) error {
 	}
 
 	trip.Photos = photos
+	return nil
+}
+
+func (s *PhotoService) DeleteById(userId int64, photoId int64) error {
+	err := s.photoRepo.DeleteById(userId, photoId)
+	if err != nil {
+		return err
+	}
+
 	return nil
 }
