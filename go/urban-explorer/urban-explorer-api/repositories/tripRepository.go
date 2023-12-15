@@ -12,6 +12,7 @@ type ITripRepository interface {
 	FindById(tripId int64, userId int64) (*models.TripModel, error)
 	AddTripToPhoto(photo *models.PhotoModel) (*models.PhotoModel, error)
 	FindAllByUserId(userId int64) (*[]models.TripModel, error)
+	DeleteById(userId int64, tripId int64) error
 }
 
 type TripRepository struct{}
@@ -133,4 +134,26 @@ func (r *TripRepository) FindAllByUserId(userId int64) (*[]models.TripModel, err
 	}
 
 	return &trips, nil
+}
+
+func (r *TripRepository) DeleteById(userId int64, tripId int64) error {
+	db := database.New()
+	defer db.Close()
+
+	_, err := db.Exec(`
+		DELETE 
+		FROM 
+			trips
+		WHERE
+			id = :trip_id AND user_id = :user_id
+	`,
+		sql.Named("photo_id", tripId),
+		sql.Named("user_id", userId),
+	)
+
+	if err != nil {
+		return err
+	}
+
+	return nil
 }
