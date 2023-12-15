@@ -30,11 +30,18 @@ func (c *PhotoController) GetById() {
 	photoId, err := strconv.ParseInt(c.context.Param("photo_id"), 10, 64)
 	if err != nil {
 		BadRequest(c.context, errors.New("invalid photo id"))
+		return
 	}
 
 	photo, err := c.service.GetById(photoId, userId)
 	if err != nil {
 		BadRequest(c.context, err)
+		return
+	}
+
+	c.context.Writer.Header().Set("Content-Type", "image/jpeg")
+	c.context.Writer.Write(photo.JpegBytes)
+}
 	}
 
 	c.context.Writer.Header().Set("Content-Type", "image/jpeg")
