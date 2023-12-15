@@ -142,3 +142,19 @@ func (c *TripController) GetTrips() {
 
 	c.context.JSON(http.StatusCreated, *trips)
 }
+
+func (c *TripController) DeleteById() {
+	userId, err := GetUserId(c.context)
+	if err != nil {
+		BadRequest(c.context, errors.New("invalid user_id"))
+		return
+	}
+
+	tripId, err := strconv.ParseInt(c.context.Param("trip_id"), 10, 64)
+	if err != nil {
+		BadRequest(c.context, errors.New("invalid trip_id"))
+		return
+	}
+
+	c.tripService.DeleteTripAndPhotos(userId, tripId)
+}

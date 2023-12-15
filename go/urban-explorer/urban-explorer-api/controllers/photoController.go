@@ -2,6 +2,7 @@ package controllers
 
 import (
 	"errors"
+	"net/http"
 	"strconv"
 	"urban-explorer/services"
 
@@ -42,8 +43,25 @@ func (c *PhotoController) GetById() {
 	c.context.Writer.Header().Set("Content-Type", "image/jpeg")
 	c.context.Writer.Write(photo.JpegBytes)
 }
+
+func (c *PhotoController) DeleteById() {
+	userId, err := GetUserId(c.context)
+	if err != nil {
+		InternalServerError(c.context, err)
+		return
 	}
 
-	c.context.Writer.Header().Set("Content-Type", "image/jpeg")
-	c.context.Writer.Write(photo.JpegBytes)
+	photoId, err := strconv.ParseInt(c.context.Param("photo_id"), 10, 64)
+	if err != nil {
+		BadRequest(c.context, errors.New("invalid photo id"))
+		return
+	}
+
+	err = c.service.DeleteById(userId, photoId)
+	if err != nil {
+		BadRequest(c.context, err)
+		return
+	}
+
+	c.context.Status(http.StatusOK)
 }

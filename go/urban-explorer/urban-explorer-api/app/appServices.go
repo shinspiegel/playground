@@ -25,6 +25,7 @@ func (a *App) LoadServices() {
 
 	a.services.trip = services.NewTripService(
 		a.repos.trip,
+		a.repos.photo,
 	)
 
 	a.services.auth = services.NewAuthService(
