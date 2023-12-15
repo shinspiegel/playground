@@ -163,7 +163,6 @@ func (r *PhotoRepository) DeleteById(userId int64, photoId int64) error {
 		sql.Named("photo_id", photoId),
 		sql.Named("user_id", userId),
 	)
-
 	if err != nil {
 		return err
 	}

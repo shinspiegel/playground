@@ -40,6 +40,7 @@ func (r *UserRepository) FindByEmail(email string) (*models.UserModel, error) {
 	if err != nil {
 		return nil, err
 	}
+	defer rows.Close()
 
 	hasUser := rows.Next()
 	if !hasUser {
@@ -73,6 +74,7 @@ func (r *UserRepository) IsEmailInUse(email string) (bool, error) {
 	if err != nil {
 		return false, err
 	}
+	defer rows.Close()
 
 	return rows.Next(), nil
 }
@@ -131,6 +133,7 @@ func (r *UserRepository) FindById(id int64) (*models.UserModel, error) {
 	if err != nil {
 		return nil, err
 	}
+	defer rows.Close()
 
 	hasUser := rows.Next()
 	if !hasUser {

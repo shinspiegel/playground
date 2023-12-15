@@ -17,6 +17,10 @@ func New() *Database {
 	return db
 }
 
+func (db *Database) Begin() (*sql.Tx, error) {
+	return db.conn.Begin()
+}
+
 func (db *Database) Query(query string, args ...any) (*sql.Rows, error) {
 	return db.conn.Query(query, args...)
 }

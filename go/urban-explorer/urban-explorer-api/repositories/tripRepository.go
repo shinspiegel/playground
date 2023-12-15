@@ -74,6 +74,7 @@ func (r *TripRepository) FindById(tripId int64, userId int64) (*models.TripModel
 	if err != nil {
 		return nil, err
 	}
+	defer rows.Close()
 
 	hasUser := rows.Next()
 	if !hasUser {
@@ -116,6 +117,7 @@ func (r *TripRepository) FindAllByUserId(userId int64) (*[]models.TripModel, err
 	if err != nil {
 		return nil, err
 	}
+	defer rows.Close()
 
 	trips := []models.TripModel{}
 
