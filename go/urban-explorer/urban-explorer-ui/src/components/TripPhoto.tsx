@@ -6,5 +6,5 @@ type TripPhotoProps = {
 };
 
 export function TripPhoto({ photo }: TripPhotoProps) {
-	return <img src={`${BASE_URL}/photos/${photo.id}`} alt="trip photo" />;
+	return <img src={`${BASE_URL}/assets/photos/${photo.id}`} alt="trip photo" />;
 }
