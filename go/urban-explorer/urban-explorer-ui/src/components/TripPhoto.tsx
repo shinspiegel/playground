@@ -1,4 +1,4 @@
-import { BASE_API } from "../redux/apiStore";
+import { BASE_URL } from "../redux/apiStore";
 import { Photo } from "../type";
 
 type TripPhotoProps = {
@@ -6,5 +6,5 @@ type TripPhotoProps = {
 };
 
 export function TripPhoto({ photo }: TripPhotoProps) {
-	return <img src={`${BASE_API}/photos/${photo.id}`} alt="trip photo" />;
+	return <img src={`${BASE_URL}/photos/${photo.id}`} alt="trip photo" />;
 }

@@ -3,7 +3,8 @@ import { Trip } from "../type";
 
 export const HOST_API = "localhost";
 export const PORT_API = "8080";
-export const BASE_API = `http://${HOST_API}:${PORT_API}/api`;
+export const BASE_URL = `http://${HOST_API}:${PORT_API}`;
+export const BASE_API = `${BASE_URL}/api`;
 const CHECK = "Check";
 const TRIP = "TRIP";
 
