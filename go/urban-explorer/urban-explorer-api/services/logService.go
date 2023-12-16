@@ -174,12 +174,30 @@ func (s *LogService) displayTerminal(level string, message string, args ...any) 
 
 func (s *LogService) displayRequestTerminal(method string, status int, uri string, latency time.Duration, clientIp string) {
 	t := time.Now()
+	statusDisplay := fmt.Sprint(status)
+
+	if status < 200 {
+		statusDisplay = cyan + statusDisplay + reset
+	}
+	if status < 300 {
+		statusDisplay = green + statusDisplay + reset
+	}
+	if status < 400 {
+		statusDisplay = cyan + statusDisplay + reset
+	}
+	if status < 500 {
+		statusDisplay = magenta + statusDisplay + reset
+	}
+	if status < 600 {
+		statusDisplay = red + statusDisplay + reset
+	}
+
 	fmt.Printf(
-		"%d-%02d-%02d %02d:%02d | %-5s | %3d | %18s | %s | %s \n",
+		"%d-%02d-%02d %02d:%02d | %s | %-6s | %-32s | %8s | %s \n",
 
 		t.Year(), t.Month(), t.Day(), t.Hour(), t.Minute(),
+		statusDisplay,
 		method,
-		status,
 		uri,
 		latency,
 		clientIp,
