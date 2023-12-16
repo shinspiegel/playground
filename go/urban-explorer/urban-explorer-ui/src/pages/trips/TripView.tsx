@@ -14,11 +14,19 @@ export function TripId() {
 	const { data, error, isLoading, isFetching, isError } = useTripByIdQuery(tripId ?? skipToken);
 
 	if (isLoading || isFetching) {
-		return <Loading />;
+		return (
+			<PrivatePage>
+				<Loading />
+			</PrivatePage>
+		);
 	}
 
 	if (isError || !data || !tripId) {
-		return <ErrorDisplay isError={isError} error={error} />;
+		return (
+			<PrivatePage>
+				<ErrorDisplay isError={isError} error={error} />
+			</PrivatePage>
+		);
 	}
 
 	return (
