@@ -58,7 +58,7 @@ func NewLogService() *LogService {
 func (s *LogService) Trace(message string, args ...any) {
 	if TRACE <= s.level {
 		s.display(s.formatMessage("TRACE", message, args...))
-		s.writeToFile(s.formatMessage("TRADE", message, args...))
+		s.writeToFile(s.formatMessage("TRACE", message, args...))
 	}
 }
 
