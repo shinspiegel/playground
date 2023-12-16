@@ -126,9 +126,12 @@ func (s *LogService) Panic(message string, args ...any) {
 	}
 }
 
-func (s *LogService) LogRequest(method string, status int, uri string, latency time.Duration, originIp string) {
+func (s *LogService) LogRequest(method string, status int, uri string, latency time.Duration, originIp string, extra ...any) {
 	if INFO <= s.level {
 		s.displayRequestTerminal(method, status, uri, latency, originIp)
+	}
+	if TRACE <= s.level {
+		s.displayRequestDataTerminal(extra...)
 	}
 }
 
@@ -138,18 +141,20 @@ func (s *LogService) LogMiddleware(ctx *gin.Context) {
 	ctx.Next()
 
 	endTime := time.Now()
-	latencyTime := endTime.Sub(startTime)
-	reqMethod := ctx.Request.Method
-	reqUri := ctx.Request.RequestURI
-	statusCode := ctx.Writer.Status()
+	latency := endTime.Sub(startTime)
+	method := ctx.Request.Method
+	uri := ctx.Request.RequestURI
+	code := ctx.Writer.Status()
 	clientIP := ctx.ClientIP()
 
 	s.LogRequest(
-		reqMethod,
-		statusCode,
-		reqUri,
-		latencyTime,
+		method,
+		code,
+		uri,
+		latency,
 		clientIP,
+
+		*ctx.Request,
 	)
 
 	ctx.Next()
@@ -170,7 +175,7 @@ func (s *LogService) displayTerminal(level string, message string, args ...any) 
 func (s *LogService) displayRequestTerminal(method string, status int, uri string, latency time.Duration, clientIp string) {
 	t := time.Now()
 	fmt.Printf(
-		"%d-%02d-%02d %02d:%02d | %-5s | %3d | %18s | %s |  %s \n",
+		"%d-%02d-%02d %02d:%02d | %-5s | %3d | %18s | %s | %s \n",
 
 		t.Year(), t.Month(), t.Day(), t.Hour(), t.Minute(),
 		method,
@@ -179,6 +184,13 @@ func (s *LogService) displayRequestTerminal(method string, status int, uri strin
 		latency,
 		clientIp,
 	)
+}
+
+func (s *LogService) displayRequestDataTerminal(data ...any) {
+	for _, d := range data {
+		fmt.Printf("%+v \n", d)
+	}
+	fmt.Printf("\n")
 }
 
 func (s *LogService) setLogLevel() {
