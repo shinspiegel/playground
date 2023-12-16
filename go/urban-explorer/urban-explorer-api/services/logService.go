@@ -48,6 +48,7 @@ type LogService struct {
 func NewLogService() *LogService {
 	logger := LogService{}
 	logger.setLogLevel()
+
 	logger.Trace("logger created")
 	logger.Debug("log level", logger.level, os.Getenv("LOG_LEVEL"))
 
@@ -56,82 +57,52 @@ func NewLogService() *LogService {
 
 func (s *LogService) Trace(message string, args ...any) {
 	if TRACE <= s.level {
-		s.displayTerminal(
-			"TRACE",
-			message,
-			args...,
-		)
+		s.display(s.formatMessage("TRACE", message, args...))
+		s.writeToFile(s.formatMessage("TRADE", message, args...))
 	}
 }
 
 func (s *LogService) Debug(message string, args ...any) {
 	if DEBUG <= s.level {
-		s.displayTerminal(
-			"DEBUG",
-			message,
-			args...,
-		)
+		s.display(s.formatMessage("DEBUG", message, args...))
+		s.writeToFile(s.formatMessage("DEBUG", message, args...))
 	}
 }
 
 func (s *LogService) Info(message string, args ...any) {
 	if INFO <= s.level {
-		s.displayTerminal(
-			blue+"INFO "+reset,
-			message,
-			args...,
-		)
+		s.display(s.formatMessage(blue+"INFO"+reset, message, args...))
+		s.writeToFile(s.formatMessage("INFO", message, args...))
 	}
 }
 
 func (s *LogService) Warn(message string, args ...any) {
 	if WARN <= s.level {
-		s.displayTerminal(
-			yellow+"WARN "+reset,
-			message,
-			args...,
-		)
+		s.display(s.formatMessage(yellow+"WARN"+reset, message, args...))
+		s.writeToFile(s.formatMessage("WARN", message, args...))
 	}
 }
 
 func (s *LogService) Error(message string, args ...any) {
 	if ERROR <= s.level {
-		s.displayTerminal(
-			red+"ERROR"+reset,
-			message,
-			args...,
-		)
+		s.display(s.formatMessage(red+"ERROR"+reset, message, args...))
+		s.writeToFile(s.formatMessage("ERROR", message, args...))
 	}
 }
 
 func (s *LogService) Fatal(message string, args ...any) {
 	if 1 <= s.level {
-		s.displayTerminal(
-			red+"FATAL"+reset,
-			message,
-			args...,
-		)
+		s.display(s.formatMessage(red+"FATAL"+reset, message, args...))
+		s.writeToFile(s.formatMessage("FATAL", message, args...))
 		log.Fatal(message, args)
 	}
 }
 
 func (s *LogService) Panic(message string, args ...any) {
 	if PANIC <= s.level {
-		s.displayTerminal(
-			red+"PANIC"+reset,
-			message,
-			args...,
-		)
+		s.display(s.formatMessage(red+"PANIC"+reset, message, args...))
+		s.writeToFile(s.formatMessage("PANIC", message, args...))
 		log.Panic(message, args)
-	}
-}
-
-func (s *LogService) LogRequest(method string, status int, uri string, latency time.Duration, originIp string, extra ...any) {
-	if INFO <= s.level {
-		s.displayRequestTerminal(method, status, uri, latency, originIp)
-	}
-	if TRACE <= s.level {
-		s.displayRequestDataTerminal(extra...)
 	}
 }
 
@@ -145,25 +116,42 @@ func (s *LogService) LogMiddleware(ctx *gin.Context) {
 	method := ctx.Request.Method
 	uri := ctx.Request.RequestURI
 	code := ctx.Writer.Status()
+	codeTerminal := fmt.Sprint(code)
 	clientIP := ctx.ClientIP()
 
-	s.LogRequest(
-		method,
-		code,
-		uri,
-		latency,
-		clientIP,
+	if code < 200 {
+		codeTerminal = cyan + codeTerminal + reset
+	}
+	if code < 300 {
+		codeTerminal = green + codeTerminal + reset
+	}
+	if code < 400 {
+		codeTerminal = cyan + codeTerminal + reset
+	}
+	if code < 500 {
+		codeTerminal = magenta + codeTerminal + reset
+	}
+	if code < 600 {
+		codeTerminal = red + codeTerminal + reset
+	}
 
-		*ctx.Request,
-	)
+	if INFO <= s.level {
+		s.display(s.formatRequest(method, codeTerminal, uri, latency, clientIP))
+		s.writeToFile(s.formatRequest(method, fmt.Sprint(code), uri, latency, clientIP))
+	}
+
+	if TRACE <= s.level {
+		s.display(fmt.Sprintf("%+v\n", ctx.Request))
+		s.writeToFile(fmt.Sprintf("%+v\n", ctx.Request))
+	}
 
 	ctx.Next()
 }
 
-func (s *LogService) displayTerminal(level string, message string, args ...any) {
+func (s *LogService) formatMessage(level string, message string, args ...any) string {
 	t := time.Now()
-	fmt.Printf(
-		"%d-%02d-%02d %02d:%02d | %s | %-32s | %+v\n",
+	return fmt.Sprintf(
+		"%d-%02d-%02d %02d:%02d | %-5s | %-50s | %+v\n",
 
 		t.Year(), t.Month(), t.Day(), t.Hour(), t.Minute(),
 		level,
@@ -172,31 +160,14 @@ func (s *LogService) displayTerminal(level string, message string, args ...any) 
 	)
 }
 
-func (s *LogService) displayRequestTerminal(method string, status int, uri string, latency time.Duration, clientIp string) {
+func (s *LogService) formatRequest(method string, status string, uri string, latency time.Duration, clientIp string) string {
 	t := time.Now()
-	statusDisplay := fmt.Sprint(status)
 
-	if status < 200 {
-		statusDisplay = cyan + statusDisplay + reset
-	}
-	if status < 300 {
-		statusDisplay = green + statusDisplay + reset
-	}
-	if status < 400 {
-		statusDisplay = cyan + statusDisplay + reset
-	}
-	if status < 500 {
-		statusDisplay = magenta + statusDisplay + reset
-	}
-	if status < 600 {
-		statusDisplay = red + statusDisplay + reset
-	}
-
-	fmt.Printf(
-		"%d-%02d-%02d %02d:%02d | %s | %-6s | %-32s | %8s | %s \n",
+	return fmt.Sprintf(
+		"%d-%02d-%02d %02d:%02d | %-5s | %-7s | %-40s | %8s | %s \n",
 
 		t.Year(), t.Month(), t.Day(), t.Hour(), t.Minute(),
-		statusDisplay,
+		status,
 		method,
 		uri,
 		latency,
@@ -204,11 +175,26 @@ func (s *LogService) displayRequestTerminal(method string, status int, uri strin
 	)
 }
 
-func (s *LogService) displayRequestDataTerminal(data ...any) {
-	for _, d := range data {
-		fmt.Printf("%+v \n", d)
+func (s *LogService) writeToFile(message string) {
+	file, err := os.OpenFile("dev.log", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
+
+	if err != nil {
+		if ERROR <= s.level {
+			s.display(s.formatMessage("ERROR", err.Error()))
+		}
 	}
-	fmt.Printf("\n")
+
+	defer file.Close()
+
+	if _, err := file.WriteString(message); err != nil {
+		if ERROR <= s.level {
+			s.display(s.formatMessage("ERROR", err.Error()))
+		}
+	}
+}
+
+func (s *LogService) display(message string) {
+	fmt.Print(message)
 }
 
 func (s *LogService) setLogLevel() {

@@ -11,7 +11,7 @@ all: test build
 
 
 dev:
-	source ./.env; go run main.go --env ./.env --dev | tee -a ./dev.log
+	source ./.env; go run main.go --env ./.env --dev
 
 
 build: 
