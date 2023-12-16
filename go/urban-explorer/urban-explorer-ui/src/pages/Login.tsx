@@ -11,6 +11,7 @@ export function Login() {
 
 	if (isSuccess) {
 		navigation(DASHBOARD);
+		return <></>;
 	}
 
 	return (
