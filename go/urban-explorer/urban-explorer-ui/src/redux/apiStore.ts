@@ -30,6 +30,14 @@ export const appApi = createApi({
 				body,
 			}),
 		}),
+		
+		logout: builder.mutation<void,void>({
+			invalidatesTags: [CHECK, TRIP],
+			query: () => ({
+				url: `auth/logout`,
+				method: "POST"
+			})
+		}),
 
 		tripNew: builder.mutation<Trip, FormData>({
 			invalidatesTags: [CHECK, TRIP],
@@ -80,6 +88,7 @@ export const appApi = createApi({
 export const {
 	useCheckQuery,
 	useLoginMutation,
+	useLogoutMutation,
 	useTripNewMutation,
 	useTripsQuery,
 	useTripByIdQuery,

@@ -199,3 +199,8 @@ func (c *AuthController) RecoverCode() {
 func (c *AuthController) Check() {
 	c.context.Status(http.StatusOK)
 }
+
+func (c *AuthController) Logout() {
+	c.cookiesService.CleanCookies(c.context)
+	c.context.Status(http.StatusOK)
+}
