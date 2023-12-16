@@ -9,7 +9,7 @@ export function DialogWindow({ isOpen, onClose, children }: ConfirmModalProps) {
 	return (
 		<dialog open={isOpen}>
 			<div>{children}</div>
-			<button onClick={onClose}>Close</button>
+			{onClose && <button onClick={onClose}>Close</button>}
 		</dialog>
 	);
 }

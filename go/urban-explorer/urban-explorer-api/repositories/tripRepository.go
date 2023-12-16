@@ -149,7 +149,7 @@ func (r *TripRepository) DeleteById(userId int64, tripId int64) error {
 		WHERE
 			id = :trip_id AND user_id = :user_id
 	`,
-		sql.Named("photo_id", tripId),
+		sql.Named("trip_id", tripId),
 		sql.Named("user_id", userId),
 	)
 

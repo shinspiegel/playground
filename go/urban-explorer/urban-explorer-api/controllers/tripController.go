@@ -157,4 +157,5 @@ func (c *TripController) DeleteById() {
 	}
 
 	c.tripService.DeleteTripAndPhotos(userId, tripId)
+	c.context.Status(http.StatusAccepted)
 }

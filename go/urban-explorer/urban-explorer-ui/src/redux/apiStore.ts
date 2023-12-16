@@ -65,6 +65,14 @@ export const appApi = createApi({
 				method: "DELETE",
 			}),
 		}),
+
+		deleteTrip: builder.mutation<void, string>({
+			invalidatesTags: [TRIP],
+			query: (tripId) => ({
+				url: `trips/${tripId}`,
+				method: "DELETE",
+			}),
+		}),
 	}),
 });
 
@@ -76,5 +84,5 @@ export const {
 	useTripByIdQuery,
 	useAddPhotoToTripMutation,
 	useDeletePhotoByIdMutation,
-	//
+	useDeleteTripMutation,
 } = appApi;
