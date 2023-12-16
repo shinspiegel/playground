@@ -7,6 +7,7 @@ import (
 )
 
 func (a *App) AddTripsRoutes() {
+	a.services.log.Debug("add trip routes")
 	a.router.POST("/api/trips/new", a.PrivateRoute, func(c *gin.Context) { a.getTripController(c).NewTrip() })
 	a.router.GET("/api/trips", a.PrivateRoute, func(c *gin.Context) { a.getTripController(c).GetTrips() })
 	a.router.GET("/api/trips/:trip_id", a.PrivateRoute, func(c *gin.Context) { a.getTripController(c).GetById() })

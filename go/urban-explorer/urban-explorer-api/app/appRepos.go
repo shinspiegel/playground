@@ -10,6 +10,7 @@ type AppRepos struct {
 
 func (a *App) LoadRepositories() {
 	// TODO: change for test/dev env
+	a.services.log.Debug("loading repositories")
 	a.repos.user = repositories.NewUserRepository()
 	a.repos.trip = repositories.NewTripRepository()
 	a.repos.photo = repositories.NewPhotoRepository()

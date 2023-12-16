@@ -12,10 +12,18 @@ type AppServices struct {
 	photo     services.IPhotoService
 	formImage services.IFormImageService
 	image     services.IImageService
+	log       services.ILogService
 }
 
 func (a *App) LoadServices() {
 	// TODO: Change for test/dev env
+	a.services.log.Debug("loading services")
+
+	if a.services.log == nil {
+		a.services.log.Info("log not created in app, adding on services")
+		a.services.log = services.NewLogService()
+	}
+
 	a.services.jwt = services.NewJwtService()
 	a.services.password = services.NewPasswordService()
 	a.services.random = services.NewRandomNumberService()
