@@ -1,5 +1,8 @@
 import { PropsWithChildren } from "preact/compat";
+import { WithClassName } from "../type";
 
-export function PublicPage({ children }: PropsWithChildren) {
-	return <>{children}</>;
+type PublicPageProps = WithClassName & PropsWithChildren;
+
+export function PublicPage({ className, children }: PublicPageProps) {
+	return <main class={className}>{children}</main>;
 }

@@ -1,0 +1,23 @@
+.root-page {
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	position: relative;
+
+	&__hero {
+		margin-bottom: 10rem;
+	}
+
+	&__footer {
+		color: var(--background-tint);
+		text-align: center;
+		margin-bottom: 1rem;
+		width: 100%;
+		position: absolute;
+		bottom: 0;
+		left: 50%;
+		transform: translateX(-50%);
+	}
+}

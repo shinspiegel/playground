@@ -1,0 +1,46 @@
+.button {
+	background: var(--text);
+	border-radius: 3px;
+	border: 1px solid var(--text);
+	color: var(--background);
+	padding: 0.2rem 0.8rem;
+	transition: all ease 0.2s;
+
+	&:hover,
+	&:visited,
+	&:focus {
+		background: var(--text-tint);
+		box-shadow: 0rem 0rem 1rem rgb(96, 96, 96);
+		color: var(--background-tint);
+	}
+
+	&--default {
+	}
+
+	&--primary {
+		color: var(--background);
+		border: 1px solid transparent;
+		background: var(--primary);
+
+		&:hover,
+		&:visited,
+		&:focus {
+			color: var(--background-tint);
+			background: var(--primary-tint);
+		}
+	}
+
+	&--big {
+		font-weight: 800;
+		text-transform: uppercase;
+		padding: 1rem 2rem;
+		letter-spacing: 1px;
+		font-size: 3rem;
+	}
+
+	&--medium {
+	}
+
+	&--small {
+	}
+}

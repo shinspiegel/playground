@@ -3,8 +3,11 @@ import { Loading } from "../components/Loading";
 import { useNavigate } from "react-router-dom";
 import { UNAUTHORIZE } from "../routes";
 import { useCheckQuery } from "../redux/apiStore";
+import { WithClassName } from "../type";
 
-export function PrivatePage({ children }: PropsWithChildren) {
+type PrivatePageProps = WithClassName & PropsWithChildren;
+
+export function PrivatePage({ className, children }: PrivatePageProps) {
 	const { isFetching, isLoading, isError } = useCheckQuery();
 	const navigate = useNavigate();
 
@@ -17,5 +20,5 @@ export function PrivatePage({ children }: PropsWithChildren) {
 		return <></>;
 	}
 
-	return <>{children}</>;
+	return <main class={className}>{children}</main>;
 }

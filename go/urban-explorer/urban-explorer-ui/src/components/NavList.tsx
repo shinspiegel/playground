@@ -16,6 +16,9 @@ export function NavList() {
 		<nav>
 			<ul>
 				<li>
+					<Link to="/">home</Link>
+				</li>
+				<li>
 					<Link to="/login">login</Link>
 				</li>
 				<li>

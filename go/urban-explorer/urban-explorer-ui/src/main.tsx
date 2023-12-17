@@ -3,10 +3,11 @@ import { RouterProvider } from "react-router-dom";
 import { router } from "./routes";
 import { Provider } from "react-redux";
 import { appStore } from "./redux/store";
+import "./main.scss";
 
 render(
-	<Provider store={appStore}>
-		<RouterProvider router={router} />
-	</Provider>,
-	document.getElementById("app")!
+  <Provider store={appStore}>
+    <RouterProvider router={router} />
+  </Provider>,
+  document.getElementById("app")!
 );

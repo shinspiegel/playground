@@ -1,3 +1,5 @@
+export type WithClassName = { className?: string };
+
 export type Trip = {
 	id: number;
 	userId: number;
