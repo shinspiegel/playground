@@ -1,9 +1,11 @@
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { LoginForm } from "../components/LoginForm";
 import { NavList } from "../components/NavList";
 import { PublicPage } from "../layout/publicPage";
-import { DASHBOARD } from "../routes";
+import { DASHBOARD, ROOT } from "../routes";
 import { useCheckQuery } from "../redux/apiStore";
+import "./Login.scss";
+import { AnimatedLogo } from "../components/AnimatedLogo";
 
 export function Login() {
 	const navigation = useNavigate();
@@ -15,10 +17,11 @@ export function Login() {
 	}
 
 	return (
-		<PublicPage>
-			<div>Login</div>
-			<NavList />
+		<PublicPage className="login-page">
+			<AnimatedLogo className="login-page__logo" />
 			<LoginForm />
+			<Link to={ROOT}>Back Home</Link>
+			<NavList />
 		</PublicPage>
 	);
 }

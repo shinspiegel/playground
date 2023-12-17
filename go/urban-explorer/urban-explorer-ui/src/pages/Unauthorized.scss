@@ -1,0 +1,20 @@
+.unauthorized-page {
+	display: flex;
+	flex-direction: column;
+	height: 100vh;
+	justify-content: center;
+	align-items: center;
+	gap: 2rem;
+	width: 70%;
+	margin: 0 auto;
+
+	> p {
+		text-align: center;
+	}
+
+	&__icon {
+		color: var(--danger);
+		height: 9rem;
+		width: 100%;
+	}
+}

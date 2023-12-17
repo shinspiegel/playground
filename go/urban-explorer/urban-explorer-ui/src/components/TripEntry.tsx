@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
-import { useReplace } from "../hooks/useReplace";
 import { TRIP_TRIPID } from "../routes";
 import { Trip } from "../type";
 import { DialogWindow } from "./DialogWindow";
 import { useDialog } from "../hooks/useDialog";
 import { useDeleteTripMutation } from "../redux/apiStore";
+import { replaceURL } from "../functions/replaceURL";
 
 type TripEntryProp = {
 	entry: Trip;
@@ -13,7 +13,7 @@ type TripEntryProp = {
 export function TripEntry({ entry }: TripEntryProp) {
 	const [deleteTrip] = useDeleteTripMutation();
 	const { isOpen, close, open } = useDialog();
-	const url = useReplace(TRIP_TRIPID, { tripId: entry.id });
+	const url = replaceURL(TRIP_TRIPID, { tripId: entry.id });
 
 	function onDelete() {
 		deleteTrip(String(entry.id));

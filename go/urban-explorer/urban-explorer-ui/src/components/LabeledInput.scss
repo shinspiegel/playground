@@ -1,0 +1,26 @@
+.labeled-input {
+	display: flex;
+	flex-direction: column;
+
+	&__label {
+		font-size: 1.6rem;
+		margin-bottom: 0.6rem;
+		padding-left: 0.4rem;
+		width: 100%;
+	}
+
+	&__input {
+		background: none;
+		border: none;
+		border-bottom: 2px solid var(--primary-shade);
+		color: var(--primary-tint);
+		font-size: 2rem;
+		padding: 0.8rem 0rem;
+		padding-left: 1rem;
+		width: 100%;
+
+		&:focus {
+			background: vaR(--background-shade);
+		}
+	}
+}

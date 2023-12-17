@@ -7,14 +7,14 @@
 
 	&__title {
 		font-family: var(--title-font);
-		text-transform: uppercase;
+		font-size: 5rem;
 		font-weight: 100;
 		letter-spacing: 1px;
-		font-size: 5rem;
+		text-transform: uppercase;
 	}
 
 	&__sub {
-		font-weight: 100;
 		font-size: 1.8rem;
+		font-weight: 100;
 	}
 }

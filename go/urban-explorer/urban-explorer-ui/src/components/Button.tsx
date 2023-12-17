@@ -1,4 +1,4 @@
-import { PropsWithChildren } from "preact/compat";
+import { HTMLAttributes, PropsWithChildren } from "preact/compat";
 import { WithClassName } from "../type";
 import "./Button.scss";
 
@@ -7,9 +7,17 @@ type ButtonProps = {
 	size?: "big" | "medium" | "small";
 	color?: "default" | "primary";
 } & PropsWithChildren &
-	WithClassName;
+	WithClassName &
+	Omit<HTMLAttributes<HTMLButtonElement>, "size">;
 
-export function Button({ onClick, size = "medium", color = "default", className, children }: ButtonProps) {
+export function Button({
+	onClick,
+	size = "medium",
+	color = "default",
+	className,
+	children,
+	...buttonRest
+}: ButtonProps) {
 	const names = ["button"];
 
 	if (className) names.push(className);
@@ -17,7 +25,7 @@ export function Button({ onClick, size = "medium", color = "default", className,
 	if (color) names.push(`button--${color}`);
 
 	return (
-		<button class={names.join(" ")} onClick={onClick}>
+		<button class={names.join(" ")} onClick={onClick} {...buttonRest}>
 			{children}
 		</button>
 	);

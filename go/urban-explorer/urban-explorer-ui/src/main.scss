@@ -12,6 +12,9 @@
 	--primary: hsl(35, 85%, 50%);
 	--primary-shade: hsl(30, 90%, 35%);
 	--primary-tint: hsl(40, 95%, 65%);
+	
+	--danger: hsl(5, 85%, 50%);
+
 
 	--title-font: "Smooch Sans";
 	--text-font: "Libre Franklin";
@@ -20,9 +23,10 @@
 *,
 *::after,
 *::before {
-	padding: 0;
-	margin: 0;
 	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	outline: none;
 }
 
 html {

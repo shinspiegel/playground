@@ -15,32 +15,45 @@
 	}
 
 	&--default {
-	}
-
-	&--primary {
+		background: var(--text);
 		color: var(--background);
-		border: 1px solid transparent;
-		background: var(--primary);
 
 		&:hover,
 		&:visited,
 		&:focus {
+			background: var(--text-shade);
 			color: var(--background-tint);
+		}
+	}
+
+	&--primary {
+		background: var(--primary);
+		border: 1px solid transparent;
+		color: var(--background);
+
+		&:hover,
+		&:visited,
+		&:focus {
 			background: var(--primary-tint);
+			color: var(--background-tint);
 		}
 	}
 
 	&--big {
-		font-weight: 800;
-		text-transform: uppercase;
-		padding: 1rem 2rem;
-		letter-spacing: 1px;
 		font-size: 3rem;
+		font-weight: 800;
+		letter-spacing: 1px;
+		padding: 1rem 2rem;
+		text-transform: uppercase;
 	}
 
 	&--medium {
+		font-size: 1.6rem;
+		padding: 0.4rem 0.8rem;
 	}
 
 	&--small {
+		font-size: 1.4rem;
+		padding: 0.2rem 0.6rem;
 	}
 }

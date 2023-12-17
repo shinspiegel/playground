@@ -1,9 +1,9 @@
 .root-page {
-	height: 100vh;
-	display: flex;
-	justify-content: center;
 	align-items: center;
+	display: flex;
 	flex-direction: column;
+	height: 100vh;
+	justify-content: center;
 	position: relative;
 
 	&__hero {
@@ -11,13 +11,13 @@
 	}
 
 	&__footer {
-		color: var(--background-tint);
-		text-align: center;
-		margin-bottom: 1rem;
-		width: 100%;
-		position: absolute;
 		bottom: 0;
+		color: var(--background-tint);
 		left: 50%;
+		margin-bottom: 1rem;
+		position: absolute;
+		text-align: center;
 		transform: translateX(-50%);
+		width: 100%;
 	}
 }

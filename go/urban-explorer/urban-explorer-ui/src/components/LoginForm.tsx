@@ -1,6 +1,9 @@
 import { useRef } from "preact/hooks";
+import { LabeledInput } from "./LabeledInput";
 import { useLoginMutation } from "../redux/apiStore";
 import { ErrorDisplay } from "./ErrorDisplay";
+import "./LoginForm.scss";
+import { Button } from "./Button";
 
 export function LoginForm() {
 	const [login, { isError, error }] = useLoginMutation();
@@ -13,18 +16,10 @@ export function LoginForm() {
 	}
 
 	return (
-		<form ref={ref} onSubmit={onSubmit}>
-			<label>
-				Login
-				<input type="email" name="email" />
-			</label>
-			<label>
-				Password
-				<input type="password" name="password" />
-			</label>
-
-			<button type="submit">Login</button>
-
+		<form class="login-form" ref={ref} onSubmit={onSubmit}>
+			<LabeledInput name="email" label="Email" type="email" />
+			<LabeledInput name="password" label="Password" type="password" />
+			<Button type="submit">Login</Button>
 			<ErrorDisplay isError={isError} error={error} />
 		</form>
 	);

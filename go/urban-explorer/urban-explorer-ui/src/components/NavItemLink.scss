@@ -1,0 +1,25 @@
+.nav-item-link {
+	align-items: flex-end;
+	border-top: 2px solid transparent;
+	display: flex;
+	height: 100%;
+	padding-bottom: 0.2rem;
+
+	&--active {
+		border-top: 2px solid var(--primary);
+	}
+
+	> a,
+	a:focus,
+	a:visited,
+	a:hover {
+		align-items: flex-end;
+		border: none;
+		color: var(--text);
+		display: flex;
+		font-size: 1.6rem;
+		height: 100%;
+		text-decoration: none;
+		width: 100%;
+	}
+}
