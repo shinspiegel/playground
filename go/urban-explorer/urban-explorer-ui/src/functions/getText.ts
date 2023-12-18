@@ -1,6 +1,7 @@
 import { getLanguage } from "./getLanguage";
 
 type Text = {
+	navList: { login: string; register: string; dashboard: string };
 	root: { bottom: string; login: string };
 	hero: { title: string; subTitle: [string, string][] };
 	login: { back: string };
@@ -48,6 +49,11 @@ export const TEXT: Record<string, Text> = {
 				"Looks like you don't have the credentials to see this page",
 			back: "Back to home",
 		},
+		navList: {
+			login: "Login",
+			register: "Register",
+			dashboard: "Dashboard",
+		},
 	},
 	// pt-br
 	pt: {
@@ -87,6 +93,11 @@ export const TEXT: Record<string, Text> = {
 			message:
 				"Parece que você não tem permissão para acessar essa página",
 			back: "Retornar ao início",
+		},
+		navList: {
+			login: "Acessar",
+			register: "Registrar",
+			dashboard: "Painel",
 		},
 	},
 };

@@ -1,4 +1,4 @@
-import { NavList } from "../components/NavList";
+import { NavListDashboard } from "../components/NavListDashboard";
 import { NewTripForm } from "../components/NewTripForm";
 import { TripsList } from "../components/TripsList";
 import { PrivatePage } from "../layout/PrivatePage";
@@ -19,9 +19,9 @@ export function Dashboard() {
 		<PrivatePage>
 			<div>Dashboard</div>
 			<button onClick={onLogout}>Logout</button>
-			<NavList />
 			<NewTripForm />
 			<TripsList />
+			<NavListDashboard />
 		</PrivatePage>
 	);
 }
