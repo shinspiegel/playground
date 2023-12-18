@@ -4,8 +4,10 @@ import { useLoginMutation } from "../redux/apiStore";
 import { ErrorDisplay } from "./ErrorDisplay";
 import "./LoginForm.scss";
 import { Button } from "./Button";
+import { getText } from "../functions/getText";
 
 export function LoginForm() {
+	const { loginForm } = getText();
 	const [login, { isError, error }] = useLoginMutation();
 	const ref = useRef<HTMLFormElement>(null);
 
@@ -17,9 +19,13 @@ export function LoginForm() {
 
 	return (
 		<form class="login-form" ref={ref} onSubmit={onSubmit}>
-			<LabeledInput name="email" label="Email" type="email" />
-			<LabeledInput name="password" label="Password" type="password" />
-			<Button type="submit">Login</Button>
+			<LabeledInput name="email" label={loginForm.email} type="email" />
+			<LabeledInput
+				name="password"
+				label={loginForm.password}
+				type="password"
+			/>
+			<Button type="submit">{loginForm.login}</Button>
 			<ErrorDisplay isError={isError} error={error} />
 		</form>
 	);

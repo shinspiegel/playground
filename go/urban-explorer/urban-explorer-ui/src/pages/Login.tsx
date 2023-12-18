@@ -6,8 +6,10 @@ import { DASHBOARD, ROOT } from "../routes";
 import { useCheckQuery } from "../redux/apiStore";
 import "./Login.scss";
 import { AnimatedLogo } from "../components/AnimatedLogo";
+import { getText } from "../functions/getText";
 
 export function Login() {
+	const { login } = getText();
 	const navigation = useNavigate();
 	const { isSuccess } = useCheckQuery();
 
@@ -20,7 +22,7 @@ export function Login() {
 		<PublicPage className="login-page">
 			<AnimatedLogo className="login-page__logo" />
 			<LoginForm />
-			<Link to={ROOT}>Back Home</Link>
+			<Link to={ROOT}>{login.back}</Link>
 			<NavList />
 		</PublicPage>
 	);
