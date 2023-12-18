@@ -8,11 +8,12 @@ import (
 )
 
 type ITripRepository interface {
-	CreateTrip(name string, userId int64) (*models.TripModel, error)
-	FindById(tripId int64, userId int64) (*models.TripModel, error)
 	AddTripToPhoto(photo *models.PhotoModel) (*models.PhotoModel, error)
-	FindAllByUserId(userId int64) (*[]models.TripModel, error)
+	CreateTrip(name string, userId int64) (*models.TripModel, error)
 	DeleteById(userId int64, tripId int64) error
+	FindAllByUserId(userId int64) (*[]models.TripModel, error)
+	FindById(tripId int64, userId int64) (*models.TripModel, error)
+	FindWithPhotosByUserId(userId int64) (*[]models.TripModel, error)
 }
 
 type TripRepository struct{}
@@ -133,6 +134,87 @@ func (r *TripRepository) FindAllByUserId(userId int64) (*[]models.TripModel, err
 		}
 
 		trips = append(trips, trip)
+	}
+
+	return &trips, nil
+}
+
+func (r *TripRepository) FindWithPhotosByUserId(userId int64) (*[]models.TripModel, error) {
+	db := database.New()
+	defer db.Close()
+
+	rows, err := db.Query(`
+		SELECT
+			trips.id as trip_id,
+			trips.name as trip_name,
+			photos.id as photo_id,
+			photos.latitude,
+			photos.longitude,
+			photos.timestamp
+		FROM
+			trips
+		LEFT JOIN
+			photos ON trips.id = photos.trip_id
+		WHERE
+			trips.user_id = :user_id
+		ORDER BY
+			trips.id ASC, photos.timestamp DESC
+	`,
+		sql.Named("user_id", userId),
+	)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+
+	var trips []models.TripModel
+	tripMap := map[int64]*models.TripModel{}
+
+	for rows.Next() {
+		var tripId int64
+		var tripName string
+		var photo models.PhotoModel
+		var photoId sql.NullInt64
+		var lat sql.NullFloat64
+		var long sql.NullFloat64
+		var time sql.NullInt64
+
+		err := rows.Scan(
+			&tripId,
+			&tripName,
+			&photoId,
+			&lat,
+			&long,
+			&time,
+		)
+		if err != nil {
+			return nil, err
+		}
+
+		trip, exists := tripMap[tripId]
+		if !exists {
+			newTrip := models.TripModel{
+				Id:     tripId,
+				Name:   tripName,
+				Photos: &[]models.PhotoModel{},
+			}
+
+			tripMap[tripId] = &newTrip
+			trips = append(trips, newTrip)
+			trip = &newTrip
+		}
+
+		if photoId.Valid {
+			photo.Id = photoId.Int64
+			photo.Latitude = lat.Float64
+			photo.Longitude = long.Float64
+			photo.Timestamp = time.Int64
+			*trip.Photos = append(*trip.Photos, photo)
+		}
+	}
+
+	if err := rows.Err(); err != nil {
+		return nil, err
 	}
 
 	return &trips, nil

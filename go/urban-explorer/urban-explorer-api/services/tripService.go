@@ -33,7 +33,7 @@ func (s *TripService) GetById(tripId int64, userId int64) (*models.TripModel, er
 }
 
 func (s *TripService) GetByUserId(userId int64) (*[]models.TripModel, error) {
-	return s.tripRepo.FindAllByUserId(userId)
+	return s.tripRepo.FindWithPhotosByUserId(userId)
 }
 
 func (s *TripService) DeleteTripAndPhotos(userId int64, tripId int64) error {
