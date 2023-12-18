@@ -1,0 +1,42 @@
+.dialog-window {
+	background: var(--background-tint);
+	border-radius: 8px;
+	border: 1px solid var(--background-shade);
+	box-shadow: 0rem 0.4rem 1rem rgba(0, 0, 0, 0.4);
+	left: 50%;
+	max-height: 80%;
+	min-height: 15rem;
+	overflow-y: auto;
+	padding: 1rem;
+	position: fixed;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	width: 80%;
+	z-index: 100;
+	opacity: 0;
+	pointer-events: none;
+	transition: all ease 1s;
+
+	&[open] {
+		opacity: 1;
+		pointer-events: inherit;
+	}
+
+	&__background {
+		z-index: 90;
+		position: fixed;
+		background: #000;
+		top: 0;
+		left: 0;
+		height: 100vh;
+		width: 100%;
+		opacity: 0;
+		transition: all ease 0.1s;
+		pointer-events: none;
+
+		&--open {
+			opacity: 0.8;
+			pointer-events: all;
+		}
+	}
+}

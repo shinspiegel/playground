@@ -1,15 +1,21 @@
 import { PropsWithChildren } from "preact/compat";
+import "./DialogWindow.scss";
 
 type ConfirmModalProps = {
 	isOpen?: boolean;
-	onClose?: () => void;
 } & PropsWithChildren;
 
-export function DialogWindow({ isOpen, onClose, children }: ConfirmModalProps) {
+export function DialogWindow({ isOpen, children }: ConfirmModalProps) {
 	return (
-		<dialog open={isOpen}>
-			<div>{children}</div>
-			{onClose && <button onClick={onClose}>Close</button>}
-		</dialog>
+		<>
+			<dialog class="dialog-window" open={isOpen}>
+				{children}
+			</dialog>
+			<div
+				class={`dialog-window__background ${
+					isOpen ? "dialog-window__background--open" : ""
+				}`}
+			/>
+		</>
 	);
 }
