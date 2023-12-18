@@ -1,6 +1,7 @@
 import { getLanguage } from "./getLanguage";
 
 type Text = {
+	general: { close: string };
 	navList: { login: string; register: string; dashboard: string };
 	root: { bottom: string; login: string };
 	hero: { title: string; subTitle: [string, string][] };
@@ -8,10 +9,14 @@ type Text = {
 	loginForm: { email: string; password: string; login: string };
 	register: { notAvailable: string };
 	unauthorized: { message: string; back: string };
+	dashboard: { title: string; newTrip: string };
 };
 
-export const TEXT: Record<string, Text> = {
+const TEXT: Record<string, Text> = {
 	en: {
+		general: {
+			close: "Close",
+		},
 		root: {
 			login: "Login",
 			bottom: "Jeferson Leite Borges. All rights reserved.",
@@ -54,9 +59,16 @@ export const TEXT: Record<string, Text> = {
 			register: "Register",
 			dashboard: "Dashboard",
 		},
+		dashboard: {
+			title: "Your Trips",
+			newTrip: "New Trip",
+		},
 	},
 	// pt-br
 	pt: {
+		general: {
+			close: "Fechar",
+		},
 		root: {
 			login: "Acessar",
 			bottom: "Jeferson Leite Borges. Todos os direitos reservados.",
@@ -99,10 +111,13 @@ export const TEXT: Record<string, Text> = {
 			register: "Registrar",
 			dashboard: "Painel",
 		},
+		dashboard: {
+			title: "Suas Viagens",
+			newTrip: "Nova Jornada",
+		},
 	},
 };
 
 export function getText(): Text {
-	const lang = getLanguage();
-	return TEXT[lang];
+	return TEXT[getLanguage()];
 }

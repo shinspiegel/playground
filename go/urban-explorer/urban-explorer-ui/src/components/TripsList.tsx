@@ -1,6 +1,7 @@
 import { useTripsQuery } from "../redux/apiStore";
 import { Loading } from "./Loading";
 import { TripEntry } from "./TripEntry";
+import "./TripsList.scss";
 
 export function TripsList() {
 	const { data, isLoading, isError, isFetching } = useTripsQuery();
@@ -14,13 +15,12 @@ export function TripsList() {
 	}
 
 	return (
-		<div>
-			Trips
-			<ul>
+		<div class="trip-list">
+			<h2 class="trip-list__title">Trips</h2>
+
+			<ul class="trip-list__list">
 				{data.map((t) => (
-					<li>
-						<TripEntry key={t.id} entry={t} />
-					</li>
+					<TripEntry key={t.id} entry={t} />
 				))}
 			</ul>
 		</div>

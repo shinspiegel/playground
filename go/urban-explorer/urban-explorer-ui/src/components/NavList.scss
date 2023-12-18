@@ -6,6 +6,7 @@
 	left: 0;
 	position: fixed;
 	width: 100%;
+	z-index: 10;
 
 	&__list {
 		align-items: flex-end;

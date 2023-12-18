@@ -1,26 +1,18 @@
+import { FloatingNewTripButton } from "../components/FloatingNewTripButton";
 import { NavListDashboard } from "../components/NavListDashboard";
-import { NewTripForm } from "../components/NewTripForm";
 import { TripsList } from "../components/TripsList";
+import { getText } from "../functions/getText";
 import { PrivatePage } from "../layout/PrivatePage";
-import { useLogoutMutation } from "../redux/apiStore";
-import { ROOT } from "../routes";
+import "./Dashboard.scss";
 
 export function Dashboard() {
-	const [logout] = useLogoutMutation();
-
-	function onLogout() {
-		logout()
-			.unwrap()
-			.then(() => window.location.replace(ROOT))
-			.catch((err) => console.error(err));
-	}
+	const { dashboard } = getText();
 
 	return (
-		<PrivatePage>
-			<div>Dashboard</div>
-			<button onClick={onLogout}>Logout</button>
-			<NewTripForm />
+		<PrivatePage className="dashboard-page">
+			<h1 className="dashboard-page__title">{dashboard.title}</h1>
 			<TripsList />
+			<FloatingNewTripButton />
 			<NavListDashboard />
 		</PrivatePage>
 	);

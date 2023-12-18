@@ -20,7 +20,7 @@ export function TripEntry({ entry }: TripEntryProp) {
 	}
 
 	return (
-		<>
+		<li>
 			<Link to={url}>{entry.name}</Link>
 			<button onClick={open}>Delete</button>
 
@@ -28,6 +28,6 @@ export function TripEntry({ entry }: TripEntryProp) {
 				<button onClick={onDelete}>Confirm Deletion</button>
 				<button onClick={close}>Don't delete</button>
 			</DialogWindow>
-		</>
+		</li>
 	);
 }
