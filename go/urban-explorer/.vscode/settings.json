@@ -12,6 +12,7 @@
 		"logrus",
 		"nfnt",
 		"PHOTOID",
+		"postgres",
 		"preact",
 		"reduxjs",
 		"rwcarlsen",

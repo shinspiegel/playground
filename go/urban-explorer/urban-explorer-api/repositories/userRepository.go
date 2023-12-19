@@ -1,7 +1,6 @@
 package repositories
 
 import (
-	"database/sql"
 	"errors"
 	"urban-explorer/database"
 	"urban-explorer/models"
@@ -33,9 +32,9 @@ func (r *UserRepository) FindByEmail(email string) (*models.UserModel, error) {
 		FROM
 			users
 		WHERE
-			email = :email
+			email=$1 
 	`,
-		sql.Named("email", email),
+		email,
 	)
 	if err != nil {
 		return nil, err
@@ -67,9 +66,9 @@ func (r *UserRepository) IsEmailInUse(email string) (bool, error) {
 		FROM
 			users
 		WHERE
-			email = :email
+			email=$1
 	`,
-		sql.Named("email", email),
+		email,
 	)
 	if err != nil {
 		return false, err
@@ -87,13 +86,11 @@ func (m *UserRepository) Insert(email, passwordHash string) (*models.UserModel, 
 		INSERT INTO users
 			(email, password_hash, recover_code)
 		VALUES
-			(:email, :password_hash, :recover_code)
+			($1, $2, $3)
 		RETURNING
 			id, email, password_hash, recover_code
 	`,
-		sql.Named("email", email),
-		sql.Named("password_hash", passwordHash),
-		sql.Named("recover_code", nil),
+		email, passwordHash, nil,
 	)
 	if err != nil {
 		return nil, err
@@ -126,9 +123,9 @@ func (r *UserRepository) FindById(id int64) (*models.UserModel, error) {
 		FROM
 			users
 		WHERE
-			id = :id
+			id=$1
 	`,
-		sql.Named("id", id),
+		id,
 	)
 	if err != nil {
 		return nil, err
@@ -168,14 +165,13 @@ func (r *UserRepository) UpdateRecoverByEmail(email string, code string) (*model
 	rows, err := db.Query(`
 		UPDATE users
 		SET 
-			recover_code=:recover_code
+			recover_code=$1
 		WHERE
-			email=:email
+			email=$2
 		RETURNING
 			id, email, password_hash, recover_code
 	`,
-		sql.Named("email", email),
-		sql.Named("recover_code", code),
+		code, email,
 	)
 	if err != nil {
 		return nil, err
@@ -205,15 +201,13 @@ func (r *UserRepository) UpdateUserPassword(userId int64, passwordHash string) (
 	rows, err := db.Query(`
 		UPDATE users
 		SET 
-			password_hash=:password_hash, recover_code=:recover_code
+			password_hash=$1, recover_code=$2
 		WHERE
-			id=:id
+			id=$3
 		RETURNING
 			id, email, password_hash, recover_code
 	`,
-		sql.Named("id", userId),
-		sql.Named("password_hash", passwordHash),
-		sql.Named("recover_code", nil),
+		passwordHash, nil, userId,
 	)
 	if err != nil {
 		return nil, err

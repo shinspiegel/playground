@@ -1,6 +1,6 @@
--- SQLite
+-- Postgresql
 CREATE TABLE IF NOT EXISTS trips (
-	id			INTEGER PRIMARY KEY AUTOINCREMENT,
+	id			SERIAL PRIMARY KEY,
 	user_id		INTEGER,
 	name		TEXT,
 	

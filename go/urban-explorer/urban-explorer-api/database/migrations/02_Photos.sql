@@ -1,10 +1,10 @@
--- SQLite
+-- Postgresql
 CREATE TABLE IF NOT EXISTS photos (
-	id				INTEGER PRIMARY KEY AUTOINCREMENT,
+	id				SERIAL PRIMARY KEY,
 	latitude		REAL,
 	longitude		REAL,
-	timestamp		INTEGER,
-	jpeg_bytes		BLOB,
+	timestamp		BIGINT,
+	jpeg_bytes		BYTEA,
 
 	user_id			INTEGER,
 	trip_id			INTEGER,

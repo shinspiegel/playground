@@ -10,7 +10,7 @@ type Database struct {
 }
 
 func New() *Database {
-	db, err := newSQLite()
+	db, err := newPostgres()
 	if err != nil {
 		log.Fatal(err)
 	}

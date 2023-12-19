@@ -1,7 +1,6 @@
 package repositories
 
 import (
-	"database/sql"
 	"errors"
 	"urban-explorer/database"
 	"urban-explorer/models"
@@ -29,16 +28,11 @@ func (r *PhotoRepository) CreatePhoto(userId int64, tripId int64, latitude float
 		INSERT INTO photos
 			(user_id, trip_id, latitude, longitude, timestamp, jpeg_bytes)
 		VALUES
-			(:user_id, :trip_id, :latitude, :longitude, :timestamp, :jpeg_bytes)
+			($1, $2, $3, $4, $5, $6)
 		RETURNING 
 			id, user_id, trip_id, latitude, longitude, timestamp, jpeg_bytes
 		`,
-		sql.Named("user_id", userId),
-		sql.Named("trip_id", tripId),
-		sql.Named("latitude", latitude),
-		sql.Named("longitude", longitude),
-		sql.Named("timestamp", timestamp),
-		sql.Named("jpeg_bytes", jpegBytes),
+		userId, tripId, latitude, longitude, timestamp, jpegBytes,
 	)
 	if err != nil {
 		return nil, err
@@ -74,10 +68,9 @@ func (r *PhotoRepository) GetById(userId int64, photoId int64) (*models.PhotoMod
 		FROM
 			photos
 		WHERE
-			id=:id AND user_id=:user_id
+			id=$1 AND user_id=$2
 		`,
-		sql.Named("id", photoId),
-		sql.Named("user_id", userId),
+		photoId, userId,
 	)
 	if err != nil {
 		return nil, err
@@ -113,12 +106,11 @@ func (r *PhotoRepository) GetPhotosByTripId(userId int64, tripId int64) (*[]mode
 		FROM
 			photos
 		WHERE
-			trip_id = :trip_id AND user_id = :user_id
+			trip_id=$1 AND user_id=$2
 		ORDER BY 
 			timestamp ASC
 		`,
-		sql.Named("user_id", userId),
-		sql.Named("trip_id", tripId),
+		tripId, userId,
 	)
 	if err != nil {
 		return nil, err
@@ -158,10 +150,9 @@ func (r *PhotoRepository) DeleteById(userId int64, photoId int64) error {
 		FROM 
 			photos
 		WHERE
-			id = :photo_id AND user_id = :user_id
+			id=$1 AND user_id=$2
 	`,
-		sql.Named("photo_id", photoId),
-		sql.Named("user_id", userId),
+		photoId, userId,
 	)
 	if err != nil {
 		return err
@@ -179,10 +170,9 @@ func (r *PhotoRepository) DeleteAllByTrip(userId int64, tripId int64) error {
 		FROM 
 			photos
 		WHERE
-			trip_id = :trip_id AND user_id = :user_id
+			trip_id=$1 AND user_id=$2
 	`,
-		sql.Named("user_id", userId),
-		sql.Named("trip_id", tripId),
+		tripId, userId,
 	)
 
 	if err != nil {

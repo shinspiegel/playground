@@ -30,12 +30,11 @@ func (r *TripRepository) CreateTrip(name string, userId int64) (*models.TripMode
 		INSERT INTO trips
 			(name, user_id)
 		VALUES
-			(:name, :user_id)
+			($1, $2)
 		RETURNING
 			id, name, user_id
 	`,
-		sql.Named("name", name),
-		sql.Named("user_id", userId),
+		name, userId,
 	)
 	if err != nil {
 		return nil, err
@@ -67,10 +66,9 @@ func (r *TripRepository) FindById(tripId int64, userId int64) (*models.TripModel
 		FROM
 			trips
 		WHERE
-			id = :trip_id AND user_id = :user_id
+			id=$1 AND user_id=$2
 	`,
-		sql.Named("trip_id", tripId),
-		sql.Named("user_id", userId),
+		tripId, userId,
 	)
 	if err != nil {
 		return nil, err
@@ -111,9 +109,9 @@ func (r *TripRepository) FindAllByUserId(userId int64) (*[]models.TripModel, err
 		FROM
 			trips
 		WHERE
-			user_id = :user_id
+			user_id=$1
 	`,
-		sql.Named("user_id", userId),
+		userId,
 	)
 	if err != nil {
 		return nil, err
@@ -156,18 +154,18 @@ func (r *TripRepository) FindWithPhotosByUserId(userId int64) (*[]models.TripMod
 		LEFT JOIN
 			photos ON trips.id = photos.trip_id
 		WHERE
-			trips.user_id = :user_id
+			trips.user_id=$1
 		ORDER BY
 			trips.id ASC, photos.timestamp DESC
 	`,
-		sql.Named("user_id", userId),
+		userId,
 	)
 	if err != nil {
 		return nil, err
 	}
 	defer rows.Close()
 
-	var trips []models.TripModel
+	trips := []models.TripModel{}
 	tripMap := map[int64]*models.TripModel{}
 
 	for rows.Next() {
@@ -229,10 +227,9 @@ func (r *TripRepository) DeleteById(userId int64, tripId int64) error {
 		FROM 
 			trips
 		WHERE
-			id = :trip_id AND user_id = :user_id
+			id=$1 AND user_id=$2
 	`,
-		sql.Named("trip_id", tripId),
-		sql.Named("user_id", userId),
+		tripId, userId,
 	)
 
 	if err != nil {
