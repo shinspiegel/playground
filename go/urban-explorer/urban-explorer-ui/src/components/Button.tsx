@@ -5,7 +5,7 @@ import "./Button.scss";
 type ButtonProps = {
 	onClick?: () => void;
 	size?: "big" | "medium" | "small";
-	color?: "default" | "primary";
+	color?: "default" | "primary" | "danger" | "transparent";
 } & PropsWithChildren &
 	WithClassName &
 	Omit<HTMLAttributes<HTMLButtonElement>, "size">;

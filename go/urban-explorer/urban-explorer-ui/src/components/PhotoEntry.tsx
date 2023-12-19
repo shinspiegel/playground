@@ -3,12 +3,16 @@ import { useDeletePhotoByIdMutation } from "../redux/apiStore";
 import { Photo } from "../type";
 import { DialogWindow } from "./DialogWindow";
 import { TripPhoto } from "./TripPhoto";
+import "./PhotoEntry.scss";
+import { getText } from "../functions/getText";
+import { Button } from "./Button";
 
 type PhotoEntryProps = {
 	item: Photo;
 };
 
 export function PhotoEntry({ item }: PhotoEntryProps) {
+	const { tripView } = getText();
 	const { isOpen, close, open } = useDialog();
 	const [del] = useDeletePhotoByIdMutation();
 
@@ -18,17 +22,22 @@ export function PhotoEntry({ item }: PhotoEntryProps) {
 	}
 
 	return (
-		<div>
-			<div>{item.id}</div>
-			<div>
-				{item.latitude} - {item.longitude}
+		<div class="photo-entry">
+			<div class="photo-entry__time">
+				{new Date(item.timestamp).toLocaleDateString()} -
+				{new Date(item.timestamp).toLocaleTimeString()}
 			</div>
-			<div>{item.timestamp}</div>
-			<TripPhoto photo={item} />
-			<button onClick={open}>Delete Photo</button>
+			<TripPhoto className="photo-entry__photo" photo={item} />
+			<button className="photo-entry__button" onClick={open}>
+				{tripView.delete}
+			</button>
 
-			<DialogWindow isOpen={isOpen} onClose={close}>
-				<button onClick={onDelete}>Confirm deletion</button>
+			<DialogWindow className="photo-entry__dialog" isOpen={isOpen}>
+				<h4>{tripView.delete}</h4>
+				<Button color="danger" onClick={onDelete}>
+					{tripView.confirm}
+				</Button>
+				<Button onClick={close}>{tripView.cancel}</Button>
 			</DialogWindow>
 		</div>
 	);

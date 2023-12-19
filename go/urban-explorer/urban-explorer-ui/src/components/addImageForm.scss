@@ -1,0 +1,35 @@
+.add-image-form {
+	align-items: center;
+	background: var(--background);
+	border-radius: 2rem;
+	border: 2px dashed var(--background-tint);
+	display: flex;
+	flex-direction: column;
+	height: 12rem;
+	justify-content: center;
+	position: relative;
+
+	&__hidden-input {
+		display: none;
+	}
+
+	&__plus {
+		color: var(--background-tint);
+		font-size: 5rem;
+		line-height: 3rem;
+	}
+
+	&__message {
+		color: var(--background-tint);
+	}
+
+	&__error {
+		bottom: 1rem;
+		font-size: 1.4rem;
+		left: 50%;
+		position: absolute;
+		text-align: center;
+		transform: translateX(-50%);
+		width: 100%;
+	}
+}

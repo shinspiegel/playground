@@ -1,14 +1,23 @@
 import { PropsWithChildren } from "preact/compat";
+import { WithClassName } from "../type";
 import "./DialogWindow.scss";
 
 type ConfirmModalProps = {
 	isOpen?: boolean;
-} & PropsWithChildren;
+} & PropsWithChildren &
+	WithClassName;
 
-export function DialogWindow({ isOpen, children }: ConfirmModalProps) {
+export function DialogWindow({
+	className,
+	isOpen,
+	children,
+}: ConfirmModalProps) {
+	const names = ["dialog-window"];
+	if (className) names.push(className);
+
 	return (
 		<>
-			<dialog class="dialog-window" open={isOpen}>
+			<dialog class={names.join(" ")} open={isOpen}>
 				{children}
 			</dialog>
 			<div

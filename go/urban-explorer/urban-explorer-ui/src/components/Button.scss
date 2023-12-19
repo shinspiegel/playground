@@ -39,6 +39,32 @@
 		}
 	}
 
+	&--danger {
+		background: var(--danger);
+		border: 1px solid transparent;
+		color: var(--text);
+
+		&:hover,
+		&:visited,
+		&:focus {
+			background: var(--danger);
+			color: var(--text);
+		}
+	}
+
+	&--transparent {
+		background: transparent;
+		border: 1px solid transparent;
+		color: var(--text);
+
+		&:hover,
+		&:visited,
+		&:focus {
+			background: transparent;
+			color: var(--text);
+		}
+	}
+
 	&--big {
 		font-size: 3rem;
 		font-weight: 800;

@@ -1,0 +1,13 @@
+.map-marker {
+	border: 3px solid var(--background-tint);
+	height: 100px;
+	width: 100px;
+	overflow: hidden;
+	border-radius: 9999rem;
+
+	&__image {
+		height: 100%;
+		width: 100%;
+		object-fit: cover;
+	}
+}

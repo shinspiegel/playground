@@ -3,10 +3,13 @@ import { PhotoEntry } from "./PhotoEntry";
 import { useTripByIdQuery } from "../redux/apiStore";
 import { skipToken } from "@reduxjs/toolkit/query";
 import { Loading } from "./Loading";
+import "./PhotosList.scss";
 
 export function PhotosList() {
 	const { tripId } = useParams();
-	const { data, isLoading, isFetching } = useTripByIdQuery(tripId ?? skipToken);
+	const { data, isLoading, isFetching } = useTripByIdQuery(
+		tripId ?? skipToken
+	);
 
 	if (isLoading || isFetching) {
 		return <Loading />;
@@ -17,9 +20,7 @@ export function PhotosList() {
 	}
 
 	return (
-		<div>
-			<h1>Photos</h1>
-
+		<div class="photos-list">
 			{data?.photos.map((p) => (
 				<PhotoEntry key={p.id} item={p} />
 			))}

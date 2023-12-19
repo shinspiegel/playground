@@ -6,8 +6,8 @@ import { appStore } from "./redux/store";
 import "./main.scss";
 
 render(
-  <Provider store={appStore}>
-    <RouterProvider router={router} />
-  </Provider>,
-  document.getElementById("app")!
+	<Provider store={appStore}>
+		<RouterProvider router={router} />
+	</Provider>,
+	document.getElementById("app")!
 );

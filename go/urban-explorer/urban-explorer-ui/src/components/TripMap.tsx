@@ -4,6 +4,7 @@ import { useTripByIdQuery } from "../redux/apiStore";
 import { skipToken } from "@reduxjs/toolkit/query";
 import { MapMaker } from "./MapMarker";
 import { generateMapLines } from "../functions/generateMapLine";
+import "./TripMap.scss";
 
 export function TripMap() {
 	const { tripId } = useParams();
@@ -14,12 +15,24 @@ export function TripMap() {
 	}
 
 	return (
-		<div style={{ height: "400px" }}>
-			<Map defaultCenter={[data.photos[0].latitude, data.photos[0].longitude]} defaultZoom={16}>
+		<div class="trip-map">
+			<Map
+				defaultCenter={[
+					data.photos[0].latitude,
+					data.photos[0].longitude,
+				]}
+				defaultZoom={16}
+			>
 				<ZoomControl />
-				{data.photos.map((p) => (
-					<Marker key={p.id} width={50} anchor={[p.latitude, p.longitude]} style={{ zIndex: 1 }}>
-						<MapMaker photo={p} />
+
+				{data.photos.map((photo) => (
+					<Marker
+						key={photo.id}
+						anchor={[photo.latitude, photo.longitude]}
+						style={{ zIndex: 1 }}
+						offset={[35, 15]} // Magic number for 100px marker
+					>
+						<MapMaker photo={photo} />
 					</Marker>
 				))}
 
@@ -27,7 +40,7 @@ export function TripMap() {
 					data={generateMapLines(data.photos)}
 					styleCallback={() => ({
 						strokeWidth: "4",
-						stroke: "black",
+						stroke: "var(--background-tint)",
 						strokeLinecap: "round",
 					})}
 				/>

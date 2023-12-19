@@ -1,5 +1,4 @@
 import { useParams } from "react-router-dom";
-import { NavList } from "../../components/NavList";
 import { PrivatePage } from "../../layout/PrivatePage";
 import { AddImageForm } from "../../components/AddImageForm";
 import { PhotosList } from "../../components/PhotosList";
@@ -8,14 +7,18 @@ import { useTripByIdQuery } from "../../redux/apiStore";
 import { skipToken } from "@reduxjs/toolkit/query";
 import { Loading } from "../../components/Loading";
 import { ErrorDisplay } from "../../components/ErrorDisplay";
+import { NavListDashboard } from "../../components/NavListDashboard";
+import "./TripView.scss";
 
 export function TripId() {
 	const { tripId } = useParams();
-	const { data, error, isLoading, isFetching, isError } = useTripByIdQuery(tripId ?? skipToken);
+	const { data, error, isLoading, isFetching, isError } = useTripByIdQuery(
+		tripId ?? skipToken
+	);
 
 	if (isLoading || isFetching) {
 		return (
-			<PrivatePage>
+			<PrivatePage navigation={<NavListDashboard />}>
 				<Loading />
 			</PrivatePage>
 		);
@@ -23,21 +26,23 @@ export function TripId() {
 
 	if (isError || !data || !tripId) {
 		return (
-			<PrivatePage>
+			<PrivatePage navigation={<NavListDashboard />}>
 				<ErrorDisplay isError={isError} error={error} />
 			</PrivatePage>
 		);
 	}
 
 	return (
-		<PrivatePage>
-			<NavList />
-			<h1>{data.name}</h1>
+		<PrivatePage navigation={<NavListDashboard />}>
+			<div class="trip-view">
+				<h1>{data.name}</h1>
 
-			<AddImageForm />
-			<TripMap />
+				<AddImageForm />
 
-			<PhotosList />
+				<TripMap />
+
+				<PhotosList />
+			</div>
 		</PrivatePage>
 	);
 }

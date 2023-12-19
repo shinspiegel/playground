@@ -1,5 +1,6 @@
 import { Photo } from "../type";
 import { TripPhoto } from "./TripPhoto";
+import "./MapMarker.scss";
 
 type MapMakerProps = {
 	photo: Photo;
@@ -7,16 +8,8 @@ type MapMakerProps = {
 
 export function MapMaker({ photo }: MapMakerProps) {
 	return (
-		<div
-			style={{
-				border: "2px solid black",
-				height: "100px",
-				width: "100px",
-				overflow: "hidden",
-				borderRadius: "999rem",
-			}}
-		>
-			<TripPhoto photo={photo} />
+		<div class="map-marker" onClick={() => console.log("aaaa")}>
+			<TripPhoto className="map-marker__image" photo={photo} />
 		</div>
 	);
 }
