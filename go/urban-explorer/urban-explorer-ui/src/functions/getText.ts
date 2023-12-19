@@ -2,7 +2,12 @@ import { getLanguage } from "./getLanguage";
 
 type Text = {
 	general: { close: string; confirm: string; cancel: string };
-	navList: { login: string; register: string; dashboard: string };
+	navList: {
+		login: string;
+		register: string;
+		dashboard: string;
+		logout: string;
+	};
 	root: { bottom: string; login: string };
 	hero: { title: string; subTitle: [string, string][] };
 	login: { back: string };
@@ -11,6 +16,7 @@ type Text = {
 	unauthorized: { message: string; back: string };
 	dashboard: { title: string; newTrip: string };
 	tripView: { add: string; delete: string; confirm: string; cancel: string };
+	newTrip: { title: string; placeholder: string };
 };
 
 const TEXT: Record<string, Text> = {
@@ -61,6 +67,7 @@ const TEXT: Record<string, Text> = {
 			login: "Login",
 			register: "Register",
 			dashboard: "Dashboard",
+			logout: "Logout",
 		},
 		dashboard: {
 			title: "Your Trips",
@@ -71,6 +78,10 @@ const TEXT: Record<string, Text> = {
 			delete: "Delete photo",
 			confirm: "Yes, delete photo",
 			cancel: "Don't delete photo",
+		},
+		newTrip: {
+			title: "Trip Name",
+			placeholder: "Type here!",
 		},
 	},
 	// pt-br
@@ -121,6 +132,7 @@ const TEXT: Record<string, Text> = {
 			login: "Acessar",
 			register: "Registrar",
 			dashboard: "Painel",
+			logout: "Sair",
 		},
 		dashboard: {
 			title: "Suas Viagens",
@@ -131,6 +143,10 @@ const TEXT: Record<string, Text> = {
 			delete: "Apagar foto",
 			confirm: "Sim, apague foto",
 			cancel: "Não apague foto",
+		},
+		newTrip: {
+			title: "Nome do Passeio",
+			placeholder: "Digite aqui!",
 		},
 	},
 };

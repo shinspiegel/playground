@@ -1,9 +1,10 @@
 import { getText } from "../functions/getText";
 import { useLogoutMutation } from "../redux/apiStore";
 import { DASHBOARD, ROOT } from "../routes";
-import { FloatingNewTripButton } from "./FloatingNewTripButton";
+import { NewTripButton } from "./NewTripButton";
 import { NavItemLink } from "./NavItemLink";
 import { NavList } from "./NavList";
+import "./NavListDashboard.scss";
 
 export function NavListDashboard() {
 	const { navList } = getText();
@@ -17,10 +18,12 @@ export function NavListDashboard() {
 	}
 
 	return (
-		<NavList>
+		<NavList className="nav-list-dashboard">
+			<NewTripButton />
 			<NavItemLink to={DASHBOARD}>{navList.dashboard}</NavItemLink>
-			<FloatingNewTripButton />
-			<button onClick={onLogout}>Logout</button>
+			<button className="nav-list-dashboard__button" onClick={onLogout}>
+				{navList.logout}
+			</button>
 		</NavList>
 	);
 }

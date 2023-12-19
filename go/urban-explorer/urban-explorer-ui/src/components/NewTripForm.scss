@@ -1,0 +1,9 @@
+.new-trip-form {
+	display: flex;
+	flex-direction: column;
+	gap: 2rem;
+
+	> label {
+		color: var(--text);
+	}
+}
