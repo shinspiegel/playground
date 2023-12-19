@@ -19,7 +19,9 @@ export function TripId() {
 	if (isLoading || isFetching) {
 		return (
 			<PrivatePage navigation={<NavListDashboard />}>
-				<Loading />
+				<div class="trip-view">
+					<Loading className="trip-view__loading" />
+				</div>
 			</PrivatePage>
 		);
 	}

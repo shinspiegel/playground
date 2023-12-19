@@ -2,15 +2,17 @@ import { useRef } from "preact/hooks";
 import { useAddPhotoToTripMutation } from "../redux/apiStore";
 import { useParams } from "react-router-dom";
 import { ErrorDisplay } from "./ErrorDisplay";
-import "./addImageForm.scss";
 import { getText } from "../functions/getText";
+import { Loading } from "./Loading";
+import "./addImageForm.scss";
 
 export function AddImageForm() {
 	const { tripView } = getText();
 	const formRef = useRef<HTMLFormElement>(null);
 	const inputRef = useRef<HTMLInputElement>(null);
 	const { tripId } = useParams();
-	const [addPhoto, { isError, error }] = useAddPhotoToTripMutation();
+	const [addPhoto, { isLoading, isError, error }] =
+		useAddPhotoToTripMutation();
 
 	function onSubmit() {
 		if (!formRef.current || !tripId) {
@@ -24,6 +26,14 @@ export function AddImageForm() {
 		if (inputRef.current) {
 			inputRef.current.click();
 		}
+	}
+
+	if (isLoading) {
+		return (
+			<div class="add-image-form add-image-form--loading">
+				<Loading className="add-image-form__loading" />
+			</div>
+		);
 	}
 
 	return (

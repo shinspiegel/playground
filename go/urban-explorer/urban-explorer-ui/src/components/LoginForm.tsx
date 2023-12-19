@@ -2,19 +2,23 @@ import { useRef } from "preact/hooks";
 import { LabeledInput } from "./LabeledInput";
 import { useLoginMutation } from "../redux/apiStore";
 import { ErrorDisplay } from "./ErrorDisplay";
-import "./LoginForm.scss";
 import { Button } from "./Button";
 import { getText } from "../functions/getText";
+import "./LoginForm.scss";
 
 export function LoginForm() {
-	const { loginForm } = getText();
-	const [login, { isError, error }] = useLoginMutation();
+	const { loginForm, general } = getText();
+	const [login, { isLoading, isError, error }] = useLoginMutation();
 	const ref = useRef<HTMLFormElement>(null);
 
 	function onSubmit(e: SubmitEvent) {
 		e.preventDefault();
 		if (!ref.current) return console.error("missing form");
 		login(new FormData(ref.current));
+	}
+
+	if (isLoading) {
+		return <div>{general.loading}</div>;
 	}
 
 	return (

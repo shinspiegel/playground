@@ -3,4 +3,9 @@
 	flex-direction: column;
 	gap: 2rem;
 	padding: 2rem 2rem 8rem;
+
+	&__loading {
+		height: 12rem;
+		width: 100%;
+	}
 }

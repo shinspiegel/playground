@@ -1,17 +1,26 @@
 import { useTripsQuery } from "../redux/apiStore";
+import { ErrorDisplay } from "./ErrorDisplay";
 import { Loading } from "./Loading";
 import { TripEntry } from "./TripEntry";
 import "./TripsList.scss";
 
 export function TripsList() {
-	const { data, isLoading, isError, isFetching } = useTripsQuery();
+	const { data, error, isLoading, isError, isFetching } = useTripsQuery();
 
 	if (isLoading || isFetching) {
-		return <Loading />;
+		return (
+			<div class="trip-list">
+				<Loading className="trip-list__loading" />
+			</div>
+		);
 	}
 
 	if (isError || !data) {
-		return <div>Error</div>;
+		return (
+			<div class="trip-list">
+				<ErrorDisplay isError={isError} error={error} />
+			</div>
+		);
 	}
 
 	return (

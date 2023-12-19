@@ -1,4 +1,4 @@
-.animated-logo {
+.loading {
 	height: 100%;
 	overflow: hidden;
 	position: relative;
@@ -16,21 +16,16 @@
 
 	&__lower,
 	&__upper {
-		animation: gentleMove 10s infinite alternate ease-in-out;
+		animation: loadingMovement 2s infinite alternate ease-in-out;
 	}
 }
 
-@keyframes gentleMove {
+@keyframes loadingMovement {
 	0% {
-		transform: rotate(-5deg);
+		transform: rotate(-10deg);
 	}
-	5% {
-		transform: rotate(0deg);
-	}
-	95% {
-		transform: rotate(15deg);
-	}
+
 	100% {
-		transform: rotate(-5deg);
+		transform: rotate(330deg);
 	}
 }

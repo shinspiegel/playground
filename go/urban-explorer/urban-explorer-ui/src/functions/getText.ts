@@ -1,7 +1,12 @@
 import { getLanguage } from "./getLanguage";
 
 type Text = {
-	general: { close: string; confirm: string; cancel: string };
+	general: {
+		close: string;
+		confirm: string;
+		cancel: string;
+		loading: string;
+	};
 	navList: {
 		login: string;
 		register: string;
@@ -25,6 +30,7 @@ const TEXT: Record<string, Text> = {
 			close: "Close",
 			cancel: "Cancel",
 			confirm: "Confirm",
+			loading: "Loading",
 		},
 		root: {
 			login: "Login",
@@ -90,6 +96,7 @@ const TEXT: Record<string, Text> = {
 			close: "Fechar",
 			cancel: "Cancelar",
 			confirm: "Confirmar",
+			loading: "Carregando",
 		},
 		root: {
 			login: "Acessar",

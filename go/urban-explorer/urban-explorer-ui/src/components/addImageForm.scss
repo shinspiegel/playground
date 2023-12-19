@@ -9,6 +9,14 @@
 	justify-content: center;
 	position: relative;
 
+	&--loading {
+		border: none;
+	}
+
+	&__loading {
+		height: 8rem;
+	}
+
 	&__hidden-input {
 		display: none;
 	}
