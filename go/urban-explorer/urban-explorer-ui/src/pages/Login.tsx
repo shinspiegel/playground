@@ -19,11 +19,12 @@ export function Login() {
 	}
 
 	return (
-		<PublicPage className="login-page">
-			<AnimatedLogo className="login-page__logo" />
-			<LoginForm />
-			<Link to={ROOT}>{login.back}</Link>
-			<NavListAuth />
+		<PublicPage navigation={<NavListAuth />}>
+			<div className="login-page">
+				<AnimatedLogo className="login-page__logo" />
+				<LoginForm />
+				<Link to={ROOT}>{login.back}</Link>
+			</div>
 		</PublicPage>
 	);
 }

@@ -1,11 +1,13 @@
 .dashboard-page {
 	display: flex;
 	flex-direction: column;
+	min-height: 100vh;
+	padding-bottom: 10rem;
 
 	&__title {
 		font-size: 2rem;
-		margin-bottom: 2rem;
 		margin-top: 2rem;
 		text-align: center;
+		margin-bottom: 2rem;
 	}
 }

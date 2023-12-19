@@ -1,12 +1,10 @@
 .login-page {
+	height: 100%;
 	align-items: center;
 	display: flex;
 	flex-direction: column;
-	height: 100vh;
-	justify-content: center;
 	gap: 2rem;
-	max-width: 80%;
-	margin: 0 auto;
+	justify-content: center;
 
 	&__logo {
 		height: 8rem;

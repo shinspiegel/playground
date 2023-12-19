@@ -1,9 +1,9 @@
 .register-page {
 	align-items: center;
 	display: flex;
+	height: 100%;
 	flex-direction: column;
 	gap: 2rem;
-	height: 100vh;
 	justify-content: center;
 
 	&__icon {

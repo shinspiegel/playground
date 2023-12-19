@@ -1,9 +1,14 @@
 .trip-list {
+	flex-grow: 1;
+
 	&__title {
 		text-align: center;
 	}
 
 	&__list {
-		background: red;
+		display: flex;
+		flex-direction: column;
+		gap: 2rem;
+		padding: 0rem 2rem;
 	}
 }

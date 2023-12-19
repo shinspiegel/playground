@@ -16,8 +16,6 @@ export function TripsList() {
 
 	return (
 		<div class="trip-list">
-			<h2 class="trip-list__title">Trips</h2>
-
 			<ul class="trip-list__list">
 				{data.map((t) => (
 					<TripEntry key={t.id} entry={t} />
