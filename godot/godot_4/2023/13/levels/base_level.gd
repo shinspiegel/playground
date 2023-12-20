@@ -1,6 +1,7 @@
 class_name BaseLevel extends Node2D
 
 @export var debug: Debugger
+@export var damage_scene: PackedScene
 @export var player_scene: PackedScene
 @export var camera: GameCamera
 @export var initial_player_pos: Marker2D
@@ -38,8 +39,14 @@ func __spawn_player() -> void:
 	add_child(__player)
 
 
-func __spawn_damage():
-	pass
+func __spawn_damage(pos: Vector2, dmg: Damage):
+	var dmg_number = damage_scene.instantiate()
+	add_child(dmg_number)
+
+	if dmg_number is DamageNumber:
+		dmg_number.set_damage_value(dmg)
+
+	dmg_number.global_position = pos
 
 
 func __add_camera_to_area() -> void:

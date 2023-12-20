@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://da36m4eycope8"]
+[gd_scene load_steps=14 format=3 uid="uid://da36m4eycope8"]
 
 [ext_resource type="Script" path="res://levels/base_level.gd" id="1_msgty"]
 [ext_resource type="PackedScene" uid="uid://curd2b6ulrvo2" path="res://entities/debug/debug.tscn" id="1_px0xy"]
+[ext_resource type="PackedScene" uid="uid://8hxy5dlnh00x" path="res://entities/damage_number/damage_number.tscn" id="2_dksym"]
 [ext_resource type="PackedScene" uid="uid://rga41emy20jf" path="res://entities/game_camera/game_camera.tscn" id="2_vttku"]
 [ext_resource type="PackedScene" uid="uid://b6h4dtp2nafng" path="res://level_areas/test_level/area_0.tscn" id="3_xh2ug"]
 [ext_resource type="PackedScene" uid="uid://rj2d1eft2ic0" path="res://entities/player/player.tscn" id="5_8ucqa"]
@@ -16,6 +17,7 @@
 [node name="TestingLevel" type="Node2D" node_paths=PackedStringArray("debug", "camera", "initial_player_pos", "areas")]
 script = ExtResource("1_msgty")
 debug = NodePath("DebugLayer")
+damage_scene = ExtResource("2_dksym")
 player_scene = ExtResource("5_8ucqa")
 camera = NodePath("GameCamera")
 initial_player_pos = NodePath("InitialPlayerPosition")

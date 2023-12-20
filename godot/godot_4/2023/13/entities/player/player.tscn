@@ -425,13 +425,13 @@ rotation = 1.5708
 shape = SubResource("CapsuleShape2D_3pcgr")
 
 [node name="DamageReceiver" type="Area2D" parent="." node_paths=PackedStringArray("health")]
+collision_mask = 12
 script = ExtResource("6_4hxgy")
 health = NodePath("../Health")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DamageReceiver"]
 position = Vector2(0, -79)
 shape = SubResource("CapsuleShape2D_jk0m3")
-disabled = true
 
 [node name="DamageColdown" type="Timer" parent="DamageReceiver"]
 one_shot = true

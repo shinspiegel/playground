@@ -32,6 +32,7 @@
 		- [ ] Turret
 		- [ ] Alert Camera
 - [ ] Hazards
+	- [ ] Electrified Field
 	- [ ] Spikes
 	- [ ] Laser?
 	- [ ] Camera?
@@ -44,11 +45,12 @@
 	- [ ] Each level will have 5 areas (with camera movemente)
 	- [ ] Boss pattern
 - [ ] Levels
-	- [ ] City slums
+	- [ ] Cybernetic Factory
+		- [x] Layout base
 		- [ ] Tilemap
 		- [ ] Objects
 		- [ ] Hide spots
-	- [ ] Cybernetic FActory
+	- [ ] City slums
 		- [ ] Tilemap
 		- [ ] Objects
 		- [ ] Hide spots
@@ -56,3 +58,10 @@
 		- [ ] Tilemap
 		- [ ] Object
 		- [ ] Hide sports
+
+
+# Tech Debts
+
+Can't make it grow!!
+
+- [ ] Make a base scene for all the levels

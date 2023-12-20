@@ -14,6 +14,6 @@ func hit(damage: Damage) -> void:
 	else:
 		GameManager.spawn_damage_number.emit(global_position, damage)
 
-	
+
 	if health:
 		health.deal_damage(damage)
