@@ -13,7 +13,7 @@ class_name Player extends CharacterBody2D
 @export var camera_holder: RemoteTransform2D
 @export var camera_min_velocity: float = 100
 @export var camera_max_distance: float = 600
-@export_range(0.0, 1.0, 0.1) var camera_speed_weight: float = 0.1
+@export_range(0.0, 1.0, 0.1) var camera_speed_weight: float = 0.5
 
 @export_group("State Machine")
 @export var state_machine: StateMachine

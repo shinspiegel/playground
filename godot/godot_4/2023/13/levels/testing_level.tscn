@@ -1,21 +1,29 @@
-[gd_scene load_steps=7 format=3 uid="uid://da36m4eycope8"]
+[gd_scene load_steps=13 format=3 uid="uid://da36m4eycope8"]
 
 [ext_resource type="Script" path="res://levels/base_level.gd" id="1_msgty"]
 [ext_resource type="PackedScene" uid="uid://curd2b6ulrvo2" path="res://entities/debug/debug.tscn" id="1_px0xy"]
 [ext_resource type="PackedScene" uid="uid://rga41emy20jf" path="res://entities/game_camera/game_camera.tscn" id="2_vttku"]
 [ext_resource type="PackedScene" uid="uid://b6h4dtp2nafng" path="res://level_areas/test_level/area_0.tscn" id="3_xh2ug"]
 [ext_resource type="PackedScene" uid="uid://rj2d1eft2ic0" path="res://entities/player/player.tscn" id="5_8ucqa"]
+[ext_resource type="PackedScene" uid="uid://b73pv8y545tic" path="res://level_areas/test_level/area_1.tscn" id="7_smptd"]
 [ext_resource type="PackedScene" uid="uid://bhoqi3c5qh8oa" path="res://entities/level_ui/level_ui.tscn" id="7_tl7he"]
+[ext_resource type="PackedScene" uid="uid://cbywg1v7c0x2" path="res://level_areas/test_level/area_2.tscn" id="8_g45nv"]
+[ext_resource type="PackedScene" uid="uid://7413ci266d7v" path="res://level_areas/test_level/area_3.tscn" id="9_d1bky"]
+[ext_resource type="PackedScene" uid="uid://cm8qhmidqv0s7" path="res://level_areas/test_level/area_4.tscn" id="10_twekx"]
+[ext_resource type="PackedScene" uid="uid://m5518517ts0o" path="res://level_areas/test_level/area_5.tscn" id="11_daisf"]
+[ext_resource type="PackedScene" uid="uid://ncic171gmgau" path="res://level_areas/test_level/area_6.tscn" id="12_bt16r"]
 
-[node name="TestingLevel" type="Node2D" node_paths=PackedStringArray("debug", "camera", "initial_player_pos")]
+[node name="TestingLevel" type="Node2D" node_paths=PackedStringArray("debug", "camera", "initial_player_pos", "areas")]
 script = ExtResource("1_msgty")
 debug = NodePath("DebugLayer")
 player_scene = ExtResource("5_8ucqa")
 camera = NodePath("GameCamera")
 initial_player_pos = NodePath("InitialPlayerPosition")
+areas = NodePath("Areas")
 
-[node name="DebugLayer" parent="." instance=ExtResource("1_px0xy")]
+[node name="DebugLayer" parent="." node_paths=PackedStringArray("current_level") instance=ExtResource("1_px0xy")]
 layer = 10
+current_level = NodePath("..")
 
 [node name="LevelUI" parent="." instance=ExtResource("7_tl7he")]
 
@@ -34,9 +42,32 @@ color = Color(0.0784314, 0.0784314, 0.0784314, 1)
 
 [node name="Areas" type="Node2D" parent="."]
 
-[node name="Area_2" parent="Areas" node_paths=PackedStringArray("game_camera") instance=ExtResource("3_xh2ug")]
-position = Vector2(-704, -1664)
-game_camera = NodePath("../../GameCamera")
+[node name="Area_0" parent="Areas" instance=ExtResource("3_xh2ug")]
+game_camera = NodePath("")
+
+[node name="Area_1" parent="Areas" instance=ExtResource("7_smptd")]
+position = Vector2(4608, 768)
+game_camera = NodePath("")
+
+[node name="Area_2" parent="Areas" instance=ExtResource("8_g45nv")]
+position = Vector2(7296, 2688)
+game_camera = NodePath("")
+
+[node name="Area_3" parent="Areas" instance=ExtResource("9_d1bky")]
+position = Vector2(15360, 6144)
+game_camera = NodePath("")
+
+[node name="Area_4" parent="Areas" instance=ExtResource("10_twekx")]
+position = Vector2(15488, -256)
+game_camera = NodePath("")
+
+[node name="Area_5" parent="Areas" instance=ExtResource("11_daisf")]
+position = Vector2(24576, -256)
+game_camera = NodePath("")
+
+[node name="Area_6" parent="Areas" instance=ExtResource("12_bt16r")]
+position = Vector2(31616, 4480)
+game_camera = NodePath("")
 
 [node name="InitialPlayerPosition" type="Marker2D" parent="."]
-position = Vector2(512, 0)
+position = Vector2(448, 1664)

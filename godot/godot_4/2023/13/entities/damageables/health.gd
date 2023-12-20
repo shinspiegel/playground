@@ -27,13 +27,13 @@ func deal_damage(damage: Damage) -> void:
 
 func change_health(amount: int) -> void:
 	__current_health = clampi(__current_health + amount, 0, max_health)
-	
+
 	changed.emit(__current_health, max_health)
-	
-	if __current_health == 0: 
+
+	if __current_health == 0:
 		zeroed.emit()
-	
-	if __current_health == max_health: 
+
+	if __current_health == max_health:
 		maxed.emit()
 
 

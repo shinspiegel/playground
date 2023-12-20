@@ -7,7 +7,7 @@ class_name DamageableBlock extends Node2D
 func _ready() -> void:
 	if damage_receiver:
 		damage_receiver.receive_damage.connect(on_receive_damage)
-	
+
 	if health:
 		health.zeroed.connect(on_die)
 

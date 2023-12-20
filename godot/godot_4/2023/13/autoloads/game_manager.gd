@@ -3,6 +3,7 @@ extends Node
 signal player_died()
 signal player_health_changed(current: int, max_health: int)
 signal spawn_damage_number(pos: Vector2, damage: Damage)
+signal last_area_changed(pos: Vector2)
 
 @export var delay_after_death: float = 1
 @export var game_data: GameData
@@ -25,6 +26,7 @@ func set_checkpoint(check: CheckPoint) -> void:
 
 		__last_checkpoint = check
 		game_data.last_checkpoint_pos = check.global_position
+		last_area_changed.emit(game_data.last_checkpoint_pos)
 
 
 func get_last_checkpoint_pos() -> Vector2:

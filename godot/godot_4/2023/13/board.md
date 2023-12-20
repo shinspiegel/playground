@@ -10,7 +10,7 @@
 	- [x] BaseState
 - [x] Input mapping
 - [x] Damageables
-	- [x] Damage 
+	- [x] Damage
 	- [x] DamageGenerator class
 - [x] Player
 	- [x] Player Graphics
@@ -22,7 +22,8 @@
 		- [x] Hide
 		- [x] Die
 		- [ ] Interact (Hack?)
-		- [ ] Jab
+		- [ ] Shoot?
+		- [ ] Jab?
 - [ ] Enemies
 	- [ ] BaseEnemy
 		- [ ] Mutated animal
@@ -32,14 +33,16 @@
 		- [ ] Alert Camera
 - [ ] Hazards
 	- [ ] Spikes
-	- [ ] Laser
+	- [ ] Laser?
+	- [ ] Camera?
+	- [ ] Hackable stuff?
 - [ ] Level Generic
 	- [x] Camera (with follow to area)
 	- [x] LevelArea
 	- [x] Transition between areas
-	- [ ] Reset on the area
+	- [x] Reset on the area
 	- [ ] Each level will have 5 areas (with camera movemente)
-	- [ ] Boss pattern 
+	- [ ] Boss pattern
 - [ ] Levels
 	- [ ] City slums
 		- [ ] Tilemap
