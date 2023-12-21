@@ -34,6 +34,7 @@ var __facing: int = 1
 var __airborne: bool = false
 var __is_hide_enabled: bool = false
 var __is_hidden: bool = false
+var __interactable: Interactable = null
 
 
 func _ready() -> void:
@@ -109,6 +110,25 @@ func enable_outline() -> void:
 
 func disable_outline() -> void:
 	sprite.disable()
+
+
+func add_interactable(node: Interactable) -> void:
+	__interactable = node
+
+
+func clean_interactable() -> void:
+	__interactable = null
+
+
+func can_interact() -> bool:
+	if not __interactable == null:
+		return true
+	return false
+
+
+func act_on_interactable() -> void:
+	if not __interactable == null:
+		__interactable.interact()
 
 
 ## Signal Methods

@@ -1,5 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://vrpy0bvcftjo"]
+[gd_scene load_steps=13 format=3 uid="uid://vrpy0bvcftjo"]
 
+[ext_resource type="Script" path="res://entities/hazards/electrified_wall/electrified_wall.gd" id="1_146j0"]
 [ext_resource type="Texture2D" uid="uid://wbjajn0lpkh4" path="res://assets/base_template/template_spriteless.png" id="1_pers0"]
 [ext_resource type="PackedScene" uid="uid://ch35wenkyos1o" path="res://entities/damageables/damage_inflictor.tscn" id="2_u84sk"]
 [ext_resource type="Script" path="res://entities/damageables/damage_generator.gd" id="3_rghdd"]
@@ -18,6 +19,42 @@ tracks/0/keys = {
 "update": 1,
 "values": [10]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DamageInflictor:monitoring")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("DamageInflictor:monitorable")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("StaticBody2D/CollisionShape2D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_221hx"]
 resource_name = "active"
@@ -35,11 +72,118 @@ tracks/0/keys = {
 "update": 1,
 "values": [10, 11, 12, 13, 14]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DamageInflictor:monitoring")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("DamageInflictor:monitorable")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("StaticBody2D/CollisionShape2D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_i2k5y"]
+resource_name = "deactive"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [5, 6, 7, 8, 9]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DamageInflictor:monitoring")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("DamageInflictor:monitorable")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("StaticBody2D/CollisionShape2D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_tpcgj"]
+resource_name = "change_state"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qirx6"]
 _data = {
 "RESET": SubResource("Animation_bmyrt"),
-"active": SubResource("Animation_221hx")
+"active": SubResource("Animation_221hx"),
+"change_state": SubResource("Animation_tpcgj"),
+"deactive": SubResource("Animation_i2k5y")
 }
 
 [sub_resource type="Resource" id="Resource_oqcxx"]
@@ -57,6 +201,7 @@ size = Vector2(128, 256)
 size = Vector2(64, 256)
 
 [node name="ElectrifiedWall" type="Node2D"]
+script = ExtResource("1_146j0")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -96)
@@ -69,7 +214,6 @@ frame = 10
 libraries = {
 "": SubResource("AnimationLibrary_qirx6")
 }
-autoplay = "active"
 
 [node name="DamageInflictor" parent="." instance=ExtResource("2_u84sk")]
 collision_layer = 8
@@ -81,6 +225,7 @@ position = Vector2(0, -128)
 shape = SubResource("RectangleShape2D_4krb1")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(0, -128)

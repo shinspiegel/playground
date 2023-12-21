@@ -1,0 +1,35 @@
+[gd_scene load_steps=8 format=3 uid="uid://bfaktunhb4oh5"]
+
+[ext_resource type="PackedScene" uid="uid://cmixdakm7cg0m" path="res://entities/outlined_sprite_2d/outlined_sprite_2d.tscn" id="1_1hx8m"]
+[ext_resource type="Script" path="res://entities/interactable/interactable.gd" id="1_aglwx"]
+[ext_resource type="Shader" path="res://shaders/outline.gdshader" id="2_scdxd"]
+[ext_resource type="Texture2D" uid="uid://6mb0gja25wlo" path="res://assets/base_template/placeholder_texture.png" id="3_7rjhx"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bssmc"]
+resource_local_to_scene = true
+shader = ExtResource("2_scdxd")
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/line_thickness = 1.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wajd7"]
+atlas = ExtResource("3_7rjhx")
+region = Rect2(8, 8, 32, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rdkmw"]
+size = Vector2(80, 80)
+
+[node name="Interactable" type="Node2D"]
+script = ExtResource("1_aglwx")
+
+[node name="OutlinedSprite2D" parent="." instance=ExtResource("1_1hx8m")]
+material = SubResource("ShaderMaterial_bssmc")
+position = Vector2(0, -32)
+texture = SubResource("AtlasTexture_wajd7")
+initial_thickness = 0.0
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -32)
+shape = SubResource("RectangleShape2D_rdkmw")

@@ -15,7 +15,7 @@ func enter() -> void:
 	player.set_hidden(true)
 	await get_tree().create_timer(hide_delay).timeout
 	__can_exit = true
-	
+
 
 func exit() -> void:
 	player.set_hidden(false)
@@ -26,7 +26,7 @@ func process(_delta: float) -> void:
 	if inputs.is_hide_just_pressed and __can_exit:
 		state_ended.emit("idle")
 		return
-	
+
 	if inputs.is_jump_just_pressed and __can_exit:
 		state_ended.emit("jump")
 		return

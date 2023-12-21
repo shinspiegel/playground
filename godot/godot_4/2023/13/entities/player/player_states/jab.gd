@@ -18,7 +18,7 @@ func enter() -> void:
 func physics_process(_delta: float) -> void:
 	if inputs.is_attack_just_pressed and can_attack_again:
 		animation_player.reset_attack()
-	
+
 	player.apply_horizontal_force(0)
 	player.move_and_slide()
 

@@ -15,18 +15,18 @@ func _physics_process(_delta: float) -> void:
 
 func __apply_input_axis() -> void:
 	direction = Input.get_axis("left", "right")
-	
-	if not direction == 0.0: 
+
+	if not direction == 0.0:
 		last_direction = direction
 
 
 func __apply_jump() -> void:
 	if Input.is_action_just_pressed("jump"):
 		is_jump_just_pressed = true
-	
+
 	if Input.is_action_just_released("jump"):
 		is_jump_just_released = true
-	
+
 
 
 func __apply_hide() -> void:

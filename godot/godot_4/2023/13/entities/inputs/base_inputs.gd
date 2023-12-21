@@ -18,4 +18,5 @@ func reset() -> void:
 	is_jump_just_released = false
 	is_hide_just_pressed = false
 	is_attack_just_pressed = false
+	is_interact_just_pressed = false
 	direction = 0.0
