@@ -1,18 +1,18 @@
 class_name ElectrifiedWall extends Node2D
 
 @export var is_active: bool = true
-@export var enable_interactable: Interactable
-@export var disable_interactable: Interactable
+@export var enabler_list: Array[Interactable] = []
+@export var disabler_list: Array[Interactable] = []
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 
 func _ready() -> void:
-	if enable_interactable:
-		enable_interactable.interacted.connect(activate)
+	for entry in enabler_list:
+		entry.interacted.connect(activate)
 
-	if disable_interactable:
-		disable_interactable.interacted.connect(deactivate)
+	for entry in disabler_list:
+		entry.interacted.connect(deactivate)
 
 	if is_active:
 		animation_player.play("active")

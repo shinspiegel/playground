@@ -32,7 +32,7 @@
 		- [ ] Turret
 		- [ ] Alert Camera
 - [ ] Hazards
-	- [ ] Electrified Field
+	- [x] Electrified Field
 	- [ ] Spikes
 	- [ ] Laser?
 	- [ ] Camera?
