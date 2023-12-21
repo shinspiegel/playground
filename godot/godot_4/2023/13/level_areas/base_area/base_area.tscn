@@ -7,7 +7,7 @@
 script = ExtResource("1_et1x4")
 
 [node name="TileMap" type="TileMap" parent="."]
-scale = Vector2(2, 2)
+scale = Vector2(4, 4)
 tile_set = ExtResource("1_gxbfb")
 format = 2
 
