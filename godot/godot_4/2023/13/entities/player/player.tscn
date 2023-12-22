@@ -516,6 +516,11 @@ script = ExtResource("19_77ydj")
 player = NodePath("../..")
 animation_player = NodePath("../../AnimationPlayer")
 
+[node name="Shoot" type="Node2D" parent="StateMachine" node_paths=PackedStringArray("player", "animation_player")]
+script = ExtResource("19_77ydj")
+player = NodePath("../..")
+animation_player = NodePath("../../AnimationPlayer")
+
 [node name="Die" type="Node2D" parent="StateMachine" node_paths=PackedStringArray("player", "inputs")]
 script = ExtResource("16_j0vgq")
 player = NodePath("../..")

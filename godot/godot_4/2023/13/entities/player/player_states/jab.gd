@@ -10,7 +10,7 @@ func _ready() -> void:
 	animation_player.attack_ended.connect(on_attack_end)
 
 
-func enter() -> void:
+fun enter() -> void:
 	animation_player.attack()
 	can_attack_again = false
 

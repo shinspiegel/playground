@@ -23,16 +23,20 @@
 		- [x] Die
 		- [ ] Interact (Hack?)
 		- [ ] Shoot?
-		- [ ] Jab?
+		- [ ] Jab
+        - [ ] Attack (floating gun)
 - [ ] Enemies
 	- [ ] BaseEnemy
+        - [ ] WanderShotter
 		- [ ] Mutated animal
 		- [ ] Watchguard
 		- [ ] Hovering drone
 		- [ ] Turret
 		- [ ] Alert Camera
+        - [ ] Tank?
 - [ ] Hazards
 	- [x] Electrified Field
+    - [ ] Turret
 	- [ ] Spikes
 	- [ ] Laser?
 	- [ ] Camera?

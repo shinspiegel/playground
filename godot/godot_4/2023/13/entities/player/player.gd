@@ -52,6 +52,7 @@ func _ready() -> void:
 
 	if health:
 		health.changed.connect(on_player_health_change)
+		health.zeroed.connect(on_player_health_zeroed)
 		health.reset()
 
 
@@ -145,6 +146,11 @@ func on_smoke_timeout() -> void:
 
 func on_player_health_change(curr: int, max_value: int) -> void:
 	GameManager.player_health_changed.emit(curr, max_value)
+
+
+func on_player_health_zeroed() -> void:
+	state_machine.change_to("die")
+	GameManager.player_died.emit()
 
 
 ## Private Methods

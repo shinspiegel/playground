@@ -5,3 +5,7 @@
 [resource]
 script = ExtResource("1_rekto")
 last_checkpoint_pos = Vector2(0, 0)
+item_current = 1
+item_1_unlock = true
+item_2_unlock = true
+item_3_unlock = true

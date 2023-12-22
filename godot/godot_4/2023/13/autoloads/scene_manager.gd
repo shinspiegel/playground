@@ -21,7 +21,7 @@ func _process(_delta: float) -> void:
 		__check_loading_state()
 
 
-func reload(delay: float = 0.5) -> void:
+func reload(delay: float = 1.0) -> void:
 	show_loading()
 	await loading_entered
 	get_tree().reload_current_scene()
@@ -29,7 +29,7 @@ func reload(delay: float = 0.5) -> void:
 	hide_loading()
 
 
-func change_to_file(filepath: String, delay: float = 0.5) -> void:
+func change_to_file(filepath: String, delay: float = 1.0) -> void:
 	show_loading()
 	await loading_entered
 	__next_scene_path = filepath
@@ -58,7 +58,7 @@ func hide_loading() -> void:
 
 
 func quit() -> void:
-	print("TODO::Fazer algo para saida do jogo")
+	print("TODO::Make something to show the exit of the game")
 	get_tree().quit()
 
 
@@ -68,7 +68,7 @@ func quit() -> void:
 func __check_loading_state() -> void:
 	__loading_scene_status = ResourceLoader.load_threaded_get_status(__next_scene_path, __progress)
 	progress_bar.value = __progress[0]
-	
+
 	if __loading_scene_status == ResourceLoader.THREAD_LOAD_LOADED:
 		var scene_packed = ResourceLoader.load_threaded_get(__next_scene_path)
 		get_tree().change_scene_to_packed(scene_packed)

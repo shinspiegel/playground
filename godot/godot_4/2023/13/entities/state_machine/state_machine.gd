@@ -32,16 +32,16 @@ func change_to(next_state: String) -> void:
 	if not __states.get(next_state.to_lower()):
 		print_debug("Could not find state for: [%s], using initial: [%s]" % [next_state, initial_state.name.to_lower()])
 		next_state = initial_state.name.to_lower()
-	
+
 	if __current_state:
 		__current_state.exit()
-	
+
 	__current_state = __states.get(next_state.to_lower())
 	__current_state.enter()
 	state_changed.emit(next_state)
 
 
-func get_current_state() -> BaseState: 
+func get_current_state() -> BaseState:
 	return __current_state
 
 ## Private Methods
@@ -61,5 +61,5 @@ func __enter_initial_state() -> void:
 		__current_state = __states.values()[0]
 	else:
 		print_debug("WARN::No initial state, this may crash the game.")
-	
+
 	__current_state.enter()

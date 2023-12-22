@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://djnjq0c00f4hr"]
+[gd_scene load_steps=5 format=3 uid="uid://djnjq0c00f4hr"]
 
 [ext_resource type="Theme" uid="uid://584vptm8xiwf" path="res://screens/base_theme.tres" id="1_jgl0q"]
 [ext_resource type="Script" path="res://screens/level_selection/level_selection.gd" id="2_1gp6o"]
+[ext_resource type="ButtonGroup" uid="uid://br3y7yfdo2loi" path="res://screens/level_selection/item_group.tres" id="3_bl3vj"]
+[ext_resource type="Resource" uid="uid://c7yyfu6nlla1u" path="res://autoloads/game_manager_resource.tres" id="3_qwdew"]
 
 [node name="LevelSelection" type="Control"]
 layout_mode = 3
@@ -12,6 +14,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_jgl0q")
 script = ExtResource("2_1gp6o")
+game_data = ExtResource("3_qwdew")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -49,6 +52,7 @@ layout_mode = 2
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 80
+alignment = 1
 
 [node name="First" type="Button" parent="VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
@@ -61,6 +65,35 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(300, 120)
 layout_mode = 2
 text = "Second"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 80
+alignment = 1
+
+[node name="Item1" type="Button" parent="VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(300, 120)
+layout_mode = 2
+toggle_mode = true
+button_group = ExtResource("3_bl3vj")
+text = "Item1"
+
+[node name="Item2" type="Button" parent="VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(300, 120)
+layout_mode = 2
+toggle_mode = true
+button_group = ExtResource("3_bl3vj")
+text = "Item2"
+
+[node name="Item3" type="Button" parent="VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(300, 120)
+layout_mode = 2
+toggle_mode = true
+button_group = ExtResource("3_bl3vj")
+text = "Item3"
 
 [node name="Control2" type="Control" parent="VBoxContainer"]
 custom_minimum_size = Vector2(2.08165e-12, 120)

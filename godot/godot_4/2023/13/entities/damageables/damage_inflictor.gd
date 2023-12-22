@@ -9,7 +9,7 @@ func _ready() -> void:
 	area_exited.connect(on_area_exit)
 
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	for area in __areas_map.values():
 		area.hit(damage_generator.random(global_position))
 
