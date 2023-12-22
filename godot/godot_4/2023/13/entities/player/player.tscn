@@ -453,10 +453,11 @@ position = Vector2(80, -72)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_3pcgr")
 
-[node name="DamageReceiver" type="Area2D" parent="." node_paths=PackedStringArray("health")]
+[node name="DamageReceiver" type="Area2D" parent="." node_paths=PackedStringArray("health", "colddown")]
 collision_mask = 12
 script = ExtResource("6_4hxgy")
 health = NodePath("../Health")
+colddown = NodePath("DamageColdown")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DamageReceiver"]
 position = Vector2(0, -79)

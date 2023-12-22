@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://ce6t374wjoj2f"]
+
+[ext_resource type="Texture2D" uid="uid://6mb0gja25wlo" path="res://assets/base_template/placeholder_texture.png" id="1_ij85d"]
+[ext_resource type="PackedScene" uid="uid://ch35wenkyos1o" path="res://entities/damageables/damage_inflictor.tscn" id="2_8vrqc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_68smv"]
+atlas = ExtResource("1_ij85d")
+region = Rect2(8, 56, 48, 48)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_msqoy"]
+size = Vector2(128, 128)
+
+[node name="DamagingBlock" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -64)
+scale = Vector2(4, 4)
+texture = SubResource("AtlasTexture_68smv")
+
+[node name="DamageInflictor" parent="." instance=ExtResource("2_8vrqc")]
+collision_layer = 8
+collision_mask = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageInflictor"]
+position = Vector2(0, -64)
+shape = SubResource("RectangleShape2D_msqoy")

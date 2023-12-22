@@ -5,8 +5,8 @@
 
 [sub_resource type="Resource" id="Resource_hkhxa"]
 script = ExtResource("2_4s2kh")
-max_damage = 10
 min_damage = 5
+max_damage = 10
 impact = 10
 critical_change = 0.1
 critical_multiplier = 2.0

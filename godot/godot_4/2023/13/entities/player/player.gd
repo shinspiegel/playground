@@ -135,10 +135,8 @@ func act_on_interactable() -> void:
 
 
 func on_receive_damage(damage: Damage) -> void:
-	if damage_coldown.is_stopped():
-		damage_coldown.start()
-		state_machine.change_to("hurt")
-		__apply_damage(damage)
+	state_machine.change_to("hurt")
+	__apply_damage(damage)
 
 
 func on_smoke_timeout() -> void:
