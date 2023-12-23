@@ -1,5 +1,8 @@
-extends BasePlayerState
+extends BaseState
 
+@export var player: Player
+@export var animation_player: PlayerAnimation
+@export var inputs: PlayerInputs
 @export var can_attack_again: bool = false
 
 
@@ -8,7 +11,7 @@ func _ready() -> void:
 
 
 func enter() -> void:
-	animation_player.attack()
+	animation_player.move()
 	can_attack_again = false
 
 

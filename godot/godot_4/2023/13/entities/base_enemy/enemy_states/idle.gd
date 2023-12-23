@@ -20,12 +20,16 @@ func enter() -> void:
 	idle_colddown.start()
 	enemy.velocity = Vector2.ZERO
 	idle_colddown.timeout.connect(on_time_out)
-	player_detector.player_sighted.connect(on_player_sight)
+
+	if not player_detector == null:
+		player_detector.player_sighted.connect(on_player_sight)
 
 
 func exit() -> void:
 	idle_colddown.timeout.disconnect(on_time_out)
-	player_detector.player_sighted.disconnect(on_player_sight)
+
+	if not PlayerDetector == null:
+		player_detector.player_sighted.disconnect(on_player_sight)
 
 
 func on_time_out() -> void:

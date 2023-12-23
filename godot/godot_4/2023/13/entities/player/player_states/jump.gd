@@ -1,8 +1,5 @@
-extends BaseState
+extends BasePlayerState
 
-@export var player: Player
-@export var animation_player: PlayerAnimation
-@export var inputs: PlayerInputs
 @export var air_friction: float = 0.6
 
 func enter() -> void:

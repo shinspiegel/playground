@@ -11,6 +11,7 @@ var __player: Player
 
 func _ready() -> void:
 	GameManager.spawn_damage_number.connect(__spawn_damage)
+	GameManager.spawn_shoot.connect(__spawn_shoot)
 	__add_camera_to_area()
 	__spawn_player()
 
@@ -53,3 +54,7 @@ func __add_camera_to_area() -> void:
 	for child in areas.get_children():
 		if child is BaseArea:
 			child.game_camera = camera
+
+
+func __spawn_shoot(node: Node2D) -> void:
+	add_child(node)

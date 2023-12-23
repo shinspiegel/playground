@@ -1,6 +1,16 @@
 class_name Player extends CharacterBody2D
 
+const weapons_map = {
+	1: preload("res://entities/player/player_weapons/weapon_1.tscn"),
+	2: preload("res://entities/player/player_weapons/weapon_2.tscn"),
+	3: preload("res://entities/player/player_weapons/weapon_3.tscn"),
+}
+
 @export var camera: Camera2D
+
+
+@export_group("Game data")
+@export var game_data: GameData
 
 @export_group("Heath")
 @export var health: Health
@@ -8,6 +18,7 @@ class_name Player extends CharacterBody2D
 @export_group("Extra Information")
 @export var inputs: PlayerInputs
 @export var sprite: OutlinedSprite2D
+@export var facing: int = 1
 
 @export_group("Camera Details", "camera_")
 @export var camera_holder: RemoteTransform2D
@@ -30,7 +41,10 @@ class_name Player extends CharacterBody2D
 @export var smoke_colddown: Timer
 @export var smoke_position: Node2D
 
-var __facing: int = 1
+@export_group("Weapons")
+@export var weapon_mount: Node2D
+@export var current_weapon: BaseWeapon = null
+
 var __airborne: bool = false
 var __is_hide_enabled: bool = false
 var __is_hidden: bool = false
@@ -54,6 +68,12 @@ func _ready() -> void:
 		health.changed.connect(on_player_health_change)
 		health.zeroed.connect(on_player_health_zeroed)
 		health.reset()
+
+	var weapon_scene = weapons_map.get(game_data.item_current)
+	if not weapon_scene == null and weapon_scene is PackedScene:
+		current_weapon = weapon_scene.instantiate()
+		current_weapon.player = self
+		weapon_mount.add_child(current_weapon)
 
 
 func _process(_delta: float) -> void:
@@ -132,6 +152,18 @@ func act_on_interactable() -> void:
 		__interactable.interact()
 
 
+func can_shoot() -> bool:
+	if not current_weapon == null:
+		return true
+	return false
+
+
+func shoot() -> void:
+	if not current_weapon == null:
+		current_weapon.shoot()
+
+
+
 ## Signal Methods
 
 
@@ -158,12 +190,12 @@ func on_player_health_zeroed() -> void:
 
 func __flip() -> void:
 	if inputs.last_direction != 0:
-		if inputs.last_direction > 0 and __facing == -1:
+		if inputs.last_direction > 0 and facing == -1:
 			scale.x *= -1
-			__facing = 1
-		if inputs.last_direction < 0 and __facing == 1:
+			facing = 1
+		if inputs.last_direction < 0 and facing == 1:
 			scale.x *= -1
-			__facing = -1
+			facing = -1
 
 
 func __start_coyote_timer() -> void:
@@ -191,3 +223,4 @@ func __update_camera_distance(delta: float) -> void:
 		camera_holder.position.x = clampf(camera_holder.position.x, 0, camera_max_distance)
 	else:
 		camera_holder.position.x = lerpf(camera_holder.position.x, 0, camera_speed_weight)
+

@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3 uid="uid://ds4rkerdny76l"]
+
+[ext_resource type="PackedScene" uid="uid://yv7f0rryscud" path="res://entities/player/player_weapons/base_weapon.tscn" id="1_xqq4t"]
+[ext_resource type="Script" path="res://entities/player/player_weapons/weapon_1.gd" id="2_fti5m"]
+[ext_resource type="Shader" path="res://shaders/outline.gdshader" id="3_e8qdq"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0lgtf"]
+resource_local_to_scene = true
+shader = ExtResource("3_e8qdq")
+shader_parameter/line_color = Color(0, 0.14902, 1, 1)
+shader_parameter/line_thickness = 1.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_607j8"]
+radius = 240.0
+height = 896.0
+
+[node name="Weapon1" instance=ExtResource("1_xqq4t")]
+script = ExtResource("2_fti5m")
+
+[node name="OutlinedSprite2D2" parent="." index="0"]
+material = SubResource("ShaderMaterial_0lgtf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AutoTargetArea" index="0"]
+position = Vector2(448, 0)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_607j8")

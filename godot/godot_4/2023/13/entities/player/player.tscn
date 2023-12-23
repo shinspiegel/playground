@@ -1,7 +1,8 @@
-[gd_scene load_steps=37 format=3 uid="uid://rj2d1eft2ic0"]
+[gd_scene load_steps=38 format=3 uid="uid://rj2d1eft2ic0"]
 
 [ext_resource type="Script" path="res://entities/player/player.gd" id="1_7i6co"]
 [ext_resource type="Script" path="res://entities/player/player_inputs.gd" id="2_5esyq"]
+[ext_resource type="Resource" uid="uid://c7yyfu6nlla1u" path="res://autoloads/game_manager_resource.tres" id="2_cbox8"]
 [ext_resource type="PackedScene" uid="uid://cjlw8f3xikk0" path="res://entities/self_free_effects/breathing_smoke.tscn" id="2_dguj2"]
 [ext_resource type="Shader" path="res://shaders/outline.gdshader" id="3_gjwci"]
 [ext_resource type="PackedScene" uid="uid://d0urqj3208mm5" path="res://entities/damageables/health.tscn" id="3_xy538"]
@@ -391,9 +392,10 @@ height = 88.0
 radius = 23.0
 height = 96.0
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("health", "inputs", "sprite", "camera_holder", "state_machine", "coyote_timer", "damage_receiver", "damage_coldown", "smoke_colddown", "smoke_position")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("health", "inputs", "sprite", "camera_holder", "state_machine", "coyote_timer", "damage_receiver", "damage_coldown", "smoke_colddown", "smoke_position", "weapon_mount")]
 collision_mask = 10
 script = ExtResource("1_7i6co")
+game_data = ExtResource("2_cbox8")
 health = NodePath("Health")
 inputs = NodePath("PlayerInputs")
 sprite = NodePath("Sprite2D")
@@ -405,6 +407,7 @@ damage_coldown = NodePath("DamageReceiver/DamageColdown")
 smoke_scene = ExtResource("2_dguj2")
 smoke_colddown = NodePath("Timers/SmokeColddown")
 smoke_position = NodePath("Markers/SmokePosition")
+weapon_mount = NodePath("WeaponHolder")
 
 [node name="Timers" type="Node" parent="."]
 
@@ -442,6 +445,9 @@ script = ExtResource("5_n3kph")
 
 [node name="CameraHolder" type="RemoteTransform2D" parent="."]
 
+[node name="WeaponHolder" type="Marker2D" parent="."]
+position = Vector2(-36, -140)
+
 [node name="DamageInflictor" parent="." instance=ExtResource("8_rswpi")]
 collision_layer = 1
 collision_mask = 6
@@ -474,12 +480,14 @@ script = ExtResource("7_d7l53")
 player = NodePath("../..")
 animation_player = NodePath("../../AnimationPlayer")
 inputs = NodePath("../../PlayerInputs")
+can_shoot = true
 
 [node name="Move" type="Node2D" parent="StateMachine" node_paths=PackedStringArray("player", "animation_player", "inputs")]
 script = ExtResource("8_s8wjd")
 player = NodePath("../..")
 animation_player = NodePath("../../AnimationPlayer")
 inputs = NodePath("../../PlayerInputs")
+can_shoot = true
 
 [node name="Jab" type="Node2D" parent="StateMachine" node_paths=PackedStringArray("player", "animation_player", "inputs")]
 script = ExtResource("18_bqbgh")
@@ -492,12 +500,14 @@ script = ExtResource("9_hfbdm")
 player = NodePath("../..")
 animation_player = NodePath("../../AnimationPlayer")
 inputs = NodePath("../../PlayerInputs")
+can_shoot = true
 
 [node name="Fall" type="Node2D" parent="StateMachine" node_paths=PackedStringArray("player", "animation_player", "inputs")]
 script = ExtResource("10_6cssk")
 player = NodePath("../..")
 animation_player = NodePath("../../AnimationPlayer")
 inputs = NodePath("../../PlayerInputs")
+can_shoot = true
 
 [node name="Hurt" type="Node2D" parent="StateMachine" node_paths=PackedStringArray("player", "animation_player", "inputs")]
 script = ExtResource("12_jyrrv")
@@ -511,20 +521,17 @@ player = NodePath("../..")
 animation_player = NodePath("../../AnimationPlayer")
 inputs = NodePath("../../PlayerInputs")
 
-[node name="Interact" type="Node2D" parent="StateMachine" node_paths=PackedStringArray("player", "animation_player")]
+[node name="Interact" type="Node2D" parent="StateMachine" node_paths=PackedStringArray("player", "animation_player", "inputs")]
 script = ExtResource("19_77ydj")
 player = NodePath("../..")
 animation_player = NodePath("../../AnimationPlayer")
+inputs = NodePath("../../PlayerInputs")
 
-[node name="Shoot" type="Node2D" parent="StateMachine" node_paths=PackedStringArray("player", "animation_player")]
-script = ExtResource("19_77ydj")
-player = NodePath("../..")
-animation_player = NodePath("../../AnimationPlayer")
-
-[node name="Die" type="Node2D" parent="StateMachine" node_paths=PackedStringArray("player", "inputs")]
+[node name="Die" type="Node2D" parent="StateMachine" node_paths=PackedStringArray("player", "animation_player", "inputs")]
 script = ExtResource("16_j0vgq")
-player = NodePath("../..")
 die_effect = ExtResource("17_563eg")
+player = NodePath("../..")
+animation_player = NodePath("../../AnimationPlayer")
 inputs = NodePath("../../PlayerInputs")
 
 [node name="Markers" type="Node2D" parent="."]

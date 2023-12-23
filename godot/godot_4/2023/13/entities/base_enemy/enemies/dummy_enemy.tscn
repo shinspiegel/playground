@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3 uid="uid://totb6ubtdjeo"]
+
+[ext_resource type="PackedScene" uid="uid://bgt5h0f3fl6jx" path="res://entities/base_enemy/base_enemy.tscn" id="1_dkdsy"]
+[ext_resource type="Texture2D" uid="uid://6mb0gja25wlo" path="res://assets/base_template/placeholder_texture.png" id="2_sy8tj"]
+[ext_resource type="Script" path="res://entities/base_enemy/enemy_states/idle.gd" id="3_b6r64"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uumdg"]
+atlas = ExtResource("2_sy8tj")
+region = Rect2(8, 8, 32, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_csqyu"]
+size = Vector2(64, 64)
+
+[node name="DummyEnemy" instance=ExtResource("1_dkdsy")]
+
+[node name="Sprite2D" parent="." index="2"]
+position = Vector2(0, -32)
+texture = SubResource("AtlasTexture_uumdg")
+
+[node name="CollisionShape2D" parent="." index="3"]
+position = Vector2(0, -32)
+shape = SubResource("RectangleShape2D_csqyu")
+
+[node name="Idle" type="Node2D" parent="StateMachine" index="0" node_paths=PackedStringArray("enemy", "animation_player", "idle_colddown", "idle_next_state_timeout", "idle_next_state_player_sighted")]
+script = ExtResource("3_b6r64")
+enemy = NodePath("../..")
+animation_player = NodePath("../../AnimationPlayer")
+idle_colddown = NodePath("Timer")
+idle_next_state_timeout = NodePath(".")
+idle_next_state_player_sighted = NodePath(".")
+
+[node name="Timer" type="Timer" parent="StateMachine/Idle" index="0"]
+wait_time = 1000.0
+one_shot = true

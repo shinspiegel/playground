@@ -1,8 +1,4 @@
-extends BaseState
-
-@export var player: Player
-@export var animation_player: PlayerAnimation
-@export var inputs: PlayerInputs
+extends BasePlayerState
 
 
 func enter() -> void:
@@ -24,7 +20,8 @@ func physics_process(_delta: float) -> void:
 		state_ended.emit("hide")
 		return
 	if inputs.is_attack_just_pressed:
-		state_ended.emit("jab")
+		if not player.can_shoot():
+			state_ended.emit("jab")
 		return
 	if inputs.is_interact_just_pressed and player.can_interact():
 		state_ended.emit("interact")

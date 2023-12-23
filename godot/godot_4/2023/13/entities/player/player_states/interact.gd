@@ -1,7 +1,4 @@
-extends BaseState
-
-@export var player: Player
-@export var animation_player: PlayerAnimation
+extends BasePlayerState
 
 
 func _ready() -> void:

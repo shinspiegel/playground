@@ -1,8 +1,5 @@
-extends BaseState
+extends BasePlayerState
 
-@export var player: Player
-@export var animation_player: PlayerAnimation
-@export var inputs: PlayerInputs
 @export_range(0.0, 1.0, 0.1) var hide_delay: float = 0.3
 
 
