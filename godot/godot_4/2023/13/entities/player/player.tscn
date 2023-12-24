@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://rj2d1eft2ic0"]
+[gd_scene load_steps=39 format=3 uid="uid://rj2d1eft2ic0"]
 
 [ext_resource type="Script" path="res://entities/player/player.gd" id="1_7i6co"]
 [ext_resource type="Script" path="res://entities/player/player_inputs.gd" id="2_5esyq"]
@@ -23,11 +23,6 @@
 [ext_resource type="Script" path="res://entities/player/player_states/jab.gd" id="18_bqbgh"]
 [ext_resource type="Script" path="res://entities/player/player_states/interact.gd" id="19_77ydj"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_etf22"]
-shader = ExtResource("3_gjwci")
-shader_parameter/line_color = Color(1, 1, 1, 1)
-shader_parameter/line_thickness = 1.0
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fdqgu"]
 size = Vector2(40, 128)
 
@@ -36,7 +31,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/path = NodePath("CanFlip/Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = false
 tracks/0/keys = {
@@ -48,7 +43,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Markers/SmokePosition:position")
+tracks/1/path = NodePath("CanFlip/SmokePosition:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -72,7 +67,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("DamageInflictor:monitoring")
+tracks/3/path = NodePath("CanFlip/DamageInflictor:monitoring")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -84,7 +79,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("DamageInflictor:monitorable")
+tracks/4/path = NodePath("CanFlip/DamageInflictor:monitorable")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -99,7 +94,7 @@ resource_name = "die"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/path = NodePath("CanFlip/Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -115,7 +110,7 @@ length = 0.4
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/path = NodePath("CanFlip/Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = false
 tracks/0/keys = {
@@ -127,7 +122,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Markers/SmokePosition:position")
+tracks/1/path = NodePath("CanFlip/SmokePosition:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -143,7 +138,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/path = NodePath("CanFlip/Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = false
 tracks/0/keys = {
@@ -155,7 +150,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Markers/SmokePosition:position")
+tracks/1/path = NodePath("CanFlip/SmokePosition:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -170,7 +165,7 @@ resource_name = "interact"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/path = NodePath("CanFlip/Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = false
 tracks/0/keys = {
@@ -182,7 +177,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Markers/SmokePosition:position")
+tracks/1/path = NodePath("CanFlip/SmokePosition:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -199,7 +194,7 @@ step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/path = NodePath("CanFlip/Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -211,7 +206,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Markers/SmokePosition:position")
+tracks/1/path = NodePath("CanFlip/SmokePosition:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -235,7 +230,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("DamageInflictor:monitoring")
+tracks/3/path = NodePath("CanFlip/DamageInflictor:monitoring")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -247,7 +242,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("DamageInflictor:monitorable")
+tracks/4/path = NodePath("CanFlip/DamageInflictor:monitorable")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -263,7 +258,7 @@ length = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/path = NodePath("CanFlip/Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = false
 tracks/0/keys = {
@@ -275,7 +270,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Markers/SmokePosition:position")
+tracks/1/path = NodePath("CanFlip/SmokePosition:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -291,7 +286,7 @@ length = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/path = NodePath("CanFlip/Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = false
 tracks/0/keys = {
@@ -303,7 +298,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Markers/SmokePosition:position")
+tracks/1/path = NodePath("CanFlip/SmokePosition:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -319,7 +314,7 @@ length = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/path = NodePath("CanFlip/Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = false
 tracks/0/keys = {
@@ -331,7 +326,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Markers/SmokePosition:position")
+tracks/1/path = NodePath("CanFlip/SmokePosition:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -348,7 +343,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/path = NodePath("CanFlip/Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = false
 tracks/0/keys = {
@@ -360,7 +355,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Markers/SmokePosition:position")
+tracks/1/path = NodePath("CanFlip/SmokePosition:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -384,93 +379,47 @@ _data = {
 "move": SubResource("Animation_x05kf")
 }
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3pcgr"]
-radius = 20.0
-height = 88.0
+[sub_resource type="Curve2D" id="Curve2D_8ejw2"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -64, -128, -51.789, -0.198425, 51.789, 0.198425, 0, -160, 0, 0, 0, 0, 64, -128)
+}
+point_count = 3
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jk0m3"]
 radius = 23.0
 height = 96.0
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("health", "inputs", "sprite", "camera_holder", "state_machine", "coyote_timer", "damage_receiver", "damage_coldown", "smoke_colddown", "smoke_position", "weapon_mount")]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3pcgr"]
+radius = 20.0
+height = 88.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_etf22"]
+shader = ExtResource("3_gjwci")
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/line_thickness = 1.0
+
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("health", "inputs", "sprite", "facing_node", "camera_holder", "state_machine", "coyote_timer", "damage_receiver", "damage_coldown", "smoke_colddown", "smoke_position", "weapon_mount", "mount_path")]
 collision_mask = 10
 script = ExtResource("1_7i6co")
 game_data = ExtResource("2_cbox8")
 health = NodePath("Health")
 inputs = NodePath("PlayerInputs")
-sprite = NodePath("Sprite2D")
-camera_holder = NodePath("CameraHolder")
+sprite = NodePath("CanFlip/Sprite2D")
+facing_node = NodePath("CanFlip")
+camera_holder = NodePath("CanFlip/CameraHolder")
 state_machine = NodePath("StateMachine")
 coyote_timer = NodePath("Timers/CoyoteTimer")
 damage_receiver = NodePath("DamageReceiver")
 damage_coldown = NodePath("DamageReceiver/DamageColdown")
 smoke_scene = ExtResource("2_dguj2")
 smoke_colddown = NodePath("Timers/SmokeColddown")
-smoke_position = NodePath("Markers/SmokePosition")
-weapon_mount = NodePath("WeaponHolder")
-
-[node name="Timers" type="Node" parent="."]
-
-[node name="CoyoteTimer" type="Timer" parent="Timers"]
-wait_time = 0.1
-one_shot = true
-
-[node name="SmokeColddown" type="Timer" parent="Timers"]
-one_shot = true
-
-[node name="Health" parent="." instance=ExtResource("3_xy538")]
-max_health = 30
-
-[node name="PlayerInputs" type="Node" parent="."]
-script = ExtResource("2_5esyq")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-material = SubResource("ShaderMaterial_etf22")
-position = Vector2(0, -68)
-scale = Vector2(4, 4)
-texture = ExtResource("4_qpvg7")
-hframes = 10
-vframes = 6
-script = ExtResource("6_bxtn5")
+smoke_position = NodePath("CanFlip/SmokePosition")
+weapon_mount = NodePath("WeaponMount/PathFollow2D/WeaponHolder")
+mount_path = NodePath("WeaponMount/PathFollow2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -64)
 shape = SubResource("RectangleShape2D_fdqgu")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_uehj6")
-}
-script = ExtResource("5_n3kph")
-
-[node name="CameraHolder" type="RemoteTransform2D" parent="."]
-
-[node name="WeaponHolder" type="Marker2D" parent="."]
-position = Vector2(-36, -140)
-
-[node name="DamageInflictor" parent="." instance=ExtResource("8_rswpi")]
-collision_layer = 1
-collision_mask = 6
-monitoring = false
-monitorable = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageInflictor"]
-position = Vector2(80, -72)
-rotation = 1.5708
-shape = SubResource("CapsuleShape2D_3pcgr")
-
-[node name="DamageReceiver" type="Area2D" parent="." node_paths=PackedStringArray("health", "colddown")]
-collision_mask = 12
-script = ExtResource("6_4hxgy")
-health = NodePath("../Health")
-colddown = NodePath("DamageColdown")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageReceiver"]
-position = Vector2(0, -79)
-shape = SubResource("CapsuleShape2D_jk0m3")
-
-[node name="DamageColdown" type="Timer" parent="DamageReceiver"]
-one_shot = true
 
 [node name="StateMachine" parent="." node_paths=PackedStringArray("initial_state") instance=ExtResource("4_p74ua")]
 initial_state = NodePath("Idle")
@@ -534,7 +483,73 @@ player = NodePath("../..")
 animation_player = NodePath("../../AnimationPlayer")
 inputs = NodePath("../../PlayerInputs")
 
-[node name="Markers" type="Node2D" parent="."]
+[node name="Timers" type="Node" parent="."]
 
-[node name="SmokePosition" type="Marker2D" parent="Markers"]
+[node name="CoyoteTimer" type="Timer" parent="Timers"]
+wait_time = 0.1
+one_shot = true
+
+[node name="SmokeColddown" type="Timer" parent="Timers"]
+one_shot = true
+
+[node name="Health" parent="." instance=ExtResource("3_xy538")]
+max_health = 30
+
+[node name="PlayerInputs" type="Node" parent="."]
+script = ExtResource("2_5esyq")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_uehj6")
+}
+script = ExtResource("5_n3kph")
+
+[node name="WeaponMount" type="Path2D" parent="."]
+curve = SubResource("Curve2D_8ejw2")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="WeaponMount"]
+position = Vector2(-64, -128)
+rotates = false
+loop = false
+
+[node name="WeaponHolder" type="Marker2D" parent="WeaponMount/PathFollow2D"]
+
+[node name="DamageReceiver" type="Area2D" parent="." node_paths=PackedStringArray("health", "colddown")]
+collision_mask = 12
+script = ExtResource("6_4hxgy")
+health = NodePath("../Health")
+colddown = NodePath("DamageColdown")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageReceiver"]
+position = Vector2(0, -79)
+shape = SubResource("CapsuleShape2D_jk0m3")
+
+[node name="DamageColdown" type="Timer" parent="DamageReceiver"]
+one_shot = true
+
+[node name="CanFlip" type="Node2D" parent="."]
+
+[node name="SmokePosition" type="Marker2D" parent="CanFlip"]
 position = Vector2(2.08165e-12, 2.08165e-12)
+
+[node name="DamageInflictor" parent="CanFlip" instance=ExtResource("8_rswpi")]
+collision_layer = 1
+collision_mask = 6
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CanFlip/DamageInflictor"]
+position = Vector2(80, -72)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_3pcgr")
+
+[node name="Sprite2D" type="Sprite2D" parent="CanFlip"]
+material = SubResource("ShaderMaterial_etf22")
+position = Vector2(0, -68)
+scale = Vector2(4, 4)
+texture = ExtResource("4_qpvg7")
+hframes = 10
+vframes = 6
+script = ExtResource("6_bxtn5")
+
+[node name="CameraHolder" type="RemoteTransform2D" parent="CanFlip"]

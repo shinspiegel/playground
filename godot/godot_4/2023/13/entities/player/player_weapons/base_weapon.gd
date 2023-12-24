@@ -21,7 +21,7 @@ func _ready() -> void:
 		auto_target_area.body_exited.connect(on_body.bind(false))
 
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	update_current_enemy()
 	update_gun_angle()
 
@@ -42,11 +42,15 @@ func update_current_enemy() -> void:
 
 func update_gun_angle() -> void:
 	if current_target:
-		var target = global_position.angle_to_point(current_target.global_position)
-		global_rotation = lerpf(global_rotation, target, speed_to_aim)
+		var target_direction = global_position.direction_to(current_target.global_position)
+		var target_angle = atan2(target_direction.y, target_direction.x)
+		var ang_difference = fposmod(target_angle - rotation + PI, 2 * PI) - PI
+
+		rotation += clamp(ang_difference, -speed_to_aim, speed_to_aim)
 	else:
 		var target = 0
-		global_rotation = lerpf(global_rotation, target, speed_to_aim)
+		if player.facing_dir == -1: target = PI
+		rotation = lerp_angle(rotation, target, speed_to_aim)
 
 
 func on_body(node: Node2D, append: bool) -> void:

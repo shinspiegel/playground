@@ -1,9 +1,4 @@
-extends BaseState
-
-@export var enemy: BaseEnemy
-@export var inputs: EnemyInput
-@export var animation_player: AnimationPlayer
-@export var anim_name: String = ""
+extends BaseEnemyState
 
 @export_group("Sensors")
 @export var floor_ray: RayCast2D
@@ -17,10 +12,7 @@ extends BaseState
 
 
 func enter() -> void:
-	if anim_name.is_empty():
-		animation_player.play(name)
-	else:
-		animation_player.play(anim_name)
+	play_animation()
 
 	player_detector.player_sighted.connect(on_player_sight)
 

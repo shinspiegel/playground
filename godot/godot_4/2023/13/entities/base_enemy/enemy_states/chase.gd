@@ -1,10 +1,6 @@
-extends BaseState
+extends BaseEnemyState
 
-@export var enemy: BaseEnemy
-@export var inputs: EnemyInput
-@export var animation_player: AnimationPlayer
 @export var player_detector: PlayerDetector
-@export var anim_name: String = ""
 
 @export_group("Chase", "chase_")
 @export_range(0.0, 5.0, 0.1) var chase_speed_override: float = 1.0
@@ -19,10 +15,7 @@ var __should_update_pos: bool = true
 
 
 func enter() -> void:
-	if anim_name.is_empty():
-		animation_player.play(name)
-	else:
-		animation_player.play(anim_name)
+	play_animation()
 
 	player_detector.player_sighted.connect(on_player_sighted)
 	player_detector.player_lost.connect(on_player_lost_sight)

@@ -5,6 +5,7 @@ signal receive_damage(damage: Damage)
 @export var health: Health
 @export var damage_number_position: Node2D
 @export var colddown: Timer
+@export var variation: float = 16
 
 
 func hit(damage: Damage) -> void:
@@ -20,7 +21,9 @@ func __apply_damage(damage: Damage):
 	receive_damage.emit(damage)
 
 	if damage_number_position:
-		GameManager.spawn_damage_number.emit(damage_number_position.global_position, damage)
+		var target_position = damage_number_position.global_position
+		target_position += Vector2(randf_range(-variation, variation),randf_range(-variation, variation))
+		GameManager.spawn_damage_number.emit(target_position, damage)
 	else:
 		GameManager.spawn_damage_number.emit(global_position, damage)
 

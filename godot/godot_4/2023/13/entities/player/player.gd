@@ -18,7 +18,10 @@ const weapons_map = {
 @export_group("Extra Information")
 @export var inputs: PlayerInputs
 @export var sprite: OutlinedSprite2D
-@export var facing: int = 1
+
+@export_group("Facing", "facing_")
+@export var facing_dir: int = 1
+@export var facing_node: Node2D
 
 @export_group("Camera Details", "camera_")
 @export var camera_holder: RemoteTransform2D
@@ -44,6 +47,7 @@ const weapons_map = {
 @export_group("Weapons")
 @export var weapon_mount: Node2D
 @export var current_weapon: BaseWeapon = null
+@export var mount_path: PathFollow2D
 
 var __airborne: bool = false
 var __is_hide_enabled: bool = false
@@ -78,6 +82,7 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	__flip()
+	__change_mount_side()
 
 
 func _physics_process(delta: float) -> void:
@@ -190,12 +195,19 @@ func on_player_health_zeroed() -> void:
 
 func __flip() -> void:
 	if inputs.last_direction != 0:
-		if inputs.last_direction > 0 and facing == -1:
-			scale.x *= -1
-			facing = 1
-		if inputs.last_direction < 0 and facing == 1:
-			scale.x *= -1
-			facing = -1
+		if inputs.last_direction > 0 and facing_dir == -1:
+			facing_node.scale.x *= -1
+			facing_dir = 1
+		if inputs.last_direction < 0 and facing_dir == 1:
+			facing_node.scale.x *= -1
+			facing_dir = -1
+
+
+func __change_mount_side() -> void:
+	if facing_dir > 0:
+		mount_path.progress_ratio = lerpf(mount_path.progress_ratio, 0, 0.1)
+	else:
+		mount_path.progress_ratio = lerpf(mount_path.progress_ratio, 1, 0.1)
 
 
 func __start_coyote_timer() -> void:

@@ -7,11 +7,7 @@ func shoot() -> void:
 	if shoot_colddown.is_stopped():
 		shoot_colddown.start()
 		anim_player.play("shoot")
-		var s = shoot_scene.instantiate()
-		s.global_position = global_position
-		s.rotation = rotation
-
-		if s is BasePlayerShoot:
-			s.direction = player.facing
-
-		GameManager.spawn_shoot.emit(s)
+		var shot_intance = shoot_scene.instantiate()
+		shot_intance.global_position = global_position
+		shot_intance.rotation = rotation
+		GameManager.spawn_shoot.emit(shot_intance)
