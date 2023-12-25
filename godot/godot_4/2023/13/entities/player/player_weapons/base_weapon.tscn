@@ -1,9 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://yv7f0rryscud"]
+[gd_scene load_steps=12 format=3 uid="uid://yv7f0rryscud"]
 
 [ext_resource type="Script" path="res://entities/player/player_weapons/base_weapon.gd" id="1_bknj1"]
-[ext_resource type="Texture2D" uid="uid://6mb0gja25wlo" path="res://assets/base_template/placeholder_texture.png" id="2_3cukd"]
 [ext_resource type="PackedScene" uid="uid://cmixdakm7cg0m" path="res://entities/outlined_sprite_2d/outlined_sprite_2d.tscn" id="2_8y78l"]
 [ext_resource type="Shader" path="res://shaders/outline.gdshader" id="2_qtrju"]
+[ext_resource type="Texture2D" uid="uid://cclc2letedtla" path="res://assets/cipher/cipher_weapons.png" id="5_kufbu"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0lgtf"]
 resource_local_to_scene = true
@@ -11,19 +11,63 @@ shader = ExtResource("2_qtrju")
 shader_parameter/line_color = Color(1, 1, 1, 1)
 shader_parameter/line_thickness = 1.0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_uqd40"]
-atlas = ExtResource("2_3cukd")
-region = Rect2(8, 120, 24, 24)
+[sub_resource type="AtlasTexture" id="AtlasTexture_lv1x8"]
+atlas = ExtResource("5_kufbu")
+region = Rect2(0, 16, 16, 16)
 
-[node name="BaseWeapon" type="Node2D" node_paths=PackedStringArray("shoot_colddown", "anim_player", "auto_target_area")]
+[sub_resource type="AtlasTexture" id="AtlasTexture_rhi3y"]
+atlas = ExtResource("5_kufbu")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lm134"]
+atlas = ExtResource("5_kufbu")
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aewnl"]
+atlas = ExtResource("5_kufbu")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j4uxk"]
+atlas = ExtResource("5_kufbu")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_iwg5n"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lv1x8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rhi3y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lm134")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aewnl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j4uxk")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]
+
+[node name="BaseWeapon" type="Node2D" node_paths=PackedStringArray("shoot_colddown", "anim_player", "aim_sprite", "auto_target_area")]
 script = ExtResource("1_bknj1")
 shoot_colddown = NodePath("Timer")
 anim_player = NodePath("AnimationPlayer")
+aim_sprite = NodePath("AnimatedSprite2D")
 auto_target_area = NodePath("AutoTargetArea")
 
-[node name="OutlinedSprite2D2" parent="." instance=ExtResource("2_8y78l")]
+[node name="GunSprite" parent="." instance=ExtResource("2_8y78l")]
 material = SubResource("ShaderMaterial_0lgtf")
-texture = SubResource("AtlasTexture_uqd40")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_iwg5n")
+autoplay = "default"
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true

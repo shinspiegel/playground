@@ -8,6 +8,7 @@ enum AIM_TYPE {CLOSE, FAR}
 @export var current_target: BaseEnemy
 
 @export_group("Auto aim")
+@export var aim_sprite: Node2D
 @export var aim_type: AIM_TYPE = AIM_TYPE.CLOSE
 @export var auto_target_area: Area2D
 @export_range(0.05, 2.0, 0.05) var speed_to_aim: float = 0.2
@@ -24,6 +25,7 @@ func _ready() -> void:
 func _physics_process(_delta: float) -> void:
 	update_current_enemy()
 	update_gun_angle()
+	update_aim_sprite()
 
 
 func shoot() -> void:
@@ -50,7 +52,20 @@ func update_gun_angle() -> void:
 	else:
 		var target = 0
 		if player.facing_dir == -1: target = PI
+
 		rotation = lerp_angle(rotation, target, speed_to_aim)
+
+
+
+func update_aim_sprite() -> void:
+	aim_sprite.global_rotation = 0
+
+	if current_target:
+		aim_sprite.global_position = lerp(aim_sprite.global_position, current_target.global_position, speed_to_aim)
+		aim_sprite.modulate = lerp(aim_sprite.modulate, Color(1,1,1,1), speed_to_aim)
+	else:
+		aim_sprite.global_position = lerp(aim_sprite.global_position, global_position, speed_to_aim)
+		aim_sprite.modulate = lerp(aim_sprite.modulate, Color(0,0,0,0), speed_to_aim)
 
 
 func on_body(node: Node2D, append: bool) -> void:

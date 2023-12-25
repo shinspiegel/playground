@@ -2,7 +2,6 @@ class_name BaseArea extends Node2D
 
 signal area_entered(name: String)
 
-
 @export var game_camera: GameCamera
 @export var transition_duration: float = 1.0
 

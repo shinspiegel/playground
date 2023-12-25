@@ -25,4 +25,4 @@ shape = SubResource("RectangleShape2D_3jarv")
 position = Vector2(-128, -128)
 
 [node name="BottomRight" parent="Limiter" index="1"]
-position = Vector2(2560, 3072)
+position = Vector2(4992, 4992)

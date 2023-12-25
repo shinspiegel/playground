@@ -1,29 +1,57 @@
-[gd_scene load_steps=7 format=3 uid="uid://6bw5h2r5g5o8"]
+[gd_scene load_steps=10 format=3 uid="uid://6bw5h2r5g5o8"]
 
 [ext_resource type="Script" path="res://entities/player/player_weapons/base_player_shoot.gd" id="1_h1wcn"]
-[ext_resource type="Texture2D" uid="uid://6mb0gja25wlo" path="res://assets/base_template/placeholder_texture.png" id="1_o6vhi"]
+[ext_resource type="Texture2D" uid="uid://cclc2letedtla" path="res://assets/cipher/cipher_weapons.png" id="2_hpf6b"]
 [ext_resource type="PackedScene" uid="uid://ch35wenkyos1o" path="res://entities/damageables/damage_inflictor.tscn" id="2_i8n2m"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_lyqwc"]
-atlas = ExtResource("1_o6vhi")
-region = Rect2(8, 120, 24, 24)
+[sub_resource type="AtlasTexture" id="AtlasTexture_8nygw"]
+atlas = ExtResource("2_hpf6b")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m5vvk"]
+atlas = ExtResource("2_hpf6b")
+region = Rect2(16, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ipy0k"]
+atlas = ExtResource("2_hpf6b")
+region = Rect2(32, 32, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_i67f8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8nygw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m5vvk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ipy0k")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jqnwj"]
-size = Vector2(36, 36)
+size = Vector2(16, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ty6tt"]
-size = Vector2(32, 32)
+size = Vector2(12, 12)
 
 [node name="BasePlayerShoot" type="Node2D" node_paths=PackedStringArray("damage_inflictor", "wall_detector")]
 script = ExtResource("1_h1wcn")
+ratio = 2.0
 damage_inflictor = NodePath("ShootNode/DamageInflictor")
 wall_detector = NodePath("ShootNode/WallDetector")
 
 [node name="ShootNode" type="Node2D" parent="."]
 
-[node name="Sprite2D" type="Sprite2D" parent="ShootNode"]
+[node name="Sprite" type="AnimatedSprite2D" parent="ShootNode"]
+position = Vector2(-2, -2)
 scale = Vector2(4, 4)
-texture = SubResource("AtlasTexture_lyqwc")
+sprite_frames = SubResource("SpriteFrames_i67f8")
+autoplay = "default"
 
 [node name="DamageInflictor" parent="ShootNode" instance=ExtResource("2_i8n2m")]
 collision_mask = 4
