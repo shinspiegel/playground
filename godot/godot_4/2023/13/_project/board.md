@@ -24,19 +24,19 @@
 		- [ ] Interact (Hack?)
 		- [ ] Shoot?
 		- [ ] Jab
-        - [ ] Attack (floating gun)
+		- [ ] Attack (floating gun)
 - [ ] Enemies
 	- [ ] BaseEnemy
-        - [ ] WanderShotter
+		- [ ] WanderShotter
 		- [ ] Mutated animal
 		- [ ] Watchguard
 		- [ ] Hovering drone
 		- [ ] Turret
 		- [ ] Alert Camera
-        - [ ] Tank?
+		- [ ] Tank?
 - [ ] Hazards
 	- [x] Electrified Field
-    - [ ] Turret
+	- [ ] Turret
 	- [ ] Spikes
 	- [ ] Laser?
 	- [ ] Camera?
