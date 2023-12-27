@@ -10,3 +10,11 @@ signal turn_ended()
 func act_turn() -> void:
 	print_debug("WARN::Should implemente this on the inherited class")
 	pass
+
+
+func end_turn() -> void:
+	turn_ended.emit()
+
+
+func deferred_end() -> void:
+	call_deferred("end_turn")
