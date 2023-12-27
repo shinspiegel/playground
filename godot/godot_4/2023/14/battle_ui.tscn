@@ -1,0 +1,128 @@
+[gd_scene load_steps=3 format=3 uid="uid://dy0sjut27553q"]
+
+[ext_resource type="Script" path="res://battle_ui.gd" id="1_608h2"]
+[ext_resource type="Theme" uid="uid://bn62phspmmrw6" path="res://base_theme.tres" id="1_gms6p"]
+
+[node name="BattleUI" type="CanvasLayer"]
+script = ExtResource("1_608h2")
+
+[node name="Control" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_gms6p")
+theme_override_constants/margin_left = 64
+theme_override_constants/margin_top = 64
+theme_override_constants/margin_right = 64
+theme_override_constants/margin_bottom = 64
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control"]
+layout_mode = 2
+
+[node name="CharacterData" type="VBoxContainer" parent="Control/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(600, 2.08165e-12)
+layout_mode = 2
+theme_override_constants/separation = 8
+alignment = 2
+
+[node name="CharacterName" type="HBoxContainer" parent="Control/HBoxContainer/CharacterData"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Control/HBoxContainer/CharacterData/CharacterName"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "CHAR_NAME"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="Control/HBoxContainer/CharacterData/CharacterName"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+value = 50.0
+show_percentage = false
+
+[node name="CharacterName2" type="HBoxContainer" parent="Control/HBoxContainer/CharacterData"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Control/HBoxContainer/CharacterData/CharacterName2"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "CHAR_NAME"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="Control/HBoxContainer/CharacterData/CharacterName2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+value = 50.0
+show_percentage = false
+
+[node name="CharacterName3" type="HBoxContainer" parent="Control/HBoxContainer/CharacterData"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Control/HBoxContainer/CharacterData/CharacterName3"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "CHAR_NAME"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="Control/HBoxContainer/CharacterData/CharacterName3"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+value = 50.0
+show_percentage = false
+
+[node name="CharacterName4" type="HBoxContainer" parent="Control/HBoxContainer/CharacterData"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Control/HBoxContainer/CharacterData/CharacterName4"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "CHAR_NAME"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="Control/HBoxContainer/CharacterData/CharacterName4"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+value = 50.0
+show_percentage = false
+
+[node name="Control" type="Control" parent="Control/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ActionsButtons" type="VBoxContainer" parent="Control/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(300, 2.08165e-12)
+layout_mode = 2
+theme_override_constants/separation = 8
+alignment = 2
+
+[node name="AttackButton" type="Button" parent="Control/HBoxContainer/ActionsButtons"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Attack"
+
+[node name="DefenseButton" type="Button" parent="Control/HBoxContainer/ActionsButtons"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Defense"
+
+[node name="MagicButton" type="Button" parent="Control/HBoxContainer/ActionsButtons"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Magic"
+
+[node name="RunButton" type="Button" parent="Control/HBoxContainer/ActionsButtons"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Run"

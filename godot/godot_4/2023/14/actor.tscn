@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://s2ytaoxq36a0"]
+
+[ext_resource type="Script" path="res://actor.gd" id="1_sdl1e"]
+[ext_resource type="Texture2D" uid="uid://bg8t6twmexf08" path="res://assets/placeholder_texture.png" id="1_xhgxf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g04cr"]
+atlas = ExtResource("1_xhgxf")
+region = Rect2(40, 8, 32, 48)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ypm0n"]
+radius = 32.0
+
+[node name="Actor" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 3
+motion_mode = 1
+script = ExtResource("1_sdl1e")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -64)
+scale = Vector2(4, 4)
+texture = SubResource("AtlasTexture_g04cr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -32)
+shape = SubResource("CircleShape2D_ypm0n")
