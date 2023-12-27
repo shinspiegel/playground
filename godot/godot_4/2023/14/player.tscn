@@ -3,10 +3,10 @@
 [ext_resource type="PackedScene" uid="uid://s2ytaoxq36a0" path="res://actor.tscn" id="1_nuxve"]
 [ext_resource type="Script" path="res://player.gd" id="2_uy217"]
 [ext_resource type="Resource" uid="uid://bfukqmd37indk" path="res://game_state.tres" id="3_7wcvi"]
-[ext_resource type="Script" path="res://actor_stats.gd" id="4_2qv1a"]
+[ext_resource type="Script" path="res://actor_stats.gd" id="4_ci30j"]
 
-[sub_resource type="Resource" id="Resource_grd7y"]
-script = ExtResource("4_2qv1a")
+[sub_resource type="Resource" id="Resource_d6gil"]
+script = ExtResource("4_ci30j")
 hit_points = 20
 attack = 10
 defense = 10
@@ -15,7 +15,7 @@ speed = 20
 [node name="Player" instance=ExtResource("1_nuxve")]
 script = ExtResource("2_uy217")
 game_state = ExtResource("3_7wcvi")
-battle_data = SubResource("Resource_grd7y")
+stats = SubResource("Resource_d6gil")
 
 [node name="Node" type="Node" parent="." index="2"]
 

@@ -2,13 +2,13 @@ extends Actor
 
 @export var game_state: GameState
 @export var camera: Camera2D
+@export var battle_ui: BattleUI
 
 @onready var remote_transform_2d: RemoteTransform2D = $RemoteTransform2D
 
 
 func _ready() -> void:
-	if camera:
-		remote_transform_2d.set_remote_node(camera.get_path())
+	remote_transform_2d.set_remote_node(camera.get_path())
 
 
 func _physics_process(delta: float) -> void:
@@ -25,3 +25,10 @@ func _physics_process(delta: float) -> void:
 		velocity = Vector2.ZERO
 
 	move_and_slide()
+
+
+func act_turn() -> void:
+	battle_ui.show_commands()
+	await battle_ui.action_selected
+	turn_ended.emit()
+	battle_ui.hide_commands()
