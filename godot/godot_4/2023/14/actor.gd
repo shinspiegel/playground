@@ -15,6 +15,3 @@ func act_turn() -> void:
 func end_turn() -> void:
 	turn_ended.emit()
 
-
-func deferred_end() -> void:
-	call_deferred("end_turn")

@@ -126,3 +126,10 @@ text = "Magic"
 unique_name_in_owner = true
 layout_mode = 2
 text = "Run"
+
+[node name="Hand" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="Polygon2D" type="Polygon2D" parent="Hand"]
+color = Color(0.694118, 0.282353, 0.588235, 1)
+polygon = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
