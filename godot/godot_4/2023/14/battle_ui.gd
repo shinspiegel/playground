@@ -17,7 +17,7 @@ class_name BattleUI extends CanvasLayer
 
 func _ready() -> void:
 	hide()
-	#attack_button.pressed.connect(on_attack_press)
+	attack_button.pressed.connect(on_attack_press)
 	#defense_button.pressed.connect(on_press)
 	#magic_button.pressed.connect(on_press)
 	run_button.pressed.connect(on_run_press)
@@ -32,9 +32,28 @@ func _ready() -> void:
 
 func on_attack_press() -> void:
 	# Select target
+	hide()
+	select_target()
+
+
 	# Emit signal
 	__current_actor.turn_ended.emit()
 	pass
+
+
+func select_target() -> void:
+	for target in battle.enemies:
+		target.show_target()
+		target.selected.connect(on_target_select.bind(target))
+
+	if not battle.enemies.is_empty():
+		battle.enemies[0].focus()
+
+
+func on_target_select(target: Actor) -> void:
+	print("Selection::[%s]" % [target])
+	pass
+
 
 
 func on_run_press() -> void:
