@@ -7,7 +7,6 @@ signal victory()
 signal defeat()
 signal run()
 
-
 @export var battle_ui: BattleUI
 
 @export_group("Player Definitions")
@@ -32,28 +31,15 @@ func _ready() -> void:
 
 
 func start_battle(party: Array[PlayerActor]) -> void:
-	# Resets
-	__party = party
-	__turn = 0
-
-	# Prepare combatents
-	__combatent_ordered = []
-	__combatent_ordered.append_array(enemies)
-	__combatent_ordered.append_array(__party)
-	__combatent_ordered.sort_custom(func(a: Actor,b: Actor): return b.stats.speed < a.stats.speed)
+	__reset_state(party)
+	__prepare_combatents()
+	__set_neighbors_enemies()
+	__prepare_camera_for_battle()
 
 	for actor in __combatent_ordered:
 		actor.turn_ended.connect(on_turn_end)
 
-	# Move camera to the center
-	for unit in __party:
-		if unit is PlayerActor:
-			unit.clean_camera()
-
-	camera.global_position = camera_center_position.global_position
-
-	battle_ui.battle = self
-	battle_ui.show()
+	battle_ui.start(self)
 
 	start_actor_turn()
 
@@ -63,8 +49,7 @@ func end_battle(state: END_STATE = END_STATE.VICTORY) -> void:
 	for actor in __combatent_ordered:
 		actor.turn_ended.disconnect(on_turn_end)
 
-	battle_ui.battle = null
-	battle_ui.hide()
+	battle_ui.end()
 
 	__party[0].set_camera()
 
@@ -91,4 +76,36 @@ func on_turn_end() -> void:
 func on_body_enter(node: Node2D) -> void:
 	if node == watch_node:
 		player_entered.emit()
+
+
+# Private Methods
+
+
+func __reset_state(party: Array[PlayerActor]) -> void:
+	__party = party
+	__turn = 0
+
+
+func __prepare_combatents() -> void:
+	__combatent_ordered = []
+	__combatent_ordered.append_array(enemies)
+	__combatent_ordered.append_array(__party)
+	__combatent_ordered.sort_custom(func(a: Actor,b: Actor): return b.stat_speed - a.stat_speed)
+
+
+func __set_neighbors_enemies() -> void:
+	for index in range(enemies.size()):
+		enemies[index].set_neighbor(
+			enemies[posmod(index-1, enemies.size())].get_focus_path(),
+			enemies[posmod(index+1, enemies.size())].get_focus_path(),
+		)
+
+
+func __prepare_camera_for_battle() -> void:
+	for unit in __party:
+		if unit is PlayerActor:
+			unit.clean_camera()
+
+	camera.global_position = camera_center_position.global_position
+
 

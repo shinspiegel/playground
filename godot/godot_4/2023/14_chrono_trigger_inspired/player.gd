@@ -29,7 +29,7 @@ func __move_world(delta: float) -> void:
 		if direction.is_zero_approx():
 			velocity = lerp(velocity, Vector2.ZERO, friction)
 		else:
-			velocity = lerp(velocity, direction * speed * delta, friction)
+			velocity = lerp(velocity, direction * move_speed * delta, friction)
 
 	if game_state.is_battle():
 		velocity = Vector2.ZERO

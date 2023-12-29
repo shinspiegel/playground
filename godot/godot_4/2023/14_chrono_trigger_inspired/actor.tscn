@@ -1,15 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://s2ytaoxq36a0"]
+[gd_scene load_steps=5 format=3 uid="uid://s2ytaoxq36a0"]
 
 [ext_resource type="Script" path="res://actor.gd" id="1_sdl1e"]
 [ext_resource type="Texture2D" uid="uid://bg8t6twmexf08" path="res://assets/placeholder_texture.png" id="1_xhgxf"]
-[ext_resource type="Script" path="res://actor_stats.gd" id="2_48hih"]
-
-[sub_resource type="Resource" id="Resource_hsag2"]
-script = ExtResource("2_48hih")
-hit_points = 10
-attack = 10
-defense = 10
-speed = 10
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g04cr"]
 atlas = ExtResource("1_xhgxf")
@@ -23,7 +15,6 @@ collision_layer = 2
 collision_mask = 3
 motion_mode = 1
 script = ExtResource("1_sdl1e")
-stats = SubResource("Resource_hsag2")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -64)
