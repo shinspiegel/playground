@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://bkiahrqou20wi"]
+[gd_scene load_steps=6 format=3 uid="uid://bkiahrqou20wi"]
 
 [ext_resource type="PackedScene" uid="uid://s2ytaoxq36a0" path="res://actor.tscn" id="1_nuxve"]
 [ext_resource type="Script" path="res://player.gd" id="2_uy217"]
 [ext_resource type="Resource" uid="uid://bfukqmd37indk" path="res://game_state.tres" id="3_7wcvi"]
+[ext_resource type="Script" path="res://combat_attack_action.gd" id="4_4ukra"]
 [ext_resource type="Script" path="res://combat_action.gd" id="4_rsvva"]
 
 [node name="Player" instance=ExtResource("1_nuxve")]
@@ -12,7 +13,7 @@ stat_hit_points = 20
 stat_speed = 20
 
 [node name="Attack" type="Node2D" parent="ActionList" index="0"]
-script = ExtResource("4_rsvva")
+script = ExtResource("4_4ukra")
 
 [node name="Defense" type="Node2D" parent="ActionList" index="1"]
 script = ExtResource("4_rsvva")

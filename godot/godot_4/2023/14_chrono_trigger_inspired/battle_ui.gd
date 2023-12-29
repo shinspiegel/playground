@@ -5,13 +5,8 @@ class_name BattleUI extends CanvasLayer
 
 @onready var character_data: VBoxContainer = %CharacterData
 @onready var actions_buttons: VBoxContainer = %ActionsButtons
-
-@onready var attack_button: Button = %AttackButton
-@onready var defense_button: Button = %DefenseButton
-@onready var magic_button: Button = %MagicButton
-@onready var run_button: Button = %RunButton
-@onready var hand: Node2D = %Hand
 @onready var damage_container: Node2D = $DamageContainer
+@onready var hand: Node2D = %Hand
 
 @export_group("PRIVATE!!!")
 @export var __current_actor: Actor
@@ -33,17 +28,7 @@ func start(new_battle: Battle) -> void:
 			actor.focus.connect(on_focus.bind(actor))
 			actor.selected.connect(on_target_select.bind(actor))
 
-	attack_button.pressed.connect(on_attack_press)
-	#defense_button.pressed.connect(on_press)
-	#magic_button.pressed.connect(on_press)
-	run_button.pressed.connect(on_run_press)
-
-	attack_button.focus_entered.connect(on_focus.bind(attack_button))
-	defense_button.focus_entered.connect(on_focus.bind(defense_button))
-	magic_button.focus_entered.connect(on_focus.bind(magic_button))
-	run_button.focus_entered.connect(on_focus.bind(run_button))
-
-	actions_buttons.hide()
+	hide_commands()
 
 
 func end() -> void:
@@ -54,17 +39,7 @@ func end() -> void:
 			actor.focus.disconnect(on_focus.bind(actor))
 			actor.selected.disconnect(on_target_select.bind(actor))
 
-	attack_button.pressed.disconnect(on_attack_press)
-	#defense_button.pressed.disconnect(on_press)
-	#magic_button.pressed.disconnect(on_press)
-	run_button.pressed.disconnect(on_run_press)
-
-	attack_button.focus_entered.disconnect(on_focus.bind(attack_button))
-	defense_button.focus_entered.disconnect(on_focus.bind(defense_button))
-	magic_button.focus_entered.disconnect(on_focus.bind(magic_button))
-	run_button.focus_entered.disconnect(on_focus.bind(run_button))
-
-	hide()
+	hide_commands()
 	actions_buttons.hide()
 
 
@@ -92,8 +67,18 @@ func on_run_press() -> void:
 
 func show_command_for_actor(actor: Actor) -> void:
 	__current_actor = actor
+
+	for action in __current_actor.action_list:
+		var button = Button.new()
+		button.name = action.name
+		button.text = action.name
+		button.focus_entered.connect(on_focus.bind(button))
+
+		actions_buttons.add_child(button)
+
+
+
 	actions_buttons.show()
-	attack_button.grab_focus()
 
 
 func hide_commands() -> void:
