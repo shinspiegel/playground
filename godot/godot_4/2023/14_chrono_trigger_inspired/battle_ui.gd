@@ -34,21 +34,14 @@ func start(new_battle: Battle) -> void:
 func end() -> void:
 	for actor in battle.combatent_ordered:
 		actor.damaged.disconnect(on_receive_damage.bind(actor))
-
-		if actor is Enemy:
-			actor.focus.disconnect(on_focus.bind(actor))
-			actor.selected.disconnect(on_target_select.bind(actor))
+		actor.focus.disconnect(on_focus.bind(actor))
+		actor.selected.disconnect(on_target_select.bind(actor))
 
 	hide_commands()
 	actions_buttons.hide()
 
 
-func on_attack_press() -> void:
-	actions_buttons.hide()
-	select_target()
-
-
-func select_target() -> void:
+func enable_target_select() -> void:
 	for target in battle.enemies:
 		target.show_target()
 
@@ -56,8 +49,8 @@ func select_target() -> void:
 		battle.enemies[0].grab_focus()
 
 
-func on_target_select(target: Actor) -> void:
-	__current_actor.attack_target(target)
+func on_target_select(_target: Actor) -> void:
+	pass
 
 
 func on_run_press() -> void:
@@ -73,10 +66,9 @@ func show_command_for_actor(actor: Actor) -> void:
 		button.name = action.name
 		button.text = action.name
 		button.focus_entered.connect(on_focus.bind(button))
+		button.pressed.connect(on_action_select.bind())
 
 		actions_buttons.add_child(button)
-
-
 
 	actions_buttons.show()
 
@@ -85,12 +77,16 @@ func hide_commands() -> void:
 	actions_buttons.hide()
 
 
+func move_hand_to(pos: Vector2) -> void:
+	hand.global_position = pos
+
+
 func on_focus(node) -> void:
 	move_hand_to(node.get_global_transform_with_canvas().origin)
 
 
-func move_hand_to(pos: Vector2) -> void:
-	hand.global_position = pos
+func on_action_select(_action: CombatAction) -> void:
+	pass
 
 
 func on_receive_damage(amount: int, actor: Actor) -> void:
