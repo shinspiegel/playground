@@ -5,3 +5,4 @@
 
 [node name="Enemy" instance=ExtResource("1_1jq5p")]
 script = ExtResource("2_mtqdc")
+threat_level = 10

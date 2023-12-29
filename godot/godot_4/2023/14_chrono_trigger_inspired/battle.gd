@@ -33,17 +33,16 @@ func _ready() -> void:
 func start_battle(party: Array[PlayerActor]) -> void:
 	__reset_state(party)
 	__prepare_combatents()
-	__set_neighbors_enemies()
 	__prepare_camera_for_battle()
-
-	for actor in combatent_ordered:
-		actor.turn_ended.connect(on_turn_end)
+	__prepare_actors()
 
 	battle_ui.start(self)
-
 	start_actor_turn()
 
 
+func end_victory() -> void: end_battle(END_STATE.VICTORY)
+func end_run() -> void: end_battle(END_STATE.RUN)
+func end_defeat() -> void: end_battle(END_STATE.DEFEAT)
 
 func end_battle(state: END_STATE = END_STATE.VICTORY) -> void:
 	for actor in combatent_ordered:
@@ -93,13 +92,6 @@ func __prepare_combatents() -> void:
 	combatent_ordered.sort_custom(func(a: Actor,b: Actor): return b.stat_speed - a.stat_speed)
 
 
-func __set_neighbors_enemies() -> void:
-	for index in range(enemies.size()):
-		enemies[index].set_neighbor(
-			enemies[posmod(index-1, enemies.size())].get_focus_path(),
-			enemies[posmod(index+1, enemies.size())].get_focus_path(),
-		)
-
 
 func __prepare_camera_for_battle() -> void:
 	for unit in __party:
@@ -109,3 +101,10 @@ func __prepare_camera_for_battle() -> void:
 	camera.global_position = camera_center_position.global_position
 
 
+func __prepare_actors() -> void:
+	for actor in combatent_ordered:
+		actor.turn_ended.connect(on_turn_end)
+
+		for action in actor.action_list:
+			action.battle = self
+			action.battle_ui = battle_ui

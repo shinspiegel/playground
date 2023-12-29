@@ -23,49 +23,16 @@ func _ready() -> void:
 
 func start(new_battle: Battle) -> void:
 	battle = new_battle
+	__set_next_position_for_combatents()
+	__prepare_combatents()
 	show()
-
-	for actor in battle.combatent_ordered:
-		actor.damaged.connect(on_receive_damage.bind(actor))
-
-		if actor is Enemy:
-			actor.focus.connect(on_focus.bind(actor))
-			actor.selected.connect(on_target_select.bind(actor))
-
 	hide_commands()
 
 
 func end() -> void:
-	for actor in battle.combatent_ordered:
-		actor.damaged.disconnect(on_receive_damage.bind(actor))
-		actor.focus.disconnect(on_focus.bind(actor))
-		actor.selected.disconnect(on_target_select.bind(actor))
-
+	__unprepare_combatents()
 	hide_commands()
 	actions_buttons.hide()
-
-
-func show_targets() -> void:
-	for actor in battle.combatent_ordered:
-		actor.show_target()
-
-	if not battle.enemies.is_empty():
-		battle.enemies[0].grab_focus()
-
-
-func hide_targets() -> void:
-	for actor in battle.combatent_ordered:
-		actor.hide_target()
-
-
-func on_target_select(target: Actor) -> void:
-	__current_target = target
-	target_selected.emit()
-
-
-func on_run_press() -> void:
-	battle.end_battle(battle.END_STATE.RUN)
-	pass
 
 
 func show_command_for_actor(actor: Actor) -> void:
@@ -92,15 +59,38 @@ func show_command_for_actor(actor: Actor) -> void:
 		call_deferred("on_focus", first)
 
 
-
 func hide_commands() -> void:
 	actions_buttons.hide()
 	hand.hide()
 
 
+func show_targets() -> void:
+	for actor in battle.combatent_ordered:
+		actor.show_target()
+
+	if not battle.enemies.is_empty():
+		battle.enemies[0].grab_focus()
+
+
+func hide_targets() -> void:
+	for actor in battle.combatent_ordered:
+		actor.hide_target()
+
+
 func move_hand_to(pos: Vector2) -> void:
 	hand.show()
 	hand.global_position = pos
+
+
+func on_target_select(target: Actor) -> void:
+	__current_target = target
+	target_selected.emit()
+
+
+func on_run_press() -> void:
+	battle.end_battle(battle.END_STATE.RUN)
+	pass
+
 
 
 func on_focus(node) -> void:
@@ -122,3 +112,34 @@ func on_receive_damage(amount: int, actor: Actor) -> void:
 	damage_container.add_child(damage)
 	damage.set_damage(amount)
 	damage.global_position = actor.get_global_transform_with_canvas().origin
+
+
+
+# Private Methods
+
+
+func __set_next_position_for_combatents() -> void:
+	for index in range(battle.combatent_ordered.size()):
+		var current = battle.combatent_ordered[index]
+		var next_index = posmod(index+1, battle.combatent_ordered.size())
+		var prev_index = posmod(index-1, battle.combatent_ordered.size())
+
+		current.set_neighbor(
+			battle.combatent_ordered[prev_index].get_focus_path(),
+			battle.combatent_ordered[next_index].get_focus_path(),
+		)
+
+
+
+func __prepare_combatents() -> void:
+	for actor in battle.combatent_ordered:
+		actor.damaged.connect(on_receive_damage.bind(actor))
+		actor.focus.connect(on_focus.bind(actor))
+		actor.selected.connect(on_target_select.bind(actor))
+
+
+func __unprepare_combatents() -> void:
+	for actor in battle.combatent_ordered:
+		actor.damaged.disconnect(on_receive_damage.bind(actor))
+		actor.focus.disconnect(on_focus.bind(actor))
+		actor.selected.disconnect(on_target_select.bind(actor))

@@ -31,7 +31,7 @@ watch_node = NodePath("../Sorted/Player")
 player_pos = NodePath("PlayerPosition")
 camera_center_position = NodePath("CameraPoition")
 camera = NodePath("../Camera2D")
-enemies = [NodePath("../Sorted/Enemy"), NodePath("../Sorted/Enemy2"), NodePath("../Sorted/Enemy3")]
+enemies = [NodePath("../Sorted/BigBossEnemy"), NodePath("../Sorted/EasyEnemy"), NodePath("../Sorted/EasyEnemy2"), NodePath("../Sorted/EasyEnemy3"), NodePath("../Sorted/EasyEnemy4")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Battle"]
 shape = SubResource("RectangleShape2D_2tnsv")
@@ -59,11 +59,27 @@ battle_ui = NodePath("../../BattleUI")
 [node name="Actor" parent="Sorted" instance=ExtResource("2_dvxm7")]
 position = Vector2(2128, 1232)
 
-[node name="Enemy" parent="Sorted" instance=ExtResource("7_thkqi")]
+[node name="BigBossEnemy" parent="Sorted" instance=ExtResource("7_thkqi")]
 position = Vector2(1696, 1040)
+stat_hit_points = 30
+stat_attack = 15
+stat_defense = 10
+stat_speed = 15
 
-[node name="Enemy2" parent="Sorted" instance=ExtResource("7_thkqi")]
-position = Vector2(2384, 960)
-
-[node name="Enemy3" parent="Sorted" instance=ExtResource("7_thkqi")]
+[node name="EasyEnemy" parent="Sorted" instance=ExtResource("7_thkqi")]
 position = Vector2(2192, 512)
+threat_level = 5
+
+[node name="EasyEnemy2" parent="Sorted" instance=ExtResource("7_thkqi")]
+position = Vector2(2384, 960)
+threat_level = 5
+
+[node name="EasyEnemy3" parent="Sorted" node_paths=PackedStringArray("stat_actions_container") instance=ExtResource("7_thkqi")]
+position = Vector2(1952, 528)
+threat_level = 5
+stat_actions_container = NodePath("../EasyEnemy2/ActionList")
+
+[node name="EasyEnemy4" parent="Sorted" node_paths=PackedStringArray("stat_actions_container") instance=ExtResource("7_thkqi")]
+position = Vector2(1744, 736)
+threat_level = 5
+stat_actions_container = NodePath("../EasyEnemy2/ActionList")
