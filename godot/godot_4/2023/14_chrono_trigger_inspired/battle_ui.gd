@@ -1,7 +1,8 @@
 class_name BattleUI extends CanvasLayer
 
-
 @export var battle: Battle
+@export var damage_number_scene: PackedScene
+
 @onready var character_data: VBoxContainer = %CharacterData
 @onready var actions_buttons: VBoxContainer = %ActionsButtons
 
@@ -10,6 +11,7 @@ class_name BattleUI extends CanvasLayer
 @onready var magic_button: Button = %MagicButton
 @onready var run_button: Button = %RunButton
 @onready var hand: Node2D = %Hand
+@onready var damage_container: Node2D = $DamageContainer
 
 @export_group("PRIVATE!!!")
 @export var __current_actor: Actor
@@ -22,8 +24,14 @@ func _ready() -> void:
 
 func start(new_battle: Battle) -> void:
 	battle = new_battle
-
 	show()
+
+	for actor in battle.combatent_ordered:
+		actor.damaged.connect(on_receive_damage.bind(actor))
+
+		if actor is Enemy:
+			actor.focus.connect(on_focus.bind(actor))
+			actor.selected.connect(on_target_select.bind(actor))
 
 	attack_button.pressed.connect(on_attack_press)
 	#defense_button.pressed.connect(on_press)
@@ -35,14 +43,17 @@ func start(new_battle: Battle) -> void:
 	magic_button.focus_entered.connect(on_focus.bind(magic_button))
 	run_button.focus_entered.connect(on_focus.bind(run_button))
 
-	for enemy in battle.enemies:
-		enemy.focus.connect(on_focus.bind(enemy))
-		enemy.selected.connect(on_target_select.bind(enemy))
-
 	actions_buttons.hide()
 
 
 func end() -> void:
+	for actor in battle.combatent_ordered:
+		actor.damaged.disconnect(on_receive_damage.bind(actor))
+
+		if actor is Enemy:
+			actor.focus.disconnect(on_focus.bind(actor))
+			actor.selected.disconnect(on_target_select.bind(actor))
+
 	attack_button.pressed.disconnect(on_attack_press)
 	#defense_button.pressed.disconnect(on_press)
 	#magic_button.pressed.disconnect(on_press)
@@ -53,10 +64,6 @@ func end() -> void:
 	magic_button.focus_entered.disconnect(on_focus.bind(magic_button))
 	run_button.focus_entered.disconnect(on_focus.bind(run_button))
 
-	for enemy in battle.enemies:
-		enemy.focus.disconnect(on_focus.bind(enemy.target_control))
-		enemy.selected.disconnect(on_target_select.bind(enemy))
-	
 	hide()
 	actions_buttons.hide()
 
@@ -93,11 +100,16 @@ func hide_commands() -> void:
 	actions_buttons.hide()
 
 
-
 func on_focus(node) -> void:
 	move_hand_to(node.get_global_transform_with_canvas().origin)
 
 
 func move_hand_to(pos: Vector2) -> void:
-	print("Moved hand to::[%s]" % [pos])
 	hand.global_position = pos
+
+
+func on_receive_damage(amount: int, actor: Actor) -> void:
+	var damage: DamageNumber = damage_number_scene.instantiate()
+	damage_container.add_child(damage)
+	damage.set_damage(amount)
+	damage.global_position = actor.get_global_transform_with_canvas().origin

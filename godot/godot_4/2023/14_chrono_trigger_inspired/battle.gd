@@ -21,8 +21,8 @@ signal run()
 @export var enemies: Array[Enemy]
 
 @export_group("PRIVATE!!!!")
+@export var combatent_ordered: Array[Actor] = []
 @export var __party: Array[PlayerActor] = []
-@export var __combatent_ordered: Array[Actor] = []
 @export var __turn: int = 0
 
 
@@ -36,7 +36,7 @@ func start_battle(party: Array[PlayerActor]) -> void:
 	__set_neighbors_enemies()
 	__prepare_camera_for_battle()
 
-	for actor in __combatent_ordered:
+	for actor in combatent_ordered:
 		actor.turn_ended.connect(on_turn_end)
 
 	battle_ui.start(self)
@@ -46,7 +46,7 @@ func start_battle(party: Array[PlayerActor]) -> void:
 
 
 func end_battle(state: END_STATE = END_STATE.VICTORY) -> void:
-	for actor in __combatent_ordered:
+	for actor in combatent_ordered:
 		actor.turn_ended.disconnect(on_turn_end)
 
 	battle_ui.end()
@@ -60,8 +60,8 @@ func end_battle(state: END_STATE = END_STATE.VICTORY) -> void:
 
 
 func start_actor_turn() -> void:
-	var index: int = __turn % __combatent_ordered.size()
-	var current_actor = __combatent_ordered[index]
+	var index: int = __turn % combatent_ordered.size()
+	var current_actor = combatent_ordered[index]
 	print("turn started::[%s] actor::[%s]" % [__turn, current_actor.name])
 	current_actor.act_turn()
 
@@ -87,10 +87,10 @@ func __reset_state(party: Array[PlayerActor]) -> void:
 
 
 func __prepare_combatents() -> void:
-	__combatent_ordered = []
-	__combatent_ordered.append_array(enemies)
-	__combatent_ordered.append_array(__party)
-	__combatent_ordered.sort_custom(func(a: Actor,b: Actor): return b.stat_speed - a.stat_speed)
+	combatent_ordered = []
+	combatent_ordered.append_array(enemies)
+	combatent_ordered.append_array(__party)
+	combatent_ordered.sort_custom(func(a: Actor,b: Actor): return b.stat_speed - a.stat_speed)
 
 
 func __set_neighbors_enemies() -> void:

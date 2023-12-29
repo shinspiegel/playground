@@ -40,7 +40,7 @@ shape = SubResource("RectangleShape2D_2tnsv")
 position = Vector2(-320, -256)
 
 [node name="CameraPoition" type="Marker2D" parent="Battle"]
-position = Vector2(64, 128)
+position = Vector2(64, 64)
 
 [node name="Sorted" type="Node2D" parent="."]
 y_sort_enabled = true

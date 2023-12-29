@@ -1,10 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://dy0sjut27553q"]
+[gd_scene load_steps=4 format=3 uid="uid://dy0sjut27553q"]
 
 [ext_resource type="Script" path="res://battle_ui.gd" id="1_608h2"]
 [ext_resource type="Theme" uid="uid://bn62phspmmrw6" path="res://base_theme.tres" id="1_gms6p"]
+[ext_resource type="PackedScene" uid="uid://b6ycpdru3xnqv" path="res://damage_number.tscn" id="2_6gao6"]
 
 [node name="BattleUI" type="CanvasLayer"]
 script = ExtResource("1_608h2")
+damage_number_scene = ExtResource("2_6gao6")
+
+[node name="DamageContainer" type="Node2D" parent="."]
+unique_name_in_owner = true
 
 [node name="Control" type="MarginContainer" parent="."]
 anchors_preset = 15

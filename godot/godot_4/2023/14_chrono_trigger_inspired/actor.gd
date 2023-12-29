@@ -3,11 +3,13 @@ class_name Actor extends CharacterBody2D
 signal turn_ended()
 signal selected()
 signal focus()
+signal damaged(amount: int)
 
 @export var move_speed = 30000.0
 @export var friction = 0.3
 
 @export_group("Battle data", "stat_")
+@export var stat_actions_container: Node2D
 @export var stat_hit_points: int = 10
 @export var stat_attack: int = 10
 @export var stat_defense: int = 5
@@ -18,15 +20,19 @@ signal focus()
 
 @onready var target_control: BaseButton = $SelectNode
 
+var action_list: Array[CombatAction] = []
 
 func _ready() -> void:
+	for node in stat_actions_container.get_children():
+		if node is CombatAction:
+			action_list.append(node)
+
 	target_control.hide()
 	target_control.pressed.connect(func(): selected.emit())
 	target_control.focus_entered.connect(func(): focus.emit())
 
 
 func grab_focus() -> void:
-	print("HERE::grab focus")
 	target_control.grab_focus()
 
 
@@ -73,7 +79,8 @@ func attack_target(target: Actor) -> void:
 
 
 func receive_damage(damage: int) -> void:
-	var total_damage = clampi(damage - stat_defense, 1, damage - stat_defense) 
+	var total_damage = clampi(damage - stat_defense, 1, damage - stat_defense)
+	damaged.emit(total_damage)
 	stat_hit_points -= total_damage
 
 
