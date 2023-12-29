@@ -113,26 +113,6 @@ layout_mode = 2
 theme_override_constants/separation = 8
 alignment = 2
 
-[node name="AttackButton" type="Button" parent="Control/HBoxContainer/ActionsButtons"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "Attack"
-
-[node name="DefenseButton" type="Button" parent="Control/HBoxContainer/ActionsButtons"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "Defense"
-
-[node name="MagicButton" type="Button" parent="Control/HBoxContainer/ActionsButtons"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "Magic"
-
-[node name="RunButton" type="Button" parent="Control/HBoxContainer/ActionsButtons"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "Run"
-
 [node name="Hand" type="Node2D" parent="."]
 unique_name_in_owner = true
 

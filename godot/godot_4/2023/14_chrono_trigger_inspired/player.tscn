@@ -12,26 +12,33 @@ game_state = ExtResource("3_7wcvi")
 stat_hit_points = 20
 stat_speed = 20
 
-[node name="Attack" type="Node2D" parent="ActionList" index="0"]
+[node name="Attack" type="Node2D" parent="ActionList" index="0" node_paths=PackedStringArray("actor")]
 script = ExtResource("4_4ukra")
+actor = NodePath("../..")
 
-[node name="Defense" type="Node2D" parent="ActionList" index="1"]
+[node name="Defense" type="Node2D" parent="ActionList" index="1" node_paths=PackedStringArray("actor")]
 script = ExtResource("4_rsvva")
+actor = NodePath("../..")
 
-[node name="Magic" type="Node2D" parent="ActionList" index="2"]
+[node name="Magic" type="Node2D" parent="ActionList" index="2" node_paths=PackedStringArray("actor")]
 script = ExtResource("4_rsvva")
+actor = NodePath("../..")
 
-[node name="Fire" type="Node2D" parent="ActionList/Magic" index="0"]
+[node name="Fire" type="Node2D" parent="ActionList/Magic" index="0" node_paths=PackedStringArray("actor")]
 script = ExtResource("4_rsvva")
+actor = NodePath("../../..")
 
-[node name="Ice" type="Node2D" parent="ActionList/Magic" index="1"]
+[node name="Ice" type="Node2D" parent="ActionList/Magic" index="1" node_paths=PackedStringArray("actor")]
 script = ExtResource("4_rsvva")
+actor = NodePath("../../..")
 
-[node name="Fire3" type="Node2D" parent="ActionList/Magic" index="2"]
+[node name="Fire3" type="Node2D" parent="ActionList/Magic" index="2" node_paths=PackedStringArray("actor")]
 script = ExtResource("4_rsvva")
+actor = NodePath("../../..")
 
-[node name="Run" type="Node2D" parent="ActionList" index="3"]
+[node name="Run" type="Node2D" parent="ActionList" index="3" node_paths=PackedStringArray("actor")]
 script = ExtResource("4_rsvva")
+actor = NodePath("../..")
 
 [node name="Node" type="Node" parent="." index="2"]
 
