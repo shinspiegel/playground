@@ -1,14 +1,25 @@
 class_name PlayerActor extends Actor
 
 @export var game_state: GameState
-@export var camera: Camera2D
 @export var battle_ui: BattleUI
+@export var camera_mount: RemoteTransform2D
+@export var is_active: bool = false
 
-@onready var remote_transform_2d: RemoteTransform2D = $RemoteTransform2D
+
+var camera: Camera2D
+
+
+func _ready() -> void:
+	super._ready()
+
+	if is_active:
+		set_camera()
 
 
 func _physics_process(delta: float) -> void:
-	__move_world(delta)
+	if is_active:
+		__move_world(delta)
+
 	move_and_slide()
 
 
@@ -19,6 +30,17 @@ func act_turn() -> void:
 func end_turn() -> void:
 	battle_ui.hide_commands()
 	turn_ended.emit()
+
+
+func set_camera() -> void:
+	camera_mount.set_remote_node(camera.get_path())
+
+
+func clean_camera() -> void:
+	camera_mount.set_remote_node("")
+
+
+# Private Methods
 
 
 func __move_world(delta: float) -> void:
@@ -34,10 +56,3 @@ func __move_world(delta: float) -> void:
 	if game_state.is_battle():
 		velocity = Vector2.ZERO
 
-
-func set_camera() -> void:
-	remote_transform_2d.set_remote_node(camera.get_path())
-
-
-func clean_camera() -> void:
-	remote_transform_2d.set_remote_node("")

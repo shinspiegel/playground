@@ -2,11 +2,15 @@ class_name World extends Node2D
 
 @export var game_state: GameState
 @export var battle_areas: Array[Battle]
-@export var party: Array[PlayerActor]
+@export var __old_party: Array[PlayerActor]
 
+@onready var sorted_container: Node2D = $Sorted
+@onready var party_start_pos: Node2D = $PartyStartPos
+@onready var main_camera: Camera2D = $MainCamera
 
 func _ready() -> void:
-	party[0].set_camera()
+	spawn_party()
+	#__old_party[0].set_camera()
 
 	for area in battle_areas:
 		area.player_entered.connect(on_battle_start.bind(area))
@@ -15,9 +19,24 @@ func _ready() -> void:
 		area.run.connect(on_battle_run.bind(area))
 
 
+func spawn_party() -> void:
+	var party: Array[PlayerActor] = GameManager.get_party()
+
+	for index in range(party.size()):
+		var member: PlayerActor = party[index]
+
+		member.global_position = party_start_pos.global_position
+		member.camera = main_camera
+		if index == 0:
+			member.is_active = true
+
+		sorted_container.add_child(member)
+
+
+
 func on_battle_start(battle: Battle) -> void:
 	print("battle started::[%s]" % [battle.name])
-	battle.start_battle(party)
+	battle.start_battle(__old_party)
 	game_state.change_to_battle()
 
 
