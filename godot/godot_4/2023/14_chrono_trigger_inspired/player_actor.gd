@@ -1,9 +1,11 @@
 class_name PlayerActor extends Actor
 
+@export var char_name: String = ""
 @export var game_state: GameState
-@export var battle_ui: BattleUI
 @export var camera_mount: RemoteTransform2D
 @export var is_active: bool = false
+
+var battle_ui: BattleUI
 
 
 var camera: Camera2D

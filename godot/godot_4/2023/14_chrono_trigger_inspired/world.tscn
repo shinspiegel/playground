@@ -11,10 +11,11 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2tnsv"]
 size = Vector2(1152, 1024)
 
-[node name="World" type="Node2D" node_paths=PackedStringArray("battle_areas")]
+[node name="World" type="Node2D" node_paths=PackedStringArray("battle_areas", "battle_ui")]
 script = ExtResource("1_034ps")
 game_state = ExtResource("2_o0arf")
 battle_areas = [NodePath("Battle")]
+battle_ui = NodePath("BattleUI")
 
 [node name="MainCamera" type="Camera2D" parent="."]
 
@@ -23,12 +24,11 @@ position = Vector2(992, 560)
 
 [node name="BattleUI" parent="." instance=ExtResource("3_a54y4")]
 
-[node name="Battle" parent="." node_paths=PackedStringArray("battle_ui", "watch_node", "player_pos", "camera_center_position", "camera", "enemies") instance=ExtResource("6_n82nt")]
+[node name="Battle" parent="." node_paths=PackedStringArray("battle_ui", "player_pos", "camera_center_position", "camera", "enemies") instance=ExtResource("6_n82nt")]
 position = Vector2(1984, 768)
 collision_layer = 0
 collision_mask = 2
 battle_ui = NodePath("../BattleUI")
-watch_node = NodePath("")
 player_pos = NodePath("PlayerPosition")
 camera_center_position = NodePath("CameraPoition")
 camera = NodePath("../MainCamera")

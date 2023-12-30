@@ -8,30 +8,26 @@ signal defeat()
 signal run()
 
 @export var battle_ui: BattleUI
-
 @export_group("Player Definitions")
 @export var watch_node: Node2D
 @export var player_pos: Node2D
-
 @export_group("Camera Definition")
 @export var camera_center_position: Node2D
 @export var camera: Camera2D
-
 @export_group("Enemies Data")
 @export var enemies: Array[Enemy]
 
-@export_group("PRIVATE!!!!")
-@export var combatent_ordered: Array[Actor] = []
-@export var __party: Array[PlayerActor] = []
-@export var __turn: int = 0
+var combatent_ordered: Array[Actor] = []
+
+var __turn: int = 0
 
 
 func _ready() -> void:
 	body_entered.connect(on_body_enter)
 
 
-func start_battle(party: Array[PlayerActor]) -> void:
-	__reset_state(party)
+func start_battle() -> void:
+	__reset_state()
 	__prepare_combatents()
 	__prepare_camera_for_battle()
 	__prepare_actors()
@@ -50,7 +46,7 @@ func end_battle(state: END_STATE = END_STATE.VICTORY) -> void:
 
 	battle_ui.end()
 
-	__party[0].set_camera()
+	GameManager.set_camera_for_leader()
 
 	match state:
 		END_STATE.VICTORY: victory.emit()
@@ -80,21 +76,20 @@ func on_body_enter(node: Node2D) -> void:
 # Private Methods
 
 
-func __reset_state(party: Array[PlayerActor]) -> void:
-	__party = party
+func __reset_state() -> void:
 	__turn = 0
 
 
 func __prepare_combatents() -> void:
 	combatent_ordered = []
 	combatent_ordered.append_array(enemies)
-	combatent_ordered.append_array(__party)
+	combatent_ordered.append_array(GameManager.party_data.get_party())
 	combatent_ordered.sort_custom(func(a: Actor,b: Actor): return b.stat_speed - a.stat_speed)
 
 
 
 func __prepare_camera_for_battle() -> void:
-	for unit in __party:
+	for unit in GameManager.get_party():
 		if unit is PlayerActor:
 			unit.clean_camera()
 
@@ -108,3 +103,4 @@ func __prepare_actors() -> void:
 		for action in actor.action_list:
 			action.battle = self
 			action.battle_ui = battle_ui
+

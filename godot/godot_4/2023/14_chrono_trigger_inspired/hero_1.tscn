@@ -9,6 +9,7 @@
 
 [node name="Player" node_paths=PackedStringArray("camera_mount") instance=ExtResource("1_tts8m")]
 script = ExtResource("2_fxs5l")
+char_name = "Hero"
 game_state = ExtResource("3_s64mb")
 camera_mount = NodePath("CameraMount")
 is_active = false
