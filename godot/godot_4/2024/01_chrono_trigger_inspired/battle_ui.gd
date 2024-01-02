@@ -39,6 +39,7 @@ func end() -> void:
 
 	hide_commands()
 	actions_buttons.hide()
+	hide()
 
 
 func show_command_for_actor(actor: Actor) -> void:
@@ -90,6 +91,7 @@ func move_hand_to(pos: Vector2) -> void:
 
 func on_target_select(target: Actor) -> void:
 	__current_target = target
+	hide_targets()
 	target_selected.emit()
 
 

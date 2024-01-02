@@ -21,11 +21,15 @@ signal health_changed(health: int, max_health: int)
 @export_range(0.1, 1.0, 0.1) var stat_crit_chance: float = 0.1
 @export_range(1.0, 5.0, 0.1) var stat_crit_bonus: float = 1.5
 
-@onready var target_control: BaseButton = $SelectNode
+@onready var target_control: BaseButton = %SelectNode
+@onready var anim_player: AnimationPlayer = %AnimPlayer
 
 var action_list: Array[CombatAction] = []
+var anim_state_machine: AnimationNodeStateMachinePlayback
 
 func _ready() -> void:
+	#anim_state_machine = anim_tree.get("parameters/playback")
+
 	for node in stat_actions_container.get_children():
 		if node is CombatAction:
 			action_list.append(node)
@@ -61,6 +65,12 @@ func get_focus_path() -> NodePath:
 	return target_control.get_path()
 
 
+func anim_idle(blend: Vector2) -> void: __play_animation("idle", blend)
+func anim_move(blend: Vector2) -> void: __play_animation("move", blend)
+func anim_hurt(blend: Vector2) -> void: __play_animation("hurt", blend)
+func anim_die(blend: Vector2) -> void: __play_animation("die", blend)
+
+
 func set_neighbor(next: NodePath, prev: NodePath) -> void:
 	target_control.set_focus_previous(prev)
 	target_control.set_focus_neighbor(SIDE_TOP, prev)
@@ -89,9 +99,25 @@ func receive_damage(damage: int) -> void:
 	stat_hit_points -= total_damage
 
 
+# Private Methods
+
 
 func __change_health(amount: int) -> void:
 	stat_hit_points = clampi(stat_hit_points + amount, 0, stat_max_hit_points)
 	health_changed.emit(stat_hit_points, stat_max_hit_points)
 
 
+func __play_animation(anim: String, blend: Vector2) -> void:
+	var dir_name: String = ""
+	var dir = blend.angle()
+
+	if dir >= -PI/4 and dir < PI/4:
+		dir_name = "right"
+	elif dir >= PI/4 and dir < 3*PI/4:
+		dir_name = "down"
+	elif dir >= -3*PI/4 and dir < -PI/4:
+		dir_name = "up"
+	else:
+		dir_name = "left"
+
+	anim_player.play("%s_%s" % [anim, dir_name])

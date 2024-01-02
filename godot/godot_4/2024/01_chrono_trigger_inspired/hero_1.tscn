@@ -7,13 +7,13 @@
 [ext_resource type="Script" path="res://combat_action.gd" id="5_qjbpu"]
 [ext_resource type="Script" path="res://combat_run_action.gd" id="6_sbmpy"]
 
-[node name="Player" node_paths=PackedStringArray("camera_mount") instance=ExtResource("1_tts8m")]
+[node name="Hero" node_paths=PackedStringArray("camera_mount") instance=ExtResource("1_tts8m")]
 script = ExtResource("2_fxs5l")
-char_name = "Hero"
 game_state = ExtResource("3_s64mb")
 camera_mount = NodePath("CameraMount")
-is_active = false
-stat_hit_points = 20
+follow_ratio = 1.0
+distance = 120
+stat_max_hit_points = 20
 stat_speed = 20
 
 [node name="CameraMount" type="RemoteTransform2D" parent="." index="0"]
@@ -48,8 +48,5 @@ script = ExtResource("6_sbmpy")
 actor = NodePath("../..")
 require_target = false
 
-[node name="Node" type="Node" parent="." index="3"]
-
-[node name="Polygon2D" type="Polygon2D" parent="." index="4"]
-color = Color(1, 0.313726, 0.0313726, 1)
-polygon = PackedVector2Array(-16, -112, 0, -112, 0, -96, -16, -96)
+[node name="Art" parent="." index="4"]
+modulate = Color(1, 0.313726, 0.968627, 1)

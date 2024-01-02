@@ -8,7 +8,7 @@ class_name PlayerActor extends Actor
 var battle_ui: BattleUI
 var camera: Camera2D
 var leader: PlayerActor
-
+var __last_dir: Vector2
 
 func _ready() -> void:
 	super._ready()
@@ -57,13 +57,21 @@ func is_leader() -> bool:
 
 
 func __apply_user_input(delta: float) -> void:
-		var direction := Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
-		direction.normalized()
+	var direction := Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
+	direction.normalized()
 
-		if direction.is_zero_approx():
-			velocity = lerp(velocity, Vector2.ZERO, friction)
-		else:
-			velocity = lerp(velocity, direction * move_speed * delta, friction)
+	if not direction == Vector2.ZERO:
+		__last_dir = direction
+
+	if direction.is_zero_approx():
+		velocity = lerp(velocity, Vector2.ZERO, friction)
+	else:
+		velocity = lerp(velocity, direction * move_speed * delta, friction)
+
+	if direction.length() > 0.1:
+		anim_move(__last_dir)
+	else:
+		anim_idle(__last_dir)
 
 
 func __follow_leader(delta: float) -> void:
@@ -73,7 +81,9 @@ func __follow_leader(delta: float) -> void:
 	if distance_to_leader > distance:
 		var move_distance = move_speed * delta * follow_ratio
 		velocity = lerp(velocity, direction_to_leader * move_distance, 0.1)
+		anim_move(direction_to_leader)
 	else:
 		velocity = lerp(velocity, Vector2.ZERO, 0.9)
+		anim_idle(direction_to_leader)
 
 
