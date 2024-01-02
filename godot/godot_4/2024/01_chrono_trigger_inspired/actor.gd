@@ -1,15 +1,18 @@
 class_name Actor extends CharacterBody2D
 
+signal turn_started()
 signal turn_ended()
 signal selected()
 signal focus()
 signal damaged(amount: int)
+signal health_changed(health: int, max_health: int)
 
 @export var move_speed = 30000.0
 @export var friction = 0.3
 
 @export_group("Battle data", "stat_")
 @export var stat_actions_container: Node2D
+@export var stat_max_hit_points: int = 10
 @export var stat_hit_points: int = 10
 @export var stat_attack: int = 10
 @export var stat_defense: int = 5
@@ -45,11 +48,12 @@ func hide_target() -> void:
 
 
 func act_turn() -> void:
-	print_debug("WARN::Should implemente this on the inherited class")
-	pass
+	print_debug("WARN::Should implemente this on the inherited class. Remeber to emit 'start_turn' signal.")
+	turn_started.emit()
 
 
 func end_turn() -> void:
+	print_debug("WARN::Should implemente this on the inherited class. Remeber to emit 'end_turn' signal.")
 	turn_ended.emit()
 
 
@@ -81,6 +85,13 @@ func attack_target(target: Actor) -> void:
 func receive_damage(damage: int) -> void:
 	var total_damage = clampi(damage - stat_defense, 1, damage - stat_defense)
 	damaged.emit(total_damage)
+	health_changed.emit()
 	stat_hit_points -= total_damage
+
+
+
+func __change_health(amount: int) -> void:
+	stat_hit_points = clampi(stat_hit_points + amount, 0, stat_max_hit_points)
+	health_changed.emit(stat_hit_points, stat_max_hit_points)
 
 

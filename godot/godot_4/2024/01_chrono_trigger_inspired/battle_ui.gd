@@ -1,5 +1,6 @@
 class_name BattleUI extends CanvasLayer
 
+const combatent_battle_data = preload("res://combatent_battle_data.tscn")
 signal target_selected()
 
 @export var damage_number_scene: PackedScene
@@ -23,14 +24,19 @@ func _ready() -> void:
 
 func start(new_battle: Battle) -> void:
 	battle = new_battle
+
+	__connect_party()
 	__set_next_position_for_combatents()
 	__prepare_combatents()
+
 	show()
 	hide_commands()
 
 
 func end() -> void:
+	__disconnect_party()
 	__unprepare_combatents()
+
 	hide_commands()
 	actions_buttons.hide()
 
@@ -114,7 +120,6 @@ func on_receive_damage(amount: int, actor: Actor) -> void:
 	damage.global_position = actor.get_global_transform_with_canvas().origin
 
 
-
 # Private Methods
 
 
@@ -143,4 +148,25 @@ func __unprepare_combatents() -> void:
 		actor.damaged.disconnect(on_receive_damage.bind(actor))
 		actor.focus.disconnect(on_focus.bind(actor))
 		actor.selected.disconnect(on_target_select.bind(actor))
+
+
+func __connect_party() -> void:
+	var party = GameManager.get_party()
+
+	for child in character_data.get_children():
+		character_data.remove_child(child)
+		child.queue_free()
+
+	for member in party:
+		var data: CombatentBattleData = combatent_battle_data.instantiate()
+		character_data.add_child(data)
+		data.set_actor(member)
+
+
+func __disconnect_party() -> void:
+	var party = GameManager.get_party()
+
+	for member in party:
+		pass
+	pass
 

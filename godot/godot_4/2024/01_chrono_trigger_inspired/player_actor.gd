@@ -27,6 +27,7 @@ func _physics_process(delta: float) -> void:
 
 func act_turn() -> void:
 	battle_ui.show_command_for_actor(self)
+	turn_started.emit()
 
 
 func end_turn() -> void:

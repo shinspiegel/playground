@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://dy0sjut27553q"]
+[gd_scene load_steps=5 format=3 uid="uid://dy0sjut27553q"]
 
 [ext_resource type="Script" path="res://battle_ui.gd" id="1_608h2"]
 [ext_resource type="Theme" uid="uid://bn62phspmmrw6" path="res://base_theme.tres" id="1_gms6p"]
 [ext_resource type="PackedScene" uid="uid://b6ycpdru3xnqv" path="res://damage_number.tscn" id="2_6gao6"]
+[ext_resource type="PackedScene" uid="uid://bg2pn3hm3w0b7" path="res://combatent_battle_data.tscn" id="4_5oet5"]
 
 [node name="BattleUI" type="CanvasLayer"]
 script = ExtResource("1_608h2")
@@ -34,73 +35,17 @@ layout_mode = 2
 theme_override_constants/separation = 8
 alignment = 2
 
-[node name="CharacterName" type="HBoxContainer" parent="Control/HBoxContainer/CharacterData"]
+[node name="CharacterName" parent="Control/HBoxContainer/CharacterData" instance=ExtResource("4_5oet5")]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Control/HBoxContainer/CharacterData/CharacterName"]
-layout_mode = 2
-size_flags_vertical = 1
-text = "CHAR_NAME"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="ProgressBar" type="ProgressBar" parent="Control/HBoxContainer/CharacterData/CharacterName"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 1
-value = 50.0
-show_percentage = false
-
-[node name="CharacterName2" type="HBoxContainer" parent="Control/HBoxContainer/CharacterData"]
+[node name="CharacterName2" parent="Control/HBoxContainer/CharacterData" instance=ExtResource("4_5oet5")]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Control/HBoxContainer/CharacterData/CharacterName2"]
-layout_mode = 2
-size_flags_vertical = 1
-text = "CHAR_NAME"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="ProgressBar" type="ProgressBar" parent="Control/HBoxContainer/CharacterData/CharacterName2"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 1
-value = 50.0
-show_percentage = false
-
-[node name="CharacterName3" type="HBoxContainer" parent="Control/HBoxContainer/CharacterData"]
+[node name="CharacterName3" parent="Control/HBoxContainer/CharacterData" instance=ExtResource("4_5oet5")]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Control/HBoxContainer/CharacterData/CharacterName3"]
+[node name="CharacterName4" parent="Control/HBoxContainer/CharacterData" instance=ExtResource("4_5oet5")]
 layout_mode = 2
-size_flags_vertical = 1
-text = "CHAR_NAME"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="ProgressBar" type="ProgressBar" parent="Control/HBoxContainer/CharacterData/CharacterName3"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 1
-value = 50.0
-show_percentage = false
-
-[node name="CharacterName4" type="HBoxContainer" parent="Control/HBoxContainer/CharacterData"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="Control/HBoxContainer/CharacterData/CharacterName4"]
-layout_mode = 2
-size_flags_vertical = 1
-text = "CHAR_NAME"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="ProgressBar" type="ProgressBar" parent="Control/HBoxContainer/CharacterData/CharacterName4"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 1
-value = 50.0
-show_percentage = false
 
 [node name="Control" type="Control" parent="Control/HBoxContainer"]
 layout_mode = 2
