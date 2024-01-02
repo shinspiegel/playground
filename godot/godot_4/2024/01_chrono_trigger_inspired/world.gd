@@ -22,15 +22,10 @@ func _ready() -> void:
 func spawn_party() -> void:
 	var party: Array[PlayerActor] = GameManager.party_data.get_party()
 
-	for index in range(party.size()):
-		var member: PlayerActor = party[index]
-
+	for member in party:
 		member.global_position = party_start_pos.global_position
 		member.battle_ui = battle_ui
 		member.camera = main_camera
-
-		if index == 0:
-			member.is_active = true
 
 		sorted_container.add_child(member)
 

@@ -16,8 +16,8 @@ func disable_background() -> void: background.hide()
 
 func set_actor(actor: Actor) -> void:
 	name_label.text = actor.name
-	
-	actor.health_changed.connect(__update_bar) 
+
+	actor.health_changed.connect(__update_bar)
 	actor.turn_started.connect(enable_background)
 	actor.turn_ended.connect(disable_background)
 

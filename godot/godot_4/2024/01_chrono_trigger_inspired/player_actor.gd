@@ -1,26 +1,32 @@
 class_name PlayerActor extends Actor
 
-@export var char_name: String = ""
 @export var game_state: GameState
 @export var camera_mount: RemoteTransform2D
-@export var is_active: bool = false
+@export_range(0.1, 2.0, 0.1) var follow_ratio: float = 1.0
+@export var distance: int = 120
 
 var battle_ui: BattleUI
-
-
 var camera: Camera2D
+var leader: PlayerActor
 
 
 func _ready() -> void:
 	super._ready()
+	leader = GameManager.get_leader()
 
-	if is_active:
+	if is_leader():
 		set_camera()
 
 
 func _physics_process(delta: float) -> void:
-	if is_active:
-		__move_world(delta)
+	if game_state.is_world():
+		if is_leader():
+			__apply_user_input(delta)
+		else:
+			__follow_leader(delta)
+
+	if game_state.is_battle():
+		velocity = Vector2.ZERO
 
 	move_and_slide()
 
@@ -43,11 +49,14 @@ func clean_camera() -> void:
 	camera_mount.set_remote_node("")
 
 
+func is_leader() -> bool:
+	return self == leader
+
+
 # Private Methods
 
 
-func __move_world(delta: float) -> void:
-	if game_state.is_world():
+func __apply_user_input(delta: float) -> void:
 		var direction := Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 		direction.normalized()
 
@@ -56,6 +65,15 @@ func __move_world(delta: float) -> void:
 		else:
 			velocity = lerp(velocity, direction * move_speed * delta, friction)
 
-	if game_state.is_battle():
-		velocity = Vector2.ZERO
+
+func __follow_leader(delta: float) -> void:
+	var direction_to_leader = global_position.direction_to(leader.global_position)
+	var distance_to_leader = global_position.distance_to(leader.global_position)
+
+	if distance_to_leader > distance:
+		var move_distance = move_speed * delta * follow_ratio
+		velocity = lerp(velocity, direction_to_leader * move_distance, 0.1)
+	else:
+		velocity = lerp(velocity, Vector2.ZERO, 0.9)
+
 

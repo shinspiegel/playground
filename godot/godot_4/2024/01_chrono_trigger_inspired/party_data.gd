@@ -13,11 +13,11 @@ func _init() -> void:
 
 func prepare_party_nodes() -> void:
 	var hero_1 = __create_player_actor_instance(HERO_1)
-	hero_1.name = hero_1.char_name
+	hero_1.name = hero_1.name
 	if not hero_1 == null: party.append(hero_1)
 
 	var hero_2 = __create_player_actor_instance(HERO_2)
-	hero_2.name = hero_2.char_name
+	hero_2.name = hero_2.name
 	if not hero_2 == null: party.append(hero_2)
 
 
