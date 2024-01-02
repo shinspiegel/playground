@@ -8,15 +8,13 @@ signal defeat()
 signal run()
 
 @export var battle_ui: BattleUI
-@export_group("Player Definitions")
-@export var watch_node: Node2D
-@export var player_pos: Node2D
+@export var hero_positions: Array[Node2D] = []
+
 @export_group("Camera Definition")
 @export var camera_center_position: Node2D
 @export var camera: Camera2D
-@export_group("Enemies Data")
-@export var enemies: Array[Enemy]
 
+var enemies: Array[Enemy]
 var combatent_ordered: Array[Actor] = []
 
 var __turn: int = 0
@@ -28,6 +26,8 @@ func _ready() -> void:
 
 func start_battle() -> void:
 	__reset_state()
+	__move_hero_to_positions()
+	__collect_enemies_on_area()
 	__prepare_combatents()
 	__prepare_camera_for_battle()
 	__prepare_actors()
@@ -69,7 +69,7 @@ func on_turn_end() -> void:
 
 
 func on_body_enter(node: Node2D) -> void:
-	if node == watch_node:
+	if node == GameManager.get_leader():
 		player_entered.emit()
 
 
@@ -103,4 +103,17 @@ func __prepare_actors() -> void:
 		for action in actor.action_list:
 			action.battle = self
 			action.battle_ui = battle_ui
+
+
+func __move_hero_to_positions() -> void:
+	var party = GameManager.get_party()
+	
+	for index in range(party.size()):
+		party[index].global_position = hero_positions[index].global_position
+
+
+func __collect_enemies_on_area() -> void:
+	for body in get_overlapping_bodies():
+		if body is Enemy:
+			enemies.append(body)
 

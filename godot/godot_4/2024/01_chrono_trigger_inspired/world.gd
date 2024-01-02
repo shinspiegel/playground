@@ -13,7 +13,6 @@ func _ready() -> void:
 	spawn_party()
 
 	for area in battle_areas:
-		area.watch_node = GameManager.party_data.get_leader()
 		area.player_entered.connect(on_battle_start.bind(area))
 		area.victory.connect(on_battle_victory.bind(area))
 		area.defeat.connect(on_battle_defeat.bind(area))

@@ -2,7 +2,6 @@ class_name BattleUI extends CanvasLayer
 
 signal target_selected()
 
-@export var battle: Battle
 @export var damage_number_scene: PackedScene
 
 @onready var character_data: VBoxContainer = %CharacterData
@@ -11,6 +10,7 @@ signal target_selected()
 @onready var hand: Node2D = %Hand
 
 @export_group("PRIVATE!!!")
+@export var battle: Battle
 @export var __current_actor: Actor
 @export var __current_target: Actor
 
@@ -143,3 +143,4 @@ func __unprepare_combatents() -> void:
 		actor.damaged.disconnect(on_receive_damage.bind(actor))
 		actor.focus.disconnect(on_focus.bind(actor))
 		actor.selected.disconnect(on_target_select.bind(actor))
+
