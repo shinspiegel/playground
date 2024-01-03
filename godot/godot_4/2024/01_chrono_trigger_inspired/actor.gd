@@ -47,13 +47,13 @@ func act_turn() -> void:
 
 
 func actor_death() -> void:
-	print_debug("WARN::Actor death. Using defatul behaviuor")
+	print_debug("INFO::Actor death. Using defatul behaviuor")
 	turn_ended.emit()
 	queue_free()
 
 
 func end_turn() -> void:
-	print_debug("WARN::Should implemente this on the inherited class. Remeber to emit 'end_turn' signal.")
+	print_debug("INFO::Using default behaviuor for 'end_turn'. Remeber to emit 'end_turn' signal.")
 	turn_ended.emit()
 
 
