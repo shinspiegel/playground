@@ -17,11 +17,11 @@ func disable_background() -> void: background.hide()
 func set_actor(actor: Actor) -> void:
 	name_label.text = actor.name
 
-	actor.health_changed.connect(__update_bar)
+	actor.actor_data.health_changed.connect(__update_bar)
 	actor.turn_started.connect(enable_background)
 	actor.turn_ended.connect(disable_background)
 
-	__update_bar(actor.stat_hit_points, actor.stat_max_hit_points)
+	__update_bar(actor.actor_data.hit_points, actor.actor_data.max_hit_points)
 
 
 # Private Methods

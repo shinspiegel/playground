@@ -8,5 +8,5 @@
 - [x] Update battle to use multiple party members 
 - [x] Move animation logic to it's own class
 - [x] Improved damage
-- [ ] Move actor to a resource instead of Node class
+- [x] Move actor to a resource instead of Node class
 - [ ] Add enemy AI behaviour (basic)

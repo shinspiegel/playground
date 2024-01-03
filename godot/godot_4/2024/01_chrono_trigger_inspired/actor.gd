@@ -1,54 +1,44 @@
+@tool
 class_name Actor extends CharacterBody2D
 
 signal turn_started()
 signal turn_ended()
 signal selected()
 signal focus()
-signal damaged(amount: int)
-signal health_changed(health: int, max_health: int)
 
+@export var actor_data: ActorData
 @export var move_speed = 30000.0
 @export var friction = 0.3
 
-@export_group("Battle data", "stat_")
-@export var stat_actions_container: Node2D
-@export var stat_max_hit_points: int = 10
-@export var stat_hit_points: int = 10
-@export var stat_attack: int = 10
-@export var stat_defense: int = 5
-@export var stat_speed: int = 10
-@export_range(0.0, 2.0, 0.1) var stat_damage_variation: float = 0.1
-@export_range(0.1, 1.0, 0.1) var stat_crit_chance: float = 0.1
-@export_range(1.0, 5.0, 0.1) var stat_crit_bonus: float = 1.5
-
 @onready var target_control: BaseButton = %SelectNode
 @onready var anim_player: ActorAnimPlayer = %AnimPlayer
+@onready var action_container: Node2D = %ActionList
+@onready var art_sprite: Sprite2D = %Art
 
 var action_list: Array[CombatAction] = []
-var anim_state_machine: AnimationNodeStateMachinePlayback
+
 
 func _ready() -> void:
-	#anim_state_machine = anim_tree.get("parameters/playback")
+	name = actor_data.name
+	art_sprite.texture = actor_data.actor_texture
 
-	for node in stat_actions_container.get_children():
-		if node is CombatAction:
-			action_list.append(node)
-
-	target_control.hide()
-	target_control.pressed.connect(func(): selected.emit())
-	target_control.focus_entered.connect(func(): focus.emit())
+	if not Engine.is_editor_hint(): # Only in game
+		actor_data = actor_data.duplicate(true)
 
 
-func grab_focus() -> void:
-	target_control.grab_focus()
+		for node in action_container.get_children():
+			if node is CombatAction:
+				action_list.append(node)
+
+		target_control.hide()
+		target_control.pressed.connect(func(): selected.emit())
+		target_control.focus_entered.connect(func(): focus.emit())
 
 
-func show_target() -> void:
-	target_control.show()
-
-
-func hide_target() -> void:
-	target_control.hide()
+func get_focus_path() -> NodePath: return target_control.get_path()
+func grab_focus() -> void: target_control.grab_focus()
+func show_target() -> void: target_control.show()
+func hide_target() -> void: target_control.hide()
 
 
 func act_turn() -> void:
@@ -59,10 +49,6 @@ func act_turn() -> void:
 func end_turn() -> void:
 	print_debug("WARN::Should implemente this on the inherited class. Remeber to emit 'end_turn' signal.")
 	turn_ended.emit()
-
-
-func get_focus_path() -> NodePath:
-	return target_control.get_path()
 
 
 func set_neighbor(next: NodePath, prev: NodePath) -> void:
@@ -76,19 +62,6 @@ func set_neighbor(next: NodePath, prev: NodePath) -> void:
 
 
 func receive_damage(damage: Damage) -> void:
-	damage.apply_defense(stat_defense)
-
-	stat_hit_points -= damage.amount
-
-	damaged.emit(damage.amount)
-	health_changed.emit()
-
-
-# Private Methods
-
-
-func __change_health(amount: int) -> void:
-	stat_hit_points = clampi(stat_hit_points + amount, 0, stat_max_hit_points)
-	health_changed.emit(stat_hit_points, stat_max_hit_points)
-
+	damage.apply_defense(actor_data.defense)
+	actor_data.receive_damage(damage.amount)
 

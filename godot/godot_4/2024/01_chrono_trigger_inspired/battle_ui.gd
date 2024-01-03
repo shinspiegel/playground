@@ -140,14 +140,14 @@ func __set_next_position_for_combatents() -> void:
 
 func __prepare_combatents() -> void:
 	for actor in battle.combatent_ordered:
-		actor.damaged.connect(on_receive_damage.bind(actor))
+		actor.actor_data.damaged.connect(on_receive_damage.bind(actor))
 		actor.focus.connect(on_focus.bind(actor))
 		actor.selected.connect(on_target_select.bind(actor))
 
 
 func __unprepare_combatents() -> void:
 	for actor in battle.combatent_ordered:
-		actor.damaged.disconnect(on_receive_damage.bind(actor))
+		actor.actor_data.damaged.disconnect(on_receive_damage.bind(actor))
 		actor.focus.disconnect(on_focus.bind(actor))
 		actor.selected.disconnect(on_target_select.bind(actor))
 

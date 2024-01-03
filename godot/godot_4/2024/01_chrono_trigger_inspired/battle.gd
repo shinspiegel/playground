@@ -85,7 +85,7 @@ func __prepare_combatents() -> void:
 	combatent_ordered = []
 	combatent_ordered.append_array(enemies)
 	combatent_ordered.append_array(GameManager.party_data.get_party())
-	combatent_ordered.sort_custom(func(a: Actor,b: Actor): return b.stat_speed - a.stat_speed)
+	combatent_ordered.sort_custom(__sort_combatent)
 
 
 
@@ -118,3 +118,6 @@ func __collect_enemies_on_area() -> void:
 		if body is Enemy:
 			enemies.append(body)
 
+
+func __sort_combatent(a: Actor, b: Actor) -> bool:
+	return a.actor_data.speed < b.actor_data.speed 

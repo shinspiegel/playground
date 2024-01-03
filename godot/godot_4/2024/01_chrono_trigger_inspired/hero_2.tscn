@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://u28q81nh6e02"]
+[gd_scene load_steps=10 format=3 uid="uid://u28q81nh6e02"]
 
 [ext_resource type="PackedScene" uid="uid://s2ytaoxq36a0" path="res://actor.tscn" id="1_pjixv"]
 [ext_resource type="Script" path="res://player_actor.gd" id="2_kl4fr"]
 [ext_resource type="Resource" uid="uid://bfukqmd37indk" path="res://game_state.tres" id="3_f4oqd"]
+[ext_resource type="Resource" uid="uid://cpt7mboubwxrp" path="res://actors_data/hero_2.tres" id="4_ov4fg"]
 [ext_resource type="Script" path="res://combat_attack_action.gd" id="4_sy21k"]
 [ext_resource type="Script" path="res://combat_action.gd" id="5_22vjw"]
 [ext_resource type="Script" path="res://damage_factory.gd" id="5_pb5tf"]
@@ -22,8 +23,7 @@ game_state = ExtResource("3_f4oqd")
 camera_mount = NodePath("CameraMount")
 follow_ratio = 1.0
 distance = 120
-stat_max_hit_points = 20
-stat_speed = 15
+actor_data = ExtResource("4_ov4fg")
 
 [node name="CameraMount" type="RemoteTransform2D" parent="." index="0"]
 
