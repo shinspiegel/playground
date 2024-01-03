@@ -6,6 +6,7 @@ signal player_entered()
 signal victory()
 signal defeat()
 signal run()
+signal combatend_changed()
 
 @export var battle_ui: BattleUI
 @export var hero_positions: Array[Node2D] = []
@@ -62,6 +63,10 @@ func start_actor_turn() -> void:
 	current_actor.act_turn()
 
 
+func get_first_ordered() -> Actor:
+	return combatent_ordered[0]
+
+
 func on_turn_end() -> void:
 	# Check for winning
 	# Check for losing
@@ -72,6 +77,11 @@ func on_turn_end() -> void:
 func on_body_enter(node: Node2D) -> void:
 	if node == GameManager.get_leader():
 		player_entered.emit()
+
+
+func on_actor_die(actor: Actor) -> void:
+	combatent_ordered.erase(actor)
+	combatend_changed.emit()
 
 
 # Private Methods
@@ -86,6 +96,9 @@ func __prepare_combatents() -> void:
 	combatent_ordered.append_array(enemies)
 	combatent_ordered.append_array(GameManager.party_data.get_party())
 	combatent_ordered.sort_custom(__sort_combatent)
+
+	for actor in combatent_ordered:
+		actor.actor_data.die.connect(on_actor_die.bind(actor))
 
 
 

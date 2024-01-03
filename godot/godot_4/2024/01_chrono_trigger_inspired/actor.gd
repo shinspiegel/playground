@@ -24,7 +24,7 @@ func _ready() -> void:
 
 	if not Engine.is_editor_hint(): # Only in game
 		actor_data = actor_data.duplicate(true)
-
+		actor_data.die.connect(on_actor_die)
 
 		for node in action_container.get_children():
 			if node is CombatAction:
@@ -46,6 +46,12 @@ func act_turn() -> void:
 	turn_started.emit()
 
 
+func actor_death() -> void:
+	print_debug("WARN::Actor death. Using defatul behaviuor")
+	turn_ended.emit()
+	queue_free()
+
+
 func end_turn() -> void:
 	print_debug("WARN::Should implemente this on the inherited class. Remeber to emit 'end_turn' signal.")
 	turn_ended.emit()
@@ -65,3 +71,6 @@ func receive_damage(damage: Damage) -> void:
 	damage.apply_defense(actor_data.defense)
 	actor_data.receive_damage(damage.amount)
 
+
+func on_actor_die() -> void:
+	actor_death()

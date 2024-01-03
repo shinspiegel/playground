@@ -29,6 +29,8 @@ func start(new_battle: Battle) -> void:
 	__set_next_position_for_combatents()
 	__prepare_combatents()
 
+	battle.combatend_changed.connect(__set_next_position_for_combatents)
+
 	show()
 	hide_commands()
 
@@ -36,6 +38,8 @@ func start(new_battle: Battle) -> void:
 func end() -> void:
 	__disconnect_party()
 	__unprepare_combatents()
+
+	battle.combatend_changed.disconnect(__set_next_position_for_combatents)
 
 	hide_commands()
 	actions_buttons.hide()
@@ -76,7 +80,7 @@ func show_targets() -> void:
 		actor.show_target()
 
 	if not battle.enemies.is_empty():
-		battle.enemies[0].grab_focus()
+		battle.get_first_ordered().grab_focus()
 
 
 func hide_targets() -> void:
@@ -93,12 +97,6 @@ func on_target_select(target: Actor) -> void:
 	__current_target = target
 	hide_targets()
 	target_selected.emit()
-
-
-func on_run_press() -> void:
-	battle.end_battle(battle.END_STATE.RUN)
-	pass
-
 
 
 func on_focus(node) -> void:
