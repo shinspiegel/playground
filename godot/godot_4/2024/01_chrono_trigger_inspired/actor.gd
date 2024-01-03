@@ -57,13 +57,13 @@ func end_turn() -> void:
 	turn_ended.emit()
 
 
-func set_neighbor(next: NodePath, prev: NodePath) -> void:
+func set_neighbor(prev: NodePath, next: NodePath) -> void:
 	target_control.set_focus_previous(prev)
-	target_control.set_focus_neighbor(SIDE_TOP, prev)
+	target_control.set_focus_neighbor(SIDE_BOTTOM, prev)
 	target_control.set_focus_neighbor(SIDE_LEFT, prev)
 
 	target_control.set_focus_next(next)
-	target_control.set_focus_neighbor(SIDE_BOTTOM, next)
+	target_control.set_focus_neighbor(SIDE_TOP, next)
 	target_control.set_focus_neighbor(SIDE_RIGHT, next)
 
 

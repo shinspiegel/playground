@@ -124,15 +124,16 @@ func on_receive_damage(amount: int, actor: Actor) -> void:
 
 
 func __set_next_position_for_combatents() -> void:
-	for index in range(battle.combatent_ordered.size()):
-		var current = battle.combatent_ordered[index]
-		var next_index = posmod(index+1, battle.combatent_ordered.size())
-		var prev_index = posmod(index-1, battle.combatent_ordered.size())
+	var list: Array[Actor] = []
+	list.append_array(battle.enemies)
+	list.append_array(GameManager.get_party())
 
-		current.set_neighbor(
-			battle.combatent_ordered[prev_index].get_focus_path(),
-			battle.combatent_ordered[next_index].get_focus_path(),
-		)
+	for index in range(list.size()):
+		var current = battle.combatent_ordered[index]
+		var next_index = posmod(index+1, list.size())
+		var prev_index = posmod(index-1, list.size())
+
+		current.set_neighbor(list[prev_index].get_focus_path(), list[next_index].get_focus_path())
 
 
 

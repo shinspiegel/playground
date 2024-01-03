@@ -9,6 +9,10 @@
 - [x] Move animation logic to it's own class
 - [x] Improved damage
 - [x] Move actor to a resource instead of Node class
-- [x] Implement enemy death
-- [ ] Implement win/lose condition for battle
+- [x] Add enemy death behaviour
+- [x] Fix ordering for selection to append the allies in the end
+- [ ] Do win/lose condition for battle
+- [ ] Add animation to actions
 - [ ] Add enemy AI behaviour (basic)
+- [ ] Basic CutScene class
+- [ ] Basic TextMessage class
