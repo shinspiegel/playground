@@ -7,8 +7,8 @@ signal selected()
 signal focus()
 
 @export var actor_data: ActorData
-@export var move_speed = 30000.0
-@export var friction = 0.3
+@export var move_speed: float = 30000.0
+@export var friction: float = 0.3
 
 @onready var target_control: BaseButton = %SelectNode
 @onready var anim_player: ActorAnimPlayer = %AnimPlayer
@@ -76,3 +76,4 @@ func is_down() -> bool:
 
 func on_actor_die() -> void:
 	actor_death()
+

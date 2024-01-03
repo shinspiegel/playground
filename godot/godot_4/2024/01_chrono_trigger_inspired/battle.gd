@@ -38,15 +38,15 @@ func start_battle() -> void:
 	start_actor_turn()
 
 
-func end_victory() -> void: 
+func end_victory() -> void:
 	end_battle(END_STATE.VICTORY)
 
 
-func end_defeat() -> void: 
+func end_defeat() -> void:
 	end_battle(END_STATE.DEFEAT)
 
 
-func end_run() -> void: 
+func end_run() -> void:
 	for enemy in enemies:
 		if enemy.is_down():
 			enemy.queue_free()
@@ -104,6 +104,7 @@ func on_actor_die(actor: Actor) -> void:
 	combatend_changed.emit()
 
 
+
 # Private Methods
 
 
@@ -137,9 +138,11 @@ func __prepare_actors() -> void:
 
 func __move_hero_to_positions() -> void:
 	var party = GameManager.get_party()
-	
+	var tw = create_tween().set_parallel(true).set_ease(Tween.EASE_IN)
+
 	for index in range(party.size()):
-		party[index].global_position = hero_positions[index].global_position
+		var member: Actor = party[index]
+		tw.tween_property(member, "global_position", hero_positions[index].global_position, 0.3)
 
 
 func __collect_enemies_on_area() -> void:
@@ -151,7 +154,7 @@ func __collect_enemies_on_area() -> void:
 
 
 func __sort_combatent(a: Actor, b: Actor) -> bool:
-	return a.actor_data.speed < b.actor_data.speed 
+	return a.actor_data.speed < b.actor_data.speed
 
 
 func __has_combat_win() -> bool:

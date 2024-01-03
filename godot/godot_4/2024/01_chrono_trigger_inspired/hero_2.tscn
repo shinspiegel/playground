@@ -17,7 +17,7 @@ damage_bonus_ratio = 0.0
 crit_bonus = 1.5
 crit_change = 0.1
 
-[node name="Sub Hero" node_paths=PackedStringArray("camera_mount") instance=ExtResource("1_pjixv")]
+[node name="PlayerActor" node_paths=PackedStringArray("camera_mount") instance=ExtResource("1_pjixv")]
 script = ExtResource("2_kl4fr")
 game_state = ExtResource("3_f4oqd")
 camera_mount = NodePath("CameraMount")

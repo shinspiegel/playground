@@ -5,14 +5,14 @@
 - [x] Add party data on the battle
 - [x] Party members will follow the player
 - [x] Add un-escapable battle
-- [x] Update battle to use multiple party members 
+- [x] Update battle to use multiple party members
 - [x] Move animation logic to it's own class
 - [x] Improved damage
 - [x] Move actor to a resource instead of Node class
 - [x] Add enemy death behaviour
 - [x] Fix ordering for selection to append the allies in the end
 - [x] Do win condition for battle
-- [ ] Animate to enter the battle
+- [x] Animate to enter the battle
 - [ ] Animate attack
 - [ ] Move threat level to EnemyData resource (extend ActorData class)
 - [ ] Add animation to actions
