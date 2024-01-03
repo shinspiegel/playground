@@ -69,9 +69,9 @@ func __apply_user_input(delta: float) -> void:
 		velocity = lerp(velocity, direction * move_speed * delta, friction)
 
 	if direction.length() > 0.1:
-		anim_move(__last_dir)
+		anim_player.anim_move(__last_dir)
 	else:
-		anim_idle(__last_dir)
+		anim_player.anim_idle(__last_dir)
 
 
 func __follow_leader(delta: float) -> void:
@@ -81,9 +81,9 @@ func __follow_leader(delta: float) -> void:
 	if distance_to_leader > distance:
 		var move_distance = move_speed * delta * follow_ratio
 		velocity = lerp(velocity, direction_to_leader * move_distance, 0.1)
-		anim_move(direction_to_leader)
+		anim_player.anim_move(direction_to_leader)
 	else:
 		velocity = lerp(velocity, Vector2.ZERO, 0.9)
-		anim_idle(direction_to_leader)
+		anim_player.anim_idle(direction_to_leader)
 
 
