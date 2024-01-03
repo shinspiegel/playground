@@ -7,6 +7,7 @@ signal die()
 
 @export var name: String = "Unnamed Actor"
 @export var actor_texture: Texture2D
+@export var is_down: bool = false
 
 @export var max_hit_points: int = 10
 @export var hit_points: int = 10
@@ -35,4 +36,7 @@ func change_health(amount: int) -> void:
 	health_changed.emit(hit_points, max_hit_points)
 
 	if hit_points == 0:
+		is_down = true
 		die.emit()
+
+

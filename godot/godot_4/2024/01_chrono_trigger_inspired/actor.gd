@@ -48,8 +48,6 @@ func act_turn() -> void:
 
 func actor_death() -> void:
 	print_debug("INFO::Actor death. Using defatul behaviuor")
-	turn_ended.emit()
-	queue_free()
 
 
 func end_turn() -> void:
@@ -70,6 +68,10 @@ func set_neighbor(prev: NodePath, next: NodePath) -> void:
 func receive_damage(damage: Damage) -> void:
 	damage.apply_defense(actor_data.defense)
 	actor_data.receive_damage(damage.amount)
+
+
+func is_down() -> bool:
+	return actor_data.is_down
 
 
 func on_actor_die() -> void:

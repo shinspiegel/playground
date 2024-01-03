@@ -11,6 +11,7 @@
 - [x] Move actor to a resource instead of Node class
 - [x] Add enemy death behaviour
 - [x] Fix ordering for selection to append the allies in the end
+- [ ] Move threat level to EnemyData resource (extend ActorData class)
 - [ ] Do win/lose condition for battle
 - [ ] Add animation to actions
 - [ ] Add enemy AI behaviour (basic)

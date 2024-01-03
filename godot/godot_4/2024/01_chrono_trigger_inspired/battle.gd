@@ -97,10 +97,6 @@ func __prepare_combatents() -> void:
 	combatent_ordered.append_array(GameManager.party_data.get_party())
 	combatent_ordered.sort_custom(__sort_combatent)
 
-	for actor in combatent_ordered:
-		actor.actor_data.die.connect(on_actor_die.bind(actor))
-
-
 
 func __prepare_camera_for_battle() -> void:
 	for unit in GameManager.get_party():

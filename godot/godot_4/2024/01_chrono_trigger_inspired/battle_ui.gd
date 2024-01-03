@@ -76,11 +76,16 @@ func hide_commands() -> void:
 
 
 func show_targets() -> void:
-	for actor in battle.combatent_ordered:
-		actor.show_target()
+	var is_first_selected: bool = false
 
-	if not battle.enemies.is_empty():
-		battle.get_first_ordered().grab_focus()
+	for actor in battle.combatent_ordered:
+		if not actor.is_down():
+			actor.show_target()
+
+			if not is_first_selected:
+				actor.grab_focus()
+				is_first_selected = true
+
 
 
 func hide_targets() -> void:
