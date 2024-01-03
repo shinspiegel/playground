@@ -13,10 +13,7 @@ func _ready() -> void:
 	spawn_party()
 
 	for area in battle_areas:
-		area.player_entered.connect(on_battle_start.bind(area))
-		area.victory.connect(on_battle_victory.bind(area))
-		area.defeat.connect(on_battle_defeat.bind(area))
-		area.run.connect(on_battle_run.bind(area))
+		__connect_battle(area)
 
 
 func spawn_party() -> void:
@@ -38,7 +35,8 @@ func on_battle_start(battle: Battle) -> void:
 
 
 func on_battle_victory(battle: Battle) -> void:
-	print("battle victory::[%s]" % [battle.name])
+	__disconnect_battle(battle)
+	battle.queue_free()
 	game_state.change_to_world()
 
 
@@ -51,3 +49,19 @@ func on_battle_run(battle: Battle) -> void:
 	print("battle run::[%s]" % [battle.name])
 	game_state.change_to_world()
 
+
+# Private Methods!
+
+
+func __connect_battle(battle: Battle) -> void:
+	battle.player_entered.connect(on_battle_start.bind(battle))
+	battle.victory.connect(on_battle_victory.bind(battle))
+	battle.defeat.connect(on_battle_defeat.bind(battle))
+	battle.run.connect(on_battle_run.bind(battle))
+
+
+func __disconnect_battle(battle: Battle) -> void:
+	battle.player_entered.disconnect(on_battle_start.bind(battle))
+	battle.victory.disconnect(on_battle_victory.bind(battle))
+	battle.defeat.disconnect(on_battle_defeat.bind(battle))
+	battle.run.disconnect(on_battle_run.bind(battle))

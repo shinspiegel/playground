@@ -38,9 +38,21 @@ func start_battle() -> void:
 	start_actor_turn()
 
 
-func end_victory() -> void: end_battle(END_STATE.VICTORY)
-func end_run() -> void: end_battle(END_STATE.RUN)
-func end_defeat() -> void: end_battle(END_STATE.DEFEAT)
+func end_victory() -> void: 
+	end_battle(END_STATE.VICTORY)
+
+
+func end_defeat() -> void: 
+	end_battle(END_STATE.DEFEAT)
+
+
+func end_run() -> void: 
+	for enemy in enemies:
+		if enemy.is_down():
+			enemy.queue_free()
+
+	end_battle(END_STATE.RUN)
+
 
 func end_battle(state: END_STATE = END_STATE.VICTORY) -> void:
 	for actor in combatent_ordered:
@@ -68,8 +80,16 @@ func get_first_ordered() -> Actor:
 
 
 func on_turn_end() -> void:
-	# Check for winning
-	# Check for losing
+	if __has_combat_win():
+		for enemy in enemies:
+			enemy.queue_free()
+		end_victory()
+		return
+
+	if __has_combat_lost():
+		end_defeat()
+		return
+
 	__turn += 1
 	start_actor_turn()
 
@@ -123,6 +143,8 @@ func __move_hero_to_positions() -> void:
 
 
 func __collect_enemies_on_area() -> void:
+	enemies.clear()
+
 	for body in get_overlapping_bodies():
 		if body is Enemy:
 			enemies.append(body)
@@ -130,3 +152,15 @@ func __collect_enemies_on_area() -> void:
 
 func __sort_combatent(a: Actor, b: Actor) -> bool:
 	return a.actor_data.speed < b.actor_data.speed 
+
+
+func __has_combat_win() -> bool:
+	for enemy in enemies:
+		if not enemy.is_down():
+			return false
+
+	return true
+
+
+func __has_combat_lost() -> bool:
+	return false
