@@ -9,6 +9,7 @@ signal run()
 
 @export var battle_ui: BattleUI
 @export var hero_positions: Array[Node2D] = []
+@export var can_be_escaped: bool = true
 
 @export_group("Camera Definition")
 @export var camera_center_position: Node2D
