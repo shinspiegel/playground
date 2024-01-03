@@ -1,11 +1,20 @@
-[gd_scene load_steps=7 format=3 uid="uid://ckqisy2cjiqfq"]
+[gd_scene load_steps=9 format=3 uid="uid://ckqisy2cjiqfq"]
 
 [ext_resource type="PackedScene" uid="uid://s2ytaoxq36a0" path="res://actor.tscn" id="1_tts8m"]
 [ext_resource type="Script" path="res://player_actor.gd" id="2_fxs5l"]
 [ext_resource type="Resource" uid="uid://bfukqmd37indk" path="res://game_state.tres" id="3_s64mb"]
 [ext_resource type="Script" path="res://combat_attack_action.gd" id="4_v8d1k"]
+[ext_resource type="Script" path="res://damage_factory.gd" id="5_d3b61"]
 [ext_resource type="Script" path="res://combat_action.gd" id="5_qjbpu"]
 [ext_resource type="Script" path="res://combat_run_action.gd" id="6_sbmpy"]
+
+[sub_resource type="Resource" id="Resource_iyd5d"]
+script = ExtResource("5_d3b61")
+damage_bonus = 0
+damage_variation = 0.1
+damage_bonus_ratio = 0.0
+crit_bonus = 1.5
+crit_change = 0.1
 
 [node name="Hero" node_paths=PackedStringArray("camera_mount") instance=ExtResource("1_tts8m")]
 script = ExtResource("2_fxs5l")
@@ -20,6 +29,7 @@ stat_speed = 20
 
 [node name="Attack" type="Node2D" parent="ActionList" index="0" node_paths=PackedStringArray("actor")]
 script = ExtResource("4_v8d1k")
+damage_factory = SubResource("Resource_iyd5d")
 actor = NodePath("../..")
 
 [node name="Defense" type="Node2D" parent="ActionList" index="1" node_paths=PackedStringArray("actor")]

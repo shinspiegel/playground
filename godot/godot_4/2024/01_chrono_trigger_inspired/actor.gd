@@ -75,22 +75,13 @@ func set_neighbor(next: NodePath, prev: NodePath) -> void:
 	target_control.set_focus_neighbor(SIDE_RIGHT, next)
 
 
-func attack_target(target: Actor) -> void:
-	var damage_variation = float(stat_attack * stat_damage_variation)
-	var damage = randi_range(stat_attack - damage_variation, stat_attack + damage_variation)
+func receive_damage(damage: Damage) -> void:
+	damage.apply_defense(stat_defense)
 
-	if randf_range(0.0, 1.0) < stat_crit_chance:
-		damage += damage * stat_crit_bonus
+	stat_hit_points -= damage.amount
 
-	target.receive_damage(damage)
-	turn_ended.emit()
-
-
-func receive_damage(damage: int) -> void:
-	var total_damage = clampi(damage - stat_defense, 1, damage - stat_defense)
-	damaged.emit(total_damage)
+	damaged.emit(damage.amount)
 	health_changed.emit()
-	stat_hit_points -= total_damage
 
 
 # Private Methods
