@@ -141,7 +141,6 @@ func __set_next_position_for_combatents() -> void:
 		current.set_neighbor(list[prev_index].get_focus_path(), list[next_index].get_focus_path())
 
 
-
 func __prepare_combatents() -> void:
 	for actor in battle.combatent_ordered:
 		actor.actor_data.damaged.connect(on_receive_damage.bind(actor))
@@ -152,7 +151,7 @@ func __prepare_combatents() -> void:
 func __unprepare_combatents() -> void:
 	for actor in battle.combatent_ordered:
 		actor.actor_data.damaged.disconnect(on_receive_damage.bind(actor))
-		actor.focus.disconnect(on_focus.bind(actor))
+		actor.focus.disconnect(on_focus_actor.bind(actor))
 		actor.selected.disconnect(on_target_select.bind(actor))
 
 

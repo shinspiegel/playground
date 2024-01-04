@@ -1,19 +1,21 @@
 class_name World extends Node2D
 
 @export var game_state: GameState
-@export var battle_areas: Array[Battle]
-@export var battle_ui: BattleUI
 
-@onready var sorted_container: Node2D = $Sorted
-@onready var party_start_pos: Node2D = $PartyStartPos
-@onready var main_camera: Camera2D = $MainCamera
+@onready var battle_ui: BattleUI = %BattleUI
+@onready var sorted_container: Node2D = %Sorted
+@onready var party_start_pos: Node2D = %PartyStartPos
+@onready var main_camera: Camera2D = %MainCamera
+@onready var battle_areas: Node2D = %BattleAreas
 
 
 func _ready() -> void:
 	spawn_party()
 
-	for area in battle_areas:
-		__connect_battle(area)
+	for area in battle_areas.get_children():
+		if area is Battle:
+			__prepare_battle(area)
+			__connect_battle(area)
 
 
 func spawn_party() -> void:
@@ -51,6 +53,11 @@ func on_battle_run(battle: Battle) -> void:
 
 
 # Private Methods!
+
+
+func __prepare_battle(battle: Battle) -> void:
+	battle.camera = main_camera
+	battle.battle_ui = battle_ui
 
 
 func __connect_battle(battle: Battle) -> void:

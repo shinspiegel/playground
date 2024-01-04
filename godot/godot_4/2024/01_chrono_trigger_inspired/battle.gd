@@ -7,21 +7,21 @@ signal victory()
 signal defeat()
 signal run()
 
-@export var battle_ui: BattleUI
 @export var hero_positions: Array[Node2D] = []
 @export var can_be_escaped: bool = true
-
-@export_group("Camera Definition")
 @export var camera_center_position: Node2D
-@export var camera: Camera2D
 
+var battle_ui: BattleUI
 var enemies: Array[Enemy]
+var camera: Camera2D
 var combatent_ordered: Array[Actor] = []
 
 var __turn: int = 0
 
 
 func _ready() -> void:
+	if camera_center_position == null:
+		print_debug("ERROR::Invalid or null 'camera_center_position'")
 	body_entered.connect(on_body_enter)
 
 
@@ -37,34 +37,25 @@ func start_battle() -> void:
 	start_actor_turn()
 
 
-func end_victory() -> void:
-	end_battle(END_STATE.VICTORY)
-
-
-func end_defeat() -> void:
-	end_battle(END_STATE.DEFEAT)
-
-
-func end_run() -> void:
-	for enemy in enemies:
-		if enemy.is_down():
-			enemy.queue_free()
-
-	end_battle(END_STATE.RUN)
-
-
+func end_victory() -> void: end_battle(END_STATE.VICTORY)
+func end_defeat() -> void: end_battle(END_STATE.DEFEAT)
+func end_run() -> void: end_battle(END_STATE.RUN)
 func end_battle(state: END_STATE = END_STATE.VICTORY) -> void:
-	for actor in combatent_ordered:
-		actor.turn_ended.disconnect(on_turn_end)
-
 	battle_ui.end()
-
+	__unprepare_actors()
 	GameManager.set_camera_for_leader()
 
 	match state:
-		END_STATE.VICTORY: victory.emit()
-		END_STATE.DEFEAT: defeat.emit()
-		END_STATE.RUN: run.emit()
+		END_STATE.VICTORY:
+			victory.emit()
+
+		END_STATE.DEFEAT:
+			defeat.emit()
+
+		END_STATE.RUN:
+			for enemy in enemies:
+				if enemy.is_down(): enemy.queue_free()
+			run.emit()
 
 
 func start_actor_turn() -> void:
@@ -131,6 +122,12 @@ func __prepare_actors() -> void:
 		for action in actor.action_list:
 			action.battle = self
 			action.battle_ui = battle_ui
+
+
+func __unprepare_actors() -> void:
+	for actor in combatent_ordered:
+		actor.turn_ended.disconnect(on_turn_end)
+		actor.actor_data.die.disconnect(on_actor_die.bind(actor))
 
 
 func __move_hero_to_positions() -> void:

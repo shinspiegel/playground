@@ -13,7 +13,7 @@
 - [x] Fix ordering for selection to append the allies in the end
 - [x] Do win condition for battle
 - [x] Animate to enter the battle
-- [ ] Add idle animation for all combatents
+- [x] Add idle animation for all combatents
 - [ ] Animate attack
 - [ ] Move threat level to EnemyData resource (extend ActorData class)
 - [ ] Add animation to actions
