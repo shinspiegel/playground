@@ -6,7 +6,6 @@ signal player_entered()
 signal victory()
 signal defeat()
 signal run()
-signal combatend_changed()
 
 @export var battle_ui: BattleUI
 @export var hero_positions: Array[Node2D] = []
@@ -28,10 +27,10 @@ func _ready() -> void:
 
 func start_battle() -> void:
 	__reset_state()
+	__prepare_camera_for_battle()
 	__move_hero_to_positions()
 	__collect_enemies_on_area()
-	__prepare_combatents()
-	__prepare_camera_for_battle()
+	__start_animation_for_enemies()
 	__prepare_actors()
 
 	battle_ui.start(self)
@@ -100,8 +99,7 @@ func on_body_enter(node: Node2D) -> void:
 
 
 func on_actor_die(actor: Actor) -> void:
-	combatent_ordered.erase(actor)
-	combatend_changed.emit()
+	actor.anim_player.anim_die(actor.global_position.direction_to(hero_positions[0].global_position).normalized())
 
 
 
@@ -110,13 +108,6 @@ func on_actor_die(actor: Actor) -> void:
 
 func __reset_state() -> void:
 	__turn = 0
-
-
-func __prepare_combatents() -> void:
-	combatent_ordered = []
-	combatent_ordered.append_array(enemies)
-	combatent_ordered.append_array(GameManager.party_data.get_party())
-	combatent_ordered.sort_custom(__sort_combatent)
 
 
 func __prepare_camera_for_battle() -> void:
@@ -128,8 +119,14 @@ func __prepare_camera_for_battle() -> void:
 
 
 func __prepare_actors() -> void:
+	combatent_ordered = []
+	combatent_ordered.append_array(enemies)
+	combatent_ordered.append_array(GameManager.party_data.get_party())
+	combatent_ordered.sort_custom(__sort_combatent)
+
 	for actor in combatent_ordered:
 		actor.turn_ended.connect(on_turn_end)
+		actor.actor_data.die.connect(on_actor_die.bind(actor))
 
 		for action in actor.action_list:
 			action.battle = self
@@ -142,7 +139,14 @@ func __move_hero_to_positions() -> void:
 
 	for index in range(party.size()):
 		var member: Actor = party[index]
+		member.anim_player.anim_move(member.global_position.direction_to(camera.global_position).normalized())
 		tw.tween_property(member, "global_position", hero_positions[index].global_position, 0.3)
+
+	await tw.finished
+
+	for index in range(party.size()):
+		var member: Actor = party[index]
+		member.anim_player.anim_move(member.global_position.direction_to(camera.global_position).normalized())
 
 
 func __collect_enemies_on_area() -> void:
@@ -167,3 +171,9 @@ func __has_combat_win() -> bool:
 
 func __has_combat_lost() -> bool:
 	return false
+
+
+func __start_animation_for_enemies() -> void:
+	for enemy in enemies:
+		enemy.anim_player.anim_idle(enemy.global_position.direction_to(hero_positions[0].global_position).normalized())
+

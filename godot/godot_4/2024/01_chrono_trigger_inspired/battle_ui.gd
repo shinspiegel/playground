@@ -29,8 +29,6 @@ func start(new_battle: Battle) -> void:
 	__set_next_position_for_combatents()
 	__prepare_combatents()
 
-	battle.combatend_changed.connect(__set_next_position_for_combatents)
-
 	show()
 	hide_commands()
 
@@ -38,8 +36,6 @@ func start(new_battle: Battle) -> void:
 func end() -> void:
 	__disconnect_party()
 	__unprepare_combatents()
-
-	battle.combatend_changed.disconnect(__set_next_position_for_combatents)
 
 	hide_commands()
 	actions_buttons.hide()
@@ -104,8 +100,12 @@ func on_target_select(target: Actor) -> void:
 	target_selected.emit()
 
 
-func on_focus(node) -> void:
+func on_focus(node: Control) -> void:
 	move_hand_to(node.get_global_transform_with_canvas().origin)
+
+
+func on_focus_actor(node: Actor) -> void:
+	move_hand_to(node.target_control.get_global_transform_with_canvas().origin)
 
 
 func on_action_select(action: CombatAction) -> void:
@@ -145,7 +145,7 @@ func __set_next_position_for_combatents() -> void:
 func __prepare_combatents() -> void:
 	for actor in battle.combatent_ordered:
 		actor.actor_data.damaged.connect(on_receive_damage.bind(actor))
-		actor.focus.connect(on_focus.bind(actor))
+		actor.focus.connect(on_focus_actor.bind(actor))
 		actor.selected.connect(on_target_select.bind(actor))
 
 

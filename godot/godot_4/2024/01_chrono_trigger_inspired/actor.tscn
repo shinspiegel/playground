@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://s2ytaoxq36a0"]
+[gd_scene load_steps=12 format=3 uid="uid://s2ytaoxq36a0"]
 
 [ext_resource type="Script" path="res://actor.gd" id="1_sdl1e"]
 [ext_resource type="Texture2D" uid="uid://rs2qunul6ij4" path="res://assets/template_character.png" id="2_4h4fn"]
@@ -9,6 +9,21 @@
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wkwkc"]
 radius = 12.0
 height = 48.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2ccjd"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qplvh"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gc3j8"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6nmei"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6i7w1"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [node name="Base Actor" type="CharacterBody2D"]
 collision_layer = 2
@@ -40,9 +55,12 @@ position = Vector2(0, -4)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_wkwkc")
 
-[node name="SelectNode" type="Button" parent="."]
+[node name="HandPosition" type="Node2D" parent="."]
+position = Vector2(-40, -32)
+metadata/_edit_group_ = true
+
+[node name="SelectNode" type="Button" parent="HandPosition"]
 unique_name_in_owner = true
-visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -54,3 +72,8 @@ offset_right = 20.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_2ccjd")
+theme_override_styles/hover = SubResource("StyleBoxFlat_qplvh")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_gc3j8")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_6nmei")
+theme_override_styles/focus = SubResource("StyleBoxFlat_6i7w1")

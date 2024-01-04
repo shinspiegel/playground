@@ -1,9 +1,47 @@
-[gd_scene load_steps=5 format=3 uid="uid://dy0sjut27553q"]
+[gd_scene load_steps=9 format=3 uid="uid://dy0sjut27553q"]
 
 [ext_resource type="Script" path="res://battle_ui.gd" id="1_608h2"]
 [ext_resource type="Theme" uid="uid://bn62phspmmrw6" path="res://base_theme.tres" id="1_gms6p"]
 [ext_resource type="PackedScene" uid="uid://b6ycpdru3xnqv" path="res://damage_number.tscn" id="2_6gao6"]
 [ext_resource type="PackedScene" uid="uid://bg2pn3hm3w0b7" path="res://combatent_battle_data.tscn" id="4_5oet5"]
+[ext_resource type="Texture2D" uid="uid://daft7im40unno" path="res://assets/hand.png" id="5_p2vey"]
+
+[sub_resource type="Animation" id="Animation_hvxa3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Hand:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -16)]
+}
+
+[sub_resource type="Animation" id="Animation_kr85w"]
+resource_name = "new_animation"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Hand:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(0.7, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(16, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_56cr8"]
+_data = {
+"RESET": SubResource("Animation_hvxa3"),
+"new_animation": SubResource("Animation_kr85w")
+}
 
 [node name="BattleUI" type="CanvasLayer"]
 script = ExtResource("1_608h2")
@@ -61,6 +99,13 @@ alignment = 2
 [node name="Hand" type="Node2D" parent="."]
 unique_name_in_owner = true
 
-[node name="Polygon2D" type="Polygon2D" parent="Hand"]
-color = Color(0.694118, 0.282353, 0.588235, 1)
-polygon = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+[node name="Hand" type="Sprite2D" parent="Hand"]
+position = Vector2(0, -16)
+scale = Vector2(4, 4)
+texture = ExtResource("5_p2vey")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Hand"]
+libraries = {
+"": SubResource("AnimationLibrary_56cr8")
+}
+autoplay = "new_animation"
