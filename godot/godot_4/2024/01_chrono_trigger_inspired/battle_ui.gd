@@ -31,6 +31,7 @@ func start(new_battle: Battle) -> void:
 
 	show()
 	hide_commands()
+	hide_hand()
 
 
 func end() -> void:
@@ -43,6 +44,8 @@ func end() -> void:
 
 
 func show_command_for_actor(actor: Actor) -> void:
+	show_hand()
+
 	for node in actions_buttons.get_children():
 		actions_buttons.remove_child(node)
 		node.queue_free()
@@ -71,32 +74,56 @@ func hide_commands() -> void:
 	hand.hide()
 
 
-func show_targets() -> void:
-	var is_first_selected: bool = false
+func show_hand() -> void:
+	hand.show()
 
+func hide_hand() -> void:
+	hand.hide()
+
+
+func show_targets_enemies() -> void:
+	for actor in battle.enemies:
+		if not actor.is_down():
+			actor.show_target()
+
+func show_target_party() -> void:
+	for actor in GameManager.get_party():
+		if not actor.is_down():
+			actor.show_target()
+
+
+func show_targets_all() -> void:
 	for actor in battle.combatent_ordered:
 		if not actor.is_down():
 			actor.show_target()
 
-			if not is_first_selected:
-				actor.grab_focus()
-				is_first_selected = true
+
+func select_first_target() -> void:
+	for actor in battle.enemies:
+		if actor.is_target_visible:
+			actor.grab_focus()
+			return
+
+	for actor in GameManager.get_party():
+		if actor.is_target_visible:
+			actor.grab_focus()
+			return
 
 
-
-func hide_targets() -> void:
+func hide_all_targets() -> void:
 	for actor in battle.combatent_ordered:
 		actor.hide_target()
 
 
 func move_hand_to(pos: Vector2) -> void:
-	hand.show()
-	hand.global_position = pos
+	show_hand()
+	var tw = create_tween().set_ease(Tween.EASE_IN)
+	tw.tween_property(hand, "global_position", pos, 0.1)
 
 
 func on_target_select(target: Actor) -> void:
 	__current_target = target
-	hide_targets()
+	hide_all_targets()
 	target_selected.emit()
 
 
@@ -109,12 +136,19 @@ func on_focus_actor(node: Actor) -> void:
 
 
 func on_action_select(action: CombatAction) -> void:
+	hide_hand()
 	__current_target = null
 
-	if action.require_target:
-		show_targets()
-		await target_selected
+	if action.affects_enemies:
+		show_targets_enemies()
 
+	if action.affect_allies:
+		show_target_party()
+
+	__set_next_position_for_combatents()
+	select_first_target()
+
+	await target_selected
 	action.use_action(__current_target)
 
 
@@ -130,11 +164,17 @@ func on_receive_damage(amount: int, actor: Actor) -> void:
 
 func __set_next_position_for_combatents() -> void:
 	var list: Array[Actor] = []
-	list.append_array(battle.enemies)
-	list.append_array(GameManager.get_party())
+
+	for actor in battle.enemies:
+		if actor.is_target_visible():
+			list.append(actor)
+
+	for actor in GameManager.get_party():
+		if actor.is_target_visible():
+			list.append(actor)
 
 	for index in range(list.size()):
-		var current = battle.combatent_ordered[index]
+		var current: Actor = battle.combatent_ordered[index]
 		var next_index = posmod(index+1, list.size())
 		var prev_index = posmod(index-1, list.size())
 

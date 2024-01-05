@@ -39,6 +39,7 @@ func get_focus_path() -> NodePath: return target_control.get_path()
 func grab_focus() -> void: target_control.grab_focus()
 func show_target() -> void: target_control.show()
 func hide_target() -> void: target_control.hide()
+func is_target_visible() -> bool: return target_control.visible
 
 
 func act_turn() -> void:

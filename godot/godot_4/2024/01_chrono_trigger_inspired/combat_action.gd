@@ -1,7 +1,8 @@
 class_name CombatAction extends Node2D
 
 @export var actor: Actor
-@export var require_target: bool = true
+@export var affects_enemies: bool = true
+@export var affect_allies: bool = true
 
 var battle: Battle
 var battle_ui: BattleUI

@@ -14,6 +14,7 @@
 - [x] Do win condition for battle
 - [x] Animate to enter the battle
 - [x] Add idle animation for all combatents
+- [ ] Refactor for a SignalBus
 - [ ] Animate attack
 - [ ] Move threat level to EnemyData resource (extend ActorData class)
 - [ ] Add animation to actions
