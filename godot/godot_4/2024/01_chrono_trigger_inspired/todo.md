@@ -1,5 +1,3 @@
-# Todos
-
 - [x] Multiple Party members
 - [x] Move player to specific places in the battle
 - [x] Add party data on the battle

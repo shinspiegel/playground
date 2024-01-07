@@ -1,0 +1,72 @@
+[gd_scene load_steps=6 format=3 uid="uid://byn3qutd87i7p"]
+
+[ext_resource type="Script" path="res://addons/markdown_todolist/markdown_ui_item.gd" id="1_j4iww"]
+[ext_resource type="Script" path="res://addons/markdown_todolist/markdown_ui_text_edit.gd" id="2_7gykp"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_207o5"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_oxvc2"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_n4482"]
+
+[node name="MarkdownUIItem" type="Panel"]
+custom_minimum_size = Vector2(2.08165e-12, 80)
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+script = ExtResource("1_j4iww")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+
+[node name="Box" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CheckBox" type="CheckBox" parent="MarginContainer/Box"]
+layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_207o5")
+
+[node name="TextEdit" type="TextEdit" parent="MarginContainer/Box"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_styles/normal = SubResource("StyleBoxEmpty_oxvc2")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_n4482")
+text = "EMPTY TEXT"
+context_menu_enabled = false
+shortcut_keys_enabled = false
+drag_and_drop_selection_enabled = false
+virtual_keyboard_enabled = false
+middle_mouse_paste_enabled = false
+wrap_mode = 1
+autowrap_mode = 2
+scroll_fit_content_height = true
+caret_blink = true
+script = ExtResource("2_7gykp")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Box"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Start" type="Button" parent="MarginContainer/Box/HBoxContainer"]
+layout_mode = 2
+text = "P"
+
+[node name="Stop" type="Button" parent="MarginContainer/Box/HBoxContainer"]
+layout_mode = 2
+text = "S"
+
+[node name="Delete" type="Button" parent="MarginContainer/Box/HBoxContainer"]
+layout_mode = 2
+text = "D"

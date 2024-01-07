@@ -1,0 +1,85 @@
+[gd_scene load_steps=7 format=3 uid="uid://khdubt877w5l"]
+
+[ext_resource type="Script" path="res://addons/markdown_todolist/markdown_todos.gd" id="1_l422q"]
+[ext_resource type="Script" path="res://addons/markdown_todolist/markdown_todos_tree.gd" id="2_3w6ig"]
+[ext_resource type="Script" path="res://addons/markdown_todolist/markdown_todos_persist_data.gd" id="2_wgwqt"]
+[ext_resource type="Script" path="res://addons/markdown_todolist/markdown_ui_text_edit.gd" id="4_tucnj"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_f2r7i"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vjnd5"]
+
+[node name="Markdown Todos" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_l422q")
+
+[node name="PersistData" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("2_wgwqt")
+
+[node name="MarkdownParser" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("2_3w6ig")
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel2" type="Panel" parent="VBoxContainer2"]
+custom_minimum_size = Vector2(2.08165e-12, 60)
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="NewEntryTextEdit" type="TextEdit" parent="VBoxContainer2/Panel2"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -13.5
+offset_bottom = 13.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_f2r7i")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_vjnd5")
+placeholder_text = "...Type a new todo"
+scroll_fit_content_height = true
+script = ExtResource("4_tucnj")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer2/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer2/VBoxContainer/MarginContainer"]
+layout_mode = 2
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 2
+
+[node name="Box" type="VBoxContainer" parent="VBoxContainer2/VBoxContainer/MarginContainer/ScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+theme_override_constants/separation = 12
+
+[node name="Reload" type="Button" parent="VBoxContainer2"]
+layout_mode = 2
+text = "Reload File"
