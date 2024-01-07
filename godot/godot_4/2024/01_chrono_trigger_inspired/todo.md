@@ -1,3 +1,11 @@
+- [ ] Refactor for a SignalBus
+- [ ] Animate attack
+- [ ] Move threat level to EnemyData resource (extend ActorData class)
+- [ ] Add animation to actions
+- [ ] Add enemy AI behaviour (basic)
+- [ ] Do lose condition for battle
+- [ ] Basic CutScene class
+- [ ] Basic TextMessage class
 - [x] Multiple Party members
 - [x] Move player to specific places in the battle
 - [x] Add party data on the battle
@@ -12,11 +20,3 @@
 - [x] Do win condition for battle
 - [x] Animate to enter the battle
 - [x] Add idle animation for all combatents
-- [ ] Refactor for a SignalBus
-- [ ] Animate attack
-- [ ] Move threat level to EnemyData resource (extend ActorData class)
-- [ ] Add animation to actions
-- [ ] Add enemy AI behaviour (basic)
-- [ ] Do lose condition for battle
-- [ ] Basic CutScene class
-- [ ] Basic TextMessage class

@@ -22,7 +22,6 @@ func _ready() -> void:
 func update_ui() -> void:
 	for todo_item in parser.get_children():
 		if todo_item is MarkdownTodoItem:
-			todo_item.changed.connect(on_todo_changed)
 			add_todo_to_ui(todo_item)
 
 
@@ -34,6 +33,7 @@ func clean_box() -> void:
 
 func add_todo_to_ui(todo_item: MarkdownTodoItem) -> void:
 	var ui_item: MarkdownUIItem = ui_item.instantiate()
+	todo_item.changed.connect(on_todo_changed.bind(ui_item, todo_item))
 	ui_item.todo_item = todo_item
 	box.add_child(ui_item)
 
@@ -58,5 +58,9 @@ func on_reload() -> void:
 	update_ui()
 
 
-func on_todo_changed() -> void:
+func on_todo_changed(ui_item: MarkdownUIItem, todo_item: MarkdownTodoItem) -> void:
+	if todo_item.completed:
+		move_child(todo_item, -1)
+		box.move_child(ui_item, -1)
+
 	persist.save()

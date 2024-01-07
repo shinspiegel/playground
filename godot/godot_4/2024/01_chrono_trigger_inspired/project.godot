@@ -26,6 +26,10 @@ window/size/viewport_height=1080
 window/stretch/mode="viewport"
 window/stretch/scale_mode="integer"
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/markdown_todolist/plugin.cfg")
+
 [layer_names]
 
 2d_physics/layer_1="Walls"
