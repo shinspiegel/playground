@@ -1,3 +1,12 @@
-[gd_scene format=3 uid="uid://bifn1ugq7tinf"]
+[gd_scene load_steps=2 format=3 uid="uid://bifn1ugq7tinf"]
+
+[ext_resource type="TileSet" uid="uid://dt4uug342irtm" path="res://source/world_level/base_tilemap.tres" id="1_3mqd7"]
 
 [node name="Level" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+scale = Vector2(4, 4)
+tile_set = ExtResource("1_3mqd7")
+format = 2
+
+[node name="YSortedNodes" type="Node2D" parent="."]
