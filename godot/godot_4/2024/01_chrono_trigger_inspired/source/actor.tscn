@@ -1,8 +1,8 @@
 [gd_scene load_steps=12 format=3 uid="uid://s2ytaoxq36a0"]
 
-[ext_resource type="Script" path="res://actor.gd" id="1_sdl1e"]
+[ext_resource type="Script" path="res://source/actor.gd" id="1_sdl1e"]
 [ext_resource type="Texture2D" uid="uid://rs2qunul6ij4" path="res://assets/template_character.png" id="2_4h4fn"]
-[ext_resource type="PackedScene" uid="uid://jcejjmwtx4sq" path="res://actor_anim_player.tscn" id="2_ayi5o"]
+[ext_resource type="PackedScene" uid="uid://jcejjmwtx4sq" path="res://source/actor_anim_player.tscn" id="2_ayi5o"]
 [ext_resource type="Resource" uid="uid://o30eemt8dwst" path="res://actors_data/base_actor.tres" id="2_v4ox7"]
 [ext_resource type="Texture2D" uid="uid://b5yhauy6pgkgj" path="res://assets/bought_assets/Pixel-RPG_Prototype_v003/Extras/Shadow.png" id="3_vya0p"]
 

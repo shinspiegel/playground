@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://b6ycpdru3xnqv"]
 
-[ext_resource type="Script" path="res://damage_number.gd" id="1_oexph"]
+[ext_resource type="Script" path="res://source/damage_number.gd" id="1_oexph"]
 
 [sub_resource type="Animation" id="Animation_ncbhr"]
 resource_name = "anim"

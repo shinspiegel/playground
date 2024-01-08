@@ -1,6 +1,6 @@
 class_name BattleUI extends CanvasLayer
 
-const combatent_battle_data = preload("res://combatent_battle_data.tscn")
+const combatent_battle_data = preload("res://source/combatent_battle_data.tscn")
 signal target_selected()
 
 @export var damage_number_scene: PackedScene
@@ -148,7 +148,9 @@ func on_action_select(action: CombatAction) -> void:
 	__set_next_position_for_combatents()
 	select_first_target()
 
-	await target_selected
+	if action.affects_enemies or action.affect_allies:
+		await target_selected
+
 	action.use_action(__current_target)
 
 

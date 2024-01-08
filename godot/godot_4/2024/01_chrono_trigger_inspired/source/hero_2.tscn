@@ -1,13 +1,13 @@
 [gd_scene load_steps=10 format=3 uid="uid://u28q81nh6e02"]
 
-[ext_resource type="PackedScene" uid="uid://s2ytaoxq36a0" path="res://actor.tscn" id="1_pjixv"]
-[ext_resource type="Script" path="res://player_actor.gd" id="2_kl4fr"]
-[ext_resource type="Resource" uid="uid://bfukqmd37indk" path="res://game_state.tres" id="3_f4oqd"]
+[ext_resource type="PackedScene" uid="uid://s2ytaoxq36a0" path="res://source/actor.tscn" id="1_pjixv"]
+[ext_resource type="Script" path="res://source/player_actor.gd" id="2_kl4fr"]
+[ext_resource type="Resource" uid="uid://bfukqmd37indk" path="res://source/game_state.tres" id="3_f4oqd"]
 [ext_resource type="Resource" uid="uid://cpt7mboubwxrp" path="res://actors_data/hero_2.tres" id="4_ov4fg"]
-[ext_resource type="Script" path="res://combat_attack_action.gd" id="4_sy21k"]
-[ext_resource type="Script" path="res://combat_action.gd" id="5_22vjw"]
-[ext_resource type="Script" path="res://damage_factory.gd" id="5_pb5tf"]
-[ext_resource type="Script" path="res://combat_run_action.gd" id="6_m7166"]
+[ext_resource type="Script" path="res://source/combat_attack_action.gd" id="4_sy21k"]
+[ext_resource type="Script" path="res://source/combat_action.gd" id="5_22vjw"]
+[ext_resource type="Script" path="res://source/damage_factory.gd" id="5_pb5tf"]
+[ext_resource type="Script" path="res://source/combat_run_action.gd" id="6_m7166"]
 
 [sub_resource type="Resource" id="Resource_vv2u2"]
 script = ExtResource("5_pb5tf")

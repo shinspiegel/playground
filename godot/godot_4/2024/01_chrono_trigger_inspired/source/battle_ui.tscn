@@ -1,9 +1,9 @@
 [gd_scene load_steps=9 format=3 uid="uid://dy0sjut27553q"]
 
-[ext_resource type="Script" path="res://battle_ui.gd" id="1_608h2"]
-[ext_resource type="Theme" uid="uid://bn62phspmmrw6" path="res://base_theme.tres" id="1_gms6p"]
-[ext_resource type="PackedScene" uid="uid://b6ycpdru3xnqv" path="res://damage_number.tscn" id="2_6gao6"]
-[ext_resource type="PackedScene" uid="uid://bg2pn3hm3w0b7" path="res://combatent_battle_data.tscn" id="4_5oet5"]
+[ext_resource type="Script" path="res://source/battle_ui.gd" id="1_608h2"]
+[ext_resource type="Theme" uid="uid://bn62phspmmrw6" path="res://source/base_theme.tres" id="1_gms6p"]
+[ext_resource type="PackedScene" uid="uid://b6ycpdru3xnqv" path="res://source/damage_number.tscn" id="2_6gao6"]
+[ext_resource type="PackedScene" uid="uid://bg2pn3hm3w0b7" path="res://source/combatent_battle_data.tscn" id="4_5oet5"]
 [ext_resource type="Texture2D" uid="uid://daft7im40unno" path="res://assets/hand.png" id="5_p2vey"]
 
 [sub_resource type="Animation" id="Animation_hvxa3"]

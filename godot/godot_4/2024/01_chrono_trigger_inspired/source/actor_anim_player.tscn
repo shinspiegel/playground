@@ -1,6 +1,6 @@
 [gd_scene load_steps=24 format=3 uid="uid://jcejjmwtx4sq"]
 
-[ext_resource type="Script" path="res://actor_anim_player.gd" id="1_ubp1i"]
+[ext_resource type="Script" path="res://source/actor_anim_player.gd" id="1_ubp1i"]
 
 [sub_resource type="Animation" id="Animation_20ye4"]
 length = 0.001

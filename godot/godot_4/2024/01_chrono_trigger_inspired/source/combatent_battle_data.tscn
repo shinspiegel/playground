@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bg2pn3hm3w0b7"]
 
-[ext_resource type="Script" path="res://combatent_battle_data.gd" id="1_njiwe"]
+[ext_resource type="Script" path="res://source/combatent_battle_data.gd" id="1_njiwe"]
 
 [node name="CharacterName" type="Control"]
 custom_minimum_size = Vector2(600, 48)

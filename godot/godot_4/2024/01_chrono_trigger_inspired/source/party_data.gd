@@ -1,7 +1,7 @@
 class_name PartyData extends Resource
 
-const HERO_1 = preload("res://hero_1.tscn")
-const HERO_2 = preload("res://hero_2.tscn")
+const HERO_1 = preload("res://source/hero_1.tscn")
+const HERO_2 = preload("res://source/hero_2.tscn")
 
 
 var party: Array[PlayerActor] = []

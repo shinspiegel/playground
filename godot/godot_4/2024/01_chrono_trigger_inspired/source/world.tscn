@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://digwssbx8ooil"]
 
-[ext_resource type="Script" path="res://world.gd" id="1_034ps"]
-[ext_resource type="TileSet" uid="uid://coew56js04ywn" path="res://tilemap.tres" id="1_b1dug"]
-[ext_resource type="Resource" uid="uid://bfukqmd37indk" path="res://game_state.tres" id="2_3snys"]
-[ext_resource type="PackedScene" uid="uid://dy0sjut27553q" path="res://battle_ui.tscn" id="3_a54y4"]
+[ext_resource type="Script" path="res://source/world.gd" id="1_034ps"]
+[ext_resource type="TileSet" uid="uid://coew56js04ywn" path="res://source/tilemap.tres" id="1_b1dug"]
+[ext_resource type="Resource" uid="uid://bfukqmd37indk" path="res://source/game_state.tres" id="2_3snys"]
+[ext_resource type="PackedScene" uid="uid://dy0sjut27553q" path="res://source/battle_ui.tscn" id="3_a54y4"]
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_034ps")
