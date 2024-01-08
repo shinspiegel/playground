@@ -10,32 +10,22 @@ config_version=5
 
 [application]
 
-config/name="(FAIL) Chrono Trigger Battle System"
-config/version="0.0.0"
-run/main_scene="res://test_level.tscn"
+config/name="ChronoTrigger With SignalBus"
+config/description="Base game for a chrono trigger inspired"
+run/main_scene="res://main.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
+config/icon="res://icon.svg"
 
 [autoload]
 
-SignalBus="*res://source/signal_bus.tscn"
-GameManager="*res://source/game_manager.tscn"
+SignalBus="*res://source/singleton/signal_bus.tscn"
 
 [display]
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
-window/stretch/mode="viewport"
 window/stretch/scale_mode="integer"
 
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/markdown_todolist/plugin.cfg")
-
-[layer_names]
-
-2d_physics/layer_1="Walls"
-2d_physics/layer_2="characters"
-
-[rendering]
-
-textures/canvas_textures/default_texture_filter=0

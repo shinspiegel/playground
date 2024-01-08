@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://csp1350btqy03"]
+
+[ext_resource type="Script" path="res://source/singleton/signal_bus.gd" id="1_df2s1"]
+
+[node name="SignalBus" type="Node2D"]
+script = ExtResource("1_df2s1")

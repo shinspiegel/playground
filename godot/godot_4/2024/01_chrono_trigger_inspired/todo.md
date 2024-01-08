@@ -1,4 +1,4 @@
-- [ ] Refactor for a SignalBus
+- [ ] Refactor for a SignalBus [00:03]
 - [ ] Animate attack
 - [ ] Move threat level to EnemyData resource (extend ActorData class)
 - [ ] Add animation to actions
