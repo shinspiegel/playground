@@ -39,7 +39,11 @@ func _apply_jump() -> void:
 
 func _apply_direction(dir: float) -> void:
 	if dir:
-		velocity.x = dir * SPEED
+		var ratio = 1.0
+		if not is_on_floor(): ratio = 0.7
+		if not is_on_floor() and not has_double_jump: ratio = 1.2
+
+		velocity.x = (dir * SPEED) * ratio
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
