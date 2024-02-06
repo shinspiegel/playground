@@ -1,0 +1,46 @@
+[gd_scene load_steps=4 format=3 uid="uid://c21pyq8kba4ne"]
+
+[sub_resource type="Theme" id="Theme_xg2hm"]
+default_font_size = 32
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ujlro"]
+radius = 28.0
+height = 100.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wxybu"]
+size = Vector2(410, 80)
+
+[node name="Main" type="Node2D"]
+
+[node name="Overlay" type="CanvasLayer" parent="."]
+
+[node name="GameUI" type="Control" parent="Overlay"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_xg2hm")
+
+[node name="Label" type="Label" parent="Overlay/GameUI"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "This is UI"
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="Node2D"]
+position = Vector2(175, 666)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/CharacterBody2D"]
+shape = SubResource("CapsuleShape2D_ujlro")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Node2D"]
+position = Vector2(166, 780)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/StaticBody2D"]
+shape = SubResource("RectangleShape2D_wxybu")

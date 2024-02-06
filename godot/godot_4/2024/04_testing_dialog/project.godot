@@ -10,33 +10,18 @@ config_version=5
 
 [application]
 
-config/name="ChronoTrigger With SignalBus"
-config/description="Base game for a chrono trigger inspired"
+config/name="Dialog Test"
 run/main_scene="res://main.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
-SignalBus="*res://source/singleton/signal_bus.tscn"
+DialogManager="*res://singletons/dialog_manager.tscn"
 
 [display]
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
+window/stretch/aspect="expand"
 window/stretch/scale_mode="integer"
-
-[editor_plugins]
-
-enabled=PackedStringArray("res://addons/markdown_todolist/plugin.cfg")
-
-[layer_names]
-
-2d_physics/layer_1="actors"
-2d_physics/layer_2="world"
-2d_physics/layer_3="enemies"
-2d_physics/layer_4="players"
-
-[rendering]
-
-textures/canvas_textures/default_texture_filter=0

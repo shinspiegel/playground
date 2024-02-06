@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://de4b6mbg1xi3q"]
+
+[ext_resource type="Texture2D" uid="uid://c8j6j232p2ni6" path="res://assets/test_asset/char_a_p1/char_a_p1_0bas_humn_v01.png" id="1_7de6l"]
+[ext_resource type="Texture2D" uid="uid://dtmo67hsh7c6v" path="res://assets/test_asset/char_a_p1/1out/char_a_p1_1out_pfpn_v04.png" id="2_sxsj3"]
+[ext_resource type="Texture2D" uid="uid://gqxugcp2384b" path="res://assets/test_asset/char_a_p1/4har/char_a_p1_4har_dap1_v01.png" id="3_mcqed"]
+[ext_resource type="Texture2D" uid="uid://cfomfb4b72nvl" path="res://assets/test_asset/char_a_p1/5hat/char_a_p1_5hat_pnty_v04.png" id="4_dnwsb"]
+
+[node name="Actor" type="Node2D"]
+
+[node name="SpriteList" type="Node2D" parent="."]
+
+[node name="Base" type="Sprite2D" parent="SpriteList"]
+texture = ExtResource("1_7de6l")
+
+[node name="Clothes" type="Sprite2D" parent="SpriteList"]
+texture = ExtResource("2_sxsj3")
+
+[node name="Hair" type="Sprite2D" parent="SpriteList"]
+texture = ExtResource("3_mcqed")
+
+[node name="Hat" type="Sprite2D" parent="SpriteList"]
+visible = false
+texture = ExtResource("4_dnwsb")

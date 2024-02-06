@@ -1,0 +1,46 @@
+[gd_scene load_steps=3 format=3 uid="uid://br2v04dv7301f"]
+
+[ext_resource type="Script" path="res://singletons/dialog_manager.gd" id="1_u74ec"]
+
+[sub_resource type="Theme" id="Theme_dm7un"]
+default_font_size = 48
+
+[node name="DialogManager" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_dm7un")
+script = ExtResource("1_u74ec")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -548.0
+offset_top = -287.0
+offset_right = 548.0
+offset_bottom = -65.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Panel" type="Panel" parent="Panel"]
+layout_mode = 0
+offset_left = -122.0
+offset_top = -78.0
+offset_right = 54.0
+offset_bottom = 153.0
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 89.0
+offset_top = 28.0
+offset_right = 1057.0
+offset_bottom = 195.0
+text = "This is a sample text, should be enough to fill at least a little bit of the screen."
+autowrap_mode = 3
