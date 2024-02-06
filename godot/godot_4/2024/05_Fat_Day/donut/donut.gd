@@ -51,6 +51,7 @@ var art_list = [
 
 @export var player_area: Area2D
 @export var sprite: Sprite2D
+@export var speed: int
 
 
 func _ready() -> void:
@@ -59,7 +60,7 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
-	position.y += 100 * delta
+	position.y += speed * delta
 
 
 func on_body_enter(node: Node2D) -> void:
