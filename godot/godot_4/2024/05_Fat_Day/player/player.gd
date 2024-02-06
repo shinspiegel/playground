@@ -3,10 +3,6 @@ class_name Player extends CharacterBody2D
 @export var anim: AnimationPlayer
 @export var sprite: Sprite2D
 
-const SPEED = 400.0
-const JUMP_VELOCITY = -600.0
-const GRAVITY = 1400
-
 var has_double_jump: bool = true
 
 func _physics_process(delta: float) -> void:
@@ -23,17 +19,17 @@ func _physics_process(delta: float) -> void:
 
 func _apply_gravity(delta: float) -> void:
 	if not is_on_floor():
-		velocity.y += GRAVITY * delta
+		velocity.y += GameManager.GRAVITY * delta
 
 
 func _apply_jump() -> void:
 	if Input.is_action_just_pressed("ui_accept"):
 		if is_on_floor():
 			print("jump")
-			velocity.y = JUMP_VELOCITY
+			velocity.y = GameManager.JUMP_VELOCITY
 		elif has_double_jump:
 			print("doublejump")
-			velocity.y = JUMP_VELOCITY
+			velocity.y = GameManager.JUMP_VELOCITY
 			has_double_jump = false
 
 
@@ -43,9 +39,9 @@ func _apply_direction(dir: float) -> void:
 		if not is_on_floor(): ratio = 0.7
 		if not is_on_floor() and not has_double_jump: ratio = 1.2
 
-		velocity.x = (dir * SPEED) * ratio
+		velocity.x = (dir * GameManager.SPEED) * ratio
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
+		velocity.x = move_toward(velocity.x, 0, GameManager.SPEED)
 
 
 func _apply_flip(dir: float) -> void:

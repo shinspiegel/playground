@@ -1,4 +1,4 @@
-class_name Donuts extends RigidBody2D
+class_name Donuts extends Node2D
 
 var art_list = [
 	preload("res://assets/used/donuts/01-SimpleDonut.png"),
@@ -56,6 +56,10 @@ var art_list = [
 func _ready() -> void:
 	player_area.body_entered.connect(on_body_enter)
 	_randomize_art()
+
+
+func _physics_process(delta: float) -> void:
+	position.y += 100 * delta
 
 
 func on_body_enter(node: Node2D) -> void:
