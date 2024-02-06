@@ -6,7 +6,6 @@ extends CharacterBody2D
 const SPEED = 400.0
 const JUMP_VELOCITY = -600.0
 const GRAVITY = 1400
-const ANIM = { "idle": "idle", "move": "move", "jump_up": "jump_up", "jump_down": "jump_down" }
 
 var has_double_jump: bool = true
 
@@ -19,6 +18,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 	_apply_animation()
+	_reset_double_jump()
 
 
 func _apply_gravity(delta: float) -> void:
@@ -29,11 +29,12 @@ func _apply_gravity(delta: float) -> void:
 func _apply_jump() -> void:
 	if Input.is_action_just_pressed("ui_accept"):
 		if is_on_floor():
+			print("jump")
 			velocity.y = JUMP_VELOCITY
-		if has_double_jump:
+		elif has_double_jump:
+			print("doublejump")
 			velocity.y = JUMP_VELOCITY
 			has_double_jump = false
-
 
 
 func _apply_direction(dir: float) -> void:
@@ -50,14 +51,18 @@ func _apply_flip(dir: float) -> void:
 
 func _apply_animation() -> void:
 	if abs(velocity.x) == 0:
-		anim.play(ANIM.idle)
+		anim.play("idle")
 
 	if abs(velocity.x) > 0: 
-		anim.play(ANIM.move)
+		anim.play("move")
 	
 	if velocity.y < 0:
-		anim.play(ANIM.jump_up)
+		anim.play("jump_up")
 	
 	if velocity.y > 0:
-		anim.play(ANIM.jump_down)
+		anim.play("jump_down")
 
+
+func _reset_double_jump() -> void:
+	if is_on_floor():
+		has_double_jump = true
