@@ -7,6 +7,7 @@ signal screen_changed(size: Vector2i)
 
 func _ready() -> void:
 	get_tree().get_root().size_changed.connect(on_resize)
+	screen_size = get_tree().get_root().size
 
 
 func on_resize() -> void:

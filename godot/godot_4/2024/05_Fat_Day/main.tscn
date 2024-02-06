@@ -1,18 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://c21pyq8kba4ne"]
+[gd_scene load_steps=4 format=3 uid="uid://djokeju1iyjnn"]
 
-[sub_resource type="Theme" id="Theme_xg2hm"]
+[ext_resource type="PackedScene" uid="uid://88v4un87h46d" path="res://player/player.tscn" id="1_c8wlf"]
+[ext_resource type="PackedScene" uid="uid://b3dyx1gnpok1e" path="res://arena/arena.tscn" id="2_wntrd"]
+
+[sub_resource type="Theme" id="Theme_xvk36"]
 default_font_size = 32
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ujlro"]
-radius = 28.0
-height = 100.0
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_wxybu"]
-size = Vector2(410, 80)
 
 [node name="Main" type="Node2D"]
 
 [node name="Overlay" type="CanvasLayer" parent="."]
+layer = 10
 
 [node name="GameUI" type="Control" parent="Overlay"]
 layout_mode = 3
@@ -21,26 +18,25 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = SubResource("Theme_xg2hm")
+theme = SubResource("Theme_xvk36")
 
-[node name="Label" type="Label" parent="Overlay/GameUI"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
-text = "This is UI"
+[node name="MarginContainer" type="MarginContainer" parent="Overlay/GameUI"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 45.0
+grow_horizontal = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
 
-[node name="Node2D" type="Node2D" parent="."]
+[node name="Label" type="Label" parent="Overlay/GameUI/MarginContainer"]
+layout_mode = 2
+text = "Game UI"
+horizontal_alignment = 1
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="Node2D"]
-position = Vector2(175, 666)
-metadata/_edit_group_ = true
+[node name="PlayArea" parent="." instance=ExtResource("2_wntrd")]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/CharacterBody2D"]
-shape = SubResource("CapsuleShape2D_ujlro")
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Node2D"]
-position = Vector2(166, 780)
-metadata/_edit_group_ = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/StaticBody2D"]
-shape = SubResource("RectangleShape2D_wxybu")
+[node name="Player" parent="." instance=ExtResource("1_c8wlf")]
+position = Vector2(176, 576)
