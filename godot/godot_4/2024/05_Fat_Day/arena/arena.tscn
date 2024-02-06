@@ -36,6 +36,7 @@ grow_vertical = 2
 color = Color(0.0980392, 0.0980392, 0.0980392, 1)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_mask = 0
 
 [node name="Ground" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(180, 720)

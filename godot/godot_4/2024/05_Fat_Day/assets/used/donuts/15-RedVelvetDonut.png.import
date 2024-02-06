@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://crgn6laqmuht8"
-path="res://.godot/imported/city version (1) variant 00.png-b9b3b113d8fb171a92885bede1080a38.ctex"
+uid="uid://beo2041vkq8i4"
+path="res://.godot/imported/15-RedVelvetDonut.png-2a2c83cf22b89273a279644c58d3a475.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/used/city version (1) variant 00.png"
-dest_files=["res://.godot/imported/city version (1) variant 00.png-b9b3b113d8fb171a92885bede1080a38.ctex"]
+source_file="res://assets/used/donuts/15-RedVelvetDonut.png"
+dest_files=["res://.godot/imported/15-RedVelvetDonut.png-2a2c83cf22b89273a279644c58d3a475.ctex"]
 
 [params]
 

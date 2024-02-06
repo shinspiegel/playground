@@ -27,8 +27,16 @@ window/stretch/aspect="expand"
 window/stretch/scale_mode="integer"
 window/handheld/orientation=5
 
+[layer_names]
+
+2d_physics/layer_1="walls"
+2d_physics/layer_2="player"
+2d_physics/layer_3="donuts"
+2d_physics/layer_4="enemies"
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+textures/vram_compression/import_etc2_astc=true

@@ -1,0 +1,36 @@
+[gd_scene load_steps=3 format=3 uid="uid://ekm8kvn0f1yo"]
+
+[ext_resource type="Script" path="res://overlay/game_ui.gd" id="1_vrpuj"]
+
+[sub_resource type="Theme" id="Theme_xvk36"]
+default_font_size = 32
+
+[node name="Overlay" type="CanvasLayer"]
+layer = 10
+
+[node name="GameUI" type="Control" parent="." node_paths=PackedStringArray("score_label")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_xvk36")
+script = ExtResource("1_vrpuj")
+score_label = NodePath("MarginContainer/Label")
+
+[node name="MarginContainer" type="MarginContainer" parent="GameUI"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 45.0
+grow_horizontal = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="Label" type="Label" parent="GameUI/MarginContainer"]
+layout_mode = 2
+text = "Score: 0"
+horizontal_alignment = 1

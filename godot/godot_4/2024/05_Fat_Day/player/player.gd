@@ -1,4 +1,4 @@
-extends CharacterBody2D
+class_name Player extends CharacterBody2D
 
 @export var anim: AnimationPlayer
 @export var sprite: Sprite2D
@@ -57,12 +57,12 @@ func _apply_animation() -> void:
 	if abs(velocity.x) == 0:
 		anim.play("idle")
 
-	if abs(velocity.x) > 0: 
+	if abs(velocity.x) > 0:
 		anim.play("move")
-	
+
 	if velocity.y < 0:
 		anim.play("jump_up")
-	
+
 	if velocity.y > 0:
 		anim.play("jump_down")
 

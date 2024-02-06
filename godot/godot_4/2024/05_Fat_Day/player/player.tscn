@@ -96,6 +96,8 @@ _data = {
 }
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("anim", "sprite")]
+collision_layer = 2
+collision_mask = 13
 script = ExtResource("1_sn36t")
 anim = NodePath("AnimationPlayer")
 sprite = NodePath("Sprite2D")

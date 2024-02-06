@@ -1,3 +1,3 @@
 # Art assets
-- [Background](https://fantasylandscapes.itch.io/pixel-art-landscapes) 
 - [Character](https://penzilla.itch.io/hooded-protagonist)
+- [Donuts](https://neuqui.itch.io/donuts-sweets-pixel-art-assets)
