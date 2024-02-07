@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://g02jhxv265bf"]
 
-[ext_resource type="Script" path="res://explosion/explosion.gd" id="1_d26ic"]
 [ext_resource type="Texture2D" uid="uid://bbgh1vm6g87er" path="res://assets/used/09-Bomb/Boooooom (52x56).png" id="1_hso4q"]
+[ext_resource type="Script" path="res://explosion/damage_area.gd" id="2_50vgk"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_x31jv"]
 radius = 40.0
@@ -106,7 +106,6 @@ _data = {
 }
 
 [node name="Explosion" type="Node2D"]
-script = ExtResource("1_d26ic")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -4)
@@ -117,6 +116,7 @@ hframes = 6
 [node name="DamageArea" type="Area2D" parent="."]
 collision_layer = 8
 collision_mask = 2
+script = ExtResource("2_50vgk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea"]
 shape = SubResource("CircleShape2D_x31jv")

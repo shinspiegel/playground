@@ -112,7 +112,6 @@ _data = {
 [node name="Bomb" type="RigidBody2D" node_paths=PackedStringArray("explosion_time")]
 collision_layer = 8
 physics_material_override = SubResource("PhysicsMaterial_jdf6t")
-linear_velocity = Vector2(20, 20)
 script = ExtResource("1_5p1x1")
 explosion_time = NodePath("Timer")
 

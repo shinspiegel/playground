@@ -17,6 +17,10 @@ func _physics_process(delta: float) -> void:
 	_reset_double_jump()
 
 
+func hurt_player() -> void:
+	queue_free()
+
+
 func _apply_gravity(delta: float) -> void:
 	if not is_on_floor():
 		velocity.y += GameManager.GRAVITY * delta

@@ -1,6 +1,7 @@
 class_name Spawner extends Node2D
 
 const DONUT = preload("res://donut/donut.tscn")
+const BOMB = preload("res://bomb/bomb.tscn")
 
 @export var shape: CollisionShape2D
 @export var offset: int = 32
