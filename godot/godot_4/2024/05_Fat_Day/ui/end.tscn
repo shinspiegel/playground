@@ -1,0 +1,68 @@
+[gd_scene load_steps=3 format=3 uid="uid://dignrpsbpv06r"]
+
+[ext_resource type="Script" path="res://ui/end.gd" id="1_3wkpn"]
+
+[sub_resource type="Theme" id="Theme_hf11q"]
+default_font_size = 64
+
+[node name="End" type="CanvasLayer" node_paths=PackedStringArray("play_again_button", "quit_button", "grab_focus_timer", "score_label")]
+script = ExtResource("1_3wkpn")
+play_again_button = NodePath("Control/VBoxContainer/Button")
+quit_button = NodePath("Control/VBoxContainer/Button2")
+grab_focus_timer = NodePath("Timer")
+score_label = NodePath("Control/VBoxContainer/Label2")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="ColorRect" type="ColorRect" parent="."]
+modulate = Color(1, 1, 1, 0.784314)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_hf11q")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -58.0
+offset_right = 58.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="Label" type="Label" parent="Control/VBoxContainer"]
+layout_mode = 2
+text = "Game Over"
+
+[node name="Label2" type="Label" parent="Control/VBoxContainer"]
+layout_mode = 2
+text = "Score: 00"
+horizontal_alignment = 1
+
+[node name="Control" type="Control" parent="Control/VBoxContainer"]
+custom_minimum_size = Vector2(2.08165e-12, 30)
+layout_mode = 2
+
+[node name="Button" type="Button" parent="Control/VBoxContainer"]
+layout_mode = 2
+text = "Main Menu"
+
+[node name="Button2" type="Button" parent="Control/VBoxContainer"]
+layout_mode = 2
+text = "Quit"

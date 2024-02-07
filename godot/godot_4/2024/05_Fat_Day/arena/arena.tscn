@@ -9,10 +9,10 @@ atlas = ExtResource("2_cdc8s")
 region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h6qlb"]
-size = Vector2(360, 160)
+size = Vector2(736, 244)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vt0ak"]
-size = Vector2(32, 800)
+size = Vector2(240, 1544)
 
 [node name="PlayArea" type="Node2D" node_paths=PackedStringArray("ground_floor", "left_wall", "right_wall")]
 script = ExtResource("1_o32n2")
@@ -48,11 +48,11 @@ layer = -1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -15.0
-offset_right = 15.0
-offset_bottom = -129.0
+offset_right = -546.0
+offset_bottom = -1307.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(4, 4)
 texture = ExtResource("2_cdc8s")
 region_rect = Rect2(0, 0, 96, 64)
 patch_margin_left = 32
@@ -75,14 +75,18 @@ texture = SubResource("AtlasTexture_33o8g")
 
 [node name="TextureRect2" type="TextureRect" parent="Area"]
 modulate = Color(0.207843, 0.207843, 0.207843, 1)
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 17.0
-offset_right = -17.0
-offset_bottom = -161.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -236.5
+offset_top = -849.5
+offset_right = -157.5
+offset_bottom = -609.5
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(6, 6)
 texture = ExtResource("3_wgkee")
 stretch_mode = 1
 
@@ -90,13 +94,13 @@ stretch_mode = 1
 collision_mask = 0
 
 [node name="Ground" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(180, 720)
+position = Vector2(368, 1574)
 shape = SubResource("RectangleShape2D_h6qlb")
 
 [node name="Left" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(0, 400)
+position = Vector2(2.08165e-12, 772)
 shape = SubResource("RectangleShape2D_vt0ak")
 
 [node name="Right" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(360, 400)
+position = Vector2(728, 772)
 shape = SubResource("RectangleShape2D_vt0ak")

@@ -1,5 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://g02jhxv265bf"]
+[gd_scene load_steps=8 format=3 uid="uid://g02jhxv265bf"]
 
+[ext_resource type="Script" path="res://explosion/explosion.gd" id="1_d26ic"]
 [ext_resource type="Texture2D" uid="uid://bbgh1vm6g87er" path="res://assets/used/09-Bomb/Boooooom (52x56).png" id="1_hso4q"]
 [ext_resource type="Script" path="res://explosion/damage_area.gd" id="2_50vgk"]
 
@@ -31,7 +32,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.5),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
-"values": [20.0, 20.0, 40.0, 50.0, 20.0]
+"values": [40.0, 40.0, 60.0, 90.0, 20.0]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -106,10 +107,11 @@ _data = {
 }
 
 [node name="Explosion" type="Node2D"]
+script = ExtResource("1_d26ic")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, -4)
-scale = Vector2(2, 2)
+position = Vector2(0, -8)
+scale = Vector2(4, 4)
 texture = ExtResource("1_hso4q")
 hframes = 6
 

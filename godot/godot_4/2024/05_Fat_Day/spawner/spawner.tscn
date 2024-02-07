@@ -1,17 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://d30aakyr8bypb"]
+[gd_scene load_steps=2 format=3 uid="uid://d30aakyr8bypb"]
 
 [ext_resource type="Script" path="res://spawner/spawner.gd" id="1_4p5hj"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ynac0"]
-size = Vector2(176, 20)
-
 [node name="Spawner" type="Node2D" node_paths=PackedStringArray("shape", "spawn_colddown")]
 script = ExtResource("1_4p5hj")
-shape = NodePath("CollisionShape2D")
+shape = NodePath("")
 spawn_colddown = NodePath("Timer")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_ynac0")
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true

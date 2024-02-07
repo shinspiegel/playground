@@ -4,21 +4,34 @@ class_name Player extends CharacterBody2D
 @export var sprite: Sprite2D
 
 var has_double_jump: bool = true
+var is_active: bool = false
+
+
+func _ready() -> void:
+	GameManager.game_started.connect(on_start)
+
 
 func _physics_process(delta: float) -> void:
-	_apply_gravity(delta)
-	_apply_jump()
-	_apply_direction(Input.get_axis("ui_left", "ui_right"))
-	_apply_flip(Input.get_axis("ui_left", "ui_right"))
+	if is_active:
+		_apply_gravity(delta)
+		_apply_jump()
+		_apply_direction(Input.get_axis("ui_left", "ui_right"))
+		_apply_flip(Input.get_axis("ui_left", "ui_right"))
 
-	move_and_slide()
+		move_and_slide()
 
-	_apply_animation()
-	_reset_double_jump()
+		_apply_animation()
+		_reset_double_jump()
 
 
 func hurt_player() -> void:
+	GameManager.player_died.emit()
+	AudioManager.death_sound()
 	queue_free()
+
+
+func on_start() -> void:
+	is_active = true
 
 
 func _apply_gravity(delta: float) -> void:

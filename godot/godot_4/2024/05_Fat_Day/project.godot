@@ -18,12 +18,13 @@ config/icon="res://icon.svg"
 [autoload]
 
 GameManager="*res://singleton/game_manager.tscn"
+AudioManager="*res://singleton/audio_manager.tscn"
 
 [display]
 
-window/size/viewport_width=360
-window/size/viewport_height=800
-window/stretch/aspect="expand"
+window/size/viewport_width=729
+window/size/viewport_height=1699
+window/stretch/mode="viewport"
 window/stretch/scale_mode="integer"
 window/handheld/orientation=5
 

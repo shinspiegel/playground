@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://m2x12n4mfdf2"
+path="res://.godot/imported/Fart_7.wav-f894415b3c1a82252065fd6209124091.sample"
+
+[deps]
+
+source_file="res://assets/sfx/Burps and Farts Basic/Farts/Fart_7.wav"
+dest_files=["res://.godot/imported/Fart_7.wav-f894415b3c1a82252065fd6209124091.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

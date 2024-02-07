@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dmw230pfci8ff"
+path="res://.godot/imported/Burp_6.wav-033d6c95ddfc72c8d24d85fa02cf7f26.sample"
+
+[deps]
+
+source_file="res://assets/sfx/Burps and Farts Basic/Burps/Burp_6.wav"
+dest_files=["res://.godot/imported/Burp_6.wav-033d6c95ddfc72c8d24d85fa02cf7f26.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

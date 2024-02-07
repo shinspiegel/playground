@@ -4,7 +4,22 @@
 [ext_resource type="Texture2D" uid="uid://cpvx3eq20njec" path="res://assets/used/AnimationSheet_Character.png" id="2_uo45e"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3bou1"]
-size = Vector2(24, 56)
+size = Vector2(48, 112)
+
+[sub_resource type="Animation" id="Animation_sox5i"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
 
 [sub_resource type="Animation" id="Animation_2hmyc"]
 resource_name = "idle"
@@ -22,8 +37,9 @@ tracks/0/keys = {
 "values": [0, 1]
 }
 
-[sub_resource type="Animation" id="Animation_sox5i"]
-length = 0.001
+[sub_resource type="Animation" id="Animation_wbxqd"]
+resource_name = "jump_down"
+length = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -31,10 +47,26 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [0]
+"values": [44, 45]
+}
+
+[sub_resource type="Animation" id="Animation_5oobo"]
+resource_name = "jump_up"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [40, 41, 42, 43, 44]
 }
 
 [sub_resource type="Animation" id="Animation_yhhdg"]
@@ -54,38 +86,6 @@ tracks/0/keys = {
 "values": [24, 25, 26, 27, 28, 29, 30, 31]
 }
 
-[sub_resource type="Animation" id="Animation_5oobo"]
-resource_name = "jump_up"
-length = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 1,
-"values": [40, 41, 42, 43, 44]
-}
-
-[sub_resource type="Animation" id="Animation_wbxqd"]
-resource_name = "jump_down"
-length = 0.2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [44, 45]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_18gb0"]
 _data = {
 "RESET": SubResource("Animation_sox5i"),
@@ -102,14 +102,14 @@ anim = NodePath("AnimationPlayer")
 sprite = NodePath("Sprite2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, -32)
-scale = Vector2(2, 2)
+position = Vector2(0, -64)
+scale = Vector2(4, 4)
 texture = ExtResource("2_uo45e")
 hframes = 8
 vframes = 9
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -28)
+position = Vector2(0, -56)
 shape = SubResource("RectangleShape2D_3bou1")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

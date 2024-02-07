@@ -1,0 +1,71 @@
+[gd_scene load_steps=3 format=3 uid="uid://60j3p730s218"]
+
+[ext_resource type="Script" path="res://ui/intro.gd" id="1_7v11f"]
+
+[sub_resource type="Theme" id="Theme_d6jmx"]
+default_font_size = 80
+
+[node name="Intro" type="CanvasLayer" node_paths=PackedStringArray("intro_button", "quit_button")]
+layer = 20
+script = ExtResource("1_7v11f")
+intro_button = NodePath("Control/VBoxContainer/Button")
+quit_button = NodePath("Control/VBoxContainer/Button2")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+modulate = Color(1, 1, 1, 0.784314)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_d6jmx")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -58.0
+offset_right = 58.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="Label" type="Label" parent="Control/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 112
+text = "Tłusty 
+Czwartek"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="Control/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "Arrows to move.
+Space to Jump.
+Avoid bombs.
+Eat donuts!"
+horizontal_alignment = 1
+
+[node name="Control" type="Control" parent="Control/VBoxContainer"]
+custom_minimum_size = Vector2(2.08165e-12, 30)
+layout_mode = 2
+
+[node name="Button" type="Button" parent="Control/VBoxContainer"]
+layout_mode = 2
+text = "Play"
+
+[node name="Button2" type="Button" parent="Control/VBoxContainer"]
+layout_mode = 2
+text = "Quit"

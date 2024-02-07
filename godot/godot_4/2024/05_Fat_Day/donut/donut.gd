@@ -59,6 +59,7 @@ func _ready() -> void:
 	notifier.screen_exited.connect(on_exit_screen)
 	player_area.body_entered.connect(on_body_enter)
 	_randomize_art()
+	_randomize_speed()
 
 
 func _physics_process(delta: float) -> void:
@@ -68,12 +69,17 @@ func _physics_process(delta: float) -> void:
 func on_body_enter(node: Node2D) -> void:
 	if node is Player:
 		GameManager.add_donuts()
+		AudioManager.burp()
 		queue_free()
 
 
 func _randomize_art() -> void:
 	art_list.shuffle()
 	sprite.texture = art_list.front()
+
+
+func _randomize_speed() -> void:
+	speed = randi_range(200, 500)
 
 
 func on_exit_screen() -> void:
