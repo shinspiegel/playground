@@ -6,10 +6,12 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_xjrx0"]
 radius = 16.0
 
-[node name="Donut" type="Node2D" node_paths=PackedStringArray("player_area", "sprite")]
+[node name="Donut" type="Node2D" node_paths=PackedStringArray("player_area", "sprite", "notifier")]
 script = ExtResource("1_fxlgi")
 player_area = NodePath("Area2D")
 sprite = NodePath("Sprite2D")
+speed = 120
+notifier = NodePath("VisibleOnScreenNotifier2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_o775t")
@@ -20,3 +22,6 @@ collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_xjrx0")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+scale = Vector2(0.8, 0.8)

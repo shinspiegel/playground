@@ -1,6 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://b3dyx1gnpok1e"]
+[gd_scene load_steps=7 format=3 uid="uid://b3dyx1gnpok1e"]
 
 [ext_resource type="Script" path="res://arena/arena.gd" id="1_o32n2"]
+[ext_resource type="Texture2D" uid="uid://cc4ldnjak242t" path="res://assets/used/background.png" id="2_cdc8s"]
+[ext_resource type="Texture2D" uid="uid://dpqggfxd5h31d" path="res://assets/used/tile_background.png" id="3_wgkee"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_33o8g"]
+atlas = ExtResource("2_cdc8s")
+region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h6qlb"]
 size = Vector2(360, 160)
@@ -34,6 +40,51 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.0980392, 0.0980392, 0.0980392, 1)
+
+[node name="Area" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Area"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -15.0
+offset_right = 15.0
+offset_bottom = -129.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_cdc8s")
+region_rect = Rect2(0, 0, 96, 64)
+patch_margin_left = 32
+patch_margin_right = 32
+patch_margin_bottom = 32
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="TextureRect" type="TextureRect" parent="Area"]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -131.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = SubResource("AtlasTexture_33o8g")
+
+[node name="TextureRect2" type="TextureRect" parent="Area"]
+modulate = Color(0.207843, 0.207843, 0.207843, 1)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 17.0
+offset_right = -17.0
+offset_bottom = -161.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_wgkee")
+stretch_mode = 1
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 collision_mask = 0

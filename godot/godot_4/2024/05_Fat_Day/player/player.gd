@@ -25,10 +25,8 @@ func _apply_gravity(delta: float) -> void:
 func _apply_jump() -> void:
 	if Input.is_action_just_pressed("ui_accept"):
 		if is_on_floor():
-			print("jump")
 			velocity.y = GameManager.JUMP_VELOCITY
 		elif has_double_jump:
-			print("doublejump")
 			velocity.y = GameManager.JUMP_VELOCITY
 			has_double_jump = false
 

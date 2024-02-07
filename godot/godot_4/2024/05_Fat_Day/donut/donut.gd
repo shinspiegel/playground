@@ -52,9 +52,11 @@ var art_list = [
 @export var player_area: Area2D
 @export var sprite: Sprite2D
 @export var speed: int
+@export var notifier: VisibleOnScreenNotifier2D
 
 
 func _ready() -> void:
+	notifier.screen_exited.connect(on_exit_screen)
 	player_area.body_entered.connect(on_body_enter)
 	_randomize_art()
 
@@ -73,3 +75,6 @@ func _randomize_art() -> void:
 	art_list.shuffle()
 	sprite.texture = art_list.front()
 
+
+func on_exit_screen() -> void:
+	queue_free()

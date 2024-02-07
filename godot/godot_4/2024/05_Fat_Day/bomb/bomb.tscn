@@ -1,0 +1,142 @@
+[gd_scene load_steps=11 format=3 uid="uid://c8r0avfas71c1"]
+
+[ext_resource type="Script" path="res://bomb/bomb.gd" id="1_5p1x1"]
+[ext_resource type="Texture2D" uid="uid://bouc7j0y6meg4" path="res://assets/used/09-Bomb/Bomb On (52x56).png" id="1_miefd"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_jdf6t"]
+friction = 0.0
+bounce = 0.9
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_l4qi4"]
+radius = 16.0
+
+[sub_resource type="Animation" id="Animation_ebxux"]
+resource_name = "bomb"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_auxfa"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_uugk4"]
+_data = {
+"RESET": SubResource("Animation_auxfa"),
+"bomb": SubResource("Animation_ebxux")
+}
+
+[sub_resource type="Animation" id="Animation_fslnp"]
+resource_name = "new_animation"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.7, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(2, 2), Vector2(2, 1.8), Vector2(1.8, 2), Vector2(2, 2)]
+}
+
+[sub_resource type="Animation" id="Animation_lcmqh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2, 2)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_y5peb"]
+_data = {
+"RESET": SubResource("Animation_lcmqh"),
+"new_animation": SubResource("Animation_fslnp")
+}
+
+[node name="Bomb" type="RigidBody2D" node_paths=PackedStringArray("explosion_time")]
+collision_layer = 8
+physics_material_override = SubResource("PhysicsMaterial_jdf6t")
+linear_velocity = Vector2(20, 20)
+script = ExtResource("1_5p1x1")
+explosion_time = NodePath("Timer")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -8)
+scale = Vector2(2, 2)
+texture = ExtResource("1_miefd")
+hframes = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_l4qi4")
+
+[node name="SpriteAnim" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_uugk4")
+}
+autoplay = "bomb"
+
+[node name="SquishAnim" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_y5peb")
+}
+autoplay = "new_animation"
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true

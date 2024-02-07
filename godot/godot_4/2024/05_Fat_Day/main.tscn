@@ -1,14 +1,22 @@
-[gd_scene load_steps=4 format=3 uid="uid://djokeju1iyjnn"]
+[gd_scene load_steps=6 format=3 uid="uid://djokeju1iyjnn"]
 
 [ext_resource type="PackedScene" uid="uid://ekm8kvn0f1yo" path="res://overlay/overlay.tscn" id="1_3m164"]
 [ext_resource type="PackedScene" uid="uid://88v4un87h46d" path="res://player/player.tscn" id="1_c8wlf"]
 [ext_resource type="PackedScene" uid="uid://b3dyx1gnpok1e" path="res://arena/arena.tscn" id="2_wntrd"]
+[ext_resource type="PackedScene" uid="uid://d30aakyr8bypb" path="res://spawner/spawner.tscn" id="4_x1lkk"]
+[ext_resource type="PackedScene" uid="uid://c8r0avfas71c1" path="res://bomb/bomb.tscn" id="5_lvct7"]
 
 [node name="Main" type="Node2D"]
 
 [node name="Overlay" parent="." instance=ExtResource("1_3m164")]
 
+[node name="Spawner" parent="." instance=ExtResource("4_x1lkk")]
+position = Vector2(176, 88)
+
 [node name="PlayArea" parent="." instance=ExtResource("2_wntrd")]
 
 [node name="Player" parent="." instance=ExtResource("1_c8wlf")]
 position = Vector2(184, 640)
+
+[node name="Bomb" parent="." instance=ExtResource("5_lvct7")]
+position = Vector2(72, 152)
