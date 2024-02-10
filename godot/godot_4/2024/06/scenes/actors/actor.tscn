@@ -1,10 +1,52 @@
-[gd_scene load_steps=2 format=3 uid="uid://c33u7sqdwdu02"]
+[gd_scene load_steps=7 format=3 uid="uid://c33u7sqdwdu02"]
 
 [ext_resource type="Texture2D" uid="uid://byegmvqk0l546" path="res://assets/downloaded_assets/FREE Mana Seed Character Base Demo/char_a_p1/char_a_p1_0bas_humn_v01.png" id="1_e7mwl"]
+[ext_resource type="Texture2D" uid="uid://6xap4slmo6rd" path="res://assets/downloaded_assets/FREE Mana Seed Character Base Demo/char_a_p1/1out/char_a_p1_1out_fstr_v04.png" id="2_c56b0"]
+[ext_resource type="Texture2D" uid="uid://cnef8doalaxbl" path="res://assets/downloaded_assets/FREE Mana Seed Character Base Demo/char_a_p1/4har/char_a_p1_4har_dap1_v01.png" id="3_v6evq"]
+[ext_resource type="Texture2D" uid="uid://btqrh7oynmbr" path="res://assets/downloaded_assets/FREE Mana Seed Character Base Demo/char_a_p1/5hat/char_a_p1_5hat_pnty_v04.png" id="4_nwbwu"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vd08i"]
+radius = 16.0
+height = 64.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tc1l0"]
+radius = 16.0
+height = 48.0
 
 [node name="Actor" type="CharacterBody2D"]
+motion_mode = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="Graphics" type="Node2D" parent="."]
+position = Vector2(0, -44)
+scale = Vector2(4, 4)
+
+[node name="Base" type="Sprite2D" parent="Graphics"]
+texture = ExtResource("1_e7mwl")
+hframes = 8
+vframes = 8
+
+[node name="Clothes" type="Sprite2D" parent="Graphics"]
+texture = ExtResource("2_c56b0")
+hframes = 8
+vframes = 8
+
+[node name="Hair" type="Sprite2D" parent="Graphics"]
+texture = ExtResource("3_v6evq")
+hframes = 8
+vframes = 8
+
+[node name="Hat" type="Sprite2D" parent="Graphics"]
+texture = ExtResource("4_nwbwu")
+hframes = 8
+vframes = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -16)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_vd08i")
 
-[node name="Base" type="Sprite2D" parent="."]
-texture = ExtResource("1_e7mwl")
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(0, -40)
+shape = SubResource("CapsuleShape2D_tc1l0")
