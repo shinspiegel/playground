@@ -10,34 +10,21 @@ config_version=5
 
 [application]
 
-config/name="Fat Day"
+config/name="CT_Battle"
 run/main_scene="res://main.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://icon.svg"
 
-[autoload]
-
-GameManager="*res://singleton/game_manager.tscn"
-AudioManager="*res://singleton/audio_manager.tscn"
-
 [display]
 
-window/size/viewport_width=730
-window/size/viewport_height=1600
-window/stretch/mode="viewport"
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+window/size/initial_position_type=3
+window/size/resizable=false
+window/size/borderless=true
 window/stretch/scale_mode="integer"
-window/handheld/orientation=5
-
-[layer_names]
-
-2d_physics/layer_1="walls"
-2d_physics/layer_2="player"
-2d_physics/layer_3="donuts"
-2d_physics/layer_4="enemies"
 
 [rendering]
 
-textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
-textures/vram_compression/import_etc2_astc=true

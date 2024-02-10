@@ -9,17 +9,29 @@
 
 [node name="Main" type="Node2D"]
 
-[node name="Intro" parent="." instance=ExtResource("1_8wxlk")]
+[node name="Intro" parent="." node_paths=PackedStringArray("intro_button", "quit_button") instance=ExtResource("1_8wxlk")]
+intro_button = NodePath("Control/VBoxContainer/Button")
+quit_button = NodePath("Control/VBoxContainer/Button2")
 
-[node name="End" parent="." instance=ExtResource("2_13x2p")]
+[node name="End" parent="." node_paths=PackedStringArray("play_again_button", "quit_button", "grab_focus_timer", "score_label") instance=ExtResource("2_13x2p")]
 visible = false
+play_again_button = NodePath("Control/VBoxContainer/Button")
+quit_button = NodePath("Control/VBoxContainer/Button2")
+grab_focus_timer = NodePath("Timer")
+score_label = NodePath("Control/VBoxContainer/Label2")
 
 [node name="Overlay" parent="." instance=ExtResource("1_3m164")]
 
-[node name="Spawner" parent="." instance=ExtResource("4_x1lkk")]
+[node name="Spawner" parent="." node_paths=PackedStringArray("spawn_colddown") instance=ExtResource("4_x1lkk")]
 position = Vector2(176, 88)
+spawn_colddown = NodePath("Timer")
 
-[node name="PlayArea" parent="." instance=ExtResource("2_wntrd")]
+[node name="PlayArea" parent="." node_paths=PackedStringArray("ground_floor", "left_wall", "right_wall") instance=ExtResource("2_wntrd")]
+ground_floor = NodePath("StaticBody2D/Ground")
+left_wall = NodePath("StaticBody2D/Left")
+right_wall = NodePath("StaticBody2D/Right")
 
-[node name="Player" parent="." instance=ExtResource("1_c8wlf")]
-position = Vector2(368, 1536)
+[node name="Player" parent="." node_paths=PackedStringArray("anim", "sprite") instance=ExtResource("1_c8wlf")]
+position = Vector2(368, 1341)
+anim = NodePath("AnimationPlayer")
+sprite = NodePath("Sprite2D")

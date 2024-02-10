@@ -9,7 +9,7 @@ atlas = ExtResource("2_cdc8s")
 region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h6qlb"]
-size = Vector2(736, 244)
+size = Vector2(732, 246)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vt0ak"]
 size = Vector2(240, 1544)
@@ -22,16 +22,6 @@ right_wall = NodePath("StaticBody2D/Right")
 
 [node name="Background" type="CanvasLayer" parent="."]
 layer = -10
-
-[node name="TextureRect" type="TextureRect" parent="Background"]
-visible = false
-modulate = Color(0.372549, 0.372549, 0.372549, 1)
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-stretch_mode = 6
 
 [node name="ColorRect" type="ColorRect" parent="Background"]
 anchors_preset = 15
@@ -49,7 +39,7 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_right = -546.0
-offset_bottom = -1307.0
+offset_bottom = -1231.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(4, 4)
@@ -80,10 +70,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -236.5
-offset_top = -849.5
-offset_right = -157.5
-offset_bottom = -609.5
+offset_left = -236.0
+offset_top = -849.0
+offset_right = -157.0
+offset_bottom = -617.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(6, 6)
@@ -94,13 +84,13 @@ stretch_mode = 1
 collision_mask = 0
 
 [node name="Ground" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(368, 1574)
+position = Vector2(366, 1477)
 shape = SubResource("RectangleShape2D_h6qlb")
 
 [node name="Left" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(2.08165e-12, 772)
+position = Vector2(2.08165e-12, 704)
 shape = SubResource("RectangleShape2D_vt0ak")
 
 [node name="Right" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(728, 772)
+position = Vector2(728, 704)
 shape = SubResource("RectangleShape2D_vt0ak")
