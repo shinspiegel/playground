@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://c33u7sqdwdu02"]
+
+[ext_resource type="Texture2D" uid="uid://byegmvqk0l546" path="res://assets/downloaded_assets/FREE Mana Seed Character Base Demo/char_a_p1/char_a_p1_0bas_humn_v01.png" id="1_e7mwl"]
+
+[node name="Actor" type="CharacterBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+[node name="Base" type="Sprite2D" parent="."]
+texture = ExtResource("1_e7mwl")
