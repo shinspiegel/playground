@@ -1,0 +1,17 @@
+[gd_scene load_steps=5 format=3 uid="uid://tp3o11x5818f"]
+
+[ext_resource type="PackedScene" uid="uid://c33u7sqdwdu02" path="res://scenes/actors/actor.tscn" id="1_dy7fd"]
+[ext_resource type="Script" path="res://scenes/actors/enemy_actor.gd" id="2_xtjv0"]
+[ext_resource type="Resource" uid="uid://1t6dln2m4fik" path="res://scenes/actors/actor_data/dummy_actor.tres" id="3_sxc5w"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_x7qma"]
+radius = 24.0
+height = 70.0
+
+[node name="EnemyActor" instance=ExtResource("1_dy7fd")]
+script = ExtResource("2_xtjv0")
+actor_data = ExtResource("3_sxc5w")
+
+[node name="Shape" parent="." index="2"]
+position = Vector2(0, -34.9253)
+shape = SubResource("CapsuleShape2D_x7qma")

@@ -22,3 +22,4 @@ func is_world() -> bool:
 func is_battle() -> bool:
 	return __current_mode == MODE.BATTLE
 
+

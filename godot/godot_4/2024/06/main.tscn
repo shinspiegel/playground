@@ -1,27 +1,26 @@
-[gd_scene load_steps=4 format=3 uid="uid://csdjbfj5l0pus"]
+[gd_scene load_steps=7 format=3 uid="uid://csdjbfj5l0pus"]
 
 [ext_resource type="TileSet" uid="uid://d4eaidaxglkih" path="res://scenes/tilemap/template.tres" id="1_b3xio"]
 [ext_resource type="PackedScene" uid="uid://cd30lwdo4bvuu" path="res://scenes/game_camera/game_camera.tscn" id="1_helwf"]
 [ext_resource type="PackedScene" uid="uid://x5a3hr02qh7c" path="res://scenes/actors/player_actor.tscn" id="2_f6nvk"]
+[ext_resource type="PackedScene" uid="uid://d233qvgetdlul" path="res://scenes/battle_area/battle_area.tscn" id="4_dfnv0"]
+[ext_resource type="PackedScene" uid="uid://tp3o11x5818f" path="res://scenes/actors/enemy_actor.tscn" id="5_acrwy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pl5m0"]
+size = Vector2(896, 768)
 
 [node name="Main" type="Node2D"]
 
 [node name="GameCamera" parent="." node_paths=PackedStringArray("top_left", "bottom_right") instance=ExtResource("1_helwf")]
-top_left = NodePath("../MapLimits/TopLeft")
-bottom_right = NodePath("../MapLimits/BottomRight")
+top_left = NodePath("../LevelMap/MapLimits/TopLeft")
+bottom_right = NodePath("../LevelMap/MapLimits/BottomRight")
 
-[node name="MapLimits" type="Node2D" parent="."]
+[node name="LevelMap" type="Node2D" parent="."]
 
-[node name="TopLeft" type="Marker2D" parent="MapLimits"]
-position = Vector2(-64, -64)
-
-[node name="BottomRight" type="Marker2D" parent="MapLimits"]
-position = Vector2(1984, 1600)
-
-[node name="BackgroundColor" type="CanvasLayer" parent="."]
+[node name="BackgroundColor" type="CanvasLayer" parent="LevelMap"]
 layer = -10
 
-[node name="ColorRect" type="ColorRect" parent="BackgroundColor"]
+[node name="ColorRect" type="ColorRect" parent="LevelMap/BackgroundColor"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -29,12 +28,42 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="TileMap" type="TileMap" parent="."]
+[node name="MapLimits" type="Node2D" parent="LevelMap"]
+
+[node name="TopLeft" type="Marker2D" parent="LevelMap/MapLimits"]
+position = Vector2(-64, -64)
+
+[node name="BottomRight" type="Marker2D" parent="LevelMap/MapLimits"]
+position = Vector2(1984, 1600)
+
+[node name="TileMap" type="TileMap" parent="LevelMap"]
 scale = Vector2(4, 4)
 tile_set = ExtResource("1_b3xio")
 format = 2
 layer_0/tile_data = PackedInt32Array(2, 131072, 0, 1, 65536, 0, 131076, 65536, 1, 131074, 65536, 1, 131073, 65536, 1, 4, 0, 0, 65542, 65536, 1, 131078, 65536, 1, 131077, 65536, 1, 5, 65536, 0, 6, 65536, 0, 7, 131072, 0, 65543, 262144, 1, 131079, 65536, 1, 65544, 65536, 0, 65545, 327680, 1, 9, 0, 0, 0, 0, 0, 65536, 0, 1, 131072, 0, 1, 196608, 0, 2, 196609, 65536, 2, 196610, 65536, 2, 196614, 65536, 1, 196616, 196608, 3, 196618, 65536, 1, 196619, 65536, 1, 196620, 262144, 0, 196621, 65536, 2, 131086, 131072, 1, 65550, 131072, 1, 14, 131072, 0, 13, 65536, 0, 12, 65536, 0, 11, 65536, 0, 10, 65536, 0, 65548, 65536, 1, 65549, 65536, 1, 131085, 65536, 1, 131084, 65536, 1, 131075, 65536, 1, 65537, 65536, 1, 65538, 262144, 1, 65539, 65536, 0, 65540, 327680, 1, 65541, 65536, 1, 196611, 65536, 2, 262149, 65536, 1, 262148, 0, 1, 262150, 65536, 1, 262152, 65536, 1, 262151, 65536, 1, 196615, 65536, 1, 131080, 65536, 1, 131081, 65536, 1, 131082, 65536, 1, 131083, 65536, 1, 65547, 65536, 1, 65546, 65536, 1, 196622, 131072, 2, 262153, 65536, 1, 262154, 65536, 1, 262155, 65536, 1, 262156, 131072, 1, 327692, 131072, 2, 327691, 65536, 2, 327690, 65536, 2, 327689, 65536, 2, 327688, 65536, 2, 327687, 65536, 2, 327686, 65536, 2, 327685, 65536, 2, 327684, 0, 2, 196617, 65536, 1, 196613, 65536, 1, 196612, 327680, 0)
 
-[node name="PlayerActor" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("2_f6nvk")]
+[node name="BattleAreas" type="Node2D" parent="LevelMap"]
+
+[node name="BattleArea" parent="LevelMap/BattleAreas" instance=ExtResource("4_dfnv0")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelMap/BattleAreas/BattleArea"]
+position = Vector2(1088, 896)
+shape = SubResource("RectangleShape2D_pl5m0")
+
+[node name="Sorted" type="Node2D" parent="LevelMap"]
+
+[node name="PlayerActor" parent="LevelMap/Sorted" node_paths=PackedStringArray("camera") instance=ExtResource("2_f6nvk")]
 position = Vector2(192, 640)
-camera = NodePath("../GameCamera")
+camera = NodePath("../../../GameCamera")
+
+[node name="EnemyActor" parent="LevelMap/Sorted" instance=ExtResource("5_acrwy")]
+position = Vector2(1248, 784)
+
+[node name="EnemyActor2" parent="LevelMap/Sorted" instance=ExtResource("5_acrwy")]
+position = Vector2(1216, 1184)
+
+[node name="EnemyActor3" parent="LevelMap/Sorted" instance=ExtResource("5_acrwy")]
+position = Vector2(1374, 1039)
+
+[node name="EnemyActor4" parent="LevelMap/Sorted" instance=ExtResource("5_acrwy")]
+position = Vector2(1408, 816)
