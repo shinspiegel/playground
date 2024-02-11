@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cpvx3eq20njec" path="res://assets/used/AnimationSheet_Character.png" id="2_uo45e"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3bou1"]
-size = Vector2(48, 112)
+size = Vector2(24, 56)
 
 [sub_resource type="Animation" id="Animation_sox5i"]
 length = 0.001
@@ -102,14 +102,14 @@ anim = NodePath("AnimationPlayer")
 sprite = NodePath("Sprite2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, -64)
-scale = Vector2(4, 4)
+position = Vector2(0, -32)
+scale = Vector2(2, 2)
 texture = ExtResource("2_uo45e")
 hframes = 8
 vframes = 9
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -56)
+position = Vector2(0, -28)
 shape = SubResource("RectangleShape2D_3bou1")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

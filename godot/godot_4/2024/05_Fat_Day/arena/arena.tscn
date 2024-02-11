@@ -9,10 +9,10 @@ atlas = ExtResource("2_cdc8s")
 region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h6qlb"]
-size = Vector2(732, 246)
+size = Vector2(360, 224)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vt0ak"]
-size = Vector2(240, 1544)
+size = Vector2(64, 800)
 
 [node name="PlayArea" type="Node2D" node_paths=PackedStringArray("ground_floor", "left_wall", "right_wall")]
 script = ExtResource("1_o32n2")
@@ -38,11 +38,9 @@ layer = -1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -546.0
-offset_bottom = -1231.0
+offset_bottom = -192.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(4, 4)
 texture = ExtResource("2_cdc8s")
 region_rect = Rect2(0, 0, 96, 64)
 patch_margin_left = 32
@@ -56,27 +54,22 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -20.0
-offset_top = -131.0
-offset_right = 20.0
+offset_top = -192.0
 grow_horizontal = 2
 grow_vertical = 0
 texture = SubResource("AtlasTexture_33o8g")
 
 [node name="TextureRect2" type="TextureRect" parent="Area"]
 modulate = Color(0.207843, 0.207843, 0.207843, 1)
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -236.0
-offset_top = -849.0
-offset_right = -157.0
-offset_bottom = -617.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 32.0
+offset_right = -254.0
+offset_bottom = -656.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(6, 6)
+scale = Vector2(4, 4)
 texture = ExtResource("3_wgkee")
 stretch_mode = 1
 
@@ -84,13 +77,13 @@ stretch_mode = 1
 collision_mask = 0
 
 [node name="Ground" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(366, 1477)
+position = Vector2(180, 688)
 shape = SubResource("RectangleShape2D_h6qlb")
 
 [node name="Left" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(2.08165e-12, 704)
+position = Vector2(2.08165e-12, 400)
 shape = SubResource("RectangleShape2D_vt0ak")
 
 [node name="Right" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(728, 704)
+position = Vector2(360, 400)
 shape = SubResource("RectangleShape2D_vt0ak")

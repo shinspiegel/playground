@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://overlay/game_ui.gd" id="1_vrpuj"]
 
 [sub_resource type="Theme" id="Theme_xvk36"]
-default_font_size = 96
+default_font_size = 48
 
 [node name="Overlay" type="CanvasLayer"]
 layer = 10

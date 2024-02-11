@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://ui/end.gd" id="1_3wkpn"]
 
 [sub_resource type="Theme" id="Theme_hf11q"]
-default_font_size = 64
+default_font_size = 48
 
 [node name="End" type="CanvasLayer" node_paths=PackedStringArray("play_again_button", "quit_button", "grab_focus_timer", "score_label")]
 script = ExtResource("1_3wkpn")

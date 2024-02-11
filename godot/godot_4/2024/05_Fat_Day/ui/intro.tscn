@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://ui/intro.gd" id="1_7v11f"]
 
 [sub_resource type="Theme" id="Theme_d6jmx"]
-default_font_size = 80
+default_font_size = 48
 
 [node name="Intro" type="CanvasLayer" node_paths=PackedStringArray("intro_button", "quit_button")]
 layer = 20
@@ -44,14 +44,14 @@ alignment = 1
 
 [node name="Label" type="Label" parent="Control/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 112
+theme_override_font_sizes/font_size = 48
 text = "Tłusty 
 Czwartek"
 horizontal_alignment = 1
 
 [node name="Label2" type="Label" parent="Control/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 48
+theme_override_font_sizes/font_size = 32
 text = "Arrows to move.
 Space to Jump.
 Avoid bombs.

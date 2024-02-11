@@ -32,6 +32,6 @@ left_wall = NodePath("StaticBody2D/Left")
 right_wall = NodePath("StaticBody2D/Right")
 
 [node name="Player" parent="." node_paths=PackedStringArray("anim", "sprite") instance=ExtResource("1_c8wlf")]
-position = Vector2(368, 1341)
+position = Vector2(176, 576)
 anim = NodePath("AnimationPlayer")
 sprite = NodePath("Sprite2D")

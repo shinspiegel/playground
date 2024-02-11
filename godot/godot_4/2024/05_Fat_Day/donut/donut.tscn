@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://c82yf5hhjgmvx" path="res://assets/used/donuts/01-SimpleDonut.png" id="2_o775t"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xjrx0"]
-radius = 48.0
+radius = 24.0
 
 [node name="Donut" type="Node2D" node_paths=PackedStringArray("player_area", "sprite", "notifier")]
 script = ExtResource("1_fxlgi")
@@ -14,7 +14,7 @@ speed = 500
 notifier = NodePath("VisibleOnScreenNotifier2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(4, 4)
+scale = Vector2(2, 2)
 texture = ExtResource("2_o775t")
 
 [node name="Area2D" type="Area2D" parent="."]

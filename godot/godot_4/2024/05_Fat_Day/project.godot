@@ -22,8 +22,8 @@ AudioManager="*res://singleton/audio_manager.tscn"
 
 [display]
 
-window/size/viewport_width=730
-window/size/viewport_height=1600
+window/size/viewport_width=360
+window/size/viewport_height=800
 window/stretch/mode="viewport"
 window/stretch/scale_mode="integer"
 window/handheld/orientation=5

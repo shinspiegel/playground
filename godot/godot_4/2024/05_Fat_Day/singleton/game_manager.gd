@@ -1,8 +1,8 @@
 extends Node2D
 
-const SPEED = 500.0
-const JUMP_VELOCITY = -800.0
-const GRAVITY = 1400
+const SPEED = 300.0
+const JUMP_VELOCITY = -600.0
+const GRAVITY = 1200
 
 signal screen_changed(size: Vector2i)
 signal donuts_changed()
