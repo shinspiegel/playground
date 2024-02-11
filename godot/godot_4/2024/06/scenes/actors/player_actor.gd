@@ -19,7 +19,7 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
-	if not Engine.is_editor_hint():
+	if not Engine.is_editor_hint() and GameManager.is_world():
 		__move_player(delta)
 		__apply_animation()
 		move_and_slide()
