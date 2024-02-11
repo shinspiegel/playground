@@ -12,10 +12,8 @@ func _ready() -> void:
 	super._ready()
 
 	if not Engine.is_editor_hint():
-		if camera:
-			camera_holder.remote_path = camera.get_path()
-		else:
-			push_warning("Missing camera node")
+		if not camera: push_warning("missing camera node")
+		enable_camera()
 
 
 func _physics_process(delta: float) -> void:
@@ -23,6 +21,14 @@ func _physics_process(delta: float) -> void:
 		__move_player(delta)
 		__apply_animation()
 		move_and_slide()
+
+
+func enable_camera() -> void:
+	camera_holder.remote_path = camera.get_path()
+
+
+func disable_camera() -> void:
+	camera_holder.remote_path = ""
 
 
 func __move_player(delta: float) -> void:
@@ -41,3 +47,5 @@ func __apply_animation() -> void:
 		play_move(__last_dir)
 	else:
 		play_idle(__last_dir)
+
+

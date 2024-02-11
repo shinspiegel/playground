@@ -18,17 +18,16 @@ func _ready() -> void:
 		head_sprite.texture = actor_data.head_texture
 
 
-func play_idle(dir: Vector2 = Vector2.ZERO) -> void: play_animation("idle", dir)
-func play_move(dir: Vector2 = Vector2.ZERO) -> void: play_animation("move", dir)
-func play_animation(anim_name: String, dir: Vector2) -> void:
+func play_idle(dir: Vector2 = Vector2.ZERO) -> void: play_animation("idle", dir.angle())
+func play_move(dir: Vector2 = Vector2.ZERO) -> void: play_animation("move", dir.angle())
+func play_animation(anim_name: String, angle_rad: float) -> void:
 	var dir_name := "down"
-	var angle = dir.angle()
 
-	if angle >= -PI/4 and angle < PI/4:
+	if angle_rad >= -PI/4 and angle_rad < PI/4:
 		dir_name = "right"
-	elif angle >= PI/4 and angle < 3*PI/4:
+	elif angle_rad >= PI/4 and angle_rad < 3*PI/4:
 		dir_name = "down"
-	elif angle >= -3*PI/4 and angle < -PI/4:
+	elif angle_rad >= -3*PI/4 and angle_rad < -PI/4:
 		dir_name = "up"
 	else:
 		dir_name = "left"
