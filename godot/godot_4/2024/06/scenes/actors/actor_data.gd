@@ -10,6 +10,7 @@ class_name ActorData extends Resource
 @export var battle_max_hp: int = 10
 @export var battle_attack: int = 5
 @export var battle_defense: int = 2
+@export var battle_speed: int = 5
 
 
 @export_group("Texture")

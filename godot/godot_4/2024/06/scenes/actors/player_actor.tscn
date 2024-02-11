@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://x5a3hr02qh7c"]
+[gd_scene load_steps=10 format=3 uid="uid://x5a3hr02qh7c"]
 
 [ext_resource type="PackedScene" uid="uid://c33u7sqdwdu02" path="res://scenes/actors/actor.tscn" id="1_v4713"]
 [ext_resource type="Texture2D" uid="uid://byegmvqk0l546" path="res://assets/downloaded_assets/FREE Mana Seed Character Base Demo/char_a_p1/char_a_p1_0bas_humn_v01.png" id="2_gq5ba"]
 [ext_resource type="Script" path="res://scenes/actors/player_actor.gd" id="2_vhwyp"]
 [ext_resource type="Texture2D" uid="uid://6xap4slmo6rd" path="res://assets/downloaded_assets/FREE Mana Seed Character Base Demo/char_a_p1/1out/char_a_p1_1out_fstr_v04.png" id="3_mx7mq"]
+[ext_resource type="Texture2D" uid="uid://bdrisbuwufpco" path="res://assets/downloaded_assets/FREE Mana Seed Character Base Demo/char_a_p1/1out/char_a_p1_1out_pfpn_v04.png" id="4_h7wmp"]
 [ext_resource type="Texture2D" uid="uid://lny58telk5ye" path="res://assets/downloaded_assets/FREE Mana Seed Character Base Demo/char_a_p1/5hat/char_a_p1_5hat_pfht_v04.png" id="5_d58lg"]
 [ext_resource type="Script" path="res://scenes/actors/actor_data.gd" id="5_r6qxc"]
 
@@ -11,8 +12,12 @@
 script = ExtResource("5_r6qxc")
 speed = 500
 friction = 10.0
+battle_max_hp = 30
+battle_attack = 10
+battle_defense = 5
+battle_speed = 10
 base_texture = ExtResource("2_gq5ba")
-body_texture = ExtResource("3_mx7mq")
+body_texture = ExtResource("4_h7wmp")
 head_texture = ExtResource("5_d58lg")
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kn3aj"]
@@ -34,5 +39,6 @@ texture = ExtResource("3_mx7mq")
 texture = ExtResource("5_d58lg")
 
 [node name="Shape" parent="." index="3"]
+visible = false
 position = Vector2(-2.08165e-12, -42)
 shape = SubResource("CapsuleShape2D_kn3aj")

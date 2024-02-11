@@ -33,3 +33,7 @@ func play_animation(anim_name: String, angle_rad: float) -> void:
 		dir_name = "left"
 
 	animation_player.play("%s_%s"% [anim_name, dir_name])
+
+
+func get_cursor_position() -> Vector2:
+	return get_global_transform_with_canvas().origin

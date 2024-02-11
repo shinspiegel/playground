@@ -1,13 +1,67 @@
-[gd_scene load_steps=7 format=3 uid="uid://csdjbfj5l0pus"]
+[gd_scene load_steps=17 format=3 uid="uid://csdjbfj5l0pus"]
 
 [ext_resource type="TileSet" uid="uid://d4eaidaxglkih" path="res://scenes/tilemap/template.tres" id="1_b3xio"]
 [ext_resource type="PackedScene" uid="uid://cd30lwdo4bvuu" path="res://scenes/game_camera/game_camera.tscn" id="1_helwf"]
 [ext_resource type="Script" path="res://scenes/level_map/level_map.gd" id="2_2k0ej"]
 [ext_resource type="PackedScene" uid="uid://d233qvgetdlul" path="res://scenes/battle_area/battle_area.tscn" id="4_dfnv0"]
 [ext_resource type="PackedScene" uid="uid://tp3o11x5818f" path="res://scenes/actors/enemy_actor.tscn" id="5_acrwy"]
+[ext_resource type="PackedScene" uid="uid://dy7d01okq1qj1" path="res://scenes/battle_ui/battle_ui.tscn" id="6_kxsdv"]
+[ext_resource type="Script" path="res://scenes/actors/actor_data.gd" id="6_shou2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pl5m0"]
 size = Vector2(896, 768)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_8p0lt"]
+load_path = "res://.godot/imported/char_a_p1_0bas_humn_v01.png-ab6598a94543c0be39472a4ce8622822.ctex"
+
+[sub_resource type="Resource" id="Resource_hr0hw"]
+script = ExtResource("6_shou2")
+speed = 500
+friction = 10.0
+battle_max_hp = 10
+battle_attack = 5
+battle_defense = 2
+battle_speed = 0
+base_texture = SubResource("CompressedTexture2D_8p0lt")
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_56jc8"]
+load_path = "res://.godot/imported/char_a_p1_0bas_humn_v01.png-ab6598a94543c0be39472a4ce8622822.ctex"
+
+[sub_resource type="Resource" id="Resource_1awp0"]
+script = ExtResource("6_shou2")
+speed = 500
+friction = 10.0
+battle_max_hp = 10
+battle_attack = 5
+battle_defense = 2
+battle_speed = 5
+base_texture = SubResource("CompressedTexture2D_56jc8")
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_wlwbb"]
+load_path = "res://.godot/imported/char_a_p1_0bas_humn_v01.png-ab6598a94543c0be39472a4ce8622822.ctex"
+
+[sub_resource type="Resource" id="Resource_jbcco"]
+script = ExtResource("6_shou2")
+speed = 500
+friction = 10.0
+battle_max_hp = 10
+battle_attack = 5
+battle_defense = 2
+battle_speed = 3
+base_texture = SubResource("CompressedTexture2D_wlwbb")
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_75dgd"]
+load_path = "res://.godot/imported/char_a_p1_0bas_humn_v01.png-ab6598a94543c0be39472a4ce8622822.ctex"
+
+[sub_resource type="Resource" id="Resource_cwi8c"]
+script = ExtResource("6_shou2")
+speed = 500
+friction = 10.0
+battle_max_hp = 10
+battle_attack = 5
+battle_defense = 2
+battle_speed = 0
+base_texture = SubResource("CompressedTexture2D_75dgd")
 
 [node name="Main" type="Node2D"]
 
@@ -76,12 +130,18 @@ position = Vector2(768, 832)
 
 [node name="EnemyActor" parent="LevelMap/Sorted" instance=ExtResource("5_acrwy")]
 position = Vector2(1248, 784)
+actor_data = SubResource("Resource_hr0hw")
 
 [node name="EnemyActor2" parent="LevelMap/Sorted" instance=ExtResource("5_acrwy")]
 position = Vector2(1216, 1184)
+actor_data = SubResource("Resource_1awp0")
 
 [node name="EnemyActor3" parent="LevelMap/Sorted" instance=ExtResource("5_acrwy")]
 position = Vector2(1374, 1039)
+actor_data = SubResource("Resource_jbcco")
 
 [node name="EnemyActor4" parent="LevelMap/Sorted" instance=ExtResource("5_acrwy")]
 position = Vector2(1408, 816)
+actor_data = SubResource("Resource_cwi8c")
+
+[node name="BattleUi" parent="." instance=ExtResource("6_kxsdv")]
