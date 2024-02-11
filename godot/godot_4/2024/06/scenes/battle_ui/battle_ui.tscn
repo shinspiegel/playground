@@ -1,7 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://dy7d01okq1qj1"]
+[gd_scene load_steps=12 format=3 uid="uid://dy7d01okq1qj1"]
 
 [ext_resource type="Script" path="res://scenes/battle_ui/battle_ui.gd" id="1_q4vm0"]
 [ext_resource type="Texture2D" uid="uid://d0e3hlvsqlwpe" path="res://assets/cursor.png" id="2_okv7g"]
+
+[sub_resource type="Theme" id="Theme_r32w2"]
+default_font_size = 32
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fap75"]
 atlas = ExtResource("2_okv7g")
@@ -70,6 +73,56 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="ActorPanel" type="Control" parent="BattleUI"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_r32w2")
+
+[node name="Panel" type="Panel" parent="BattleUI/ActorPanel"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -352.0
+offset_top = -124.0
+offset_right = -116.0
+offset_bottom = 124.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BattleUI/ActorPanel/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 32.0
+offset_right = -32.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Attack" type="Button" parent="BattleUI/ActorPanel/Panel/VBoxContainer"]
+layout_mode = 2
+text = "Attack"
+
+[node name="Defend" type="Button" parent="BattleUI/ActorPanel/Panel/VBoxContainer"]
+layout_mode = 2
+text = "Defend"
+
+[node name="Run" type="Button" parent="BattleUI/ActorPanel/Panel/VBoxContainer"]
+layout_mode = 2
+text = "Run"
 
 [node name="CursorHand" type="Control" parent="BattleUI"]
 unique_name_in_owner = true
