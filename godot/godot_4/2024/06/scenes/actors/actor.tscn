@@ -384,6 +384,10 @@ position = Vector2(0, -0.0747233)
 motion_mode = 1
 script = ExtResource("1_e7e8a")
 
+[node name="HandPos" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(1, -80)
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true
 libraries = {

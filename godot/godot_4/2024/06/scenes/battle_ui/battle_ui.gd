@@ -6,6 +6,7 @@ class_name BattleUI extends CanvasLayer
 func _ready() -> void:
 	BattleManager.battle_started.connect(on_battle_start)
 	BattleManager.battle_ended.connect(on_battle_end)
+	BattleManager.turn_started.connect(on_turn_started)
 	hide()
 
 
@@ -20,3 +21,6 @@ func on_battle_start() -> void:
 func on_battle_end() -> void:
 	hide()
 
+
+func on_turn_started() -> void:
+	move_hand_to(BattleManager.current_turn.get_cursor_position())

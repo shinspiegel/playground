@@ -2,10 +2,12 @@ extends Node
 
 signal battle_started()
 signal battle_ended()
+signal turn_started()
 
 var current_party: Array[PlayerActor] = []
 var current_enemy_list: Array[EnemyActor] = []
 var turn_order: Array[Actor] = []
+var current_turn: Actor
 
 
 func start_battle(party: Array[PlayerActor], enemies: Array[EnemyActor]) -> void:
@@ -15,6 +17,7 @@ func start_battle(party: Array[PlayerActor], enemies: Array[EnemyActor]) -> void
 
 	GameManager.change_to_battle()
 	battle_started.emit()
+	start_turn()
 
 
 func end_battle() -> void:
@@ -24,8 +27,12 @@ func end_battle() -> void:
 
 
 func start_turn() -> void:
-	# turn order
-	pass
+	if __check_victory():
+		end_battle()
+		return
+
+	current_turn = turn_order[0]
+	turn_started.emit()
 
 
 func __reset() -> void:
@@ -44,3 +51,11 @@ func __prepare_lists(party: Array[PlayerActor], list: Array[EnemyActor]) -> void
 
 func __sort(a: Actor,b: Actor) -> bool:
 	return a.actor_data.battle_speed > b.actor_data.battle_speed
+
+
+func __check_victory() -> bool:
+	# Check victory
+	if turn_order.size() < 1:
+		return true
+
+	return false

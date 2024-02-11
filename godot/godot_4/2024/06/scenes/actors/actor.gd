@@ -7,6 +7,7 @@ class_name Actor extends CharacterBody2D
 @onready var body_sprite: Sprite2D = %BodySprite
 @onready var head_sprite: Sprite2D = %HeadSprite
 @onready var animation_player: AnimationPlayer = %AnimationPlayer
+@onready var hand_pos: Marker2D = %HandPos
 
 
 func _ready() -> void:
@@ -36,4 +37,4 @@ func play_animation(anim_name: String, angle_rad: float) -> void:
 
 
 func get_cursor_position() -> Vector2:
-	return get_global_transform_with_canvas().origin
+	return hand_pos.get_global_transform_with_canvas().origin

@@ -7,4 +7,8 @@
 script = ExtResource("2_jg0af")
 speed = 500
 friction = 10.0
+battle_max_hp = 10
+battle_attack = 5
+battle_defense = 2
+battle_speed = 5
 base_texture = ExtResource("1_0k0jc")
