@@ -3,11 +3,12 @@ extends Node
 signal battle_started()
 signal battle_ended()
 signal turn_started()
+signal turn_ended()
 
 var current_party: Array[PlayerActor] = []
 var current_enemy_list: Array[EnemyActor] = []
 var turn_order: Array[Actor] = []
-var current_turn: Actor
+var current_actor: Actor
 
 
 func start_battle(party: Array[PlayerActor], enemies: Array[EnemyActor]) -> void:
@@ -31,8 +32,34 @@ func start_turn() -> void:
 		end_battle()
 		return
 
-	current_turn = turn_order[0]
+	current_actor = turn_order[0]
 	turn_started.emit()
+	
+	if current_actor is EnemyActor:
+		# Create AI usage
+		await get_tree().create_timer(1).timeout
+		next_turn()
+
+
+func next_turn() -> void:
+	turn_ended.emit()
+
+	if __check_victory():
+		end_battle()
+		return
+	
+	var first = turn_order.pop_front()
+	current_actor = turn_order.front()
+	turn_order.push_back(first)
+	start_turn()
+
+
+func select_action(action_name: String) -> void:
+	print(action_name)
+    :wa
+    :wa
+	next_turn()
+	pass
 
 
 func __reset() -> void:
@@ -59,3 +86,4 @@ func __check_victory() -> bool:
 		return true
 
 	return false
+

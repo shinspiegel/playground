@@ -27,4 +27,3 @@ func change_state_to(state: MODE) -> void:
 func is_world() -> bool: return current_mode == MODE.WORLD
 func is_battle() -> bool: return current_mode == MODE.BATTLE
 func is_cut_scene() -> bool: return current_mode == MODE.CUT_SCENE
-
