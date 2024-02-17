@@ -1,18 +1,10 @@
 extends Node
 
-const PLAYER_ACTOR = preload("res://scenes/actors/player_actor.tscn")
-
 signal state_changed()
 
 enum MODE {WORLD, BATTLE, CUT_SCENE}
 
 var current_mode: MODE = MODE.WORLD
-var current_party: Array[PlayerActor] = []
-
-
-func _ready() -> void:
-	var player = PLAYER_ACTOR.instantiate()
-	current_party.append(player)
 
 
 func change_to_world() -> void: change_state_to(MODE.WORLD)

@@ -25,15 +25,15 @@ func __prepare_battle() -> void:
 
 	var tw = create_tween().set_ease(Tween.EASE_OUT).set_parallel(true)
 
-	for index in GameManager.current_party.size():
-		var party_member: PlayerActor = GameManager.current_party[index]
+	for index in PartyManager.party_size():
+		var party_member: PlayerActor = PartyManager.at(index)
 		var party_pos: Node2D = player_actor_pos[index]
 		tw.tween_property(party_member, "global_position", party_pos.global_position, MOVE_DURATION)
 
 	tw.play()
 	await tw.finished
 
-	for member in GameManager.current_party:
+	for member in PartyManager.party:
 		member.disable_camera()
 		member.play_animation("idle", member.global_position.direction_to(camera_position.global_position).normalized().angle())
 
@@ -42,7 +42,7 @@ func __prepare_battle() -> void:
 	tw.play()
 	await tw.finished
 
-	BattleManager.start_battle(GameManager.current_party, __get_enemy_targets())
+	BattleManager.start_battle(PartyManager.party, __get_enemy_targets())
 
 
 func __get_enemy_targets() -> Array[EnemyActor]:

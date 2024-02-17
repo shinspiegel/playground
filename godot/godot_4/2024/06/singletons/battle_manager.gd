@@ -34,7 +34,7 @@ func start_turn() -> void:
 
 	current_actor = turn_order[0]
 	turn_started.emit()
-	
+
 	if current_actor is EnemyActor:
 		# Create AI usage
 		await get_tree().create_timer(1).timeout
@@ -47,7 +47,7 @@ func next_turn() -> void:
 	if __check_victory():
 		end_battle()
 		return
-	
+
 	var first = turn_order.pop_front()
 	current_actor = turn_order.front()
 	turn_order.push_back(first)
@@ -56,8 +56,6 @@ func next_turn() -> void:
 
 func select_action(action_name: String) -> void:
 	print(action_name)
-    :wa
-    :wa
 	next_turn()
 	pass
 

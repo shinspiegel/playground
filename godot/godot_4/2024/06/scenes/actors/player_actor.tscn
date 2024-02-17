@@ -1,9 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://x5a3hr02qh7c"]
+[gd_scene load_steps=9 format=3 uid="uid://x5a3hr02qh7c"]
 
 [ext_resource type="PackedScene" uid="uid://c33u7sqdwdu02" path="res://scenes/actors/actor.tscn" id="1_v4713"]
 [ext_resource type="Texture2D" uid="uid://byegmvqk0l546" path="res://assets/downloaded_assets/FREE Mana Seed Character Base Demo/char_a_p1/char_a_p1_0bas_humn_v01.png" id="2_gq5ba"]
 [ext_resource type="Script" path="res://scenes/actors/player_actor.gd" id="2_vhwyp"]
-[ext_resource type="Texture2D" uid="uid://6xap4slmo6rd" path="res://assets/downloaded_assets/FREE Mana Seed Character Base Demo/char_a_p1/1out/char_a_p1_1out_fstr_v04.png" id="3_mx7mq"]
 [ext_resource type="Texture2D" uid="uid://bdrisbuwufpco" path="res://assets/downloaded_assets/FREE Mana Seed Character Base Demo/char_a_p1/1out/char_a_p1_1out_pfpn_v04.png" id="4_h7wmp"]
 [ext_resource type="Texture2D" uid="uid://lny58telk5ye" path="res://assets/downloaded_assets/FREE Mana Seed Character Base Demo/char_a_p1/5hat/char_a_p1_5hat_pfht_v04.png" id="5_d58lg"]
 [ext_resource type="Script" path="res://scenes/actors/actor_data.gd" id="5_r6qxc"]
@@ -33,12 +32,12 @@ actor_data = SubResource("Resource_1pii5")
 unique_name_in_owner = true
 
 [node name="BodySprite" parent="Graphics" index="1"]
-texture = ExtResource("3_mx7mq")
+texture = ExtResource("4_h7wmp")
 
 [node name="HeadSprite" parent="Graphics" index="2"]
 texture = ExtResource("5_d58lg")
 
-[node name="Shape" parent="." index="3"]
+[node name="Shape" parent="." index="4"]
 visible = false
 position = Vector2(-2.08165e-12, -42)
 shape = SubResource("CapsuleShape2D_kn3aj")

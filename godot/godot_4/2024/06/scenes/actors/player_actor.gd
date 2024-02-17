@@ -1,19 +1,17 @@
-@tool
 class_name PlayerActor extends Actor
 
 @export var camera: Camera2D
 
 @onready var camera_holder: RemoteTransform2D = %CameraHolder
 
-
 var __last_dir := Vector2.ZERO
 
-func _ready() -> void:
-	super._ready()
 
-	if not Engine.is_editor_hint():
-		if not camera: push_warning("missing camera node")
-		enable_camera()
+func _ready() -> void:
+	apply_textures_from_data()
+
+	if not camera: push_error("missing camera node")
+	enable_camera()
 
 
 func _physics_process(delta: float) -> void:

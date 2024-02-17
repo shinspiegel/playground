@@ -1,4 +1,3 @@
-@tool
 class_name Actor extends CharacterBody2D
 
 @export var actor_data: ActorData
@@ -11,6 +10,11 @@ class_name Actor extends CharacterBody2D
 
 
 func _ready() -> void:
+	apply_textures_from_data()
+
+
+func apply_textures_from_data() -> void:
+	if not actor_data: push_error("missing actor data")
 	if actor_data.base_texture:
 		base_sprite.texture = actor_data.base_texture
 	if actor_data.body_texture:
@@ -19,8 +23,14 @@ func _ready() -> void:
 		head_sprite.texture = actor_data.head_texture
 
 
-func play_idle(dir: Vector2 = Vector2.ZERO) -> void: play_animation("idle", dir.angle())
-func play_move(dir: Vector2 = Vector2.ZERO) -> void: play_animation("move", dir.angle())
+func play_idle(dir: Vector2 = Vector2.ZERO) -> void: 
+	play_animation("idle", dir.angle())
+
+
+func play_move(dir: Vector2 = Vector2.ZERO) -> void: 
+	play_animation("move", dir.angle())
+
+
 func play_animation(anim_name: String, angle_rad: float) -> void:
 	var dir_name := "down"
 
