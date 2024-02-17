@@ -24,3 +24,6 @@ class_name ActorData extends Resource
 @export var follow_ratio: float = 0.9
 @export var follow_distance: int = 50
 @export var follow_angle: int = 45
+
+@export_group("Actions")
+@export var actions: Array[ActionCommand] = []

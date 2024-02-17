@@ -48,3 +48,7 @@ func play_animation(anim_name: String, angle_rad: float) -> void:
 
 func get_cursor_position() -> Vector2:
 	return hand_pos.get_global_transform_with_canvas().origin
+
+
+func get_actions() -> Array[ActionCommand]:
+	return actor_data.actions

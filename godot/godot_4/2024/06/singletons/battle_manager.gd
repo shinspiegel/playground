@@ -54,8 +54,9 @@ func next_turn() -> void:
 	start_turn()
 
 
-func select_action(action_name: String) -> void:
-	print("select_action", action_name)
+func select_action(action: ActionCommand) -> void:
+	print("select_action", action)
+	action.action()
 	next_turn()
 	pass
 

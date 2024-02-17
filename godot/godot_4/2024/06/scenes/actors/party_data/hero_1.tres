@@ -1,8 +1,11 @@
-[gd_resource type="Resource" script_class="ActorData" load_steps=5 format=3 uid="uid://ciolqpkmmigyc"]
+[gd_resource type="Resource" script_class="ActorData" load_steps=8 format=3 uid="uid://ciolqpkmmigyc"]
 
+[ext_resource type="Resource" uid="uid://dkg0xp6apcmsa" path="res://scenes/actors/action_commands/shoot.tres" id="1_esi7u"]
 [ext_resource type="Texture2D" uid="uid://byegmvqk0l546" path="res://assets/downloaded_assets/FREE Mana Seed Character Base Demo/char_a_p1/char_a_p1_0bas_humn_v01.png" id="1_puiih"]
 [ext_resource type="Script" path="res://scenes/actors/actor_data.gd" id="2_c77vl"]
 [ext_resource type="Texture2D" uid="uid://6xap4slmo6rd" path="res://assets/downloaded_assets/FREE Mana Seed Character Base Demo/char_a_p1/1out/char_a_p1_1out_fstr_v04.png" id="2_ejylb"]
+[ext_resource type="Resource" uid="uid://oxrdmxfeu83y" path="res://scenes/actors/action_commands/reload.tres" id="2_po5vu"]
+[ext_resource type="Resource" uid="uid://bypicrl0b25of" path="res://scenes/actors/action_commands/run.tres" id="3_8q0xe"]
 [ext_resource type="Texture2D" uid="uid://cnef8doalaxbl" path="res://assets/downloaded_assets/FREE Mana Seed Character Base Demo/char_a_p1/4har/char_a_p1_4har_dap1_v01.png" id="3_ydedu"]
 
 [resource]
@@ -20,3 +23,4 @@ follow_min_distance = 120
 follow_ratio = 0.9
 follow_distance = 50
 follow_angle = 45
+actions = Array[Resource("res://scenes/actors/action_commands/action_command.gd")]([ExtResource("1_esi7u"), ExtResource("2_po5vu"), ExtResource("3_8q0xe")])

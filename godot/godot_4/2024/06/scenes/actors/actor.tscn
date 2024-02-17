@@ -391,6 +391,9 @@ actor_data = ExtResource("2_jpl1r")
 unique_name_in_owner = true
 position = Vector2(1, -80)
 
+[node name="ActionsList" type="Node2D" parent="."]
+unique_name_in_owner = true
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true
 libraries = {

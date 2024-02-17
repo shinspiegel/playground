@@ -15,7 +15,7 @@ func on_turn_started() -> void:
 	if actor is PlayerActor:
 		__create_container_butttons()
 		global_position = actor.get_cursor_position()
-		action_container.get_child(0).grab_focus()
+		__select_first()
 		show()
 
 
@@ -27,23 +27,22 @@ func on_turn_ended() -> void:
 	hide()
 
 
-func on_button_press(action: String) -> void:
+func on_button_press(action: ActionCommand) -> void:
 	BattleManager.select_action(action)
 
 
 func __create_container_butttons() -> void:
-	var list_options: Array[String] = [
-		"Shoot",
-		"Reload",
-		"Run",
-	]
-
-	for option in list_options:
+	for option in BattleManager.current_actor.get_actions():
 		var btn := Button.new()
-		btn.text = option
+		btn.text = option.name
 		btn.pressed.connect(on_button_press.bind(option))
 		action_container.add_child(btn)
 
 	await get_tree().create_timer(0.1).timeout
-	action_container.get_child(0).grab_focus()
+	__select_first()
+
+
+func __select_first() -> void:
+	if action_container.get_children().size() > 0:
+		action_container.get_child(0).grab_focus()
 
