@@ -9,10 +9,10 @@ var current_party: Array[PlayerActor] = []
 var current_enemy_list: Array[EnemyActor] = []
 var turn_order: Array[Actor] = []
 var current_actor: Actor
+var battle_area: BattleArea
 
 
 func start_battle(party: Array[PlayerActor], enemies: Array[EnemyActor]) -> void:
-	__reset()
 	__prepare_lists(party, enemies)
 	turn_order.sort_custom(__sort)
 
@@ -56,7 +56,7 @@ func next_turn() -> void:
 
 func select_action(action: ActionCommand) -> void:
 	print("select_action", action)
-	action.action()
+	action.act()
 	next_turn()
 	pass
 
@@ -65,6 +65,8 @@ func __reset() -> void:
 	current_party = []
 	current_enemy_list = []
 	turn_order = []
+	current_actor = null
+	battle_area = null
 
 
 func __prepare_lists(party: Array[PlayerActor], list: Array[EnemyActor]) -> void:

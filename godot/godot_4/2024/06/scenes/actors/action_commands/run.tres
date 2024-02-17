@@ -1,7 +1,7 @@
-[gd_resource type="Resource" script_class="ActionCommand" load_steps=2 format=3 uid="uid://bypicrl0b25of"]
+[gd_resource type="Resource" script_class="RunCommandAction" load_steps=2 format=3 uid="uid://bypicrl0b25of"]
 
-[ext_resource type="Script" path="res://scenes/actors/action_commands/action_command.gd" id="1_fbb7q"]
+[ext_resource type="Script" path="res://scenes/actors/action_commands/run.gd" id="1_k03oc"]
 
 [resource]
-script = ExtResource("1_fbb7q")
+script = ExtResource("1_k03oc")
 name = "Run"

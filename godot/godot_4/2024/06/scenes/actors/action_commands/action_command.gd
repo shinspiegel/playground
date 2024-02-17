@@ -3,6 +3,7 @@ class_name ActionCommand extends Resource
 @export var name: String
 
 
-func action() -> void:
-	push_warning("not implemented action")
+func act() -> void:
+	push_warning("not implemented act")
 	pass
+

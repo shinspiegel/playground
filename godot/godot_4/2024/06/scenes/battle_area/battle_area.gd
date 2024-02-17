@@ -2,6 +2,7 @@ class_name BattleArea extends Area2D
 
 const MOVE_DURATION = 0.3
 
+@export var can_be_escaped := true
 @export var player_actor_pos: Array[Node2D] = []
 @export var camera_position: Node2D
 @export var game_camera: Camera2D
@@ -22,6 +23,7 @@ func on_body_enter(body: Node) -> void:
 
 func __prepare_battle() -> void:
 	GameManager.change_to_cut_scene()
+	BattleManager.battle_area = self
 
 	var tw = create_tween().set_ease(Tween.EASE_OUT).set_parallel(true)
 
