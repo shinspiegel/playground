@@ -10,8 +10,18 @@ func _ready() -> void:
 	if not pos: push_error("failed to locate the initial player position node")
 	if not game_camera: push_error("missing game camera node")
 
-	var player: PlayerActor = PartyManager.get_leader()
-	player.camera = game_camera
-	sorted.add_child(player)
-	player.global_position = pos.global_position
+	for index in PartyManager.party_size():
+		var player: PlayerActor = PartyManager.at(index)
+		player.global_position = pos.global_position
+		player.camera = game_camera
+
+		match index:
+			0:
+				player.is_user_controlled = true
+			1:
+				player.follow_side = -1
+			2:
+				player.follow_side = 1
+
+		sorted.add_child(player)
 

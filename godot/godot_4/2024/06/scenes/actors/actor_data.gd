@@ -18,3 +18,9 @@ class_name ActorData extends Resource
 @export var body_texture: Texture2D
 @export var head_texture: Texture2D
 
+
+@export_group("Follow", "follow_")
+@export var follow_min_distance: int = 120
+@export var follow_ratio: float = 0.9
+@export var follow_distance: int = 50
+@export var follow_angle: int = 45

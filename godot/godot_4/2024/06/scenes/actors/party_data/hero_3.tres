@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="ActorData" load_steps=5 format=3 uid="uid://yu8t7y7vs6p7"]
+
+[ext_resource type="Texture2D" uid="uid://byegmvqk0l546" path="res://assets/downloaded_assets/FREE Mana Seed Character Base Demo/char_a_p1/char_a_p1_0bas_humn_v01.png" id="1_hnchi"]
+[ext_resource type="Script" path="res://scenes/actors/actor_data.gd" id="2_56s04"]
+[ext_resource type="Texture2D" uid="uid://djxd3bgkf210" path="res://assets/downloaded_assets/FREE Mana Seed Character Base Demo/char_a_p1/1out/char_a_p1_1out_undi_v01.png" id="2_ol448"]
+[ext_resource type="Texture2D" uid="uid://lny58telk5ye" path="res://assets/downloaded_assets/FREE Mana Seed Character Base Demo/char_a_p1/5hat/char_a_p1_5hat_pfht_v04.png" id="3_mc5jk"]
+
+[resource]
+script = ExtResource("2_56s04")
+speed = 500
+friction = 10.0
+battle_max_hp = 30
+battle_attack = 10
+battle_defense = 5
+battle_speed = 10
+base_texture = ExtResource("1_hnchi")
+body_texture = ExtResource("2_ol448")
+head_texture = ExtResource("3_mc5jk")
+follow_min_distance = 110
+follow_ratio = 0.95
+follow_distance = 50
+follow_angle = 45

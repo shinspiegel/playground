@@ -23,11 +23,11 @@ func apply_textures_from_data() -> void:
 		head_sprite.texture = actor_data.head_texture
 
 
-func play_idle(dir: Vector2 = Vector2.ZERO) -> void: 
+func play_idle(dir: Vector2 = Vector2.ZERO) -> void:
 	play_animation("idle", dir.angle())
 
 
-func play_move(dir: Vector2 = Vector2.ZERO) -> void: 
+func play_move(dir: Vector2 = Vector2.ZERO) -> void:
 	play_animation("move", dir.angle())
 
 

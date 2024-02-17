@@ -3,4 +3,6 @@
 [ext_resource type="Script" path="res://scenes/battle_area/battle_area.gd" id="1_h4hoi"]
 
 [node name="BattleArea" type="Area2D"]
+collision_layer = 8
+collision_mask = 2
 script = ExtResource("1_h4hoi")

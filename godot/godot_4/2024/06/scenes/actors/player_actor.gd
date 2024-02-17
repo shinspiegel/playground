@@ -1,9 +1,11 @@
 class_name PlayerActor extends Actor
 
 @export var camera: Camera2D
+@export var follow_side: int = 0
 
 @onready var camera_holder: RemoteTransform2D = %CameraHolder
 
+var is_user_controlled: bool = false
 var __last_dir := Vector2.ZERO
 
 
@@ -11,13 +13,17 @@ func _ready() -> void:
 	apply_textures_from_data()
 
 	if not camera: push_error("missing camera node")
-	enable_camera()
+	if is_user_controlled: enable_camera()
 
 
 func _physics_process(delta: float) -> void:
-	if not Engine.is_editor_hint() and GameManager.is_world():
-		__move_player(delta)
-		__apply_animation()
+	if GameManager.is_world():
+		if is_user_controlled:
+			__move_player(delta)
+			__apply_animation()
+		else:
+			__follow_leader(delta)
+
 		move_and_slide()
 
 
@@ -46,4 +52,25 @@ func __apply_animation() -> void:
 	else:
 		play_idle(__last_dir)
 
+
+func __follow_leader(delta: float) -> void:
+	var leader = PartyManager.get_leader()
+	var direction_to_leader = global_position.direction_to(leader.global_position)
+	var distance_to_leader = global_position.distance_to(leader.global_position)
+
+	var offset_direction = direction_to_leader.rotated(deg_to_rad(actor_data.follow_angle) * follow_side).normalized() * actor_data.follow_distance
+	var target_position = leader.global_position + offset_direction
+
+	direction_to_leader = global_position.direction_to(target_position)
+	distance_to_leader = global_position.distance_to(target_position)
+
+	if distance_to_leader > actor_data.follow_min_distance:
+		velocity = velocity.move_toward(
+			direction_to_leader.normalized() * actor_data.speed * actor_data.follow_ratio,
+			actor_data.friction
+		)
+		play_move(direction_to_leader)
+	else:
+		velocity = velocity.move_toward(Vector2.ZERO, actor_data.speed * delta * actor_data.friction)
+		play_idle(direction_to_leader)
 
