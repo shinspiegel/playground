@@ -55,7 +55,7 @@ func next_turn() -> void:
 
 
 func select_action(action_name: String) -> void:
-	print(action_name)
+	print("select_action", action_name)
 	next_turn()
 	pass
 

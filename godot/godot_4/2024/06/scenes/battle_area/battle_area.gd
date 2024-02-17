@@ -16,7 +16,7 @@ func _ready() -> void:
 
 
 func on_body_enter(body: Node) -> void:
-	if body is PlayerActor:
+	if body is PlayerActor and body.is_user_controlled:
 		__prepare_battle()
 
 

@@ -21,9 +21,8 @@ func on_turn_started() -> void:
 
 func on_turn_ended() -> void:
 	for node in action_container.get_children():
-		if node.has_signal("pressed"):
-			node.pressed.disconnect(on_button_press)
-			node.queue_free()
+		node.pressed.disconnect(on_button_press)
+		node.queue_free()
 
 	hide()
 
@@ -33,15 +32,18 @@ func on_button_press(action: String) -> void:
 
 
 func __create_container_butttons() -> void:
-	var things: Array[String] = [
+	var list_options: Array[String] = [
 		"Shoot",
 		"Reload",
 		"Run",
 	]
 
-	for op in things:
+	for option in list_options:
 		var btn := Button.new()
-		btn.text = op
-		btn.pressed.connect(on_button_press.bind(op))
+		btn.text = option
+		btn.pressed.connect(on_button_press.bind(option))
 		action_container.add_child(btn)
+
+	await get_tree().create_timer(0.1).timeout
+	action_container.get_child(0).grab_focus()
 

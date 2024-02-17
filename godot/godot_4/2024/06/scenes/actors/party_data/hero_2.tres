@@ -17,6 +17,6 @@ base_texture = ExtResource("1_rvfy5")
 body_texture = ExtResource("2_7oemg")
 head_texture = ExtResource("3_gqkck")
 follow_min_distance = 140
-follow_ratio = 0.8
+follow_ratio = 0.95
 follow_distance = 30
 follow_angle = 45
