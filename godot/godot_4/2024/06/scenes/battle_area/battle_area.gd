@@ -27,6 +27,7 @@ func __prepare_battle() -> void:
 
 	for index in PartyManager.party_size():
 		var party_member: PlayerActor = PartyManager.at(index)
+		party_member.play_move(party_member.last_dir)
 		var party_pos: Node2D = player_actor_pos[index]
 		tw.tween_property(party_member, "global_position", party_pos.global_position, MOVE_DURATION)
 

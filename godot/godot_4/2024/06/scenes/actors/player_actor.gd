@@ -6,7 +6,7 @@ class_name PlayerActor extends Actor
 @onready var camera_holder: RemoteTransform2D = %CameraHolder
 
 var is_user_controlled: bool = false
-var __last_dir := Vector2.ZERO
+var last_dir := Vector2.ZERO
 
 
 func _ready() -> void:
@@ -40,7 +40,7 @@ func __move_player(delta: float) -> void:
 	input_dir.normalized()
 
 	if not input_dir == Vector2.ZERO:
-		__last_dir = input_dir
+		last_dir = input_dir
 		velocity = input_dir * actor_data.speed
 	else:
 		velocity = velocity.move_toward(Vector2.ZERO, actor_data.speed * delta * actor_data.friction)
@@ -48,9 +48,9 @@ func __move_player(delta: float) -> void:
 
 func __apply_animation() -> void:
 	if not velocity == Vector2.ZERO:
-		play_move(__last_dir)
+		play_move(last_dir)
 	else:
-		play_idle(__last_dir)
+		play_idle(last_dir)
 
 
 func __follow_leader(delta: float) -> void:
