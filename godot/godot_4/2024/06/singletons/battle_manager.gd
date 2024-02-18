@@ -9,6 +9,7 @@ signal turn_ended()
 signal targets_selected
 signal targets_requested
 signal target_pointed_to(actor: Actor)
+signal target_damaged(actor: Actor, damage: Damage)
 
 var current_party: Array[PlayerActor] = []
 var current_enemy_list: Array[EnemyActor] = []

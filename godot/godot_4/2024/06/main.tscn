@@ -36,7 +36,7 @@ color = Color(0, 0, 0, 1)
 [node name="MapLimits" type="Node2D" parent="LevelMap"]
 
 [node name="TopLeft" type="Marker2D" parent="LevelMap/MapLimits"]
-position = Vector2(-64, -64)
+position = Vector2(-64, -320)
 
 [node name="BottomRight" type="Marker2D" parent="LevelMap/MapLimits"]
 position = Vector2(1984, 2368)

@@ -13,6 +13,14 @@ func _ready() -> void:
 	apply_textures_from_data()
 
 
+func apply_damage(damage: Damage) -> void:
+	if not damage.is_critical:
+		damage.amount = clampi(damage.amount - actor_data.battle_defense, 1, damage.amount)
+
+	actor_data.battle_hp = clampi(actor_data.battle_hp - damage.amount, 0, actor_data.battle_max_hp)
+	BattleManager.target_damaged.emit(self, damage)
+
+
 func apply_textures_from_data() -> void:
 	if not actor_data: push_error("missing actor data")
 	if actor_data.base_texture:

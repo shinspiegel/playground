@@ -8,4 +8,3 @@ signal finished
 func act() -> void:
 	push_warning("not implemented act")
 	finished.emit()
-

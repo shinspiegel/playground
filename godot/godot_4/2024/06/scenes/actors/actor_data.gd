@@ -1,6 +1,5 @@
 class_name ActorData extends Resource
 
-
 @export_group("World Data")
 @export var speed: int = 500
 @export var friction: float = 10
@@ -8,6 +7,7 @@ class_name ActorData extends Resource
 
 @export_group("Battle Data", "battle_")
 @export var battle_max_hp: int = 10
+@export var battle_hp: int = 10
 @export var battle_attack: int = 5
 @export var battle_defense: int = 2
 @export var battle_speed: int = 5
@@ -28,3 +28,8 @@ class_name ActorData extends Resource
 
 @export_group("Actions")
 @export var actions: Array[ActionCommand] = []
+
+
+func _init() -> void:
+	battle_hp = battle_max_hp
+

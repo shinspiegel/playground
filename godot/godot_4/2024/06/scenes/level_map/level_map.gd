@@ -10,6 +10,10 @@ func _ready() -> void:
 	if not pos: push_error("failed to locate the initial player position node")
 	if not game_camera: push_error("missing game camera node")
 
+	__spawn_party()
+
+
+func __spawn_party() -> void:
 	for index in PartyManager.party_size():
 		var player: PlayerActor = PartyManager.at(index)
 		player.global_position = pos.global_position
