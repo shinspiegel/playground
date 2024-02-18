@@ -9,6 +9,8 @@ const MOVE_DURATION = 0.3
 
 
 func _ready() -> void:
+	BattleManager.battle_ended.connect(on_battle_end)
+
 	if player_actor_pos.size() < 3: push_error("invalid position for player actors, needs to have 3 position")
 	if not camera_position: push_error("missing camera position node")
 	if not game_camera: push_error("missing game camera node")
@@ -19,6 +21,10 @@ func _ready() -> void:
 func on_body_enter(body: Node) -> void:
 	if body is PlayerActor and body.is_user_controlled:
 		__prepare_battle()
+
+
+func on_battle_end() -> void:
+	PartyManager.get_leader().enable_camera()
 
 
 func __prepare_battle() -> void:
@@ -32,6 +38,8 @@ func __prepare_battle() -> void:
 		party_member.play_move(party_member.last_dir)
 		var party_pos: Node2D = player_actor_pos[index]
 		tw.tween_property(party_member, "global_position", party_pos.global_position, MOVE_DURATION)
+		party_member.disable_camera()
+
 
 	tw.play()
 	await tw.finished

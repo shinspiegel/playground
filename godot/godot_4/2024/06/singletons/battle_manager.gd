@@ -17,6 +17,7 @@ var current_actor: Actor
 var battle_area: BattleArea
 var target_list: Array[Actor] = []
 
+
 func start_battle(party: Array[PlayerActor], enemies: Array[EnemyActor]) -> void:
 	__prepare_lists(party, enemies)
 	turn_order.sort_custom(__sort)
