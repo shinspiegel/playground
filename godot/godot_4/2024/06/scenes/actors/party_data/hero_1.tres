@@ -10,7 +10,7 @@
 
 [resource]
 script = ExtResource("2_c77vl")
-speed = 500
+speed = 300
 friction = 10.0
 battle_max_hp = 30
 battle_attack = 7
@@ -19,8 +19,8 @@ battle_speed = 10
 base_texture = ExtResource("1_puiih")
 body_texture = ExtResource("2_ejylb")
 head_texture = ExtResource("3_ydedu")
-follow_min_distance = 120
-follow_ratio = 0.9
-follow_distance = 50
+follow_min_distance = 210
+follow_ratio = 1.05
+follow_distance = 70
 follow_angle = 45
 actions = Array[Resource("res://scenes/actors/action_commands/action_command.gd")]([ExtResource("1_esi7u"), ExtResource("2_po5vu"), ExtResource("3_8q0xe")])

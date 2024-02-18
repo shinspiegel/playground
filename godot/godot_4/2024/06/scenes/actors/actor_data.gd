@@ -2,7 +2,7 @@ class_name ActorData extends Resource
 
 
 @export_group("World Data")
-@export var speed: int = 500
+@export var speed: int = 300
 @export var friction: float = 10
 
 
@@ -20,10 +20,11 @@ class_name ActorData extends Resource
 
 
 @export_group("Follow", "follow_")
-@export var follow_min_distance: int = 120
-@export var follow_ratio: float = 0.9
-@export var follow_distance: int = 50
-@export var follow_angle: int = 45
+@export_range(100, 300, 5) var follow_min_distance: int = 50
+@export_range(0.0, 2.0, 0.05) var follow_ratio: float = 1.0
+@export_range(0, 100, 5) var follow_distance: int = 20
+@export_range(0, 100, 5) var follow_angle: int = 45
+
 
 @export_group("Actions")
 @export var actions: Array[ActionCommand] = []

@@ -10,7 +10,7 @@ var current_enemy_list: Array[EnemyActor] = []
 var turn_order: Array[Actor] = []
 var current_actor: Actor
 var battle_area: BattleArea
-
+var targets: Array[Actor] = []
 
 func start_battle(party: Array[PlayerActor], enemies: Array[EnemyActor]) -> void:
 	__prepare_lists(party, enemies)
@@ -43,6 +43,7 @@ func start_turn() -> void:
 
 func next_turn() -> void:
 	turn_ended.emit()
+	targets.clear()
 
 	if __check_victory():
 		end_battle()

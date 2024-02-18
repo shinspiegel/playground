@@ -23,6 +23,7 @@ func _physics_process(delta: float) -> void:
 			__apply_animation()
 		else:
 			__follow_leader(delta)
+			__apply_animation()
 
 		move_and_slide()
 
@@ -57,20 +58,15 @@ func __follow_leader(delta: float) -> void:
 	var leader = PartyManager.get_leader()
 	var direction_to_leader = global_position.direction_to(leader.global_position)
 	var distance_to_leader = global_position.distance_to(leader.global_position)
-
 	var offset_direction = direction_to_leader.rotated(deg_to_rad(actor_data.follow_angle) * follow_side).normalized() * actor_data.follow_distance
 	var target_position = leader.global_position + offset_direction
 
 	direction_to_leader = global_position.direction_to(target_position)
 	distance_to_leader = global_position.distance_to(target_position)
+	last_dir = direction_to_leader
 
 	if distance_to_leader > actor_data.follow_min_distance:
-		velocity = velocity.move_toward(
-			direction_to_leader.normalized() * actor_data.speed * actor_data.follow_ratio,
-			actor_data.friction
-		)
-		play_move(direction_to_leader)
+		velocity = direction_to_leader.normalized() * actor_data.speed * actor_data.follow_ratio
 	else:
 		velocity = velocity.move_toward(Vector2.ZERO, actor_data.speed * delta * actor_data.friction)
-		play_idle(direction_to_leader)
 
