@@ -10,7 +10,7 @@
 
 [resource]
 script = ExtResource("2_c77vl")
-speed = 300
+speed = 500
 friction = 10.0
 battle_max_hp = 30
 battle_attack = 7

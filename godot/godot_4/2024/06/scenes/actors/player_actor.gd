@@ -19,7 +19,7 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	if GameManager.is_world():
 		if is_user_controlled:
-			__move_player(delta)
+			__move_player()
 			__apply_animation()
 		else:
 			__follow_leader(delta)
@@ -36,7 +36,7 @@ func disable_camera() -> void:
 	camera_holder.remote_path = ""
 
 
-func __move_player(delta: float) -> void:
+func __move_player() -> void:
 	var input_dir := Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	input_dir.normalized()
 
@@ -44,7 +44,7 @@ func __move_player(delta: float) -> void:
 		last_dir = input_dir
 		velocity = input_dir * actor_data.speed
 	else:
-		velocity = velocity.move_toward(Vector2.ZERO, actor_data.speed * delta * actor_data.friction)
+		velocity = velocity.move_toward(Vector2.ZERO, actor_data.speed * actor_data.friction)
 
 
 func __apply_animation() -> void:
@@ -68,5 +68,5 @@ func __follow_leader(delta: float) -> void:
 	if distance_to_leader > actor_data.follow_min_distance:
 		velocity = direction_to_leader.normalized() * actor_data.speed * actor_data.follow_ratio
 	else:
-		velocity = velocity.move_toward(Vector2.ZERO, actor_data.speed * delta * actor_data.friction)
+		velocity = velocity.move_toward(Vector2.ZERO, actor_data.speed * actor_data.friction * delta)
 

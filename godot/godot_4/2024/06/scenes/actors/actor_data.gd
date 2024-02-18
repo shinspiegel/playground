@@ -2,7 +2,7 @@ class_name ActorData extends Resource
 
 
 @export_group("World Data")
-@export var speed: int = 300
+@export var speed: int = 500
 @export var friction: float = 10
 
 

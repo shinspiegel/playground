@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://dy7d01okq1qj1"]
+[gd_scene load_steps=5 format=3 uid="uid://dy7d01okq1qj1"]
 
 [ext_resource type="Script" path="res://scenes/battle_ui/battle_ui.gd" id="1_q4vm0"]
 [ext_resource type="PackedScene" uid="uid://cjlpl2veygtu4" path="res://scenes/battle_ui/elements/actor_panel.tscn" id="2_j7hlr"]
 [ext_resource type="PackedScene" uid="uid://nwj6til6lqdl" path="res://scenes/battle_ui/elements/cursor_hand.tscn" id="3_uqld7"]
+[ext_resource type="Script" path="res://scenes/battle_ui/elements/enemies_marker.gd" id="4_5k72m"]
 
 [node name="BattleUi" type="CanvasLayer"]
 script = ExtResource("1_q4vm0")
@@ -22,3 +23,13 @@ layout_mode = 1
 [node name="CursorHand" parent="BattleUI" instance=ExtResource("3_uqld7")]
 unique_name_in_owner = true
 layout_mode = 1
+
+[node name="EnemiesMarkers" type="Control" parent="."]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("4_5k72m")

@@ -1,7 +1,8 @@
-[gd_resource type="Resource" script_class="ActionCommand" load_steps=2 format=3 uid="uid://dkg0xp6apcmsa"]
+[gd_resource type="Resource" script_class="AttackCommand" load_steps=2 format=3 uid="uid://dkg0xp6apcmsa"]
 
-[ext_resource type="Script" path="res://scenes/actors/action_commands/action_command.gd" id="1_bkobh"]
+[ext_resource type="Script" path="res://scenes/actors/action_commands/attack.gd" id="1_nnk8u"]
 
 [resource]
-script = ExtResource("1_bkobh")
-name = "Shoot"
+script = ExtResource("1_nnk8u")
+name = "Shoot (Atk)"
+require_target = true

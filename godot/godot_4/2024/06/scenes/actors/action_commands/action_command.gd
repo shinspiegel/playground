@@ -1,10 +1,11 @@
 class_name ActionCommand extends Resource
 
+signal finished
+
 @export var name: String
-@export var require_target: bool = true
 
 
 func act() -> void:
 	push_warning("not implemented act")
-	pass
+	finished.emit()
 

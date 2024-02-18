@@ -6,6 +6,7 @@ const DURATION = 0.2
 func _ready() -> void:
 	BattleManager.turn_started.connect(on_turn_started)
 	BattleManager.turn_ended.connect(on_turn_ended)
+	BattleManager.target_pointed_to.connect(on_point_to)
 	hide()
 
 
@@ -23,3 +24,7 @@ func on_turn_started() -> void:
 
 func on_turn_ended() -> void:
 	hide()
+
+
+func on_point_to(actor: Actor) -> void:
+	move_hand_to(actor.get_cursor_position())

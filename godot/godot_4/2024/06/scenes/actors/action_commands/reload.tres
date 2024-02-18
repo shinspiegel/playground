@@ -5,3 +5,4 @@
 [resource]
 script = ExtResource("1_61usm")
 name = "Reload"
+require_target = true

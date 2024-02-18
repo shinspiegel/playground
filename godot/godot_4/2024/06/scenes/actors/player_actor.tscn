@@ -16,6 +16,6 @@ follow_side = 0
 [node name="CameraHolder" type="RemoteTransform2D" parent="." index="0"]
 unique_name_in_owner = true
 
-[node name="Shape" parent="." index="4"]
+[node name="Shape" parent="." index="5"]
 position = Vector2(-2.08165e-12, -42)
 shape = SubResource("CapsuleShape2D_kn3aj")

@@ -15,6 +15,8 @@ func act() -> void:
 		# Make the fail animation
 		pass
 
+	finished.emit()
+
 
 func __generate_change() -> float:
 	return clampf(base_change + (float(BattleManager.current_actor.actor_data.battle_speed - __calculate_average()) * speed_factor), 0.0, 1.0)
