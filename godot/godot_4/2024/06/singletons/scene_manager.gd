@@ -1,5 +1,13 @@
 extends CanvasLayer
 
+const SCENES = {
+	"main": "res://main.tscn",
+	"start": "res://screens/start_screen.tscn",
+	"options": "res://screens/options.tscn",
+	"credits": "res://screens/credits.tscn",
+	"game_over": "res://screens/game_over.tscn",
+}
+
 signal loading_entered()
 signal loading_exited()
 

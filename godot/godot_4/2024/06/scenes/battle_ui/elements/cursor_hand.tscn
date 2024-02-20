@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://nwj6til6lqdl"]
 
 [ext_resource type="Script" path="res://scenes/battle_ui/elements/cursor_hand.gd" id="1_gbpva"]
-[ext_resource type="Texture2D" uid="uid://d0e3hlvsqlwpe" path="res://assets/cursor.png" id="1_sdt1a"]
+[ext_resource type="Texture2D" uid="uid://d0e3hlvsqlwpe" path="res://assets/graphics/cursor.png" id="1_sdt1a"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fap75"]
 atlas = ExtResource("1_sdt1a")

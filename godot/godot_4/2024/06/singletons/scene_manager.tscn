@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://8jbm6h665h1k"]
 
-[ext_resource type="Script" path="res://autoloads/scene_manager.gd" id="1_f70dw"]
-[ext_resource type="Theme" uid="uid://584vptm8xiwf" path="res://screens/base_theme.tres" id="2_8mnqr"]
+[ext_resource type="Script" path="res://singletons/scene_manager.gd" id="1_f70dw"]
+[ext_resource type="Theme" uid="uid://x61ckk74bynv" path="res://screens/theme/base_theme.tres" id="2_8mnqr"]
 
 [node name="SceneManager" type="CanvasLayer"]
 script = ExtResource("1_f70dw")
@@ -32,13 +32,14 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -247.0
-offset_top = -150.0
+offset_top = -136.0
 offset_right = 247.0
 offset_bottom = -46.0
 grow_horizontal = 2
 grow_vertical = 0
 bbcode_enabled = true
-text = "[wave amp=100.0 freq=5.0][center]Loading...[/center][/wave]"
+text = "
+[wave amp=100.0 freq=5.0][center]Loading...[/center][/wave]"
 fit_content = true
 scroll_active = false
 
