@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://c7hs74xnp2lco"
+path="res://.godot/imported/sonatina_letsadventure_5InLoneliness.ogg-4bcd4be544a49dd5879ab550247c015d.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/music/Let's Adventure oggs sonatina.itch.io/sonatina_letsadventure_5InLoneliness.ogg"
+dest_files=["res://.godot/imported/sonatina_letsadventure_5InLoneliness.ogg-4bcd4be544a49dd5879ab550247c015d.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

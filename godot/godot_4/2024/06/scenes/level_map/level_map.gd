@@ -11,6 +11,8 @@ func _ready() -> void:
 	if not game_camera: push_error("missing game camera node")
 
 	__spawn_party()
+	AudioManager.play_music(AudioManager.WORLD)
+
 
 
 func __spawn_party() -> void:

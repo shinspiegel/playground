@@ -29,10 +29,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+offset_left = -736.0
+offset_top = -487.0
+offset_right = 736.0
+offset_bottom = 488.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 20
@@ -50,12 +50,14 @@ layout_mode = 2
 
 [node name="GridContainer" type="GridContainer" parent="VBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 theme_override_constants/h_separation = 20
 theme_override_constants/v_separation = 20
 columns = 2
 
 [node name="FontsContainer" type="Panel" parent="VBoxContainer/GridContainer"]
-custom_minimum_size = Vector2(500, 300)
+custom_minimum_size = Vector2(600, 300)
 layout_mode = 2
 size_flags_vertical = 3
 
@@ -78,7 +80,7 @@ theme_override_font_sizes/font_size = 48
 text = "Fonts"
 
 [node name="Control2" type="Control" parent="VBoxContainer/GridContainer/FontsContainer/MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(2.08165e-12, 30)
+custom_minimum_size = Vector2(2.08165e-12, 20)
 layout_mode = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/GridContainer/FontsContainer/MarginContainer/VBoxContainer"]
@@ -100,7 +102,7 @@ text = "VCR OSD Mono by Riciery Leal"
 autowrap_mode = 2
 
 [node name="GraphicsContainer" type="Panel" parent="VBoxContainer/GridContainer"]
-custom_minimum_size = Vector2(500, 300)
+custom_minimum_size = Vector2(600, 300)
 layout_mode = 2
 size_flags_vertical = 3
 
@@ -123,11 +125,11 @@ theme_override_font_sizes/font_size = 48
 text = "Graphics"
 
 [node name="Control3" type="Control" parent="VBoxContainer/GridContainer/GraphicsContainer/MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(2.08165e-12, 30)
+custom_minimum_size = Vector2(2.08165e-12, 20)
 layout_mode = 2
 
 [node name="MusicPanel" type="Panel" parent="VBoxContainer/GridContainer"]
-custom_minimum_size = Vector2(500, 300)
+custom_minimum_size = Vector2(600, 300)
 layout_mode = 2
 size_flags_vertical = 3
 
@@ -150,29 +152,29 @@ theme_override_font_sizes/font_size = 48
 text = "Musics"
 
 [node name="Control4" type="Control" parent="VBoxContainer/GridContainer/MusicPanel/MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(2.08165e-12, 30)
+custom_minimum_size = Vector2(2.08165e-12, 20)
 layout_mode = 2
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/GridContainer/MusicPanel/MarginContainer/VBoxContainer"]
+[node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer/GridContainer/MusicPanel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="LinkButton" type="LinkButton" parent="VBoxContainer/GridContainer/MusicPanel/MarginContainer/VBoxContainer/HBoxContainer2"]
+[node name="LinkButton" type="LinkButton" parent="VBoxContainer/GridContainer/MusicPanel/MarginContainer/VBoxContainer/HBoxContainer3"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 text = "Link"
-uri = "soundcloud.com/abstraction"
+uri = "https://sonatina.itch.io/letsadventure"
 
-[node name="Label2" type="Label" parent="VBoxContainer/GridContainer/MusicPanel/MarginContainer/VBoxContainer/HBoxContainer2"]
+[node name="Label2" type="Label" parent="VBoxContainer/GridContainer/MusicPanel/MarginContainer/VBoxContainer/HBoxContainer3"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 0
-text = "Abstraction Music"
+text = "Let's Adventure"
 autowrap_mode = 2
 
 [node name="SFXPanel" type="Panel" parent="VBoxContainer/GridContainer"]
-custom_minimum_size = Vector2(500, 300)
+custom_minimum_size = Vector2(600, 300)
 layout_mode = 2
 size_flags_vertical = 3
 
@@ -193,6 +195,10 @@ layout_mode = 2
 size_flags_vertical = 0
 theme_override_font_sizes/font_size = 48
 text = "Sound Effects"
+
+[node name="Control5" type="Control" parent="VBoxContainer/GridContainer/SFXPanel/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(2.08165e-12, 20)
+layout_mode = 2
 
 [node name="Back" type="Button" parent="VBoxContainer"]
 unique_name_in_owner = true

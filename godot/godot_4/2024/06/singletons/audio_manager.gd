@@ -1,9 +1,9 @@
 extends Node2D
 
-const MUSIC_LIST = [
-	preload("res://assets/music/sample_music_1.ogg"),
-	preload("res://assets/music/sample_music_2.ogg"),
-]
+const BATTLE = preload("res://assets/music/Let's Adventure oggs sonatina.itch.io/sonatina_letsadventure_3ToArms.ogg")
+const INTRO = preload("res://assets/music/Let's Adventure oggs sonatina.itch.io/sonatina_letsadventure_1ATaleForTheJourney.ogg")
+const WORLD = preload("res://assets/music/Let's Adventure oggs sonatina.itch.io/sonatina_letsadventure_2Harbingers.ogg")
+
 
 @export var game_settings: GameSettings
 @onready var background_music: AudioStreamPlayer = $BackgroundMusic
@@ -22,11 +22,11 @@ func play_music(next_music: AudioStream, volume_adjust: float = 0.0, duration: f
 		tw.tween_property(background_music, "volume_db", -80, duration)
 		tw.play()
 		await tw.finished
-		
+
 		background_music.stop()
 		background_music.stream = next_music
 		background_music.play()
-		
+
 		tw = create_tween()
 		tw.tween_property(background_music, "volume_db", __convert_float_to_db(game_settings.music_volume + volume_adjust), duration)
 		tw.play()
