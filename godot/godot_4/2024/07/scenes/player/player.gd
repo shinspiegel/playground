@@ -6,13 +6,13 @@ const JUMP_VELOCITY = -1400.0
 @export var input: PlayerInput
 
 var flip_direction: int = 1
-var last_dir: float = 0.0
 
 
 func _physics_process(delta: float) -> void:
 	apply_gravity(delta)
 	apply_vertical_force(input.jump_just_pressed, input.jump_pressed)
 	apply_horizontal_force(input.direction)
+	apply_flip_scale(input.direction)
 
 	move_and_slide()
 
