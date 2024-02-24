@@ -1,5 +1,11 @@
 class_name ActorData extends Resource
 
+@export_group("Experience", "exp_")
+@export var exp_curve: Curve
+@export var exp_level: int = 1
+@export var exp_current_exp: int
+
+
 @export_group("World Data")
 @export var speed: int = 500
 @export var friction: float = 10
@@ -32,4 +38,9 @@ class_name ActorData extends Resource
 
 func _init() -> void:
 	battle_hp = battle_max_hp
+
+
+func calculate_total_by(level: int) -> int:
+	return 10 + (floori((float(level) / 100) * exp_curve.sample(float(level)/100) * 100000) * 1)
+
 
