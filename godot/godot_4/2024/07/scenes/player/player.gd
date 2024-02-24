@@ -3,11 +3,16 @@ class_name Player extends CharacterBody2D
 const SPEED = 900.0
 const JUMP_VELOCITY = -1400.0
 
+@export var input: PlayerInput
+
+var flip_direction: int = 1
+var last_dir: float = 0.0
+
 
 func _physics_process(delta: float) -> void:
 	apply_gravity(delta)
-	apply_vertical_force()
-	apply_horizontal_force()
+	apply_vertical_force(input.jump_just_pressed, input.jump_pressed)
+	apply_horizontal_force(input.direction)
 
 	move_and_slide()
 
@@ -17,18 +22,28 @@ func apply_gravity(delta: float) -> void:
 		velocity += get_gravity() * delta
 
 
-func apply_vertical_force() -> void:
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+func apply_vertical_force(just_jump: bool, jump: bool) -> void:
+	if just_jump and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 
-	if not Input.is_action_pressed("ui_accept") and not is_on_floor() and velocity.y < 0:
+	if not jump and not is_on_floor() and velocity.y < 0:
 		velocity.y = lerpf(velocity.y, 0, 0.2)
 
 
-
-func apply_horizontal_force() -> void:
-	var direction := Input.get_axis("ui_left", "ui_right")
-	if direction:
-		velocity.x = direction * SPEED
+func apply_horizontal_force(dir: float) -> void:
+	if dir:
+		velocity.x = dir * SPEED
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
+
+
+func apply_flip_scale(dir: float) -> void:
+	if dir != 0:
+		if dir > 0 and flip_direction == -1:
+			scale.x *= -1
+			flip_direction = 1
+
+		if dir < 0 and flip_direction == 1:
+			scale.x *= -1
+			flip_direction = -1
+
