@@ -1,16 +1,19 @@
 [gd_resource type="Resource" script_class="ActorData" load_steps=3 format=3 uid="uid://1t6dln2m4fik"]
 
 [ext_resource type="Texture2D" uid="uid://byegmvqk0l546" path="res://assets/downloaded_assets/FREE Mana Seed Character Base Demo/char_a_p1/char_a_p1_0bas_humn_v01.png" id="1_0k0jc"]
-[ext_resource type="Script" path="res://scenes/actors/actor_data.gd" id="2_jg0af"]
+[ext_resource type="Script" path="res://scenes/actors/actor_data/actor_data.gd" id="2_ee8l1"]
 
 [resource]
-script = ExtResource("2_jg0af")
-speed = 500
-friction = 10.0
-battle_max_hp = 10
-battle_attack = 5
-battle_defense = 2
-battle_speed = 5
+script = ExtResource("2_ee8l1")
+level = 1
+experience = 0
+class_hit_dice = 6
+stat_str = 10
+stat_dex = 10
+stat_con = 10
+stat_int = 10
+stat_wis = 10
+stat_cha = 10
 base_texture = ExtResource("1_0k0jc")
 follow_min_distance = 50
 follow_ratio = 1.0

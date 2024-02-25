@@ -1,32 +1,26 @@
-[gd_resource type="Resource" script_class="ActorData" load_steps=9 format=3 uid="uid://ciolqpkmmigyc"]
+[gd_resource type="Resource" script_class="ActorData" load_steps=5 format=3 uid="uid://ciolqpkmmigyc"]
 
-[ext_resource type="Resource" uid="uid://dkg0xp6apcmsa" path="res://scenes/actors/action_commands/shoot.tres" id="1_esi7u"]
 [ext_resource type="Texture2D" uid="uid://byegmvqk0l546" path="res://assets/downloaded_assets/FREE Mana Seed Character Base Demo/char_a_p1/char_a_p1_0bas_humn_v01.png" id="1_puiih"]
-[ext_resource type="Script" path="res://scenes/actors/actor_data.gd" id="2_c77vl"]
-[ext_resource type="Texture2D" uid="uid://6xap4slmo6rd" path="res://assets/downloaded_assets/FREE Mana Seed Character Base Demo/char_a_p1/1out/char_a_p1_1out_fstr_v04.png" id="2_ejylb"]
-[ext_resource type="Resource" uid="uid://oxrdmxfeu83y" path="res://scenes/actors/action_commands/reload.tres" id="2_po5vu"]
-[ext_resource type="Resource" uid="uid://bypicrl0b25of" path="res://scenes/actors/action_commands/run.tres" id="3_8q0xe"]
-[ext_resource type="Texture2D" uid="uid://cnef8doalaxbl" path="res://assets/downloaded_assets/FREE Mana Seed Character Base Demo/char_a_p1/4har/char_a_p1_4har_dap1_v01.png" id="3_ydedu"]
-
-[sub_resource type="Curve" id="Curve_e8ycg"]
-_data = [Vector2(0, 0), 0.0, 0.1, 0, 0, Vector2(1, 1), 3.05043, 0.0, 0, 0]
-point_count = 2
+[ext_resource type="Texture2D" uid="uid://bdrisbuwufpco" path="res://assets/downloaded_assets/FREE Mana Seed Character Base Demo/char_a_p1/1out/char_a_p1_1out_pfpn_v04.png" id="2_at3l2"]
+[ext_resource type="Texture2D" uid="uid://lny58telk5ye" path="res://assets/downloaded_assets/FREE Mana Seed Character Base Demo/char_a_p1/5hat/char_a_p1_5hat_pfht_v04.png" id="3_axe6o"]
+[ext_resource type="Script" path="res://scenes/actors/actor_data/actor_data.gd" id="7_5gstw"]
 
 [resource]
-script = ExtResource("2_c77vl")
-xp_curve = SubResource("Curve_e8ycg")
-speed = 500
-friction = 10.0
-battle_max_hp = 30
-battle_hp = 10
-battle_attack = 7
-battle_defense = 4
-battle_speed = 10
+script = ExtResource("7_5gstw")
+level = 1
+experience = 0
+class_hit_dice = 6
+stat_str = 10
+stat_dex = 10
+stat_con = 10
+stat_int = 10
+stat_wis = 10
+stat_cha = 10
 base_texture = ExtResource("1_puiih")
-body_texture = ExtResource("2_ejylb")
-head_texture = ExtResource("3_ydedu")
-follow_min_distance = 210
-follow_ratio = 1.05
-follow_distance = 70
+body_texture = ExtResource("2_at3l2")
+head_texture = ExtResource("3_axe6o")
+follow_min_distance = 50
+follow_ratio = 1.0
+follow_distance = 20
 follow_angle = 45
-actions = Array[Resource("res://scenes/actors/action_commands/action_command.gd")]([ExtResource("1_esi7u"), ExtResource("2_po5vu"), ExtResource("3_8q0xe")])
+actions = Array[Resource("res://scenes/actors/action_commands/action_command.gd")]([])

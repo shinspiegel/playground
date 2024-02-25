@@ -60,3 +60,9 @@ func get_cursor_position() -> Vector2:
 
 func get_actions() -> Array[ActionCommand]:
 	return actor_data.actions
+
+
+func generate_damage() -> Damage:
+	var dmg = Damage.new()
+	return dmg
+

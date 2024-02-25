@@ -90,7 +90,7 @@ func __prepare_lists(party: Array[PlayerActor], list: Array[EnemyActor]) -> void
 
 
 func __sort(a: Actor,b: Actor) -> bool:
-	return a.actor_data.battle_speed > b.actor_data.battle_speed
+	return a.actor_data.class_initiative > b.actor_data.class_initiative
 
 
 func __check_victory() -> bool:
