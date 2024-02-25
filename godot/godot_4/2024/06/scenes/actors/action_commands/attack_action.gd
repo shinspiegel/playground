@@ -12,12 +12,14 @@ func attack_target(attacker: Actor, defender: Actor, stat: String) -> void:
 		var left = attacker.actor_data.equip_left
 		if not left == null and left is WeaponEquipament:
 			# TODO: Make animation for attack
-			dmg.amount = left.rand()
+			dmg.amount += left.rand()
+			dmg.amount += attacker.get_mod_for(stat)
 
 		var right = attacker.actor_data.equip_right
 		if not right == null and right is WeaponEquipament:
 			# TODO: Make animation for attack
-			dmg.amount = right.rand()
+			dmg.amount += right.rand()
+			dmg.amount += attacker.get_mod_for(stat)
 
 		if dmg.amount <= 0:
 			dmg.amount = 1
