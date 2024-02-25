@@ -67,7 +67,8 @@ func hide_loading() -> void:
 
 
 func quit() -> void:
-	print("TODO::Make something to show the exit of the game")
+	# TODO: make the exit game effect
+	print("Make something to show the exit of the game")
 	get_tree().quit()
 
 

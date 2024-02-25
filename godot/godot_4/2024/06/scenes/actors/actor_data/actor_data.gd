@@ -1,17 +1,21 @@
 class_name ActorData extends Resource
 
 const LEVEL_EXP = [ 
-#   1  2    3    4     5     6      7      8      9      10
-	0, 300, 900, 2700, 6500, 14000, 23000, 34000, 48000, 64000,
-#   11    12      13      14      15      16      17      18      19      20
-	85000, 100000, 120000, 140000, 165000, 195000, 225000, 265000, 305000, 355000,
+#   1  2    3    4     5
+	0, 300, 900, 2700, 6500,
+#   6      7      8      9      10
+	14000, 23000, 34000, 48000, 64000,
+#   11     12      13      14      15
+	85000, 100000, 120000, 140000, 165000,
+#   16      17      18      19      20
+	195000, 225000, 265000, 305000, 355000,
 ]
 
 signal level_up()
+signal player_died()
 
 @export var level: int = 1
 @export var experience: int = 0
-var attack_bonus: get = get_attack_bonus
 var prof_bonus: get = get_proficiency_bonus
 
 
@@ -20,7 +24,6 @@ var prof_bonus: get = get_proficiency_bonus
 var class_hit_points: get = get_class_hit_points
 var class_current_hp: int = 10
 var class_initiative: get = get_class_initiative
-var class_armor: get = get_class_armor
 
 
 @export_group("Stats", "stat_")
@@ -69,27 +72,30 @@ func _init() -> void:
 
 func gain_experience(xp: int) -> void:
 	experience += xp
-	var lv := 1
+	var level_count := 1
 	
 	for x in LEVEL_EXP:
-		if experience > x: lv += 1
+		if experience > x: level_count += 1
 		else: break
 	
-	if lv > level:
-		level = lv
+	if level_count > level:
+		level = level_count
 		level_up.emit()
+
+
+func deal_damage(dmg: Damage) -> void:
+	class_current_hp = clampi(class_current_hp - dmg.amount, 0, class_hit_points)
+	if class_current_hp <= 0:
+		player_died.emit()
 
 
 func get_mod(val: int) -> int:
 	return floor((float(val) - 10.0) / 2)
 
 
-func get_attack_bonus() -> int:
-	return 0
-
-
 func get_proficiency_bonus() -> int:
 	return 1 + ceili(float(level) / 4)
+
 
 func get_class_hit_points() -> int:
 	return stat_con + (level + class_hit_dice)
@@ -125,8 +131,4 @@ func get_speed() -> int:
 
 func get_class_initiative() -> int:
 	return randi_range(1, 20) + stat_dex_mod
-
-
-func get_class_armor() -> int:
-	return 10
 

@@ -1,7 +1,9 @@
-[gd_resource type="Resource" script_class="ActorData" load_steps=5 format=3 uid="uid://yu8t7y7vs6p7"]
+[gd_resource type="Resource" script_class="ActorData" load_steps=7 format=3 uid="uid://yu8t7y7vs6p7"]
 
+[ext_resource type="Resource" uid="uid://c5acj6ehe65ds" path="res://scenes/actors/action_commands/ranged_attack.tres" id="1_1elso"]
 [ext_resource type="Texture2D" uid="uid://byegmvqk0l546" path="res://assets/downloaded_assets/FREE Mana Seed Character Base Demo/char_a_p1/char_a_p1_0bas_humn_v01.png" id="1_hnchi"]
 [ext_resource type="Texture2D" uid="uid://6xap4slmo6rd" path="res://assets/downloaded_assets/FREE Mana Seed Character Base Demo/char_a_p1/1out/char_a_p1_1out_fstr_v04.png" id="2_dwlkv"]
+[ext_resource type="Resource" uid="uid://bypicrl0b25of" path="res://scenes/actors/action_commands/run.tres" id="2_ihup0"]
 [ext_resource type="Texture2D" uid="uid://cnef8doalaxbl" path="res://assets/downloaded_assets/FREE Mana Seed Character Base Demo/char_a_p1/4har/char_a_p1_4har_dap1_v01.png" id="3_1b6ii"]
 [ext_resource type="Script" path="res://scenes/actors/actor_data/actor_data.gd" id="4_528en"]
 
@@ -23,4 +25,4 @@ follow_min_distance = 50
 follow_ratio = 1.0
 follow_distance = 20
 follow_angle = 45
-actions = Array[Resource("res://scenes/actors/action_commands/action_command.gd")]([])
+actions = Array[Resource("res://scenes/actors/action_commands/action_command.gd")]([ExtResource("1_1elso"), ExtResource("2_ihup0")])

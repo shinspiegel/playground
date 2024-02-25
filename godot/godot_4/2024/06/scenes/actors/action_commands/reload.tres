@@ -1,8 +1,0 @@
-[gd_resource type="Resource" script_class="ActionCommand" load_steps=2 format=3 uid="uid://oxrdmxfeu83y"]
-
-[ext_resource type="Script" path="res://scenes/actors/action_commands/action_command.gd" id="1_61usm"]
-
-[resource]
-script = ExtResource("1_61usm")
-name = "Reload"
-require_target = true

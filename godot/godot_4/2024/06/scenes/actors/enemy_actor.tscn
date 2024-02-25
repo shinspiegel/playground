@@ -11,6 +11,6 @@ height = 70.0
 collision_layer = 4
 script = ExtResource("2_xtjv0")
 
-[node name="Shape" parent="." index="3"]
+[node name="Shape" parent="." index="4"]
 position = Vector2(0, -34.9253)
 shape = SubResource("CapsuleShape2D_x7qma")

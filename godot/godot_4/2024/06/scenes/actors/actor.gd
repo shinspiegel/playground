@@ -14,10 +14,7 @@ func _ready() -> void:
 
 
 func apply_damage(damage: Damage) -> void:
-	if not damage.is_critical:
-		damage.amount = clampi(damage.amount - actor_data.battle_defense, 1, damage.amount)
-
-	actor_data.battle_hp = clampi(actor_data.battle_hp - damage.amount, 0, actor_data.battle_max_hp)
+	actor_data.deal_damage(damage)
 	BattleManager.target_damaged.emit(self, damage)
 
 
@@ -62,7 +59,30 @@ func get_actions() -> Array[ActionCommand]:
 	return actor_data.actions
 
 
-func generate_damage() -> Damage:
-	var dmg = Damage.new()
-	return dmg
+func get_attack(stat: String) -> int:
+	var bonus: int = 0
+
+	match stat:
+		"str": bonus = actor_data.stat_str_mod
+		"dex": bonus = actor_data.stat_dex_mod
+		"con": bonus = actor_data.stat_con_mod
+		"int": bonus = actor_data.stat_int_mod
+		"wis": bonus = actor_data.stat_wis_mod
+		"cha": bonus = actor_data.stat_cha_mod
+		_: bonus = 0
+
+	return randi_range(0, 20) + bonus + actor_data.prof_bonus
+
+
+func get_armor() -> int:
+	var value = 10
+	var armor = actor_data.equip_armor
+
+	if armor and armor is ArmorEquipment:
+		if armor.apply_dex:
+			armor += actor_data.stat_dex_mod
+
+		armor += armor.bonus
+
+	return value
 

@@ -9,17 +9,17 @@ func act() -> void:
 		return
 
 	if randf_range(0.0, 1.0) < __generate_change():
-		# Make the sucess animation
+		# TODO: Make the sucess animation
 		BattleManager.end_battle()
 	else:
-		# Make the fail animation
+		# TODO: Make the fail animation
 		pass
 
 	finished.emit()
 
 
 func __generate_change() -> float:
-	return clampf(base_change + (float(BattleManager.current_actor.actor_data.battle_speed - __calculate_average()) * speed_factor), 0.0, 1.0)
+	return clampf(base_change + (float(BattleManager.current_actor.actor_data.stat_dex_mod - __calculate_average()) * speed_factor), 0.0, 1.0)
 
 
 func __calculate_average() -> float:
@@ -27,8 +27,8 @@ func __calculate_average() -> float:
 	var total_speed := 0
 
 	for enemy: EnemyActor in BattleManager.current_enemy_list:
-		enemy_list.append(enemy.actor_data.battle_speed)
-		total_speed += enemy.actor_data.battle_speed
+		enemy_list.append(enemy.actor_data.stat_dex_mod)
+		total_speed += enemy.actor_data.stat_dex_mod
 
 	return float(total_speed) / enemy_list.size()
 
