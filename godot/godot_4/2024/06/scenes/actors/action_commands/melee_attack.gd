@@ -9,4 +9,3 @@ func act() -> void:
 		attack_target(BattleManager.current_actor, target, "str")
 
 	finished.emit()
-
