@@ -94,7 +94,7 @@ func __sort(a: Actor,b: Actor) -> bool:
 
 
 func __check_victory() -> bool:
-	# NEXT: Check victory
+	# TODO: Check victory
 	if turn_order.size() < 1:
 		return true
 
