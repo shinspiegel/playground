@@ -59,7 +59,7 @@ func get_actions() -> Array[ActionCommand]:
 	return actor_data.actions
 
 
-func get_attack(stat: String) -> int:
+func get_attack(stat: String, roll: int = 0) -> int:
 	var bonus: int = 0
 
 	match stat:
@@ -71,7 +71,7 @@ func get_attack(stat: String) -> int:
 		"cha": bonus = actor_data.stat_cha_mod
 		_: bonus = 0
 
-	return randi_range(0, 20) + bonus + actor_data.prof_bonus
+	return roll + bonus + actor_data.prof_bonus
 
 
 func get_armor() -> int:
