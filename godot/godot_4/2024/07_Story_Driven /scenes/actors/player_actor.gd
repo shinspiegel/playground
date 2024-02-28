@@ -6,14 +6,20 @@ class_name PlayerActor extends Actor
 @onready var camera_holder: RemoteTransform2D = %CameraHolder
 
 var is_user_controlled: bool = false
-var last_dir := Vector2.ZERO
+var last_dir: Vector2 = Vector2.ZERO
+var is_force_move: bool = false
+var leader: Actor = null
 
 
 func _ready() -> void:
 	apply_textures_from_data()
 
 	if not camera: push_error("missing camera node")
-	if is_user_controlled: enable_camera()
+	if is_user_controlled:
+		enable_camera()
+	else:
+		leader = PartyManager.get_leader()
+
 
 
 func _physics_process(delta: float) -> void:
@@ -22,7 +28,7 @@ func _physics_process(delta: float) -> void:
 			__move_player()
 			__apply_animation()
 		else:
-			__follow_leader(delta)
+			__move_towards_player(delta)
 			__apply_animation()
 
 		move_and_slide()
@@ -54,8 +60,19 @@ func __apply_animation() -> void:
 		play_idle(last_dir)
 
 
+func __move_towards_player(delta: float) -> void:
+	var distance_to_leader = global_position.distance_to(leader.global_position)
+
+	if distance_to_leader > actor_data.follow_max_distance:
+		is_force_move = true
+
+	if is_force_move:
+		__teleport_to_leader()
+	else:
+		__follow_leader(delta)
+
+
 func __follow_leader(delta: float) -> void:
-	var leader = PartyManager.get_leader()
 	var direction_to_leader = global_position.direction_to(leader.global_position)
 	var distance_to_leader = global_position.distance_to(leader.global_position)
 	var offset_direction = direction_to_leader.rotated(deg_to_rad(actor_data.follow_angle) * follow_side).normalized() * actor_data.follow_distance
@@ -69,4 +86,11 @@ func __follow_leader(delta: float) -> void:
 		velocity = direction_to_leader.normalized() * actor_data.speed * actor_data.follow_ratio
 	else:
 		velocity = velocity.move_toward(Vector2.ZERO, actor_data.speed * actor_data.friction * delta)
+
+
+func __teleport_to_leader() -> void:
+	var tw = create_tween().set_ease(Tween.EASE_IN_OUT)
+	tw.tween_property(self, "global_position", leader.global_position, actor_data.follow_force_duration)
+	await tw.finished
+	is_force_move = false
 

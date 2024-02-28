@@ -15,7 +15,6 @@ func _ready() -> void:
 
 func apply_damage(damage: Damage) -> void:
 	actor_data.deal_damage(damage)
-	BattleManager.target_damaged.emit(self, damage)
 
 
 func apply_textures_from_data() -> void:
@@ -53,10 +52,6 @@ func play_animation(anim_name: String, angle_rad: float) -> void:
 
 func get_cursor_position() -> Vector2:
 	return hand_pos.get_global_transform_with_canvas().origin
-
-
-func get_actions() -> Array[ActionCommand]:
-	return actor_data.actions
 
 
 func get_attack(stat: String, roll: int = 0) -> int:

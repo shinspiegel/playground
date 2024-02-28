@@ -21,13 +21,19 @@ config/icon="res://icon.svg"
 GameManager="*res://singletons/game_manager.tscn"
 SceneManager="*res://singletons/scene_manager.tscn"
 AudioManager="*res://singletons/audio_manager.tscn"
-BattleManager="*res://singletons/battle_manager.tscn"
 PartyManager="*res://singletons/party_manager.tscn"
 
 [display]
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
+
+[layer_names]
+
+2d_physics/layer_1="world"
+2d_physics/layer_2="player"
+2d_physics/layer_3="enemies"
+2d_physics/layer_4="interactable"
 
 [rendering]
 

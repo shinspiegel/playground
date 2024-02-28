@@ -19,4 +19,3 @@ follow_min_distance = 50
 follow_ratio = 1.0
 follow_distance = 20
 follow_angle = 45
-actions = Array[Resource("res://scenes/actors/action_commands/action_command.gd")]([])

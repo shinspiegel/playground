@@ -24,9 +24,9 @@ func on_back() -> void:
 	SceneManager.change_to_file(SceneManager.SCENES.start)
 
 
-func on_sound_change(val: float) -> void: 
+func on_sound_change(val: float) -> void:
 	game_setting.sound_volume = val
 
 
-func on_music_change(val: float) -> void: 
+func on_music_change(val: float) -> void:
 	game_setting.music_volume = val

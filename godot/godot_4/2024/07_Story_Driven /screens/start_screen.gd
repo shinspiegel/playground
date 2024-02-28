@@ -21,17 +21,17 @@ func _ready() -> void:
 	quit.pressed.connect(on_quit)
 
 
-func on_start() -> void: 
+func on_start() -> void:
 	SceneManager.change_to_file(SceneManager.SCENES.main)
 
 
-func on_options() -> void: 
+func on_options() -> void:
 	SceneManager.change_to_file(SceneManager.SCENES.options)
 
 
-func on_credits() -> void: 
+func on_credits() -> void:
 	SceneManager.change_to_file(SceneManager.SCENES.credits)
 
 
-func on_quit() -> void: 
+func on_quit() -> void:
 	SceneManager.quit()
