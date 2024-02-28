@@ -1,0 +1,79 @@
+[gd_scene load_steps=11 format=3 uid="uid://nwj6til6lqdl"]
+
+[ext_resource type="Script" path="res://scenes/battle_ui/elements/cursor_hand.gd" id="1_gbpva"]
+[ext_resource type="Texture2D" uid="uid://d0e3hlvsqlwpe" path="res://assets/graphics/cursor.png" id="1_sdt1a"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fap75"]
+atlas = ExtResource("1_sdt1a")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n0k8c"]
+atlas = ExtResource("1_sdt1a")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q6rn6"]
+atlas = ExtResource("1_sdt1a")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xedm3"]
+atlas = ExtResource("1_sdt1a")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8n77k"]
+atlas = ExtResource("1_sdt1a")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qqw2f"]
+atlas = ExtResource("1_sdt1a")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l51i5"]
+atlas = ExtResource("1_sdt1a")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mb54r"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fap75")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n0k8c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q6rn6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xedm3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8n77k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qqw2f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l51i5")
+}],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
+}]
+
+[node name="CursorHand" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_gbpva")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_mb54r")
+animation = &"new_animation"
+autoplay = "new_animation"
+frame_progress = 0.392301
