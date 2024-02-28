@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://f4gymmvvjwiy"
+path="res://.godot/imported/sonatina_letsadventure_2Harbingers.ogg-30133b6720890b21b72e30dcf96de129.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/music/Let's Adventure oggs sonatina.itch.io/sonatina_letsadventure_2Harbingers.ogg"
+dest_files=["res://.godot/imported/sonatina_letsadventure_2Harbingers.ogg-30133b6720890b21b72e30dcf96de129.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=15.0
+bpm=0.0
+beat_count=0
+bar_beats=4

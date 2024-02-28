@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://x5a3hr02qh7c"]
+
+[ext_resource type="PackedScene" uid="uid://c33u7sqdwdu02" path="res://scenes/actors/actor.tscn" id="1_v4713"]
+[ext_resource type="Script" path="res://scenes/actors/player_actor.gd" id="2_vhwyp"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kn3aj"]
+radius = 28.0
+height = 84.0
+
+[node name="PlayerActor" instance=ExtResource("1_v4713")]
+position = Vector2(1, 2.08165e-12)
+collision_layer = 2
+script = ExtResource("2_vhwyp")
+follow_side = 0
+
+[node name="CameraHolder" type="RemoteTransform2D" parent="." index="0"]
+unique_name_in_owner = true
+
+[node name="Shape" parent="." index="5"]
+position = Vector2(-2.08165e-12, -42)
+shape = SubResource("CapsuleShape2D_kn3aj")

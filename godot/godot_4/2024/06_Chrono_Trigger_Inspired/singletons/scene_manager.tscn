@@ -1,0 +1,61 @@
+[gd_scene load_steps=3 format=3 uid="uid://8jbm6h665h1k"]
+
+[ext_resource type="Script" path="res://singletons/scene_manager.gd" id="1_f70dw"]
+[ext_resource type="Theme" uid="uid://x61ckk74bynv" path="res://screens/theme/base_theme.tres" id="2_8mnqr"]
+
+[node name="SceneManager" type="CanvasLayer"]
+script = ExtResource("1_f70dw")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_8mnqr")
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -247.0
+offset_top = -136.0
+offset_right = 247.0
+offset_bottom = -46.0
+grow_horizontal = 2
+grow_vertical = 0
+bbcode_enabled = true
+text = "
+[wave amp=100.0 freq=5.0][center]Loading...[/center][/wave]"
+fit_content = true
+scroll_active = false
+
+[node name="ProgressBar" type="ProgressBar" parent="Control"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -161.0
+offset_top = -49.0
+offset_right = 161.0
+offset_bottom = -31.0
+grow_horizontal = 2
+grow_vertical = 0
+max_value = 1.0
+value = 0.5
+show_percentage = false

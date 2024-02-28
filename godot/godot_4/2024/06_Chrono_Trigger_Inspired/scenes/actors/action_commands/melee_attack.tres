@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="MeleeAttack" load_steps=2 format=3 uid="uid://cxec3y7a3vfxb"]
+
+[ext_resource type="Script" path="res://scenes/actors/action_commands/melee_attack.gd" id="1_stpbi"]
+
+[resource]
+script = ExtResource("1_stpbi")
+name = "Melee Attack"
