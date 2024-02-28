@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://dwx3y07ppvn7d"]
-
-[ext_resource type="Script" path="res://singletons/party_manager.gd" id="1_nx8xj"]
-
-[node name="PartyManager" type="Node"]
-script = ExtResource("1_nx8xj")
