@@ -4,6 +4,7 @@ class_name PlayerActor extends Actor
 @export var follow_side: int = 0
 
 @onready var camera_holder: RemoteTransform2D = %CameraHolder
+@onready var interactor: Interactor = $Interactor
 
 var is_user_controlled: bool = false
 var last_dir: Vector2 = Vector2.ZERO
@@ -25,6 +26,7 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	if GameManager.is_world():
 		if is_user_controlled:
+			__check_interactor()
 			__move_player()
 			__apply_animation()
 		else:
@@ -94,3 +96,7 @@ func __teleport_to_leader() -> void:
 	await tw.finished
 	is_force_move = false
 
+
+func __check_interactor() -> void:
+	if Input.is_action_just_pressed("ui_accept"):
+		interactor.interact()

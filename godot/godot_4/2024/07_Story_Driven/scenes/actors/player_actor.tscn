@@ -1,14 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://x5a3hr02qh7c"]
+[gd_scene load_steps=6 format=3 uid="uid://x5a3hr02qh7c"]
 
 [ext_resource type="PackedScene" uid="uid://c33u7sqdwdu02" path="res://scenes/actors/actor.tscn" id="1_v4713"]
 [ext_resource type="Script" path="res://scenes/actors/player_actor.gd" id="2_vhwyp"]
+[ext_resource type="PackedScene" uid="uid://dfye3sw7hi05x" path="res://scenes/interactables/interactor.tscn" id="3_2ofcf"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7bmhp"]
+radius = 48.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kn3aj"]
 radius = 28.0
 height = 84.0
 
 [node name="PlayerActor" instance=ExtResource("1_v4713")]
-position = Vector2(1, 2.08165e-12)
 collision_layer = 2
 collision_mask = 5
 script = ExtResource("2_vhwyp")
@@ -17,6 +20,13 @@ follow_side = 0
 [node name="CameraHolder" type="RemoteTransform2D" parent="." index="0"]
 unique_name_in_owner = true
 
-[node name="Shape" parent="." index="5"]
+[node name="Interactor" parent="." index="1" instance=ExtResource("3_2ofcf")]
+position = Vector2(0, -26)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactor" index="0"]
+shape = SubResource("CircleShape2D_7bmhp")
+
+[node name="Shape" parent="." index="6"]
 position = Vector2(-2.08165e-12, -42)
 shape = SubResource("CapsuleShape2D_kn3aj")

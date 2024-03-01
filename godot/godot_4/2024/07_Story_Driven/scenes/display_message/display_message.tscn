@@ -15,6 +15,7 @@ theme = ExtResource("1_5dvya")
 script = ExtResource("2_7io0w")
 
 [node name="ProfilePanel" type="Panel" parent="."]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -29,6 +30,7 @@ grow_horizontal = 2
 grow_vertical = 0
 
 [node name="ProfileImage" type="TextureRect" parent="ProfilePanel"]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -43,6 +45,7 @@ texture = ExtResource("2_eiahp")
 stretch_mode = 6
 
 [node name="DisplayTextPanel" type="Panel" parent="."]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -57,6 +60,7 @@ grow_horizontal = 2
 grow_vertical = 0
 
 [node name="DisplayText" type="RichTextLabel" parent="DisplayTextPanel"]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -77,6 +81,7 @@ deselect_on_focus_loss_enabled = false
 drag_and_drop_selection_enabled = false
 
 [node name="NextButton" type="Button" parent="."]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -92,6 +97,7 @@ grow_vertical = 0
 text = "Next"
 
 [node name="OptionA" type="Button" parent="."]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -107,6 +113,7 @@ grow_vertical = 0
 text = "Options One"
 
 [node name="OptionB" type="Button" parent="."]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5

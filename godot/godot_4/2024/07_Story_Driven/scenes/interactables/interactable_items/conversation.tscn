@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dkyxyos2d2ygj"]
+
+[ext_resource type="Script" path="res://scenes/interactables/interactable_items/conversation.gd" id="1_oxi7k"]
+
+[node name="Conversation" type="Node2D"]
+script = ExtResource("1_oxi7k")

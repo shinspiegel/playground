@@ -1,9 +1,19 @@
-[gd_scene load_steps=5 format=3 uid="uid://csdjbfj5l0pus"]
+[gd_scene load_steps=10 format=3 uid="uid://csdjbfj5l0pus"]
 
 [ext_resource type="TileSet" uid="uid://d4eaidaxglkih" path="res://scenes/tilemap/template.tres" id="1_b3xio"]
 [ext_resource type="PackedScene" uid="uid://cd30lwdo4bvuu" path="res://scenes/game_camera/game_camera.tscn" id="1_helwf"]
 [ext_resource type="Script" path="res://scenes/level_map/level_map.gd" id="2_2k0ej"]
 [ext_resource type="PackedScene" uid="uid://tp3o11x5818f" path="res://scenes/actors/enemy_actor.tscn" id="5_acrwy"]
+[ext_resource type="PackedScene" uid="uid://dq3y1i2y72rcs" path="res://scenes/interactables/interactable.tscn" id="5_b83mu"]
+[ext_resource type="PackedScene" uid="uid://dkyxyos2d2ygj" path="res://scenes/interactables/interactable_items/conversation.tscn" id="6_k0elb"]
+[ext_resource type="Script" path="res://scenes/display_message/message_data.gd" id="6_l0mi5"]
+
+[sub_resource type="Resource" id="Resource_kphwp"]
+script = ExtResource("6_l0mi5")
+message = "Message1"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7uk25"]
+radius = 57.0088
 
 [node name="Main" type="Node2D"]
 
@@ -49,13 +59,15 @@ position = Vector2(320, 192)
 y_sort_enabled = true
 
 [node name="EnemyActor" parent="LevelMap/Sorted" instance=ExtResource("5_acrwy")]
-position = Vector2(1664, 80)
+position = Vector2(521, 167)
 
-[node name="EnemyActor2" parent="LevelMap/Sorted" instance=ExtResource("5_acrwy")]
-position = Vector2(1552, 240)
+[node name="Conversation" parent="LevelMap/Sorted/EnemyActor" node_paths=PackedStringArray("interactable") instance=ExtResource("6_k0elb")]
+interactable = NodePath("../Interactable")
+message_list = Array[ExtResource("6_l0mi5")]([SubResource("Resource_kphwp")])
 
-[node name="EnemyActor3" parent="LevelMap/Sorted" instance=ExtResource("5_acrwy")]
-position = Vector2(1696, 416)
+[node name="Interactable" parent="LevelMap/Sorted/EnemyActor" instance=ExtResource("5_b83mu")]
+position = Vector2(0, -32)
+metadata/_edit_group_ = true
 
-[node name="EnemyActor4" parent="LevelMap/Sorted" instance=ExtResource("5_acrwy")]
-position = Vector2(1360, 64)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelMap/Sorted/EnemyActor/Interactable"]
+shape = SubResource("CircleShape2D_7uk25")

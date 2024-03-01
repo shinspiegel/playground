@@ -1,12 +1,26 @@
-extends Control
+class_name DisplayMessage extends Control
+
+@onready var profile_panel: Panel = %ProfilePanel
+@onready var profile_image: TextureRect = %ProfileImage
+@onready var display_text_panel: Panel = %DisplayTextPanel
+@onready var display_text: RichTextLabel = %DisplayText
+@onready var next_button: Button = %NextButton
+@onready var option_a: Button = %OptionA
+@onready var option_b: Button = %OptionB
 
 
-
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	reset()
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func display(message) -> void:
+	print(message)
+
+
+func reset() -> void:
+	profile_panel.hide()
+	display_text_panel.hide()
+	next_button.hide()
+	option_a.hide()
+	option_b.hide()
+
