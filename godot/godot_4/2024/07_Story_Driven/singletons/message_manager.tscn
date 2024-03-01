@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dh4uhlnq78rcw"]
+
+[ext_resource type="Theme" uid="uid://x61ckk74bynv" path="res://screens/theme/base_theme.tres" id="1_qcuss"]
+[ext_resource type="PackedScene" uid="uid://bnx3sv1x8pfpg" path="res://scenes/display_message/display_message.tscn" id="2_oq7ry"]
+
+[node name="MessageManager" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_qcuss")
+
+[node name="DisplayMessage" parent="." instance=ExtResource("2_oq7ry")]
+layout_mode = 1
