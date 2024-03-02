@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="MessageProfile" load_steps=3 format=3 uid="uid://d2r2vtkxw6j5k"]
+
+[ext_resource type="Texture2D" uid="uid://xwgu0hgnpv3p" path="res://icon.svg" id="1_x6c5q"]
+[ext_resource type="Script" path="res://scenes/display_message/message_data/message_profile.gd" id="2_u2gg7"]
+
+[resource]
+script = ExtResource("2_u2gg7")
+name = "Master Shura"
+image = ExtResource("1_x6c5q")

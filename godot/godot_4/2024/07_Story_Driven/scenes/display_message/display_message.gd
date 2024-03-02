@@ -32,20 +32,14 @@ func display(data: MessageData) -> void:
 
 	if data.profile:
 		profile_panel.show()
-		profile_image.texture = data.profile
-		profile_name.text = data.name
+		profile_image.texture = data.profile.image
+		profile_name.text = data.profile.name
 
 	display_text.visible_ratio = 0.0
-	display_text.text = data.message
+	display_text.text = data.text
 
 	var tw = create_tween().set_ease(Tween.EASE_IN_OUT)
-	tw.tween_property(
-		display_text,
-		"visible_ratio",
-		1.0,
-		(get_length_without_bbcode(data.message) * CHAR_DURATION) / data.speed_ratio
-	)
-
+	tw.tween_property(display_text, "visible_ratio", 1.0, (lenght_wihout_bbcode(data.text) * CHAR_DURATION) / data.speed_ratio)
 	tw.play()
 	await tw.finished
 
@@ -94,6 +88,16 @@ func unprepare() -> void:
 	reset()
 
 
+func lenght_wihout_bbcode(text: String) -> int:
+	var list = regex.search_all(text)
+
+	for piece in list:
+		var bb_code = piece.get_string()
+		text = text.replace(bb_code, "")
+
+	return text.length()
+
+
 func on_button_press() -> void:
 	next_button.hide()
 	next_button.position = NEXT_BUTTON_OFFSET_POS
@@ -102,12 +106,3 @@ func on_button_press() -> void:
 
 	message_ended.emit()
 
-
-func get_length_without_bbcode(text: String) -> int:
-	var list = regex.search_all(text)
-
-	for piece in list:
-		var bb_code = piece.get_string()
-		text = text.replace(bb_code, "")
-
-	return text.length()
