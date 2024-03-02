@@ -1,27 +1,18 @@
-[gd_resource type="Resource" script_class="ActorData" load_steps=6 format=3 uid="uid://yu8t7y7vs6p7"]
+[gd_resource type="Resource" script_class="ActorData" load_steps=5 format=3 uid="uid://yu8t7y7vs6p7"]
 
 [ext_resource type="Texture2D" uid="uid://byegmvqk0l546" path="res://assets/downloaded_assets/FREE Mana Seed Character Base Demo/char_a_p1/char_a_p1_0bas_humn_v01.png" id="1_hnchi"]
 [ext_resource type="Texture2D" uid="uid://6xap4slmo6rd" path="res://assets/downloaded_assets/FREE Mana Seed Character Base Demo/char_a_p1/1out/char_a_p1_1out_fstr_v04.png" id="2_dwlkv"]
 [ext_resource type="Texture2D" uid="uid://cnef8doalaxbl" path="res://assets/downloaded_assets/FREE Mana Seed Character Base Demo/char_a_p1/4har/char_a_p1_4har_dap1_v01.png" id="3_1b6ii"]
 [ext_resource type="Script" path="res://scenes/actors/actor_data/actor_data.gd" id="4_528en"]
-[ext_resource type="Resource" uid="uid://c5q6x6rt1pm4c" path="res://scenes/actors/equipment/basic_sword.tres" id="5_jb3cy"]
 
 [resource]
 script = ExtResource("4_528en")
-level = 1
-experience = 0
-class_hit_dice = 6
-stat_str = 10
-stat_dex = 10
-stat_con = 10
-stat_int = 10
-stat_wis = 10
-stat_cha = 10
-equip_left = ExtResource("5_jb3cy")
 base_texture = ExtResource("1_hnchi")
 body_texture = ExtResource("2_dwlkv")
 head_texture = ExtResource("3_1b6ii")
 follow_min_distance = 170
+follow_max_distance = 500
 follow_ratio = 1.0
 follow_distance = 80
+follow_force_duration = 0.3
 follow_angle = 45
