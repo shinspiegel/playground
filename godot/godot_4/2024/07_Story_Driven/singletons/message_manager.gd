@@ -16,8 +16,13 @@ func _ready() -> void:
 func start_conversation(messages: Array[MessageData]) -> void:
 	GameManager.change_to_talk()
 	reset()
-	display_message.show()
+
 	list.append_array(messages)
+
+	display_message.show()
+	display_message.prepare()
+	await display_message.prepared
+
 	next_message()
 
 
@@ -38,6 +43,12 @@ func on_message_end() -> void:
 		return
 
 	conversation_finished.emit()
+	display_message.unprepare()
+
+	print("started")
+	await display_message.unprepared
+	print("ended")
+
 	display_message.hide()
 	GameManager.change_to_world()
 
