@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://csdjbfj5l0pus"]
+[gd_scene load_steps=12 format=3 uid="uid://csdjbfj5l0pus"]
 
 [ext_resource type="TileSet" uid="uid://d4eaidaxglkih" path="res://scenes/tilemap/template.tres" id="1_b3xio"]
 [ext_resource type="PackedScene" uid="uid://cd30lwdo4bvuu" path="res://scenes/game_camera/game_camera.tscn" id="1_helwf"]
@@ -10,18 +10,17 @@
 
 [sub_resource type="Resource" id="Resource_kphwp"]
 script = ExtResource("6_l0mi5")
-message = "Message 1"
+speed_ratio = 1.0
+message = "Sample basic text"
 
 [sub_resource type="Resource" id="Resource_dqcok"]
 script = ExtResource("6_l0mi5")
-message = "Mesasge 2"
-
-[sub_resource type="Resource" id="Resource_1c70v"]
-script = ExtResource("6_l0mi5")
-message = "Message 3"
+speed_ratio = 2.0
+message = "[shake rate=20.0 level=10 connected=1]This is an angy text![/shake]"
 
 [sub_resource type="Resource" id="Resource_5t6pf"]
 script = ExtResource("6_l0mi5")
+speed_ratio = 1.0
 message = "This is a very long message so I can see how long can I write on this message here."
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7uk25"]
@@ -75,7 +74,7 @@ position = Vector2(521, 167)
 
 [node name="Conversation" parent="LevelMap/Sorted/EnemyActor" node_paths=PackedStringArray("interactable") instance=ExtResource("6_k0elb")]
 interactable = NodePath("../Interactable")
-message_list = Array[ExtResource("6_l0mi5")]([SubResource("Resource_kphwp"), SubResource("Resource_dqcok"), SubResource("Resource_1c70v"), SubResource("Resource_5t6pf")])
+message_list = Array[ExtResource("6_l0mi5")]([SubResource("Resource_kphwp"), SubResource("Resource_dqcok"), SubResource("Resource_5t6pf")])
 
 [node name="Interactable" parent="LevelMap/Sorted/EnemyActor" instance=ExtResource("5_b83mu")]
 position = Vector2(0, -32)
