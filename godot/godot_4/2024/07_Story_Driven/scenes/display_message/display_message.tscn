@@ -1,8 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://bnx3sv1x8pfpg"]
+[gd_scene load_steps=3 format=3 uid="uid://bnx3sv1x8pfpg"]
 
 [ext_resource type="Theme" uid="uid://x61ckk74bynv" path="res://screens/theme/base_theme.tres" id="1_5dvya"]
 [ext_resource type="Script" path="res://scenes/display_message/display_message.gd" id="2_7io0w"]
-[ext_resource type="Texture2D" uid="uid://xwgu0hgnpv3p" path="res://icon.svg" id="2_eiahp"]
 
 [node name="DisplayMessage" type="Control"]
 layout_mode = 3
@@ -25,7 +24,7 @@ anchor_bottom = 1.0
 offset_left = -864.0
 offset_top = -376.0
 offset_right = -616.0
-offset_bottom = -152.0
+offset_bottom = -104.0
 grow_horizontal = 2
 grow_vertical = 0
 
@@ -38,11 +37,26 @@ anchor_bottom = 1.0
 offset_left = 16.0
 offset_top = 16.0
 offset_right = -48.0
-offset_bottom = -16.0
+offset_bottom = -72.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_eiahp")
 stretch_mode = 6
+
+[node name="ProfileName" type="Label" parent="ProfilePanel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = -49.0
+offset_right = -40.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 32
+horizontal_alignment = 1
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 1
@@ -82,13 +96,12 @@ offset_bottom = -16.0
 grow_horizontal = 2
 grow_vertical = 2
 bbcode_enabled = true
-text = "This is a sample [b]text[/b] this is [i]italic[/i] and this is [b][i]bold end italic[/i][/b]. 
-This is another line with text.
-This is a very long line with lots of words that can describe a lot of text with very long line."
 scroll_active = false
 shortcut_keys_enabled = false
 deselect_on_focus_loss_enabled = false
 drag_and_drop_selection_enabled = false
+visible_characters = 0
+visible_ratio = 0.0
 
 [node name="NextWrapper" type="Control" parent="."]
 layout_mode = 1

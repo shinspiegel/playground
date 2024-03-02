@@ -14,6 +14,7 @@ signal unprepared()
 
 @onready var profile_panel: Panel = %ProfilePanel
 @onready var profile_image: TextureRect = %ProfileImage
+@onready var profile_name: Label = %ProfileName
 @onready var display_text_panel: Panel = %DisplayTextPanel
 @onready var display_text: RichTextLabel = %DisplayText
 @onready var next_button: Button = %NextButton
@@ -28,6 +29,11 @@ func _ready() -> void:
 
 func display(data: MessageData) -> void:
 	display_text_panel.show()
+
+	if data.profile:
+		profile_panel.show()
+		profile_image.texture = data.profile
+		profile_name.text = data.name
 
 	display_text.visible_ratio = 0.0
 	display_text.text = data.message
@@ -91,6 +97,8 @@ func unprepare() -> void:
 func on_button_press() -> void:
 	next_button.hide()
 	next_button.position = NEXT_BUTTON_OFFSET_POS
+
+	profile_panel.hide()
 
 	message_ended.emit()
 
