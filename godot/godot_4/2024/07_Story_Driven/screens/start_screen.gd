@@ -1,4 +1,3 @@
-@tool
 class_name StartScreen extends Control
 
 @onready var title: Label = $VBoxContainer/Title

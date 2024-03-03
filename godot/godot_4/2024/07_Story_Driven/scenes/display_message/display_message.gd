@@ -1,8 +1,8 @@
 class_name DisplayMessage extends Control
 
-const PANEL_MOVE_DURATION = 0.5
+const PANEL_MOVE_DURATION = 0.3
 const CHAR_DURATION = 0.05
-const BUTTON_DURATION = 0.1
+const BUTTON_DURATION = 0.05
 const NEXT_BUTTON_OFFSET_POS = Vector2(112, -80)
 const NEXT_BUTTON_VISIBLE_POS = Vector2(-208, -80)
 const DISPLAY_PANEL_OFFSET_POS = Vector2(-648, 72)

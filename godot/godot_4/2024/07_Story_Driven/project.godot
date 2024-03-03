@@ -28,6 +28,9 @@ MessageManager="*res://singletons/message_manager.tscn"
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
+window/stretch/scale_mode="integer"
 
 [layer_names]
 
