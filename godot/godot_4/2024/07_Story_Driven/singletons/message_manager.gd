@@ -14,7 +14,6 @@ func _ready() -> void:
 
 
 func start_conversation(messages: Array[MessageData]) -> void:
-	GameManager.change_to_talk()
 	reset()
 
 	list.append_array(messages)
@@ -45,10 +44,7 @@ func on_message_end() -> void:
 	conversation_finished.emit()
 	display_message.unprepare()
 
-	print("started")
 	await display_message.unprepared
-	print("ended")
 
 	display_message.hide()
-	GameManager.change_to_world()
 

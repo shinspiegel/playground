@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://csdjbfj5l0pus"]
+[gd_scene load_steps=16 format=3 uid="uid://csdjbfj5l0pus"]
 
 [ext_resource type="TileSet" uid="uid://d4eaidaxglkih" path="res://scenes/tilemap/template.tres" id="1_b3xio"]
 [ext_resource type="PackedScene" uid="uid://cd30lwdo4bvuu" path="res://scenes/game_camera/game_camera.tscn" id="1_helwf"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://scenes/display_message/message_data/message_data.gd" id="6_l0mi5"]
 [ext_resource type="Resource" uid="uid://d2r2vtkxw6j5k" path="res://scenes/display_message/message_data/hero_1.tres" id="6_rvi22"]
 [ext_resource type="Resource" uid="uid://c83k31eku71du" path="res://scenes/display_message/message_data/hero_2.tres" id="8_pld8b"]
+[ext_resource type="PackedScene" uid="uid://b4qnf5faj7ybi" path="res://scenes/cut_scene/cut_scene_starter_area.tscn" id="11_l2br1"]
 
 [sub_resource type="Resource" id="Resource_kphwp"]
 script = ExtResource("6_l0mi5")
@@ -30,6 +31,9 @@ text = "Super final text"
 [sub_resource type="CircleShape2D" id="CircleShape2D_7uk25"]
 radius = 57.0088
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k5kpa"]
+size = Vector2(768, 632)
+
 [node name="Main" type="Node2D"]
 
 [node name="GameCamera" parent="." node_paths=PackedStringArray("top_left", "bottom_right") instance=ExtResource("1_helwf")]
@@ -38,7 +42,7 @@ bottom_right = NodePath("../LevelMap/MapLimits/BottomRight")
 
 [node name="LevelMap" type="Node2D" parent="." node_paths=PackedStringArray("sorted", "pos", "game_camera")]
 script = ExtResource("2_2k0ej")
-sorted = NodePath("Sorted")
+sorted = NodePath("../Sorted")
 pos = NodePath("PlayerPos")
 game_camera = NodePath("../GameCamera")
 
@@ -70,19 +74,30 @@ layer_0/tile_data = PackedInt32Array(131076, 65536, 1, 131078, 65536, 1, 131077,
 [node name="PlayerPos" type="Marker2D" parent="LevelMap"]
 position = Vector2(320, 192)
 
-[node name="Sorted" type="Node2D" parent="LevelMap"]
+[node name="Sorted" type="Node2D" parent="."]
 y_sort_enabled = true
 
-[node name="EnemyActor" parent="LevelMap/Sorted" instance=ExtResource("5_acrwy")]
+[node name="EnemyActor" parent="Sorted" instance=ExtResource("5_acrwy")]
 position = Vector2(521, 167)
 
-[node name="Conversation" parent="LevelMap/Sorted/EnemyActor" node_paths=PackedStringArray("interactable") instance=ExtResource("6_k0elb")]
+[node name="Conversation" parent="Sorted/EnemyActor" node_paths=PackedStringArray("interactable") instance=ExtResource("6_k0elb")]
 interactable = NodePath("../Interactable")
 message_list = Array[ExtResource("6_l0mi5")]([SubResource("Resource_kphwp"), SubResource("Resource_dqcok"), SubResource("Resource_5t6pf")])
 
-[node name="Interactable" parent="LevelMap/Sorted/EnemyActor" instance=ExtResource("5_b83mu")]
+[node name="Interactable" parent="Sorted/EnemyActor" instance=ExtResource("5_b83mu")]
 position = Vector2(0, -32)
 metadata/_edit_group_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelMap/Sorted/EnemyActor/Interactable"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sorted/EnemyActor/Interactable"]
 shape = SubResource("CircleShape2D_7uk25")
+
+[node name="EnemyActor2" parent="Sorted" instance=ExtResource("5_acrwy")]
+position = Vector2(1237, 144)
+
+[node name="CutSceneAreas" type="Node2D" parent="."]
+
+[node name="CutSceneStarterArea" parent="CutSceneAreas" instance=ExtResource("11_l2br1")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CutSceneAreas/CutSceneStarterArea"]
+position = Vector2(1408, 316)
+shape = SubResource("RectangleShape2D_k5kpa")

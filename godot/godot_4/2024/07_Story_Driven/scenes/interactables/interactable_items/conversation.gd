@@ -19,7 +19,10 @@ func on_interact() -> void:
 			for member in PartyManager.party:
 				member.call_deferred("play_idle", member.last_dir)
 
+		GameManager.change_to_talk()
 		MessageManager.start_conversation(message_list)
+		await MessageManager.conversation_finished
+		GameManager.change_to_world()
 
 
 func on_finish() -> void:
