@@ -17,7 +17,7 @@ func start(cut_scene_steps: Array[CutSceneStep]) -> void:
 
 func reset() -> void:
 	index = 0
-	steps.clear()
+	steps = []
 
 
 func execute_current() -> void:

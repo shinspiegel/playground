@@ -10,7 +10,7 @@ class_name Conversation extends Node2D
 
 func _ready() -> void:
 	interactable.interacted.connect(on_interact)
-	MessageManager.finished.connect(on_finish)
+	MessageManager.ended.connect(on_finish)
 
 
 func on_interact() -> void:
@@ -21,7 +21,7 @@ func on_interact() -> void:
 
 		GameManager.change_to_talk()
 		MessageManager.start(message_list)
-		await MessageManager.finished
+		await MessageManager.ended
 		GameManager.change_to_world()
 
 

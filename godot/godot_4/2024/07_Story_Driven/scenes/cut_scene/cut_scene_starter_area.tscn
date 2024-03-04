@@ -3,4 +3,6 @@
 [ext_resource type="Script" path="res://scenes/cut_scene/cut_scene_starter_area.gd" id="1_0dpk8"]
 
 [node name="CutSceneStarterArea" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
 script = ExtResource("1_0dpk8")
