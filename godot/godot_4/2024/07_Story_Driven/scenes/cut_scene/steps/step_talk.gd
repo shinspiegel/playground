@@ -5,8 +5,5 @@ class_name CutSceneStepTalk extends CutSceneStep
 
 func execute() -> void:
 	MessageManager.start(messages)
-
-	if wait_for_next:
-		await MessageManager.ended
-		ended.emit()
-
+	await MessageManager.ended
+	ended.emit()

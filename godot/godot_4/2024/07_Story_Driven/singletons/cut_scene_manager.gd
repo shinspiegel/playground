@@ -4,6 +4,8 @@ signal started()
 signal ended()
 signal step_finished()
 
+@onready var wait_timer: Timer = $WaitTimer
+
 var steps: Array[CutSceneStep] = []
 var index: int = 0
 
@@ -11,8 +13,12 @@ var index: int = 0
 func start(cut_scene_steps: Array[CutSceneStep]) -> void:
 	reset()
 	steps = cut_scene_steps
+
+	for step in steps:
+		step.ended.connect(on_step_end.bind(step))
+
 	started.emit()
-	execute_current()
+	steps[index].execute()
 
 
 func reset() -> void:
@@ -20,18 +26,23 @@ func reset() -> void:
 	steps = []
 
 
-func execute_current() -> void:
-	steps[index].execute()
-	await steps[index].ended
-	step_finished.emit()
-	next_step()
-
-
 func next_step() -> void:
 	index += 1
 
 	if index < steps.size():
-		execute_current()
+		steps[index].execute()
 		return
 
 	ended.emit()
+
+
+func wait(seconds: float) -> Timer:
+	wait_timer.start(seconds)
+	return wait_timer
+
+
+func on_step_end(step: CutSceneStep) -> void:
+	step.ended.disconnect(on_step_end)
+	step_finished.emit()
+	next_step()
+
