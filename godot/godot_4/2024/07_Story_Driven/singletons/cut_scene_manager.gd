@@ -22,7 +22,7 @@ func reset() -> void:
 
 func execute_current() -> void:
 	steps[index].execute()
-	await steps[index].finished
+	await steps[index].ended
 	step_finished.emit()
 	next_step()
 

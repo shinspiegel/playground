@@ -1,6 +1,7 @@
 extends CanvasLayer
 
-signal conversation_finished()
+signal started()
+signal ended()
 
 @onready var display_message: DisplayMessage = %DisplayMessage
 
@@ -13,10 +14,11 @@ func _ready() -> void:
 	display_message.hide()
 
 
-func start_conversation(messages: Array[MessageData]) -> void:
+func start(messages: Array[MessageData]) -> void:
 	reset()
 
 	list.append_array(messages)
+	started.emit()
 
 	display_message.show()
 	display_message.prepare()
@@ -41,10 +43,10 @@ func on_message_end() -> void:
 		next_message()
 		return
 
-	conversation_finished.emit()
 	display_message.unprepare()
 
 	await display_message.unprepared
 
 	display_message.hide()
+	ended.emit()
 

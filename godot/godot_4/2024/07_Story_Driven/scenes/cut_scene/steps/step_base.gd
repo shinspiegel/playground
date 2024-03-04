@@ -1,6 +1,8 @@
 class_name CutSceneStep extends Resource
 
-signal finished()
+signal ended()
+
+@export var wait_for_next: bool = true
 
 
 func execute() -> void:

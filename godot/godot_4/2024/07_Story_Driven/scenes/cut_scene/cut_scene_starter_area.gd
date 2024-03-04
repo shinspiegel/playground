@@ -8,6 +8,8 @@ func _ready() -> void:
 
 func on_body_enter(node: Node2D) -> void:
 	if node is PlayerActor and node.is_user_controlled:
-		# Prepare for the cut_scene
-		CutSceneManager.start()
+		GameManager.change_to_cut_scene()
+		CutSceneManager.start(steps)
+		await CutSceneManager.ended
+		GameManager.change_to_world()
 
