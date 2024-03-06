@@ -1,4 +1,4 @@
-class_name CutSceneStep extends Resource
+class_name CutSceneStepBase extends Resource
 
 signal ended()
 

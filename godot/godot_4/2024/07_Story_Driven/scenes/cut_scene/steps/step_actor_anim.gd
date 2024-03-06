@@ -1,4 +1,4 @@
-class_name CutScenePlayerAnim extends CutSceneStepBase
+class_name CutSceneActorAnim extends CutSceneStepBase
 
 @export var index: int = 0
 @export var direction: Vector2 = Vector2.ZERO
@@ -6,5 +6,5 @@ class_name CutScenePlayerAnim extends CutSceneStepBase
 
 
 func execute() -> void:
-	CutSceneManager.animate_actor(PartyManager.party[index], anim, direction.angle())
+	CutSceneManager.animate_actor(CutSceneManager.actors[index], anim, direction.angle())
 	ended.emit()

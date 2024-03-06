@@ -1,4 +1,4 @@
-class_name CutSceneStepTalk extends CutSceneStep
+class_name CutSceneStepTalk extends CutSceneStepBase
 
 @export var messages: Array[MessageData]
 
