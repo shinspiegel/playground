@@ -19,7 +19,7 @@
 script = ExtResource("6_l0mi5")
 profile = ExtResource("6_rvi22")
 speed_ratio = 1.0
-text = "[shake rate=30.0 level=20 connected=1]Eu to muito puto!!!![/shake]"
+text = "[shake rate=30.0 level=50 connected=1]I'm very angry[/shake]"
 
 [sub_resource type="Resource" id="Resource_dqcok"]
 script = ExtResource("6_l0mi5")
@@ -137,10 +137,16 @@ position = Vector2(1237, 144)
 
 [node name="CutSceneAreas" type="Node2D" parent="."]
 
-[node name="CutSceneStarterArea" parent="CutSceneAreas" instance=ExtResource("11_l2br1")]
+[node name="CutSceneStarterArea" parent="CutSceneAreas" node_paths=PackedStringArray("initial_pos") instance=ExtResource("11_l2br1")]
+initial_pos = [NodePath("Marker2D"), NodePath("Marker2D2")]
 steps = Array[Resource("res://scenes/cut_scene/steps/step_base.gd")]([SubResource("Resource_aqf14"), SubResource("Resource_hcmd2"), SubResource("Resource_lkn14"), SubResource("Resource_pd22n"), SubResource("Resource_xi3sd"), SubResource("Resource_4ta1x")])
-metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CutSceneAreas/CutSceneStarterArea"]
 position = Vector2(1408, 316)
 shape = SubResource("RectangleShape2D_k5kpa")
+
+[node name="Marker2D" type="Marker2D" parent="CutSceneAreas/CutSceneStarterArea"]
+position = Vector2(1673, 553)
+
+[node name="Marker2D2" type="Marker2D" parent="CutSceneAreas/CutSceneStarterArea"]
+position = Vector2(1223, 528)
