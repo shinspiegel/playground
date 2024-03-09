@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://csdjbfj5l0pus"]
+[gd_scene load_steps=17 format=3 uid="uid://csdjbfj5l0pus"]
 
 [ext_resource type="TileSet" uid="uid://d4eaidaxglkih" path="res://scenes/tilemap/template.tres" id="1_b3xio"]
 [ext_resource type="PackedScene" uid="uid://cd30lwdo4bvuu" path="res://scenes/game_camera/game_camera.tscn" id="1_helwf"]
@@ -9,11 +9,8 @@
 [ext_resource type="Script" path="res://scenes/display_message/message_data/message_data.gd" id="6_l0mi5"]
 [ext_resource type="Resource" uid="uid://d2r2vtkxw6j5k" path="res://scenes/display_message/message_data/hero_1.tres" id="6_rvi22"]
 [ext_resource type="Resource" uid="uid://c83k31eku71du" path="res://scenes/display_message/message_data/hero_2.tres" id="8_pld8b"]
-[ext_resource type="Script" path="res://scenes/cut_scene/steps/step_talk.gd" id="11_0inyl"]
-[ext_resource type="Script" path="res://scenes/cut_scene/steps/step_party_anim.gd" id="11_bafkg"]
+[ext_resource type="PackedScene" uid="uid://03yy01jl71jn" path="res://scenes/cut_scene/cut_scene.tscn" id="10_i3x8e"]
 [ext_resource type="PackedScene" uid="uid://b4qnf5faj7ybi" path="res://scenes/cut_scene/cut_scene_starter_area.tscn" id="11_l2br1"]
-[ext_resource type="Script" path="res://scenes/cut_scene/steps/step_wait.gd" id="13_fsnej"]
-[ext_resource type="Script" path="res://scenes/cut_scene/steps/step_player_anim.gd" id="14_7pqt5"]
 
 [sub_resource type="Resource" id="Resource_kphwp"]
 script = ExtResource("6_l0mi5")
@@ -34,43 +31,6 @@ text = "Super final text"
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7uk25"]
 radius = 57.0088
-
-[sub_resource type="Resource" id="Resource_aqf14"]
-script = ExtResource("11_bafkg")
-direction = Vector2(2.08165e-12, 1)
-anim = "idle"
-
-[sub_resource type="Resource" id="Resource_hcmd2"]
-script = ExtResource("13_fsnej")
-seconds = 1.0
-
-[sub_resource type="Resource" id="Resource_uqa5q"]
-script = ExtResource("6_l0mi5")
-speed_ratio = 1.0
-text = "This is first message"
-
-[sub_resource type="Resource" id="Resource_88ig4"]
-script = ExtResource("6_l0mi5")
-speed_ratio = 1.0
-text = "This is second message"
-
-[sub_resource type="Resource" id="Resource_lkn14"]
-script = ExtResource("11_0inyl")
-messages = Array[ExtResource("6_l0mi5")]([SubResource("Resource_uqa5q"), SubResource("Resource_88ig4")])
-
-[sub_resource type="Resource" id="Resource_pd22n"]
-script = ExtResource("13_fsnej")
-seconds = 1.0
-
-[sub_resource type="Resource" id="Resource_xi3sd"]
-script = ExtResource("14_7pqt5")
-index = 1
-direction = Vector2(2.08165e-12, -1)
-anim = "move"
-
-[sub_resource type="Resource" id="Resource_4ta1x"]
-script = ExtResource("13_fsnej")
-seconds = 1.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k5kpa"]
 size = Vector2(768, 632)
@@ -137,16 +97,25 @@ position = Vector2(1237, 144)
 
 [node name="CutSceneAreas" type="Node2D" parent="."]
 
-[node name="CutSceneStarterArea" parent="CutSceneAreas" node_paths=PackedStringArray("initial_pos") instance=ExtResource("11_l2br1")]
-initial_pos = [NodePath("Marker2D"), NodePath("Marker2D2")]
-steps = Array[Resource("res://scenes/cut_scene/steps/step_base.gd")]([SubResource("Resource_aqf14"), SubResource("Resource_hcmd2"), SubResource("Resource_lkn14"), SubResource("Resource_pd22n"), SubResource("Resource_xi3sd"), SubResource("Resource_4ta1x")])
+[node name="CutScene" parent="CutSceneAreas" node_paths=PackedStringArray("initial_position", "camera_current", "camera_pos") instance=ExtResource("10_i3x8e")]
+initial_position = [NodePath("Marker2D"), NodePath("Marker2D2"), NodePath("Marker2D3")]
+camera_current = NodePath("../../GameCamera")
+camera_pos = NodePath("CameraPos")
+
+[node name="CameraPos" type="Marker2D" parent="CutSceneAreas/CutScene"]
+position = Vector2(1373, 294)
+
+[node name="Marker2D" type="Marker2D" parent="CutSceneAreas/CutScene"]
+position = Vector2(1685, 484)
+
+[node name="Marker2D2" type="Marker2D" parent="CutSceneAreas/CutScene"]
+position = Vector2(1444, 521)
+
+[node name="Marker2D3" type="Marker2D" parent="CutSceneAreas/CutScene"]
+position = Vector2(1193, 530)
+
+[node name="CutSceneStarterArea" parent="CutSceneAreas" instance=ExtResource("11_l2br1")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CutSceneAreas/CutSceneStarterArea"]
 position = Vector2(1408, 316)
 shape = SubResource("RectangleShape2D_k5kpa")
-
-[node name="Marker2D" type="Marker2D" parent="CutSceneAreas/CutSceneStarterArea"]
-position = Vector2(1673, 553)
-
-[node name="Marker2D2" type="Marker2D" parent="CutSceneAreas/CutSceneStarterArea"]
-position = Vector2(1223, 528)

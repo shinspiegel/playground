@@ -32,3 +32,11 @@ func __prepare_party() -> void:
 		var player: PlayerActor = PLAYER_ACTOR.instantiate()
 		player.actor_data = data
 		party.append(player)
+
+
+func enable_leader_camera() -> void:
+	get_leader().enable_camera()
+
+
+func disabled_leader_camera() -> void:
+	get_leader().disable_camera()
