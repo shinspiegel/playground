@@ -32,8 +32,8 @@ func start():
 
 		for index in range(initial_position.size()):
 			if index < PartyManager.party_size():
-				PartyManager.party[index].play_move(PartyManager.party[index].last_dir)
-				tw.tween_property(PartyManager.party[index], "global_position", initial_position[index].global_position, initial_duration)
+				PartyManager.at(index).play_move(PartyManager.at(index).last_dir)
+				tw.tween_property(PartyManager.at(index), "global_position", initial_position[index].global_position, initial_duration)
 
 		tw.play()
 		await tw.finished

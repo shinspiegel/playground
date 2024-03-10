@@ -3,6 +3,7 @@ extends Node2D
 signal started()
 signal ended()
 signal step_finished()
+signal moved()
 
 @onready var wait_timer: Timer = $WaitTimer
 
@@ -32,8 +33,11 @@ func move_actor(actor: Actor, pos: Vector2, duration: float = 0.3, ease_type: Tw
 		var tw = create_tween().set_ease(ease_type)
 		tw.tween_property(actor, "global_position", pos, duration)
 		tw.play()
+		await tw.finished
 	else:
 		actor.global_position = pos
+	
+	moved.emit()
 
 
 func next_step() -> void:

@@ -6,5 +6,5 @@ class_name CutScenePlayerSetPos extends CutSceneStepBase
 
 
 func execute() -> void:
-	CutSceneManager.move_actor(PartyManager.party[index], position, duration)
+	CutSceneManager.move_actor(PartyManager.at(index), position, duration)
 	ended.emit()

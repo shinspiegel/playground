@@ -6,5 +6,5 @@ class_name CutScenePlayerAnim extends CutSceneStepBase
 
 
 func execute() -> void:
-	CutSceneManager.animate_actor(PartyManager.party[index], anim, direction.angle())
+	CutSceneManager.animate_actor(PartyManager.at(index), anim, direction.angle())
 	ended.emit()
