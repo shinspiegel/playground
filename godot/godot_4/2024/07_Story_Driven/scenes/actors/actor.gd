@@ -54,34 +54,4 @@ func get_cursor_position() -> Vector2:
 	return hand_pos.get_global_transform_with_canvas().origin
 
 
-func get_attack(stat: String, roll: int = 0) -> int:
-	return roll + get_mod_for(stat) + actor_data.prof_bonus
-
-
-func get_mod_for(stat: String) -> int:
-	var bonus: int = 0
-
-	match stat:
-		"str": bonus = actor_data.stat_str_mod
-		"dex": bonus = actor_data.stat_dex_mod
-		"con": bonus = actor_data.stat_con_mod
-		"int": bonus = actor_data.stat_int_mod
-		"wis": bonus = actor_data.stat_wis_mod
-		"cha": bonus = actor_data.stat_cha_mod
-		_: bonus = 0
-
-	return bonus
-
-
-func get_armor() -> int:
-	var value = 10
-	var armor = actor_data.equip_armor
-
-	if armor and armor is ArmorEquipment:
-		if armor.apply_dex:
-			armor += actor_data.stat_dex_mod
-
-		armor += armor.bonus
-
-	return value
 
