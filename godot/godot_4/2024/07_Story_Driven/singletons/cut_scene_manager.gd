@@ -9,11 +9,11 @@ signal moved()
 
 var data: CutSceneData
 var actors: Array[Actor] = []
-var index: int = 0
+var step_index: int = 0
 
 
 func start(scene_data: CutSceneData, cut_scene_actors: Array[Actor] = []) -> void:
-	index = 0
+	step_index = 0
 	data = scene_data
 	actors = cut_scene_actors
 
@@ -21,7 +21,11 @@ func start(scene_data: CutSceneData, cut_scene_actors: Array[Actor] = []) -> voi
 		step.ended.connect(on_step_end.bind(step))
 
 	started.emit()
-	data.steps[index].execute()
+	data.execute_at(step_index)
+
+
+func at(index: int) -> Actor:
+	return actors[index]
 
 
 func animate_actor(actor: Actor, anim: String, angle: float) -> void:
@@ -36,15 +40,15 @@ func move_actor(actor: Actor, pos: Vector2, duration: float = 0.3, ease_type: Tw
 		await tw.finished
 	else:
 		actor.global_position = pos
-	
+
 	moved.emit()
 
 
 func next_step() -> void:
-	index += 1
+	step_index += 1
 
-	if index < data.size():
-		data.steps[index].execute()
+	if step_index < data.size():
+		data.execute_at(step_index)
 		return
 
 	ended.emit()

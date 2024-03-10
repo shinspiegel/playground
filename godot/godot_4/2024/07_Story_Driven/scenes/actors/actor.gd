@@ -50,6 +50,16 @@ func play_animation(anim_name: String, angle_rad: float) -> void:
 	animation_player.play("%s_%s"% [anim_name, dir_name])
 
 
+func get_anim() -> String:
+	var list = animation_player.current_animation.split("_")
+
+	if list.size() <= 0:
+		push_warning("failed to identity animation name")
+		return ""
+
+	return list[0]
+
+
 func get_cursor_position() -> Vector2:
 	return hand_pos.get_global_transform_with_canvas().origin
 
