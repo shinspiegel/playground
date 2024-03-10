@@ -6,21 +6,21 @@ signal step_finished()
 
 @onready var wait_timer: Timer = $WaitTimer
 
-var steps: Array[CutSceneStepBase] = []
+var data: CutSceneData
 var actors: Array[Actor] = []
 var index: int = 0
 
 
-func start(cut_scene_steps: Array[CutSceneStepBase], cut_scene_actors: Array[Actor] = []) -> void:
+func start(scene_data: CutSceneData, cut_scene_actors: Array[Actor] = []) -> void:
 	index = 0
-	steps = cut_scene_steps
+	data = scene_data
 	actors = cut_scene_actors
 
-	for step in steps:
+	for step in scene_data.steps:
 		step.ended.connect(on_step_end.bind(step))
 
 	started.emit()
-	steps[index].execute()
+	data.steps[index].execute()
 
 
 func animate_actor(actor: Actor, anim: String, angle: float) -> void:
@@ -39,8 +39,8 @@ func move_actor(actor: Actor, pos: Vector2, duration: float = 0.3, ease_type: Tw
 func next_step() -> void:
 	index += 1
 
-	if index < steps.size():
-		steps[index].execute()
+	if index < data.size():
+		data.steps[index].execute()
 		return
 
 	ended.emit()

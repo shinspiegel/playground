@@ -1,6 +1,6 @@
 class_name CutScene extends Node2D
 
-@export var steps: Array[CutSceneStepBase] = []
+@export var data: CutSceneData
 @export var scene_actors: Array[Actor] = []
 
 @export_group("Initial Pos", "initial_")
@@ -11,6 +11,10 @@ class_name CutScene extends Node2D
 @export var camera_current: Camera2D
 @export var camera_pos: Node2D
 @export_range(0.1, 2.0, 0.1) var camera_duration: float = 0.3
+
+
+func _ready() -> void:
+	if data == null: push_error("missing data for cutscene")
 
 
 func start():
@@ -34,7 +38,7 @@ func start():
 		tw.play()
 		await tw.finished
 
-	CutSceneManager.start(steps, scene_actors)
+	CutSceneManager.start(data, scene_actors)
 	await CutSceneManager.ended
 	GameManager.change_to_world()
 
