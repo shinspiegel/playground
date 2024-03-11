@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://csdjbfj5l0pus"]
+[gd_scene load_steps=26 format=3 uid="uid://csdjbfj5l0pus"]
 
 [ext_resource type="TileSet" uid="uid://d4eaidaxglkih" path="res://scenes/tilemap/template.tres" id="1_b3xio"]
 [ext_resource type="PackedScene" uid="uid://cd30lwdo4bvuu" path="res://scenes/game_camera/game_camera.tscn" id="1_helwf"]
@@ -12,8 +12,10 @@
 [ext_resource type="PackedScene" uid="uid://03yy01jl71jn" path="res://scenes/cut_scene/cut_scene.tscn" id="10_i3x8e"]
 [ext_resource type="PackedScene" uid="uid://b4qnf5faj7ybi" path="res://scenes/cut_scene/cut_scene_starter_area/cut_scene_starter_area.tscn" id="11_l2br1"]
 [ext_resource type="Script" path="res://scenes/cut_scene/cut_scene_data/cut_scene_data.gd" id="12_7hgj2"]
+[ext_resource type="PackedScene" uid="uid://b30m85msfc1xv" path="res://scenes/bubble_message/bubble_message_starter/bubble_message_starter.tscn" id="12_8fjiu"]
 [ext_resource type="Script" path="res://scenes/cut_scene/steps/step_party_anim.gd" id="13_8dnvl"]
 [ext_resource type="Script" path="res://scenes/cut_scene/steps/step_player_move.gd" id="14_ixjig"]
+[ext_resource type="PackedScene" uid="uid://c33u7sqdwdu02" path="res://scenes/actors/actor.tscn" id="15_jeux2"]
 
 [sub_resource type="Resource" id="Resource_kphwp"]
 script = ExtResource("6_l0mi5")
@@ -37,6 +39,9 @@ radius = 57.0088
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_to7yp"]
 size = Vector2(768, 512)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ql8fy"]
+radius = 104.0
 
 [sub_resource type="Resource" id="Resource_c82wg"]
 script = ExtResource("13_8dnvl")
@@ -122,6 +127,17 @@ metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sorted/CutSceneStarterArea"]
 shape = SubResource("RectangleShape2D_to7yp")
+
+[node name="Actor" parent="Sorted" instance=ExtResource("15_jeux2")]
+position = Vector2(320, 448)
+metadata/_edit_group_ = true
+
+[node name="BubbleMessageStarter" parent="Sorted/Actor" node_paths=PackedStringArray("actor") instance=ExtResource("12_8fjiu")]
+actor = NodePath("..")
+text = "Message"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sorted/Actor/BubbleMessageStarter"]
+shape = SubResource("CircleShape2D_ql8fy")
 
 [node name="CutScene" parent="." node_paths=PackedStringArray("scene_actors", "initial_position", "camera_current", "camera_pos") instance=ExtResource("10_i3x8e")]
 position = Vector2(2, 0)

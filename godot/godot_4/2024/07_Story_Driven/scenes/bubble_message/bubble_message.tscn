@@ -1,0 +1,55 @@
+[gd_scene load_steps=3 format=3 uid="uid://kgtr453d15op"]
+
+[ext_resource type="Script" path="res://scenes/bubble_message/bubble_message.gd" id="1_3abii"]
+[ext_resource type="Theme" uid="uid://x61ckk74bynv" path="res://screens/theme/base_theme.tres" id="1_dej87"]
+
+[node name="BubbleMessage" type="Node2D"]
+script = ExtResource("1_3abii")
+
+[node name="BubbleWrapper" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("1_dej87")
+
+[node name="Panel" type="Panel" parent="BubbleWrapper"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(2.08165e-12, 80)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_top = -80.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Label" type="Label" parent="BubbleWrapper"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -500.0
+offset_top = -80.0
+offset_right = 500.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 1
+text = "Maybe we should"
+horizontal_alignment = 1
+vertical_alignment = 1
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="Timer" type="Timer" parent="."]
+unique_name_in_owner = true
+one_shot = true

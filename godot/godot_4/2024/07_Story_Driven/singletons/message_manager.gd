@@ -1,5 +1,7 @@
 extends CanvasLayer
 
+const BUBBLE_MESSAGE = preload("res://scenes/bubble_message/bubble_message.tscn")
+
 signal started()
 signal ended()
 
@@ -25,6 +27,13 @@ func start(messages: Array[MessageData]) -> void:
 	await display_message.prepared
 
 	next_message()
+
+
+func create_bubble_at(actor: Actor, text: String) -> void:
+	var msg: BubbleMessage = BUBBLE_MESSAGE.instantiate()
+	msg.text = text
+	actor.add_child(msg)
+	msg.global_position = actor.message_pos.global_position
 
 
 func next_message() -> void:

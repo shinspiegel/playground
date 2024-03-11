@@ -389,7 +389,11 @@ actor_data = ExtResource("2_jpl1r")
 
 [node name="HandPos" type="Marker2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(1, -80)
+position = Vector2(2.08165e-12, -80)
+
+[node name="BubblePos" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(2.08165e-12, -140)
 
 [node name="ActionsList" type="Node2D" parent="."]
 unique_name_in_owner = true

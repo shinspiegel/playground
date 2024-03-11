@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://b30m85msfc1xv"]
+
+[ext_resource type="Script" path="res://scenes/bubble_message/bubble_message_starter/bubble_message_starter.gd" id="1_dbyhj"]
+
+[node name="BubbleMessageStarter" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_dbyhj")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true

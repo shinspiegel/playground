@@ -7,6 +7,7 @@ class_name Actor extends CharacterBody2D
 @onready var head_sprite: Sprite2D = %HeadSprite
 @onready var animation_player: AnimationPlayer = %AnimationPlayer
 @onready var hand_pos: Marker2D = %HandPos
+@onready var message_pos: Marker2D = %BubblePos
 
 
 func _ready() -> void:
