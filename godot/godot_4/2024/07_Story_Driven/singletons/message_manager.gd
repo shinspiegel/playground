@@ -29,11 +29,31 @@ func start(messages: Array[MessageData]) -> void:
 	next_message()
 
 
-func create_bubble_at(actor: Actor, text: String) -> void:
+func create_bubble_at(actor: Actor, message_data: MessageData) -> void:
 	var msg: BubbleMessage = BUBBLE_MESSAGE.instantiate()
-	msg.text = text
+	msg.message_data = message_data
 	actor.add_child(msg)
 	msg.global_position = actor.message_pos.global_position
+
+
+func random_bubble_weighted(weight_list: Array[MessageData]) -> MessageData:
+	var total: float = 0.0
+	var cursor: float = 0.0
+	var rand_weight: float = 0.0
+
+	for data in weight_list:
+		total += data.weight
+
+	rand_weight = randf_range(0.0, total)
+
+	for item in weight_list:
+		cursor += item.weight
+
+		if cursor >= rand_weight:
+			return item
+
+	# In case of some failure will return the sorted entry
+	return weight_list[0]
 
 
 func next_message() -> void:

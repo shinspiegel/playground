@@ -134,7 +134,6 @@ metadata/_edit_group_ = true
 
 [node name="BubbleMessageStarter" parent="Sorted/Actor" node_paths=PackedStringArray("actor") instance=ExtResource("12_8fjiu")]
 actor = NodePath("..")
-text = "Message"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sorted/Actor/BubbleMessageStarter"]
 shape = SubResource("CircleShape2D_ql8fy")
