@@ -12,6 +12,6 @@ func _ready() -> void:
 
 func on_body_enter(node: Node2D) -> void:
 	if timer.is_stopped() and node is PlayerActor and node.is_user_controlled:
-		MessageManager.create_bubble_at(actor, MessageManager.random_bubble_weighted(possible_messages))
+		MessageManager.create_bubble(actor, MessageManager.random_bubble_weighted(possible_messages), actor.message_pos.global_position)
 		timer.start(colddown)
 
