@@ -6,7 +6,8 @@ class_name BubbleMessage extends Node2D
 @onready var label: Label = %Label
 @onready var timer: Timer = %Timer
 
-var text_width: int = 50
+var text_width_multipleir: float = 3.0
+var text_padding: float = 40
 var text_speed: float = 0.05
 var fadeout_time: float = 0.3
 
@@ -17,13 +18,13 @@ var final_width: float = 0.0
 func _ready() -> void:
 	timer.timeout.connect(on_timeout)
 
-	final_speed = message_data.text.length() * text_speed * message_data.speed_ratio
-	final_width = message_data.text.length() * text_width
-
 	label.text = message_data.text
 	label.visible_ratio = 0.0
 	panel.size = Vector2(0, 80)
 	panel.position = Vector2(0, -80)
+
+	final_speed = message_data.text.length() * text_speed * message_data.speed_ratio
+	final_width = label.get_theme_default_font().get_string_size(message_data.text).x * text_width_multipleir + text_padding
 
 	show_bubble()
 
