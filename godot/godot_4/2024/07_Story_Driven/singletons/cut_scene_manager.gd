@@ -55,7 +55,7 @@ func wait(seconds: float) -> Timer:
 	return wait_timer
 
 
-func on_step_end(step: CutSceneStepBase) -> void:
+func on_step_end(step: CutSceneBase) -> void:
 	step.ended.disconnect(on_step_end)
 	step_finished.emit()
 	next_step()

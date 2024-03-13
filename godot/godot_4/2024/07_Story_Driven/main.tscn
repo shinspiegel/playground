@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://csdjbfj5l0pus"]
+[gd_scene load_steps=34 format=3 uid="uid://csdjbfj5l0pus"]
 
 [ext_resource type="TileSet" uid="uid://d4eaidaxglkih" path="res://scenes/tilemap/template.tres" id="1_b3xio"]
 [ext_resource type="PackedScene" uid="uid://cd30lwdo4bvuu" path="res://scenes/game_camera/game_camera.tscn" id="1_helwf"]
@@ -14,8 +14,9 @@
 [ext_resource type="Script" path="res://scenes/cut_scene/cut_scene_data/cut_scene_data.gd" id="12_7hgj2"]
 [ext_resource type="PackedScene" uid="uid://b30m85msfc1xv" path="res://scenes/bubble_message/bubble_message_starter/bubble_message_starter.tscn" id="12_8fjiu"]
 [ext_resource type="Script" path="res://scenes/cut_scene/steps/step_party_anim.gd" id="13_8dnvl"]
-[ext_resource type="Script" path="res://scenes/cut_scene/steps/step_player_move.gd" id="14_ixjig"]
 [ext_resource type="PackedScene" uid="uid://c33u7sqdwdu02" path="res://scenes/actors/actor.tscn" id="15_jeux2"]
+[ext_resource type="Script" path="res://scenes/cut_scene/steps/step_wait.gd" id="16_min0s"]
+[ext_resource type="Script" path="res://scenes/cut_scene/steps/step_bubble.gd" id="17_nkqnk"]
 
 [sub_resource type="Resource" id="Resource_kphwp"]
 script = ExtResource("6_l0mi5")
@@ -69,17 +70,39 @@ script = ExtResource("13_8dnvl")
 direction = Vector2(2.08165e-12, -1)
 anim = "idle"
 
-[sub_resource type="Resource" id="Resource_4hvq3"]
-script = ExtResource("14_ixjig")
+[sub_resource type="Resource" id="Resource_vaxud"]
+script = ExtResource("16_min0s")
+seconds = 1.0
+
+[sub_resource type="Resource" id="Resource_xxnr7"]
+script = ExtResource("6_l0mi5")
+speed_ratio = 1.0
+text = "First"
+weight = 1.0
+
+[sub_resource type="Resource" id="Resource_80u1l"]
+script = ExtResource("6_l0mi5")
+speed_ratio = 1.0
+text = "Second"
+weight = 1.0
+
+[sub_resource type="Resource" id="Resource_nn3k5"]
+script = ExtResource("6_l0mi5")
+speed_ratio = 1.0
+text = "Fourth!"
+weight = 1.0
+
+[sub_resource type="Resource" id="Resource_dujuk"]
+script = ExtResource("17_nkqnk")
+list = Array[ExtResource("6_l0mi5")]([SubResource("Resource_xxnr7"), SubResource("Resource_80u1l"), SubResource("Resource_nn3k5")])
+delay = 0.3
+rand_pos = Vector2(20, 20)
 index = 0
-direction = Vector2(2.08165e-12, -200)
-duration = 0.5
-animation_animate = true
-animation_anim_name = "move"
+is_party = true
 
 [sub_resource type="Resource" id="Resource_usofd"]
 script = ExtResource("12_7hgj2")
-steps = Array[Resource("res://scenes/cut_scene/steps/step_base.gd")]([SubResource("Resource_c82wg"), SubResource("Resource_4hvq3")])
+steps = Array[Resource("res://scenes/cut_scene/steps/step_base.gd")]([SubResource("Resource_c82wg"), SubResource("Resource_vaxud"), SubResource("Resource_dujuk")])
 
 [node name="Main" type="Node2D"]
 
@@ -150,7 +173,7 @@ metadata/_edit_group_ = true
 shape = SubResource("RectangleShape2D_to7yp")
 
 [node name="Actor" parent="Sorted" instance=ExtResource("15_jeux2")]
-position = Vector2(320, 448)
+position = Vector2(424, 968)
 metadata/_edit_group_ = true
 
 [node name="BubbleMessageStarter" parent="Sorted/Actor" node_paths=PackedStringArray("actor") instance=ExtResource("12_8fjiu")]

@@ -40,5 +40,7 @@ func start():
 
 	CutSceneManager.start(data, scene_actors)
 	await CutSceneManager.ended
+
+	PartyManager.enable_leader_camera()
 	GameManager.change_to_world()
 

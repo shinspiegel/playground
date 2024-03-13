@@ -1,13 +1,13 @@
 class_name CutSceneData extends Resource
 
-@export var steps: Array[CutSceneStepBase] = []
+@export var steps: Array[CutSceneBase] = []
 
 
 func size() -> int:
 	return steps.size()
 
 
-func at(index: int) -> CutSceneStepBase:
+func at(index: int) -> CutSceneBase:
 	return steps[index]
 
 
