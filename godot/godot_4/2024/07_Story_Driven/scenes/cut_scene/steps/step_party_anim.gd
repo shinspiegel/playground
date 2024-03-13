@@ -1,4 +1,4 @@
-class_name CutScenePartyAnim extends CutSceneStepBase
+class_name CutScenePartyAnim extends CutSceneBase
 
 @export var direction: Vector2 = Vector2.ZERO
 @export_enum("idle", "move") var anim: String = "idle"
@@ -6,6 +6,6 @@ class_name CutScenePartyAnim extends CutSceneStepBase
 
 func execute() -> void:
 	for member in PartyManager.party:
-		CutSceneManager.animate_actor(member, anim, direction.angle())
+		member.play_animation(anim, direction.angle())
 
 	ended.emit()

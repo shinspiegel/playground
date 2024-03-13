@@ -1,4 +1,4 @@
-class_name CutSceneStepWait extends CutSceneStepBase
+class_name CutSceneStepWait extends CutSceneBase
 
 @export_range(0.1, 5.0, 0.1) var seconds: float
 

@@ -28,10 +28,6 @@ func at(index: int) -> Actor:
 	return actors[index]
 
 
-func animate_actor(actor: Actor, anim: String, angle: float) -> void:
-	actor.play_animation(anim, angle)
-
-
 func move_actor(actor: Actor, pos: Vector2, duration: float = 0.3, ease_type: Tween.EaseType = Tween.EASE_IN) -> void:
 	if duration > 0:
 		var tw = create_tween().set_ease(ease_type)
