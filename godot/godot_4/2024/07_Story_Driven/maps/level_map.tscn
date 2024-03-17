@@ -11,8 +11,8 @@ pos = NodePath("PlayerStartPos")
 game_camera = NodePath("GameCamera")
 
 [node name="GameCamera" parent="." node_paths=PackedStringArray("top_left", "bottom_right") instance=ExtResource("2_4fbhm")]
-top_left = NodePath("")
-bottom_right = NodePath("")
+top_left = NodePath("../MapLimits/TopLeft")
+bottom_right = NodePath("../MapLimits/BottomRight")
 
 [node name="BackgroundColor" type="CanvasLayer" parent="."]
 layer = -10
