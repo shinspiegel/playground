@@ -5,7 +5,7 @@ class_name GameOverScreen extends Control
 @onready var quit: Button = %Quit
 
 func _ready() -> void:
-	AudioManager.play_music(AudioManager.INTRO)
+	AudioManager.play_music(AudioManager.Musics.INTRO)
 	start.pressed.connect(on_start)
 	credits.pressed.connect(on_credits)
 	quit.pressed.connect(on_quit)

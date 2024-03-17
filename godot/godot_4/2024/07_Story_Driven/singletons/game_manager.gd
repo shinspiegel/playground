@@ -15,12 +15,12 @@ func is_talk() -> bool: return current_mode == MODE.TALK
 
 func change_to_world() -> void:
 	change_state_to(MODE.WORLD)
-	AudioManager.play_music(AudioManager.WORLD)
+	AudioManager.play_music(AudioManager.Musics.INTRO)
 
 
 func change_to_battle() -> void:
 	change_state_to(MODE.BATTLE)
-	AudioManager.play_music(AudioManager.BATTLE)
+	AudioManager.play_music(AudioManager.Musics.BATTLE)
 
 
 func change_to_cut_scene() -> void:

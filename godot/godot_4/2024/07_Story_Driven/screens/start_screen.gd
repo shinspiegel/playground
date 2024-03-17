@@ -9,7 +9,7 @@ class_name StartScreen extends Control
 
 
 func _ready() -> void:
-	AudioManager.play_music(AudioManager.INTRO)
+	AudioManager.play_music(AudioManager.Musics.INTRO)
 
 	title.text = ProjectSettings.get("application/config/name")
 	version.text = "Version.%s" % ProjectSettings.get("application/config/version")
