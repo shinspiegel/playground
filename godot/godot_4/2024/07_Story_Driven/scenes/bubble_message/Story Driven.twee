@@ -1,0 +1,39 @@
+:: StoryTitle
+Story Driven
+
+
+:: StoryData
+{
+  "ifid": "87C3EF6F-C974-40A6-A720-A0A62D588AB3",
+  "format": "Harlowe",
+  "format-version": "3.3.8",
+  "start": "CH1_100",
+  "zoom": 1
+}
+
+
+:: CH1_100 {"position":"800,300","size":"100,100"}
+In his new appartment unpacking the only two big luggages.
+Thoughts about the next day, the journalist job was a pretty increase for him.
+There is some good fortune on this.
+The starts to creepling in, time for some quick junk food.
+
+[[Pizza Hat|CH1_200]]
+
+
+:: CH1_200 {"position":"800,500","size":"100,100"}
+In the Pizza Hat place, few people talking, there is a lot of noise. People is talking in the background.
+It's hard for [Protagonist] to keep focus on this place.
+He wants to do it quickly to get back home.
+
+[[Wait in line|CH1_300]]
+
+[[Push line|CH1_310k]]
+
+
+:: CH1_300 {"position":"800,700","size":"100,100"}
+
+
+
+:: CH1_310k {"position":"1000,700","size":"100,100"}
+
