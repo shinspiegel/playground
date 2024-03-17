@@ -1,0 +1,46 @@
+[gd_scene load_steps=4 format=3 uid="uid://blydrbv15xonn"]
+
+[ext_resource type="Script" path="res://maps/level_map.gd" id="1_smkhw"]
+[ext_resource type="PackedScene" uid="uid://cd30lwdo4bvuu" path="res://scenes/game_camera/game_camera.tscn" id="2_4fbhm"]
+[ext_resource type="TileSet" uid="uid://d4eaidaxglkih" path="res://scenes/tilemap/template.tres" id="3_5osx2"]
+
+[node name="LevelMap" type="Node2D" node_paths=PackedStringArray("sorted", "pos", "game_camera")]
+script = ExtResource("1_smkhw")
+sorted = NodePath("Sorted")
+pos = NodePath("PlayerStartPos")
+game_camera = NodePath("GameCamera")
+
+[node name="GameCamera" parent="." node_paths=PackedStringArray("top_left", "bottom_right") instance=ExtResource("2_4fbhm")]
+top_left = NodePath("")
+bottom_right = NodePath("")
+
+[node name="BackgroundColor" type="CanvasLayer" parent="."]
+layer = -10
+
+[node name="ColorRect" type="ColorRect" parent="BackgroundColor"]
+auto_translate_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="MapLimits" type="Node2D" parent="."]
+
+[node name="TopLeft" type="Marker2D" parent="MapLimits"]
+position = Vector2(-64, -64)
+
+[node name="BottomRight" type="Marker2D" parent="MapLimits"]
+position = Vector2(1984, 1152)
+
+[node name="Map" type="TileMap" parent="."]
+scale = Vector2(4, 4)
+tile_set = ExtResource("3_5osx2")
+format = 2
+
+[node name="Sorted" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="PlayerStartPos" type="Marker2D" parent="."]
+position = Vector2(224, 160)
