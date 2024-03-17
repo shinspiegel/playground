@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://badrifwdvk514"]
+
+[ext_resource type="Script" path="res://singletons/story_manager.gd" id="1_5mtml"]
+[ext_resource type="Resource" uid="uid://b5hnkhmfbia7b" path="res://singletons/story_data.tres" id="2_g44iq"]
+
+[node name="StoryManager" type="Node"]
+script = ExtResource("1_5mtml")
+data = ExtResource("2_g44iq")

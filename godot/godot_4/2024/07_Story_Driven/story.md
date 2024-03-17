@@ -119,6 +119,16 @@ Arriving on the train [Jakub](#jakub) check his stuff.
 ## Buy Tickets
 - CH2 EP2 S1
 --
+With a clear mind, even with the packed train, it's a good thing.
+This may be a new start, and overcoming the shyness can be accomplish trough the hard effort. 
+So a packed train won't be a problem.
+
+- [To the Office](#reaching-the-office)
+
+
+## Buy Tickets
+- CH2 EP2 S2
+--
 [Jakub](#jakub) does not have the tickets ready, and needs to buy on the station. 
 The station is busy on this day, like all Mondays.
 He needs to find the where is the ticket info, and buy the tickets.
@@ -131,7 +141,7 @@ This will cost him some money, but worse it this will cost him the time, losing 
 
 
 ## No Address
-- CH2 EP2 S2
+- CH2 EP2 S3
 --
 Wihtout the right address finding the correct station will be impossible. 
 To find the correct address on the phone, on the most busy station with limited connection takes time.
@@ -145,7 +155,7 @@ The noise of people around, with the smells of the train station will pay a toll
 
 
 ## No Clothes
-- CH2 EP2 S3
+- CH2 EP2 S4
 --
 You can't leave home wihout the correct clothes, but without the time you just pack the uniform and needs to find a place to change in the station.
 

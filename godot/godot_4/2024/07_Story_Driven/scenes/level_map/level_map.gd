@@ -14,20 +14,16 @@ func _ready() -> void:
 	AudioManager.play_music(AudioManager.WORLD)
 
 
-
 func __spawn_party() -> void:
 	for index in PartyManager.party_size():
 		var player: PlayerActor = PartyManager.at(index)
 		player.global_position = pos.global_position
 		player.camera = game_camera
 
-		match index:
-			0:
-				player.is_user_controlled = true
-			1:
-				player.follow_side = -1
-			2:
-				player.follow_side = 1
+		if index == 0:
+			player.is_user_controlled = true
+		else:
+			player.follow_side = 1 if index % 1 == 0 else -1
 
 		sorted.add_child(player)
 

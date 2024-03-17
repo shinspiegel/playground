@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="StoryData" load_steps=2 format=3 uid="uid://b5hnkhmfbia7b"]
+
+[ext_resource type="Script" path="res://singletons/story_data.gd" id="1_voeoa"]
+
+[resource]
+script = ExtResource("1_voeoa")
+chapter = 0
+episode = 0
+step = 0
+chapter_1_push = false
+chapter_1_alarm = false
+chapter_1_clothes = false
+chapter_1_email = false
+chapter_1_train_ticket = false
