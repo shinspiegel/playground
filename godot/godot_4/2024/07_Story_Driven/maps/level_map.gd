@@ -6,12 +6,18 @@ class_name LevelMap extends Node2D
 
 
 func _ready() -> void:
+	before_ready()
+
 	if not sorted: push_error("failed to locate the sorted node")
 	if not pos: push_error("failed to locate the initial player position node")
 	if not game_camera: push_error("missing game camera node")
 
 	__spawn_party()
-	AudioManager.play_music(AudioManager.WORLD)
+	AudioManager.play_music(AudioManager.Musics.WORLD)
+
+
+func before_ready() -> void:
+	push_warning("nothing prepared in the current map")
 
 
 func __spawn_party() -> void:
