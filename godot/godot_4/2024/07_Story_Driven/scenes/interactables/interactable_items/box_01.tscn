@@ -1,0 +1,38 @@
+[gd_scene load_steps=8 format=3 uid="uid://mhop6i4ani4m"]
+
+[ext_resource type="PackedScene" uid="uid://b15nrb2j3vhb7" path="res://scenes/interactables/interactable_items/interactable_item.tscn" id="1_7nssc"]
+[ext_resource type="Shader" path="res://scenes/interactables/interactable_items/interactable_item.gdshader" id="2_hb5ou"]
+[ext_resource type="Texture2D" uid="uid://bg2iw8mmjrs7t" path="res://assets/graphics/template_3d_size.png" id="3_l0vgs"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qssvk"]
+resource_local_to_scene = true
+shader = ExtResource("2_hb5ou")
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/line_thickness = 1.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8p2o0"]
+atlas = ExtResource("3_l0vgs")
+region = Rect2(40, 8, 32, 40)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g1rsk"]
+radius = 80.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r0pee"]
+size = Vector2(64, 80)
+
+[node name="Box" instance=ExtResource("1_7nssc")]
+
+[node name="SpriteGroup" parent="." index="0"]
+material = SubResource("ShaderMaterial_qssvk")
+
+[node name="Sprite2D" parent="SpriteGroup" index="0"]
+position = Vector2(0, -48)
+texture = SubResource("AtlasTexture_8p2o0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable" index="0"]
+position = Vector2(0, -16)
+shape = SubResource("CircleShape2D_g1rsk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" index="0"]
+position = Vector2(0, -40)
+shape = SubResource("RectangleShape2D_r0pee")

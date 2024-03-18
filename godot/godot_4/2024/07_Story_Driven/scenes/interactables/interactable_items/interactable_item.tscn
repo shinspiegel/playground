@@ -23,3 +23,6 @@ scale = Vector2(4, 4)
 
 [node name="Interactable" parent="." instance=ExtResource("1_eo6d2")]
 unique_name_in_owner = true
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_mask = 6

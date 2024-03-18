@@ -3,10 +3,10 @@ class_name InteractableItem extends Node2D
 @export var is_active: bool = false
 
 @export_group("sprite", "sprite_")
-@export_range(0.0, 1.0, 0.1) var sprite_initial_thickness: float = 1.0
+@export_range(0.0, 1.0, 0.1) var sprite_initial_thickness: float = 0.0
 @export_range(0.0, 1.0, 0.1) var sprite_thickness: float = 1.0
 @export var sprite_smooth: bool = true
-@export_range(0.0, 1.0, 0.1) var sprite_duration: float = 0.3
+@export_range(0.0, 1.0, 0.1) var sprite_duration: float = 0.2
 
 @onready var sprite_group: Node2D = %SpriteGroup
 @onready var interactable: Interactable = %Interactable
@@ -30,9 +30,9 @@ func interact() -> void:
 
 func enable() -> void:
 	if not is_outlined:
-		if sprite_smooth: 
+		if sprite_smooth:
 			__tween_countour(0.0, sprite_thickness)
-		else: 
+		else:
 			__update_outline(sprite_thickness)
 
 		is_outlined = true
@@ -40,9 +40,9 @@ func enable() -> void:
 
 func disable() -> void:
 	if is_outlined:
-		if sprite_smooth: 
+		if sprite_smooth:
 			__tween_countour(sprite_thickness, 0.0)
-		else: 
+		else:
 			__update_outline(0.0)
 
 		is_outlined = false
@@ -69,4 +69,5 @@ func __tween_countour(from: float, to: float) -> void:
 
 
 func __update_outline(value: float) -> void:
-	material.set_shader_parameter("line_thickness", value)
+	sprite_group.material.set_shader_parameter("line_thickness", value)
+

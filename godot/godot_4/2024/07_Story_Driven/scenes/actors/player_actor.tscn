@@ -9,7 +9,7 @@ radius = 48.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kn3aj"]
 radius = 28.0
-height = 84.0
+height = 80.0
 
 [node name="PlayerActor" instance=ExtResource("1_v4713")]
 collision_layer = 2
@@ -27,6 +27,6 @@ metadata/_edit_group_ = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interactor" index="0"]
 shape = SubResource("CircleShape2D_7bmhp")
 
-[node name="Shape" parent="." index="6"]
-position = Vector2(-2.08165e-12, -42)
+[node name="Shape" parent="." index="7"]
+position = Vector2(0, -44)
 shape = SubResource("CapsuleShape2D_kn3aj")

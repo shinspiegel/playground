@@ -18,8 +18,10 @@ func _ready() -> void:
 	if not camera: push_error("missing camera node")
 	if is_user_controlled:
 		enable_camera()
+		interactor.is_active = true
 	else:
 		leader = PartyManager.get_leader()
+		interactor.is_active = false
 
 
 
