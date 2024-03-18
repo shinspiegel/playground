@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://maps/jakub_apartment.gd" id="2_io7gp"]
 [ext_resource type="PackedScene" uid="uid://mhop6i4ani4m" path="res://scenes/interactables/interactable_items/box_01.tscn" id="3_4e226"]
 
-[node name="LevelMap" node_paths=PackedStringArray("sorted", "pos", "game_camera") instance=ExtResource("1_l0do0")]
+[node name="JakubApartment" node_paths=PackedStringArray("sorted", "pos", "game_camera") instance=ExtResource("1_l0do0")]
 script = ExtResource("2_io7gp")
 sorted = NodePath("Sorted")
 pos = NodePath("PlayerStartPos")

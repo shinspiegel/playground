@@ -1,25 +1,22 @@
-[gd_scene load_steps=5 format=3 uid="uid://b15nrb2j3vhb7"]
+[gd_scene load_steps=6 format=3 uid="uid://b15nrb2j3vhb7"]
 
 [ext_resource type="Script" path="res://scenes/interactables/interactable_items/interactable_item.gd" id="1_cbch5"]
 [ext_resource type="PackedScene" uid="uid://dq3y1i2y72rcs" path="res://scenes/interactables/interactable/interactable.tscn" id="1_eo6d2"]
-[ext_resource type="Shader" path="res://scenes/interactables/interactable_items/interactable_item.gdshader" id="2_j80ir"]
+[ext_resource type="PackedScene" uid="uid://bovm5ihipur2q" path="res://scenes/outlined_sprite/outlined_sprite.tscn" id="2_2ehav"]
+[ext_resource type="Shader" path="res://scenes/outlined_sprite/outlined_sprite.gdshader" id="3_fev6t"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_1u0vf"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_35kvl"]
 resource_local_to_scene = true
-shader = ExtResource("2_j80ir")
+shader = ExtResource("3_fev6t")
 shader_parameter/line_color = Color(1, 1, 1, 1)
 shader_parameter/line_thickness = 1.0
 
 [node name="InteractableItems" type="Node2D"]
 script = ExtResource("1_cbch5")
 
-[node name="SpriteGroup" type="Node2D" parent="."]
+[node name="OutlinedSprite" parent="." instance=ExtResource("2_2ehav")]
 unique_name_in_owner = true
-material = SubResource("ShaderMaterial_1u0vf")
-
-[node name="Sprite2D" type="Sprite2D" parent="SpriteGroup"]
-use_parent_material = true
-scale = Vector2(4, 4)
+material = SubResource("ShaderMaterial_35kvl")
 
 [node name="Interactable" parent="." instance=ExtResource("1_eo6d2")]
 unique_name_in_owner = true

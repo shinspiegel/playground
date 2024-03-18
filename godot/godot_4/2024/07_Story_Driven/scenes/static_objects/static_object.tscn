@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://b3uegvtypi7xu"]
+
+[node name="StaticObject" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(4, 4)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
