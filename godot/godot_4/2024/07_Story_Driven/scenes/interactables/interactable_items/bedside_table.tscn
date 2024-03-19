@@ -1,17 +1,17 @@
-[gd_scene load_steps=8 format=3 uid="uid://mhop6i4ani4m"]
+[gd_scene load_steps=8 format=3 uid="uid://bs8eem7wkj3xi"]
 
-[ext_resource type="PackedScene" uid="uid://b15nrb2j3vhb7" path="res://scenes/interactables/interactable_items/interactable_item.tscn" id="1_7nssc"]
-[ext_resource type="Shader" path="res://scenes/interactables/outlined_sprite/outlined_sprite.gdshader" id="2_6hwje"]
-[ext_resource type="Texture2D" uid="uid://bg2iw8mmjrs7t" path="res://assets/graphics/template_3d_size.png" id="3_l0vgs"]
+[ext_resource type="PackedScene" uid="uid://b15nrb2j3vhb7" path="res://scenes/interactables/interactable_items/interactable_item.tscn" id="1_j2741"]
+[ext_resource type="Shader" path="res://scenes/interactables/outlined_sprite/outlined_sprite.gdshader" id="2_j1que"]
+[ext_resource type="Texture2D" uid="uid://bg2iw8mmjrs7t" path="res://assets/graphics/template_3d_size.png" id="3_2lihj"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_35kvl"]
 resource_local_to_scene = true
-shader = ExtResource("2_6hwje")
+shader = ExtResource("2_j1que")
 shader_parameter/line_color = Color(1, 1, 1, 1)
 shader_parameter/line_thickness = 0.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_djmgu"]
-atlas = ExtResource("3_l0vgs")
+atlas = ExtResource("3_2lihj")
 region = Rect2(8, 8, 32, 40)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5hhge"]
@@ -20,7 +20,7 @@ size = Vector2(96, 112)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r0pee"]
 size = Vector2(64, 80)
 
-[node name="Box" instance=ExtResource("1_7nssc")]
+[node name="BedsideTable" instance=ExtResource("1_j2741")]
 
 [node name="OutlinedSprite" parent="." index="0"]
 material = SubResource("ShaderMaterial_35kvl")
@@ -42,11 +42,13 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -32.0
-offset_top = -64.0
+offset_top = -80.0
 offset_right = 32.0
-offset_bottom = -32.0
+offset_bottom = -15.0
 grow_horizontal = 2
 grow_vertical = 0
-text = "Box"
+theme_override_font_sizes/font_size = 14
+text = "Bedside
+Table"
 horizontal_alignment = 1
 vertical_alignment = 1

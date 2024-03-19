@@ -1,11 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://ceqphrxd7newn"]
+[gd_scene load_steps=9 format=3 uid="uid://ceqphrxd7newn"]
 
 [ext_resource type="PackedScene" uid="uid://blydrbv15xonn" path="res://maps/level_map.tscn" id="1_l0do0"]
 [ext_resource type="Script" path="res://maps/jakub_apartment.gd" id="2_io7gp"]
 [ext_resource type="PackedScene" uid="uid://bb2h823fwhajj" path="res://scenes/interactables/interactable_items/bed.tscn" id="3_plwcj"]
 [ext_resource type="PackedScene" uid="uid://xrth3wl55abf" path="res://scenes/interactables/interactable_items/wardrobe.tscn" id="4_dwghp"]
 [ext_resource type="PackedScene" uid="uid://bs8eem7wkj3xi" path="res://scenes/interactables/interactable_items/bedside_table.tscn" id="5_qkw5b"]
+[ext_resource type="PackedScene" uid="uid://dk4b0bjjfj33w" path="res://scenes/interactables/interactable_items/table.tscn" id="6_lq18n"]
 [ext_resource type="PackedScene" uid="uid://2c45hgxkl6hm" path="res://scenes/interactables/interactable_items/alarm_clock.tscn" id="6_u6r5v"]
+[ext_resource type="PackedScene" uid="uid://cdijjuxgq1vkm" path="res://scenes/interactables/interactable_items/chair.tscn" id="7_kunvw"]
 
 [node name="JakubApartment" node_paths=PackedStringArray("sorted", "pos", "game_camera") instance=ExtResource("1_l0do0")]
 script = ExtResource("2_io7gp")
@@ -33,16 +35,31 @@ position = Vector2(2080, 352)
 position = Vector2(2400, 384)
 
 [node name="BedsideTable" parent="Sorted" index="3" instance=ExtResource("5_qkw5b")]
-position = Vector2(800, 1344)
+position = Vector2(1824, 352)
 
-[node name="BedsideTable2" parent="Sorted" index="4" instance=ExtResource("5_qkw5b")]
-position = Vector2(576, 1344)
+[node name="Table" parent="Sorted" index="4" instance=ExtResource("6_lq18n")]
+position = Vector2(1728, 1376)
 
-[node name="AlarmClock2" parent="Sorted" index="5" instance=ExtResource("6_u6r5v")]
-position = Vector2(800, 1280)
+[node name="Chair" parent="Sorted" index="5" instance=ExtResource("7_kunvw")]
+position = Vector2(1824, 1504)
 
-[node name="AlarmClock3" parent="Over" index="0" instance=ExtResource("6_u6r5v")]
-position = Vector2(576, 1280)
+[node name="Chair2" parent="Sorted" index="6" instance=ExtResource("7_kunvw")]
+position = Vector2(1664, 1472)
+
+[node name="Chair3" parent="Sorted" index="7" instance=ExtResource("7_kunvw")]
+position = Vector2(1664, 1184)
+
+[node name="Chair4" parent="Sorted" index="8" instance=ExtResource("7_kunvw")]
+position = Vector2(1792, 1152)
+
+[node name="Chair5" parent="Sorted" index="9" instance=ExtResource("7_kunvw")]
+position = Vector2(1536, 1280)
+
+[node name="Chair6" parent="Sorted" index="10" instance=ExtResource("7_kunvw")]
+position = Vector2(1920, 1344)
+
+[node name="AlarmClock3" parent="Sorted" index="11" instance=ExtResource("6_u6r5v")]
+position = Vector2(1824, 352)
 
 [node name="PlayerStartPos" parent="." index="7"]
 position = Vector2(2240, 1024)

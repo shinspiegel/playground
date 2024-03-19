@@ -5,11 +5,11 @@
 [ext_resource type="PackedScene" uid="uid://dfye3sw7hi05x" path="res://scenes/interactables/interactor/interactor.tscn" id="3_2ofcf"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7bmhp"]
-radius = 48.0
+radius = 64.2806
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kn3aj"]
-radius = 28.0
-height = 80.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ckpjc"]
+radius = 16.0
+height = 48.0
 
 [node name="PlayerActor" instance=ExtResource("1_v4713")]
 collision_layer = 2
@@ -28,5 +28,6 @@ metadata/_edit_group_ = true
 shape = SubResource("CircleShape2D_7bmhp")
 
 [node name="Shape" parent="." index="7"]
-position = Vector2(0, -44)
-shape = SubResource("CapsuleShape2D_kn3aj")
+position = Vector2(0, -16)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_ckpjc")

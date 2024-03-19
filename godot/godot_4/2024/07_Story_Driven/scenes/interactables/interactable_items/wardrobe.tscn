@@ -1,38 +1,38 @@
-[gd_scene load_steps=8 format=3 uid="uid://mhop6i4ani4m"]
+[gd_scene load_steps=8 format=3 uid="uid://xrth3wl55abf"]
 
-[ext_resource type="PackedScene" uid="uid://b15nrb2j3vhb7" path="res://scenes/interactables/interactable_items/interactable_item.tscn" id="1_7nssc"]
-[ext_resource type="Shader" path="res://scenes/interactables/outlined_sprite/outlined_sprite.gdshader" id="2_6hwje"]
-[ext_resource type="Texture2D" uid="uid://bg2iw8mmjrs7t" path="res://assets/graphics/template_3d_size.png" id="3_l0vgs"]
+[ext_resource type="PackedScene" uid="uid://b15nrb2j3vhb7" path="res://scenes/interactables/interactable_items/interactable_item.tscn" id="1_22hvw"]
+[ext_resource type="Shader" path="res://scenes/interactables/outlined_sprite/outlined_sprite.gdshader" id="2_ew12w"]
+[ext_resource type="Texture2D" uid="uid://bg2iw8mmjrs7t" path="res://assets/graphics/template_3d_size.png" id="3_24oyw"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_35kvl"]
 resource_local_to_scene = true
-shader = ExtResource("2_6hwje")
+shader = ExtResource("2_ew12w")
 shader_parameter/line_color = Color(1, 1, 1, 1)
 shader_parameter/line_thickness = 0.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_djmgu"]
-atlas = ExtResource("3_l0vgs")
-region = Rect2(8, 8, 32, 40)
+atlas = ExtResource("3_24oyw")
+region = Rect2(152, 344, 80, 80)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5hhge"]
-size = Vector2(96, 112)
+size = Vector2(288, 128)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r0pee"]
-size = Vector2(64, 80)
+size = Vector2(256, 96)
 
-[node name="Box" instance=ExtResource("1_7nssc")]
+[node name="Wardrobe" instance=ExtResource("1_22hvw")]
 
 [node name="OutlinedSprite" parent="." index="0"]
 material = SubResource("ShaderMaterial_35kvl")
-position = Vector2(0, -48)
+position = Vector2(0, -128)
 texture = SubResource("AtlasTexture_djmgu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable" index="0"]
-position = Vector2(0, -40)
+position = Vector2(0, -48)
 shape = SubResource("RectangleShape2D_5hhge")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" index="0"]
-position = Vector2(0, -40)
+position = Vector2(0, -48)
 shape = SubResource("RectangleShape2D_r0pee")
 
 [node name="Label" type="Label" parent="." index="3"]
@@ -41,12 +41,13 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -32.0
-offset_top = -64.0
-offset_right = 32.0
-offset_bottom = -32.0
+offset_left = -128.0
+offset_top = -161.0
+offset_right = 128.0
+offset_bottom = -96.0
 grow_horizontal = 2
 grow_vertical = 0
-text = "Box"
+text = "Wardrobe
+Cabinet"
 horizontal_alignment = 1
 vertical_alignment = 1

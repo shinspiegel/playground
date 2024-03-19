@@ -1,38 +1,43 @@
-[gd_scene load_steps=8 format=3 uid="uid://mhop6i4ani4m"]
+[gd_scene load_steps=8 format=3 uid="uid://2c45hgxkl6hm"]
 
-[ext_resource type="PackedScene" uid="uid://b15nrb2j3vhb7" path="res://scenes/interactables/interactable_items/interactable_item.tscn" id="1_7nssc"]
-[ext_resource type="Shader" path="res://scenes/interactables/outlined_sprite/outlined_sprite.gdshader" id="2_6hwje"]
-[ext_resource type="Texture2D" uid="uid://bg2iw8mmjrs7t" path="res://assets/graphics/template_3d_size.png" id="3_l0vgs"]
+[ext_resource type="PackedScene" uid="uid://b15nrb2j3vhb7" path="res://scenes/interactables/interactable_items/interactable_item.tscn" id="1_rciu0"]
+[ext_resource type="Shader" path="res://scenes/interactables/outlined_sprite/outlined_sprite.gdshader" id="2_mjqsp"]
+[ext_resource type="Texture2D" uid="uid://bg2iw8mmjrs7t" path="res://assets/graphics/template_3d_size.png" id="3_6makv"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_35kvl"]
 resource_local_to_scene = true
-shader = ExtResource("2_6hwje")
+shader = ExtResource("2_mjqsp")
 shader_parameter/line_color = Color(1, 1, 1, 1)
 shader_parameter/line_thickness = 0.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_djmgu"]
-atlas = ExtResource("3_l0vgs")
-region = Rect2(8, 8, 32, 40)
+atlas = ExtResource("3_6makv")
+region = Rect2(8, 648, 24, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5hhge"]
-size = Vector2(96, 112)
+size = Vector2(160, 160)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r0pee"]
-size = Vector2(64, 80)
+size = Vector2(32, 32)
 
-[node name="Box" instance=ExtResource("1_7nssc")]
+[node name="AlarmClock" instance=ExtResource("1_rciu0")]
+active = true
 
 [node name="OutlinedSprite" parent="." index="0"]
 material = SubResource("ShaderMaterial_35kvl")
-position = Vector2(0, -48)
+position = Vector2(0, -80)
 texture = SubResource("AtlasTexture_djmgu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable" index="0"]
-position = Vector2(0, -40)
+position = Vector2(0, -80)
 shape = SubResource("RectangleShape2D_5hhge")
 
+[node name="StaticBody2D" parent="." index="2"]
+collision_layer = 0
+collision_mask = 0
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" index="0"]
-position = Vector2(0, -40)
+position = Vector2(0, -80)
 shape = SubResource("RectangleShape2D_r0pee")
 
 [node name="Label" type="Label" parent="." index="3"]
@@ -41,12 +46,13 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -32.0
-offset_top = -64.0
-offset_right = 32.0
-offset_bottom = -32.0
+offset_left = -16.0
+offset_top = -96.0
+offset_right = 16.0
+offset_bottom = -63.0
 grow_horizontal = 2
 grow_vertical = 0
-text = "Box"
+theme_override_font_sizes/font_size = 10
+text = "Clock"
 horizontal_alignment = 1
 vertical_alignment = 1
