@@ -7,7 +7,7 @@
 resource_local_to_scene = true
 shader = ExtResource("1_eac2a")
 shader_parameter/line_color = Color(1, 1, 1, 1)
-shader_parameter/line_thickness = 1.0
+shader_parameter/line_thickness = 0.0
 
 [node name="OutlinedSprite" type="Sprite2D"]
 material = SubResource("ShaderMaterial_3eohl")

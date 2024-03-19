@@ -13,6 +13,7 @@ shader_parameter/line_thickness = 1.0
 
 [node name="InteractableItems" type="Node2D"]
 script = ExtResource("1_cbch5")
+active = false
 
 [node name="OutlinedSprite" parent="." instance=ExtResource("2_2ehav")]
 unique_name_in_owner = true
