@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://5eb6d56qq0hb"]
+
+[ext_resource type="PackedScene" uid="uid://b3uegvtypi7xu" path="res://scenes/static_objects/static_object.tscn" id="1_k1kwk"]
+[ext_resource type="Texture2D" uid="uid://bg2iw8mmjrs7t" path="res://assets/graphics/template_3d_size.png" id="2_8tpx1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nkyeu"]
+atlas = ExtResource("2_8tpx1")
+region = Rect2(40, 8, 32, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m040l"]
+size = Vector2(64, 80)
+
+[node name="Chair" instance=ExtResource("1_k1kwk")]
+
+[node name="Sprite2D" parent="." index="0"]
+position = Vector2(0, -48)
+texture = SubResource("AtlasTexture_nkyeu")
+
+[node name="Label" type="Label" parent="." index="1"]
+offset_left = -64.0
+offset_top = -80.0
+offset_right = 64.0
+offset_bottom = -32.0
+text = "Chair"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" index="0"]
+position = Vector2(0, -40)
+shape = SubResource("RectangleShape2D_m040l")

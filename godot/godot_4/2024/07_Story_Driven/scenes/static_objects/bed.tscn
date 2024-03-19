@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://p5mxjrft6hg1"]
+
+[ext_resource type="PackedScene" uid="uid://b3uegvtypi7xu" path="res://scenes/static_objects/static_object.tscn" id="1_mjp1o"]
+[ext_resource type="Texture2D" uid="uid://bg2iw8mmjrs7t" path="res://assets/graphics/template_3d_size.png" id="2_lsbqr"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nkyeu"]
+atlas = ExtResource("2_lsbqr")
+region = Rect2(344, 264, 64, 88)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m040l"]
+size = Vector2(192, 272)
+
+[node name="Bed" instance=ExtResource("1_mjp1o")]
+
+[node name="Sprite2D" parent="." index="0"]
+position = Vector2(0, -144)
+texture = SubResource("AtlasTexture_nkyeu")
+
+[node name="Label" type="Label" parent="." index="1"]
+offset_left = -64.0
+offset_top = -144.0
+offset_right = 64.0
+offset_bottom = -96.0
+text = "Bed"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" index="0"]
+position = Vector2(0, -136)
+shape = SubResource("RectangleShape2D_m040l")
