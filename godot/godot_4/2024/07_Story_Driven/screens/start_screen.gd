@@ -21,7 +21,7 @@ func _ready() -> void:
 
 
 func on_start() -> void:
-	SceneManager.change_to_file(SceneManager.SCENES.main)
+	SceneManager.change_to_file(SceneManager.SCENES.jakub)
 
 
 func on_options() -> void:

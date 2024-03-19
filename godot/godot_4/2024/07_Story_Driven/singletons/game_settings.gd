@@ -1,6 +1,7 @@
 class_name GameSettings extends Resource
 
 signal music_changed
+@warning_ignore("unused_signal")
 signal sound_changed
 
 @export var music_volume: float = 1.0:

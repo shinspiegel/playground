@@ -2,6 +2,7 @@ extends CanvasLayer
 
 const SCENES = {
 	"main": "res://main.tscn",
+	"jakub": "res://maps/jakub_apartment.tscn",
 	"start": "res://screens/start_screen.tscn",
 	"options": "res://screens/options.tscn",
 	"credits": "res://screens/credits.tscn",

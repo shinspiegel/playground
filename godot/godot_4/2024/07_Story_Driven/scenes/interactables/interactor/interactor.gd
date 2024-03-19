@@ -30,7 +30,10 @@ func on_enter(area: Area2D) -> void:
 	if not area is Interactable:
 		return
 
-	if current_area == null:
+	if not area.active:
+		return
+
+	if area.active and current_area == null:
 		current_area = area
 		current_area.grab_focus()
 	else:
@@ -41,7 +44,8 @@ func on_exit(area: Area2D) -> void:
 	if not is_active:
 		return
 
-	if not area is Interactable: return
+	if not area is Interactable:
+		return
 
 	if area == current_area:
 		current_area.release_focus()
@@ -62,7 +66,7 @@ func __calculate_closest_one() -> void:
 	var short := current_area.global_position.distance_to(global_position)
 
 	for area in list:
-		if area is Interactable and short > area.global_position.distance_to(global_position):
+		if area is Interactable and area.active and area.global_position.distance_to(global_position) < short:
 			short = area.global_position.distance_to(global_position)
 			next = area
 
