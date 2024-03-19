@@ -2,10 +2,10 @@ class_name InteractableItem extends Node2D
 
 signal interacted()
 
+@export var active: bool = true
+
 @onready var sprite: OutlinedSprite = %OutlinedSprite
 @onready var interactable: Interactable = %Interactable
-
-var is_outlined: bool = true
 
 
 func _ready() -> void:
@@ -15,17 +15,21 @@ func _ready() -> void:
 
 
 func interact() -> void:
-	interacted.emit()
+	if active:
+		interacted.emit()
 
 
 func on_focus() -> void:
-	sprite.enable()
+	if active:
+		sprite.enable()
 
 
 func on_blur() -> void:
-	sprite.disable()
+	if active:
+		sprite.disable()
 
 
 func on_interact() -> void:
-	interact()
+	if active:
+		interact()
 
