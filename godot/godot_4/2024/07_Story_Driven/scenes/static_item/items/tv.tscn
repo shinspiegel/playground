@@ -1,31 +1,31 @@
-[gd_scene load_steps=7 format=3 uid="uid://cklplhs1wkpt4"]
+[gd_scene load_steps=7 format=3 uid="uid://c72bcgkvlqjfo"]
 
-[ext_resource type="PackedScene" uid="uid://bukjmuell15yw" path="res://scenes/static_item/static_item.tscn" id="1_lfl5d"]
-[ext_resource type="Shader" path="res://scenes/interactables/outlined_sprite/outlined_sprite.gdshader" id="2_pkhq7"]
-[ext_resource type="Texture2D" uid="uid://bg2iw8mmjrs7t" path="res://assets/graphics/template_3d_size.png" id="3_lps2q"]
+[ext_resource type="PackedScene" uid="uid://bukjmuell15yw" path="res://scenes/static_item/static_item.tscn" id="1_yjydo"]
+[ext_resource type="Shader" path="res://scenes/interactables/outlined_sprite/outlined_sprite.gdshader" id="2_i5uet"]
+[ext_resource type="Texture2D" uid="uid://bg2iw8mmjrs7t" path="res://assets/graphics/template_3d_size.png" id="3_5c833"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fcppo"]
 resource_local_to_scene = true
-shader = ExtResource("2_pkhq7")
+shader = ExtResource("2_i5uet")
 shader_parameter/line_color = Color(1, 1, 1, 1)
 shader_parameter/line_thickness = 0.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3o2pm"]
-atlas = ExtResource("3_lps2q")
-region = Rect2(8, 648, 24, 32)
+atlas = ExtResource("3_5c833")
+region = Rect2(136, 1224, 32, 120)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2xrhq"]
-size = Vector2(32, 32)
+size = Vector2(64, 352)
 
-[node name="Clock" instance=ExtResource("1_lfl5d")]
+[node name="TV" instance=ExtResource("1_yjydo")]
 
 [node name="OutlinedSprite" parent="." index="0"]
 material = SubResource("ShaderMaterial_fcppo")
-position = Vector2(0, -16)
+position = Vector2(0, -208)
 texture = SubResource("AtlasTexture_3o2pm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
-position = Vector2(0, -16)
+position = Vector2(0, -176)
 shape = SubResource("RectangleShape2D_2xrhq")
 
 [node name="Label" type="Label" parent="." index="2"]
@@ -36,9 +36,9 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -20.0
-offset_top = -48.0
+offset_top = -280.0
 offset_right = 20.0
-offset_bottom = -25.0
+offset_bottom = -257.0
 grow_horizontal = 2
 grow_vertical = 0
-text = "Clock"
+text = "TV"

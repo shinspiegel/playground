@@ -39,12 +39,8 @@ scale = Vector2(4, 4)
 tile_set = ExtResource("3_5osx2")
 format = 2
 
-[node name="Under" type="Node2D" parent="."]
-
 [node name="Sorted" type="Node2D" parent="."]
 y_sort_enabled = true
-
-[node name="Over" type="Node2D" parent="."]
 
 [node name="PlayerStartPos" type="Marker2D" parent="."]
 position = Vector2(224, 160)

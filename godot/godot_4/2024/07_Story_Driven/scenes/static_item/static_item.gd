@@ -1,5 +1,5 @@
 class_name StaticItem extends StaticBody2D
- 
+
 @export var interactable: Interactable
 @onready var sprite: OutlinedSprite = %OutlinedSprite
 
