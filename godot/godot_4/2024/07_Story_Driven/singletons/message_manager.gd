@@ -9,9 +9,10 @@ signal ended()
 
 var list: Array[MessageData] = []
 var index: int = 0
-
+var regex = RegEx.new()
 
 func _ready() -> void:
+	regex.compile("\\[\\/?[^\\]]*\\]")
 	display_message.message_ended.connect(on_message_end)
 	display_message.hide()
 
@@ -64,6 +65,17 @@ func next_message() -> void:
 func reset() -> void:
 	index = 0
 	list = []
+
+
+func remove_bbcode(text: String) -> String:
+	var words = regex.search_all(text)
+
+	for word in words:
+		var bb_code = word.get_string()
+		text = text.replace(bb_code, "")
+
+	return text
+
 
 
 func on_message_end() -> void:

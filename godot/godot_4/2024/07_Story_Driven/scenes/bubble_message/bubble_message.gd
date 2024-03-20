@@ -3,7 +3,7 @@ class_name BubbleMessage extends Node2D
 @export var message_data: MessageData
 
 @onready var panel: Panel = %Panel
-@onready var label: Label = %Label
+@onready var label: RichTextLabel = %Label
 @onready var timer: Timer = %Timer
 
 var text_width_multipleir: float = 3.0
@@ -23,8 +23,8 @@ func _ready() -> void:
 	panel.size = Vector2(0, 80)
 	panel.position = Vector2(0, -80)
 
-	final_speed = message_data.text.length() * text_speed * message_data.speed_ratio
-	final_width = label.get_theme_default_font().get_string_size(message_data.text).x * text_width_multipleir + text_padding
+	final_speed = MessageManager.remove_bbcode(message_data.text).length() * text_speed * message_data.speed_ratio
+	final_width = label.get_theme_default_font().get_string_size(MessageManager.remove_bbcode(message_data.text)).x * text_width_multipleir + text_padding
 
 	show_bubble()
 

@@ -6,8 +6,10 @@ class_name LevelMap extends Node2D
 
 
 func _ready() -> void:
-	before_ready()
+	prepare()
 
+
+func prepare() -> void:
 	if not sorted: push_error("failed to locate the sorted node")
 	if not pos: push_error("failed to locate the initial player position node")
 	if not game_camera: push_error("missing game camera node")

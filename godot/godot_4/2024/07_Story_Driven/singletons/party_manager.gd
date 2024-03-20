@@ -4,8 +4,8 @@ const PLAYER_ACTOR = preload("res://scenes/actors/player_actor.tscn")
 
 const PARTY_LIST = [
 	preload("res://scenes/actors/party_data/hero_1.tres"),
-	preload("res://scenes/actors/party_data/hero_2.tres"),
-	preload("res://scenes/actors/party_data/hero_3.tres"),
+	# preload("res://scenes/actors/party_data/hero_2.tres"),
+	# preload("res://scenes/actors/party_data/hero_3.tres"),
 ]
 
 var party: Array[PlayerActor] = []

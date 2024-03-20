@@ -1,10 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://kgtr453d15op"]
+[gd_scene load_steps=5 format=3 uid="uid://kgtr453d15op"]
 
 [ext_resource type="Script" path="res://scenes/bubble_message/bubble_message.gd" id="1_3abii"]
 [ext_resource type="Theme" uid="uid://x61ckk74bynv" path="res://screens/theme/base_theme.tres" id="1_dej87"]
+[ext_resource type="Script" path="res://scenes/display_message/message_data/message_data.gd" id="2_liufx"]
+
+[sub_resource type="Resource" id="Resource_kpk1m"]
+script = ExtResource("2_liufx")
+speed_ratio = 1.0
+text = ""
+weight = 1.0
 
 [node name="BubbleMessage" type="Node2D"]
 script = ExtResource("1_3abii")
+message_data = SubResource("Resource_kpk1m")
 
 [node name="BubbleWrapper" type="Control" parent="."]
 layout_mode = 3
@@ -26,11 +34,13 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
+offset_left = -456.0
 offset_top = -80.0
+offset_right = -456.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="Label" type="Label" parent="BubbleWrapper"]
+[node name="Label" type="RichTextLabel" parent="BubbleWrapper"]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 7
@@ -39,14 +49,13 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -500.0
-offset_top = -80.0
+offset_top = -64.0
 offset_right = 500.0
+offset_bottom = 8.0
 grow_horizontal = 2
 grow_vertical = 0
-size_flags_vertical = 1
-text = "Maybe we should"
-horizontal_alignment = 1
-vertical_alignment = 1
+bbcode_enabled = true
+text = "[center]Maybe we should[/center]"
 visible_characters = 0
 visible_ratio = 0.0
 

@@ -19,11 +19,8 @@ signal unprepared()
 @onready var display_text: RichTextLabel = %DisplayText
 @onready var next_button: Button = %NextButton
 
-var regex = RegEx.new()
-
 
 func _ready() -> void:
-	regex.compile("\\[\\/?[^\\]]*\\]")
 	next_button.pressed.connect(on_button_press)
 
 
@@ -39,7 +36,7 @@ func display(data: MessageData) -> void:
 	display_text.text = data.text
 
 	var tw = create_tween().set_ease(Tween.EASE_IN_OUT)
-	tw.tween_property(display_text, "visible_ratio", 1.0, (lenght_wihout_bbcode(data.text) * CHAR_DURATION) / data.speed_ratio)
+	tw.tween_property(display_text, "visible_ratio", 1.0, (MessageManager.remove_bbcode(data.text).length() * CHAR_DURATION) / data.speed_ratio)
 	tw.play()
 	await tw.finished
 
@@ -86,16 +83,6 @@ func unprepare() -> void:
 
 	unprepared.emit()
 	reset()
-
-
-func lenght_wihout_bbcode(text: String) -> int:
-	var list = regex.search_all(text)
-
-	for piece in list:
-		var bb_code = piece.get_string()
-		text = text.replace(bb_code, "")
-
-	return text.length()
 
 
 func on_button_press() -> void:

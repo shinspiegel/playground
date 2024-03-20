@@ -1,7 +1,8 @@
-[gd_scene load_steps=29 format=3 uid="uid://ceqphrxd7newn"]
+[gd_scene load_steps=31 format=3 uid="uid://ceqphrxd7newn"]
 
 [ext_resource type="PackedScene" uid="uid://blydrbv15xonn" path="res://maps/level_map.tscn" id="1_l0do0"]
 [ext_resource type="Script" path="res://maps/jakub_apartment.gd" id="2_io7gp"]
+[ext_resource type="Script" path="res://scenes/display_message/message_data/message_data.gd" id="3_ydkdp"]
 [ext_resource type="PackedScene" uid="uid://b7cbvdwellajn" path="res://scenes/static_item/items/bed.tscn" id="5_c3vta"]
 [ext_resource type="PackedScene" uid="uid://7ttw1q43x2ys" path="res://scenes/static_item/items/bedside_table.tscn" id="6_nkgvo"]
 [ext_resource type="PackedScene" uid="uid://dlivjs0bxtajd" path="res://scenes/static_item/items/wardrobe.tscn" id="7_fckoh"]
@@ -17,6 +18,12 @@
 [ext_resource type="PackedScene" uid="uid://b1b67slj1nu5x" path="res://scenes/static_item/items/tv_hack.tscn" id="15_dqchd"]
 [ext_resource type="PackedScene" uid="uid://c72bcgkvlqjfo" path="res://scenes/static_item/items/tv.tscn" id="16_pa6bl"]
 [ext_resource type="Shader" path="res://scenes/interactables/outlined_sprite/outlined_sprite.gdshader" id="17_myhdx"]
+
+[sub_resource type="Resource" id="Resource_fqh6y"]
+script = ExtResource("3_ydkdp")
+speed_ratio = 1.0
+text = "[wave amp=10.0 freq=20.0][center]So many boxes...[/center][/wave]"
+weight = 1.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sfb1l"]
 size = Vector2(320, 154.5)
@@ -66,8 +73,10 @@ shader_parameter/line_thickness = 0.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f1j1d"]
 size = Vector2(128, 362)
 
-[node name="JakubApartment" node_paths=PackedStringArray("sorted", "pos", "game_camera") instance=ExtResource("1_l0do0")]
+[node name="JakubApartment" node_paths=PackedStringArray("boxes_interactor", "sorted", "pos", "game_camera") instance=ExtResource("1_l0do0")]
 script = ExtResource("2_io7gp")
+boxes_interactor = NodePath("Sorted/Interactable")
+boxes_message = SubResource("Resource_fqh6y")
 sorted = NodePath("Sorted")
 pos = NodePath("PlayerStartPos")
 game_camera = NodePath("GameCamera")
@@ -189,18 +198,22 @@ offset_right = 4.0
 offset_bottom = -89.0
 
 [node name="Box6" parent="Sorted" index="17" node_paths=PackedStringArray("interactable") instance=ExtResource("9_nausv")]
-position = Vector2(304, 1248)
+position = Vector2(384, 1200)
 interactable = NodePath("../Interactable")
 
-[node name="Box7" parent="Sorted" index="18" node_paths=PackedStringArray("interactable") instance=ExtResource("9_nausv")]
+[node name="Box8" parent="Sorted" index="18" node_paths=PackedStringArray("interactable") instance=ExtResource("9_nausv")]
+position = Vector2(240, 1168)
+interactable = NodePath("../Interactable")
+
+[node name="Box7" parent="Sorted" index="19" node_paths=PackedStringArray("interactable") instance=ExtResource("9_nausv")]
 position = Vector2(224, 1312)
 interactable = NodePath("../Interactable")
 
-[node name="Box2" parent="Sorted" index="19" node_paths=PackedStringArray("interactable") instance=ExtResource("9_nausv")]
+[node name="Box2" parent="Sorted" index="20" node_paths=PackedStringArray("interactable") instance=ExtResource("9_nausv")]
 position = Vector2(288, 1360)
 interactable = NodePath("../Interactable")
 
-[node name="Box3" parent="Sorted" index="20" node_paths=PackedStringArray("interactable") instance=ExtResource("9_nausv")]
+[node name="Box3" parent="Sorted" index="21" node_paths=PackedStringArray("interactable") instance=ExtResource("9_nausv")]
 position = Vector2(176, 1376)
 interactable = NodePath("../Interactable")
 
@@ -217,7 +230,7 @@ offset_top = -160.0
 offset_right = 36.0
 offset_bottom = -137.0
 
-[node name="Sofa" parent="Sorted" index="21" node_paths=PackedStringArray("interactable") instance=ExtResource("14_1r6fq")]
+[node name="Sofa" parent="Sorted" index="22" node_paths=PackedStringArray("interactable") instance=ExtResource("14_1r6fq")]
 position = Vector2(768, 1440)
 interactable = NodePath("Interactable")
 
@@ -227,10 +240,10 @@ interactable = NodePath("Interactable")
 position = Vector2(64, -128)
 shape = SubResource("RectangleShape2D_uduor")
 
-[node name="Box4" parent="Sorted" index="22" instance=ExtResource("15_dqchd")]
+[node name="Box4" parent="Sorted" index="23" instance=ExtResource("15_dqchd")]
 position = Vector2(1216, 1472)
 
-[node name="TV" parent="Sorted" index="23" node_paths=PackedStringArray("interactable") instance=ExtResource("16_pa6bl")]
+[node name="TV" parent="Sorted" index="24" node_paths=PackedStringArray("interactable") instance=ExtResource("16_pa6bl")]
 position = Vector2(1216, 1472)
 interactable = NodePath("Interactable")
 
