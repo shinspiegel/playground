@@ -12,18 +12,18 @@ shader_parameter/line_thickness = 0.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3o2pm"]
 atlas = ExtResource("3_g2qed")
-region = Rect2(344, 296, 48, 88)
+region = Rect2(648, 472, 64, 112)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2xrhq"]
-size = Vector2(128, 128)
+size = Vector2(192, 192)
 
 [node name="Fridge" instance=ExtResource("1_xjd4m")]
 
 [node name="OutlinedSprite" parent="." index="0"]
 material = SubResource("ShaderMaterial_fcppo")
-position = Vector2(0, -144)
+position = Vector2(0, -192)
 texture = SubResource("AtlasTexture_3o2pm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
-position = Vector2(0, -64)
+position = Vector2(0, -96)
 shape = SubResource("RectangleShape2D_2xrhq")

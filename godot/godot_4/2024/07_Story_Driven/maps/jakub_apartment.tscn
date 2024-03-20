@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://ceqphrxd7newn"]
+[gd_scene load_steps=18 format=3 uid="uid://ceqphrxd7newn"]
 
 [ext_resource type="PackedScene" uid="uid://blydrbv15xonn" path="res://maps/level_map.tscn" id="1_l0do0"]
 [ext_resource type="Script" path="res://maps/jakub_apartment.gd" id="2_io7gp"]
@@ -8,11 +8,23 @@
 [ext_resource type="PackedScene" uid="uid://cklplhs1wkpt4" path="res://scenes/static_item/items/clock.tscn" id="8_8bp36"]
 [ext_resource type="PackedScene" uid="uid://dvulqop733i80" path="res://scenes/static_item/items/table.tscn" id="9_16bae"]
 [ext_resource type="PackedScene" uid="uid://f8bmwofxscau" path="res://scenes/static_item/items/chair.tscn" id="9_gx6p0"]
+[ext_resource type="PackedScene" uid="uid://bd0qn8u5sptdl" path="res://scenes/static_item/items/box.tscn" id="9_nausv"]
 [ext_resource type="PackedScene" uid="uid://dphobpwxhsy75" path="res://scenes/static_item/items/frdige.tscn" id="10_sg36p"]
 [ext_resource type="PackedScene" uid="uid://dq3y1i2y72rcs" path="res://scenes/interactables/interactable/interactable.tscn" id="10_xo0yv"]
+[ext_resource type="PackedScene" uid="uid://ci37fj6pv5hy6" path="res://scenes/static_item/items/kitchen_counter.tscn" id="11_0wkas"]
+[ext_resource type="PackedScene" uid="uid://ckdb7yqknt62d" path="res://scenes/static_item/items/phone.tscn" id="12_lv5b5"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_ocev3"]
-radius = 128.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sfb1l"]
+size = Vector2(320, 154.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sstvv"]
+size = Vector2(256, 256)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b7cf4"]
+size = Vector2(197, 213)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_po82d"]
+size = Vector2(512, 416)
 
 [node name="JakubApartment" node_paths=PackedStringArray("sorted", "pos", "game_camera") instance=ExtResource("1_l0do0")]
 script = ExtResource("2_io7gp")
@@ -36,8 +48,15 @@ position = Vector2(1600, 576)
 [node name="BedsideTable" parent="Sorted" index="1" instance=ExtResource("6_nkgvo")]
 position = Vector2(1824, 384)
 
-[node name="Wardrobe" parent="Sorted" index="2" instance=ExtResource("7_fckoh")]
+[node name="Wardrobe" parent="Sorted" index="2" node_paths=PackedStringArray("interactable") instance=ExtResource("7_fckoh")]
 position = Vector2(2368, 384)
+interactable = NodePath("Interactable")
+
+[node name="Interactable" parent="Sorted/Wardrobe" index="2" instance=ExtResource("10_xo0yv")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sorted/Wardrobe/Interactable" index="0"]
+position = Vector2(0, 50.75)
+shape = SubResource("RectangleShape2D_sfb1l")
 
 [node name="Clock" parent="Sorted" index="3" node_paths=PackedStringArray("interactable") instance=ExtResource("8_8bp36")]
 z_index = 1
@@ -47,8 +66,8 @@ interactable = NodePath("Interactable")
 [node name="Interactable" parent="Sorted/Clock" index="2" instance=ExtResource("10_xo0yv")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sorted/Clock/Interactable" index="0"]
-position = Vector2(64, 96)
-shape = SubResource("CircleShape2D_ocev3")
+position = Vector2(96, 128)
+shape = SubResource("RectangleShape2D_sstvv")
 
 [node name="Table" parent="Sorted" index="4" instance=ExtResource("9_16bae")]
 position = Vector2(2240, 1600)
@@ -72,7 +91,48 @@ position = Vector2(2464, 1472)
 position = Vector2(1984, 1536)
 
 [node name="Fridge" parent="Sorted" index="11" instance=ExtResource("10_sg36p")]
-position = Vector2(1504, 1120)
+position = Vector2(1536, 1216)
+
+[node name="KitchenCounter" parent="Sorted" index="12" instance=ExtResource("11_0wkas")]
+position = Vector2(1856, 1152)
+
+[node name="Phone" parent="Sorted" index="13" node_paths=PackedStringArray("interactable") instance=ExtResource("12_lv5b5")]
+z_index = 1
+position = Vector2(2112, 1440)
+interactable = NodePath("Interactable")
+
+[node name="Interactable" parent="Sorted/Phone" index="2" instance=ExtResource("10_xo0yv")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sorted/Phone/Interactable" index="0"]
+position = Vector2(-96, 224)
+shape = SubResource("RectangleShape2D_b7cf4")
+
+[node name="Table2" parent="Sorted" index="14" instance=ExtResource("9_16bae")]
+position = Vector2(1088, 1248)
+
+[node name="Chair7" parent="Sorted" index="15" instance=ExtResource("9_gx6p0")]
+position = Vector2(992, 1344)
+
+[node name="Chair8" parent="Sorted" index="16" instance=ExtResource("9_gx6p0")]
+position = Vector2(1152, 1376)
+
+[node name="Interactable" parent="Sorted" index="17" instance=ExtResource("10_xo0yv")]
+position = Vector2(384, 1280)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sorted/Interactable" index="0"]
+shape = SubResource("RectangleShape2D_po82d")
+
+[node name="Box" parent="Sorted" index="18" node_paths=PackedStringArray("interactable") instance=ExtResource("9_nausv")]
+position = Vector2(192, 1376)
+interactable = NodePath("../Interactable")
+
+[node name="Box2" parent="Sorted" index="19" node_paths=PackedStringArray("interactable") instance=ExtResource("9_nausv")]
+position = Vector2(320, 1344)
+interactable = NodePath("../Interactable")
+
+[node name="Box3" parent="Sorted" index="20" node_paths=PackedStringArray("interactable") instance=ExtResource("9_nausv")]
+position = Vector2(224, 1248)
+interactable = NodePath("../Interactable")
 
 [node name="PlayerStartPos" parent="." index="7"]
 position = Vector2(2240, 896)
