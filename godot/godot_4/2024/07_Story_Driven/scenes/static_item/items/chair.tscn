@@ -1,0 +1,29 @@
+[gd_scene load_steps=7 format=3 uid="uid://f8bmwofxscau"]
+
+[ext_resource type="PackedScene" uid="uid://bukjmuell15yw" path="res://scenes/static_item/static_item.tscn" id="1_l64st"]
+[ext_resource type="Shader" path="res://scenes/interactables/outlined_sprite/outlined_sprite.gdshader" id="2_khrlp"]
+[ext_resource type="Texture2D" uid="uid://bg2iw8mmjrs7t" path="res://assets/graphics/template_3d_size.png" id="3_wsjrh"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fcppo"]
+resource_local_to_scene = true
+shader = ExtResource("2_khrlp")
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/line_thickness = 0.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3o2pm"]
+atlas = ExtResource("3_wsjrh")
+region = Rect2(8, 184, 32, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2xrhq"]
+size = Vector2(64, 96)
+
+[node name="Chair" instance=ExtResource("1_l64st")]
+
+[node name="OutlinedSprite" parent="." index="0"]
+material = SubResource("ShaderMaterial_fcppo")
+position = Vector2(0, -96)
+texture = SubResource("AtlasTexture_3o2pm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
+position = Vector2(0, -48)
+shape = SubResource("RectangleShape2D_2xrhq")

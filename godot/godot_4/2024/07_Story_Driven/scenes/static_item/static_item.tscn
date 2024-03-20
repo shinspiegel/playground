@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://bukjmuell15yw"]
+
+[ext_resource type="PackedScene" uid="uid://bovm5ihipur2q" path="res://scenes/interactables/outlined_sprite/outlined_sprite.tscn" id="1_46ou6"]
+[ext_resource type="Script" path="res://scenes/static_item/static_item.gd" id="1_g5sn7"]
+[ext_resource type="Shader" path="res://scenes/interactables/outlined_sprite/outlined_sprite.gdshader" id="2_1n7hj"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fcppo"]
+resource_local_to_scene = true
+shader = ExtResource("2_1n7hj")
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/line_thickness = 0.0
+
+[node name="StaticItem" type="StaticBody2D"]
+script = ExtResource("1_g5sn7")
+
+[node name="OutlinedSprite" parent="." instance=ExtResource("1_46ou6")]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_fcppo")

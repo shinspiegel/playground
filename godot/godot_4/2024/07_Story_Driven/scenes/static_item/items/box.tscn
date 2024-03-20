@@ -1,0 +1,29 @@
+[gd_scene load_steps=7 format=3 uid="uid://bd0qn8u5sptdl"]
+
+[ext_resource type="PackedScene" uid="uid://bukjmuell15yw" path="res://scenes/static_item/static_item.tscn" id="1_m78w1"]
+[ext_resource type="Texture2D" uid="uid://bg2iw8mmjrs7t" path="res://assets/graphics/template_3d_size.png" id="2_gksww"]
+[ext_resource type="Shader" path="res://scenes/interactables/outlined_sprite/outlined_sprite.gdshader" id="3_att51"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fcppo"]
+resource_local_to_scene = true
+shader = ExtResource("3_att51")
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/line_thickness = 0.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3o2pm"]
+atlas = ExtResource("2_gksww")
+region = Rect2(8, 8, 32, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2xrhq"]
+size = Vector2(64, 64)
+
+[node name="Box" instance=ExtResource("1_m78w1")]
+
+[node name="OutlinedSprite" parent="." index="0"]
+material = SubResource("ShaderMaterial_fcppo")
+position = Vector2(0, -48)
+texture = SubResource("AtlasTexture_3o2pm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
+position = Vector2(0, -32)
+shape = SubResource("RectangleShape2D_2xrhq")

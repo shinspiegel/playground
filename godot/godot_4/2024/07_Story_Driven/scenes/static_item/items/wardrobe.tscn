@@ -1,0 +1,29 @@
+[gd_scene load_steps=7 format=3 uid="uid://dlivjs0bxtajd"]
+
+[ext_resource type="PackedScene" uid="uid://bukjmuell15yw" path="res://scenes/static_item/static_item.tscn" id="1_lkeap"]
+[ext_resource type="Shader" path="res://scenes/interactables/outlined_sprite/outlined_sprite.gdshader" id="2_wbm1k"]
+[ext_resource type="Texture2D" uid="uid://bg2iw8mmjrs7t" path="res://assets/graphics/template_3d_size.png" id="3_ojr78"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fcppo"]
+resource_local_to_scene = true
+shader = ExtResource("2_wbm1k")
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/line_thickness = 0.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3o2pm"]
+atlas = ExtResource("3_ojr78")
+region = Rect2(536, 296, 96, 88)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2xrhq"]
+size = Vector2(320, 128)
+
+[node name="Wardrobe" instance=ExtResource("1_lkeap")]
+
+[node name="OutlinedSprite" parent="." index="0"]
+material = SubResource("ShaderMaterial_fcppo")
+position = Vector2(0, -144)
+texture = SubResource("AtlasTexture_3o2pm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
+position = Vector2(0, -64)
+shape = SubResource("RectangleShape2D_2xrhq")
