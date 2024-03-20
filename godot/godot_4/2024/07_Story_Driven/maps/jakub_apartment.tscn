@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://ceqphrxd7newn"]
+[gd_scene load_steps=32 format=3 uid="uid://ceqphrxd7newn"]
 
 [ext_resource type="PackedScene" uid="uid://blydrbv15xonn" path="res://maps/level_map.tscn" id="1_l0do0"]
 [ext_resource type="Script" path="res://maps/jakub_apartment.gd" id="2_io7gp"]
@@ -23,6 +23,12 @@
 script = ExtResource("3_ydkdp")
 speed_ratio = 1.0
 text = "[wave amp=10.0 freq=20.0][center]So many boxes...[/center][/wave]"
+weight = 1.0
+
+[sub_resource type="Resource" id="Resource_12yru"]
+script = ExtResource("3_ydkdp")
+speed_ratio = 1.0
+text = "[center]Should I relax?[/center]"
 weight = 1.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sfb1l"]
@@ -73,10 +79,13 @@ shader_parameter/line_thickness = 0.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f1j1d"]
 size = Vector2(128, 362)
 
-[node name="JakubApartment" node_paths=PackedStringArray("boxes_interactor", "sorted", "pos", "game_camera") instance=ExtResource("1_l0do0")]
+[node name="JakubApartment" node_paths=PackedStringArray("bubble_timer", "boxes_interactor", "sofa_interactable", "sorted", "pos", "game_camera") instance=ExtResource("1_l0do0")]
 script = ExtResource("2_io7gp")
-boxes_interactor = NodePath("Sorted/Interactable")
+bubble_timer = NodePath("Timer")
+boxes_interactor = NodePath("Sorted/BoxesInteractable")
 boxes_message = SubResource("Resource_fqh6y")
+sofa_interactable = NodePath("Sorted/Sofa/Interactable")
+sofa_message = SubResource("Resource_12yru")
 sorted = NodePath("Sorted")
 pos = NodePath("PlayerStartPos")
 game_camera = NodePath("GameCamera")
@@ -169,20 +178,20 @@ position = Vector2(0, -136)
 position = Vector2(-96, 64)
 shape = SubResource("RectangleShape2D_b7cf4")
 
-[node name="Interactable" parent="Sorted" index="14" instance=ExtResource("10_xo0yv")]
+[node name="BoxesInteractable" parent="Sorted" index="14" instance=ExtResource("10_xo0yv")]
 position = Vector2(384, 1280)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Sorted/Interactable" index="0"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sorted/BoxesInteractable" index="0"]
 position = Vector2(-96, 0)
 shape = SubResource("RectangleShape2D_po82d")
 
 [node name="Box" parent="Sorted" index="15" node_paths=PackedStringArray("interactable") instance=ExtResource("9_nausv")]
 position = Vector2(192, 1376)
-interactable = NodePath("../Interactable")
+interactable = NodePath("../BoxesInteractable")
 
 [node name="Box5" parent="Sorted" index="16" node_paths=PackedStringArray("interactable") instance=ExtResource("9_nausv")]
 position = Vector2(224, 1376)
-interactable = NodePath("../Interactable")
+interactable = NodePath("../BoxesInteractable")
 
 [node name="OutlinedSprite" parent="Sorted/Box5" index="0"]
 material = SubResource("ShaderMaterial_2jlbf")
@@ -199,23 +208,23 @@ offset_bottom = -89.0
 
 [node name="Box6" parent="Sorted" index="17" node_paths=PackedStringArray("interactable") instance=ExtResource("9_nausv")]
 position = Vector2(384, 1200)
-interactable = NodePath("../Interactable")
+interactable = NodePath("../BoxesInteractable")
 
 [node name="Box8" parent="Sorted" index="18" node_paths=PackedStringArray("interactable") instance=ExtResource("9_nausv")]
 position = Vector2(240, 1168)
-interactable = NodePath("../Interactable")
+interactable = NodePath("../BoxesInteractable")
 
 [node name="Box7" parent="Sorted" index="19" node_paths=PackedStringArray("interactable") instance=ExtResource("9_nausv")]
 position = Vector2(224, 1312)
-interactable = NodePath("../Interactable")
+interactable = NodePath("../BoxesInteractable")
 
 [node name="Box2" parent="Sorted" index="20" node_paths=PackedStringArray("interactable") instance=ExtResource("9_nausv")]
 position = Vector2(288, 1360)
-interactable = NodePath("../Interactable")
+interactable = NodePath("../BoxesInteractable")
 
 [node name="Box3" parent="Sorted" index="21" node_paths=PackedStringArray("interactable") instance=ExtResource("9_nausv")]
 position = Vector2(176, 1376)
-interactable = NodePath("../Interactable")
+interactable = NodePath("../BoxesInteractable")
 
 [node name="OutlinedSprite" parent="Sorted/Box3" index="0"]
 material = SubResource("ShaderMaterial_xu5b3")
@@ -266,6 +275,10 @@ shape = SubResource("RectangleShape2D_f1j1d")
 
 [node name="PlayerStartPos" parent="." index="5"]
 position = Vector2(2240, 896)
+
+[node name="Timer" type="Timer" parent="." index="6"]
+wait_time = 3.0
+one_shot = true
 
 [editable path="Sorted/Clock"]
 [editable path="Sorted/Phone"]

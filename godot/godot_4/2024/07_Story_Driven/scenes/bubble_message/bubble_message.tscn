@@ -11,6 +11,7 @@ text = ""
 weight = 1.0
 
 [node name="BubbleMessage" type="Node2D"]
+z_index = 1
 script = ExtResource("1_3abii")
 message_data = SubResource("Resource_kpk1m")
 
