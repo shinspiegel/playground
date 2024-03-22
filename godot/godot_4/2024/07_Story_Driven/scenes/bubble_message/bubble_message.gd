@@ -18,7 +18,7 @@ var final_width: float = 0.0
 func _ready() -> void:
 	timer.timeout.connect(on_timeout)
 
-	label.text = message_data.text
+	label.text = "[center]" + message_data.text + "[/center]"
 	label.visible_ratio = 0.0
 	panel.size = Vector2(0, 80)
 	panel.position = Vector2(0, -80)
@@ -35,7 +35,7 @@ func show_bubble() -> void:
 	tw.tween_property(panel, "size", Vector2(final_width, 80), final_speed)
 	tw.tween_property(panel, "position", Vector2((float(final_width)/2) * -1 , -80), final_speed)
 	tw.play()
-	tw.finished.connect(func(): timer.start())
+	tw.finished.connect(func(): timer.start(message_data.duration))
 
 
 func on_timeout() -> void:

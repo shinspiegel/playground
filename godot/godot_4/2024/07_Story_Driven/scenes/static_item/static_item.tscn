@@ -11,6 +11,7 @@ shader_parameter/line_color = Color(1, 1, 1, 1)
 shader_parameter/line_thickness = 0.0
 
 [node name="StaticItem" type="StaticBody2D"]
+collision_mask = 0
 script = ExtResource("1_g5sn7")
 
 [node name="OutlinedSprite" parent="." instance=ExtResource("1_46ou6")]

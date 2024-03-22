@@ -2,25 +2,26 @@ extends LevelMap
 
 @export_group("Chapter 1")
 @export var bubble_timer: Timer
-@export_subgroup("Boxes")
 @export var boxes_interactor: Interactable
-@export var boxes_message: MessageData
-@export_subgroup("Sofa")
 @export var sofa_interactable: Interactable
-@export var sofa_message: MessageData
+@export var tv_interactable: Interactable
+@export var phone_interactable: Interactable
+@export var clock_interactable: Interactable
+@export var wardrobe_interactable: Interactable
 
 
 func _ready() -> void:
-	var list = [
-		[boxes_interactor, boxes_message],
-		[sofa_interactable, sofa_message],
-	]
-
-	for entry in list:
+	for entry in [
+		[boxes_interactor, MessageManager.message_at(0)],
+		[sofa_interactable, MessageManager.message_at(1)],
+		[tv_interactable, MessageManager.message_at(2)],
+		[clock_interactable, MessageManager.message_at(3)],
+		[wardrobe_interactable, MessageManager.message_at(4)],
+		[phone_interactable, MessageManager.message_at(5)],
+	]:
 		entry[0].focus.connect(on_focus.bind(PartyManager.get_leader(), entry[1]))
 
 	prepare()
-
 
 
 func on_focus(actor: Actor, message: MessageData) -> void:

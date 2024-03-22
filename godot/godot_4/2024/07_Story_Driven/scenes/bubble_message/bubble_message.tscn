@@ -6,9 +6,10 @@
 
 [sub_resource type="Resource" id="Resource_kpk1m"]
 script = ExtResource("2_liufx")
+text = "NULL"
 speed_ratio = 1.0
-text = ""
 weight = 1.0
+duration = 3.0
 
 [node name="BubbleMessage" type="Node2D"]
 z_index = 1
@@ -35,9 +36,7 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -456.0
 offset_top = -80.0
-offset_right = -456.0
 grow_horizontal = 2
 grow_vertical = 0
 
@@ -62,4 +61,5 @@ visible_ratio = 0.0
 
 [node name="Timer" type="Timer" parent="."]
 unique_name_in_owner = true
+wait_time = 3.0
 one_shot = true
