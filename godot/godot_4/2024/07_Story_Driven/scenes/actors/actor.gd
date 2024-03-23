@@ -10,8 +10,11 @@ class_name Actor extends CharacterBody2D
 @onready var message_pos: Marker2D = %BubblePos
 
 
+var last_animation: String = "idle"
+
 func _ready() -> void:
 	apply_textures_from_data()
+	play_idle()
 
 
 func apply_damage(damage: Damage) -> void:
@@ -37,6 +40,7 @@ func play_move(dir: Vector2 = Vector2.ZERO) -> void:
 
 
 func play_animation(anim_name: String, angle_rad: float) -> void:
+	last_animation = anim_name
 	var dir_name := "down"
 
 	if angle_rad >= -PI/4 and angle_rad < PI/4:
@@ -52,13 +56,7 @@ func play_animation(anim_name: String, angle_rad: float) -> void:
 
 
 func get_anim() -> String:
-	var list = animation_player.current_animation.split("_")
-
-	if list.size() <= 0:
-		push_warning("failed to identity animation name")
-		return ""
-
-	return list[0]
+	return last_animation
 
 
 func get_cursor_position() -> Vector2:
