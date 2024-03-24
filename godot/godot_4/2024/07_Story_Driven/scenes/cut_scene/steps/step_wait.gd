@@ -1,6 +1,6 @@
 class_name CutSceneWait extends CutSceneBase
 
-@export_range(0.1, 5.0, 0.1) var seconds: float
+@export_range(0.1, 10.0, 0.1) var seconds: float
 
 
 func execute() -> void:

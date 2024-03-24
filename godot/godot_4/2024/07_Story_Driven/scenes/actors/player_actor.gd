@@ -14,6 +14,7 @@ var leader: Actor = null
 
 func _ready() -> void:
 	apply_textures_from_data()
+	play_idle()
 
 	if not camera: push_error("missing camera node")
 	if is_user_controlled:

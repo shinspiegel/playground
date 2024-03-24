@@ -1,7 +1,8 @@
-[gd_scene load_steps=29 format=3 uid="uid://ceqphrxd7newn"]
+[gd_scene load_steps=53 format=3 uid="uid://ceqphrxd7newn"]
 
 [ext_resource type="PackedScene" uid="uid://blydrbv15xonn" path="res://maps/level_map.tscn" id="1_l0do0"]
 [ext_resource type="Script" path="res://maps/jakub_apartment.gd" id="2_io7gp"]
+[ext_resource type="Script" path="res://scenes/display_message/message_data/message_data.gd" id="3_ydkdp"]
 [ext_resource type="PackedScene" uid="uid://b7cbvdwellajn" path="res://scenes/static_item/items/bed.tscn" id="5_c3vta"]
 [ext_resource type="PackedScene" uid="uid://7ttw1q43x2ys" path="res://scenes/static_item/items/bedside_table.tscn" id="6_nkgvo"]
 [ext_resource type="PackedScene" uid="uid://dlivjs0bxtajd" path="res://scenes/static_item/items/wardrobe.tscn" id="7_fckoh"]
@@ -17,6 +18,15 @@
 [ext_resource type="PackedScene" uid="uid://b1b67slj1nu5x" path="res://scenes/static_item/items/tv_hack.tscn" id="15_dqchd"]
 [ext_resource type="PackedScene" uid="uid://c72bcgkvlqjfo" path="res://scenes/static_item/items/tv.tscn" id="16_pa6bl"]
 [ext_resource type="Shader" path="res://scenes/interactables/outlined_sprite/outlined_sprite.gdshader" id="17_myhdx"]
+[ext_resource type="PackedScene" uid="uid://x0r1rdho5vqu" path="res://scenes/static_item/items/door.tscn" id="18_g5r67"]
+[ext_resource type="PackedScene" uid="uid://03yy01jl71jn" path="res://scenes/cut_scene/cut_scene.tscn" id="18_kwm3y"]
+[ext_resource type="Script" path="res://scenes/cut_scene/cut_scene_data/cut_scene_data.gd" id="19_e6r1y"]
+[ext_resource type="Script" path="res://scenes/cut_scene/steps/step_party_anim.gd" id="21_ew3yv"]
+[ext_resource type="Script" path="res://scenes/cut_scene/steps/step_wait.gd" id="22_hgvnt"]
+[ext_resource type="Script" path="res://scenes/cut_scene/steps/step_move.gd" id="23_64kbr"]
+[ext_resource type="Script" path="res://scenes/cut_scene/steps/step_bubble.gd" id="23_nve0r"]
+[ext_resource type="Resource" uid="uid://d2r2vtkxw6j5k" path="res://scenes/display_message/profiles/jakub_profile.tres" id="26_imebr"]
+[ext_resource type="Script" path="res://scenes/cut_scene/steps/step_talk.gd" id="26_oyy11"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sfb1l"]
 size = Vector2(320, 154.5)
@@ -66,8 +76,90 @@ shader_parameter/line_thickness = 0.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f1j1d"]
 size = Vector2(128, 362)
 
-[node name="JakubApartment" node_paths=PackedStringArray("bubble_timer", "boxes_interactor", "sofa_interactable", "tv_interactable", "phone_interactable", "clock_interactable", "wardrobe_interactable", "sorted", "pos", "game_camera") instance=ExtResource("1_l0do0")]
+[sub_resource type="Resource" id="Resource_ftv2g"]
+script = ExtResource("21_ew3yv")
+direction = 2
+anim = "idle"
+
+[sub_resource type="Resource" id="Resource_nmbor"]
+script = ExtResource("22_hgvnt")
+seconds = 1.0
+
+[sub_resource type="Resource" id="Resource_b51gh"]
+script = ExtResource("23_64kbr")
+direction = Vector2(2.08165e-12, 200)
+duration = 1.5
+animation_animate = true
+animation_anim_name = "move"
+index = 0
+is_party = true
+
+[sub_resource type="Resource" id="Resource_gdbie"]
+script = ExtResource("22_hgvnt")
+seconds = 2.0
+
+[sub_resource type="Resource" id="Resource_awekc"]
+script = ExtResource("3_ydkdp")
+text = "Home"
+speed_ratio = 1.0
+weight = 1.0
+duration = 1.0
+
+[sub_resource type="Resource" id="Resource_v335u"]
+script = ExtResource("23_nve0r")
+list = Array[ExtResource("3_ydkdp")]([SubResource("Resource_awekc")])
+delay = 0.3
+rand_pos = Vector2(40, 40)
+index = 0
+is_party = true
+
+[sub_resource type="Resource" id="Resource_6xleo"]
+script = ExtResource("22_hgvnt")
+seconds = 3.0
+
+[sub_resource type="Resource" id="Resource_ylu6y"]
+script = ExtResource("22_hgvnt")
+seconds = 1.0
+
+[sub_resource type="Resource" id="Resource_cge6q"]
+script = ExtResource("3_ydkdp")
+profile = ExtResource("26_imebr")
+text = "So this is it..."
+speed_ratio = 0.7
+weight = 1.0
+duration = 3.0
+
+[sub_resource type="Resource" id="Resource_xni7c"]
+script = ExtResource("3_ydkdp")
+profile = ExtResource("26_imebr")
+text = "My new life starts now."
+speed_ratio = 1.0
+weight = 1.0
+duration = 3.0
+
+[sub_resource type="Resource" id="Resource_cphc2"]
+script = ExtResource("3_ydkdp")
+profile = ExtResource("26_imebr")
+text = "I need to prepare for tomorrow. There is a lot to do."
+speed_ratio = 1.0
+weight = 1.0
+duration = 3.0
+
+[sub_resource type="Resource" id="Resource_w5e0n"]
+script = ExtResource("26_oyy11")
+messages = Array[ExtResource("3_ydkdp")]([SubResource("Resource_cge6q"), SubResource("Resource_xni7c"), SubResource("Resource_cphc2")])
+
+[sub_resource type="Resource" id="Resource_nr4vs"]
+script = ExtResource("22_hgvnt")
+seconds = 1.0
+
+[sub_resource type="Resource" id="Resource_dge5t"]
+script = ExtResource("19_e6r1y")
+steps = Array[Resource("res://scenes/cut_scene/steps/step_base.gd")]([SubResource("Resource_ftv2g"), SubResource("Resource_nmbor"), SubResource("Resource_b51gh"), SubResource("Resource_gdbie"), SubResource("Resource_v335u"), SubResource("Resource_6xleo"), SubResource("Resource_ylu6y"), SubResource("Resource_w5e0n"), SubResource("Resource_nr4vs")])
+
+[node name="JakubApartment" node_paths=PackedStringArray("intro_cut_scene", "bubble_timer", "boxes_interactor", "sofa_interactable", "tv_interactable", "phone_interactable", "clock_interactable", "wardrobe_interactable", "sorted", "pos", "game_camera") instance=ExtResource("1_l0do0")]
 script = ExtResource("2_io7gp")
+intro_cut_scene = NodePath("CutScenes/IntroHouse")
 bubble_timer = NodePath("BubbleMessageTimer")
 boxes_interactor = NodePath("Sorted/BoxesInteractable")
 sofa_interactable = NodePath("Sorted/Sofa/Interactable")
@@ -87,11 +179,14 @@ one_shot = true
 top_left = NodePath("../MapLimits/TopLeft")
 bottom_right = NodePath("../MapLimits/BottomRight")
 
+[node name="BackgroundColor" parent="." index="2"]
+visible = false
+
 [node name="BottomRight" parent="MapLimits" index="1"]
 position = Vector2(2752, 2112)
 
 [node name="Map" parent="." index="4"]
-layer_0/tile_data = PackedInt32Array(196617, 65536, 0, 196618, 262144, 3, 131082, 0, 1, 65546, 0, 1, 262157, 65536, 1, 196621, 65536, 3, 131085, 65536, 1, 65549, 65536, 1, 262156, 65536, 1, 196620, 65536, 3, 131084, 65536, 1, 65548, 65536, 1, 262155, 65536, 1, 196619, 65536, 3, 131083, 65536, 1, 65547, 65536, 1, 262154, 196608, 1, 262153, 65536, 1, 262152, 65536, 1, 196616, 65536, 0, 262151, 65536, 1, 196615, 65536, 0, 262150, 65536, 1, 196614, 65536, 0, 262149, 65536, 1, 196613, 65536, 0, 262148, 65536, 1, 196612, 65536, 0, 262147, 65536, 1, 196611, 65536, 0, 262146, 65536, 1, 196610, 65536, 0, 262145, 65536, 1, 196609, 65536, 0, 327697, 65536, 1, 262161, 65536, 1, 196625, 65536, 1, 131089, 65536, 1, 65553, 65536, 1, 17, 65536, 0, 327696, 65536, 1, 262160, 65536, 1, 196624, 131072, 3, 131088, 65536, 1, 65552, 65536, 1, 16, 65536, 0, 327695, 65536, 1, 262159, 65536, 1, 196623, 65536, 3, 131087, 65536, 1, 65551, 65536, 1, 15, 65536, 0, 327694, 65536, 1, 262158, 65536, 1, 196622, 65536, 3, 131086, 65536, 1, 14, 65536, 0, 327693, 65536, 1, 13, 65536, 0, 327692, 65536, 1, 12, 65536, 0, 327691, 65536, 1, 11, 65536, 0, 327690, 196608, 2, 10, 0, 0, 327689, 65536, 1, 327688, 65536, 1, 327687, 65536, 1, 327686, 65536, 1, 327685, 65536, 1, 327684, 65536, 1, 327683, 65536, 1, 327682, 65536, 1, 327681, 65536, 1, 327680, 0, 1, 262144, 0, 1, 196608, 0, 0, 458772, 131072, 2, 393236, 131072, 1, 327700, 131072, 1, 262164, 131072, 1, 196628, 131072, 1, 131092, 131072, 1, 65556, 131072, 1, 20, 131072, 0, 458771, 65536, 2, 393235, 65536, 1, 327699, 65536, 1, 262163, 65536, 1, 196627, 65536, 3, 131091, 65536, 1, 65555, 65536, 1, 19, 65536, 0, 458770, 65536, 2, 393234, 65536, 1, 327698, 65536, 1, 262162, 65536, 1, 196626, 0, 3, 131090, 65536, 1, 65554, 65536, 1, 18, 65536, 0, 458769, 65536, 2, 393233, 65536, 1, 458768, 65536, 2, 393232, 65536, 1, 458767, 65536, 2, 393231, 65536, 1, 458766, 65536, 2, 393230, 65536, 1, 458765, 65536, 2, 393229, 65536, 1, 458764, 65536, 2, 393228, 65536, 1, 458763, 65536, 2, 393227, 65536, 1, 458762, 65536, 2, 393226, 65536, 1, 458761, 65536, 2, 393225, 65536, 1, 458760, 65536, 2, 393224, 65536, 1, 458759, 65536, 2, 393223, 65536, 1, 458758, 65536, 2, 393222, 65536, 1, 458757, 65536, 2, 393221, 65536, 1, 458756, 65536, 2, 393220, 65536, 1, 458755, 65536, 2, 393219, 65536, 1, 458754, 65536, 2, 393218, 65536, 1, 458753, 65536, 2, 393217, 65536, 1, 458752, 0, 2, 393216, 0, 1, 65550, 65536, 1)
+layer_0/tile_data = PackedInt32Array(196617, 65536, 3, 196618, 262144, 3, 131082, 196608, 1, 65546, 196608, 1, 262157, 65536, 1, 196621, 65536, 3, 131085, 65536, 1, 65549, 65536, 1, 262156, 65536, 1, 196620, 65536, 3, 131084, 65536, 1, 65548, 65536, 1, 262155, 65536, 1, 196619, 65536, 3, 131083, 65536, 1, 65547, 65536, 1, 262154, 196608, 1, 262153, 65536, 1, 262152, 65536, 1, 196616, 65536, 3, 262151, 65536, 1, 196615, 65536, 3, 262150, 65536, 1, 196614, 65536, 3, 262149, 65536, 1, 196613, 0, 3, 262148, 65536, 1, 196612, 65536, 1, 262147, 65536, 1, 196611, 131072, 3, 262146, 65536, 1, 196610, 65536, 3, 262145, 65536, 1, 196609, 65536, 3, 327697, 65536, 1, 262161, 65536, 1, 196625, 65536, 1, 131089, 65536, 1, 65553, 65536, 1, 17, 65536, 0, 327696, 65536, 1, 262160, 65536, 1, 196624, 131072, 3, 131088, 65536, 1, 65552, 65536, 1, 16, 65536, 0, 327695, 65536, 1, 262159, 65536, 1, 196623, 65536, 3, 131087, 65536, 1, 65551, 65536, 1, 15, 65536, 0, 327694, 65536, 1, 262158, 65536, 1, 196622, 65536, 3, 131086, 65536, 1, 14, 65536, 0, 327693, 65536, 1, 13, 65536, 0, 327692, 65536, 1, 12, 65536, 0, 327691, 65536, 1, 11, 65536, 0, 327690, 196608, 2, 10, 262144, 3, 327689, 65536, 1, 327688, 65536, 1, 327687, 65536, 1, 327686, 65536, 1, 327685, 65536, 1, 327684, 65536, 1, 327683, 65536, 1, 327682, 65536, 1, 327681, 65536, 1, 327680, 0, 1, 262144, 0, 1, 196608, 0, 0, 458772, 131072, 2, 393236, 131072, 1, 327700, 131072, 1, 262164, 131072, 1, 196628, 131072, 1, 131092, 131072, 1, 65556, 131072, 1, 20, 131072, 0, 458771, 65536, 2, 393235, 65536, 1, 327699, 65536, 1, 262163, 65536, 1, 196627, 65536, 3, 131091, 65536, 1, 65555, 65536, 1, 19, 65536, 0, 458770, 65536, 2, 393234, 65536, 1, 327698, 65536, 1, 262162, 65536, 1, 196626, 0, 3, 131090, 65536, 1, 65554, 65536, 1, 18, 65536, 0, 458769, 65536, 2, 393233, 65536, 1, 458768, 65536, 2, 393232, 65536, 1, 458767, 65536, 2, 393231, 65536, 1, 458766, 65536, 2, 393230, 65536, 1, 458765, 65536, 2, 393229, 65536, 1, 458764, 65536, 2, 393228, 65536, 1, 458763, 65536, 2, 393227, 65536, 1, 458762, 65536, 2, 393226, 65536, 1, 458761, 65536, 2, 393225, 65536, 1, 458760, 65536, 2, 393224, 65536, 1, 458759, 65536, 2, 393223, 65536, 1, 458758, 65536, 2, 393222, 65536, 1, 458757, 65536, 2, 393221, 65536, 1, 458756, 65536, 2, 393220, 65536, 1, 458755, 65536, 2, 393219, 65536, 1, 458754, 65536, 2, 393218, 65536, 1, 458753, 65536, 2, 393217, 65536, 1, 458752, 0, 2, 393216, 0, 1, 65550, 65536, 1, 65544, 65536, 1, 65543, 65536, 1, 65542, 65536, 1, 65541, 65536, 1, 65540, 65536, 1, 65539, 65536, 1, 65538, 65536, 1, 65537, 65536, 1, 131073, 65536, 1, 131076, 65536, 1, 131075, 65536, 1, 131074, 65536, 1, 131072, 65536, 1, 65536, 65536, 1, 131081, 65536, 1, 65545, 65536, 1, 9, 65536, 1, 8, 65536, 1, 7, 65536, 1, 6, 65536, 1, 5, 65536, 1, 4, 65536, 1, 3, 65536, 1, 2, 65536, 1, 1, 65536, 1, 0, 65536, 1, 131071, 65536, 1, 65535, 65536, 1, -1, 65536, 1, -65536, 65536, 1, -65535, 65536, 1, -65534, 65536, 1, -65533, 65536, 1, -65532, 65536, 1, -65531, 65536, 1, -65530, 65536, 1, -65529, 65536, 1, -65528, 65536, 1, -65527, 65536, 1, 196607, 65536, 1, 131077, 65536, 1, 131078, 65536, 1, 131079, 65536, 1, 131080, 65536, 1, 262143, 65536, 2, -65526, 131072, 1)
 
 [node name="Bed" parent="Sorted" index="0" instance=ExtResource("5_c3vta")]
 position = Vector2(1600, 576)
@@ -290,8 +385,22 @@ offset_bottom = -329.0
 position = Vector2(-96, -171)
 shape = SubResource("RectangleShape2D_f1j1d")
 
+[node name="Door" parent="Sorted" index="25" instance=ExtResource("18_g5r67")]
+position = Vector2(576, 992)
+
 [node name="PlayerStartPos" parent="." index="6"]
-position = Vector2(576, 1088)
+position = Vector2(576, 1040)
+
+[node name="CutScenes" type="Node2D" parent="." index="7"]
+
+[node name="IntroHouse" parent="CutScenes" index="0" node_paths=PackedStringArray("camera_current", "camera_pos") instance=ExtResource("18_kwm3y")]
+position = Vector2(576, 1280)
+data = SubResource("Resource_dge5t")
+camera_current = NodePath("../../GameCamera")
+camera_pos = NodePath("Marker2D")
+metadata/_edit_group_ = true
+
+[node name="Marker2D" type="Marker2D" parent="CutScenes/IntroHouse" index="0"]
 
 [editable path="Sorted/Clock"]
 [editable path="Sorted/Phone"]

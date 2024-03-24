@@ -5,7 +5,8 @@ signal ended()
 signal step_finished()
 signal moved()
 
-@onready var wait_timer: Timer = $WaitTimer
+@onready var wait_timer: Timer = %WaitTimer
+@onready var reticule_anim: AnimationPlayer = %ReticuleAnim
 
 var data: CutSceneData
 var actors: Array[Actor] = []
@@ -53,6 +54,14 @@ func next_step() -> void:
 func wait(seconds: float) -> Timer:
 	wait_timer.start(seconds)
 	return wait_timer
+
+
+func show_reticule() -> void:
+	reticule_anim.play("anim")
+
+
+func hide_reticule() -> void:
+	reticule_anim.play_backwards("anim")
 
 
 func on_step_end(step: CutSceneBase) -> void:

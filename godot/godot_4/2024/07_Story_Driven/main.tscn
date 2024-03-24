@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://csdjbfj5l0pus"]
+[gd_scene load_steps=33 format=3 uid="uid://csdjbfj5l0pus"]
 
 [ext_resource type="TileSet" uid="uid://d4eaidaxglkih" path="res://scenes/tilemap/template.tres" id="1_b3xio"]
 [ext_resource type="PackedScene" uid="uid://cd30lwdo4bvuu" path="res://scenes/game_camera/game_camera.tscn" id="1_helwf"]
@@ -7,8 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dq3y1i2y72rcs" path="res://scenes/interactables/interactable/interactable.tscn" id="5_b83mu"]
 [ext_resource type="PackedScene" uid="uid://dkyxyos2d2ygj" path="res://scenes/interactables/conversation/conversation.tscn" id="6_k0elb"]
 [ext_resource type="Script" path="res://scenes/display_message/message_data/message_data.gd" id="6_l0mi5"]
-[ext_resource type="Resource" uid="uid://d2r2vtkxw6j5k" path="res://scenes/display_message/message_data/hero_1.tres" id="6_rvi22"]
-[ext_resource type="Resource" uid="uid://c83k31eku71du" path="res://scenes/display_message/message_data/hero_2.tres" id="8_pld8b"]
+[ext_resource type="Resource" uid="uid://d2r2vtkxw6j5k" path="res://scenes/display_message/profiles/jakub_profile.tres" id="6_rvi22"]
 [ext_resource type="PackedScene" uid="uid://03yy01jl71jn" path="res://scenes/cut_scene/cut_scene.tscn" id="10_i3x8e"]
 [ext_resource type="PackedScene" uid="uid://b4qnf5faj7ybi" path="res://scenes/cut_scene/cut_scene_starter_area/cut_scene_starter_area.tscn" id="11_l2br1"]
 [ext_resource type="Script" path="res://scenes/cut_scene/cut_scene_data/cut_scene_data.gd" id="12_7hgj2"]
@@ -21,22 +20,25 @@
 [sub_resource type="Resource" id="Resource_kphwp"]
 script = ExtResource("6_l0mi5")
 profile = ExtResource("6_rvi22")
-speed_ratio = 1.0
 text = "[shake rate=30.0 level=50 connected=1]I'm very angry[/shake]"
+speed_ratio = 1.0
 weight = 1.0
+duration = 3.0
 
 [sub_resource type="Resource" id="Resource_dqcok"]
 script = ExtResource("6_l0mi5")
-speed_ratio = 1.0
 text = "Another text"
+speed_ratio = 1.0
 weight = 1.0
+duration = 3.0
 
 [sub_resource type="Resource" id="Resource_5t6pf"]
 script = ExtResource("6_l0mi5")
-profile = ExtResource("8_pld8b")
-speed_ratio = 1.0
+profile = ExtResource("6_rvi22")
 text = "Super final text"
+speed_ratio = 1.0
 weight = 1.0
+duration = 3.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7uk25"]
 radius = 57.0088
@@ -46,28 +48,31 @@ size = Vector2(768, 512)
 
 [sub_resource type="Resource" id="Resource_8qrei"]
 script = ExtResource("6_l0mi5")
-speed_ratio = 1.0
 text = "Medium text"
+speed_ratio = 1.0
 weight = 1.0
+duration = 3.0
 
 [sub_resource type="Resource" id="Resource_0bjta"]
 script = ExtResource("6_l0mi5")
-speed_ratio = 1.0
 text = "This is a long text message"
+speed_ratio = 1.0
 weight = 1.0
+duration = 3.0
 
 [sub_resource type="Resource" id="Resource_anne2"]
 script = ExtResource("6_l0mi5")
-speed_ratio = 1.0
 text = "Smol"
+speed_ratio = 1.0
 weight = 1.0
+duration = 3.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ql8fy"]
 radius = 104.0
 
 [sub_resource type="Resource" id="Resource_c82wg"]
 script = ExtResource("13_8dnvl")
-direction = Vector2(2.08165e-12, -1)
+direction = 0
 anim = "idle"
 
 [sub_resource type="Resource" id="Resource_vaxud"]
@@ -76,21 +81,24 @@ seconds = 1.0
 
 [sub_resource type="Resource" id="Resource_xxnr7"]
 script = ExtResource("6_l0mi5")
-speed_ratio = 1.0
 text = "First"
+speed_ratio = 1.0
 weight = 1.0
+duration = 3.0
 
 [sub_resource type="Resource" id="Resource_80u1l"]
 script = ExtResource("6_l0mi5")
-speed_ratio = 1.0
 text = "Second"
+speed_ratio = 1.0
 weight = 1.0
+duration = 3.0
 
 [sub_resource type="Resource" id="Resource_nn3k5"]
 script = ExtResource("6_l0mi5")
-speed_ratio = 1.0
 text = "Fourth!"
+speed_ratio = 1.0
 weight = 1.0
+duration = 3.0
 
 [sub_resource type="Resource" id="Resource_dujuk"]
 script = ExtResource("17_nkqnk")

@@ -1,5 +1,8 @@
 class_name CutScene extends Node2D
 
+signal started()
+signal ended()
+
 @export var data: CutSceneData
 @export var scene_actors: Array[Actor] = []
 
@@ -19,6 +22,8 @@ func _ready() -> void:
 
 func start():
 	GameManager.change_to_cut_scene()
+	CutSceneManager.show_reticule()
+	started.emit()
 
 	if camera_pos and camera_current:
 		var tw = create_tween().set_ease(Tween.EASE_IN_OUT)
@@ -42,5 +47,6 @@ func start():
 	await CutSceneManager.ended
 
 	PartyManager.enable_leader_camera()
+	CutSceneManager.hide_reticule()
 	GameManager.change_to_world()
-
+	ended.emit()

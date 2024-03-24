@@ -36,5 +36,7 @@ func change_state_to(state: MODE) -> void:
 		current_mode = state
 		state_changed.emit()
 
+
 func create_timer(seconds: float) -> SceneTreeTimer:
 	return get_tree().create_timer(seconds)
+
