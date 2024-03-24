@@ -6,36 +6,48 @@ const jakub_profile = preload("res://scenes/display_message/profiles/jakub_profi
 signal story_changed(story: StoryData)
 
 var bubble_message_list: Array[MessageData] = []
-
-var messages = [
-	[], # Chapter 0
-	[], # Chapter 1
-	[], # Chapter 2
-]
+var chapter_0: Array[MessageData] = []
+var chapter_1: Array[MessageData] = []
 
 
 func _ready() -> void:
-	read_from_csv("res://dialogs/chapter_0.csv", messages[0])
-	read_from_csv("res://dialogs/message_bubble.csv", messages[1])
+	read_from_csv("res://dialogs/chapter_0.csv", chapter_0)
+	read_from_csv("res://dialogs/chapter_1.csv", chapter_1)
 
 
-func message_at(chapter: int, index: int) -> MessageData:
-	if index >= messages[chapter].size():
+func message_list(chapter: int, index_list: Array[int]) -> Array[MessageData]:
+	var list: Array[MessageData] = []
+
+	for index in index_list:
+		list.append(message_from(chapter, index))
+
+	return list
+
+
+func message_from(chapter: int, index: int) -> MessageData:
+	var list: Array[MessageData]
+
+	match chapter:
+		0: list = chapter_0
+		1: list = chapter_1
+		_: pass
+
+	if index >= list.size():
 		push_warning("Out of bounds message")
 		return MessageData.new()
 
-	return messages[chapter][index]
+	return list[index]
 
 
-func get_chapter() -> int: 
+func get_chapter() -> int:
 	return data.chapter
 
 
-func get_episode() -> int: 
+func get_episode() -> int:
 	return data.episode
 
 
-func get_step() -> int: 
+func get_step() -> int:
 	return data.step
 
 
@@ -59,6 +71,10 @@ func set_step(step: int) -> void:
 func read_from_csv(filepath: String, list: Array[MessageData]) -> void:
 	var file = FileAccess.open(filepath, FileAccess.READ)
 
+	if file == null:
+		push_error("failed to open file %s" % [filepath])
+		return
+
 	# Fetch headers
 	file.get_csv_line()
 
@@ -74,8 +90,8 @@ func read_from_csv(filepath: String, list: Array[MessageData]) -> void:
 			msg.text = line[0]
 
 		if line.size() > 1:
-			match line[1]:
-				"1": msg.profile = jakub_profile
+			match line[1].to_int():
+				0: msg.profile = jakub_profile
 				_: pass
 
 		if line.size() > 2:

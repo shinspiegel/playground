@@ -1,8 +1,7 @@
-[gd_scene load_steps=53 format=3 uid="uid://ceqphrxd7newn"]
+[gd_scene load_steps=47 format=3 uid="uid://ceqphrxd7newn"]
 
 [ext_resource type="PackedScene" uid="uid://blydrbv15xonn" path="res://maps/level_map.tscn" id="1_l0do0"]
 [ext_resource type="Script" path="res://maps/jakub_apartment.gd" id="2_io7gp"]
-[ext_resource type="Script" path="res://scenes/display_message/message_data/message_data.gd" id="3_ydkdp"]
 [ext_resource type="PackedScene" uid="uid://b7cbvdwellajn" path="res://scenes/static_item/items/bed.tscn" id="5_c3vta"]
 [ext_resource type="PackedScene" uid="uid://7ttw1q43x2ys" path="res://scenes/static_item/items/bedside_table.tscn" id="6_nkgvo"]
 [ext_resource type="PackedScene" uid="uid://dlivjs0bxtajd" path="res://scenes/static_item/items/wardrobe.tscn" id="7_fckoh"]
@@ -25,7 +24,6 @@
 [ext_resource type="Script" path="res://scenes/cut_scene/steps/step_wait.gd" id="22_hgvnt"]
 [ext_resource type="Script" path="res://scenes/cut_scene/steps/step_move.gd" id="23_64kbr"]
 [ext_resource type="Script" path="res://scenes/cut_scene/steps/step_bubble.gd" id="23_nve0r"]
-[ext_resource type="Resource" uid="uid://d2r2vtkxw6j5k" path="res://scenes/display_message/profiles/jakub_profile.tres" id="26_imebr"]
 [ext_resource type="Script" path="res://scenes/cut_scene/steps/step_talk.gd" id="26_oyy11"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sfb1l"]
@@ -98,18 +96,12 @@ is_party = true
 script = ExtResource("22_hgvnt")
 seconds = 2.0
 
-[sub_resource type="Resource" id="Resource_awekc"]
-script = ExtResource("3_ydkdp")
-text = "Home"
-speed_ratio = 1.0
-duration = 1.0
-weight = 1.0
-
 [sub_resource type="Resource" id="Resource_v335u"]
 script = ExtResource("23_nve0r")
-list = Array[ExtResource("3_ydkdp")]([SubResource("Resource_awekc")])
+chapter = 0
+list = Array[int]([0])
 delay = 0.3
-rand_pos = Vector2(40, 40)
+rand_pos = Vector2(0, 0)
 index = 0
 is_party = true
 
@@ -121,33 +113,10 @@ seconds = 3.0
 script = ExtResource("22_hgvnt")
 seconds = 1.0
 
-[sub_resource type="Resource" id="Resource_cge6q"]
-script = ExtResource("3_ydkdp")
-profile = ExtResource("26_imebr")
-text = "So this is it..."
-speed_ratio = 0.7
-duration = 3.0
-weight = 1.0
-
-[sub_resource type="Resource" id="Resource_xni7c"]
-script = ExtResource("3_ydkdp")
-profile = ExtResource("26_imebr")
-text = "My new life starts now."
-speed_ratio = 1.0
-duration = 3.0
-weight = 1.0
-
-[sub_resource type="Resource" id="Resource_cphc2"]
-script = ExtResource("3_ydkdp")
-profile = ExtResource("26_imebr")
-text = "I need to prepare for tomorrow. There is a lot to do."
-speed_ratio = 1.0
-duration = 3.0
-weight = 1.0
-
 [sub_resource type="Resource" id="Resource_w5e0n"]
 script = ExtResource("26_oyy11")
-messages = Array[ExtResource("3_ydkdp")]([SubResource("Resource_cge6q"), SubResource("Resource_xni7c"), SubResource("Resource_cphc2")])
+chapter = 0
+messages = Array[int]([1, 2, 2])
 
 [sub_resource type="Resource" id="Resource_nr4vs"]
 script = ExtResource("22_hgvnt")
