@@ -2,7 +2,6 @@ extends LevelMap
 
 @export_group("Chapter 1")
 @export var intro_cut_scene: CutScene
-@export_subgroup("Bubble Messages")
 @export var bubble_timer: Timer
 @export var boxes_interactor: Interactable
 @export var sofa_interactable: Interactable
@@ -10,6 +9,7 @@ extends LevelMap
 @export var phone_interactable: Interactable
 @export var clock_interactable: Interactable
 @export var wardrobe_interactable: Interactable
+@export var door_interactable: Interactable
 
 @onready var chapter_1_bubble = [
 	[boxes_interactor, StoryManager.message_from(1, 0)],
@@ -34,6 +34,7 @@ func on_story_change(story: StoryData) -> void:
 # Chapter 0
 
 func chapter_0_enable() -> void:
+	door_interactable.active = false
 	intro_cut_scene.start()
 	intro_cut_scene.ended.connect(on_intro_end)
 
@@ -50,6 +51,8 @@ func on_intro_end() -> void:
 # Chapter 1
 
 func chapter_1_enable() -> void:
+	door_interactable.active = true
+
 	for entry in chapter_1_bubble:
 		entry[0].focus.connect(on_focus.bind(PartyManager.get_leader(), entry[1]))
 

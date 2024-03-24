@@ -10,21 +10,17 @@ func _ready() -> void:
 	if not pos: push_error("failed to locate the initial player position node")
 	if not game_camera: push_error("missing game camera node")
 
-	__spawn_party()
 	AudioManager.play_music(AudioManager.Musics.WORLD)
 	StoryManager.story_changed.connect(on_story_change)
+	spawn_party()
 	on_story_change(StoryManager.data)
-
-
-func before_ready() -> void:
-	push_warning("nothing prepared in the current map")
 
 
 func on_story_change(_story: StoryData) -> void:
 	push_warning("story changed and this map didn't updated")
 
 
-func __spawn_party() -> void:
+func spawn_party() -> void:
 	for index in PartyManager.party_size():
 		var player: PlayerActor = PartyManager.at(index)
 		player.global_position = pos.global_position
