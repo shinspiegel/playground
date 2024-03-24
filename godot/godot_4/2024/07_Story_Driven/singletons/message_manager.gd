@@ -10,15 +10,12 @@ signal ended()
 var list: Array[MessageData] = []
 var step_index: int = 0
 var regex = RegEx.new()
-var bubble_message_list: Array[MessageData] = []
 
 
 func _ready() -> void:
 	regex.compile("\\[\\/?[^\\]]*\\]")
 	display_message.message_ended.connect(on_message_end)
 	display_message.hide()
-
-	__read_bubble_message_csv()
 
 
 func start(messages: Array[MessageData]) -> void:
@@ -81,15 +78,6 @@ func remove_bbcode(text: String) -> String:
 	return text
 
 
-func message_at(index: int) -> MessageData:
-	if index >= bubble_message_list.size():
-		push_warning("Out of bounds message")
-		return MessageData.new()
-
-	return bubble_message_list[index]
-
-
-
 func on_message_end() -> void:
 	step_index += 1
 
@@ -103,33 +91,4 @@ func on_message_end() -> void:
 
 	display_message.hide()
 	ended.emit()
-
-
-func __read_bubble_message_csv() -> void:
-	var file = FileAccess.open("res://dialogs/message_bubble.csv", FileAccess.READ)
-
-	# Fetch headers
-	file.get_csv_line()
-
-
-	while not file.eof_reached():
-		var line := file.get_csv_line()
-		var msg: MessageData = MessageData.new()
-
-		if line.size() <= 0 or line[0].is_empty():
-			continue
-
-		if line.size() > 0:
-			msg.text = line[0]
-
-		if line.size() > 1:
-			# Should I use id for something?
-			pass
-
-		if line.size() > 2:
-			msg.speed_ratio = line[2].to_float()
-
-		bubble_message_list.append(msg)
-
-	file.close()
 

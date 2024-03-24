@@ -12,12 +12,12 @@ extends LevelMap
 @export var wardrobe_interactable: Interactable
 
 @onready var bubble_message = [
-	[boxes_interactor, MessageManager.message_at(0)],
-	[sofa_interactable, MessageManager.message_at(1)],
-	[tv_interactable, MessageManager.message_at(2)],
-	[clock_interactable, MessageManager.message_at(3)],
-	[wardrobe_interactable, MessageManager.message_at(4)],
-	[phone_interactable, MessageManager.message_at(5)],
+	[boxes_interactor, StoryManager.message_at(0)],
+	[sofa_interactable, StoryManager.message_at(1)],
+	[tv_interactable, StoryManager.message_at(2)],
+	[clock_interactable, StoryManager.message_at(3)],
+	[wardrobe_interactable, StoryManager.message_at(4)],
+	[phone_interactable, StoryManager.message_at(5)],
 ]
 
 
