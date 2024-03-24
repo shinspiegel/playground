@@ -119,14 +119,66 @@ grow_vertical = 0
 
 [node name="NextButton" type="Button" parent="NextWrapper"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(240, 0)
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -208.0
+offset_left = -240.0
 offset_top = -80.0
 grow_horizontal = 0
 grow_vertical = 0
 text = "Next"
+
+[node name="OptionA" type="Button" parent="NextWrapper"]
+unique_name_in_owner = true
+auto_translate_mode = 1
+custom_minimum_size = Vector2(240, 0)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -240.0
+offset_top = -200.0
+offset_bottom = -120.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "OptionA"
+
+[node name="OptionB" type="Button" parent="NextWrapper"]
+unique_name_in_owner = true
+auto_translate_mode = 1
+custom_minimum_size = Vector2(240, 0)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -240.0
+offset_top = -300.0
+offset_bottom = -220.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "OptionB"
+
+[node name="OptionC" type="Button" parent="NextWrapper"]
+unique_name_in_owner = true
+auto_translate_mode = 1
+custom_minimum_size = Vector2(240, 0)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -240.0
+offset_top = -400.0
+offset_bottom = -320.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "OptionC"

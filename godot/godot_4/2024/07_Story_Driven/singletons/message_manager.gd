@@ -4,6 +4,7 @@ const BUBBLE_MESSAGE = preload("res://scenes/bubble_message/bubble_message.tscn"
 
 signal started()
 signal ended()
+signal message_chosen(message: MessageData, option: String)
 
 @onready var display_message: DisplayMessage = %DisplayMessage
 
@@ -25,10 +26,14 @@ func start(messages: Array[MessageData]) -> void:
 	started.emit()
 
 	display_message.show()
-	display_message.prepare()
-	await display_message.prepared
+	display_message.show_panel()
+	await display_message.panel_showed
 
 	next_message()
+
+
+func choose_option(message: MessageData, option: String) -> void:
+	message_chosen.emit(message, option)
 
 
 func create_bubble(target_node: Node, message_data: MessageData, global_position: Vector2 = Vector2.ZERO) -> void:
@@ -85,9 +90,9 @@ func on_message_end() -> void:
 		next_message()
 		return
 
-	display_message.unprepare()
+	display_message.hide_panel()
 
-	await display_message.unprepared
+	await display_message.panel_hidden
 
 	display_message.hide()
 	ended.emit()

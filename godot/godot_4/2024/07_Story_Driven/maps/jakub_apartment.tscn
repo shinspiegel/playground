@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://ceqphrxd7newn"]
+[gd_scene load_steps=50 format=3 uid="uid://ceqphrxd7newn"]
 
 [ext_resource type="PackedScene" uid="uid://blydrbv15xonn" path="res://maps/level_map.tscn" id="1_l0do0"]
 [ext_resource type="Script" path="res://maps/jakub_apartment.gd" id="2_io7gp"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://ckdb7yqknt62d" path="res://scenes/static_item/items/phone.tscn" id="12_lv5b5"]
 [ext_resource type="PackedScene" uid="uid://dlxdca6nheyls" path="res://scenes/static_item/items/sofa.tscn" id="14_1r6fq"]
 [ext_resource type="PackedScene" uid="uid://b1b67slj1nu5x" path="res://scenes/static_item/items/tv_hack.tscn" id="15_dqchd"]
+[ext_resource type="PackedScene" uid="uid://dkyxyos2d2ygj" path="res://scenes/interactables/conversation/conversation.tscn" id="16_8prqg"]
 [ext_resource type="PackedScene" uid="uid://c72bcgkvlqjfo" path="res://scenes/static_item/items/tv.tscn" id="16_pa6bl"]
 [ext_resource type="Shader" path="res://scenes/interactables/outlined_sprite/outlined_sprite.gdshader" id="17_myhdx"]
 [ext_resource type="PackedScene" uid="uid://x0r1rdho5vqu" path="res://scenes/static_item/items/door.tscn" id="18_g5r67"]
@@ -152,9 +153,6 @@ one_shot = true
 [node name="GameCamera" parent="." index="1" node_paths=PackedStringArray("top_left", "bottom_right")]
 top_left = NodePath("../MapLimits/TopLeft")
 bottom_right = NodePath("../MapLimits/BottomRight")
-
-[node name="BackgroundColor" parent="." index="2"]
-visible = false
 
 [node name="BottomRight" parent="MapLimits" index="1"]
 position = Vector2(2752, 2112)
@@ -332,6 +330,11 @@ interactable = NodePath("Interactable")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sorted/Sofa/Interactable" index="0"]
 position = Vector2(64, -128)
 shape = SubResource("RectangleShape2D_uduor")
+
+[node name="Conversation" parent="Sorted/Sofa" index="4" node_paths=PackedStringArray("interactable") instance=ExtResource("16_8prqg")]
+interactable = NodePath("../Interactable")
+chapter = 1
+message_list = Array[int]([6])
 
 [node name="Box4" parent="Sorted" index="23" instance=ExtResource("15_dqchd")]
 position = Vector2(1216, 1472)

@@ -10,6 +10,7 @@ extends LevelMap
 @export var clock_interactable: Interactable
 @export var wardrobe_interactable: Interactable
 @export var door_interactable: Interactable
+@export var sofa_conversation: Conversation
 
 @onready var chapter_1_bubble = [
 	[boxes_interactor, StoryManager.message_from(1, 0)],
@@ -56,11 +57,16 @@ func chapter_1_enable() -> void:
 	for entry in chapter_1_bubble:
 		entry[0].focus.connect(on_focus.bind(PartyManager.get_leader(), entry[1]))
 
+	MessageManager.message_chosen.connect(on_message_choosen)
+
 
 func chapter_1_disable() -> void:
 	for entry in chapter_1_bubble:
 		if entry[0].focus.is_connected(on_focus):
 			entry[0].focus.disconnect(on_focus)
+
+	if MessageManager.message_chosen.is_connected(on_message_choosen):
+		MessageManager.message_chosen.disconnect(on_message_choosen)
 
 
 func on_focus(actor: Actor, message: MessageData) -> void:
@@ -68,3 +74,9 @@ func on_focus(actor: Actor, message: MessageData) -> void:
 		bubble_timer.start()
 		MessageManager.create_bubble(actor, message, actor.message_pos.global_position)
 
+
+func on_message_choosen(msg: MessageData, opt: String) -> void:
+	match msg.id:
+		"TV_WATCH":
+			if opt == "Yes": print("YEAH!")
+			if opt == "No": print("Noooo!")

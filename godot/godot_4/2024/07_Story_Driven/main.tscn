@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://csdjbfj5l0pus"]
+[gd_scene load_steps=26 format=3 uid="uid://csdjbfj5l0pus"]
 
 [ext_resource type="TileSet" uid="uid://d4eaidaxglkih" path="res://scenes/tilemap/template.tres" id="1_b3xio"]
 [ext_resource type="PackedScene" uid="uid://cd30lwdo4bvuu" path="res://scenes/game_camera/game_camera.tscn" id="1_helwf"]
@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://dq3y1i2y72rcs" path="res://scenes/interactables/interactable/interactable.tscn" id="5_b83mu"]
 [ext_resource type="PackedScene" uid="uid://dkyxyos2d2ygj" path="res://scenes/interactables/conversation/conversation.tscn" id="6_k0elb"]
 [ext_resource type="Script" path="res://scenes/display_message/message_data/message_data.gd" id="6_l0mi5"]
-[ext_resource type="Resource" uid="uid://d2r2vtkxw6j5k" path="res://scenes/display_message/profiles/jakub_profile.tres" id="6_rvi22"]
 [ext_resource type="PackedScene" uid="uid://03yy01jl71jn" path="res://scenes/cut_scene/cut_scene.tscn" id="10_i3x8e"]
 [ext_resource type="PackedScene" uid="uid://b4qnf5faj7ybi" path="res://scenes/cut_scene/cut_scene_starter_area/cut_scene_starter_area.tscn" id="11_l2br1"]
 [ext_resource type="Script" path="res://scenes/cut_scene/cut_scene_data/cut_scene_data.gd" id="12_7hgj2"]
@@ -16,29 +15,6 @@
 [ext_resource type="PackedScene" uid="uid://c33u7sqdwdu02" path="res://scenes/actors/actor.tscn" id="15_jeux2"]
 [ext_resource type="Script" path="res://scenes/cut_scene/steps/step_wait.gd" id="16_min0s"]
 [ext_resource type="Script" path="res://scenes/cut_scene/steps/step_bubble.gd" id="17_nkqnk"]
-
-[sub_resource type="Resource" id="Resource_kphwp"]
-script = ExtResource("6_l0mi5")
-profile = ExtResource("6_rvi22")
-text = "[shake rate=30.0 level=50 connected=1]I'm very angry[/shake]"
-speed_ratio = 1.0
-weight = 1.0
-duration = 3.0
-
-[sub_resource type="Resource" id="Resource_dqcok"]
-script = ExtResource("6_l0mi5")
-text = "Another text"
-speed_ratio = 1.0
-weight = 1.0
-duration = 3.0
-
-[sub_resource type="Resource" id="Resource_5t6pf"]
-script = ExtResource("6_l0mi5")
-profile = ExtResource("6_rvi22")
-text = "Super final text"
-speed_ratio = 1.0
-weight = 1.0
-duration = 3.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7uk25"]
 radius = 57.0088
@@ -50,22 +26,31 @@ size = Vector2(768, 512)
 script = ExtResource("6_l0mi5")
 text = "Medium text"
 speed_ratio = 1.0
-weight = 1.0
 duration = 3.0
+weight = 1.0
+option_a = ""
+option_b = ""
+option_c = ""
 
 [sub_resource type="Resource" id="Resource_0bjta"]
 script = ExtResource("6_l0mi5")
 text = "This is a long text message"
 speed_ratio = 1.0
-weight = 1.0
 duration = 3.0
+weight = 1.0
+option_a = ""
+option_b = ""
+option_c = ""
 
 [sub_resource type="Resource" id="Resource_anne2"]
 script = ExtResource("6_l0mi5")
 text = "Smol"
 speed_ratio = 1.0
-weight = 1.0
 duration = 3.0
+weight = 1.0
+option_a = ""
+option_b = ""
+option_c = ""
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ql8fy"]
 radius = 104.0
@@ -79,30 +64,10 @@ anim = "idle"
 script = ExtResource("16_min0s")
 seconds = 1.0
 
-[sub_resource type="Resource" id="Resource_xxnr7"]
-script = ExtResource("6_l0mi5")
-text = "First"
-speed_ratio = 1.0
-weight = 1.0
-duration = 3.0
-
-[sub_resource type="Resource" id="Resource_80u1l"]
-script = ExtResource("6_l0mi5")
-text = "Second"
-speed_ratio = 1.0
-weight = 1.0
-duration = 3.0
-
-[sub_resource type="Resource" id="Resource_nn3k5"]
-script = ExtResource("6_l0mi5")
-text = "Fourth!"
-speed_ratio = 1.0
-weight = 1.0
-duration = 3.0
-
 [sub_resource type="Resource" id="Resource_dujuk"]
 script = ExtResource("17_nkqnk")
-list = Array[ExtResource("6_l0mi5")]([SubResource("Resource_xxnr7"), SubResource("Resource_80u1l"), SubResource("Resource_nn3k5")])
+chapter = 0
+list = Array[int]([])
 delay = 0.3
 rand_pos = Vector2(20, 20)
 index = 0
@@ -160,7 +125,7 @@ position = Vector2(521, 167)
 
 [node name="Conversation" parent="Sorted/EnemyActor" node_paths=PackedStringArray("interactable") instance=ExtResource("6_k0elb")]
 interactable = NodePath("../Interactable")
-message_list = Array[ExtResource("6_l0mi5")]([SubResource("Resource_kphwp"), SubResource("Resource_dqcok"), SubResource("Resource_5t6pf")])
+message_list = Array[int]([1, 2])
 
 [node name="Interactable" parent="Sorted/EnemyActor" instance=ExtResource("5_b83mu")]
 position = Vector2(0, -32)

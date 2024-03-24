@@ -3,7 +3,8 @@ class_name Conversation extends Node2D
 @export var force_idle_anim: bool = true
 @export var interactable: Interactable
 @export_range(0.0, 2.0, 0.1) var colddown: float = 0.3
-@export var message_list: Array[MessageData] = []
+@export var chapter: int = 0
+@export var message_list: Array[int] = []
 
 @onready var timer: Timer = $Timer
 
@@ -20,7 +21,7 @@ func on_interact() -> void:
 				member.call_deferred("play_idle", member.last_dir)
 
 		GameManager.change_to_talk()
-		MessageManager.start(message_list)
+		MessageManager.start(StoryManager.message_list(chapter, message_list))
 		await MessageManager.ended
 		GameManager.change_to_world()
 

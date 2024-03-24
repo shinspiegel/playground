@@ -33,38 +33,16 @@ func message_from(chapter: int, index: int) -> MessageData:
 		_: pass
 
 	if index >= list.size():
-		push_warning("Out of bounds message")
+		push_error("Out of bounds message")
 		return MessageData.new()
 
 	return list[index]
-
-
-func get_chapter() -> int:
-	return data.chapter
-
-
-func get_episode() -> int:
-	return data.episode
-
-
-func get_step() -> int:
-	return data.step
 
 
 func advance_chapter() -> void:
 	data.chapter += 1
 	data.episode = 0
 	data.step = 0
-	story_changed.emit(data)
-
-
-func advance_episode() -> void:
-	data.episode += 1
-	story_changed.emit(data)
-
-
-func set_step(step: int) -> void:
-	data.step = step
 	story_changed.emit(data)
 
 
@@ -94,14 +72,26 @@ func read_from_csv(filepath: String, list: Array[MessageData]) -> void:
 				0: msg.profile = jakub_profile
 				_: pass
 
-		if line.size() > 2:
+		if line.size() > 2 and not line[2].is_empty():
 			msg.speed_ratio = line[2].to_float()
 
-		if line.size() > 3:
+		if line.size() > 3 and not line[3].is_empty():
 			msg.duration = line[3].to_float()
 
-		if line.size() > 4:
+		if line.size() > 4 and not line[4].is_empty():
 			msg.weight = line[4].to_float()
+
+		if line.size() > 5 and not line[5].is_empty():
+			msg.id = line[5]
+
+		if line.size() > 6 and not line[6].is_empty():
+			msg.option_a = line[6]
+
+		if line.size() > 7 and not line[7].is_empty():
+			msg.option_b = line[7]
+
+		if line.size() > 8 and not line[8].is_empty():
+			msg.option_c = line[8]
 
 		list.append(msg)
 

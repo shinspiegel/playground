@@ -1,8 +1,8 @@
-message,profile,speed_ratio,duration,weight
+message,profile,speed_ratio,duration,weight,id,option_a,option_b,option_c
 Need up unpack this.
 Should I relax?
 TV is inviting.
 Need to set the alarm.
 Prepare suit now?
 Need to check address.
-
+Should watch TV?,0,,,,TV_WATCH,Yes,No
