@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://b61j8asvy1y3"
+
+[deps]
+
+files=["res://dialogs/chapter_1.profile.translation", "res://dialogs/chapter_1.speed.translation", "res://dialogs/chapter_1.duration.translation", "res://dialogs/chapter_1.weight.translation"]
+
+source_file="res://dialogs/chapter_1.csv"
+dest_files=["res://dialogs/chapter_1.profile.translation", "res://dialogs/chapter_1.speed.translation", "res://dialogs/chapter_1.duration.translation", "res://dialogs/chapter_1.weight.translation"]
+
+[params]
+
+compress=true
+delimiter=0

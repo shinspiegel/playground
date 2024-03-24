@@ -1,8 +1,9 @@
 extends Node
 
-signal story_changed(story: StoryData)
+const data = preload("res://singletons/story_data.tres")
+const jakub_profile = preload("res://scenes/display_message/profiles/jakub_profile.tres")
 
-@export var data: StoryData
+signal story_changed(story: StoryData)
 
 var bubble_message_list: Array[MessageData] = []
 
@@ -14,15 +15,16 @@ var messages = [
 
 
 func _ready() -> void:
-	__read_bubble_message_csv("res://dialogs/message_bubble.csv", bubble_message_list)
+	read_from_csv("res://dialogs/chapter_0.csv", messages[0])
+	read_from_csv("res://dialogs/message_bubble.csv", messages[1])
 
 
-func message_at(index: int) -> MessageData:
-	if index >= bubble_message_list.size():
+func message_at(chapter: int, index: int) -> MessageData:
+	if index >= messages[chapter].size():
 		push_warning("Out of bounds message")
 		return MessageData.new()
 
-	return bubble_message_list[index]
+	return messages[chapter][index]
 
 
 func get_chapter() -> int: 
@@ -54,7 +56,7 @@ func set_step(step: int) -> void:
 	story_changed.emit(data)
 
 
-func __read_bubble_message_csv(filepath: String, list: Array[MessageData]) -> void:
+func read_from_csv(filepath: String, list: Array[MessageData]) -> void:
 	var file = FileAccess.open(filepath, FileAccess.READ)
 
 	# Fetch headers
@@ -72,11 +74,18 @@ func __read_bubble_message_csv(filepath: String, list: Array[MessageData]) -> vo
 			msg.text = line[0]
 
 		if line.size() > 1:
-			# Should I use id for something?
-			pass
+			match line[1]:
+				"1": msg.profile = jakub_profile
+				_: pass
 
 		if line.size() > 2:
 			msg.speed_ratio = line[2].to_float()
+
+		if line.size() > 3:
+			msg.duration = line[3].to_float()
+
+		if line.size() > 4:
+			msg.weight = line[4].to_float()
 
 		list.append(msg)
 

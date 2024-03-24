@@ -11,13 +11,13 @@ extends LevelMap
 @export var clock_interactable: Interactable
 @export var wardrobe_interactable: Interactable
 
-@onready var bubble_message = [
-	[boxes_interactor, StoryManager.message_at(0)],
-	[sofa_interactable, StoryManager.message_at(1)],
-	[tv_interactable, StoryManager.message_at(2)],
-	[clock_interactable, StoryManager.message_at(3)],
-	[wardrobe_interactable, StoryManager.message_at(4)],
-	[phone_interactable, StoryManager.message_at(5)],
+@onready var chapter_1_bubble = [
+	[boxes_interactor, StoryManager.message_at(1, 0)],
+	[sofa_interactable, StoryManager.message_at(1, 1)],
+	[tv_interactable, StoryManager.message_at(1, 2)],
+	[clock_interactable, StoryManager.message_at(1, 3)],
+	[wardrobe_interactable, StoryManager.message_at(1, 4)],
+	[phone_interactable, StoryManager.message_at(1, 5)],
 ]
 
 
@@ -47,15 +47,15 @@ func on_intro_end() -> void:
 	StoryManager.advance_chapter()
 
 
-# Chapter 2
+# Chapter 1
 
 func chapter_1_enable() -> void:
-	for entry in bubble_message:
+	for entry in chapter_1_bubble:
 		entry[0].focus.connect(on_focus.bind(PartyManager.get_leader(), entry[1]))
 
 
 func chapter_1_disable() -> void:
-	for entry in bubble_message:
+	for entry in chapter_1_bubble:
 		if entry[0].focus.is_connected(on_focus):
 			entry[0].focus.disconnect(on_focus)
 
