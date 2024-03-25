@@ -26,7 +26,7 @@ The biggest conflict will happen in the [Pizza Hat](#pizza-hat)
 
 
 ## Intro
-- CH1 EP1
+- CH1 EP0
 ---
 In his new appartment unpacking the only two big luggages.
 Thoughts about the next day, the journalist job was a pretty increase for him.
@@ -45,7 +45,7 @@ The starts to creepling in, time for some quick junk food.
 
 
 ## Pizza Hat
-- CH1 EP2
+- CH1 EP1
 ---
 In the Pizza Hat place, people talking, there is a lot of noise, the heavy smell of deep fry invades [Jakub](#jakub) perception.
 People is talking in the background.
@@ -61,18 +61,23 @@ He wants to do it quickly to get back home.
 
 
 ## Waiting in line
-- CH1 EP2 S1
+- CH1 EP1 S1
 --
 Waiting in the line pays a tool on [Jakub](#jakub), due to the over stimulation.
 With the pizza at home, he feels the pressure of a new place, maybe chaning from a small city was a mistake.
 
 
 ## Push the Line
-- CH1 EP2 S2
+- CH1 EP1 S2
 --
 [Jakub](#jakub) asks to hurry up. The next client in line does not want problems and conceds his position to [Jakub](#jakub) out of fear.
 At home with the pizza in hands [Jakub](#jakub) thinks about the situation, he does not know if he was too rude, or that is normal in a big city.
 He will need to think about being a better person, otherwise he will be the same in this new start.
+
+
+## Reflection at home
+- CH1 EP2
+<!-- TODO: Add reflectsion -->
 
 
 # Chapter 2: The first day in the office
@@ -81,7 +86,7 @@ This chapter will display teach that each action will have some level of consequ
 Also, not all choices are life/death situation, and every choice can be overcome with the right mindfullness.
 
 ## The first waking up
-- CH2 EP1
+- CH2 EP0
 --
 After the [Pizza Har](#pizza-hat) [Jakub](#jakub) is fearful about the new job. He as approved, but he still needs to prove that he is a worth person for the company.
 This could take some time, and he needs to have a good first impression.
@@ -99,7 +104,7 @@ After waking up, you still have few minutes
 
 
 ## Train Station
-- CH2 EP2
+- CH2 EP1
 --
 Arriving on the train [Jakub](#jakub) check his stuff.
 
@@ -117,7 +122,7 @@ Arriving on the train [Jakub](#jakub) check his stuff.
 
 
 ## Buy Tickets
-- CH2 EP2 S1
+- CH2 EP1 S1
 --
 With a clear mind, even with the packed train, it's a good thing.
 This may be a new start, and overcoming the shyness can be accomplish trough the hard effort. 
@@ -127,7 +132,7 @@ So a packed train won't be a problem.
 
 
 ## Buy Tickets
-- CH2 EP2 S2
+- CH2 EP1 S2
 --
 [Jakub](#jakub) does not have the tickets ready, and needs to buy on the station. 
 The station is busy on this day, like all Mondays.
@@ -141,7 +146,7 @@ This will cost him some money, but worse it this will cost him the time, losing 
 
 
 ## No Address
-- CH2 EP2 S3
+- CH2 EP1 S3
 --
 Wihtout the right address finding the correct station will be impossible. 
 To find the correct address on the phone, on the most busy station with limited connection takes time.
@@ -155,7 +160,7 @@ The noise of people around, with the smells of the train station will pay a toll
 
 
 ## No Clothes
-- CH2 EP2 S4
+- CH2 EP1 S4
 --
 You can't leave home wihout the correct clothes, but without the time you just pack the uniform and needs to find a place to change in the station.
 
@@ -166,7 +171,7 @@ You can't leave home wihout the correct clothes, but without the time you just p
 
 
 ## Reaching the Office
-- CH2 EP3
+- CH2 EP2
 --
 After the rough morning, reaching the office is bliss.
 This will be the new home for the next few years, at least 8 hours a day.

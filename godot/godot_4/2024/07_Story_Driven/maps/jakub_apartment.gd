@@ -53,12 +53,17 @@ func on_intro_end() -> void:
 # Chapter 1
 
 func chapter_1_enable() -> void:
-	door_interactable.active = true
+	match StoryManager.data.episode:
+		0:
+			if StoryManager.data.actions_taken >= 2:
+				door_interactable.active = true
 
-	for entry in chapter_1_bubble:
-		entry[0].focus.connect(on_focus.bind(PartyManager.get_leader(), entry[1]))
+			for entry in chapter_1_bubble:
+				entry[0].focus.connect(on_focus.bind(PartyManager.get_leader(), entry[1]))
 
-	MessageManager.message_chosen.connect(on_message_choosen)
+			MessageManager.message_chosen.connect(on_message_choosen)
+		1:
+			pass
 
 
 func chapter_1_disable() -> void:
