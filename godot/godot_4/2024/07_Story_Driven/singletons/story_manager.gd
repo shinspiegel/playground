@@ -11,8 +11,8 @@ var chapter_1: Array[MessageData] = []
 
 
 func _ready() -> void:
-	read_from_csv("res://dialogs/chapter_0.csv", chapter_0)
-	read_from_csv("res://dialogs/chapter_1.csv", chapter_1)
+	read_from_csv(0, "res://dialogs/chapter_0.csv", chapter_0)
+	read_from_csv(1, "res://dialogs/chapter_1.csv", chapter_1)
 
 
 func message_list(chapter: int, index_list: Array[int]) -> Array[MessageData]:
@@ -46,8 +46,9 @@ func advance_chapter() -> void:
 	story_changed.emit(data)
 
 
-func read_from_csv(filepath: String, list: Array[MessageData]) -> void:
-	var file = FileAccess.open(filepath, FileAccess.READ)
+func read_from_csv(chapter: int, filepath: String, list: Array[MessageData]) -> void:
+	var file := FileAccess.open(filepath, FileAccess.READ)
+	var line_number := 1 # Line count starts from 1
 
 	if file == null:
 		push_error("failed to open file %s" % [filepath])
@@ -56,10 +57,11 @@ func read_from_csv(filepath: String, list: Array[MessageData]) -> void:
 	# Fetch headers
 	file.get_csv_line()
 
-
 	while not file.eof_reached():
 		var line := file.get_csv_line()
-		var msg: MessageData = MessageData.new()
+		line_number += 1
+
+		var msg := MessageData.new()
 
 		if line.size() <= 0 or line[0].is_empty():
 			continue
@@ -82,17 +84,15 @@ func read_from_csv(filepath: String, list: Array[MessageData]) -> void:
 			msg.weight = line[4].to_float()
 
 		if line.size() > 5 and not line[5].is_empty():
-			msg.id = line[5]
+			msg.option_a = line[5]
 
 		if line.size() > 6 and not line[6].is_empty():
-			msg.option_a = line[6]
+			msg.option_b = line[6]
 
 		if line.size() > 7 and not line[7].is_empty():
-			msg.option_b = line[7]
+			msg.option_c = line[7]
 
-		if line.size() > 8 and not line[8].is_empty():
-			msg.option_c = line[8]
-
+		msg.id = "%s_%s" % [chapter, line_number]
 		list.append(msg)
 
 	file.close()

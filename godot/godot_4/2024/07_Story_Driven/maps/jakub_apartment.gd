@@ -11,6 +11,7 @@ extends LevelMap
 @export var wardrobe_interactable: Interactable
 @export var door_interactable: Interactable
 @export var sofa_conversation: Conversation
+@export var relax_cutscene: CutScene
 
 @onready var chapter_1_bubble = [
 	[boxes_interactor, StoryManager.message_from(1, 0)],
@@ -76,7 +77,6 @@ func on_focus(actor: Actor, message: MessageData) -> void:
 
 
 func on_message_choosen(msg: MessageData, opt: String) -> void:
-	match msg.id:
-		"TV_WATCH":
-			if opt == "Yes": print("YEAH!")
-			if opt == "No": print("Noooo!")
+	if msg.id == "1_8" and opt == "Yes":
+		relax_cutscene.start()
+

@@ -6,10 +6,10 @@ uid="uid://b61j8asvy1y3"
 
 [deps]
 
-files=["res://dialogs/chapter_1.profile.translation", "res://dialogs/chapter_1.speed.translation", "res://dialogs/chapter_1.duration.translation", "res://dialogs/chapter_1.weight.translation", "res://dialogs/chapter_1.id.translation", "res://dialogs/chapter_1.option.translation", "res://dialogs/chapter_1.option.translation", "res://dialogs/chapter_1.option.translation"]
+files=["res://dialogs/chapter_1.profile.translation", "res://dialogs/chapter_1.speed.translation", "res://dialogs/chapter_1.duration.translation", "res://dialogs/chapter_1.weight.translation", "res://dialogs/chapter_1.option.translation", "res://dialogs/chapter_1.option.translation", "res://dialogs/chapter_1.option.translation"]
 
 source_file="res://dialogs/chapter_1.csv"
-dest_files=["res://dialogs/chapter_1.profile.translation", "res://dialogs/chapter_1.speed.translation", "res://dialogs/chapter_1.duration.translation", "res://dialogs/chapter_1.weight.translation", "res://dialogs/chapter_1.id.translation", "res://dialogs/chapter_1.option.translation", "res://dialogs/chapter_1.option.translation", "res://dialogs/chapter_1.option.translation"]
+dest_files=["res://dialogs/chapter_1.profile.translation", "res://dialogs/chapter_1.speed.translation", "res://dialogs/chapter_1.duration.translation", "res://dialogs/chapter_1.weight.translation", "res://dialogs/chapter_1.option.translation", "res://dialogs/chapter_1.option.translation", "res://dialogs/chapter_1.option.translation"]
 
 [params]
 

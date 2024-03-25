@@ -6,10 +6,10 @@ uid="uid://of40pc7814c1"
 
 [deps]
 
-files=["res://dialogs/chapter_0.profile.translation", "res://dialogs/chapter_0.speed.translation", "res://dialogs/chapter_0.duration.translation", "res://dialogs/chapter_0.weight.translation", "res://dialogs/chapter_0.id.translation", "res://dialogs/chapter_0.option.translation", "res://dialogs/chapter_0.option.translation", "res://dialogs/chapter_0.option.translation"]
+files=["res://dialogs/chapter_0.profile.translation", "res://dialogs/chapter_0.speed.translation", "res://dialogs/chapter_0.duration.translation", "res://dialogs/chapter_0.weight.translation", "res://dialogs/chapter_0.option.translation", "res://dialogs/chapter_0.option.translation", "res://dialogs/chapter_0.option.translation"]
 
 source_file="res://dialogs/chapter_0.csv"
-dest_files=["res://dialogs/chapter_0.profile.translation", "res://dialogs/chapter_0.speed.translation", "res://dialogs/chapter_0.duration.translation", "res://dialogs/chapter_0.weight.translation", "res://dialogs/chapter_0.id.translation", "res://dialogs/chapter_0.option.translation", "res://dialogs/chapter_0.option.translation", "res://dialogs/chapter_0.option.translation"]
+dest_files=["res://dialogs/chapter_0.profile.translation", "res://dialogs/chapter_0.speed.translation", "res://dialogs/chapter_0.duration.translation", "res://dialogs/chapter_0.weight.translation", "res://dialogs/chapter_0.option.translation", "res://dialogs/chapter_0.option.translation", "res://dialogs/chapter_0.option.translation"]
 
 [params]
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=3 uid="uid://ceqphrxd7newn"]
+[gd_scene load_steps=57 format=3 uid="uid://ceqphrxd7newn"]
 
 [ext_resource type="PackedScene" uid="uid://blydrbv15xonn" path="res://maps/level_map.tscn" id="1_l0do0"]
 [ext_resource type="Script" path="res://maps/jakub_apartment.gd" id="2_io7gp"]
@@ -66,6 +66,45 @@ shader_parameter/line_thickness = 0.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uduor"]
 size = Vector2(192, 320)
+
+[sub_resource type="Resource" id="Resource_fq6vt"]
+script = ExtResource("21_ew3yv")
+direction = 4
+anim = "idle"
+
+[sub_resource type="Resource" id="Resource_a4tqm"]
+script = ExtResource("22_hgvnt")
+seconds = 3.0
+
+[sub_resource type="Resource" id="Resource_ob1i0"]
+script = ExtResource("23_nve0r")
+chapter = 1
+list = Array[int]([7])
+delay = 0.0
+rand_pos = Vector2(0, 0)
+index = 0
+is_party = true
+
+[sub_resource type="Resource" id="Resource_ua62s"]
+script = ExtResource("22_hgvnt")
+seconds = 3.0
+
+[sub_resource type="Resource" id="Resource_mn3t7"]
+script = ExtResource("23_64kbr")
+direction = Vector2(80, 2.08165e-12)
+duration = 0.5
+animation_animate = true
+animation_anim_name = "move"
+index = 0
+is_party = true
+
+[sub_resource type="Resource" id="Resource_ud5i1"]
+script = ExtResource("22_hgvnt")
+seconds = 3.0
+
+[sub_resource type="Resource" id="Resource_qor5q"]
+script = ExtResource("19_e6r1y")
+steps = Array[Resource("res://scenes/cut_scene/steps/step_base.gd")]([SubResource("Resource_fq6vt"), SubResource("Resource_a4tqm"), SubResource("Resource_ob1i0"), SubResource("Resource_ua62s"), SubResource("Resource_mn3t7"), SubResource("Resource_ud5i1")])
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gmis7"]
 resource_local_to_scene = true
@@ -136,12 +175,12 @@ script = ExtResource("2_io7gp")
 intro_cut_scene = NodePath("CutScenes/IntroHouse")
 bubble_timer = NodePath("BubbleMessageTimer")
 boxes_interactor = NodePath("Sorted/BoxesInteractable")
-sofa_interactable = NodePath("Sorted/Sofa/Interactable")
-tv_interactable = NodePath("Sorted/TV/Interactable")
-phone_interactable = NodePath("Sorted/Phone/Interactable")
-clock_interactable = NodePath("Sorted/Clock/Interactable")
-wardrobe_interactable = NodePath("Sorted/Wardrobe/Interactable")
-door_interactable = NodePath("Sorted/Door/Interactable")
+sofa_interactable = NodePath("Sorted/Sofa/SofaInteractor")
+tv_interactable = NodePath("Sorted/TV/TVInteractor")
+phone_interactable = NodePath("Sorted/Phone/PhoneInteractor")
+clock_interactable = NodePath("Sorted/Clock/ClockInteractor")
+wardrobe_interactable = NodePath("Sorted/Wardrobe/WarDrobeInteractor")
+door_interactable = NodePath("Sorted/Door/DoorInteractor")
 sorted = NodePath("Sorted")
 pos = NodePath("PlayerStartPos")
 game_camera = NodePath("GameCamera")
@@ -171,18 +210,18 @@ collision_mask = 1
 [node name="Wardrobe" parent="Sorted" index="2" node_paths=PackedStringArray("interactable") instance=ExtResource("7_fckoh")]
 position = Vector2(2368, 384)
 collision_mask = 1
-interactable = NodePath("Interactable")
+interactable = NodePath("WarDrobeInteractor")
 
-[node name="Interactable" parent="Sorted/Wardrobe" index="2" instance=ExtResource("10_xo0yv")]
+[node name="WarDrobeInteractor" parent="Sorted/Wardrobe" index="2" instance=ExtResource("10_xo0yv")]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Sorted/Wardrobe/Interactable" index="0"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sorted/Wardrobe/WarDrobeInteractor" index="0"]
 position = Vector2(0, 50.75)
 shape = SubResource("RectangleShape2D_sfb1l")
 
 [node name="Clock" parent="Sorted" index="3" node_paths=PackedStringArray("interactable") instance=ExtResource("8_8bp36")]
 position = Vector2(1792, 384)
 collision_mask = 1
-interactable = NodePath("Interactable")
+interactable = NodePath("ClockInteractor")
 
 [node name="OutlinedSprite" parent="Sorted/Clock" index="0"]
 material = SubResource("ShaderMaterial_5w3ow")
@@ -191,9 +230,9 @@ position = Vector2(16, -128)
 [node name="CollisionShape2D" parent="Sorted/Clock" index="1"]
 position = Vector2(16, -128)
 
-[node name="Interactable" parent="Sorted/Clock" index="2" instance=ExtResource("10_xo0yv")]
+[node name="ClockInteractor" parent="Sorted/Clock" index="2" instance=ExtResource("10_xo0yv")]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Sorted/Clock/Interactable" index="0"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sorted/Clock/ClockInteractor" index="0"]
 position = Vector2(96, 64)
 shape = SubResource("RectangleShape2D_sstvv")
 
@@ -237,7 +276,7 @@ collision_mask = 1
 z_index = 1
 position = Vector2(2112, 1600)
 collision_mask = 1
-interactable = NodePath("Interactable")
+interactable = NodePath("PhoneInteractor")
 
 [node name="OutlinedSprite" parent="Sorted/Phone" index="0"]
 material = SubResource("ShaderMaterial_nddtp")
@@ -246,9 +285,9 @@ position = Vector2(0, -128)
 [node name="CollisionShape2D" parent="Sorted/Phone" index="1"]
 position = Vector2(0, -136)
 
-[node name="Interactable" parent="Sorted/Phone" index="2" instance=ExtResource("10_xo0yv")]
+[node name="PhoneInteractor" parent="Sorted/Phone" index="2" instance=ExtResource("10_xo0yv")]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Sorted/Phone/Interactable" index="0"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sorted/Phone/PhoneInteractor" index="0"]
 position = Vector2(-96, 64)
 shape = SubResource("RectangleShape2D_b7cf4")
 
@@ -323,18 +362,25 @@ offset_bottom = -137.0
 [node name="Sofa" parent="Sorted" index="22" node_paths=PackedStringArray("interactable") instance=ExtResource("14_1r6fq")]
 position = Vector2(768, 1440)
 collision_mask = 1
-interactable = NodePath("Interactable")
+interactable = NodePath("SofaInteractor")
 
-[node name="Interactable" parent="Sorted/Sofa" index="3" instance=ExtResource("10_xo0yv")]
+[node name="SofaInteractor" parent="Sorted/Sofa" index="3" instance=ExtResource("10_xo0yv")]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Sorted/Sofa/Interactable" index="0"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sorted/Sofa/SofaInteractor" index="0"]
 position = Vector2(64, -128)
 shape = SubResource("RectangleShape2D_uduor")
 
-[node name="Conversation" parent="Sorted/Sofa" index="4" node_paths=PackedStringArray("interactable") instance=ExtResource("16_8prqg")]
-interactable = NodePath("../Interactable")
+[node name="SofaConversation" parent="Sorted/Sofa" index="4" node_paths=PackedStringArray("interactable") instance=ExtResource("16_8prqg")]
+interactable = NodePath("../SofaInteractor")
 chapter = 1
 message_list = Array[int]([6])
+
+[node name="RelaxCutScene" parent="Sorted/Sofa" index="5" node_paths=PackedStringArray("initial_position") instance=ExtResource("18_kwm3y")]
+data = SubResource("Resource_qor5q")
+initial_position = [NodePath("Marker2D")]
+
+[node name="Marker2D" type="Marker2D" parent="Sorted/Sofa/RelaxCutScene" index="0"]
+position = Vector2(32, -158)
 
 [node name="Box4" parent="Sorted" index="23" instance=ExtResource("15_dqchd")]
 position = Vector2(1216, 1472)
@@ -343,7 +389,7 @@ collision_mask = 1
 [node name="TV" parent="Sorted" index="24" node_paths=PackedStringArray("interactable") instance=ExtResource("16_pa6bl")]
 position = Vector2(1216, 1472)
 collision_mask = 1
-interactable = NodePath("Interactable")
+interactable = NodePath("TVInteractor")
 
 [node name="OutlinedSprite" parent="Sorted/TV" index="0"]
 material = SubResource("ShaderMaterial_gmis7")
@@ -356,24 +402,24 @@ position = Vector2(0, -240)
 offset_top = -352.0
 offset_bottom = -329.0
 
-[node name="Interactable" parent="Sorted/TV" index="3" instance=ExtResource("10_xo0yv")]
+[node name="TVInteractor" parent="Sorted/TV" index="3" instance=ExtResource("10_xo0yv")]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Sorted/TV/Interactable" index="0"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sorted/TV/TVInteractor" index="0"]
 position = Vector2(-96, -171)
 shape = SubResource("RectangleShape2D_f1j1d")
 
 [node name="Door" parent="Sorted" index="25" node_paths=PackedStringArray("interactable") instance=ExtResource("18_g5r67")]
 position = Vector2(576, 992)
-interactable = NodePath("Interactable")
+interactable = NodePath("DoorInteractor")
 
 [node name="SceneChanger" parent="Sorted/Door" index="3" node_paths=PackedStringArray("interactable") instance=ExtResource("20_6yk8r")]
 scene = "jakub"
-interactable = NodePath("../Interactable")
+interactable = NodePath("../DoorInteractor")
 
-[node name="Interactable" parent="Sorted/Door" index="4" instance=ExtResource("10_xo0yv")]
+[node name="DoorInteractor" parent="Sorted/Door" index="4" instance=ExtResource("10_xo0yv")]
 active = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Sorted/Door/Interactable" index="0"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sorted/Door/DoorInteractor" index="0"]
 position = Vector2(0, 40)
 shape = SubResource("RectangleShape2D_pelh6")
 
