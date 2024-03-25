@@ -78,5 +78,6 @@ func on_focus(actor: Actor, message: MessageData) -> void:
 
 func on_message_choosen(msg: MessageData, opt: String) -> void:
 	if msg.id == "1_8" and opt == "Yes":
+		StoryManager.data.actions_taken += 1
 		relax_cutscene.start()
 
