@@ -11,6 +11,7 @@ var chapter_1: Array[MessageData] = []
 
 
 func _ready() -> void:
+	data.changed.connect(func(): story_changed.emit(data))
 	read_from_csv(0, "res://dialogs/chapter_0.csv", chapter_0)
 	read_from_csv(1, "res://dialogs/chapter_1.csv", chapter_1)
 
