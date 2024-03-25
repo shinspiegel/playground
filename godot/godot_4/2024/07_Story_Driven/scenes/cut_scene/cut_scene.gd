@@ -21,8 +21,8 @@ func _ready() -> void:
 
 
 func start():
-	GameManager.change_to_cut_scene()
 	CutSceneManager.show_reticule()
+	CutSceneManager.ended.connect(on_cut_scene_end)
 	started.emit()
 
 	if camera_pos and camera_current:
@@ -44,9 +44,10 @@ func start():
 		await tw.finished
 
 	CutSceneManager.start(data, scene_actors)
-	await CutSceneManager.ended
 
+
+func on_cut_scene_end() -> void:
+	CutSceneManager.ended.disconnect(on_cut_scene_end)
 	PartyManager.enable_leader_camera()
 	CutSceneManager.hide_reticule()
-	GameManager.change_to_world()
 	ended.emit()

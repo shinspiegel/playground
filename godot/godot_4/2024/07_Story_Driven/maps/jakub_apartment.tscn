@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=3 uid="uid://ceqphrxd7newn"]
+[gd_scene load_steps=60 format=3 uid="uid://ceqphrxd7newn"]
 
 [ext_resource type="PackedScene" uid="uid://blydrbv15xonn" path="res://maps/level_map.tscn" id="1_l0do0"]
 [ext_resource type="Script" path="res://maps/jakub_apartment.gd" id="2_io7gp"]
@@ -21,6 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://x0r1rdho5vqu" path="res://scenes/static_item/items/door.tscn" id="18_g5r67"]
 [ext_resource type="PackedScene" uid="uid://03yy01jl71jn" path="res://scenes/cut_scene/cut_scene.tscn" id="18_kwm3y"]
 [ext_resource type="Script" path="res://scenes/cut_scene/cut_scene_data/cut_scene_data.gd" id="19_e6r1y"]
+[ext_resource type="Script" path="res://scenes/cut_scene/steps/step_z_index.gd" id="19_pi4pe"]
 [ext_resource type="PackedScene" uid="uid://b1o5ghi3hqt5s" path="res://scenes/scene_changer/scene_changer.tscn" id="20_6yk8r"]
 [ext_resource type="Script" path="res://scenes/cut_scene/steps/step_party_anim.gd" id="21_ew3yv"]
 [ext_resource type="Script" path="res://scenes/cut_scene/steps/step_wait.gd" id="22_hgvnt"]
@@ -67,6 +68,12 @@ shader_parameter/line_thickness = 0.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uduor"]
 size = Vector2(192, 320)
 
+[sub_resource type="Resource" id="Resource_f55xd"]
+script = ExtResource("19_pi4pe")
+z_index = 1
+index = 0
+is_party = true
+
 [sub_resource type="Resource" id="Resource_fq6vt"]
 script = ExtResource("21_ew3yv")
 direction = 4
@@ -102,9 +109,15 @@ is_party = true
 script = ExtResource("22_hgvnt")
 seconds = 3.0
 
+[sub_resource type="Resource" id="Resource_j7u0a"]
+script = ExtResource("19_pi4pe")
+z_index = 0
+index = 0
+is_party = true
+
 [sub_resource type="Resource" id="Resource_qor5q"]
 script = ExtResource("19_e6r1y")
-steps = Array[Resource("res://scenes/cut_scene/steps/step_base.gd")]([SubResource("Resource_fq6vt"), SubResource("Resource_a4tqm"), SubResource("Resource_ob1i0"), SubResource("Resource_ua62s"), SubResource("Resource_mn3t7"), SubResource("Resource_ud5i1")])
+steps = Array[Resource("res://scenes/cut_scene/steps/step_base.gd")]([SubResource("Resource_f55xd"), SubResource("Resource_fq6vt"), SubResource("Resource_a4tqm"), SubResource("Resource_ob1i0"), SubResource("Resource_ua62s"), SubResource("Resource_mn3t7"), SubResource("Resource_ud5i1"), SubResource("Resource_j7u0a")])
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gmis7"]
 resource_local_to_scene = true
@@ -170,7 +183,7 @@ seconds = 1.0
 script = ExtResource("19_e6r1y")
 steps = Array[Resource("res://scenes/cut_scene/steps/step_base.gd")]([SubResource("Resource_ftv2g"), SubResource("Resource_nmbor"), SubResource("Resource_b51gh"), SubResource("Resource_gdbie"), SubResource("Resource_v335u"), SubResource("Resource_6xleo"), SubResource("Resource_ylu6y"), SubResource("Resource_w5e0n"), SubResource("Resource_nr4vs")])
 
-[node name="JakubApartment" node_paths=PackedStringArray("intro_cut_scene", "bubble_timer", "boxes_interactor", "sofa_interactable", "tv_interactable", "phone_interactable", "clock_interactable", "wardrobe_interactable", "door_interactable", "sorted", "pos", "game_camera") instance=ExtResource("1_l0do0")]
+[node name="JakubApartment" node_paths=PackedStringArray("intro_cut_scene", "bubble_timer", "boxes_interactor", "sofa_interactable", "tv_interactable", "phone_interactable", "clock_interactable", "wardrobe_interactable", "door_interactable", "relax_cutscene", "sorted", "pos", "game_camera") instance=ExtResource("1_l0do0")]
 script = ExtResource("2_io7gp")
 intro_cut_scene = NodePath("CutScenes/IntroHouse")
 bubble_timer = NodePath("BubbleMessageTimer")
@@ -181,6 +194,7 @@ phone_interactable = NodePath("Sorted/Phone/PhoneInteractor")
 clock_interactable = NodePath("Sorted/Clock/ClockInteractor")
 wardrobe_interactable = NodePath("Sorted/Wardrobe/WarDrobeInteractor")
 door_interactable = NodePath("Sorted/Door/DoorInteractor")
+relax_cutscene = NodePath("Sorted/Sofa/RelaxCutScene")
 sorted = NodePath("Sorted")
 pos = NodePath("PlayerStartPos")
 game_camera = NodePath("GameCamera")

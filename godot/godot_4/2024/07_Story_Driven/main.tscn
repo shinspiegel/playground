@@ -24,6 +24,7 @@ size = Vector2(768, 512)
 
 [sub_resource type="Resource" id="Resource_8qrei"]
 script = ExtResource("6_l0mi5")
+id = ""
 text = "Medium text"
 speed_ratio = 1.0
 duration = 3.0
@@ -34,6 +35,7 @@ option_c = ""
 
 [sub_resource type="Resource" id="Resource_0bjta"]
 script = ExtResource("6_l0mi5")
+id = ""
 text = "This is a long text message"
 speed_ratio = 1.0
 duration = 3.0
@@ -44,6 +46,7 @@ option_c = ""
 
 [sub_resource type="Resource" id="Resource_anne2"]
 script = ExtResource("6_l0mi5")
+id = ""
 text = "Smol"
 speed_ratio = 1.0
 duration = 3.0

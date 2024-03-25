@@ -10,7 +10,6 @@ extends LevelMap
 @export var clock_interactable: Interactable
 @export var wardrobe_interactable: Interactable
 @export var door_interactable: Interactable
-@export var sofa_conversation: Conversation
 @export var relax_cutscene: CutScene
 
 @onready var chapter_1_bubble = [
@@ -24,6 +23,7 @@ extends LevelMap
 
 
 func on_story_change(story: StoryData) -> void:
+	print("story changed")
 	chapter_0_disable()
 	chapter_1_disable()
 
@@ -78,6 +78,10 @@ func on_focus(actor: Actor, message: MessageData) -> void:
 
 func on_message_choosen(msg: MessageData, opt: String) -> void:
 	if msg.id == "1_8" and opt == "Yes":
-		StoryManager.data.actions_taken += 1
+		await MessageManager.ended
 		relax_cutscene.start()
+		StoryManager.data.actions_taken += 1
+		GameManager.change_to_cut_scene()
+		await CutSceneManager.ended
+		GameManager.change_to_world()
 
