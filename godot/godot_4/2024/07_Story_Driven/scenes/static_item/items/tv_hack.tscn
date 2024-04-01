@@ -17,7 +17,7 @@ region = Rect2(248, 1256, 48, 104)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2xrhq"]
 size = Vector2(128, 320)
 
-[node name="Box" instance=ExtResource("1_hwgme")]
+[node name="TVHack" instance=ExtResource("1_hwgme")]
 
 [node name="OutlinedSprite" parent="." index="0"]
 material = SubResource("ShaderMaterial_fcppo")
