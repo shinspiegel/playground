@@ -40,3 +40,8 @@ func change_state_to(state: MODE) -> void:
 func create_timer(seconds: float) -> SceneTreeTimer:
 	return get_tree().create_timer(seconds)
 
+
+func check_disconnect(sig: Signal, method: Callable) -> void:
+	if sig.is_connected(method):
+		sig.disconnect(method)
+	

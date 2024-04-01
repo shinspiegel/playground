@@ -5,25 +5,18 @@ extends LevelMap
 @export var bubble_timer: Timer
 @export var boxes_interactor: Interactable
 @export var sofa_interactable: Interactable
+@export var sofa_conversation: Conversation
 @export var tv_interactable: Interactable
+@export var tv_conversation: Conversation
 @export var phone_interactable: Interactable
 @export var clock_interactable: Interactable
 @export var wardrobe_interactable: Interactable
 @export var door_interactable: Interactable
 @export var relax_cutscene: CutScene
 
-@onready var chapter_1_bubble = [
-	[boxes_interactor, StoryManager.message_from(1, 0)],
-	[sofa_interactable, StoryManager.message_from(1, 1)],
-	[tv_interactable, StoryManager.message_from(1, 2)],
-	[clock_interactable, StoryManager.message_from(1, 3)],
-	[wardrobe_interactable, StoryManager.message_from(1, 4)],
-	[phone_interactable, StoryManager.message_from(1, 5)],
-]
-
 
 func on_story_change(story: StoryData) -> void:
-	print("story changed")
+	print("story updated")
 	chapter_0_disable()
 	chapter_1_disable()
 
@@ -42,8 +35,7 @@ func chapter_0_enable() -> void:
 
 
 func chapter_0_disable() -> void:
-	if intro_cut_scene.ended.is_connected(on_intro_end):
-		intro_cut_scene.ended.connect(on_intro_end)
+	GameManager.check_disconnect(intro_cut_scene.ended, on_intro_end)
 
 
 func on_intro_end() -> void:
@@ -54,25 +46,42 @@ func on_intro_end() -> void:
 
 func chapter_1_enable() -> void:
 	match StoryManager.data.episode:
-		0:
-			if StoryManager.data.actions_taken >= 2:
-				door_interactable.active = true
+		0: chapter_1_step_0_enable()
 
-			for entry in chapter_1_bubble:
-				entry[0].focus.connect(on_focus.bind(PartyManager.get_leader(), entry[1]))
 
-			MessageManager.message_chosen.connect(on_message_choosen)
-		1:
-			pass
+func chapter_1_step_0_enable() -> void:
+	if StoryManager.data.actions_taken >= 2:
+		door_interactable.active = true
+	else:
+		door_interactable.active = false
+
+	if StoryManager.data.chapter_1_relaxed_on_tv:
+		sofa_interactable.focus.connect(on_focus.bind(PartyManager.get_leader(), StoryManager.message_from(1,8)))
+		tv_interactable.focus.connect(on_focus.bind(PartyManager.get_leader(), StoryManager.message_from(1,8)))
+		sofa_conversation.is_active = false
+		tv_conversation.is_active = false
+	else:
+		sofa_interactable.focus.connect(on_focus.bind(PartyManager.get_leader(), StoryManager.message_from(1,1)))
+		tv_interactable.focus.connect(on_focus.bind(PartyManager.get_leader(), StoryManager.message_from(1,2)))
+		sofa_conversation.is_active = true
+		tv_conversation.is_active = true
+
+	boxes_interactor.focus.connect(on_focus.bind(PartyManager.get_leader(), StoryManager.message_from(1,0)))
+	clock_interactable.focus.connect(on_focus.bind(PartyManager.get_leader(), StoryManager.message_from(1,3)))
+	wardrobe_interactable.focus.connect(on_focus.bind(PartyManager.get_leader(), StoryManager.message_from(1,4)))
+	phone_interactable.focus.connect(on_focus.bind(PartyManager.get_leader(), StoryManager.message_from(1,5)))
+
+	MessageManager.message_chosen.connect(on_message_choosen)
 
 
 func chapter_1_disable() -> void:
-	for entry in chapter_1_bubble:
-		if entry[0].focus.is_connected(on_focus):
-			entry[0].focus.disconnect(on_focus)
-
-	if MessageManager.message_chosen.is_connected(on_message_choosen):
-		MessageManager.message_chosen.disconnect(on_message_choosen)
+	GameManager.check_disconnect(boxes_interactor.focus, on_focus)
+	GameManager.check_disconnect(sofa_interactable.focus, on_focus)
+	GameManager.check_disconnect(tv_interactable.focus, on_focus)
+	GameManager.check_disconnect(clock_interactable.focus, on_focus)
+	GameManager.check_disconnect(wardrobe_interactable.focus, on_focus)
+	GameManager.check_disconnect(phone_interactable.focus, on_focus)
+	GameManager.check_disconnect(MessageManager.message_chosen, on_message_choosen)
 
 
 func on_focus(actor: Actor, message: MessageData) -> void:
@@ -85,7 +94,7 @@ func on_message_choosen(msg: MessageData, opt: String) -> void:
 	if msg.id == "1_8" and opt == "Yes":
 		await MessageManager.ended
 		relax_cutscene.start()
-		StoryManager.data.actions_taken += 1
+		StoryManager.data.ch_1_relax_tv()
 		GameManager.change_to_cut_scene()
 		await CutSceneManager.ended
 		GameManager.change_to_world()

@@ -68,57 +68,6 @@ shader_parameter/line_thickness = 0.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uduor"]
 size = Vector2(192, 320)
 
-[sub_resource type="Resource" id="Resource_f55xd"]
-script = ExtResource("19_pi4pe")
-z_index = 1
-index = 0
-is_party = true
-
-[sub_resource type="Resource" id="Resource_fq6vt"]
-script = ExtResource("21_ew3yv")
-direction = 4
-anim = "idle"
-
-[sub_resource type="Resource" id="Resource_a4tqm"]
-script = ExtResource("22_hgvnt")
-seconds = 3.0
-
-[sub_resource type="Resource" id="Resource_ob1i0"]
-script = ExtResource("23_nve0r")
-chapter = 1
-list = Array[int]([7])
-delay = 0.0
-rand_pos = Vector2(0, 0)
-index = 0
-is_party = true
-
-[sub_resource type="Resource" id="Resource_ua62s"]
-script = ExtResource("22_hgvnt")
-seconds = 3.0
-
-[sub_resource type="Resource" id="Resource_mn3t7"]
-script = ExtResource("23_64kbr")
-direction = Vector2(80, 2.08165e-12)
-duration = 0.5
-animation_animate = true
-animation_anim_name = "move"
-index = 0
-is_party = true
-
-[sub_resource type="Resource" id="Resource_ud5i1"]
-script = ExtResource("22_hgvnt")
-seconds = 3.0
-
-[sub_resource type="Resource" id="Resource_j7u0a"]
-script = ExtResource("19_pi4pe")
-z_index = 0
-index = 0
-is_party = true
-
-[sub_resource type="Resource" id="Resource_qor5q"]
-script = ExtResource("19_e6r1y")
-steps = Array[Resource("res://scenes/cut_scene/steps/step_base.gd")]([SubResource("Resource_f55xd"), SubResource("Resource_fq6vt"), SubResource("Resource_a4tqm"), SubResource("Resource_ob1i0"), SubResource("Resource_ua62s"), SubResource("Resource_mn3t7"), SubResource("Resource_ud5i1"), SubResource("Resource_j7u0a")])
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gmis7"]
 resource_local_to_scene = true
 shader = ExtResource("17_myhdx")
@@ -183,18 +132,71 @@ seconds = 1.0
 script = ExtResource("19_e6r1y")
 steps = Array[Resource("res://scenes/cut_scene/steps/step_base.gd")]([SubResource("Resource_ftv2g"), SubResource("Resource_nmbor"), SubResource("Resource_b51gh"), SubResource("Resource_gdbie"), SubResource("Resource_v335u"), SubResource("Resource_6xleo"), SubResource("Resource_ylu6y"), SubResource("Resource_w5e0n"), SubResource("Resource_nr4vs")])
 
-[node name="JakubApartment" node_paths=PackedStringArray("intro_cut_scene", "bubble_timer", "boxes_interactor", "sofa_interactable", "tv_interactable", "phone_interactable", "clock_interactable", "wardrobe_interactable", "door_interactable", "relax_cutscene", "sorted", "pos", "game_camera") instance=ExtResource("1_l0do0")]
+[sub_resource type="Resource" id="Resource_f55xd"]
+script = ExtResource("19_pi4pe")
+z_index = 1
+index = 0
+is_party = true
+
+[sub_resource type="Resource" id="Resource_fq6vt"]
+script = ExtResource("21_ew3yv")
+direction = 4
+anim = "idle"
+
+[sub_resource type="Resource" id="Resource_a4tqm"]
+script = ExtResource("22_hgvnt")
+seconds = 3.0
+
+[sub_resource type="Resource" id="Resource_ob1i0"]
+script = ExtResource("23_nve0r")
+chapter = 1
+list = Array[int]([7])
+delay = 0.0
+rand_pos = Vector2(0, 0)
+index = 0
+is_party = true
+
+[sub_resource type="Resource" id="Resource_ua62s"]
+script = ExtResource("22_hgvnt")
+seconds = 3.0
+
+[sub_resource type="Resource" id="Resource_mn3t7"]
+script = ExtResource("23_64kbr")
+direction = Vector2(80, 2.08165e-12)
+duration = 0.5
+animation_animate = true
+animation_anim_name = "move"
+index = 0
+is_party = true
+
+[sub_resource type="Resource" id="Resource_ud5i1"]
+script = ExtResource("22_hgvnt")
+seconds = 1.0
+
+[sub_resource type="Resource" id="Resource_j7u0a"]
+script = ExtResource("19_pi4pe")
+z_index = 0
+index = 0
+is_party = true
+
+[sub_resource type="Resource" id="Resource_qor5q"]
+script = ExtResource("19_e6r1y")
+steps = Array[Resource("res://scenes/cut_scene/steps/step_base.gd")]([SubResource("Resource_f55xd"), SubResource("Resource_fq6vt"), SubResource("Resource_a4tqm"), SubResource("Resource_ob1i0"), SubResource("Resource_ua62s"), SubResource("Resource_mn3t7"), SubResource("Resource_ud5i1"), SubResource("Resource_j7u0a")])
+
+[node name="JakubApartment" node_paths=PackedStringArray("intro_cut_scene", "bubble_timer", "boxes_interactor", "sofa_interactable", "sofa_conversation", "tv_interactable", "tv_conversation", "phone_interactable", "clock_interactable", "wardrobe_interactable", "door_interactable", "relax_cutscene", "sorted", "pos", "game_camera") instance=ExtResource("1_l0do0")]
 script = ExtResource("2_io7gp")
 intro_cut_scene = NodePath("CutScenes/IntroHouse")
 bubble_timer = NodePath("BubbleMessageTimer")
 boxes_interactor = NodePath("Sorted/BoxesInteractable")
 sofa_interactable = NodePath("Sorted/Sofa/SofaInteractor")
+sofa_conversation = NodePath("Sorted/Sofa/SofaConversation")
 tv_interactable = NodePath("Sorted/TV/TVInteractor")
+tv_conversation = NodePath("Sorted/TV/TVConversation")
 phone_interactable = NodePath("Sorted/Phone/PhoneInteractor")
 clock_interactable = NodePath("Sorted/Clock/ClockInteractor")
 wardrobe_interactable = NodePath("Sorted/Wardrobe/WarDrobeInteractor")
 door_interactable = NodePath("Sorted/Door/DoorInteractor")
-relax_cutscene = NodePath("Sorted/Sofa/RelaxCutScene")
+relax_cutscene = NodePath("CutScenes/RelaxCutScene")
 sorted = NodePath("Sorted")
 pos = NodePath("PlayerStartPos")
 game_camera = NodePath("GameCamera")
@@ -389,13 +391,6 @@ interactable = NodePath("../SofaInteractor")
 chapter = 1
 message_list = Array[int]([6])
 
-[node name="RelaxCutScene" parent="Sorted/Sofa" index="5" node_paths=PackedStringArray("initial_position") instance=ExtResource("18_kwm3y")]
-data = SubResource("Resource_qor5q")
-initial_position = [NodePath("Marker2D")]
-
-[node name="Marker2D" type="Marker2D" parent="Sorted/Sofa/RelaxCutScene" index="0"]
-position = Vector2(32, -158)
-
 [node name="Box4" parent="Sorted" index="23" instance=ExtResource("15_dqchd")]
 position = Vector2(1216, 1472)
 collision_mask = 1
@@ -421,6 +416,11 @@ offset_bottom = -329.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sorted/TV/TVInteractor" index="0"]
 position = Vector2(-96, -171)
 shape = SubResource("RectangleShape2D_f1j1d")
+
+[node name="TVConversation" parent="Sorted/TV" index="4" node_paths=PackedStringArray("interactable") instance=ExtResource("16_8prqg")]
+interactable = NodePath("../TVInteractor")
+chapter = 1
+message_list = Array[int]([6])
 
 [node name="Door" parent="Sorted" index="25" node_paths=PackedStringArray("interactable") instance=ExtResource("18_g5r67")]
 position = Vector2(576, 992)
@@ -450,6 +450,14 @@ camera_pos = NodePath("Marker2D")
 metadata/_edit_group_ = true
 
 [node name="Marker2D" type="Marker2D" parent="CutScenes/IntroHouse" index="0"]
+
+[node name="RelaxCutScene" parent="CutScenes" index="1" node_paths=PackedStringArray("initial_position") instance=ExtResource("18_kwm3y")]
+position = Vector2(768, 1440)
+data = SubResource("Resource_qor5q")
+initial_position = [NodePath("Marker2D")]
+
+[node name="Marker2D" type="Marker2D" parent="CutScenes/RelaxCutScene" index="0"]
+position = Vector2(32, -158)
 
 [editable path="Sorted/Clock"]
 [editable path="Sorted/Phone"]
