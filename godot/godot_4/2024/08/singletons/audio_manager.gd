@@ -14,9 +14,12 @@ func _ready() -> void:
 	game_settings.music_changed.connect(on_music_change)
 
 
-func play_music(next_music: AudioStream, volume_adjust: float = 0.0, duration: float = 0.3) -> void:
-	if not next_music: return
-
+func play_music(track_index: int, volume_adjust: float = 0.0, duration: float = 0.3) -> void:
+	if track_index < 0 or track_index >= MUSIC_LIST.size(): 
+		return
+	
+	var next_music = MUSIC_LIST[track_index]
+	
 	if not next_music == background_music.stream:
 		var tw = create_tween()
 		tw.tween_property(background_music, "volume_db", -80, duration)
