@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://glesdckbbcba"]
+
+[ext_resource type="Script" path="res://scenes/actor/base_actor/base_actor.gd" id="1_2yj78"]
+[ext_resource type="Script" path="res://scenes/actor/actor_data/actor_data.gd" id="2_3ck3n"]
+
+[sub_resource type="Resource" id="Resource_pof54"]
+script = ExtResource("2_3ck3n")
+acceleration = 0.1
+speed = 800.0
+jump_velocity = 1200.0
+land_friction = 1.0
+air_friction = 0.5
+
+[node name="BaseActor" type="CharacterBody2D"]
+script = ExtResource("1_2yj78")
+data = SubResource("Resource_pof54")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
