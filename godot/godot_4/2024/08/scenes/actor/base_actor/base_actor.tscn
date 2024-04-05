@@ -15,7 +15,8 @@ air_friction = 0.5
 script = ExtResource("1_2yj78")
 data = SubResource("Resource_pof54")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(2, 2)
+[node name="FlipEnabled" type="Node2D" parent="."]
+unique_name_in_owner = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="FlipEnabled"]
+scale = Vector2(2, 2)

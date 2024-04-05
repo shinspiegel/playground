@@ -1,19 +1,30 @@
-[gd_scene load_steps=5 format=3 uid="uid://b3y4ayg4a3myn"]
+[gd_scene load_steps=7 format=3 uid="uid://b3y4ayg4a3myn"]
 
 [ext_resource type="PackedScene" uid="uid://glesdckbbcba" path="res://scenes/actor/base_actor/base_actor.tscn" id="1_chlu2"]
 [ext_resource type="Texture2D" uid="uid://xwgu0hgnpv3p" path="res://icon.svg" id="1_ionjt"]
 [ext_resource type="Script" path="res://scenes/actor/player/player.gd" id="2_8ynni"]
+[ext_resource type="Script" path="res://scenes/actor/player/player_input.gd" id="3_tobpv"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_xgc6p"]
-size = Vector2(129, 128)
+[sub_resource type="CircleShape2D" id="CircleShape2D_ja5er"]
 
-[node name="Player" instance=ExtResource("1_chlu2")]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hqjok"]
+size = Vector2(128, 128)
+
+[node name="Player" node_paths=PackedStringArray("input") instance=ExtResource("1_chlu2")]
 script = ExtResource("2_8ynni")
+input = NodePath("PlayerInput")
 
-[node name="Sprite2D" parent="." index="0"]
+[node name="Sprite2D" parent="FlipEnabled" index="0"]
 position = Vector2(0, -64)
 texture = ExtResource("1_ionjt")
 
-[node name="CollisionShape2D" parent="." index="1"]
-position = Vector2(0.5, -64)
-shape = SubResource("RectangleShape2D_xgc6p")
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="FlipEnabled" index="1"]
+position = Vector2(96, -64)
+shape = SubResource("CircleShape2D_ja5er")
+
+[node name="PlayerInput" type="Node" parent="." index="1"]
+script = ExtResource("3_tobpv")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="." index="2"]
+position = Vector2(0, -64)
+shape = SubResource("RectangleShape2D_hqjok")
