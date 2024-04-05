@@ -99,3 +99,8 @@ func on_message_choosen(msg: MessageData, opt: String) -> void:
 		await CutSceneManager.ended
 		GameManager.change_to_world()
 
+	if msg.id == "1_12" and opt == "Yes":
+		# TODO: Prepare cut scene
+		await MessageManager.ended
+		pass
+

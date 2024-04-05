@@ -189,9 +189,9 @@ intro_cut_scene = NodePath("CutScenes/IntroHouse")
 bubble_timer = NodePath("BubbleMessageTimer")
 boxes_interactor = NodePath("Sorted/LivingRoom/Boxes/BoxesInteractable")
 sofa_interactable = NodePath("Sorted/LivingRoom/Sofa/SofaInteractor")
-sofa_conversation = NodePath("Sorted/LivingRoom/Sofa/SofaConversation")
+sofa_conversation = NodePath("Covnersation/SofaConversation")
 tv_interactable = NodePath("Sorted/LivingRoom/TV/TVInteractor")
-tv_conversation = NodePath("Sorted/LivingRoom/TV/TVConversation")
+tv_conversation = NodePath("Covnersation/TVConversation")
 phone_interactable = NodePath("Sorted/Kitchen/Phone/PhoneInteractor")
 clock_interactable = NodePath("Sorted/BedRoom/Clock/ClockInteractor")
 wardrobe_interactable = NodePath("Sorted/BedRoom/Wardrobe/WarDrobeInteractor")
@@ -300,11 +300,6 @@ interactable = NodePath("SofaInteractor")
 position = Vector2(64, -128)
 shape = SubResource("RectangleShape2D_uduor")
 
-[node name="SofaConversation" parent="Sorted/LivingRoom/Sofa" index="4" node_paths=PackedStringArray("interactable") instance=ExtResource("16_8prqg")]
-interactable = NodePath("../SofaInteractor")
-chapter = 1
-message_list = Array[int]([6])
-
 [node name="TVHack" parent="Sorted/LivingRoom" index="2" instance=ExtResource("15_dqchd")]
 position = Vector2(1216, 1472)
 collision_mask = 1
@@ -330,11 +325,6 @@ offset_bottom = -329.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sorted/LivingRoom/TV/TVInteractor" index="0"]
 position = Vector2(-96, -171)
 shape = SubResource("RectangleShape2D_f1j1d")
-
-[node name="TVConversation" parent="Sorted/LivingRoom/TV" index="4" node_paths=PackedStringArray("interactable") instance=ExtResource("16_8prqg")]
-interactable = NodePath("../TVInteractor")
-chapter = 1
-message_list = Array[int]([6])
 
 [node name="Door" parent="Sorted/LivingRoom" index="4" node_paths=PackedStringArray("interactable") instance=ExtResource("18_g5r67")]
 position = Vector2(576, 992)
@@ -479,6 +469,25 @@ initial_position = [NodePath("Marker2D")]
 
 [node name="Marker2D" type="Marker2D" parent="CutScenes/RelaxCutScene" index="0"]
 position = Vector2(32, -158)
+
+[node name="Covnersation" type="Node2D" parent="." index="8"]
+
+[node name="SofaConversation" parent="Covnersation" index="0" node_paths=PackedStringArray("interactable") instance=ExtResource("16_8prqg")]
+position = Vector2(768, 1440)
+interactable = NodePath("../../Sorted/LivingRoom/Sofa/SofaInteractor")
+chapter = 1
+message_list = Array[int]([6])
+
+[node name="TVConversation" parent="Covnersation" index="1" node_paths=PackedStringArray("interactable") instance=ExtResource("16_8prqg")]
+position = Vector2(1216, 1472)
+interactable = NodePath("../../Sorted/LivingRoom/TV/TVInteractor")
+chapter = 1
+message_list = Array[int]([6])
+
+[node name="PhoneConversation" parent="Covnersation" index="2" node_paths=PackedStringArray("interactable") instance=ExtResource("16_8prqg")]
+interactable = NodePath("../../Sorted/Kitchen/Phone/PhoneInteractor")
+chapter = 1
+message_list = Array[int]([9, 10])
 
 [editable path="Sorted/LivingRoom/Boxes/Box5"]
 [editable path="Sorted/LivingRoom/Boxes/Box3"]
