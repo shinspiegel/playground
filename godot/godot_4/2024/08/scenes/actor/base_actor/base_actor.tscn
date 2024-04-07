@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://glesdckbbcba"]
+[gd_scene load_steps=5 format=3 uid="uid://glesdckbbcba"]
 
 [ext_resource type="Script" path="res://scenes/actor/base_actor/base_actor.gd" id="1_2yj78"]
 [ext_resource type="Script" path="res://scenes/actor/actor_data/actor_data.gd" id="2_3ck3n"]
+[ext_resource type="Script" path="res://scenes/actor/state_machine/state_machine.gd" id="3_6wqjd"]
 
 [sub_resource type="Resource" id="Resource_pof54"]
 script = ExtResource("2_3ck3n")
@@ -11,12 +12,16 @@ jump_velocity = 1200.0
 land_friction = 1.0
 air_friction = 0.5
 
-[node name="BaseActor" type="CharacterBody2D"]
+[node name="BaseActor" type="CharacterBody2D" node_paths=PackedStringArray("state_machine")]
 script = ExtResource("1_2yj78")
 data = SubResource("Resource_pof54")
+state_machine = NodePath("StateMachine")
 
 [node name="FlipEnabled" type="Node2D" parent="."]
 unique_name_in_owner = true
 
 [node name="Sprite2D" type="Sprite2D" parent="FlipEnabled"]
 scale = Vector2(2, 2)
+
+[node name="StateMachine" type="Node2D" parent="."]
+script = ExtResource("3_6wqjd")
