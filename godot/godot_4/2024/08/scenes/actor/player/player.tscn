@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://glesdckbbcba" path="res://scenes/actor/base_actor/base_actor.tscn" id="1_chlu2"]
 [ext_resource type="Texture2D" uid="uid://xwgu0hgnpv3p" path="res://icon.svg" id="1_ionjt"]
 [ext_resource type="Script" path="res://scenes/actor/player/player.gd" id="2_8ynni"]
-[ext_resource type="Script" path="res://scenes/actor/player/player_input.gd" id="3_tobpv"]
+[ext_resource type="Script" path="res://scenes/actor/player/inputs/player_input.gd" id="3_tobpv"]
 [ext_resource type="Script" path="res://scenes/actor/player/states/idle.gd" id="4_cis2p"]
 [ext_resource type="Script" path="res://scenes/actor/player/states/move.gd" id="5_eblpi"]
 [ext_resource type="Script" path="res://scenes/actor/player/states/jump.gd" id="6_4yecm"]

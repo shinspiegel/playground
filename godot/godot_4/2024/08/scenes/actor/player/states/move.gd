@@ -7,7 +7,7 @@ func update(delta: float) -> void:
 		return
 
 	if actor.input.just_jump:
-		state_machine.change_state(MOVE)
+		state_machine.change_state(JUMP)
 		return
 
 	if actor.input.direction == 0.0:
