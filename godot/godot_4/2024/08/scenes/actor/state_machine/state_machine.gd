@@ -20,9 +20,6 @@ func change_state(state: String) -> void:
 		push_warning("invalid state")
 		return
 
-	if state == "Jump":
-		pass
-
 	if not states.get(state) == current:
 		if not current == null:
 			current.exit()
