@@ -1,8 +1,4 @@
-class_name PlayerInput extends Node
-
-@export var direction: float = 0.0
-@export var last_direction: float = 0.0
-@export var just_jump: bool = false
+class_name PlayerInput extends BaseInputs
 
 
 func _physics_process(_delta: float) -> void:

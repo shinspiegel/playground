@@ -9,6 +9,8 @@ signal sound_changed
 	set(value):
 		music_volume = value
 		music_changed.emit()
+		emit_changed()
+
 
 @export var sound_volume: float = 0.5:
 	get:
@@ -16,3 +18,4 @@ signal sound_changed
 	set(value):
 		sound_volume = value
 		sound_changed.emit()
+		emit_changed()
