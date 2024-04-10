@@ -4,10 +4,10 @@ extends PlayerState
 func update(delta: float) -> void:
 	if actor.is_on_floor():
 		if actor.input.direction == 0.0:
-			state_machine.change_state("Idle")
+			state_machine.change_state(IDLE)
 			return
 		else:
-			state_machine.change_state("Move")
+			state_machine.change_state(MOVE)
 			return
 
 	actor.apply_gravity(delta)
