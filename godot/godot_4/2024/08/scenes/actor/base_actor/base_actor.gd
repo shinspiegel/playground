@@ -2,6 +2,7 @@ class_name BaseActor extends CharacterBody2D
 
 @export var data: ActorData
 @export var input: BaseInputs
+@export var animation_player: AnimationPlayer
 @export var state_machine: StateMachine
 @onready var flip_enabled_node: Node2D = %FlipEnabled
 
@@ -30,3 +31,8 @@ func check_flip(direction: float) -> void:
 		if direction < 0 and facing_direction == 1:
 			flip_enabled_node.scale.x *= -1
 			facing_direction = -1
+
+
+func change_animation(anim: String) -> void:
+	if not animation_player.current_animation == anim:
+		animation_player.play(anim)

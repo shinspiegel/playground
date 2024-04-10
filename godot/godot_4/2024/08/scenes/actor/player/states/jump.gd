@@ -2,6 +2,7 @@ extends PlayerState
 
 
 func enter() -> void:
+	actor.change_animation(JUMP)
 	actor.apply_jump()
 
 

@@ -1,6 +1,10 @@
 extends PlayerState
 
 
+func enter() -> void:
+	actor.change_animation(FALLING)
+
+
 func update(delta: float) -> void:
 	if actor.is_on_floor():
 		if actor.input.direction == 0.0:

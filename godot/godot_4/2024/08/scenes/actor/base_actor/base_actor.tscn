@@ -12,16 +12,19 @@ jump_velocity = 1200.0
 land_friction = 1.0
 air_friction = 0.5
 
-[node name="BaseActor" type="CharacterBody2D" node_paths=PackedStringArray("state_machine")]
+[node name="BaseActor" type="CharacterBody2D" node_paths=PackedStringArray("animation_player", "state_machine")]
 script = ExtResource("1_2yj78")
 data = SubResource("Resource_pof54")
+animation_player = NodePath("AnimationPlayer")
 state_machine = NodePath("StateMachine")
 
 [node name="FlipEnabled" type="Node2D" parent="."]
 unique_name_in_owner = true
 
 [node name="Sprite2D" type="Sprite2D" parent="FlipEnabled"]
-scale = Vector2(2, 2)
+scale = Vector2(4, 4)
 
 [node name="StateMachine" type="Node2D" parent="."]
 script = ExtResource("3_6wqjd")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
