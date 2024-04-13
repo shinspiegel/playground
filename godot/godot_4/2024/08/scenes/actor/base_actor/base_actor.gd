@@ -18,6 +18,10 @@ func apply_jump() -> void:
 	velocity.y = -data.jump_velocity
 
 
+func set_y_velocity(y_value: float = 0.0) -> void:
+	velocity.y = y_value
+
+
 func apple_direction(direction: float, friction: float = 1.0, ratio: float = 1.0) -> void:
 	velocity.x = lerpf(velocity.x, direction * data.speed * friction * ratio, data.acceleration)
 	velocity.x = clamp(velocity.x, -data.speed, data.speed)

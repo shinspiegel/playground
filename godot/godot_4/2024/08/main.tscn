@@ -1,19 +1,26 @@
-[gd_scene load_steps=3 format=3 uid="uid://c74dnqqs41xag"]
+[gd_scene load_steps=4 format=3 uid="uid://c74dnqqs41xag"]
 
 [ext_resource type="PackedScene" uid="uid://b3y4ayg4a3myn" path="res://scenes/actor/player/player.tscn" id="1_g6rf1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ojh47"]
-size = Vector2(1960, 246)
+size = Vector2(489.5, 311)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_xq4u5"]
 
 [node name="Main" type="Node2D"]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(970, 969)
+position = Vector2(579, 890)
 shape = SubResource("RectangleShape2D_ojh47")
 
-[node name="Player" parent="." node_paths=PackedStringArray("input", "state_machine") instance=ExtResource("1_g6rf1")]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(970, 1041)
+shape = SubResource("WorldBoundaryShape2D_xq4u5")
+
+[node name="Player" parent="." node_paths=PackedStringArray("input", "animation_player", "state_machine") instance=ExtResource("1_g6rf1")]
 position = Vector2(994, 672)
 input = NodePath("PlayerInput")
+animation_player = NodePath("AnimationPlayer")
 state_machine = NodePath("StateMachine")
