@@ -26,6 +26,6 @@ func update(delta: float) -> void:
 			return
 
 	actor.apply_gravity(delta)
-	actor.apple_direction(actor.input.direction, actor.data.friction_land, actor.data.acceleration_jump)
+	actor.apple_direction(actor.input.direction, actor.data.friction_land, 0.05)
 	actor.move_and_slide()
 	actor.check_flip(actor.input.last_direction)

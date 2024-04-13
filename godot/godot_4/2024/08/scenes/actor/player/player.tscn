@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://b3y4ayg4a3myn"]
+[gd_scene load_steps=25 format=3 uid="uid://b3y4ayg4a3myn"]
 
 [ext_resource type="PackedScene" uid="uid://glesdckbbcba" path="res://scenes/actor/base_actor/base_actor.tscn" id="1_chlu2"]
 [ext_resource type="Script" path="res://scenes/actor/player/player.gd" id="2_8ynni"]
@@ -10,8 +10,10 @@
 [ext_resource type="Script" path="res://scenes/actor/player/states/falling.gd" id="7_on48n"]
 [ext_resource type="Script" path="res://scenes/actor/player/states/land.gd" id="8_l7r01"]
 [ext_resource type="Texture2D" uid="uid://bin084ocb6bp3" path="res://assets/graphics/Asset Packs 1-5 2/Asset Pack-V1/Player Run/player run 48x48.png" id="8_xgs7x"]
+[ext_resource type="Script" path="res://scenes/actor/player/states/jab.gd" id="9_2aao3"]
 [ext_resource type="Texture2D" uid="uid://bom3f5bdmsw1i" path="res://assets/graphics/Asset Packs 1-5 2/Asset Pack-V1/Player Jump/player jump 48x48.png" id="9_nh46m"]
 [ext_resource type="Texture2D" uid="uid://c2jhphg1k2kg3" path="res://assets/graphics/Asset Packs 1-5 2/Asset Pack-V1/Player Land/player land 48x48.png" id="11_k0dr0"]
+[ext_resource type="Texture2D" uid="uid://bo8ev2yncu7p4" path="res://assets/graphics/Asset Packs 1-5 2/Asset Pack-V4/Player Punch Jab/Player Jab 48x48.png" id="12_h0vda"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ja5er"]
 
@@ -328,10 +330,64 @@ tracks/3/keys = {
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8]
 }
 
+[sub_resource type="Animation" id="Animation_b5v3t"]
+resource_name = "Jab"
+length = 0.5
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FlipEnabled/Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("12_h0vda")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FlipEnabled/Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [10]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("FlipEnabled/Sprite2D:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("FlipEnabled/Sprite2D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lkjk6"]
 _data = {
 "Falling": SubResource("Animation_qdu0g"),
 "Idle": SubResource("Animation_sxtm6"),
+"Jab": SubResource("Animation_b5v3t"),
 "Jump": SubResource("Animation_lo4w7"),
 "Land": SubResource("Animation_6rbrt"),
 "Move": SubResource("Animation_n61s8"),
@@ -380,6 +436,9 @@ actor = NodePath("../..")
 script = ExtResource("8_l7r01")
 anim_player = NodePath("../../AnimationPlayer")
 actor = NodePath("../..")
+
+[node name="Jab" type="Node2D" parent="StateMachine" index="5"]
+script = ExtResource("9_2aao3")
 
 [node name="AnimationPlayer" parent="." index="2"]
 libraries = {
