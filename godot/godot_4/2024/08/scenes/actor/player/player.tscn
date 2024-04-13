@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://b3y4ayg4a3myn"]
+[gd_scene load_steps=28 format=3 uid="uid://b3y4ayg4a3myn"]
 
 [ext_resource type="PackedScene" uid="uid://glesdckbbcba" path="res://scenes/actor/base_actor/base_actor.tscn" id="1_chlu2"]
 [ext_resource type="Script" path="res://scenes/actor/player/player.gd" id="2_8ynni"]
@@ -12,8 +12,10 @@
 [ext_resource type="Texture2D" uid="uid://bin084ocb6bp3" path="res://assets/graphics/Asset Packs 1-5 2/Asset Pack-V1/Player Run/player run 48x48.png" id="8_xgs7x"]
 [ext_resource type="Script" path="res://scenes/actor/player/states/jab.gd" id="9_2aao3"]
 [ext_resource type="Texture2D" uid="uid://bom3f5bdmsw1i" path="res://assets/graphics/Asset Packs 1-5 2/Asset Pack-V1/Player Jump/player jump 48x48.png" id="9_nh46m"]
+[ext_resource type="Script" path="res://scenes/actor/player/states/roll.gd" id="10_eo2x5"]
 [ext_resource type="Texture2D" uid="uid://c2jhphg1k2kg3" path="res://assets/graphics/Asset Packs 1-5 2/Asset Pack-V1/Player Land/player land 48x48.png" id="11_k0dr0"]
 [ext_resource type="Texture2D" uid="uid://bo8ev2yncu7p4" path="res://assets/graphics/Asset Packs 1-5 2/Asset Pack-V4/Player Punch Jab/Player Jab 48x48.png" id="12_h0vda"]
+[ext_resource type="Texture2D" uid="uid://bvm7fdslgx4b7" path="res://assets/graphics/Asset Packs 1-5 2/Asset Pack-V2/Player Roll/Player Roll 48x48.png" id="14_75iv5"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ja5er"]
 
@@ -383,6 +385,58 @@ tracks/3/keys = {
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 }
 
+[sub_resource type="Animation" id="Animation_g0ley"]
+resource_name = "Roll"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FlipEnabled/Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("14_75iv5")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FlipEnabled/Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [7]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("FlipEnabled/Sprite2D:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("FlipEnabled/Sprite2D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lkjk6"]
 _data = {
 "Falling": SubResource("Animation_qdu0g"),
@@ -391,10 +445,11 @@ _data = {
 "Jump": SubResource("Animation_lo4w7"),
 "Land": SubResource("Animation_6rbrt"),
 "Move": SubResource("Animation_n61s8"),
-"RESET": SubResource("Animation_b6rgr")
+"RESET": SubResource("Animation_b6rgr"),
+"Roll": SubResource("Animation_g0ley")
 }
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_urqk7"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_w1uad"]
 radius = 24.0
 height = 128.0
 
@@ -442,6 +497,11 @@ script = ExtResource("9_2aao3")
 anim_player = NodePath("../../AnimationPlayer")
 actor = NodePath("../..")
 
+[node name="Roll" type="Node2D" parent="StateMachine" index="6" node_paths=PackedStringArray("anim_player", "actor")]
+script = ExtResource("10_eo2x5")
+anim_player = NodePath("../../AnimationPlayer")
+actor = NodePath("../..")
+
 [node name="AnimationPlayer" parent="." index="2"]
 libraries = {
 "": SubResource("AnimationLibrary_lkjk6")
@@ -452,4 +512,4 @@ script = ExtResource("3_tobpv")
 
 [node name="BodyShape" type="CollisionShape2D" parent="." index="4"]
 position = Vector2(0, -64)
-shape = SubResource("CapsuleShape2D_urqk7")
+shape = SubResource("CapsuleShape2D_w1uad")

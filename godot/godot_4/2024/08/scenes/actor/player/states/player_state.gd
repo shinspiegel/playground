@@ -6,6 +6,7 @@ const JUMP = "Jump"
 const FALLING = "Falling"
 const LAND = "Land"
 const JAB = "Jab"
+const ROLL = "Roll"
 
 @export var actor: Player
 

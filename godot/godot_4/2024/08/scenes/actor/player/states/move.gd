@@ -6,6 +6,10 @@ func enter() -> void:
 
 
 func update(delta: float) -> void:
+	if actor.is_on_floor() and actor.input.roll:
+		state_machine.change_state(ROLL)
+		return
+
 	if actor.is_on_floor() and actor.input.attack:
 		state_machine.change_state(JAB)
 		return
