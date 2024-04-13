@@ -437,8 +437,10 @@ script = ExtResource("8_l7r01")
 anim_player = NodePath("../../AnimationPlayer")
 actor = NodePath("../..")
 
-[node name="Jab" type="Node2D" parent="StateMachine" index="5"]
+[node name="Jab" type="Node2D" parent="StateMachine" index="5" node_paths=PackedStringArray("anim_player", "actor")]
 script = ExtResource("9_2aao3")
+anim_player = NodePath("../../AnimationPlayer")
+actor = NodePath("../..")
 
 [node name="AnimationPlayer" parent="." index="2"]
 libraries = {

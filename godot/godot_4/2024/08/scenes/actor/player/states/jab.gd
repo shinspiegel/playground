@@ -4,6 +4,7 @@ extends PlayerState
 
 var repeat: bool = false
 
+
 func _ready() -> void:
 	anim_player.animation_finished.connect(on_anim_finished)
 
@@ -24,4 +25,9 @@ func update(delta: float) -> void:
 
 func on_anim_finished(anim: String) -> void:
 	if anim == JAB:
-		state_machine.change_state(IDLE)
+		if repeat:
+			anim_player.play(JAB)
+			repeat = false
+
+		else:
+			state_machine.change_state(IDLE)

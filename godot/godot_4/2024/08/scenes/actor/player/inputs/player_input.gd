@@ -10,7 +10,7 @@ func _physics_process(_delta: float) -> void:
 	direction = Input.get_axis(LEFT, RIGHT)
 	just_jump = Input.is_action_just_pressed(JUMP)
 	just_release_jump = Input.is_action_just_released(JUMP)
-	attack = Input.is_action_pressed(JAB)
+	attack = Input.is_action_just_pressed(JAB)
 
 	if direction != 0.0:
 		last_direction = direction
