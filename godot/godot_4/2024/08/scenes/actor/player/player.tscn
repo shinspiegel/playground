@@ -282,8 +282,9 @@ _data = {
 "RESET": SubResource("Animation_b6rgr")
 }
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_hqjok"]
-size = Vector2(48, 128)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_urqk7"]
+radius = 24.0
+height = 128.0
 
 [node name="Player" node_paths=PackedStringArray("input", "animation_player", "state_machine") instance=ExtResource("1_chlu2")]
 script = ExtResource("2_8ynni")
@@ -329,4 +330,4 @@ script = ExtResource("3_tobpv")
 
 [node name="BodyShape" type="CollisionShape2D" parent="." index="4"]
 position = Vector2(0, -64)
-shape = SubResource("RectangleShape2D_hqjok")
+shape = SubResource("CapsuleShape2D_urqk7")

@@ -4,9 +4,15 @@ extends PlayerState
 func enter() -> void:
 	actor.change_animation(JUMP)
 	actor.apply_jump()
+	# INFO: Neeeds to have the movement applied on the enter
+	actor.move_and_slide()
 
 
 func update(delta: float) -> void:
+	if actor.input.just_release_jump:
+		actor.set_y_velocity(0.0)
+		return
+
 	if actor.velocity.y > 0:
 		state_machine.change_state(FALLING)
 		return
