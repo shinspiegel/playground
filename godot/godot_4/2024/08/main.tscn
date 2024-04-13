@@ -20,7 +20,7 @@ position = Vector2(970, 1041)
 shape = SubResource("WorldBoundaryShape2D_xq4u5")
 
 [node name="Player" parent="." node_paths=PackedStringArray("input", "animation_player", "state_machine") instance=ExtResource("1_g6rf1")]
-position = Vector2(994, 672)
+position = Vector2(964, 885)
 input = NodePath("PlayerInput")
 animation_player = NodePath("AnimationPlayer")
 state_machine = NodePath("StateMachine")
