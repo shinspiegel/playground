@@ -4,6 +4,7 @@ const IDLE = "Idle"
 const MOVE = "Move"
 const JUMP = "Jump"
 const FALLING = "Falling"
+const LAND = "Land"
 
 @export var actor: Player
 
