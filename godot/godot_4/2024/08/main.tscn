@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://c74dnqqs41xag"]
+[gd_scene load_steps=5 format=3 uid="uid://c74dnqqs41xag"]
 
 [ext_resource type="PackedScene" uid="uid://b3y4ayg4a3myn" path="res://scenes/actor/player/player.tscn" id="1_g6rf1"]
+[ext_resource type="PackedScene" uid="uid://bx17aiwt0uqrx" path="res://scenes/debug_overlay/debug.tscn" id="2_vei06"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ojh47"]
 size = Vector2(489.5, 311)
@@ -19,9 +20,15 @@ shape = SubResource("RectangleShape2D_ojh47")
 position = Vector2(970, 1041)
 shape = SubResource("WorldBoundaryShape2D_xq4u5")
 
-[node name="Player" parent="." node_paths=PackedStringArray("input", "animation_player", "state_machine") instance=ExtResource("1_g6rf1")]
+[node name="Player" parent="." node_paths=PackedStringArray("input", "jump_buffer_cast", "coyote_timer", "animation_player", "state_machine") instance=ExtResource("1_g6rf1")]
 position = Vector2(964, 885)
 input = NodePath("PlayerInput")
 power_ups = null
+jump_buffer_cast = NodePath("JumpBufferCast2D")
+coyote_timer = NodePath("CoyoteTimer")
 animation_player = NodePath("AnimationPlayer")
 state_machine = NodePath("StateMachine")
+
+[node name="DEBUG" parent="." node_paths=PackedStringArray("player", "label") instance=ExtResource("2_vei06")]
+player = NodePath("../Player")
+label = NodePath("Control/VBoxContainer/Label")

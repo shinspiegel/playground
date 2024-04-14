@@ -1,6 +1,6 @@
 extends PlayerState
 
-@export var dist_to_land: int = 600
+@export var dist_to_land: int = 800
 
 var start_pos: Vector2 = Vector2.ZERO
 

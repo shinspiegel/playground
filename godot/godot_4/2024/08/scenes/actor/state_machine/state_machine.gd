@@ -1,5 +1,7 @@
 class_name StateMachine extends Node2D
 
+signal state_changed(state: String)
+
 @export var initial_state: BaseState
 
 var states: Dictionary
@@ -26,7 +28,7 @@ func change_state(state: String) -> void:
 
 		current = states.get(state)
 		current.enter()
-
+		state_changed.emit(state)
 
 
 func __load_child_states() -> void:

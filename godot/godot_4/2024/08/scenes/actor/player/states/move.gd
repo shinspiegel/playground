@@ -14,11 +14,11 @@ func update(delta: float) -> void:
 		state_machine.change_state(JAB)
 		return
 
-	if not actor.is_on_floor():
+	if actor.should_fall():
 		state_machine.change_state(FALLING)
 		return
 
-	if actor.input.just_jump:
+	if actor.input.just_jump and actor.can_jump():
 		state_machine.change_state(JUMP)
 		return
 
@@ -26,7 +26,9 @@ func update(delta: float) -> void:
 		state_machine.change_state(IDLE)
 		return
 
-	actor.apply_gravity(delta)
+	if actor.should_fall():
+		actor.apply_gravity(delta)
+
 	actor.apple_direction(actor.input.direction, actor.data.friction_land, 0.1)
 	actor.move_and_slide()
 	actor.check_flip(actor.input.last_direction)

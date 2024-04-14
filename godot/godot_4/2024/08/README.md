@@ -25,7 +25,7 @@
 		- [ ] Landing (4 frames)
 	- Mechanics
 		- [x] Jump buffer
-		- [ ] Coyote-time
+		- [x] Coyote-time
 		- [ ] Shoot (slow time)
 		- [ ] Create block
 		- [ ] Dash
