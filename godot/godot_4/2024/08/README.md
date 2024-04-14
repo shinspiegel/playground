@@ -25,14 +25,14 @@
 - [ ] Landing (4 frames)
 
 
-- [ ] Arrow
-	- [ ] Arrow extra damage
-- [ ] Create block
-	- [ ] More resistent
-	- [ ] Damageable
-- [ ] Forward dash
-	- [ ] Dash invulnerability
-	- [ ] Dash damage
+- [ ] Arrow (1 frame)
+	- [ ] Arrow extra damage (1 frame)
+- [ ] Create block (4 frames)
+	- [ ] More resistent (1 frame)
+	- [ ] Damageable (1 frame)
+- [ ] Forward dash (4 frames for starting, 2 frames for final)
+	- [ ] Dash invulnerability (2 frames)
+	- [ ] Dash damage (2 frames)
 
 
 - Mechanics
@@ -149,6 +149,13 @@ Needs to collect batteries on the map and add on the eruption protection device.
 # Enemies
 
 - [ ] Design
+
+- Walker (just walk from side to side and idle in between)
+- Defender / Tank (holds something to protect, avoids damage)
+- Shooter (does not move, shoot on invervals)
+- Sniper (wanders, if player in sight, shoot)
+- Medusa head (floats on screen, ignore tilemap)
+- Hovering (hovers and drops bombs)
 
 
 # Game Story
