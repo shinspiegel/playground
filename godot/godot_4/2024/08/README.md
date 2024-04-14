@@ -119,6 +119,11 @@ Needs to collect batteries on the map and add on the eruption protection device.
 
 ## Demon King castle
 
+- [ ] Story
+- [ ] Tilemap
+- [ ] Level design
+
+<!-- TODO: Create description -->
 
 
 # Enemies
@@ -131,8 +136,8 @@ Needs to collect batteries on the map and add on the eruption protection device.
 - [x] Story
 
 The demon king stole the soul of alchemist wife and will use to make the human domination spell to have all the human as his slaves.
-
 Use the present day setting for the scenario with mixture of fantastical and magical themes.
+The demon king is the main character itself who went back in time to save his wife soul in the detriment of the city.
 
 
 ## Pitch Elevator
@@ -144,7 +149,8 @@ Use the present day setting for the scenario with mixture of fantastical and mag
 
 - [x] Game flow
 
-Alchemist needs to run over 3 levels to collect each a alchemist power.
+Alchemist needs to run over 3 levels to collect to solve problems on each area.
+Every problem solved can acquire a power up.
 On each level there is a pathway that can only be accesible with the usage of a alchemist power.
 
 Last level should face a boss. 
