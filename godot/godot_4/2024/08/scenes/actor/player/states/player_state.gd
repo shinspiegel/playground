@@ -14,3 +14,4 @@ const ROLL = "Roll"
 func _ready() -> void:
 	if actor == null:
 		push_error("missing player actor node")
+

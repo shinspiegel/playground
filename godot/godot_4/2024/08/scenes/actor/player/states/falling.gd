@@ -23,6 +23,10 @@ func update(delta: float) -> void:
 			state_machine.change_state(MOVE)
 			return
 
+	if actor.can_jump() and actor.input.just_jump:
+		state_machine.change_state(JUMP)
+		return
+
 	actor.apply_gravity(delta)
 	actor.apple_direction(actor.input.direction, actor.data.friction_air, 0.05)
 	actor.move_and_slide()

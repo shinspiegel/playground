@@ -454,10 +454,11 @@ _data = {
 radius = 24.0
 height = 128.0
 
-[node name="Player" node_paths=PackedStringArray("input", "animation_player", "state_machine") instance=ExtResource("1_chlu2")]
+[node name="Player" node_paths=PackedStringArray("input", "jump_buffer_cast", "animation_player", "state_machine") instance=ExtResource("1_chlu2")]
 script = ExtResource("2_8ynni")
 input = NodePath("PlayerInput")
 power_ups = ExtResource("3_75gay")
+jump_buffer_cast = NodePath("JumpBufferCast2D")
 animation_player = NodePath("AnimationPlayer")
 state_machine = NodePath("StateMachine")
 
@@ -515,3 +516,10 @@ script = ExtResource("3_tobpv")
 [node name="BodyShape" type="CollisionShape2D" parent="." index="4"]
 position = Vector2(0, -64)
 shape = SubResource("CapsuleShape2D_w1uad")
+
+[node name="JumpBufferCast2D" type="RayCast2D" parent="." index="5"]
+target_position = Vector2(2.08165e-12, 64)
+
+[node name="CoyoteTimer" type="Timer" parent="." index="6"]
+wait_time = 5.0
+one_shot = true

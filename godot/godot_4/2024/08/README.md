@@ -24,7 +24,7 @@
 		- [ ] Jump / Falling (2 frames / 1 frame)
 		- [ ] Landing (4 frames)
 	- Mechanics
-		- [ ] Jump buffer
+		- [x] Jump buffer
 		- [ ] Coyote-time
 		- [ ] Shoot (slow time)
 		- [ ] Create block
