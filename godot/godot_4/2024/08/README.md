@@ -87,6 +87,7 @@ Close gaps that jump can't
 - [x] Plan
 - [ ] Tilemap
 - [ ] Level design
+- [ ] Enemies idea
 
 In this sacret forest protected by humanity from the influence of the demon king.
 Now felt in hands and the mind control of the demon king, needs to destroy his creatures and preseve the sacret deer.
@@ -104,6 +105,7 @@ Needs to destroy the mind-control device in the forest while hords of enemies ap
 - [x] Plan
 - [ ] Tilemap
 - [ ] Level design
+- [ ] Enemies idea
 
 On the calm beachs the energy production is created from the water waves.
 The demon king used his minions to convert the energy into his power to dominate the minds of his vassals.
@@ -121,6 +123,7 @@ Needs to remove the tendrils from the wave generators. Each generator is on a di
 - [ ] Plan
 - [ ] Tilemap
 - [ ] Level design
+- [ ] Enemies idea
 
 The biggest mountain in the whole region, it's a natural treasure and fear.
 With the usage of the magic and techonology this vuldano mountain is kept under control.
@@ -138,6 +141,7 @@ Needs to collect batteries on the map and add on the eruption protection device.
 - [ ] Story
 - [ ] Tilemap
 - [ ] Level design
+- [ ] Enemies idea
 
 <!-- TODO: Create description -->
 
