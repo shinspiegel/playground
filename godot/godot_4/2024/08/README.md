@@ -83,6 +83,21 @@ Needs to destroy the mind-control device in the forest while hords of enemies ap
 
 ## Wave power generation (Beach)
 
+- [x] Story
+- [x] Plan
+- [ ] Tilemap
+- [ ] Level design
+
+On the calm beachs the energy production is created from the water waves.
+The demon king used his minions to convert the energy into his power to dominate the minds of his vassals.
+Needs to remove the tendrils from the wave generators. Each generator is on a differnt part of the map.
+
+- Power Ups Upgrades:
+	- **Ranged Attack**: Shot increased damage
+	- **Create Block**: Damage block recover life
+	- **Forward Dash**: Deal damage on the path
+
+
 ## Vulcano Level (Vulcano)
 
 ## Demon King castle
