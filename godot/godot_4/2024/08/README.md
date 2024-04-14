@@ -1,9 +1,6 @@
 # Summary 
 
 - [Power ups](/power-ups)
-	- [Ranged Attack](/ranged-attack)
-	- [Create Block](/create-block)
-	- [Forward Dash](/forward-dash)
 - [Main Character](/main-character)
 - [Power Ups][(/power-ups)
 - [Levels](/levels)
@@ -28,6 +25,10 @@
 - [ ] Jump buffer
 
 
+<!-- TODO: Create description -->
+<!-- TODO: Artwork -->
+<!-- TODO: Extra gameplay mechanics -->
+
 # Power Ups
 
 ## Ranged Attack
@@ -35,9 +36,9 @@
 Can interact with distant objects
 
 - Upgrades
-	- [ ] Shoot increase damage (more than Jab)
-	- [ ] Increase distance (whole screen)
-	- [ ] Shot 3 projectiles
+	- [ ] Increase distance (whole screen) #Forest
+	- [ ] Shoot increase damage (more than Jab) # Beach
+	- [ ] Shot 3 projectiles #Vulcano
 
 
 ## Create Block
@@ -45,9 +46,9 @@ Can interact with distant objects
 Can be place to move on it
 
 - Upgrades
-	- [ ] Can create two at the same time
-	- [ ] The block have extra life
-	- [ ] Anything that damages the block recover your life
+	- [ ] The block have extra life #Forest
+	- [ ] Anything that damages the block recover your life #Beach
+	- [ ] Can create two at the same time #Vuldano
 
 
 ## Forward Dash
@@ -55,9 +56,9 @@ Can be place to move on it
 Close gaps that jump can't
 
 - Upgrades
-	- [ ] Gain invulnerability on the dash
-	- [ ] Deal damage on the path
-	- [ ] Reduced colddown
+	- [ ] Gain invulnerability on the dash #Forest
+	- [ ] Deal damage on the path #Beach
+	- [ ] Reduced colddown #Vulcano
 
 
 # Levels
