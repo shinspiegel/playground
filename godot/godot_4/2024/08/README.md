@@ -26,7 +26,6 @@
 ## Keyboard (All)
 
 All mapped keys, to be used with Arrows or VIM movement or WASD.
-For each specific keymaps there is a section for each how it's suggested to use.
 
 - **Movement**: Arrows, HJKL (Vim), WASD
 - **Jump**: Space, Up on movement
@@ -95,6 +94,9 @@ For each specific keymaps there is a section for each how it's suggested to use.
 
 
 - Mechanics
+- [ ] Shoot (slow time)
+- [ ] Create block
+- [ ] Dash
 - [ ] Coyote-time
 - [ ] Jump buffer
 
