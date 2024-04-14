@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://f74ro42tsoby"]
+
+[ext_resource type="Script" path="res://scenes/actor/player/player_shot/player_shot.gd" id="1_51rmj"]
+[ext_resource type="Texture2D" uid="uid://dovewtuchy5a1" path="res://assets/graphics/template/size_template.png" id="1_ty7ef"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fh5t8"]
+atlas = ExtResource("1_ty7ef")
+region = Rect2(51, 19, 10, 10)
+
+[node name="PlayerShot" type="Node2D" node_paths=PackedStringArray("movable", "notifier")]
+script = ExtResource("1_51rmj")
+movable = NodePath("Movable")
+notifier = NodePath("Movable/VisibleOnScreenNotifier2D")
+metadata/_edit_group_ = true
+
+[node name="Movable" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Movable"]
+scale = Vector2(4, 4)
+texture = SubResource("AtlasTexture_fh5t8")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="Movable"]
+rect = Rect2(-20, -20, 40, 40)
