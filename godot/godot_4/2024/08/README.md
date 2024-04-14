@@ -1,12 +1,13 @@
 # Summary 
 
-- [Power ups](/power-ups)
-- [Main Character](/main-character)
-- [Power Ups][(/power-ups)
-- [Levels](/levels)
-- [Enemies](/enemies)
-- [Game Flow Overview](/game-flow-overview)
-- [Game Story](/game-story)
+- [Controls](#controls)
+- [Main Character](#main-character)
+- [Power ups](#power-ups)
+- [Power Ups][(#power-ups)
+- [Levels](#levels)
+- [Enemies](#enemies)
+- [Game Flow Overview](#game-flow-overview)
+- [Game Story](#game-story)
 
 
 # Main Character
