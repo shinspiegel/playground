@@ -73,9 +73,9 @@ Close gaps that jump can't
 
 In this sacret forest protected by humanity from the influence of the demon king.
 Now felt in hands and the mind control of the demon king, needs to destroy his creatures and preseve the sacret deer.
-Needs to destroy the mind-control device in the forest
+Needs to destroy the mind-control device in the forest while hords of enemies appear.
 
-- Power Ups on this level
+- Power Ups Upgrades:
 	- **Ranged Attack**: Increase Distance
 	- **Create Block**: Extra life
 	- **Forward Dash**: Forest
