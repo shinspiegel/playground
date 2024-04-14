@@ -100,6 +100,22 @@ Needs to remove the tendrils from the wave generators. Each generator is on a di
 
 ## Vulcano Level (Vulcano)
 
+- [ ] Story
+- [ ] Plan
+- [ ] Tilemap
+- [ ] Level design
+
+The biggest mountain in the whole region, it's a natural treasure and fear.
+With the usage of the magic and techonology this vuldano mountain is kept under control.
+The demon king is trying to make the vulcano to erupt for evildoing things.
+Needs to collect batteries on the map and add on the eruption protection device.
+
+- Power Ups Upgrades:
+	- **Ranged Attack**: Shot 3 projectiles
+	- **Create Block**: Create extra block
+	- **Forward Dash**: Reduced colddown
+
+
 ## Demon King castle
 
 
