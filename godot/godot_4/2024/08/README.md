@@ -11,6 +11,8 @@
 
 # Controls
 
+- [x] Define controls
+
 ## Joystick
 
 - **Movement**: Left Stick or D-pad
@@ -21,15 +23,50 @@
 - **Create Block**: Triangle
 - **Forward Dash**: L1/L2 
 
-## Keyboard
+## Keyboard (All)
 
-- **Movement**: Arrows, HJKL (Vim), WASD (fps)
+All mapped keys, to be used with Arrows or VIM movement or WASD.
+For each specific keymaps there is a section for each how it's suggested to use.
+
+- **Movement**: Arrows, HJKL (Vim), WASD
 - **Jump**: Space, Up on movement
 - **Roll**: C or P (qwerty or equivalent in other layouts)
 - **Jab**: Z or I (qwerty or equivalent in other layouts)
 - **Ranged Attack**: Hold Shift (aim) and release Shift (shoot)
 - **Create Block**: X or O (qwerty or equivalent in other layouts)
 - **Forward Dash**: V or U (qwerty or equivalent in other layouts) 
+
+<small>Letter keys are position on the QUERTY, same position applies for other latouts</small>
+
+### Keyboard (Arrows)
+
+- **Movement**: Arrows
+- **Jump**: Space, Arrow Up
+- **Roll**: C
+- **Jab**: Z
+- **Ranged Attack**: Hold Shift (aim) and release Shift (shoot)
+- **Create Block**: X
+- **Forward Dash**: V
+
+### Keyboard (VIM)
+
+- **Movement**: HJKL
+- **Jump**: Space, K
+- **Roll**: C
+- **Jab**: Z
+- **Ranged Attack**: Hold Shift (aim) and release Shift (shoot)
+- **Create Block**: X
+- **Forward Dash**: V
+
+### Keyboard (WASD)
+
+- **Movement**: WASD
+- **Jump**: Space, W
+- **Roll**: P
+- **Jab**: I
+- **Ranged Attack**: Hold Shift (aim) and release Shift (shoot)
+- **Create Block**: O
+- **Forward Dash**: U
 
 # Main Character
 
