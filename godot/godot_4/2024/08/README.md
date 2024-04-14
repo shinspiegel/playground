@@ -64,10 +64,29 @@ Close gaps that jump can't
 
 - [ ] Create base idea
 
-Forest Level
-Beach Level
-Vulcano Level
-Castle Level
+## Sacret Deer Forest (Forest)
+
+- [x] Story
+- [x] Plan
+- [ ] Tilemap
+- [ ] Level design
+
+In this sacret forest protected by humanity from the influence of the demon king.
+Now felt in hands and the mind control of the demon king, needs to destroy his creatures and preseve the sacret deer.
+Needs to destroy the mind-control device in the forest
+
+- Power Ups on this level
+	- **Ranged Attack**: Increase Distance
+	- **Create Block**: Extra life
+	- **Forward Dash**: Forest
+
+
+## Wave power generation (Beach)
+
+## Vulcano Level (Vulcano)
+
+## Demon King castle
+
 
 
 # Enemies
