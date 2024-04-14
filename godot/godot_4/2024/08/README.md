@@ -75,6 +75,20 @@ Castle Level
 - [ ] Design
 
 
+# Game Story
+
+- [x] Story
+
+The demon king stole the soul of alchemist wife and will use to make the human domination spell to have all the human as his slaves.
+
+Use the present day setting for the scenario with mixture of fantastical and magical themes.
+
+
+## Pitch Elevator
+
+"In a world of magic and technology an alchemist needs to save his wife soul to prevent the demon king from enslave the whole humanity in this platformer action game"
+
+
 # Game Flow Overwiew
 
 - [x] Game flow
@@ -86,6 +100,3 @@ Last level should face a boss.
 On boss level should use all the collected alchemist power to complete the level.
 The boss have 3 states, on each it's vulnerable to a single power usage.
 
-# Game Story
-
-- [ ] Story
