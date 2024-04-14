@@ -11,9 +11,12 @@
 
 # Main Character
 
+- Design
 - [ ] Descriptions
 - [ ] Design
 
+
+- Artwork
 - [ ] Idle (4 frames)
 - [ ] Move / Run (8 frames)
 - [ ] Jab (6 frames)
@@ -21,6 +24,18 @@
 - [ ] Jump / Falling (2 frames / 1 frame)
 - [ ] Landing (4 frames)
 
+
+- [ ] Arrow
+	- [ ] Arrow extra damage
+- [ ] Create block
+	- [ ] More resistent
+	- [ ] Damageable
+- [ ] Forward dash
+	- [ ] Dash invulnerability
+	- [ ] Dash damage
+
+
+- Mechanics
 - [ ] Coyote-time
 - [ ] Jump buffer
 
@@ -28,6 +43,7 @@
 <!-- TODO: Create description -->
 <!-- TODO: Artwork -->
 <!-- TODO: Extra gameplay mechanics -->
+
 
 # Power Ups
 
