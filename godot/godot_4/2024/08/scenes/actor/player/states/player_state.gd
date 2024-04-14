@@ -7,6 +7,8 @@ const FALLING = "Falling"
 const LAND = "Land"
 const JAB = "Jab"
 const ROLL = "Roll"
+const RANGED_AIM = "RangedAim"
+const RANGED_SHOT = "RangedShot"
 
 @export var actor: Player
 

@@ -21,7 +21,7 @@ position = Vector2(970, 1041)
 shape = SubResource("WorldBoundaryShape2D_xq4u5")
 
 [node name="Player" parent="." node_paths=PackedStringArray("input", "jump_buffer_cast", "coyote_timer", "animation_player", "state_machine") instance=ExtResource("1_g6rf1")]
-position = Vector2(964, 885)
+position = Vector2(653, 734)
 input = NodePath("PlayerInput")
 power_ups = null
 jump_buffer_cast = NodePath("JumpBufferCast2D")
