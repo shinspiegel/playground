@@ -9,6 +9,27 @@
 - [Game Flow Overview](#game-flow-overview)
 - [Game Story](#game-story)
 
+# Controls
+
+## Joystick
+
+- **Movement**: Left Stick or D-pad
+- **Roll**: Circle
+- **Jump**: Cross
+- **Jab**: Square
+- **Ranged Attack**: Hold R1/R2 (aim) and Release R1/R2 (shoot)
+- **Create Block**: Triangle
+- **Forward Dash**: L1/L2 
+
+## Keyboard
+
+- **Movement**: Arrows, HJKL (Vim), WASD (fps)
+- **Jump**: Space, Up on movement
+- **Roll**: C or P (qwerty or equivalent in other layouts)
+- **Jab**: Z or I (qwerty or equivalent in other layouts)
+- **Ranged Attack**: Hold Shift (aim) and release Shift (shoot)
+- **Create Block**: X or O (qwerty or equivalent in other layouts)
+- **Forward Dash**: V or U (qwerty or equivalent in other layouts) 
 
 # Main Character
 

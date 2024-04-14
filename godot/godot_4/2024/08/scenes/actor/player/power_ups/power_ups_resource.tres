@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="PowerUps" load_steps=2 format=3 uid="uid://6qjvv1i7ejxj"]
+
+[ext_resource type="Script" path="res://scenes/actor/player/power_ups/power_ups.gd" id="1_8jfir"]
+
+[resource]
+script = ExtResource("1_8jfir")
+ranged_enabled = false
+create_block_enabled = false
+forward_dash = false
+ranged_extra_range = false
+ranged_extra_damage = false
+ranged_multiple_projectile = false
+block_extra_life = false
+block_deas_damage = false
+block_additional = false
+forward_invulnerable = false
+forward_deal_damage = false
+forward_reduced_colddown = false
