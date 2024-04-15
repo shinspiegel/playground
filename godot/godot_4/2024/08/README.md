@@ -10,8 +10,10 @@
 - [Game Flow Overview](#game-flow-overview)
 - [Game Story](#game-story)
 
+
 # Todo List
 - [x] Controls
+- [ ] Damageables
 - Main Character
 	- Design
 		- [ ] Descriptions
@@ -26,9 +28,11 @@
 	- Mechanics
 		- [x] Jump buffer
 		- [x] Coyote-time
-		- [ ] Shoot (slow time)
+		- [ ] Add health / damage
+		- [ ] Shoot (slow time?)
 		- [ ] Create block
 		- [ ] Dash
+		- [ ] Colddown for abilities
 - Power Ups
 	- Ranged Attack
 		- [ ] Increase distance (whole screen) #Forest
@@ -67,12 +71,12 @@
 		- [ ] Level design
 		- [ ] Enemies idea
 - Enemies
-	- Walker (just walk from side to side and idle in between)
-	- Defender / Tank (holds something to protect, avoids damage)
-	- Shooter (does not move, shoot on invervals)
-	- Sniper (wanders, if player in sight, shoot)
-	- Medusa head (floats on screen, ignore tilemap)
-	- Hovering (hovers and drops bombs)
+	- [ ] Walker (just walk from side to side and idle in between)
+	- [ ] Defender / Tank (holds something to protect, avoids damage)
+	- [ ] Shooter (does not move, shoot on invervals)
+	- [ ] Sniper (wanders, if player in sight, shoot)
+	- [ ] Medusa head (floats on screen, ignore tilemap)
+	- [ ] Hovering (hovers and drops bombs)
 - [x] Game Story
 - [x] Game flow
 
