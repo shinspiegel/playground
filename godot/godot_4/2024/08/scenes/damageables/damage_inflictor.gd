@@ -1,6 +1,6 @@
 class_name DamageInflictor extends Area2D
 
-@export var damage: Damage
+@export var dmg_generator: DamageGenerator
 
 var __areas_map: Dictionary = {}
 
@@ -12,13 +12,14 @@ func _ready() -> void:
 
 func _physics_process(_delta: float) -> void:
 	for area: DamageReceiver in __areas_map.values():
-		area.hit(damage.randomize(global_position))
+		if area.can_hit():
+			area.hit(dmg_generator.generate(global_position))
 
 
 func on_area_enter(area: Area2D) -> void:
 	if area is DamageReceiver:
 		__areas_map[area.name] = area
-		area.hit(damage.randomize(global_position))
+		area.hit(dmg_generator.generate(global_position))
 
 
 func on_area_exit(area: Area2D) -> void:
