@@ -1,11 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://bx17aiwt0uqrx"]
+[gd_scene load_steps=4 format=3 uid="uid://bx17aiwt0uqrx"]
 
 [ext_resource type="Script" path="res://scenes/debug_overlay/debug.gd" id="1_jyjfj"]
 [ext_resource type="Theme" uid="uid://x61ckk74bynv" path="res://screens/theme/base_theme.tres" id="2_34n7v"]
+[ext_resource type="Resource" uid="uid://b5il2dq7d8iem" path="res://scenes/actor/player/player_stats/player_stats.tres" id="2_640tr"]
 
-[node name="DEBUG" type="CanvasLayer" node_paths=PackedStringArray("label")]
+[node name="DEBUG" type="CanvasLayer" node_paths=PackedStringArray("state_label", "hp_label")]
 script = ExtResource("1_jyjfj")
-label = NodePath("Control/VBoxContainer/Label")
+state_label = NodePath("Control/VBoxContainer/Label")
+hp_label = NodePath("Control/VBoxContainer/Label2")
+stats = ExtResource("2_640tr")
 
 [node name="Control" type="Control" parent="."]
 auto_translate_mode = 1
@@ -23,6 +26,11 @@ anchors_preset = 9
 anchor_bottom = 1.0
 offset_right = 144.0
 grow_vertical = 2
+
+[node name="Label2" type="Label" parent="Control/VBoxContainer"]
+auto_translate_mode = 1
+layout_mode = 2
+text = "HP: [NULL / NULL]"
 
 [node name="Label" type="Label" parent="Control/VBoxContainer"]
 auto_translate_mode = 1

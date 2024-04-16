@@ -1,9 +1,10 @@
-[gd_scene load_steps=31 format=3 uid="uid://b3y4ayg4a3myn"]
+[gd_scene load_steps=37 format=3 uid="uid://b3y4ayg4a3myn"]
 
 [ext_resource type="PackedScene" uid="uid://glesdckbbcba" path="res://scenes/actor/base_actor/base_actor.tscn" id="1_chlu2"]
 [ext_resource type="Script" path="res://scenes/actor/player/player.gd" id="2_7sqgf"]
 [ext_resource type="Resource" uid="uid://6qjvv1i7ejxj" path="res://scenes/actor/player/power_ups/power_ups_resource.tres" id="3_75gay"]
 [ext_resource type="Texture2D" uid="uid://bhvx2mut3gocl" path="res://assets/graphics/Asset Packs 1-5 2/Asset Pack-V1/Player Idle/Player Idle 48x48.png" id="3_kq0ku"]
+[ext_resource type="Resource" uid="uid://b5il2dq7d8iem" path="res://scenes/actor/player/player_stats/player_stats.tres" id="3_qir03"]
 [ext_resource type="Script" path="res://scenes/actor/player/inputs/player_input.gd" id="3_tobpv"]
 [ext_resource type="Script" path="res://scenes/actor/player/states/idle.gd" id="4_cis2p"]
 [ext_resource type="Script" path="res://scenes/actor/player/states/move.gd" id="5_eblpi"]
@@ -18,7 +19,10 @@
 [ext_resource type="Texture2D" uid="uid://c2jhphg1k2kg3" path="res://assets/graphics/Asset Packs 1-5 2/Asset Pack-V1/Player Land/player land 48x48.png" id="11_k0dr0"]
 [ext_resource type="Texture2D" uid="uid://bo8ev2yncu7p4" path="res://assets/graphics/Asset Packs 1-5 2/Asset Pack-V4/Player Punch Jab/Player Jab 48x48.png" id="12_h0vda"]
 [ext_resource type="Script" path="res://scenes/actor/player/states/ranged_shot.gd" id="12_u0fqx"]
+[ext_resource type="Script" path="res://scenes/actor/player/states/hit.gd" id="13_onoyn"]
 [ext_resource type="Texture2D" uid="uid://bvm7fdslgx4b7" path="res://assets/graphics/Asset Packs 1-5 2/Asset Pack-V2/Player Roll/Player Roll 48x48.png" id="14_75iv5"]
+[ext_resource type="Texture2D" uid="uid://b36smuq2dp4vw" path="res://assets/graphics/Asset Packs 1-5 2/Asset Pack-V3/Player Hurt-Damaged/Player Hurt 48x48.png" id="20_cs0ph"]
+[ext_resource type="Script" path="res://scenes/damageables/damage_reciever.gd" id="20_y54df"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ja5er"]
 
@@ -440,9 +444,62 @@ tracks/3/keys = {
 "values": [0, 1, 2, 3, 4, 5, 6]
 }
 
+[sub_resource type="Animation" id="Animation_wubu2"]
+resource_name = "Hit"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FlipEnabled/Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("20_cs0ph")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FlipEnabled/Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("FlipEnabled/Sprite2D:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("FlipEnabled/Sprite2D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lkjk6"]
 _data = {
 "Falling": SubResource("Animation_qdu0g"),
+"Hit": SubResource("Animation_wubu2"),
 "Idle": SubResource("Animation_sxtm6"),
 "Jab": SubResource("Animation_b5v3t"),
 "Jump": SubResource("Animation_lo4w7"),
@@ -456,12 +513,17 @@ _data = {
 radius = 24.0
 height = 128.0
 
-[node name="Player" node_paths=PackedStringArray("input", "jump_buffer_cast", "coyote_timer", "animation_player", "state_machine") instance=ExtResource("1_chlu2")]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_82qu1"]
+size = Vector2(48, 128)
+
+[node name="Player" node_paths=PackedStringArray("input", "jump_buffer_cast", "coyote_timer", "dmg_receiver", "animation_player", "state_machine") instance=ExtResource("1_chlu2")]
 script = ExtResource("2_7sqgf")
 input = NodePath("PlayerInput")
+stats = ExtResource("3_qir03")
 power_ups = ExtResource("3_75gay")
 jump_buffer_cast = NodePath("JumpBufferCast2D")
 coyote_timer = NodePath("CoyoteTimer")
+dmg_receiver = NodePath("DamageReceiver")
 animation_player = NodePath("AnimationPlayer")
 state_machine = NodePath("StateMachine")
 
@@ -508,11 +570,17 @@ script = ExtResource("10_eo2x5")
 anim_player = NodePath("../../AnimationPlayer")
 actor = NodePath("../..")
 
-[node name="RangedAim" type="Node2D" parent="StateMachine" index="7" node_paths=PackedStringArray("actor")]
+[node name="Hit" type="Node2D" parent="StateMachine" index="7" node_paths=PackedStringArray("anim_player", "dmg_receiver", "actor")]
+script = ExtResource("13_onoyn")
+anim_player = NodePath("../../AnimationPlayer")
+dmg_receiver = NodePath("../../DamageReceiver")
+actor = NodePath("../..")
+
+[node name="RangedAim" type="Node2D" parent="StateMachine" index="8" node_paths=PackedStringArray("actor")]
 script = ExtResource("11_jcr58")
 actor = NodePath("../..")
 
-[node name="RangedShoot" type="Node2D" parent="StateMachine" index="8" node_paths=PackedStringArray("actor")]
+[node name="RangedShoot" type="Node2D" parent="StateMachine" index="9" node_paths=PackedStringArray("actor")]
 script = ExtResource("12_u0fqx")
 actor = NodePath("../..")
 
@@ -532,5 +600,17 @@ shape = SubResource("CapsuleShape2D_w1uad")
 target_position = Vector2(2.08165e-12, 64)
 
 [node name="CoyoteTimer" type="Timer" parent="." index="6"]
-wait_time = 0.3
+wait_time = 0.1
 one_shot = true
+
+[node name="DamageReceiver" type="Area2D" parent="." index="7" node_paths=PackedStringArray("colddown")]
+position = Vector2(0, -64)
+script = ExtResource("20_y54df")
+colddown = NodePath("DamageColddown")
+
+[node name="DamageColddown" type="Timer" parent="DamageReceiver" index="0"]
+wait_time = 0.5
+one_shot = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageReceiver" index="1"]
+shape = SubResource("RectangleShape2D_82qu1")

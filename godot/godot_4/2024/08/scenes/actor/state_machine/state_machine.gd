@@ -17,6 +17,10 @@ func update(delta: float) -> void:
 	current.update(delta)
 
 
+func get_current_name() -> String:
+	return current.name
+
+
 func change_state(state: String) -> void:
 	if not states.has(state):
 		push_warning("invalid state")

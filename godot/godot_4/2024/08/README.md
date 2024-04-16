@@ -13,7 +13,7 @@
 
 # Todo List
 - [x] Controls
-- [ ] Damageables
+- [x] Damageables
 - Main Character
 	- Design
 		- [ ] Descriptions
