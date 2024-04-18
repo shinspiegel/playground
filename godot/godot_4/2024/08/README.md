@@ -14,6 +14,7 @@
 # Todo List
 - [x] Controls
 - [ ] Damageables
+- [ ] DamageNumbers
 - Main Character
 	- Design
 		- [ ] Descriptions
@@ -28,11 +29,8 @@
 	- Mechanics
 		- [x] Jump buffer
 		- [x] Coyote-time
-		- [ ] Add health / damage
-		- [ ] Shoot (slow time?)
-		- [ ] Create block
-		- [ ] Dash
-		- [ ] Colddown for abilities
+		- [ ] Mana sytem
+		- [ ] Health / damage
 - Power Ups
 	- Ranged Attack
 		- [ ] Increase distance (whole screen) #Forest
@@ -47,6 +45,9 @@
 		- [ ] Deal damage on the path #Beach
 		- [ ] Reduced colddown #Vulcano
 - Levels
+	- [ ] Level Segments
+	- [ ] Game Camera
+	- [ ] Camera Shake
 	- Forest
 		- [x] Story
 		- [x] Plan
@@ -143,8 +144,38 @@ All mapped keys, to be used with Arrows or VIM movement or WASD.
 <!-- TODO: Artwork -->
 <!-- TODO: Extra gameplay mechanics -->
 
+## Jump buffer
+
+- Basic jump buffer
+
+## Coyote-time
+
+- Real coyote time
+- Very little time (0.1s ?)
+
+## Mana System
+
+- Starts with 3 segment
+- Player will have segments of mana to use
+- The segments fill overtime and you have a maximum amount
+- Every stage will have a increase segment of mana
+- Start a level with full mana
+
+## Health / damage
+
+- Int value, starting with 50?
+- Use damage numbers, average damage should be 10 (maybe 5 hit to die)
+	- Big damage should be 25
+	- Small damage should be 5
+- Each level have a health upgrade
+- Each level will have 3 recovery items
+- Damage does not recover across levels
+
 
 # Power Ups
+
+- Each power up consumes a mana segment
+- No power up should consume more than a single segments
 
 ## Ranged Attack
 
