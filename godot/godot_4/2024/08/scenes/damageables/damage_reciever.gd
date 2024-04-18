@@ -15,3 +15,7 @@ func hit(dmg: Damage) -> void:
 	
 
 
+func can_hit() -> bool:
+	if not colddown == null and not colddown.is_stopped():
+		return false
+	return true

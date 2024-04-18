@@ -13,3 +13,4 @@ func exit() -> void:
 
 func update(_delta: float) -> void:
 	pass
+
