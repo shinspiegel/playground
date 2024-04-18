@@ -82,6 +82,16 @@
 - [x] Game flow
 
 
+## Late Todo List
+
+- [ ] Particles?
+- [ ] Shake effects?
+- [ ] Camera ritcule?
+- [ ] Cutscenes?
+- [ ] Rolling credits?
+- [ ] Automate credits from CREDITS file?
+
+
 # Controls
 
 ## Joystick
