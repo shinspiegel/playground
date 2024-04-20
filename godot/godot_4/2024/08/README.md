@@ -15,6 +15,7 @@
 - [x] Controls
 - [x] Damageables
 - [x] DamageNumbers
+- [ ] Level selection screen
 - Main Character
 	- Design
 		- [ ] Descriptions
