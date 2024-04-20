@@ -32,7 +32,7 @@
 	- Mechanics
 		- [x] Jump buffer
 		- [x] Coyote-time
-		- [ ] Mana sytem
+		- [x] Mana sytem
 		- [ ] Health / damage
 - Power Ups
 	- Ranged Attack

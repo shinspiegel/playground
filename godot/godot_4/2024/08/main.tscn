@@ -44,10 +44,11 @@ animation_player = NodePath("AnimationPlayer")
 state_machine = NodePath("StateMachine")
 damage_position = NodePath("FlipEnabled/DamagePos")
 
-[node name="DEBUG" parent="." node_paths=PackedStringArray("player", "state_label", "hp_label") instance=ExtResource("2_vei06")]
+[node name="DEBUG" parent="." node_paths=PackedStringArray("player", "state_label", "hp_label", "mp_label") instance=ExtResource("2_vei06")]
 player = NodePath("../Player")
-state_label = NodePath("Control/VBoxContainer/Label")
-hp_label = NodePath("Control/VBoxContainer/Label2")
+state_label = NodePath("Control/VBoxContainer/STATE")
+hp_label = NodePath("Control/VBoxContainer/HP")
+mp_label = NodePath("Control/VBoxContainer/MP")
 
 [node name="DamageInflictor" type="Area2D" parent="."]
 position = Vector2(152, 639)

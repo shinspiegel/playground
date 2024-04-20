@@ -22,7 +22,11 @@ func _physics_process(delta: float) -> void:
 		coyote_timer.stop()
 		__is_coyoting = false
 
+	if Input.is_key_pressed(KEY_M):
+		stats.consume_mana()
+
 	state_machine.update(delta)
+	stats.tick_mp(delta)
 
 
 func can_jump() -> bool:
