@@ -516,27 +516,29 @@ height = 128.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_82qu1"]
 size = Vector2(48, 128)
 
-[node name="Player" node_paths=PackedStringArray("input", "jump_buffer_cast", "coyote_timer", "dmg_receiver", "animation_player", "state_machine", "damage_position") instance=ExtResource("1_chlu2")]
+[node name="Player" node_paths=PackedStringArray("animation_player", "state_machine", "damage_position") instance=ExtResource("1_chlu2")]
 script = ExtResource("2_7sqgf")
-input = NodePath("PlayerInput")
 stats = ExtResource("3_qir03")
 power_ups = ExtResource("3_75gay")
-jump_buffer_cast = NodePath("JumpBufferCast2D")
-coyote_timer = NodePath("CoyoteTimer")
-dmg_receiver = NodePath("DamageReceiver")
 animation_player = NodePath("AnimationPlayer")
 state_machine = NodePath("StateMachine")
 damage_position = NodePath("FlipEnabled/DamagePos")
 
-[node name="DamagePos" type="Marker2D" parent="FlipEnabled" index="0"]
+[node name="RemoteCamera" type="RemoteTransform2D" parent="FlipEnabled" index="0"]
+unique_name_in_owner = true
+position = Vector2(320, 2.08165e-12)
+update_rotation = false
+update_scale = false
+
+[node name="DamagePos" type="Marker2D" parent="FlipEnabled" index="1"]
 position = Vector2(2.08165e-12, -130)
 
-[node name="Sprite2D" parent="FlipEnabled" index="1"]
+[node name="Sprite2D" parent="FlipEnabled" index="2"]
 position = Vector2(0, -64)
 texture = ExtResource("3_kq0ku")
 hframes = 10
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="FlipEnabled" index="2"]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="FlipEnabled" index="3"]
 position = Vector2(64, -64)
 shape = SubResource("CircleShape2D_ja5er")
 
@@ -595,20 +597,24 @@ libraries = {
 }
 
 [node name="PlayerInput" type="Node" parent="." index="3"]
+unique_name_in_owner = true
 script = ExtResource("3_tobpv")
 
 [node name="BodyShape" type="CollisionShape2D" parent="." index="4"]
 position = Vector2(0, -64)
 shape = SubResource("CapsuleShape2D_w1uad")
 
-[node name="JumpBufferCast2D" type="RayCast2D" parent="." index="5"]
+[node name="JumpBufferRaycast2D" type="RayCast2D" parent="." index="5"]
+unique_name_in_owner = true
 target_position = Vector2(2.08165e-12, 64)
 
 [node name="CoyoteTimer" type="Timer" parent="." index="6"]
+unique_name_in_owner = true
 wait_time = 0.1
 one_shot = true
 
 [node name="DamageReceiver" type="Area2D" parent="." index="7" node_paths=PackedStringArray("colddown")]
+unique_name_in_owner = true
 position = Vector2(0, -64)
 script = ExtResource("20_y54df")
 colddown = NodePath("DamageColddown")

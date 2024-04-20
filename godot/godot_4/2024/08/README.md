@@ -49,8 +49,9 @@
 		- [ ] Deal damage on the path #Beach
 		- [ ] Reduced colddown #Vulcano
 - Levels
-	- [ ] Game Camera
+	- [x] Game Camera
 	- [x] Base level 
+		- [x] Spawner with camera
 	- [ ] Level Segments
 	- [ ] Camera Shake
 	- Forest

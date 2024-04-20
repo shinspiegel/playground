@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://b87cqyunlhsul"]
+[gd_scene load_steps=8 format=3 uid="uid://b87cqyunlhsul"]
 
 [ext_resource type="Script" path="res://scenes/level/base_level.gd" id="1_v4pmm"]
+[ext_resource type="PackedScene" uid="uid://bqflvi2xo4pkv" path="res://scenes/game_camera/game_camera.tscn" id="2_go2xw"]
 [ext_resource type="Texture2D" uid="uid://cd8tnglt3wh0n" path="res://assets/graphics/Asset Packs 1-5 2/Asset Pack-V1/Super Basic Tilemap/160x160 background tilemap.png" id="2_pofx2"]
 [ext_resource type="Texture2D" uid="uid://2smabcindhi2" path="res://assets/graphics/Asset Packs 1-5 2/Asset Pack-V1/Super Basic Tilemap/Basic Tilemap.png" id="3_od6tw"]
 
@@ -305,6 +306,9 @@ sources/1 = SubResource("TileSetAtlasSource_db3er")
 [node name="BaseLevel" type="Node2D" node_paths=PackedStringArray("pos_list")]
 script = ExtResource("1_v4pmm")
 pos_list = [NodePath("StartPosition/Marker2D")]
+
+[node name="GameCamera" parent="." instance=ExtResource("2_go2xw")]
+unique_name_in_owner = true
 
 [node name="StartPosition" type="Node2D" parent="."]
 

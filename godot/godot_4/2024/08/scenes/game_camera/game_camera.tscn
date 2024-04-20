@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://bqflvi2xo4pkv"]
+
+[ext_resource type="Script" path="res://scenes/game_camera/game_camera.gd" id="1_eltna"]
+
+[node name="GameCamera" type="Camera2D"]
+process_callback = 0
+position_smoothing_enabled = true
+drag_top_margin = 0.6
+drag_bottom_margin = 0.3
+editor_draw_limits = true
+editor_draw_drag_margin = true
+script = ExtResource("1_eltna")
