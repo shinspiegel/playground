@@ -1,6 +1,5 @@
 extends CanvasLayer
 
-@export var player: Player
 @export var state_label: Label
 @export var hp_label: Label
 @export var mp_label: Label
@@ -8,14 +7,13 @@ extends CanvasLayer
 
 
 func _ready() -> void:
-	var sm: StateMachine = player.get_node("StateMachine")
-	sm.state_changed.connect(on_player_state_change)
+	var state_machine: StateMachine = GameManager.player.state_machine
+	state_machine.state_changed.connect(on_player_state_change)
 	stats.hp_changed.connect(on_hp_change)
 	stats.mp_changed.connect(on_mp_change)
 	stats.mp_refil_changed.connect(on_mp_change)
-
-	state_label.text = "Player State: [%s]" % [sm.current.name]
-	hp_label.text = "HP: [%s / %s]" % [stats.hp_curr, stats.hp_max]
+	on_hp_change()
+	on_mp_change()
 
 
 func on_player_state_change(state: String) -> void:

@@ -1,60 +1,13 @@
-[gd_scene load_steps=9 format=3 uid="uid://c74dnqqs41xag"]
+[gd_scene load_steps=3 format=3 uid="uid://c74dnqqs41xag"]
 
-[ext_resource type="PackedScene" uid="uid://b3y4ayg4a3myn" path="res://scenes/actor/player/player.tscn" id="1_g6rf1"]
+[ext_resource type="PackedScene" uid="uid://b87cqyunlhsul" path="res://scenes/level/base_level.tscn" id="2_fbse2"]
 [ext_resource type="PackedScene" uid="uid://bx17aiwt0uqrx" path="res://scenes/debug_overlay/debug.tscn" id="2_vei06"]
-[ext_resource type="Script" path="res://scenes/damageables/damage_inflictor/damage_inflictor.gd" id="3_cfnvm"]
-[ext_resource type="Script" path="res://scenes/damageables/damage_generator/damage_generator.gd" id="4_dorsi"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ojh47"]
-size = Vector2(874.75, 311)
-
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_xq4u5"]
-
-[sub_resource type="Resource" id="Resource_4eqch"]
-script = ExtResource("4_dorsi")
-amount = 10
-impact = 0.5
-critical_chance = 0.1
-critical_boost = 1.5
-variation_amount = 0.2
-variation_impact = 0.1
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_rkmdw"]
-size = Vector2(192, 184)
 
 [node name="Main" type="Node2D"]
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(386.375, 890)
-shape = SubResource("RectangleShape2D_ojh47")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(970, 1041)
-shape = SubResource("WorldBoundaryShape2D_xq4u5")
-
-[node name="Player" parent="." node_paths=PackedStringArray("input", "jump_buffer_cast", "coyote_timer", "dmg_receiver", "animation_player", "state_machine", "damage_position") instance=ExtResource("1_g6rf1")]
-position = Vector2(653, 734)
-input = NodePath("PlayerInput")
-jump_buffer_cast = NodePath("JumpBufferCast2D")
-coyote_timer = NodePath("CoyoteTimer")
-dmg_receiver = NodePath("DamageReceiver")
-animation_player = NodePath("AnimationPlayer")
-state_machine = NodePath("StateMachine")
-damage_position = NodePath("FlipEnabled/DamagePos")
-
-[node name="DEBUG" parent="." node_paths=PackedStringArray("player", "state_label", "hp_label", "mp_label") instance=ExtResource("2_vei06")]
-player = NodePath("../Player")
+[node name="DEBUG" parent="." node_paths=PackedStringArray("state_label", "hp_label", "mp_label") instance=ExtResource("2_vei06")]
 state_label = NodePath("Control/VBoxContainer/STATE")
 hp_label = NodePath("Control/VBoxContainer/HP")
 mp_label = NodePath("Control/VBoxContainer/MP")
 
-[node name="DamageInflictor" type="Area2D" parent="."]
-position = Vector2(152, 639)
-script = ExtResource("3_cfnvm")
-dmg_generator = SubResource("Resource_4eqch")
-metadata/_edit_group_ = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageInflictor"]
-shape = SubResource("RectangleShape2D_rkmdw")
+[node name="BaseLevel" parent="." instance=ExtResource("2_fbse2")]
