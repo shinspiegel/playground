@@ -33,6 +33,7 @@
 		- [x] Jump buffer
 		- [x] Coyote-time
 		- [x] Mana sytem
+			- [x] Rolling consume mana
 		- [ ] Health / damage
 - Power Ups
 	- Ranged Attack
@@ -48,6 +49,7 @@
 		- [ ] Deal damage on the path #Beach
 		- [ ] Reduced colddown #Vulcano
 - Levels
+	- [ ] Base level 
 	- [ ] Level Segments
 	- [ ] Game Camera
 	- [ ] Camera Shake

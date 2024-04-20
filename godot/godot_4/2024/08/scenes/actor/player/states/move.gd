@@ -6,7 +6,7 @@ func enter() -> void:
 
 
 func update(delta: float) -> void:
-	if actor.can_jump() and actor.input.roll:
+	if actor.can_roll()  and actor.input.roll:
 		state_machine.change_state(ROLL)
 		return
 
