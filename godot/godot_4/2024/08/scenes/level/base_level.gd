@@ -10,7 +10,8 @@ var __seg_map: Dictionary = {}
 
 
 func _ready() -> void:
-	GameManager.player_died.connect(on_player_died)
+	GameManager.player.died.connect(on_player_died)
+	GameManager.game_camera = game_camera
 
 	for child in segments_list.get_children():
 		if child is LevelSegment:
@@ -25,6 +26,7 @@ func _ready() -> void:
 
 	game_camera.set_limit_list(current_segment.get_limit_list())
 	GameManager.spawn_player(self, current_segment.respawn_point.global_position, game_camera)
+	game_settings.saved_stats = GameManager.player.stats.duplicate(true)
 
 
 func on_player_change_segment(segment: LevelSegment) -> void:

@@ -20,6 +20,6 @@ func update(delta: float) -> void:
 
 func on_anim_finished(anim: String) -> void:
 	if anim == DIE:
-		GameManager.player_died.emit()
+		GameManager.player.died.emit()
 
 

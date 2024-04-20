@@ -1,14 +1,12 @@
 extends Node
 
-@warning_ignore("unused_signal")
-signal player_died()
-
 const damage_number: Resource = preload("res://scenes/damageables/damage_number/damage_number.tscn")
 const player_scene: Resource = preload("res://scenes/actor/player/player.tscn")
 
 @export var game_setting: SavedData
 
 var player: Player
+var game_camera: GameCamera
 
 
 func _ready() -> void:

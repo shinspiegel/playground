@@ -1,5 +1,8 @@
 class_name Player extends BaseActor
 
+@warning_ignore("unused_signal")
+signal died()
+
 @export var stats: PlayerStats
 @export var power_ups: PowerUps
 
@@ -66,5 +69,6 @@ func can_roll() -> bool:
 func on_damage_receive(dmg: Damage) -> void:
 	stats.deal_damage(dmg.amount)
 	GameManager.spawn_damage_number(dmg, damage_position.global_position)
+	GameManager.game_camera.shake_damage(dmg)
 	state_machine.change_state(PlayerState.HIT)
 

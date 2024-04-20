@@ -55,7 +55,7 @@
 		- [x] Spawner with camera
 	- [x] Level Segments
 		- [x] Respawn on death
-	- [ ] Camera Shake
+	- [x] Camera Shake
 	- Forest
 		- [x] Story
 		- [x] Plan
