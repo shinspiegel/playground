@@ -24,8 +24,9 @@
 		- [ ] Move / Run (8 frames)
 		- [ ] Jab (6 frames)
 		- [ ] Roll (6 frames)
-		- [ ] Jump / Falling (2 frames / 1 frame)
 		- [ ] Landing (4 frames)
+		- [ ] Hit
+		- [ ] Die
 		- [ ] Ranged
 		- [ ] Block
 		- [ ] Dash
@@ -34,7 +35,7 @@
 		- [x] Coyote-time
 		- [x] Mana sytem
 			- [x] Rolling consume mana
-		- [ ] Health / damage
+		- [x] Health / damage
 - Power Ups
 	- Ranged Attack
 		- [ ] Increase distance (whole screen) #Forest
@@ -52,7 +53,8 @@
 	- [x] Game Camera
 	- [x] Base level 
 		- [x] Spawner with camera
-	- [ ] Level Segments
+	- [x] Level Segments
+		- [ ] Respawn on death
 	- [ ] Camera Shake
 	- Forest
 		- [x] Story

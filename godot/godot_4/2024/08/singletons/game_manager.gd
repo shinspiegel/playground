@@ -25,6 +25,9 @@ func spawn_damage_number(damage: Damage, pos: Vector2 = Vector2.ZERO, pos_variat
 	instance.global_position = pos
 
 
-func spawn_player_at(node: Node, pos: Vector2 = Vector2.ZERO) -> void:
+func spawn_player_at(node: Node, pos: Vector2 = Vector2.ZERO, camera: GameCamera = null) -> void:
 	node.add_child(player)
 	player.global_position = pos
+
+	if not camera == null:
+		player.set_camera(camera)
