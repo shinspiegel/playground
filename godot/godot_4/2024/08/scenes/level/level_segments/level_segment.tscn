@@ -1,8 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://cpl5hkuemkr3r"]
+[gd_scene load_steps=13 format=3 uid="uid://cpl5hkuemkr3r"]
 
 [ext_resource type="Texture2D" uid="uid://cd8tnglt3wh0n" path="res://assets/graphics/Asset Packs 1-5 2/Asset Pack-V1/Super Basic Tilemap/160x160 background tilemap.png" id="1_fkub6"]
 [ext_resource type="Script" path="res://scenes/level/level_segments/level_segment.gd" id="1_v6hlk"]
 [ext_resource type="Texture2D" uid="uid://2smabcindhi2" path="res://assets/graphics/Asset Packs 1-5 2/Asset Pack-V1/Super Basic Tilemap/Basic Tilemap.png" id="2_pk1hd"]
+[ext_resource type="Script" path="res://scenes/damageables/damage_inflictor/damage_inflictor.gd" id="4_s8bhf"]
+[ext_resource type="Script" path="res://scenes/damageables/damage_generator/damage_generator.gd" id="5_5fomm"]
+[ext_resource type="Texture2D" uid="uid://xwgu0hgnpv3p" path="res://icon.svg" id="6_obaik"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_e7y2e"]
 texture = ExtResource("1_fkub6")
@@ -305,6 +308,18 @@ sources/1 = SubResource("TileSetAtlasSource_db3er")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rgrgq"]
 size = Vector2(112, 256)
 
+[sub_resource type="Resource" id="Resource_66yin"]
+script = ExtResource("5_5fomm")
+amount = 30
+impact = 0.5
+critical_chance = 0.1
+critical_boost = 1.5
+variation_amount = 0.2
+variation_impact = 0.1
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hl7ph"]
+size = Vector2(64, 64)
+
 [node name="LevelSegment" type="Node2D"]
 script = ExtResource("1_v6hlk")
 
@@ -338,3 +353,16 @@ shape = SubResource("RectangleShape2D_rgrgq")
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="EntryDetection"]
 position = Vector2(2048, 896)
 shape = SubResource("RectangleShape2D_rgrgq")
+
+[node name="DamageInflictor" type="Area2D" parent="."]
+position = Vector2(1056, 992)
+input_pickable = false
+script = ExtResource("4_s8bhf")
+dmg_generator = SubResource("Resource_66yin")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="DamageInflictor"]
+texture = ExtResource("6_obaik")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageInflictor"]
+shape = SubResource("RectangleShape2D_hl7ph")

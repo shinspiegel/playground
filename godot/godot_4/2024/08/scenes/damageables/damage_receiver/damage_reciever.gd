@@ -5,17 +5,18 @@ signal receive_damage(damage: Damage)
 @export var colddown: Timer
 
 
+func _ready() -> void:
+	if colddown == null:
+		push_error("ERROR: no colddown for damage")
+
+
 func hit(dmg: Damage) -> void:
-	if colddown:
-		if colddown.is_stopped():
-			colddown.start()
-			receive_damage.emit(dmg)
-	else:
+	if colddown.is_stopped():
+		colddown.start()
 		receive_damage.emit(dmg)
-	
 
 
 func can_hit() -> bool:
-	if not colddown == null and not colddown.is_stopped():
-		return false
-	return true
+	if colddown.is_stopped():
+		return true
+	return false

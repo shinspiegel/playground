@@ -11,19 +11,6 @@ pos_list = [NodePath("StartPosition/Marker2D")]
 [node name="GameCamera" parent="." instance=ExtResource("2_go2xw")]
 unique_name_in_owner = true
 
-[node name="StartPosition" type="Node2D" parent="."]
-
-[node name="Marker2D" type="Marker2D" parent="StartPosition"]
-position = Vector2(996, 700)
-
-[node name="LevelSegments" type="Node2D" parent="."]
-unique_name_in_owner = true
-
-[node name="LevelSegment" parent="LevelSegments" instance=ExtResource("3_vtkqs")]
-
-[node name="LevelSegment2" parent="LevelSegments" instance=ExtResource("3_vtkqs")]
-position = Vector2(2304, 0)
-
 [node name="Background" type="CanvasLayer" parent="."]
 layer = -10
 
@@ -34,3 +21,16 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.188969, 0.188969, 0.188969, 1)
+
+[node name="StartPosition" type="Node2D" parent="."]
+
+[node name="Marker2D" type="Marker2D" parent="StartPosition"]
+position = Vector2(450, 881)
+
+[node name="LevelSegments" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="LevelSegment" parent="LevelSegments" instance=ExtResource("3_vtkqs")]
+
+[node name="LevelSegment2" parent="LevelSegments" instance=ExtResource("3_vtkqs")]
+position = Vector2(2304, 0)
