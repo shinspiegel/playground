@@ -572,6 +572,7 @@ actor = NodePath("../..")
 [node name="Roll" type="Node2D" parent="StateMachine" index="6" node_paths=PackedStringArray("anim_player", "actor")]
 script = ExtResource("10_eo2x5")
 anim_player = NodePath("../../AnimationPlayer")
+stats = ExtResource("3_qir03")
 actor = NodePath("../..")
 
 [node name="Hit" type="Node2D" parent="StateMachine" index="7" node_paths=PackedStringArray("anim_player", "dmg_receiver", "actor")]

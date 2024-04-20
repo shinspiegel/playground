@@ -29,12 +29,6 @@ func _physics_process(delta: float) -> void:
 	stats.tick_mp(delta)
 
 
-func can_jump() -> bool:
-	if jump_buffer_cast.is_colliding() or is_on_floor() or __is_coyoting:
-		return true
-	return false
-
-
 func should_fall() -> bool:
 	if coyote_timer.time_left <= 0 and not is_on_floor():
 		return true
@@ -42,10 +36,19 @@ func should_fall() -> bool:
 
 
 func on_damage_receive(dmg: Damage) -> void:
-	if can_receive_damage():
+	if dmg_receiver.can_hit():
 		stats.deal_damage(dmg.amount)
+		GameManager.spawn_damage_number(dmg, damage_position.global_position)
 		state_machine.change_state(PlayerState.HIT)
 
 
-func can_receive_damage() -> bool:
-	return true
+func can_jump() -> bool:
+	if jump_buffer_cast.is_colliding() or is_on_floor() or __is_coyoting:
+		return true
+	return false
+
+
+func can_roll() -> bool:
+	if can_jump() and stats.can_use_mana():
+		return true
+	return false

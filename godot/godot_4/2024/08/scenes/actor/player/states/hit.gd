@@ -32,9 +32,6 @@ func on_damage_receive(dmg: Damage) -> void:
 
 func __apply_damage() -> void:
 	if last_damage == null: return
-
-	GameManager.spawn_damage_number(last_damage, actor.damage_position.global_position)
-
 	var direction := clampi(int(actor.global_position.x - last_damage.source_position.x), -1, 1)
 	actor.velocity.y = (last_damage.impact * 500) * -1
 	actor.apple_direction(direction, last_damage.impact, 0.9)

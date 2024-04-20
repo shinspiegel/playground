@@ -10,18 +10,18 @@ signal mp_refil_changed()
 
 @export_group("Hit Points", "hp_")
 @export var hp_max: int = 50
-@export var hp_curr: int = 50
+@export var hp_curr: int = 0
 
 @export_group("Mana Points", "mp_")
-@export var mp_max: int = 10
-@export var mp_curr: int = 5
+@export var mp_max: int = 3
+@export var mp_curr: int = 0
 @export var mp_refil: float = 0.0
-@export var mp_refil_ratio: float = 0.8
+@export var mp_refil_ratio: float = 0.7
 
 
 func _init() -> void:
-	hp_curr = hp_max
-	hp_changed.emit()
+	reset_hp()
+	reset_mp()
 
 
 func change_hp(amount: int) -> void:
@@ -48,12 +48,12 @@ func change_mana(amount: int) -> void:
 	if mp_curr >= mp_max: mp_maxed.emit()
 
 
-func consume_mana() -> void:
-	change_mana(-1)
+func consume_mana(amount: int = -1) -> void:
+	change_mana(amount)
 
 
-func recover_mana() -> void:
-	change_mana(1)
+func recover_mana(amount: int = 1) -> void:
+	change_mana(amount)
 
 
 func tick_mp(amount: float) -> void:
@@ -68,3 +68,13 @@ func tick_mp(amount: float) -> void:
 
 func can_use_mana() -> bool:
 	return mp_curr > 0
+
+
+func reset_hp() -> void:
+	hp_curr = hp_max
+	hp_changed.emit()
+
+
+func reset_mp() -> void:
+	mp_curr = mp_max
+	mp_changed.emit()
