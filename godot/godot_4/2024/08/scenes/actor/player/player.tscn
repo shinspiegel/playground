@@ -516,7 +516,7 @@ height = 128.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_82qu1"]
 size = Vector2(48, 128)
 
-[node name="Player" node_paths=PackedStringArray("input", "jump_buffer_cast", "coyote_timer", "dmg_receiver", "animation_player", "state_machine") instance=ExtResource("1_chlu2")]
+[node name="Player" node_paths=PackedStringArray("input", "jump_buffer_cast", "coyote_timer", "dmg_receiver", "animation_player", "state_machine", "damage_position") instance=ExtResource("1_chlu2")]
 script = ExtResource("2_7sqgf")
 input = NodePath("PlayerInput")
 stats = ExtResource("3_qir03")
@@ -526,13 +526,17 @@ coyote_timer = NodePath("CoyoteTimer")
 dmg_receiver = NodePath("DamageReceiver")
 animation_player = NodePath("AnimationPlayer")
 state_machine = NodePath("StateMachine")
+damage_position = NodePath("FlipEnabled/DamagePos")
 
-[node name="Sprite2D" parent="FlipEnabled" index="0"]
+[node name="DamagePos" type="Marker2D" parent="FlipEnabled" index="0"]
+position = Vector2(2.08165e-12, -130)
+
+[node name="Sprite2D" parent="FlipEnabled" index="1"]
 position = Vector2(0, -64)
 texture = ExtResource("3_kq0ku")
 hframes = 10
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="FlipEnabled" index="1"]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="FlipEnabled" index="2"]
 position = Vector2(64, -64)
 shape = SubResource("CircleShape2D_ja5er")
 

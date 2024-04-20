@@ -14,7 +14,7 @@
 # Todo List
 - [x] Controls
 - [x] Damageables
-- [ ] DamageNumbers
+- [x] DamageNumbers
 - Main Character
 	- Design
 		- [ ] Descriptions
@@ -26,6 +26,9 @@
 		- [ ] Roll (6 frames)
 		- [ ] Jump / Falling (2 frames / 1 frame)
 		- [ ] Landing (4 frames)
+		- [ ] Ranged
+		- [ ] Block
+		- [ ] Dash
 	- Mechanics
 		- [x] Jump buffer
 		- [x] Coyote-time

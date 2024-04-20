@@ -5,7 +5,7 @@ class_name DamageNumber extends Node2D
 
 
 func _ready() -> void:
-	if damage == null: 
+	if damage == null:
 		push_error("missing damage")
 		return
 

@@ -9,16 +9,16 @@ class_name DamageGenerator extends Resource
 
 
 func generate(source: Vector2 = Vector2.ZERO) -> Damage:
-	var new_damage: Damage = Damage.new()
+	var damage: Damage = Damage.new()
 
-	new_damage.source_position = source
-	new_damage.amount = randi_range(int(amount - (amount * variation_amount)), int(amount + (amount * variation_amount)))
-	new_damage.impact = randf_range(impact - (impact * variation_impact), impact + (impact * variation_impact))
+	damage.source_position = source
+	damage.amount = randi_range(int(amount - (amount * variation_amount)), int(amount + (amount * variation_amount)))
+	damage.impact = randf_range(impact - (impact * variation_impact), impact + (impact * variation_impact))
 
 	if randf() < critical_chance:
-		new_damage.is_critical = true
-		new_damage.amount = int(new_damage.amount * critical_boost)
-		new_damage.impact = int(new_damage.impact * critical_boost)
+		damage.is_critical = true
+		damage.amount += int(damage.amount * critical_boost)
+		damage.impact = damage.impact * critical_boost
 
-	return new_damage
+	return damage
 

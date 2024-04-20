@@ -3,6 +3,7 @@ class_name BaseActor extends CharacterBody2D
 @export var data: ActorData
 @export var animation_player: AnimationPlayer
 @export var state_machine: StateMachine
+@export var damage_position: Node2D
 @onready var flip_enabled_node: Node2D = %FlipEnabled
 
 var facing_direction: int = 1

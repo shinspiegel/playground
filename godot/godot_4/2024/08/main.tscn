@@ -34,7 +34,7 @@ shape = SubResource("RectangleShape2D_ojh47")
 position = Vector2(970, 1041)
 shape = SubResource("WorldBoundaryShape2D_xq4u5")
 
-[node name="Player" parent="." node_paths=PackedStringArray("input", "jump_buffer_cast", "coyote_timer", "dmg_receiver", "animation_player", "state_machine") instance=ExtResource("1_g6rf1")]
+[node name="Player" parent="." node_paths=PackedStringArray("input", "jump_buffer_cast", "coyote_timer", "dmg_receiver", "animation_player", "state_machine", "damage_position") instance=ExtResource("1_g6rf1")]
 position = Vector2(653, 734)
 input = NodePath("PlayerInput")
 jump_buffer_cast = NodePath("JumpBufferCast2D")
@@ -42,6 +42,7 @@ coyote_timer = NodePath("CoyoteTimer")
 dmg_receiver = NodePath("DamageReceiver")
 animation_player = NodePath("AnimationPlayer")
 state_machine = NodePath("StateMachine")
+damage_position = NodePath("FlipEnabled/DamagePos")
 
 [node name="DEBUG" parent="." node_paths=PackedStringArray("player", "state_label", "hp_label") instance=ExtResource("2_vei06")]
 player = NodePath("../Player")
