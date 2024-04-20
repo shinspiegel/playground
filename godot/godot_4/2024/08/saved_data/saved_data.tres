@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="GameSettings" load_steps=2 format=3 uid="uid://dyfg2qodnx83r"]
 
-[ext_resource type="Script" path="res://singletons/game_settings.gd" id="1_80ngi"]
+[ext_resource type="Script" path="res://saved_data/saved_data.gd" id="1_80ngi"]
 
 [resource]
 script = ExtResource("1_80ngi")

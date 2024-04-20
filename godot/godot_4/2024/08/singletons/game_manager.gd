@@ -6,7 +6,7 @@ signal player_died()
 const damage_number: Resource = preload("res://scenes/damageables/damage_number/damage_number.tscn")
 const player_scene: Resource = preload("res://scenes/actor/player/player.tscn")
 
-@export var game_setting: GameSettings
+@export var game_setting: SavedData
 
 var player: Player
 
@@ -35,6 +35,8 @@ func spawn_player(node: Node, pos: Vector2 = Vector2.ZERO, camera: GameCamera = 
 	player.global_position = pos
 
 	if not camera == null:
+		camera.global_position = pos
+		camera.reset_smoothing()
 		player.set_camera(camera)
 
 
@@ -42,5 +44,4 @@ func reload_current() -> void:
 	player = player_scene.instantiate()
 	player.stats = game_setting.saved_stats.duplicate(true)
 	player.stats.reset_mp()
-
 	get_tree().reload_current_scene()

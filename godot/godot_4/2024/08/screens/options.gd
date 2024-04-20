@@ -1,6 +1,6 @@
 class_name OptionsScreen extends Control
 
-@export var game_setting: GameSettings
+@export var game_setting: SavedData
 
 @onready var sound_slider: HSlider = %SoundSlider
 @onready var music_slider: HSlider = %MusicSlider

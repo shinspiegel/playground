@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://b87cqyunlhsul"]
 
 [ext_resource type="Script" path="res://scenes/level/base_level.gd" id="1_v4pmm"]
-[ext_resource type="Resource" uid="uid://dyfg2qodnx83r" path="res://singletons/game_settings.tres" id="2_f4fbj"]
+[ext_resource type="Resource" uid="uid://dyfg2qodnx83r" path="res://saved_data/saved_data.tres" id="2_f4fbj"]
 [ext_resource type="PackedScene" uid="uid://bqflvi2xo4pkv" path="res://scenes/game_camera/game_camera.tscn" id="2_go2xw"]
 [ext_resource type="PackedScene" uid="uid://cpl5hkuemkr3r" path="res://scenes/level/level_segments/level_segment.tscn" id="3_vtkqs"]
 
@@ -26,10 +26,12 @@ color = Color(0.188969, 0.188969, 0.188969, 1)
 [node name="LevelSegments" type="Node2D" parent="."]
 unique_name_in_owner = true
 
-[node name="LevelSegment" parent="LevelSegments" instance=ExtResource("3_vtkqs")]
+[node name="LevelSegment" parent="LevelSegments" node_paths=PackedStringArray("respawn_point") instance=ExtResource("3_vtkqs")]
+respawn_point = NodePath("RespawnPoint")
 
-[node name="LevelSegment2" parent="LevelSegments" instance=ExtResource("3_vtkqs")]
+[node name="LevelSegment2" parent="LevelSegments" node_paths=PackedStringArray("respawn_point") instance=ExtResource("3_vtkqs")]
 position = Vector2(2304, 0)
+respawn_point = NodePath("RespawnPoint")
 
 [node name="Label" type="Label" parent="."]
 offset_left = 787.0

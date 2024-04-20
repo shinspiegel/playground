@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://f8aeae5rb80f"]
 
 [ext_resource type="Script" path="res://singletons/audio_manager.gd" id="1_gbd06"]
-[ext_resource type="Resource" uid="uid://dyfg2qodnx83r" path="res://singletons/game_settings.tres" id="2_va2cw"]
+[ext_resource type="Resource" uid="uid://dyfg2qodnx83r" path="res://saved_data/saved_data.tres" id="2_va2cw"]
 
 [node name="AudioManager" type="Node2D"]
 script = ExtResource("1_gbd06")

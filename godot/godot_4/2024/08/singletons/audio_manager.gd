@@ -5,7 +5,7 @@ const MUSIC_LIST = [
 	preload("res://assets/music/sample_music_2.ogg"),
 ]
 
-@export var game_settings: GameSettings
+@export var game_settings: SavedData
 @onready var background_music: AudioStreamPlayer = $BackgroundMusic
 
 var __background_adjust: float = 0.0

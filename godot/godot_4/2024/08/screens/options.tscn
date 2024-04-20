@@ -2,7 +2,7 @@
 
 [ext_resource type="Theme" uid="uid://x61ckk74bynv" path="res://screens/theme/base_theme.tres" id="1_yvmth"]
 [ext_resource type="Script" path="res://screens/options.gd" id="2_ox5gw"]
-[ext_resource type="Resource" uid="uid://dyfg2qodnx83r" path="res://singletons/game_settings.tres" id="3_uavmj"]
+[ext_resource type="Resource" uid="uid://dyfg2qodnx83r" path="res://saved_data/saved_data.tres" id="3_uavmj"]
 
 [node name="Options" type="Control"]
 layout_mode = 3

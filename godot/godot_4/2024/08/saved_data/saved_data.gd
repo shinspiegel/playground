@@ -1,4 +1,4 @@
-class_name GameSettings extends Resource
+class_name SavedData extends Resource
 
 signal music_changed
 signal sound_changed

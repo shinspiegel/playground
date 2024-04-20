@@ -54,7 +54,7 @@
 	- [x] Base level 
 		- [x] Spawner with camera
 	- [x] Level Segments
-		- [ ] Respawn on death
+		- [x] Respawn on death
 	- [ ] Camera Shake
 	- Forest
 		- [x] Story
