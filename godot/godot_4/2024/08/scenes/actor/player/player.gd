@@ -25,8 +25,13 @@ func _physics_process(delta: float) -> void:
 		coyote_timer.stop()
 		__is_coyoting = false
 
+	# TODO: remove me later
 	if Input.is_key_pressed(KEY_M):
 		stats.consume_mana()
+
+	if Input.is_key_pressed(KEY_N):
+		stats.deal_damage(1)
+	# end removal
 
 	state_machine.update(delta)
 	stats.tick_mp(delta)

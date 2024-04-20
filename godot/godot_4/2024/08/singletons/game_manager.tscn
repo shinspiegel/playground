@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://07hfl0tv12dw"]
+[gd_scene load_steps=3 format=3 uid="uid://07hfl0tv12dw"]
 
 [ext_resource type="Script" path="res://singletons/game_manager.gd" id="1_dhhkr"]
+[ext_resource type="Resource" uid="uid://dyfg2qodnx83r" path="res://singletons/game_settings.tres" id="2_orflu"]
 
 [node name="GameManager" type="Node"]
 script = ExtResource("1_dhhkr")
+game_setting = ExtResource("2_orflu")

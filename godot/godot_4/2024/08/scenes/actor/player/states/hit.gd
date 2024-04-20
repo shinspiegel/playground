@@ -23,7 +23,10 @@ func update(delta: float) -> void:
 
 func on_anim_finished(anim: String) -> void:
 	if anim == HIT:
-		state_machine.change_state(IDLE)
+		if actor.stats.hp_curr <= 0:
+			state_machine.change_state(DIE)
+		else:
+			state_machine.change_state(IDLE)
 
 
 func on_damage_receive(dmg: Damage) -> void:

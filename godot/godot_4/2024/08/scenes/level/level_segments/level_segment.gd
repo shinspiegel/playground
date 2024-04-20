@@ -2,7 +2,7 @@ class_name LevelSegment extends Node2D
 
 signal player_entered()
 
-
+@export var respawn_point: Node2D
 @onready var entry_detection: Area2D = %EntryDetection
 @onready var top_left: Node2D = %TopLeft
 @onready var bottom_right: Node2D = %BottomRight

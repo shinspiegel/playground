@@ -2,6 +2,7 @@ class_name DamageReceiver extends Area2D
 
 signal receive_damage(damage: Damage)
 
+@export var active: bool = true
 @export var colddown: Timer
 
 
@@ -11,12 +12,12 @@ func _ready() -> void:
 
 
 func hit(dmg: Damage) -> void:
-	if colddown.is_stopped():
+	if colddown.is_stopped() and active:
 		colddown.start()
 		receive_damage.emit(dmg)
 
 
 func can_hit() -> bool:
-	if colddown.is_stopped():
+	if colddown.is_stopped() and active:
 		return true
 	return false

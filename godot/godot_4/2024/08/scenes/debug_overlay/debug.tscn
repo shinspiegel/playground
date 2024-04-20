@@ -1,15 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://bx17aiwt0uqrx"]
+[gd_scene load_steps=3 format=3 uid="uid://bx17aiwt0uqrx"]
 
 [ext_resource type="Script" path="res://scenes/debug_overlay/debug.gd" id="1_jyjfj"]
 [ext_resource type="Theme" uid="uid://x61ckk74bynv" path="res://screens/theme/base_theme.tres" id="2_34n7v"]
-[ext_resource type="Resource" uid="uid://b5il2dq7d8iem" path="res://scenes/actor/player/player_stats/player_stats.tres" id="2_640tr"]
 
 [node name="DEBUG" type="CanvasLayer" node_paths=PackedStringArray("state_label", "hp_label", "mp_label")]
 script = ExtResource("1_jyjfj")
 state_label = NodePath("Control/VBoxContainer/STATE")
 hp_label = NodePath("Control/VBoxContainer/HP")
 mp_label = NodePath("Control/VBoxContainer/MP")
-stats = ExtResource("2_640tr")
 
 [node name="Control" type="Control" parent="."]
 auto_translate_mode = 1

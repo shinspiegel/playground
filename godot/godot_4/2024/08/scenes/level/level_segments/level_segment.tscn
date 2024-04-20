@@ -320,12 +320,13 @@ variation_impact = 0.1
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hl7ph"]
 size = Vector2(64, 64)
 
-[node name="LevelSegment" type="Node2D"]
+[node name="LevelSegment" type="Node2D" node_paths=PackedStringArray("respawn_point")]
 script = ExtResource("1_v6hlk")
+respawn_point = NodePath("RespawnPoint")
 
 [node name="RespawnPoint" type="Marker2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(1016, 416)
+position = Vector2(512, 960)
 
 [node name="TileMap" type="TileMap" parent="."]
 scale = Vector2(4, 4)

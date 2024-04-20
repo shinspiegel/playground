@@ -1,7 +1,12 @@
 extends Node
 
+@warning_ignore("unused_signal")
+signal player_died()
+
 const damage_number: Resource = preload("res://scenes/damageables/damage_number/damage_number.tscn")
 const player_scene: Resource = preload("res://scenes/actor/player/player.tscn")
+
+@export var game_setting: GameSettings
 
 var player: Player
 
@@ -16,7 +21,7 @@ func spawn_damage_number(damage: Damage, pos: Vector2 = Vector2.ZERO, pos_variat
 
 	if parent == null:
 		parent = get_tree().root
-	
+
 	parent.add_child(instance)
 
 	pos.x += randf_range(-pos_variation.x, pos_variation.x)
@@ -25,9 +30,17 @@ func spawn_damage_number(damage: Damage, pos: Vector2 = Vector2.ZERO, pos_variat
 	instance.global_position = pos
 
 
-func spawn_player_at(node: Node, pos: Vector2 = Vector2.ZERO, camera: GameCamera = null) -> void:
+func spawn_player(node: Node, pos: Vector2 = Vector2.ZERO, camera: GameCamera = null) -> void:
 	node.add_child(player)
 	player.global_position = pos
 
 	if not camera == null:
 		player.set_camera(camera)
+
+
+func reload_current() -> void:
+	player = player_scene.instantiate()
+	player.stats = game_setting.saved_stats.duplicate(true)
+	player.stats.reset_mp()
+
+	get_tree().reload_current_scene()

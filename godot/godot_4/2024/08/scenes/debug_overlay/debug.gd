@@ -3,11 +3,13 @@ extends CanvasLayer
 @export var state_label: Label
 @export var hp_label: Label
 @export var mp_label: Label
-@export var stats: PlayerStats
+
+var stats: PlayerStats
 
 
 func _ready() -> void:
 	var state_machine: StateMachine = GameManager.player.state_machine
+	stats = GameManager.player.stats
 	state_machine.state_changed.connect(on_player_state_change)
 	stats.hp_changed.connect(on_hp_change)
 	stats.mp_changed.connect(on_mp_change)
