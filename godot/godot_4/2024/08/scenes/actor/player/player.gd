@@ -11,6 +11,7 @@ signal died()
 @onready var coyote_timer: Timer = %CoyoteTimer
 @onready var jump_buffer_cast: RayCast2D = %JumpBufferRaycast2D
 @onready var remote_camera: RemoteTransform2D = %RemoteCamera
+@onready var shoot_pos: Node2D = %ShotPosition
 
 var __is_coyoting: bool = false
 
@@ -53,6 +54,12 @@ func can_jump() -> bool:
 
 
 func can_roll() -> bool:
+	if can_jump() and stats.can_use_mana():
+		return true
+	return false
+
+
+func can_shoot() -> bool:
 	if can_jump() and stats.can_use_mana():
 		return true
 	return false

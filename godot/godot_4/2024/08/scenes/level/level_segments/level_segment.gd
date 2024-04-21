@@ -6,6 +6,9 @@ signal player_entered()
 @onready var entry_detection: Area2D = %EntryDetection
 @onready var top_left: Node2D = %TopLeft
 @onready var bottom_right: Node2D = %BottomRight
+@onready var back: Node2D = %Back
+@onready var middle: Node2D = %Middle
+@onready var front: Node2D = %Front
 
 
 func _ready() -> void:

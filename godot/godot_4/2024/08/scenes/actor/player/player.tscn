@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://b3y4ayg4a3myn"]
+[gd_scene load_steps=39 format=3 uid="uid://b3y4ayg4a3myn"]
 
 [ext_resource type="PackedScene" uid="uid://glesdckbbcba" path="res://scenes/actor/base_actor/base_actor.tscn" id="1_chlu2"]
 [ext_resource type="Script" path="res://scenes/actor/player/player.gd" id="2_7sqgf"]
@@ -24,8 +24,6 @@
 [ext_resource type="Texture2D" uid="uid://b36smuq2dp4vw" path="res://assets/graphics/Asset Packs 1-5 2/Asset Pack-V3/Player Hurt-Damaged/Player Hurt 48x48.png" id="20_cs0ph"]
 [ext_resource type="Script" path="res://scenes/damageables/damage_receiver/damage_reciever.gd" id="20_y54df"]
 [ext_resource type="Texture2D" uid="uid://unni7uw7oc7p" path="res://assets/graphics/Asset Packs 1-5 2/Asset Pack-V3/Player Death/Player Death 64x64.png" id="22_h2gw3"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_ja5er"]
 
 [sub_resource type="Animation" id="Animation_0xmk4"]
 resource_name = "Die"
@@ -646,9 +644,9 @@ position = Vector2(0, -64)
 texture = ExtResource("3_kq0ku")
 hframes = 10
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="FlipEnabled" index="3"]
-position = Vector2(64, -64)
-shape = SubResource("CircleShape2D_ja5er")
+[node name="ShotPosition" type="Marker2D" parent="FlipEnabled" index="3"]
+unique_name_in_owner = true
+position = Vector2(56, -64)
 
 [node name="StateMachine" parent="." index="1" node_paths=PackedStringArray("initial_state")]
 initial_state = NodePath("Idle")
@@ -696,8 +694,9 @@ script = ExtResource("13_eg56f")
 anim_player = NodePath("../../AnimationPlayer")
 actor = NodePath("../..")
 
-[node name="Ranged" type="Node2D" parent="StateMachine" index="9" node_paths=PackedStringArray("actor")]
+[node name="Ranged" type="Node2D" parent="StateMachine" index="9" node_paths=PackedStringArray("anim_player", "actor")]
 script = ExtResource("15_rmp7x")
+anim_player = NodePath("../../AnimationPlayer")
 actor = NodePath("../..")
 
 [node name="AnimationPlayer" parent="." index="2"]

@@ -15,8 +15,7 @@ const DASH = "dash"
 @export var just_release_jump: bool = false
 @export var roll: bool = false
 @export var attack: bool = false
-@export var ranged_aim: bool = false
-@export var ranged_shoot: bool = false
+@export var ranged: bool = false
 @export var block: bool = false
 @export var dash: bool = false
 
@@ -28,8 +27,7 @@ func _physics_process(_delta: float) -> void:
 	just_release_jump = Input.is_action_just_released(JUMP)
 	attack = Input.is_action_just_pressed(JAB)
 	roll = Input.is_action_just_pressed(ROLL)
-	ranged_aim = Input.is_action_pressed(RANGED)
-	ranged_shoot = Input.is_action_just_released(RANGED)
+	ranged = Input.is_action_just_pressed(RANGED)
 	block = Input.is_action_just_pressed(BLOCK)
 	dash = Input.is_action_just_pressed(DASH)
 

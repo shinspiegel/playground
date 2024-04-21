@@ -794,11 +794,6 @@ respawn_point = NodePath("RespawnPoint")
 unique_name_in_owner = true
 position = Vector2(512, 960)
 
-[node name="TileMap" type="TileMap" parent="."]
-scale = Vector2(4, 4)
-tile_set = SubResource("TileSet_4aih4")
-format = 2
-
 [node name="MapLimits" type="Node2D" parent="."]
 
 [node name="TopLeft" type="Marker2D" parent="MapLimits"]
@@ -808,6 +803,27 @@ position = Vector2(-192, -192)
 [node name="BottomRight" type="Marker2D" parent="MapLimits"]
 unique_name_in_owner = true
 position = Vector2(2240, 1344)
+
+[node name="Back" type="Node2D" parent="."]
+
+[node name="BackTilemap" type="TileMap" parent="Back"]
+scale = Vector2(4, 4)
+tile_set = SubResource("TileSet_4aih4")
+format = 2
+
+[node name="Middle" type="Node2D" parent="."]
+
+[node name="MiddleTilemap" type="TileMap" parent="Middle"]
+scale = Vector2(4, 4)
+tile_set = SubResource("TileSet_4aih4")
+format = 2
+
+[node name="Front" type="Node2D" parent="."]
+
+[node name="FrontTilemap" type="TileMap" parent="Front"]
+scale = Vector2(4, 4)
+tile_set = SubResource("TileSet_4aih4")
+format = 2
 
 [node name="EntryDetection" type="Area2D" parent="."]
 unique_name_in_owner = true

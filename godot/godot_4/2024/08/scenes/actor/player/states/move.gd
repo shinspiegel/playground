@@ -10,6 +10,10 @@ func update(delta: float) -> void:
 		state_machine.change_state(ROLL)
 		return
 
+	if actor.can_shoot() and actor.input.ranged:
+		state_machine.change_state(RANGED)
+		return
+
 	if actor.is_on_floor() and actor.input.attack:
 		state_machine.change_state(JAB)
 		return

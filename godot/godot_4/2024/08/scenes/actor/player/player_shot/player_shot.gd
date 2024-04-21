@@ -1,6 +1,7 @@
 class_name PlayerShoot extends Node2D
 
 @export var speed: int = 1400
+@export var dir: int = 1
 @export var movable: Node2D
 @export var notifier: VisibleOnScreenNotifier2D
 
@@ -10,7 +11,7 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
-	movable.position.x += speed * delta
+	movable.position.x += speed * delta * dir
 
 
 func on_screen_exit() -> void:

@@ -1,6 +1,7 @@
 class_name BaseLevel extends Node2D
 
 @export var game_settings: SavedData
+
 @onready var game_camera: GameCamera = %GameCamera
 @onready var segments_list: Node2D = %LevelSegments
 
@@ -10,6 +11,7 @@ var __seg_map: Dictionary = {}
 
 
 func _ready() -> void:
+	GameManager.current_level = self
 	GameManager.player.died.connect(on_player_died)
 	GameManager.game_camera = game_camera
 
@@ -25,8 +27,20 @@ func _ready() -> void:
 		current_segment = __seg_map.get(game_settings.saved_segment)
 
 	game_camera.set_limit_list(current_segment.get_limit_list())
-	GameManager.spawn_player(self, current_segment.respawn_point.global_position, game_camera)
+	GameManager.spawn_player(current_segment.middle, current_segment.respawn_point.global_position, game_camera)
 	game_settings.saved_stats = GameManager.player.stats.duplicate(true)
+
+
+func spawn(node: Node, layer: int = 1) -> void:
+	var target: Node2D
+
+	match layer:
+		0: target = current_segment.back
+		1: target = current_segment.middle
+		2: target = current_segment.front
+		_: target = current_segment.middle
+
+	target.add_child(node)
 
 
 func on_player_change_segment(segment: LevelSegment) -> void:

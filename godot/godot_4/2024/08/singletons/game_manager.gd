@@ -7,6 +7,7 @@ const player_scene: Resource = preload("res://scenes/actor/player/player.tscn")
 
 var player: Player
 var game_camera: GameCamera
+var current_level: BaseLevel
 
 
 func _ready() -> void:
@@ -36,6 +37,13 @@ func spawn_player(node: Node, pos: Vector2 = Vector2.ZERO, camera: GameCamera = 
 		camera.global_position = pos
 		camera.reset_smoothing()
 		player.set_camera(camera)
+
+
+func spawn(node: Node, layer: int = 1) -> void:
+	if current_level:
+		current_level.spawn(node, layer)
+	else:
+		push_error("current level unabailable")
 
 
 func reload_current() -> void:
