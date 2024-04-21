@@ -9,8 +9,7 @@ const JAB = "Jab"
 const ROLL = "Roll"
 const HIT = "Hit"
 const DIE = "Die"
-const RANGED_AIM = "RangedAim"
-const RANGED_SHOT = "RangedShot"
+const RANGED = "Ranged"
 
 @export var actor: Player
 

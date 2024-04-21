@@ -5,7 +5,7 @@
 
 [node name="DEBUG" type="CanvasLayer" node_paths=PackedStringArray("state_label", "hp_label", "mp_label")]
 script = ExtResource("1_jyjfj")
-state_label = NodePath("Control/VBoxContainer/STATE")
+state_label = NodePath("Control/VBoxContainer/State")
 hp_label = NodePath("Control/VBoxContainer/HP")
 mp_label = NodePath("Control/VBoxContainer/MP")
 
@@ -36,7 +36,7 @@ auto_translate_mode = 1
 layout_mode = 2
 text = "MP: [NULL / NULL :: NULL]"
 
-[node name="STATE" type="Label" parent="Control/VBoxContainer"]
+[node name="State" type="Label" parent="Control/VBoxContainer"]
 auto_translate_mode = 1
 layout_mode = 2
 text = "Player State: [Null]"

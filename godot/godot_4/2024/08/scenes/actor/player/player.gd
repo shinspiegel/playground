@@ -20,11 +20,11 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
-	if not is_on_floor() and not __is_coyoting:
-		coyote_timer.start()
+	if not __is_coyoting and not is_on_floor():
 		__is_coyoting = true
+		coyote_timer.start()
 
-	if is_on_floor():
+	if is_on_floor() or jump_buffer_cast.is_colliding():
 		coyote_timer.stop()
 		__is_coyoting = false
 
@@ -47,7 +47,7 @@ func should_fall() -> bool:
 
 
 func can_jump() -> bool:
-	if jump_buffer_cast.is_colliding() or is_on_floor() or __is_coyoting:
+	if is_on_floor() or jump_buffer_cast.is_colliding() or coyote_timer.time_left > 0:
 		return true
 	return false
 

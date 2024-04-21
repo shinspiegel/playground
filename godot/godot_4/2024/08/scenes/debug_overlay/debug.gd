@@ -19,12 +19,15 @@ func _ready() -> void:
 
 
 func on_player_state_change(state: String) -> void:
-	state_label.text = "Player State: [%s]" % [state]
+	if state_label:
+		state_label.text = "Player State: [%s]" % [state]
 
 
 func on_hp_change() -> void:
-	hp_label.text = "HP: [%s / %s]" % [stats.hp_curr, stats.hp_max]
+	if hp_label:
+		hp_label.text = "HP: [%s / %s]" % [stats.hp_curr, stats.hp_max]
 
 
 func on_mp_change() -> void:
-	mp_label.text = "MP: [%s / %s :: %.2f]" % [stats.mp_curr, stats.mp_max, stats.mp_refil]
+	if mp_label:
+		mp_label.text = "MP: [%s / %s :: %.2f]" % [stats.mp_curr, stats.mp_max, stats.mp_refil]

@@ -15,13 +15,12 @@
 [ext_resource type="Script" path="res://scenes/actor/player/states/jab.gd" id="9_2aao3"]
 [ext_resource type="Texture2D" uid="uid://bom3f5bdmsw1i" path="res://assets/graphics/Asset Packs 1-5 2/Asset Pack-V1/Player Jump/player jump 48x48.png" id="9_nh46m"]
 [ext_resource type="Script" path="res://scenes/actor/player/states/roll.gd" id="10_eo2x5"]
-[ext_resource type="Script" path="res://scenes/actor/player/states/ranged_aim.gd" id="11_jcr58"]
 [ext_resource type="Texture2D" uid="uid://c2jhphg1k2kg3" path="res://assets/graphics/Asset Packs 1-5 2/Asset Pack-V1/Player Land/player land 48x48.png" id="11_k0dr0"]
 [ext_resource type="Texture2D" uid="uid://bo8ev2yncu7p4" path="res://assets/graphics/Asset Packs 1-5 2/Asset Pack-V4/Player Punch Jab/Player Jab 48x48.png" id="12_h0vda"]
-[ext_resource type="Script" path="res://scenes/actor/player/states/ranged_shot.gd" id="12_u0fqx"]
 [ext_resource type="Script" path="res://scenes/actor/player/states/die.gd" id="13_eg56f"]
 [ext_resource type="Script" path="res://scenes/actor/player/states/hit.gd" id="13_onoyn"]
 [ext_resource type="Texture2D" uid="uid://bvm7fdslgx4b7" path="res://assets/graphics/Asset Packs 1-5 2/Asset Pack-V2/Player Roll/Player Roll 48x48.png" id="14_75iv5"]
+[ext_resource type="Script" path="res://scenes/actor/player/states/ranged.gd" id="15_rmp7x"]
 [ext_resource type="Texture2D" uid="uid://b36smuq2dp4vw" path="res://assets/graphics/Asset Packs 1-5 2/Asset Pack-V3/Player Hurt-Damaged/Player Hurt 48x48.png" id="20_cs0ph"]
 [ext_resource type="Script" path="res://scenes/damageables/damage_receiver/damage_reciever.gd" id="20_y54df"]
 [ext_resource type="Texture2D" uid="uid://unni7uw7oc7p" path="res://assets/graphics/Asset Packs 1-5 2/Asset Pack-V3/Player Death/Player Death 64x64.png" id="22_h2gw3"]
@@ -550,6 +549,59 @@ tracks/3/keys = {
 "values": [0, 1, 2, 3, 4, 5, 6]
 }
 
+[sub_resource type="Animation" id="Animation_h52tx"]
+resource_name = "Ranged"
+length = 0.5
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FlipEnabled/Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("12_h0vda")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FlipEnabled/Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [10]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("FlipEnabled/Sprite2D:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("FlipEnabled/Sprite2D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lkjk6"]
 _data = {
 "Die": SubResource("Animation_0xmk4"),
@@ -561,6 +613,7 @@ _data = {
 "Land": SubResource("Animation_6rbrt"),
 "Move": SubResource("Animation_n61s8"),
 "RESET": SubResource("Animation_b6rgr"),
+"Ranged": SubResource("Animation_h52tx"),
 "Roll": SubResource("Animation_g0ley")
 }
 
@@ -643,12 +696,8 @@ script = ExtResource("13_eg56f")
 anim_player = NodePath("../../AnimationPlayer")
 actor = NodePath("../..")
 
-[node name="RangedAim" type="Node2D" parent="StateMachine" index="9" node_paths=PackedStringArray("actor")]
-script = ExtResource("11_jcr58")
-actor = NodePath("../..")
-
-[node name="RangedShoot" type="Node2D" parent="StateMachine" index="10" node_paths=PackedStringArray("actor")]
-script = ExtResource("12_u0fqx")
+[node name="Ranged" type="Node2D" parent="StateMachine" index="9" node_paths=PackedStringArray("actor")]
+script = ExtResource("15_rmp7x")
 actor = NodePath("../..")
 
 [node name="AnimationPlayer" parent="." index="2"]
@@ -667,6 +716,7 @@ shape = SubResource("RectangleShape2D_cu7ei")
 [node name="JumpBufferRaycast2D" type="RayCast2D" parent="." index="5"]
 unique_name_in_owner = true
 target_position = Vector2(2.08165e-12, 64)
+collision_mask = 2
 
 [node name="CoyoteTimer" type="Timer" parent="." index="6"]
 unique_name_in_owner = true

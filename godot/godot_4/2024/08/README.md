@@ -37,6 +37,7 @@
 		- [x] Mana sytem
 			- [x] Rolling consume mana
 		- [x] Health / damage
+		- [x] Fix jump
 - Power Ups
 	- [x] Ranged Attack
 		- [ ] Increase distance (whole screen) #Forest
