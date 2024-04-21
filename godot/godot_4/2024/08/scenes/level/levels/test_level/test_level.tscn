@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://bktyolcslmgk2"]
+
+[ext_resource type="PackedScene" uid="uid://b87cqyunlhsul" path="res://scenes/level/base_level/base_level.tscn" id="1_vpqn5"]
+[ext_resource type="PackedScene" uid="uid://cof23ug74llw2" path="res://scenes/level/levels/test_level/test_segments/test_segment_1.tscn" id="2_fyp2i"]
+
+[node name="TestLevel" instance=ExtResource("1_vpqn5")]
+
+[node name="TestSegment" parent="LevelSegments" index="0" node_paths=PackedStringArray("respawn_point") instance=ExtResource("2_fyp2i")]
+respawn_point = NodePath("RespawnPoint")
+
+[node name="TestSegment2" parent="LevelSegments" index="1" node_paths=PackedStringArray("respawn_point") instance=ExtResource("2_fyp2i")]
+position = Vector2(14592, 0)
+respawn_point = NodePath("RespawnPoint")

@@ -57,6 +57,7 @@
 	- [x] Level Segments
 		- [x] Respawn on death
 	- [x] Camera Shake
+	- [x] Oneway block
 	- Forest
 		- [x] Story
 		- [x] Plan

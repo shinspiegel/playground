@@ -59,8 +59,8 @@ func can_roll() -> bool:
 
 
 func on_damage_receive(dmg: Damage) -> void:
-	stats.deal_damage(dmg.amount)
 	GameManager.spawn_damage_number(dmg, damage_position.global_position)
 	GameManager.game_camera.shake_damage(dmg)
+	stats.deal_damage(dmg.amount)
 	state_machine.change_state(PlayerState.HIT)
 

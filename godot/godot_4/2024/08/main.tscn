@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://c74dnqqs41xag"]
 
-[ext_resource type="PackedScene" uid="uid://b87cqyunlhsul" path="res://scenes/level/base_level.tscn" id="2_fbse2"]
+[ext_resource type="PackedScene" uid="uid://bktyolcslmgk2" path="res://scenes/level/levels/test_level/test_level.tscn" id="2_apren"]
 [ext_resource type="PackedScene" uid="uid://bx17aiwt0uqrx" path="res://scenes/debug_overlay/debug.tscn" id="2_vei06"]
 
 [node name="Main" type="Node2D"]
@@ -10,4 +10,4 @@ state_label = NodePath("Control/VBoxContainer/STATE")
 hp_label = NodePath("Control/VBoxContainer/HP")
 mp_label = NodePath("Control/VBoxContainer/MP")
 
-[node name="BaseLevel" parent="." instance=ExtResource("2_fbse2")]
+[node name="TestLevel" parent="." instance=ExtResource("2_apren")]

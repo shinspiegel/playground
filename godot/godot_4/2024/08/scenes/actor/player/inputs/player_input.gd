@@ -1,5 +1,7 @@
 class_name PlayerInput extends BaseInputs
 
+const UP = "up"
+const DOWN = "down"
 const LEFT = "left"
 const RIGHT = "right"
 const JUMP = "jump"
@@ -20,6 +22,7 @@ const DASH = "dash"
 
 
 func _physics_process(_delta: float) -> void:
+	down = Input.get_action_strength(DOWN)
 	direction = Input.get_axis(LEFT, RIGHT)
 	just_jump = Input.is_action_just_pressed(JUMP)
 	just_release_jump = Input.is_action_just_released(JUMP)
