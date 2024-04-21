@@ -38,7 +38,7 @@
 			- [x] Rolling consume mana
 		- [x] Health / damage
 - Power Ups
-	- [ ] Ranged Attack
+	- [x] Ranged Attack
 		- [ ] Increase distance (whole screen) #Forest
 		- [ ] Shoot increase damage (more than Jab) # Beach
 		- [ ] Shot 3 projectiles #Vulcano
@@ -65,6 +65,10 @@
 		- [x] Base files
 		- [ ] Tilemap
 		- [ ] Level design
+			- [ ] Initial Design
+			- [ ] Upgrade Ranged
+			- [ ] Upgrade Create
+			- [ ] Upgrade Dash
 		- [ ] Enemies idea
 	- Beach
 		- [x] Story
@@ -72,6 +76,10 @@
 		- [x] Base files
 		- [ ] Tilemap
 		- [ ] Level design
+			- [ ] Initial Design
+			- [ ] Upgrade Ranged
+			- [ ] Upgrade Create
+			- [ ] Upgrade Dash
 		- [ ] Enemies idea
 	- Vuldano
 		- [x] Story
@@ -79,12 +87,20 @@
 		- [x] Base files
 		- [ ] Tilemap
 		- [ ] Level design
+			- [ ] Initial Design
+			- [ ] Upgrade Ranged
+			- [ ] Upgrade Create
+			- [ ] Upgrade Dash
 		- [ ] Enemies idea
 	- Castle
 		- [ ] Story
 		- [ ] Tilemap
 		- [x] Base files
 		- [ ] Level design
+			- [ ] Initial Design
+			- [ ] Upgrade Ranged
+			- [ ] Upgrade Create
+			- [ ] Upgrade Dash
 		- [ ] Enemies idea
 - Enemies
 	- [ ] Walker (just walk from side to side and idle in between)
