@@ -38,15 +38,15 @@
 			- [x] Rolling consume mana
 		- [x] Health / damage
 - Power Ups
-	- Ranged Attack
+	- [ ] Ranged Attack
 		- [ ] Increase distance (whole screen) #Forest
 		- [ ] Shoot increase damage (more than Jab) # Beach
 		- [ ] Shot 3 projectiles #Vulcano
-	- Create Block
+	- [ ] Create Block
 		- [ ] The block have extra life #Forest
 		- [ ] Anything that damages the block recover your life #Beach
 		- [ ] Can create two at the same time #Vuldano
-	- Forward Dash
+	- [ ] Forward Dash
 		- [ ] Gain invulnerability on the dash #Forest
 		- [ ] Deal damage on the path #Beach
 		- [ ] Reduced colddown #Vulcano
@@ -58,27 +58,32 @@
 		- [x] Respawn on death
 	- [x] Camera Shake
 	- [x] Oneway block
+	- [ ] Parallax background
 	- Forest
 		- [x] Story
 		- [x] Plan
+		- [x] Base files
 		- [ ] Tilemap
 		- [ ] Level design
 		- [ ] Enemies idea
 	- Beach
 		- [x] Story
 		- [x] Plan
+		- [x] Base files
 		- [ ] Tilemap
 		- [ ] Level design
 		- [ ] Enemies idea
 	- Vuldano
 		- [x] Story
 		- [x] Plan
+		- [x] Base files
 		- [ ] Tilemap
 		- [ ] Level design
 		- [ ] Enemies idea
 	- Castle
 		- [ ] Story
 		- [ ] Tilemap
+		- [x] Base files
 		- [ ] Level design
 		- [ ] Enemies idea
 - Enemies
@@ -95,7 +100,6 @@
 ## Late Todo List
 
 - [ ] Particles?
-- [ ] Shake effects?
 - [ ] Camera ritcule?
 - [ ] Cutscenes?
 - [ ] Rolling credits?
