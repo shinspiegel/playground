@@ -10,13 +10,17 @@ class_name PlayerShoot extends Node2D
 
 
 func _ready() -> void:
-	notifier.screen_exited.connect(destroy)
-	wall_detection.body_entered.connect(destroy)
+	notifier.screen_exited.connect(on_exit_screen)
+	wall_detection.body_entered.connect(on_wall_hit)
 
 
 func _physics_process(delta: float) -> void:
 	movable.position.x += speed * delta * dir
 
 
-func destroy(_body: Node2D) -> void:
+func on_wall_hit(_body: Node2D) -> void:
+	queue_free()
+
+
+func on_exit_screen() -> void:
 	queue_free()
