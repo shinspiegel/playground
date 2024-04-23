@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://b3y4ayg4a3myn"]
+[gd_scene load_steps=43 format=3 uid="uid://b3y4ayg4a3myn"]
 
 [ext_resource type="PackedScene" uid="uid://glesdckbbcba" path="res://scenes/actor/base_actor/base_actor.tscn" id="1_chlu2"]
 [ext_resource type="Script" path="res://scenes/actor/player/player.gd" id="2_7sqgf"]
@@ -22,6 +22,7 @@
 [ext_resource type="Texture2D" uid="uid://bvm7fdslgx4b7" path="res://assets/graphics/Asset Packs 1-5 2/Asset Pack-V2/Player Roll/Player Roll 48x48.png" id="14_75iv5"]
 [ext_resource type="Script" path="res://scenes/actor/player/states/ranged.gd" id="15_rmp7x"]
 [ext_resource type="Script" path="res://scenes/actor/player/states/block.gd" id="17_u3pm1"]
+[ext_resource type="Script" path="res://scenes/actor/player/states/dash.gd" id="18_y7mo5"]
 [ext_resource type="Texture2D" uid="uid://b36smuq2dp4vw" path="res://assets/graphics/Asset Packs 1-5 2/Asset Pack-V3/Player Hurt-Damaged/Player Hurt 48x48.png" id="20_cs0ph"]
 [ext_resource type="Script" path="res://scenes/damageables/damage_receiver/damage_reciever.gd" id="20_y54df"]
 [ext_resource type="Texture2D" uid="uid://unni7uw7oc7p" path="res://assets/graphics/Asset Packs 1-5 2/Asset Pack-V3/Player Death/Player Death 64x64.png" id="22_h2gw3"]
@@ -825,7 +826,6 @@ actor = NodePath("../..")
 [node name="Roll" type="Node2D" parent="StateMachine" index="6" node_paths=PackedStringArray("anim_player", "actor")]
 script = ExtResource("10_eo2x5")
 anim_player = NodePath("../../AnimationPlayer")
-stats = ExtResource("3_qir03")
 actor = NodePath("../..")
 
 [node name="Hit" type="Node2D" parent="StateMachine" index="7" node_paths=PackedStringArray("anim_player", "dmg_receiver", "actor")]
@@ -849,7 +849,14 @@ script = ExtResource("17_u3pm1")
 anim_player = NodePath("../../AnimationPlayer")
 actor = NodePath("../..")
 
-[node name="Dash" type="Node2D" parent="StateMachine" index="11"]
+[node name="Dash" type="Node2D" parent="StateMachine" index="11" node_paths=PackedStringArray("duration", "actor")]
+script = ExtResource("18_y7mo5")
+duration = NodePath("DashDuration")
+actor = NodePath("../..")
+
+[node name="DashDuration" type="Timer" parent="StateMachine/Dash" index="0"]
+wait_time = 0.3
+one_shot = true
 
 [node name="AnimationPlayer" parent="." index="2"]
 libraries = {

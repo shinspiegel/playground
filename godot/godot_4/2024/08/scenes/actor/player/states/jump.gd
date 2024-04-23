@@ -9,6 +9,10 @@ func enter() -> void:
 
 
 func update(delta: float) -> void:
+	if actor.can_dash() and actor.input.dash:
+		state_machine.change_state(DASH)
+		return
+
 	if actor.input.just_release_jump:
 		actor.set_y_velocity(0.0)
 		return

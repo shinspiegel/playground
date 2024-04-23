@@ -6,6 +6,10 @@ func enter() -> void:
 
 
 func update(delta: float) -> void:
+	if actor.can_dash() and actor.input.dash:
+		state_machine.change_state(DASH)
+		return
+
 	if actor.can_roll() and actor.input.roll:
 		state_machine.change_state(ROLL)
 		return

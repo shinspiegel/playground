@@ -1,7 +1,6 @@
 extends PlayerState
 
 @export var anim_player: AnimationPlayer
-@export var stats: PlayerStats
 
 var direction: float = 0.0
 
@@ -13,7 +12,7 @@ func _ready() -> void:
 func enter() -> void:
 	actor.change_animation(ROLL)
 	direction = actor.input.last_direction
-	stats.consume_mana()
+	actor.stats.consume_mana()
 
 
 func update(delta: float) -> void:

@@ -47,7 +47,7 @@
 		- [ ] The block have extra life #Forest
 		- [ ] Anything that damages the block recover your life #Beach
 		- [ ] Can create two at the same time #Vuldano
-	- [ ] Forward Dash
+	- [x] Forward Dash
 		- [ ] Gain invulnerability on the dash #Forest
 		- [ ] Deal damage on the path #Beach
 		- [ ] Reduced colddown #Vulcano

@@ -40,6 +40,8 @@ func __load_child_states() -> void:
 		if child is BaseState:
 			child.state_machine = self
 			states[child.name] = child
+		else:
+			push_warning("childen isn't a state")
 
 
 func __start_initial() -> void:

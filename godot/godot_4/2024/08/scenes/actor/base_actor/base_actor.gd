@@ -22,9 +22,10 @@ func set_y_velocity(y_value: float = 0.0) -> void:
 	velocity.y = y_value
 
 
-func apple_direction(direction: float, friction: float, acceleration: float) -> void:
+func apple_direction(direction: float, friction: float, acceleration: float, ratio: float = 1.0) -> void:
 	velocity.x = lerpf(velocity.x, direction * data.speed * friction, acceleration)
 	velocity.x = clamp(velocity.x, -data.speed, data.speed)
+	velocity.x *= ratio
 
 
 func check_flip(direction: float) -> void:

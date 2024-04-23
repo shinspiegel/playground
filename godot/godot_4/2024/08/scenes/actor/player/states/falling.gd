@@ -23,6 +23,9 @@ func update(delta: float) -> void:
 			state_machine.change_state(MOVE)
 			return
 
+	if actor.can_dash() and actor.input.dash:
+		state_machine.change_state(DASH)
+
 	if actor.can_jump() and actor.input.just_jump:
 		state_machine.change_state(JUMP)
 		return
