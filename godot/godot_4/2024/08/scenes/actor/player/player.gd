@@ -68,13 +68,13 @@ func can_shoot() -> bool:
 
 
 func can_create_block() -> bool:
-	if power_ups.create_block_enabled and not placements[0].is_colliding() and not placements[1].is_colliding():
+	if power_ups.create_block_enabled and stats.can_use_mana() and not placements[0].is_colliding() and not placements[1].is_colliding():
 		return true
 	return false
 
 
 func can_dash() -> bool:
-	if power_ups.forward_dash:
+	if power_ups.forward_dash and stats.can_use_mana():
 		return true
 	return false
 
