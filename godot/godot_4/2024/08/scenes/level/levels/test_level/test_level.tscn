@@ -41,6 +41,6 @@ theme_override_font_sizes/font_size = 24
 text = "Jump Max 
 Height:: 3 Block (32)
 Width:: 6 Block (32)
-"
+Block Jump:: 5 Block (32)"
 horizontal_alignment = 2
 vertical_alignment = 1

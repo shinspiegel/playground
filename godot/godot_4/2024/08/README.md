@@ -34,7 +34,6 @@
 		- [x] Mana sytem
 			- [x] Rolling consume mana
 		- [x] Health / damage
-		- [x] Fix jump
 - Power Ups
 	- [x] Ranged Attack
 		- [ ] Increase distance (whole screen) #Forest
@@ -44,7 +43,7 @@
 		- [ ] The block have extra life #Forest
 		- [ ] Anything that damages the block recover your life #Beach
 		- [ ] Can create two at the same time #Vuldano
-	- [ ] Forward Dash
+	- [x] Forward Dash
 		- [ ] Gain invulnerability on the dash #Forest
 		- [ ] Deal damage on the path #Beach
 		- [ ] Reduced colddown #Vulcano
@@ -63,7 +62,7 @@
 		- [x] Base files
 		- [ ] Tilemap
 		- [ ] Level design
-			- [ ] Initial Design
+			- [x] Initial Design
 			- [ ] Upgrade Ranged
 			- [ ] Upgrade Create
 			- [ ] Upgrade Dash

@@ -14,6 +14,7 @@ func enter() -> void:
 	actor.change_animation(ROLL)
 	actor.velocity = Vector2.ZERO
 	actor.stats.consume_mana()
+	actor.dash_used = true
 	duration.start()
 
 

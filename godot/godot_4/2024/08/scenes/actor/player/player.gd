@@ -16,6 +16,7 @@ signal died()
 @onready var placements: Array[RayCast2D] = [%BlockTop, %BlockBottom]
 
 var __is_coyoting: bool = false
+var dash_used: bool = false
 
 
 func _ready() -> void:
@@ -30,6 +31,7 @@ func _physics_process(delta: float) -> void:
 	if is_on_floor() or jump_buffer_cast.is_colliding():
 		coyote_timer.stop()
 		__is_coyoting = false
+		dash_used = false
 
 	state_machine.update(delta)
 	stats.tick_mp(delta)
@@ -74,7 +76,7 @@ func can_create_block() -> bool:
 
 
 func can_dash() -> bool:
-	if power_ups.forward_dash and stats.can_use_mana():
+	if power_ups.forward_dash and stats.can_use_mana() and not dash_used:
 		return true
 	return false
 
