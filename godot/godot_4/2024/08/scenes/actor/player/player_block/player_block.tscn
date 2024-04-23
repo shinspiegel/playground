@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://cljw3xiu3830u"]
+
+[ext_resource type="Texture2D" uid="uid://dovewtuchy5a1" path="res://assets/graphics/template/size_template.png" id="1_0ga4k"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_rfcd7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ojb6s"]
+atlas = ExtResource("1_0ga4k")
+region = Rect2(240, 16, 32, 48)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7pkms"]
+size = Vector2(128, 192)
+
+[node name="PlayerBlock1" type="RigidBody2D"]
+collision_layer = 2
+collision_mask = 7
+physics_material_override = SubResource("PhysicsMaterial_rfcd7")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -96)
+scale = Vector2(4, 4)
+texture = SubResource("AtlasTexture_ojb6s")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -96)
+shape = SubResource("RectangleShape2D_7pkms")

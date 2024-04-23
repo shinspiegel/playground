@@ -25,8 +25,10 @@ func _physics_process(_delta: float) -> void:
 	direction = Input.get_axis(LEFT, RIGHT)
 	just_jump = Input.is_action_just_pressed(JUMP)
 	just_release_jump = Input.is_action_just_released(JUMP)
+
 	attack = Input.is_action_just_pressed(JAB)
 	roll = Input.is_action_just_pressed(ROLL)
+
 	ranged = Input.is_action_just_pressed(RANGED)
 	block = Input.is_action_just_pressed(BLOCK)
 	dash = Input.is_action_just_pressed(DASH)

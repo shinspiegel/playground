@@ -131,7 +131,7 @@
 - **Roll**: Circle
 - **Jump**: Cross
 - **Jab**: Square
-- **Ranged Attack**: R1/L2
+- **Ranged Attack**: R1/L2ot
 - **Create Block**: Triangle
 - **Forward Dash**: L1/L2 
 
