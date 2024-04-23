@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_8jfir")
-ranged_enabled = false
+ranged_enabled = true
 create_block_enabled = false
 forward_dash = false
 ranged_extra_range = false

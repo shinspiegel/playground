@@ -60,7 +60,18 @@ func can_roll() -> bool:
 
 
 func can_shoot() -> bool:
-	if can_jump() and stats.can_use_mana():
+	if power_ups.ranged_enabled and can_jump() and stats.can_use_mana():
+		return true
+	return false
+
+
+func can_create_block() -> bool:
+	if power_ups.create_block_enabled:
+		return true
+	return false
+
+func can_dash() -> bool:
+	if power_ups.forward_dash:
 		return true
 	return false
 

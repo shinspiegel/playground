@@ -1,8 +1,8 @@
 class_name PowerUps extends Resource
 
-@export var ranged_enabled: bool = false
-@export var create_block_enabled: bool = false
-@export var forward_dash: bool = false
+@export var ranged_enabled: bool = true
+@export var create_block_enabled: bool = true
+@export var forward_dash: bool = true
 
 @export_group("Ranged Attack upgrades", "ranged_")
 @export var ranged_extra_range: bool = false
