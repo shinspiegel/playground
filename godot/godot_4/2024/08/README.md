@@ -17,9 +17,6 @@
 - [x] DamageNumbers
 - [ ] Level selection screen
 - Main Character
-	- Design
-		- [ ] Descriptions
-		- [ ] Design
 	- Artwork
 		- [ ] Idle (4 frames)
 		- [ ] Move / Run (8 frames)
@@ -47,7 +44,7 @@
 		- [ ] The block have extra life #Forest
 		- [ ] Anything that damages the block recover your life #Beach
 		- [ ] Can create two at the same time #Vuldano
-	- [x] Forward Dash
+	- [ ] Forward Dash
 		- [ ] Gain invulnerability on the dash #Forest
 		- [ ] Deal damage on the path #Beach
 		- [ ] Reduced colddown #Vulcano
@@ -110,6 +107,13 @@
 	- [ ] Sniper (wanders, if player in sight, shoot)
 	- [ ] Medusa head (floats on screen, ignore tilemap)
 	- [ ] Hovering (hovers and drops bombs)
+- Hazards
+	- [ ] Spike (ground damage)
+	- [ ] Moving platform
+	- [ ] Mana hurt
+- Pickables
+	- [ ] Heart Recover
+	- [ ] Mana Recover
 - [x] Game Story
 - [x] Game flow
 
