@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=3 uid="uid://conurgiqgodb"]
+
+[ext_resource type="PackedScene" uid="uid://b87cqyunlhsul" path="res://level/base_level/base_level.tscn" id="1_ba3dr"]
+[ext_resource type="PackedScene" uid="uid://cqfqw42vgda3x" path="res://level/levels/forest/forest_segments/forest_segment_00.tscn" id="2_bpe3u"]
+[ext_resource type="PackedScene" uid="uid://xerb74oi1gpq" path="res://level/levels/forest/forest_segments/forest_segment_01.tscn" id="3_0ykon"]
+[ext_resource type="Texture2D" uid="uid://dmy6oc75phl76" path="res://assets/graphics/parallax_forest_pack web/layers/parallax-forest-back-trees.png" id="4_0o273"]
+[ext_resource type="Texture2D" uid="uid://bg8opxtg57ro0" path="res://assets/graphics/parallax_forest_pack web/layers/parallax-forest-middle-trees.png" id="5_1kjv5"]
+[ext_resource type="Texture2D" uid="uid://bkw84m7uctuw4" path="res://assets/graphics/parallax_forest_pack web/layers/parallax-forest-front-trees.png" id="6_cq046"]
+
+[node name="ForestLevel" instance=ExtResource("1_ba3dr")]
+
+[node name="Parallax2D" type="Parallax2D" parent="ParallaxArea" index="0"]
+scroll_scale = Vector2(0.1, 0.2)
+scroll_offset = Vector2(0, -100)
+repeat_size = Vector2(2720, 1600)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxArea/Parallax2D" index="0"]
+scale = Vector2(10, 10)
+texture = ExtResource("4_0o273")
+centered = false
+
+[node name="Parallax2D2" type="Parallax2D" parent="ParallaxArea" index="1"]
+scroll_scale = Vector2(0.3, 0.2)
+scroll_offset = Vector2(0, -100)
+repeat_size = Vector2(2720, 1600)
+
+[node name="Sprite2D2" type="Sprite2D" parent="ParallaxArea/Parallax2D2" index="0"]
+scale = Vector2(10, 10)
+texture = ExtResource("5_1kjv5")
+centered = false
+
+[node name="Parallax2D3" type="Parallax2D" parent="ParallaxArea" index="2"]
+scroll_scale = Vector2(0.5, 0.2)
+scroll_offset = Vector2(0, -100)
+repeat_size = Vector2(2720, 1600)
+
+[node name="Sprite2D3" type="Sprite2D" parent="ParallaxArea/Parallax2D3" index="0"]
+scale = Vector2(10, 10)
+texture = ExtResource("6_cq046")
+centered = false
+
+[node name="ForestSegment" parent="LevelSegments" index="0" instance=ExtResource("2_bpe3u")]
+
+[node name="ForestSegment2" parent="LevelSegments" index="1" instance=ExtResource("3_0ykon")]
+position = Vector2(3712, 0)

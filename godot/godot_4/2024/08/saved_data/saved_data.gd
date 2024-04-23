@@ -20,5 +20,5 @@ signal sound_changed
 		sound_changed.emit()
 		emit_changed()
 
-@export var saved_stats: PlayerStats
+@export var saved_stats: PlayerStats = PlayerStats.new()
 @export var saved_segment: String = ""

@@ -1,9 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://conurgiqgodb"]
-
-[ext_resource type="PackedScene" uid="uid://b87cqyunlhsul" path="res://scenes/level/base_level/base_level.tscn" id="1_ba3dr"]
-[ext_resource type="PackedScene" uid="uid://cqfqw42vgda3x" path="res://scenes/level/levels/forest/forest_segments/forest_segment.tscn" id="2_bpe3u"]
-
-[node name="ForestLevel" instance=ExtResource("1_ba3dr")]
-
-[node name="ForestSegment" parent="LevelSegments" index="0" node_paths=PackedStringArray("respawn_point") instance=ExtResource("2_bpe3u")]
-respawn_point = NodePath("RespawnPoint")

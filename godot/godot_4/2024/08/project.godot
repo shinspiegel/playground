@@ -32,6 +32,7 @@ window/stretch/scale_mode="integer"
 [file_customization]
 
 folder_colors={
+"res://level/": "green",
 "res://scenes/": "purple",
 "res://screens/": "yellow",
 "res://singletons/": "red"

@@ -1,9 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://dx03dbynouxo8"]
-
-[ext_resource type="PackedScene" uid="uid://b87cqyunlhsul" path="res://scenes/level/base_level/base_level.tscn" id="1_dntxo"]
-[ext_resource type="PackedScene" uid="uid://spsr12m61m57" path="res://scenes/level/levels/vulcano/vulcano_segments/vulcano_segment.tscn" id="2_3m32i"]
-
-[node name="VulcanoLevel" instance=ExtResource("1_dntxo")]
-
-[node name="VulcanoSegment" parent="LevelSegments" index="0" node_paths=PackedStringArray("respawn_point") instance=ExtResource("2_3m32i")]
-respawn_point = NodePath("RespawnPoint")

@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://lv30u8dh5u6l"]
+
+[ext_resource type="PackedScene" uid="uid://b87cqyunlhsul" path="res://level/base_level/base_level.tscn" id="1_tx51v"]
+[ext_resource type="PackedScene" uid="uid://dgrw7ondr42xa" path="res://level/levels/castle/castle_segments/castle_segment.tscn" id="2_elfm2"]
+
+[node name="CastleLevel" instance=ExtResource("1_tx51v")]
+
+[node name="CastleSegment" parent="LevelSegments" index="0" node_paths=PackedStringArray("respawn_point") instance=ExtResource("2_elfm2")]
+position = Vector2(-417.599, -422.598)
+respawn_point = NodePath("RespawnPoint")
