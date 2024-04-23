@@ -43,7 +43,7 @@
 		- [ ] Increase distance (whole screen) #Forest
 		- [ ] Shoot increase damage (more than Jab) # Beach
 		- [ ] Shot 3 projectiles #Vulcano
-	- [ ] Create Block
+	- [x] Create Block
 		- [ ] The block have extra life #Forest
 		- [ ] Anything that damages the block recover your life #Beach
 		- [ ] Can create two at the same time #Vuldano

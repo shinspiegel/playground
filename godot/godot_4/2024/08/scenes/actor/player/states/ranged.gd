@@ -16,7 +16,8 @@ func enter() -> void:
 	spawn_shoot()
 
 
-func update(_delta: float) -> void:
+func update(delta: float) -> void:
+	actor.apply_gravity(delta)
 	actor.apple_direction(0, actor.data.friction_land, 1)
 	actor.move_and_slide()
 	actor.check_flip(actor.input.last_direction)

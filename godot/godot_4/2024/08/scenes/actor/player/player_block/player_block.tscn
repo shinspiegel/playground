@@ -1,8 +1,17 @@
-[gd_scene load_steps=5 format=3 uid="uid://cljw3xiu3830u"]
+[gd_scene load_steps=10 format=3 uid="uid://cljw3xiu3830u"]
 
 [ext_resource type="Texture2D" uid="uid://dovewtuchy5a1" path="res://assets/graphics/template/size_template.png" id="1_0ga4k"]
+[ext_resource type="Script" path="res://scenes/actor/player/player_block/player_block.gd" id="1_nq6cv"]
+[ext_resource type="Script" path="res://scenes/actor/actor_data/actor_data.gd" id="2_bjwg4"]
+[ext_resource type="Script" path="res://scenes/level/level_objects/one_way_block/one_way_block.gd" id="4_k2rd0"]
+[ext_resource type="Script" path="res://scenes/actor/player/inputs/player_input.gd" id="5_fnu5g"]
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_rfcd7"]
+[sub_resource type="Resource" id="Resource_rwm5x"]
+script = ExtResource("2_bjwg4")
+speed = 800.0
+jump_velocity = 1248.0
+friction_land = 1.0
+friction_air = 1.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ojb6s"]
 atlas = ExtResource("1_0ga4k")
@@ -11,17 +20,39 @@ region = Rect2(240, 16, 32, 48)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7pkms"]
 size = Vector2(128, 192)
 
-[node name="PlayerBlock1" type="RigidBody2D"]
-collision_layer = 2
-collision_mask = 7
-physics_material_override = SubResource("PhysicsMaterial_rfcd7")
-metadata/_edit_group_ = true
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nf1pg"]
+size = Vector2(128, 32)
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="PlayerBlock" type="Node2D"]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_nq6cv")
+actor = SubResource("Resource_rwm5x")
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
 position = Vector2(0, -96)
 scale = Vector2(4, 4)
 texture = SubResource("AtlasTexture_ojb6s")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
 position = Vector2(0, -96)
 shape = SubResource("RectangleShape2D_7pkms")
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="CharacterBody2D"]
+remote_path = NodePath("../../StaticBody2D")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." node_paths=PackedStringArray("player_input", "shape")]
+collision_layer = 2
+script = ExtResource("4_k2rd0")
+player_input = NodePath("PlayerInput")
+shape = NodePath("CollisionShape2D")
+
+[node name="PlayerInput" type="Node" parent="StaticBody2D"]
+script = ExtResource("5_fnu5g")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, -176)
+shape = SubResource("RectangleShape2D_nf1pg")
+one_way_collision = true

@@ -10,6 +10,10 @@ func update(delta: float) -> void:
 		state_machine.change_state(ROLL)
 		return
 
+	if actor.can_create_block() and actor.input.block:
+		state_machine.change_state(BLOCK)
+		return
+
 	if actor.can_shoot() and actor.input.ranged:
 		state_machine.change_state(RANGED)
 		return
