@@ -9,10 +9,10 @@ size = Vector2(128, 1920)
 size = Vector2(128, 1152)
 
 [node name="ForestSegment" instance=ExtResource("1_eu03q")]
-parallax_offset = Vector2(2.08165e-12, -100)
+parallax_offset = Vector2(2.08165e-12, 600)
 
 [node name="RespawnPoint" parent="." index="0"]
-position = Vector2(384, 480)
+position = Vector2(128, 768)
 
 [node name="TopLeft" parent="MapLimits" index="0"]
 position = Vector2(-128, -384)

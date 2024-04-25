@@ -1,6 +1,7 @@
 class_name BaseLevel extends Node2D
 
 @export var game_settings: SavedData
+@export var initial_segment: LevelSegment
 
 @onready var game_camera: GameCamera = %GameCamera
 @onready var segments_list: Node2D = %LevelSegments
@@ -24,17 +25,18 @@ func _ready() -> void:
 			if current_segment == null:
 				current_segment = child
 
+	if initial_segment:
+		current_segment = initial_segment
+
 	if not game_settings.saved_segment.is_empty():
 		current_segment = __seg_map.get(game_settings.saved_segment)
-
-	update_parallax()
 
 	game_camera.set_limit_list(current_segment.get_limit_list())
 	GameManager.spawn_player(current_segment.middle, current_segment.respawn_point.global_position, game_camera)
 	game_settings.saved_stats = GameManager.player.stats.duplicate(true)
 
 
-func spawn(node: Node, layer: int = 1) -> void:
+func rpawn(node: Node, layer: int = 1) -> void:
 	var target: Node2D
 
 	match layer:
@@ -49,7 +51,6 @@ func spawn(node: Node, layer: int = 1) -> void:
 func on_player_change_segment(segment: LevelSegment) -> void:
 	game_camera.set_limit_list(segment.get_limit_list())
 	current_segment = segment
-	update_parallax()
 
 	game_settings.saved_segment = current_segment.name
 	game_settings.saved_stats = GameManager.player.stats.duplicate(true)
@@ -58,8 +59,3 @@ func on_player_change_segment(segment: LevelSegment) -> void:
 func on_player_died() -> void:
 	GameManager.reload_current()
 
-
-func update_parallax() -> void:
-	for child in parallax_area.get_children():
-		if child is Parallax2D:
-			child.screen_offset = current_segment.parallax_offset

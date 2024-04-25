@@ -2,8 +2,6 @@ class_name LevelSegment extends Node2D
 
 signal player_entered()
 
-@export var parallax_offset: Vector2 = Vector2.ZERO
-
 @onready var respawn_point: Node2D = %RespawnPoint
 @onready var entry_detection: Area2D = %EntryDetection
 @onready var top_left: Node2D = %TopLeft
@@ -17,6 +15,11 @@ func _ready() -> void:
 	entry_detection.body_entered.connect(on_body_enter)
 
 
+## Screen limits in array
+## 0: Top (y)
+## 1: Left (x)
+## 2: Bottom (y)
+## 3: Right (x)
 func get_limit_list() -> Array[int]:
 	return [
 		top_left.global_position.y,
