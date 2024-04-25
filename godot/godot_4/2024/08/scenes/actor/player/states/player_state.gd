@@ -17,10 +17,10 @@ const RANGED = "Ranged"
 const BLOCK = "Block"
 const DASH = "Dash"
 
-@export var actor: Player
+@export var player: Player
 
 
 func _ready() -> void:
-	if actor == null:
-		push_error("missing player actor node")
+	if player == null:
+		push_error("missing player player node")
 

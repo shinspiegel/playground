@@ -10,17 +10,17 @@ func _ready() -> void:
 
 
 func enter() -> void:
-	actor.change_animation(JAB)
+	player.change_animation(JAB)
 
 
 func update(delta: float) -> void:
-	if not repeat and actor.input.attack:
+	if not repeat and player.input.attack:
 		repeat = true
 
-	actor.apply_gravity(delta)
-	actor.apple_direction(0, actor.data.friction_land, 0.9)
-	actor.move_and_slide()
-	actor.check_flip(actor.input.last_direction)
+	player.apply_gravity(delta)
+	player.apple_direction(0, player.data.friction_land, 0.9)
+	player.move_and_slide()
+	player.check_flip(player.input.last_direction)
 
 
 func on_anim_finished(anim: String) -> void:

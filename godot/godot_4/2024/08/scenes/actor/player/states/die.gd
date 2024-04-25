@@ -8,14 +8,14 @@ func _ready() -> void:
 
 
 func enter() -> void:
-	actor.change_animation(DIE)
-	actor.velocity = Vector2.ZERO
-	actor.dmg_receiver.active = false
+	player.change_animation(DIE)
+	player.velocity = Vector2.ZERO
+	player.dmg_receiver.active = false
 
 
 func update(delta: float) -> void:
-	actor.apply_gravity(delta)
-	actor.move_and_slide()
+	player.apply_gravity(delta)
+	player.move_and_slide()
 
 
 func on_anim_finished(anim: String) -> void:

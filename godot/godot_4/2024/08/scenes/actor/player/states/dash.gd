@@ -10,36 +10,36 @@ func _ready() -> void:
 
 
 func enter() -> void:
-	direction = actor.input.last_direction
-	actor.change_animation(ROLL)
-	actor.velocity = Vector2.ZERO
-	actor.stats.consume_mana()
-	actor.dash_used = true
+	direction = player.input.last_direction
+	player.change_animation(ROLL)
+	player.velocity = Vector2.ZERO
+	player.stats.consume_mana()
+	player.dash_used = true
 	duration.start()
 
 
 func update(delta: float) -> void:
 	direction = lerpf(direction, 0, delta * 1.5)
 
-	actor.apple_direction(direction, 1.0, 1.0, 3.0)
-	actor.move_and_slide()
-	actor.check_flip(direction)
+	player.apple_direction(direction, 1.0, 1.0, 3.0)
+	player.move_and_slide()
+	player.check_flip(direction)
 
 
 func on_timeout() -> void:
-	if actor.can_roll() and actor.input.roll:
+	if player.can_roll() and player.input.roll:
 		state_machine.change_state(ROLL)
 		return
 
-	if actor.input.just_jump and actor.can_jump():
+	if player.input.just_jump and player.can_jump():
 		state_machine.change_state(JUMP)
 		return
 
-	if actor.should_fall():
+	if player.should_fall():
 		state_machine.change_state(FALLING)
 		return
 
-	if actor.input.direction == 0.0:
+	if player.input.direction == 0.0:
 		state_machine.change_state(IDLE)
 		return
 

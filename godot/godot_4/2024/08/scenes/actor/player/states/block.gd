@@ -13,22 +13,22 @@ func _ready() -> void:
 
 
 func enter() -> void:
-	actor.change_animation(BLOCK)
-	actor.stats.consume_mana()
-	actor.velocity = Vector2.ZERO
+	player.change_animation(BLOCK)
+	player.stats.consume_mana()
+	player.velocity = Vector2.ZERO
 	spawn_shoot()
 
 
 func update(_delta: float) -> void:
-	actor.apply_gravity(_delta)
-	actor.apple_direction(0, actor.data.friction_land, 1)
-	actor.move_and_slide()
-	actor.check_flip(actor.input.last_direction)
+	player.apply_gravity(_delta)
+	player.apple_direction(0, player.data.friction_land, 1)
+	player.move_and_slide()
+	player.check_flip(player.input.last_direction)
 
 
 func on_anim_finished(anim: String) -> void:
 	if anim == BLOCK:
-		if actor.input.direction > 0:
+		if player.input.direction > 0:
 			state_machine.change_state(MOVE)
 		else:
 			state_machine.change_state(IDLE)
@@ -36,7 +36,7 @@ func on_anim_finished(anim: String) -> void:
 
 func spawn_shoot() -> void:
 	var block: Node2D = scene.instantiate()
-	block.global_position = actor.block_pos.global_position
+	block.global_position = player.block_pos.global_position
 	GameManager.spawn(block, 0)
 	blocks.append(block)
 

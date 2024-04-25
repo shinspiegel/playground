@@ -2,34 +2,34 @@ extends PlayerState
 
 
 func enter() -> void:
-	actor.change_animation(JUMP)
-	actor.apply_jump()
+	player.change_animation(JUMP)
+	player.apply_jump()
 	# INFO: Neeeds to have the movement applied on the enter
-	actor.move_and_slide()
+	player.move_and_slide()
 
 
 func update(delta: float) -> void:
-	if actor.can_dash() and actor.input.dash:
+	if player.can_dash() and player.input.dash:
 		state_machine.change_state(DASH)
 		return
 
-	if actor.input.just_release_jump:
-		actor.set_y_velocity(0.0)
+	if player.input.just_release_jump:
+		player.set_y_velocity(0.0)
 		return
 
-	if actor.velocity.y > 0:
+	if player.velocity.y > 0:
 		state_machine.change_state(FALLING)
 		return
 
-	if actor.is_on_floor():
-		if actor.input.direction == 0.0:
+	if player.is_on_floor():
+		if player.input.direction == 0.0:
 			state_machine.change_state(IDLE)
 			return
 		else:
 			state_machine.change_state(MOVE)
 			return
 
-	actor.apply_gravity(delta)
-	actor.apple_direction(actor.input.direction, actor.data.friction_land, 0.05)
-	actor.move_and_slide()
-	actor.check_flip(actor.input.last_direction)
+	player.apply_gravity(delta)
+	player.apple_direction(player.input.direction, player.data.friction_land, 0.05)
+	player.move_and_slide()
+	player.check_flip(player.input.last_direction)
