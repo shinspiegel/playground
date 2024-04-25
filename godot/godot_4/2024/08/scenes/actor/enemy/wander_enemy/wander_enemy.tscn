@@ -1,0 +1,118 @@
+[gd_scene load_steps=13 format=3 uid="uid://bxkot377yyeju"]
+
+[ext_resource type="PackedScene" uid="uid://do4arqmfus0eo" path="res://scenes/actor/enemy/base_enemy/base_enemy.tscn" id="1_vtri4"]
+[ext_resource type="Texture2D" uid="uid://dovewtuchy5a1" path="res://assets/graphics/template/size_template.png" id="2_3vf71"]
+[ext_resource type="Texture2D" uid="uid://c2h2tebe12vje" path="res://assets/graphics/template/number_template.png" id="3_j7rpk"]
+[ext_resource type="Script" path="res://scenes/actor/enemy/enemy_states/enemy_idle.gd" id="4_cr0dk"]
+[ext_resource type="Script" path="res://scenes/actor/enemy/enemy_states/enemy_wander.gd" id="5_gqobw"]
+[ext_resource type="Script" path="res://scenes/actor/enemy/enemy_states/enemy_turn.gd" id="6_xyn32"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tcvr4"]
+atlas = ExtResource("2_3vf71")
+region = Rect2(72, 8, 32, 32)
+
+[sub_resource type="Animation" id="Animation_v5q5l"]
+resource_name = "Idle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FlipEnabled/Sprite2D2:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 0, 1, 2, 3, 4, 5, 6, 7, 8]
+}
+
+[sub_resource type="Animation" id="Animation_vkajp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FlipEnabled/Sprite2D2:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_lbbjl"]
+resource_name = "Wander"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FlipEnabled/Sprite2D2:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 0, 1, 2, 3, 4, 5, 6, 7, 8]
+}
+
+[sub_resource type="Animation" id="Animation_ph3ax"]
+resource_name = "Turn"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FlipEnabled/Sprite2D2:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 0, 1, 2, 3, 4, 5, 6, 7, 8]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1vwqw"]
+_data = {
+"Idle": SubResource("Animation_v5q5l"),
+"RESET": SubResource("Animation_vkajp"),
+"Turn": SubResource("Animation_ph3ax"),
+"Wander": SubResource("Animation_lbbjl")
+}
+
+[node name="WanderEnemy" node_paths=PackedStringArray("animation_player", "state_machine", "damage_position") instance=ExtResource("1_vtri4")]
+animation_player = NodePath("AnimationPlayer")
+state_machine = NodePath("StateMachine")
+damage_position = NodePath("FlipEnabled/DamagePos")
+
+[node name="Sprite2D" parent="FlipEnabled" index="0"]
+position = Vector2(0, -32)
+texture = SubResource("AtlasTexture_tcvr4")
+
+[node name="Sprite2D2" type="Sprite2D" parent="FlipEnabled" index="1"]
+position = Vector2(-16, -16)
+texture = ExtResource("3_j7rpk")
+hframes = 10
+
+[node name="StateMachine" parent="." index="1" node_paths=PackedStringArray("initial_state")]
+initial_state = NodePath("Idle")
+
+[node name="Idle" type="Node2D" parent="StateMachine" index="0" node_paths=PackedStringArray("idle_duration", "next_state", "enemy")]
+script = ExtResource("4_cr0dk")
+idle_duration = NodePath("IdleDuration")
+next_state = NodePath("../Wander")
+enemy = NodePath("../..")
+
+[node name="IdleDuration" type="Timer" parent="StateMachine/Idle" index="0"]
+wait_time = 3.0
+one_shot = true
+
+[node name="Wander" type="Node2D" parent="StateMachine" index="1"]
+script = ExtResource("5_gqobw")
+
+[node name="Turn" type="Node2D" parent="StateMachine" index="2"]
+script = ExtResource("6_xyn32")
+
+[node name="AnimationPlayer" parent="." index="2"]
+libraries = {
+"": SubResource("AnimationLibrary_1vwqw")
+}
