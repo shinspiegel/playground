@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://b3y4ayg4a3myn"]
+[gd_scene load_steps=44 format=3 uid="uid://b3y4ayg4a3myn"]
 
 [ext_resource type="PackedScene" uid="uid://glesdckbbcba" path="res://scenes/actor/base_actor/base_actor.tscn" id="1_chlu2"]
 [ext_resource type="Script" path="res://scenes/actor/player/player.gd" id="2_7sqgf"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://scenes/actor/player/inputs/player_input.gd" id="3_tobpv"]
 [ext_resource type="Script" path="res://scenes/actor/player/states/idle.gd" id="4_cis2p"]
 [ext_resource type="Script" path="res://scenes/actor/player/states/move.gd" id="5_eblpi"]
+[ext_resource type="Resource" uid="uid://bdpiltm25r811" path="res://scenes/actor/actor_data/player_actor_data.tres" id="5_l7rxu"]
 [ext_resource type="Script" path="res://scenes/actor/player/states/jump.gd" id="6_4yecm"]
 [ext_resource type="Script" path="res://scenes/actor/player/states/falling.gd" id="7_on48n"]
 [ext_resource type="Script" path="res://scenes/actor/player/states/land.gd" id="8_l7r01"]
@@ -735,33 +736,25 @@ collision_mask = 2
 script = ExtResource("2_7sqgf")
 stats = ExtResource("3_qir03")
 power_ups = ExtResource("3_75gay")
+data = ExtResource("5_l7rxu")
 animation_player = NodePath("AnimationPlayer")
 state_machine = NodePath("StateMachine")
 damage_position = NodePath("FlipEnabled/DamagePos")
 
-[node name="RemoteCamera" type="RemoteTransform2D" parent="FlipEnabled" index="0"]
-unique_name_in_owner = true
-position = Vector2(64, 2.08165e-12)
-update_rotation = false
-update_scale = false
-
-[node name="DamagePos" type="Marker2D" parent="FlipEnabled" index="1"]
-position = Vector2(2.08165e-12, -130)
-
-[node name="Sprite2D" parent="FlipEnabled" index="2"]
+[node name="Sprite2D" parent="FlipEnabled" index="0"]
 position = Vector2(0, -64)
 texture = ExtResource("3_kq0ku")
 hframes = 10
 
-[node name="ShotPosition" type="Marker2D" parent="FlipEnabled" index="3"]
+[node name="ShotPosition" type="Marker2D" parent="FlipEnabled" index="2"]
 unique_name_in_owner = true
 position = Vector2(56, -64)
 
-[node name="BlockPosition" type="Marker2D" parent="FlipEnabled" index="4"]
+[node name="BlockPosition" type="Marker2D" parent="FlipEnabled" index="3"]
 unique_name_in_owner = true
 position = Vector2(128, 2.08165e-12)
 
-[node name="BlockPlacementCast" type="Node2D" parent="FlipEnabled" index="5"]
+[node name="BlockPlacementCast" type="Node2D" parent="FlipEnabled" index="4"]
 
 [node name="BlockTop" type="RayCast2D" parent="FlipEnabled/BlockPlacementCast" index="0"]
 unique_name_in_owner = true
@@ -775,12 +768,12 @@ position = Vector2(2.08165e-12, -8)
 target_position = Vector2(192, 2.08165e-12)
 collision_mask = 2
 
-[node name="JumpBufferRaycast2D" type="RayCast2D" parent="FlipEnabled" index="6"]
+[node name="JumpBufferRaycast2D" type="RayCast2D" parent="FlipEnabled" index="5"]
 unique_name_in_owner = true
 target_position = Vector2(2.08165e-12, 64)
 collision_mask = 2
 
-[node name="DamageReceiver" type="Area2D" parent="FlipEnabled" index="7" node_paths=PackedStringArray("colddown")]
+[node name="DamageReceiver" type="Area2D" parent="FlipEnabled" index="6" node_paths=PackedStringArray("colddown")]
 unique_name_in_owner = true
 visible = false
 position = Vector2(0, -64)
@@ -793,6 +786,12 @@ one_shot = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FlipEnabled/DamageReceiver" index="1"]
 shape = SubResource("RectangleShape2D_82qu1")
+
+[node name="RemoteCamera" type="RemoteTransform2D" parent="FlipEnabled" index="7"]
+unique_name_in_owner = true
+position = Vector2(64, 2.08165e-12)
+update_rotation = false
+update_scale = false
 
 [node name="StateMachine" parent="." index="1" node_paths=PackedStringArray("initial_state")]
 initial_state = NodePath("Idle")

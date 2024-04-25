@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://do4arqmfus0eo"]
+
+[ext_resource type="PackedScene" uid="uid://glesdckbbcba" path="res://scenes/actor/base_actor/base_actor.tscn" id="1_p2e0t"]
+[ext_resource type="Script" path="res://scenes/actor/enemy/base_enemy/base_enemy.gd" id="2_i8n8a"]
+
+[node name="BaseEnemy" node_paths=PackedStringArray("animation_player", "state_machine", "damage_position") instance=ExtResource("1_p2e0t")]
+script = ExtResource("2_i8n8a")
+max_hp = 10
+hp = 10
+animation_player = NodePath("AnimationPlayer")
+state_machine = NodePath("StateMachine")
+damage_position = NodePath("FlipEnabled/DamagePos")

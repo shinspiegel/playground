@@ -1,27 +1,21 @@
-[gd_scene load_steps=5 format=3 uid="uid://glesdckbbcba"]
+[gd_scene load_steps=3 format=3 uid="uid://glesdckbbcba"]
 
 [ext_resource type="Script" path="res://scenes/actor/base_actor/base_actor.gd" id="1_2yj78"]
-[ext_resource type="Script" path="res://scenes/actor/actor_data/actor_data.gd" id="2_3ck3n"]
 [ext_resource type="Script" path="res://scenes/actor/state_machine/state_machine.gd" id="3_6wqjd"]
 
-[sub_resource type="Resource" id="Resource_pof54"]
-script = ExtResource("2_3ck3n")
-speed = 800.0
-jump_velocity = 1328.0
-friction_land = 1.0
-friction_air = 0.5
-
-[node name="BaseActor" type="CharacterBody2D" node_paths=PackedStringArray("animation_player", "state_machine")]
+[node name="BaseActor" type="CharacterBody2D" node_paths=PackedStringArray("animation_player", "state_machine", "damage_position")]
 script = ExtResource("1_2yj78")
-data = SubResource("Resource_pof54")
 animation_player = NodePath("AnimationPlayer")
 state_machine = NodePath("StateMachine")
+damage_position = NodePath("FlipEnabled/DamagePos")
 
 [node name="FlipEnabled" type="Node2D" parent="."]
 unique_name_in_owner = true
 
 [node name="Sprite2D" type="Sprite2D" parent="FlipEnabled"]
 scale = Vector2(4, 4)
+
+[node name="DamagePos" type="Marker2D" parent="FlipEnabled"]
 
 [node name="StateMachine" type="Node2D" parent="."]
 script = ExtResource("3_6wqjd")

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ActorData" load_steps=2 format=3 uid="uid://bdpiltm25r811"]
+
+[ext_resource type="Script" path="res://scenes/actor/actor_data/actor_data.gd" id="1_lc4l1"]
+
+[resource]
+script = ExtResource("1_lc4l1")
+speed = 800.0
+jump_velocity = 1328.0
+friction_land = 1.0
+friction_air = 0.5

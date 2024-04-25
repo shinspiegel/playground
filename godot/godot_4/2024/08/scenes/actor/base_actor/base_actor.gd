@@ -1,6 +1,6 @@
 class_name BaseActor extends CharacterBody2D
 
-@export var data: ActorData
+@export var data: ActorData = ActorData.new()
 @export var animation_player: AnimationPlayer
 @export var state_machine: StateMachine
 @export var damage_position: Node2D
