@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://bxkot377yyeju"]
+[gd_scene load_steps=27 format=3 uid="uid://bxkot377yyeju"]
 
 [ext_resource type="PackedScene" uid="uid://do4arqmfus0eo" path="res://scenes/actor/enemy/base_enemy/base_enemy.tscn" id="1_vtri4"]
 [ext_resource type="Texture2D" uid="uid://dovewtuchy5a1" path="res://assets/graphics/template/size_template.png" id="2_3vf71"]
@@ -8,10 +8,8 @@
 [ext_resource type="Script" path="res://scenes/actor/enemy/enemy_states/enemy_idle.gd" id="4_cr0dk"]
 [ext_resource type="PackedScene" uid="uid://bdna7yrgtgcjj" path="res://scenes/player_detector/player_detector.tscn" id="5_0f2kb"]
 [ext_resource type="Script" path="res://scenes/actor/enemy/enemy_states/enemy_wander.gd" id="5_gqobw"]
-[ext_resource type="Script" path="res://scenes/actor/enemy/enemy_states/hit.gd" id="7_cusjw"]
 [ext_resource type="Script" path="res://scenes/damageables/damage_inflictor/damage_inflictor.gd" id="7_wbbg8"]
 [ext_resource type="Script" path="res://scenes/damageables/damage_generator/damage_generator.gd" id="8_h4uoe"]
-[ext_resource type="Script" path="res://scenes/actor/enemy/enemy_states/death.gd" id="8_rssys"]
 [ext_resource type="Script" path="res://scenes/actor/enemy/enemy_states/shock_around.gd" id="9_mw7mj"]
 
 [sub_resource type="Resource" id="Resource_pnaxd"]
@@ -60,7 +58,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Label:text")
+tracks/1/path = NodePath("STATE:text")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -88,7 +86,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Label:text")
+tracks/1/path = NodePath("STATE:text")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -116,7 +114,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Label:text")
+tracks/1/path = NodePath("STATE:text")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -143,7 +141,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Label:text")
+tracks/1/path = NodePath("STATE:text")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -151,6 +149,34 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [""]
+}
+
+[sub_resource type="Animation" id="Animation_7qf58"]
+resource_name = "ShockAround"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FlipEnabled/Sprite2D2:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("STATE:text")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["ShockAround"]
 }
 
 [sub_resource type="Animation" id="Animation_ph3ax"]
@@ -171,7 +197,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Label:text")
+tracks/1/path = NodePath("STATE:text")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -199,7 +225,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Label:text")
+tracks/1/path = NodePath("STATE:text")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -207,34 +233,6 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": ["Wander"]
-}
-
-[sub_resource type="Animation" id="Animation_7qf58"]
-resource_name = "ShockAround"
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("FlipEnabled/Sprite2D2:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Label:text")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": ["ShockAround"]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1vwqw"]
@@ -307,7 +305,17 @@ shape = SubResource("CircleShape2D_2c11x")
 [node name="StateMachine" parent="." index="1" node_paths=PackedStringArray("initial_state")]
 initial_state = NodePath("Idle")
 
-[node name="Idle" type="Node2D" parent="StateMachine" index="0" node_paths=PackedStringArray("idle_duration", "next_state", "damage_receiver", "enemy")]
+[node name="Hit" parent="StateMachine" index="0" node_paths=PackedStringArray("anim_player", "dmg_receiver", "enemy")]
+anim_player = NodePath("../../AnimationPlayer")
+dmg_receiver = NodePath("../../FlipEnabled/DamageReceiver")
+enemy = NodePath("../..")
+
+[node name="Death" parent="StateMachine" index="1" node_paths=PackedStringArray("anim_player", "damage_receiver", "enemy")]
+anim_player = NodePath("../../AnimationPlayer")
+damage_receiver = NodePath("../../FlipEnabled/DamageReceiver")
+enemy = NodePath("../..")
+
+[node name="Idle" type="Node2D" parent="StateMachine" index="2" node_paths=PackedStringArray("idle_duration", "next_state", "damage_receiver", "enemy")]
 script = ExtResource("4_cr0dk")
 idle_duration = NodePath("IdleDuration")
 next_state = NodePath("../Wander")
@@ -318,7 +326,7 @@ enemy = NodePath("../..")
 wait_time = 3.0
 one_shot = true
 
-[node name="Wander" type="Node2D" parent="StateMachine" index="1" node_paths=PackedStringArray("damage_receiver", "floor_raycast", "wall_raycast", "next_state", "delay_timer", "enemy")]
+[node name="Wander" type="Node2D" parent="StateMachine" index="3" node_paths=PackedStringArray("damage_receiver", "floor_raycast", "wall_raycast", "next_state", "delay_timer", "enemy")]
 script = ExtResource("5_gqobw")
 damage_receiver = NodePath("../../FlipEnabled/DamageReceiver")
 floor_raycast = NodePath("../../FlipEnabled/FloorCast")
@@ -330,18 +338,6 @@ enemy = NodePath("../..")
 [node name="DelayTimer" type="Timer" parent="StateMachine/Wander" index="0"]
 wait_time = 0.3
 one_shot = true
-
-[node name="Hit" type="Node2D" parent="StateMachine" index="2" node_paths=PackedStringArray("anim_player", "dmg_receiver", "enemy")]
-script = ExtResource("7_cusjw")
-anim_player = NodePath("../../AnimationPlayer")
-dmg_receiver = NodePath("../../FlipEnabled/DamageReceiver")
-enemy = NodePath("../..")
-
-[node name="Death" type="Node2D" parent="StateMachine" index="3" node_paths=PackedStringArray("anim_player", "damage_receiver", "enemy")]
-script = ExtResource("8_rssys")
-anim_player = NodePath("../../AnimationPlayer")
-damage_receiver = NodePath("../../FlipEnabled/DamageReceiver")
-enemy = NodePath("../..")
 
 [node name="ShockAround" type="Node2D" parent="StateMachine" index="4" node_paths=PackedStringArray("shock_duration", "damage_inflictor", "enemy")]
 script = ExtResource("9_mw7mj")
@@ -362,7 +358,7 @@ libraries = {
 position = Vector2(0, -32)
 shape = SubResource("RectangleShape2D_dunbs")
 
-[node name="Label" type="Label" parent="." index="4"]
+[node name="STATE" type="Label" parent="." index="4"]
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
@@ -377,5 +373,21 @@ grow_vertical = 0
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="EnterShockDelay" type="Timer" parent="." index="5"]
+[node name="NAME" type="Label" parent="." index="5"]
+auto_translate_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_top = -24.0
+offset_right = 32.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "WA"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="EnterShockDelay" type="Timer" parent="." index="6"]
 one_shot = true

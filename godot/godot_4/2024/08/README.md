@@ -100,9 +100,9 @@
 			- [ ] Upgrade Dash
 		- [ ] Enemies idea
 - Enemies
-	- [ ] Walker (just walk from side to side and idle in between)
+	- [x] Walker (just walk from side to side and idle in between)
+	- [-] Shooter (does not move, shoot on invervals)
 	- [ ] Defender / Tank (holds something to protect, avoids damage)
-	- [ ] Shooter (does not move, shoot on invervals)
 	- [ ] Sniper (wanders, if player in sight, shoot)
 	- [ ] Medusa head (floats on screen, ignore tilemap)
 	- [ ] Hovering (hovers and drops bombs)
