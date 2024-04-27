@@ -6,6 +6,9 @@ class_name BaseLevel extends Node2D
 @onready var game_camera: GameCamera = %GameCamera
 @onready var segments_list: Node2D = %LevelSegments
 @onready var parallax_area: Node2D = %ParallaxArea
+@onready var background_nodes: Node2D = %BackgroundNodes
+@onready var foreground_nodes: Node2D = %ForegroundNodes
+
 
 var current_segment: LevelSegment
 
@@ -36,8 +39,18 @@ func _ready() -> void:
 	game_settings.saved_stats = GameManager.player.stats.duplicate(true)
 
 
+func spawn_background(node: Node) -> void:
+	background_nodes.add_child(node)
+
+
+func spawn_foreground(node: Node) -> void:
+	foreground_nodes.add_child(node)
+
+
 func spawn(node: Node, layer: int = 1) -> void:
 	var target: Node2D
+	var _node_name = node.name
+	var _name = current_segment.name
 
 	match layer:
 		0: target = current_segment.back
@@ -51,6 +64,7 @@ func spawn(node: Node, layer: int = 1) -> void:
 func on_player_change_segment(segment: LevelSegment) -> void:
 	game_camera.set_limit_list(segment.get_limit_list())
 	current_segment = segment
+	GameManager.player.reparent.call_deferred(segment)
 
 	game_settings.saved_segment = current_segment.name
 	game_settings.saved_stats = GameManager.player.stats.duplicate(true)

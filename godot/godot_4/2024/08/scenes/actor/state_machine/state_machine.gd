@@ -1,6 +1,6 @@
 class_name StateMachine extends Node2D
 
-signal state_changed(state: String)
+signal state_changed(state_name: String)
 
 @export var initial_state: BaseState
 

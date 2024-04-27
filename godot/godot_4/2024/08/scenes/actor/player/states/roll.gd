@@ -1,6 +1,7 @@
 extends PlayerState
 
 @export var anim_player: AnimationPlayer
+@export var damage_receiver: DamageReceiver
 
 var direction: float = 0.0
 
@@ -11,8 +12,13 @@ func _ready() -> void:
 
 func enter() -> void:
 	player.change_animation(ROLL)
+	damage_receiver.active = false
 	direction = player.input.last_direction
 	player.stats.consume_mana()
+
+
+func exit() -> void:
+	damage_receiver.active = true
 
 
 func update(delta: float) -> void:

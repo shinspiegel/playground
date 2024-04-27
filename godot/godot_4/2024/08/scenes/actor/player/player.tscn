@@ -743,7 +743,7 @@ _data = {
 "Roll": SubResource("Animation_g0ley")
 }
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_cu7ei"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xpcxu"]
 size = Vector2(48, 128)
 
 [node name="Player" instance=ExtResource("1_chlu2")]
@@ -846,9 +846,10 @@ anim_player = NodePath("../../AnimationPlayer")
 damage_inflictor = NodePath("../../FlipEnabled/JabDamageInflictor")
 player = NodePath("../..")
 
-[node name="Roll" type="Node2D" parent="StateMachine" index="6" node_paths=PackedStringArray("anim_player", "player")]
+[node name="Roll" type="Node2D" parent="StateMachine" index="6" node_paths=PackedStringArray("anim_player", "damage_receiver", "player")]
 script = ExtResource("10_eo2x5")
 anim_player = NodePath("../../AnimationPlayer")
+damage_receiver = NodePath("../../FlipEnabled/DamageReceiver")
 player = NodePath("../..")
 
 [node name="Hit" type="Node2D" parent="StateMachine" index="7" node_paths=PackedStringArray("anim_player", "dmg_receiver", "player")]
@@ -892,7 +893,7 @@ script = ExtResource("3_tobpv")
 
 [node name="BodyShape" type="CollisionShape2D" parent="." index="4"]
 position = Vector2(0, -64)
-shape = SubResource("RectangleShape2D_cu7ei")
+shape = SubResource("RectangleShape2D_xpcxu")
 
 [node name="CoyoteTimer" type="Timer" parent="." index="5"]
 unique_name_in_owner = true

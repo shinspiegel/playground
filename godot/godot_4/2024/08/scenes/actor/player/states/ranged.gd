@@ -35,4 +35,4 @@ func spawn_shoot() -> void:
 	var shot: PlayerShoot = player_shoot_scene.instantiate()
 	shot.global_position = player.shoot_pos.global_position
 	shot.dir = clampi(int(player.input.last_direction), -1, 1)
-	GameManager.spawn(shot, 2)
+	GameManager.spawn_foreground(shot)

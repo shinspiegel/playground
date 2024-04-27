@@ -39,8 +39,17 @@ func spawn_player(node: Node, pos: Vector2 = Vector2.ZERO, camera: GameCamera = 
 		player.set_camera(camera)
 
 
+func spawn_background(node: Node) -> void:
+	current_level.spawn_background(node)
+
+
+func spawn_foreground(node: Node) -> void:
+	current_level.spawn_foreground(node)
+
+
 func spawn(node: Node, layer: int = 1) -> void:
 	if current_level:
+		var _name = current_level.name
 		current_level.spawn(node, layer)
 	else:
 		push_error("current level unabailable")

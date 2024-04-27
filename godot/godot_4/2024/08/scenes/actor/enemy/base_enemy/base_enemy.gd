@@ -18,11 +18,19 @@ func _physics_process(delta: float) -> void:
 	state_machine.update(delta)
 
 
-func on_receive_damage(dmg: Damage) -> void:
-	GameManager.spawn_damage_number(dmg, damage_position.global_position)
-	receive_damage(dmg.amount)
-	state_machine.change_state(hit_state.name)
+func is_on_hit() -> bool:
+	return state_machine.get_current_name() == hit_state.name
+
+
+func is_on_death() -> bool:
+	return state_machine.get_current_name() == death_state.name
 
 
 func receive_damage(val: int) -> void:
 	hp = clampi(hp - val, 0, max_hp)
+
+
+func on_receive_damage(dmg: Damage) -> void:
+	GameManager.spawn_damage_number(dmg, damage_position.global_position)
+	receive_damage(dmg.amount)
+	state_machine.change_state(hit_state.name)

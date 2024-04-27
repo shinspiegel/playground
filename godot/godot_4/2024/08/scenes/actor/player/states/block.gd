@@ -16,7 +16,7 @@ func enter() -> void:
 	player.change_animation(BLOCK)
 	player.stats.consume_mana()
 	player.velocity = Vector2.ZERO
-	spawn_shoot()
+	spawn_block()
 
 
 func update(_delta: float) -> void:
@@ -34,10 +34,10 @@ func on_anim_finished(anim: String) -> void:
 			state_machine.change_state(IDLE)
 
 
-func spawn_shoot() -> void:
+func spawn_block() -> void:
 	var block: Node2D = scene.instantiate()
 	block.global_position = player.block_pos.global_position
-	GameManager.spawn(block, 0)
+	GameManager.spawn_background(block)
 	blocks.append(block)
 
 	if blocks.size() > max_blocks:

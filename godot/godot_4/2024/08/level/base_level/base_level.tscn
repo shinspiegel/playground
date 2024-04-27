@@ -25,5 +25,11 @@ color = Color(0.188969, 0.188969, 0.188969, 1)
 [node name="ParallaxArea" type="Node2D" parent="."]
 unique_name_in_owner = true
 
+[node name="BackgroundNodes" type="Node2D" parent="."]
+unique_name_in_owner = true
+
 [node name="LevelSegments" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="ForegroundNodes" type="Node2D" parent="."]
 unique_name_in_owner = true
