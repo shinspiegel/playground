@@ -4,9 +4,6 @@ const scene: Resource = preload("res://scenes/actor/player/player_block/player_b
 
 @export var anim_player: AnimationPlayer
 
-var blocks: Array[Node2D] = []
-var max_blocks: int = 1
-
 
 func _ready() -> void:
 	anim_player.animation_finished.connect(on_anim_finished)
@@ -38,8 +35,8 @@ func spawn_shoot() -> void:
 	var block: Node2D = scene.instantiate()
 	block.global_position = player.block_pos.global_position
 	GameManager.spawn(block, 0)
-	blocks.append(block)
+	player.power_ups.blocks.append(block)
 
-	if blocks.size() > max_blocks:
-		blocks[0].queue_free()
-		blocks.pop_front()
+	if player.power_ups.blocks.size() > player.power_ups.max_blocks:
+		player.power_ups.blocks[0].queue_free()
+		player.power_ups.blocks.pop_front()

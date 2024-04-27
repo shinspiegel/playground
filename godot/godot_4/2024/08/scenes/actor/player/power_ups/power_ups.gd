@@ -18,3 +18,6 @@ class_name PowerUps extends Resource
 @export var forward_invulnerable: bool = false
 @export var forward_deal_damage: bool = false
 @export var forward_reduced_colddown: bool = false
+
+var blocks: Array[Node2D] = []
+var max_blocks: int = 1
