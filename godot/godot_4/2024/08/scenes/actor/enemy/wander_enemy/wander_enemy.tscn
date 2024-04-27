@@ -1,20 +1,25 @@
-[gd_scene load_steps=20 format=3 uid="uid://bxkot377yyeju"]
+[gd_scene load_steps=29 format=3 uid="uid://bxkot377yyeju"]
 
 [ext_resource type="PackedScene" uid="uid://do4arqmfus0eo" path="res://scenes/actor/enemy/base_enemy/base_enemy.tscn" id="1_vtri4"]
 [ext_resource type="Texture2D" uid="uid://dovewtuchy5a1" path="res://assets/graphics/template/size_template.png" id="2_3vf71"]
 [ext_resource type="Script" path="res://scenes/actor/actor_data/actor_data.gd" id="2_8hbxm"]
+[ext_resource type="Script" path="res://scenes/actor/enemy/wander_enemy/wander_enemy.gd" id="2_8nut0"]
 [ext_resource type="Texture2D" uid="uid://c2h2tebe12vje" path="res://assets/graphics/template/number_template.png" id="3_j7rpk"]
 [ext_resource type="Script" path="res://scenes/actor/enemy/enemy_states/enemy_idle.gd" id="4_cr0dk"]
+[ext_resource type="PackedScene" uid="uid://bdna7yrgtgcjj" path="res://scenes/player_detector/player_detector.tscn" id="5_0f2kb"]
 [ext_resource type="Script" path="res://scenes/actor/enemy/enemy_states/enemy_wander.gd" id="5_gqobw"]
 [ext_resource type="Script" path="res://scenes/actor/enemy/enemy_states/hit.gd" id="7_cusjw"]
+[ext_resource type="Script" path="res://scenes/damageables/damage_inflictor/damage_inflictor.gd" id="7_wbbg8"]
+[ext_resource type="Script" path="res://scenes/damageables/damage_generator/damage_generator.gd" id="8_h4uoe"]
 [ext_resource type="Script" path="res://scenes/actor/enemy/enemy_states/death.gd" id="8_rssys"]
+[ext_resource type="Script" path="res://scenes/actor/enemy/enemy_states/shock_around.gd" id="9_mw7mj"]
 
-[sub_resource type="Resource" id="Resource_can4u"]
+[sub_resource type="Resource" id="Resource_pnaxd"]
 script = ExtResource("2_8hbxm")
-speed = 800.0
+speed = 400.0
 jump_velocity = 1328.0
-friction_land = 1.0
-friction_air = 0.5
+friction_land = 0.9
+friction_air = 0.7
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tcvr4"]
 atlas = ExtResource("2_3vf71")
@@ -22,6 +27,76 @@ region = Rect2(72, 8, 32, 32)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wnvhm"]
 radius = 56.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wre42"]
+size = Vector2(576, 320)
+
+[sub_resource type="Resource" id="Resource_rj3yl"]
+script = ExtResource("8_h4uoe")
+amount = 10
+impact = 1.0
+critical_chance = 0.2
+critical_boost = 1.3
+variation_amount = 0.1
+variation_impact = 0.1
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2c11x"]
+radius = 144.0
+
+[sub_resource type="Animation" id="Animation_qbrfk"]
+resource_name = "Death"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FlipEnabled/Sprite2D2:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Label:text")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["Death"]
+}
+
+[sub_resource type="Animation" id="Animation_87q71"]
+resource_name = "Hit"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FlipEnabled/Sprite2D2:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Label:text")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["Hit"]
+}
 
 [sub_resource type="Animation" id="Animation_v5q5l"]
 resource_name = "Idle"
@@ -134,36 +209,9 @@ tracks/1/keys = {
 "values": ["Wander"]
 }
 
-[sub_resource type="Animation" id="Animation_87q71"]
-resource_name = "Hit"
-length = 0.3
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("FlipEnabled/Sprite2D2:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [0, 1, 2]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Label:text")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": ["Hit"]
-}
-
-[sub_resource type="Animation" id="Animation_qbrfk"]
-resource_name = "Death"
+[sub_resource type="Animation" id="Animation_7qf58"]
+resource_name = "ShockAround"
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -186,7 +234,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": ["Death"]
+"values": ["ShockAround"]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1vwqw"]
@@ -195,6 +243,7 @@ _data = {
 "Hit": SubResource("Animation_87q71"),
 "Idle": SubResource("Animation_v5q5l"),
 "RESET": SubResource("Animation_vkajp"),
+"ShockAround": SubResource("Animation_7qf58"),
 "Turn": SubResource("Animation_ph3ax"),
 "Wander": SubResource("Animation_lbbjl")
 }
@@ -202,12 +251,14 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dunbs"]
 size = Vector2(64, 64)
 
-[node name="WanderEnemy" node_paths=PackedStringArray("hit_state", "death_state") instance=ExtResource("1_vtri4")]
+[node name="WanderEnemy" node_paths=PackedStringArray("shock_around_state", "hit_state", "death_state") instance=ExtResource("1_vtri4")]
 collision_layer = 4
 collision_mask = 10
+script = ExtResource("2_8nut0")
+shock_around_state = NodePath("StateMachine/ShockAround")
 hit_state = NodePath("StateMachine/Hit")
 death_state = NodePath("StateMachine/Death")
-data = SubResource("Resource_can4u")
+data = SubResource("Resource_pnaxd")
 
 [node name="Sprite2D" parent="FlipEnabled" index="0"]
 position = Vector2(0, -32)
@@ -235,21 +286,39 @@ colddown = NodePath("DamageColddown")
 position = Vector2(0, -32)
 shape = SubResource("CircleShape2D_wnvhm")
 
+[node name="PlayerDetector" parent="FlipEnabled" index="6" node_paths=PackedStringArray("external_origin_point") instance=ExtResource("5_0f2kb")]
+external_origin_point = NodePath("../..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FlipEnabled/PlayerDetector" index="0"]
+position = Vector2(288, -32)
+shape = SubResource("RectangleShape2D_wre42")
+
+[node name="DamageInflictor" type="Area2D" parent="FlipEnabled" index="7"]
+script = ExtResource("7_wbbg8")
+dmg_generator = SubResource("Resource_rj3yl")
+active = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FlipEnabled/DamageInflictor" index="0"]
+position = Vector2(0, -32)
+shape = SubResource("CircleShape2D_2c11x")
+
 [node name="StateMachine" parent="." index="1" node_paths=PackedStringArray("initial_state")]
 initial_state = NodePath("Idle")
 
-[node name="Idle" type="Node2D" parent="StateMachine" index="0" node_paths=PackedStringArray("idle_duration", "next_state", "enemy")]
+[node name="Idle" type="Node2D" parent="StateMachine" index="0" node_paths=PackedStringArray("idle_duration", "next_state", "damage_receiver", "enemy")]
 script = ExtResource("4_cr0dk")
 idle_duration = NodePath("IdleDuration")
 next_state = NodePath("../Wander")
+damage_receiver = NodePath("../../FlipEnabled/DamageReceiver")
 enemy = NodePath("../..")
 
 [node name="IdleDuration" type="Timer" parent="StateMachine/Idle" index="0"]
 wait_time = 3.0
 one_shot = true
 
-[node name="Wander" type="Node2D" parent="StateMachine" index="1" node_paths=PackedStringArray("floor_raycast", "wall_raycast", "next_state", "delay_timer", "enemy")]
+[node name="Wander" type="Node2D" parent="StateMachine" index="1" node_paths=PackedStringArray("damage_receiver", "floor_raycast", "wall_raycast", "next_state", "delay_timer", "enemy")]
 script = ExtResource("5_gqobw")
+damage_receiver = NodePath("../../FlipEnabled/DamageReceiver")
 floor_raycast = NodePath("../../FlipEnabled/FloorCast")
 wall_raycast = NodePath("../../FlipEnabled/WallCast")
 next_state = NodePath("../Idle")
@@ -271,6 +340,16 @@ script = ExtResource("8_rssys")
 anim_player = NodePath("../../AnimationPlayer")
 damage_receiver = NodePath("../../FlipEnabled/DamageReceiver")
 enemy = NodePath("../..")
+
+[node name="ShockAround" type="Node2D" parent="StateMachine" index="4" node_paths=PackedStringArray("shock_duration", "damage_inflictor", "enemy")]
+script = ExtResource("9_mw7mj")
+shock_duration = NodePath("ShockDuration")
+damage_inflictor = NodePath("../../FlipEnabled/DamageInflictor")
+enemy = NodePath("../..")
+
+[node name="ShockDuration" type="Timer" parent="StateMachine/ShockAround" index="0"]
+wait_time = 2.0
+one_shot = true
 
 [node name="AnimationPlayer" parent="." index="2"]
 libraries = {
@@ -295,3 +374,6 @@ grow_horizontal = 2
 grow_vertical = 0
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="EnterShockDelay" type="Timer" parent="." index="5"]
+one_shot = true

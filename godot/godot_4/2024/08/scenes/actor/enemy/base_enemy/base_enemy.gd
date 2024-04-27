@@ -12,7 +12,6 @@ class_name BaseEnemy extends BaseActor
 func _ready() -> void:
 	hp = max_hp
 	state_machine.change_initial()
-	damage_receiver.receive_damage.connect(on_receive_damage)
 
 
 func _physics_process(delta: float) -> void:

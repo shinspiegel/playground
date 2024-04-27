@@ -14,6 +14,7 @@ signal died()
 @onready var shoot_pos: Node2D = %ShotPosition
 @onready var block_pos: Node2D = %BlockPosition
 @onready var placements: Array[RayCast2D] = [%BlockTop, %BlockBottom]
+@onready var jab_damage_inflictor: DamageInflictor = %JabDamageInflictor
 
 var __is_coyoting: bool = false
 var dash_used: bool = false
@@ -21,6 +22,7 @@ var dash_used: bool = false
 
 func _ready() -> void:
 	dmg_receiver.receive_damage.connect(on_damage_receive)
+	jab_damage_inflictor.active = false
 	state_machine.change_initial()
 
 

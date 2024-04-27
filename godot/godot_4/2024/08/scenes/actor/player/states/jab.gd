@@ -28,6 +28,9 @@ func update(delta: float) -> void:
 	player.move_and_slide()
 	player.check_flip(player.input.last_direction)
 
+	if damage_inflictor.active:
+		damage_inflictor.active = false
+
 
 func on_anim_finished(anim: String) -> void:
 	if anim == JAB:

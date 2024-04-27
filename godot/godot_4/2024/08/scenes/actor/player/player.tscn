@@ -787,7 +787,6 @@ collision_mask = 2
 
 [node name="DamageReceiver" type="Area2D" parent="FlipEnabled" index="6" node_paths=PackedStringArray("colddown")]
 unique_name_in_owner = true
-visible = false
 position = Vector2(0, -64)
 script = ExtResource("20_y54df")
 colddown = NodePath("DamageColddown")
@@ -806,6 +805,7 @@ update_rotation = false
 update_scale = false
 
 [node name="JabDamageInflictor" type="Area2D" parent="FlipEnabled" index="8"]
+unique_name_in_owner = true
 collision_mask = 4
 script = ExtResource("8_yx3wq")
 dmg_generator = SubResource("Resource_hecd8")

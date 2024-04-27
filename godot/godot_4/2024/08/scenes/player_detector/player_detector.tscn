@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bdna7yrgtgcjj"]
+
+[ext_resource type="Script" path="res://scenes/player_detector/player_detector.gd" id="1_2dmx1"]
+
+[node name="PlayerDetector" type="Area2D"]
+collision_layer = 0
+script = ExtResource("1_2dmx1")

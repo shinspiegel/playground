@@ -2,16 +2,19 @@ extends EnemyState
 
 @export var idle_duration: Timer
 @export var next_state: EnemyState
+@export var damage_receiver: DamageReceiver
 
 
 func enter() -> void:
 	idle_duration.timeout.connect(on_idle_end)
+	damage_receiver.receive_damage.connect(enemy.on_receive_damage)
 	play_anim()
 	idle_duration.start()
 
 
 func exit() -> void:
 	idle_duration.timeout.disconnect(on_idle_end)
+	damage_receiver.receive_damage.disconnect(enemy.on_receive_damage)
 
 
 func update(delta: float) -> void:
@@ -23,4 +26,5 @@ func update(delta: float) -> void:
 
 func on_idle_end() -> void:
 	state_machine.change_state(next_state.name)
+
 

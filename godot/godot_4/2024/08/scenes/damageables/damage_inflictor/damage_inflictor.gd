@@ -2,7 +2,6 @@ class_name DamageInflictor extends Area2D
 
 @export var dmg_generator: DamageGenerator
 @export var active: bool = true
-@export var single_hit: bool = true
 
 var __areas_map: Dictionary = {}
 
@@ -13,7 +12,7 @@ func _ready() -> void:
 
 
 func _physics_process(_delta: float) -> void:
-	if active and not single_hit:
+	if active:
 		for area: DamageReceiver in __areas_map.values():
 			if area.can_hit():
 				area.hit(dmg_generator.generate(global_position))
@@ -22,9 +21,6 @@ func _physics_process(_delta: float) -> void:
 func on_area_enter(area: Area2D) -> void:
 	if area is DamageReceiver:
 		__areas_map[area.name] = area
-		
-		if active or single_hit:
-			area.hit(dmg_generator.generate(global_position))
 
 
 func on_area_exit(area: Area2D) -> void:
