@@ -3,11 +3,8 @@
 [ext_resource type="Script" path="res://scenes/actor/base_actor/base_actor.gd" id="1_2yj78"]
 [ext_resource type="Script" path="res://scenes/actor/state_machine/state_machine.gd" id="3_6wqjd"]
 
-[node name="BaseActor" type="CharacterBody2D" node_paths=PackedStringArray("animation_player", "state_machine", "damage_position")]
+[node name="BaseActor" type="CharacterBody2D"]
 script = ExtResource("1_2yj78")
-animation_player = NodePath("AnimationPlayer")
-state_machine = NodePath("StateMachine")
-damage_position = NodePath("FlipEnabled/DamagePos")
 
 [node name="FlipEnabled" type="Node2D" parent="."]
 unique_name_in_owner = true
@@ -16,8 +13,11 @@ unique_name_in_owner = true
 scale = Vector2(4, 4)
 
 [node name="DamagePos" type="Marker2D" parent="FlipEnabled"]
+unique_name_in_owner = true
 
 [node name="StateMachine" type="Node2D" parent="."]
+unique_name_in_owner = true
 script = ExtResource("3_6wqjd")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true

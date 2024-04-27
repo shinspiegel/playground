@@ -21,6 +21,7 @@ var dash_used: bool = false
 
 func _ready() -> void:
 	dmg_receiver.receive_damage.connect(on_damage_receive)
+	state_machine.change_initial()
 
 
 func _physics_process(delta: float) -> void:

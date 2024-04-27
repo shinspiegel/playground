@@ -5,10 +5,15 @@ extends CanvasLayer
 @export var mp_label: Label
 
 var stats: PlayerStats
+var state_machine: StateMachine
 
 
 func _ready() -> void:
-	var state_machine: StateMachine = GameManager.player.state_machine
+	GameManager.player.ready.connect(on_player_ready)
+
+
+func on_player_ready() -> void:
+	state_machine = GameManager.player.state_machine
 	stats = GameManager.player.stats
 	state_machine.state_changed.connect(on_player_state_change)
 	stats.hp_changed.connect(on_hp_change)

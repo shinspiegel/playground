@@ -19,7 +19,7 @@ func update(delta: float) -> void:
 	direction = lerpf(direction, 0, delta * 1.5)
 
 	player.apply_gravity(delta)
-	player.apple_direction(direction, player.data.friction_land, 0.9)
+	player.apply_direction(direction, player.data.friction_land, 0.9)
 	player.move_and_slide()
 	player.check_flip(direction)
 

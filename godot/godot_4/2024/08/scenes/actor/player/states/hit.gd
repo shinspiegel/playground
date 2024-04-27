@@ -37,5 +37,5 @@ func __apply_damage() -> void:
 	if last_damage == null: return
 	var direction := clampi(int(player.global_position.x - last_damage.source_position.x), -1, 1)
 	player.velocity.y = (last_damage.impact * 500) * -1
-	player.apple_direction(direction, last_damage.impact, 0.9)
+	player.apply_direction(direction, last_damage.impact, 0.9)
 

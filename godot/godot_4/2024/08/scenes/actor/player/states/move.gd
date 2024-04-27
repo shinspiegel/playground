@@ -41,6 +41,6 @@ func update(delta: float) -> void:
 	if player.should_fall():
 		player.apply_gravity(delta)
 
-	player.apple_direction(player.input.direction, player.data.friction_land, 0.1)
+	player.apply_direction(player.input.direction, player.data.friction_land, 0.1)
 	player.move_and_slide()
 	player.check_flip(player.input.last_direction)

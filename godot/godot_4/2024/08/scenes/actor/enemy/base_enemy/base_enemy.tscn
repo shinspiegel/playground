@@ -1,12 +1,31 @@
-[gd_scene load_steps=3 format=3 uid="uid://do4arqmfus0eo"]
+[gd_scene load_steps=5 format=3 uid="uid://do4arqmfus0eo"]
 
 [ext_resource type="PackedScene" uid="uid://glesdckbbcba" path="res://scenes/actor/base_actor/base_actor.tscn" id="1_p2e0t"]
 [ext_resource type="Script" path="res://scenes/actor/enemy/base_enemy/base_enemy.gd" id="2_i8n8a"]
+[ext_resource type="Script" path="res://scenes/actor/actor_data/actor_data.gd" id="3_yanel"]
 
-[node name="BaseEnemy" node_paths=PackedStringArray("animation_player", "state_machine", "damage_position") instance=ExtResource("1_p2e0t")]
+[sub_resource type="Resource" id="Resource_g08m4"]
+script = ExtResource("3_yanel")
+speed = 800.0
+jump_velocity = 1328.0
+friction_land = 1.0
+friction_air = 0.5
+
+[node name="BaseEnemy" instance=ExtResource("1_p2e0t")]
 script = ExtResource("2_i8n8a")
 max_hp = 10
 hp = 10
-animation_player = NodePath("AnimationPlayer")
-state_machine = NodePath("StateMachine")
-damage_position = NodePath("FlipEnabled/DamagePos")
+direction = -1
+data = SubResource("Resource_g08m4")
+
+[node name="FlipEnabled" parent="." index="0"]
+unique_name_in_owner = false
+
+[node name="DamagePos" parent="FlipEnabled" index="1"]
+unique_name_in_owner = false
+
+[node name="StateMachine" parent="." index="1"]
+unique_name_in_owner = false
+
+[node name="AnimationPlayer" parent="." index="2"]
+unique_name_in_owner = false

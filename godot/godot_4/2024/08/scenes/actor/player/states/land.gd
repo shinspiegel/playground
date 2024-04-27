@@ -13,7 +13,7 @@ func enter() -> void:
 
 func update(delta: float) -> void:
 	player.apply_gravity(delta)
-	player.apple_direction(0.0, player.data.friction_land, 0.1)
+	player.apply_direction(0.0, player.data.friction_land, 0.1)
 	player.move_and_slide()
 	player.check_flip(player.input.last_direction)
 

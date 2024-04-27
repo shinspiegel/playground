@@ -21,7 +21,7 @@ func enter() -> void:
 func update(delta: float) -> void:
 	direction = lerpf(direction, 0, delta * 1.5)
 
-	player.apple_direction(direction, 1.0, 1.0, 3.0)
+	player.apply_direction(direction, 1.0, 1.0, 3.0)
 	player.move_and_slide()
 	player.check_flip(direction)
 

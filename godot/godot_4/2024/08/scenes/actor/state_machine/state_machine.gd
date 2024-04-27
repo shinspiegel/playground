@@ -10,7 +10,6 @@ var current: BaseState
 
 func _ready() -> void:
 	__load_child_states()
-	__start_initial()
 
 
 func update(delta: float) -> void:
@@ -35,16 +34,7 @@ func change_state(state: String) -> void:
 		state_changed.emit(state)
 
 
-func __load_child_states() -> void:
-	for child in get_children():
-		if child is BaseState:
-			child.state_machine = self
-			states[child.name] = child
-		else:
-			push_warning("childen isn't a state")
-
-
-func __start_initial() -> void:
+func change_initial() -> void:
 	if states.size() <= 0:
 		push_error("No state in state machine")
 		return
@@ -54,3 +44,12 @@ func __start_initial() -> void:
 
 	else:
 		change_state(states.keys()[0])
+
+
+func __load_child_states() -> void:
+	for child in get_children():
+		if child is BaseState:
+			child.state_machine = self
+			states[child.name] = child
+		else:
+			push_warning("childen isn't a state")

@@ -1,10 +1,11 @@
 class_name BaseActor extends CharacterBody2D
 
 @export var data: ActorData = ActorData.new()
-@export var animation_player: AnimationPlayer
-@export var state_machine: StateMachine
-@export var damage_position: Node2D
-@onready var flip_enabled_node: Node2D = %FlipEnabled
+
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var state_machine: StateMachine = $StateMachine
+@onready var damage_position: Node2D = $FlipEnabled/DamagePos
+@onready var flip_enabled_node: Node2D = $FlipEnabled
 
 var facing_direction: int = 1
 
@@ -22,7 +23,7 @@ func set_y_velocity(y_value: float = 0.0) -> void:
 	velocity.y = y_value
 
 
-func apple_direction(direction: float, friction: float, acceleration: float, ratio: float = 1.0) -> void:
+func apply_direction(direction: float, friction: float, acceleration: float, ratio: float = 1.0) -> void:
 	velocity.x = lerpf(velocity.x, direction * data.speed * friction, acceleration)
 	velocity.x = clamp(velocity.x, -data.speed, data.speed)
 	velocity.x *= ratio

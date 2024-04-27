@@ -731,15 +731,12 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cu7ei"]
 size = Vector2(48, 128)
 
-[node name="Player" node_paths=PackedStringArray("animation_player", "state_machine", "damage_position") instance=ExtResource("1_chlu2")]
+[node name="Player" instance=ExtResource("1_chlu2")]
 collision_mask = 2
 script = ExtResource("2_7sqgf")
 stats = ExtResource("3_qir03")
 power_ups = ExtResource("3_75gay")
 data = ExtResource("5_l7rxu")
-animation_player = NodePath("AnimationPlayer")
-state_machine = NodePath("StateMachine")
-damage_position = NodePath("FlipEnabled/DamagePos")
 
 [node name="Sprite2D" parent="FlipEnabled" index="0"]
 position = Vector2(0, -64)
@@ -796,62 +793,62 @@ update_scale = false
 [node name="StateMachine" parent="." index="1" node_paths=PackedStringArray("initial_state")]
 initial_state = NodePath("Idle")
 
-[node name="Idle" type="Node2D" parent="StateMachine" index="0" node_paths=PackedStringArray("actor")]
+[node name="Idle" type="Node2D" parent="StateMachine" index="0" node_paths=PackedStringArray("player")]
 script = ExtResource("4_cis2p")
-actor = NodePath("../..")
+player = NodePath("../..")
 
-[node name="Move" type="Node2D" parent="StateMachine" index="1" node_paths=PackedStringArray("actor")]
+[node name="Move" type="Node2D" parent="StateMachine" index="1" node_paths=PackedStringArray("player")]
 script = ExtResource("5_eblpi")
-actor = NodePath("../..")
+player = NodePath("../..")
 
-[node name="Jump" type="Node2D" parent="StateMachine" index="2" node_paths=PackedStringArray("actor")]
+[node name="Jump" type="Node2D" parent="StateMachine" index="2" node_paths=PackedStringArray("player")]
 script = ExtResource("6_4yecm")
-actor = NodePath("../..")
+player = NodePath("../..")
 
-[node name="Falling" type="Node2D" parent="StateMachine" index="3" node_paths=PackedStringArray("actor")]
+[node name="Falling" type="Node2D" parent="StateMachine" index="3" node_paths=PackedStringArray("player")]
 script = ExtResource("7_on48n")
-actor = NodePath("../..")
+player = NodePath("../..")
 
-[node name="Land" type="Node2D" parent="StateMachine" index="4" node_paths=PackedStringArray("anim_player", "actor")]
+[node name="Land" type="Node2D" parent="StateMachine" index="4" node_paths=PackedStringArray("anim_player", "player")]
 script = ExtResource("8_l7r01")
 anim_player = NodePath("../../AnimationPlayer")
-actor = NodePath("../..")
+player = NodePath("../..")
 
-[node name="Jab" type="Node2D" parent="StateMachine" index="5" node_paths=PackedStringArray("anim_player", "actor")]
+[node name="Jab" type="Node2D" parent="StateMachine" index="5" node_paths=PackedStringArray("anim_player", "player")]
 script = ExtResource("9_2aao3")
 anim_player = NodePath("../../AnimationPlayer")
-actor = NodePath("../..")
+player = NodePath("../..")
 
-[node name="Roll" type="Node2D" parent="StateMachine" index="6" node_paths=PackedStringArray("anim_player", "actor")]
+[node name="Roll" type="Node2D" parent="StateMachine" index="6" node_paths=PackedStringArray("anim_player", "player")]
 script = ExtResource("10_eo2x5")
 anim_player = NodePath("../../AnimationPlayer")
-actor = NodePath("../..")
+player = NodePath("../..")
 
-[node name="Hit" type="Node2D" parent="StateMachine" index="7" node_paths=PackedStringArray("anim_player", "dmg_receiver", "actor")]
+[node name="Hit" type="Node2D" parent="StateMachine" index="7" node_paths=PackedStringArray("anim_player", "dmg_receiver", "player")]
 script = ExtResource("13_onoyn")
 anim_player = NodePath("../../AnimationPlayer")
 dmg_receiver = NodePath("../../FlipEnabled/DamageReceiver")
-actor = NodePath("../..")
+player = NodePath("../..")
 
-[node name="Die" type="Node2D" parent="StateMachine" index="8" node_paths=PackedStringArray("anim_player", "actor")]
+[node name="Die" type="Node2D" parent="StateMachine" index="8" node_paths=PackedStringArray("anim_player", "player")]
 script = ExtResource("13_eg56f")
 anim_player = NodePath("../../AnimationPlayer")
-actor = NodePath("../..")
+player = NodePath("../..")
 
-[node name="Ranged" type="Node2D" parent="StateMachine" index="9" node_paths=PackedStringArray("anim_player", "actor")]
+[node name="Ranged" type="Node2D" parent="StateMachine" index="9" node_paths=PackedStringArray("anim_player", "player")]
 script = ExtResource("15_rmp7x")
 anim_player = NodePath("../../AnimationPlayer")
-actor = NodePath("../..")
+player = NodePath("../..")
 
-[node name="Block" type="Node2D" parent="StateMachine" index="10" node_paths=PackedStringArray("anim_player", "actor")]
+[node name="Block" type="Node2D" parent="StateMachine" index="10" node_paths=PackedStringArray("anim_player", "player")]
 script = ExtResource("17_u3pm1")
 anim_player = NodePath("../../AnimationPlayer")
-actor = NodePath("../..")
+player = NodePath("../..")
 
-[node name="Dash" type="Node2D" parent="StateMachine" index="11" node_paths=PackedStringArray("duration", "actor")]
+[node name="Dash" type="Node2D" parent="StateMachine" index="11" node_paths=PackedStringArray("duration", "player")]
 script = ExtResource("18_y7mo5")
 duration = NodePath("DashDuration")
-actor = NodePath("../..")
+player = NodePath("../..")
 
 [node name="DashDuration" type="Timer" parent="StateMachine/Dash" index="0"]
 wait_time = 0.3
