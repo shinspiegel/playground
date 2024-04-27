@@ -36,7 +36,7 @@ func _ready() -> void:
 	game_settings.saved_stats = GameManager.player.stats.duplicate(true)
 
 
-func rpawn(node: Node, layer: int = 1) -> void:
+func spawn(node: Node, layer: int = 1) -> void:
 	var target: Node2D
 
 	match layer:

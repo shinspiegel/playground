@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://do4arqmfus0eo"]
+[gd_scene load_steps=6 format=3 uid="uid://do4arqmfus0eo"]
 
 [ext_resource type="PackedScene" uid="uid://glesdckbbcba" path="res://scenes/actor/base_actor/base_actor.tscn" id="1_p2e0t"]
 [ext_resource type="Script" path="res://scenes/actor/enemy/base_enemy/base_enemy.gd" id="2_i8n8a"]
 [ext_resource type="Script" path="res://scenes/actor/actor_data/actor_data.gd" id="3_yanel"]
+[ext_resource type="Script" path="res://scenes/damageables/damage_receiver/damage_reciever.gd" id="4_w7q1d"]
 
 [sub_resource type="Resource" id="Resource_g08m4"]
 script = ExtResource("3_yanel")
@@ -23,6 +24,16 @@ unique_name_in_owner = false
 
 [node name="DamagePos" parent="FlipEnabled" index="1"]
 unique_name_in_owner = false
+
+[node name="DamageReceiver" type="Area2D" parent="FlipEnabled" index="2" node_paths=PackedStringArray("colddown")]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("4_w7q1d")
+colddown = NodePath("DamageColddown")
+
+[node name="DamageColddown" type="Timer" parent="FlipEnabled/DamageReceiver" index="0"]
+wait_time = 0.1
+one_shot = true
 
 [node name="StateMachine" parent="." index="1"]
 unique_name_in_owner = false

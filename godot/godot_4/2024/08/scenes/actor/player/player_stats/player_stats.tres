@@ -5,8 +5,8 @@
 [resource]
 script = ExtResource("1_2ay66")
 hp_max = 50
-hp_curr = 0
+hp_curr = 50
 mp_max = 3
-mp_curr = 0
+mp_curr = 3
 mp_refil = 0.0
 mp_refil_ratio = 0.7

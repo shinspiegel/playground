@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bxkot377yyeju"]
+[gd_scene load_steps=20 format=3 uid="uid://bxkot377yyeju"]
 
 [ext_resource type="PackedScene" uid="uid://do4arqmfus0eo" path="res://scenes/actor/enemy/base_enemy/base_enemy.tscn" id="1_vtri4"]
 [ext_resource type="Texture2D" uid="uid://dovewtuchy5a1" path="res://assets/graphics/template/size_template.png" id="2_3vf71"]
@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://c2h2tebe12vje" path="res://assets/graphics/template/number_template.png" id="3_j7rpk"]
 [ext_resource type="Script" path="res://scenes/actor/enemy/enemy_states/enemy_idle.gd" id="4_cr0dk"]
 [ext_resource type="Script" path="res://scenes/actor/enemy/enemy_states/enemy_wander.gd" id="5_gqobw"]
+[ext_resource type="Script" path="res://scenes/actor/enemy/enemy_states/hit.gd" id="7_cusjw"]
+[ext_resource type="Script" path="res://scenes/actor/enemy/enemy_states/death.gd" id="8_rssys"]
 
 [sub_resource type="Resource" id="Resource_can4u"]
 script = ExtResource("2_8hbxm")
@@ -17,6 +19,9 @@ friction_air = 0.5
 [sub_resource type="AtlasTexture" id="AtlasTexture_tcvr4"]
 atlas = ExtResource("2_3vf71")
 region = Rect2(72, 8, 32, 32)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wnvhm"]
+radius = 56.0
 
 [sub_resource type="Animation" id="Animation_v5q5l"]
 resource_name = "Idle"
@@ -129,8 +134,65 @@ tracks/1/keys = {
 "values": ["Wander"]
 }
 
+[sub_resource type="Animation" id="Animation_87q71"]
+resource_name = "Hit"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FlipEnabled/Sprite2D2:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Label:text")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["Hit"]
+}
+
+[sub_resource type="Animation" id="Animation_qbrfk"]
+resource_name = "Death"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FlipEnabled/Sprite2D2:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Label:text")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["Death"]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1vwqw"]
 _data = {
+"Death": SubResource("Animation_qbrfk"),
+"Hit": SubResource("Animation_87q71"),
 "Idle": SubResource("Animation_v5q5l"),
 "RESET": SubResource("Animation_vkajp"),
 "Turn": SubResource("Animation_ph3ax"),
@@ -140,9 +202,11 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dunbs"]
 size = Vector2(64, 64)
 
-[node name="WanderEnemy" instance=ExtResource("1_vtri4")]
+[node name="WanderEnemy" node_paths=PackedStringArray("hit_state", "death_state") instance=ExtResource("1_vtri4")]
 collision_layer = 4
 collision_mask = 10
+hit_state = NodePath("StateMachine/Hit")
+death_state = NodePath("StateMachine/Death")
 data = SubResource("Resource_can4u")
 
 [node name="Sprite2D" parent="FlipEnabled" index="0"]
@@ -163,6 +227,13 @@ collision_mask = 2
 position = Vector2(32, -40)
 target_position = Vector2(32, 2.08165e-12)
 collision_mask = 2
+
+[node name="DamageReceiver" parent="FlipEnabled" index="5" node_paths=PackedStringArray("colddown")]
+colddown = NodePath("DamageColddown")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FlipEnabled/DamageReceiver" index="1"]
+position = Vector2(0, -32)
+shape = SubResource("CircleShape2D_wnvhm")
 
 [node name="StateMachine" parent="." index="1" node_paths=PackedStringArray("initial_state")]
 initial_state = NodePath("Idle")
@@ -188,6 +259,18 @@ enemy = NodePath("../..")
 [node name="DelayTimer" type="Timer" parent="StateMachine/Wander" index="0"]
 wait_time = 0.3
 one_shot = true
+
+[node name="Hit" type="Node2D" parent="StateMachine" index="2" node_paths=PackedStringArray("anim_player", "dmg_receiver", "enemy")]
+script = ExtResource("7_cusjw")
+anim_player = NodePath("../../AnimationPlayer")
+dmg_receiver = NodePath("../../FlipEnabled/DamageReceiver")
+enemy = NodePath("../..")
+
+[node name="Death" type="Node2D" parent="StateMachine" index="3" node_paths=PackedStringArray("anim_player", "damage_receiver", "enemy")]
+script = ExtResource("8_rssys")
+anim_player = NodePath("../../AnimationPlayer")
+damage_receiver = NodePath("../../FlipEnabled/DamageReceiver")
+enemy = NodePath("../..")
 
 [node name="AnimationPlayer" parent="." index="2"]
 libraries = {

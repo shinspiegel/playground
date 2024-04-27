@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://b3y4ayg4a3myn"]
+[gd_scene load_steps=48 format=3 uid="uid://b3y4ayg4a3myn"]
 
 [ext_resource type="PackedScene" uid="uid://glesdckbbcba" path="res://scenes/actor/base_actor/base_actor.tscn" id="1_chlu2"]
 [ext_resource type="Script" path="res://scenes/actor/player/player.gd" id="2_7sqgf"]
@@ -13,7 +13,9 @@
 [ext_resource type="Script" path="res://scenes/actor/player/states/falling.gd" id="7_on48n"]
 [ext_resource type="Script" path="res://scenes/actor/player/states/land.gd" id="8_l7r01"]
 [ext_resource type="Texture2D" uid="uid://bin084ocb6bp3" path="res://assets/graphics/Asset Packs 1-5 2/Asset Pack-V1/Player Run/player run 48x48.png" id="8_xgs7x"]
+[ext_resource type="Script" path="res://scenes/damageables/damage_inflictor/damage_inflictor.gd" id="8_yx3wq"]
 [ext_resource type="Script" path="res://scenes/actor/player/states/jab.gd" id="9_2aao3"]
+[ext_resource type="Script" path="res://scenes/damageables/damage_generator/damage_generator.gd" id="9_j3drc"]
 [ext_resource type="Texture2D" uid="uid://bom3f5bdmsw1i" path="res://assets/graphics/Asset Packs 1-5 2/Asset Pack-V1/Player Jump/player jump 48x48.png" id="9_nh46m"]
 [ext_resource type="Script" path="res://scenes/actor/player/states/roll.gd" id="10_eo2x5"]
 [ext_resource type="Texture2D" uid="uid://c2jhphg1k2kg3" path="res://assets/graphics/Asset Packs 1-5 2/Asset Pack-V1/Player Land/player land 48x48.png" id="11_k0dr0"]
@@ -30,6 +32,19 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_82qu1"]
 size = Vector2(48, 128)
+
+[sub_resource type="Resource" id="Resource_hecd8"]
+script = ExtResource("9_j3drc")
+amount = 10
+impact = 0.3
+critical_chance = 0.1
+critical_boost = 2.0
+variation_amount = 0.4
+variation_impact = 0.1
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_smar4"]
+radius = 32.0
+height = 112.0
 
 [sub_resource type="Animation" id="Animation_ujab5"]
 resource_name = "Block"
@@ -790,6 +805,17 @@ position = Vector2(64, 2.08165e-12)
 update_rotation = false
 update_scale = false
 
+[node name="JabDamageInflictor" type="Area2D" parent="FlipEnabled" index="8"]
+collision_mask = 4
+script = ExtResource("8_yx3wq")
+dmg_generator = SubResource("Resource_hecd8")
+active = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FlipEnabled/JabDamageInflictor" index="0"]
+position = Vector2(80, -64)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_smar4")
+
 [node name="StateMachine" parent="." index="1" node_paths=PackedStringArray("initial_state")]
 initial_state = NodePath("Idle")
 
@@ -814,9 +840,10 @@ script = ExtResource("8_l7r01")
 anim_player = NodePath("../../AnimationPlayer")
 player = NodePath("../..")
 
-[node name="Jab" type="Node2D" parent="StateMachine" index="5" node_paths=PackedStringArray("anim_player", "player")]
+[node name="Jab" type="Node2D" parent="StateMachine" index="5" node_paths=PackedStringArray("anim_player", "damage_inflictor", "player")]
 script = ExtResource("9_2aao3")
 anim_player = NodePath("../../AnimationPlayer")
+damage_inflictor = NodePath("../../FlipEnabled/JabDamageInflictor")
 player = NodePath("../..")
 
 [node name="Roll" type="Node2D" parent="StateMachine" index="6" node_paths=PackedStringArray("anim_player", "player")]

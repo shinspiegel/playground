@@ -4,13 +4,14 @@ extends EnemyState
 @export var next_state: EnemyState
 
 
-func _ready() -> void:
-	idle_duration.timeout.connect(on_idle_end)
-
-
 func enter() -> void:
+	idle_duration.timeout.connect(on_idle_end)
 	play_anim()
 	idle_duration.start()
+
+
+func exit() -> void:
+	idle_duration.timeout.disconnect(on_idle_end)
 
 
 func update(delta: float) -> void:

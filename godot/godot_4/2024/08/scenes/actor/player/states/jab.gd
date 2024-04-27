@@ -1,6 +1,7 @@
 extends PlayerState
 
 @export var anim_player: AnimationPlayer
+@export var damage_inflictor: DamageInflictor
 
 var repeat: bool = false
 
@@ -11,6 +12,11 @@ func _ready() -> void:
 
 func enter() -> void:
 	player.change_animation(JAB)
+	damage_inflictor.active = true
+
+
+func exit() -> void:
+	damage_inflictor.active = false
 
 
 func update(delta: float) -> void:
