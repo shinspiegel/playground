@@ -58,7 +58,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("STATE:text")
+tracks/1/path = NodePath("FlipEnabled/STATE:text")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -86,7 +86,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("STATE:text")
+tracks/1/path = NodePath("FlipEnabled/STATE:text")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -114,7 +114,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("STATE:text")
+tracks/1/path = NodePath("FlipEnabled/STATE:text")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -141,7 +141,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("STATE:text")
+tracks/1/path = NodePath("FlipEnabled/STATE:text")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -169,7 +169,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("STATE:text")
+tracks/1/path = NodePath("FlipEnabled/STATE:text")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -197,7 +197,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("STATE:text")
+tracks/1/path = NodePath("FlipEnabled/STATE:text")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -225,7 +225,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("STATE:text")
+tracks/1/path = NodePath("FlipEnabled/STATE:text")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -250,7 +250,6 @@ _data = {
 size = Vector2(64, 64)
 
 [node name="WanderEnemy" node_paths=PackedStringArray("shock_around_state", "hit_state", "death_state") instance=ExtResource("1_vtri4")]
-collision_layer = 4
 collision_mask = 10
 script = ExtResource("2_8nut0")
 shock_around_state = NodePath("StateMachine/ShockAround")
@@ -260,40 +259,71 @@ hit_state = NodePath("StateMachine/Hit")
 death_state = NodePath("StateMachine/Death")
 data = SubResource("Resource_pnaxd")
 
-[node name="Sprite2D" parent="FlipEnabled" index="0"]
+[node name="STATE" type="Label" parent="FlipEnabled" index="0"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -48.0
+offset_top = -96.0
+offset_right = 48.0
+offset_bottom = -73.0
+grow_horizontal = 2
+grow_vertical = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NAME" type="Label" parent="FlipEnabled" index="1"]
+auto_translate_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_top = -24.0
+offset_right = 32.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "WA"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Sprite2D" parent="FlipEnabled" index="2"]
 position = Vector2(0, -32)
 texture = SubResource("AtlasTexture_tcvr4")
 
-[node name="Sprite2D2" type="Sprite2D" parent="FlipEnabled" index="1"]
+[node name="Sprite2D2" type="Sprite2D" parent="FlipEnabled" index="3"]
 position = Vector2(-16, -16)
 texture = ExtResource("3_j7rpk")
 hframes = 10
 
-[node name="FloorCast" type="RayCast2D" parent="FlipEnabled" index="3"]
+[node name="FloorCast" type="RayCast2D" parent="FlipEnabled" index="5"]
 position = Vector2(48, -8)
 target_position = Vector2(2.08165e-12, 32)
 collision_mask = 2
 
-[node name="WallCast" type="RayCast2D" parent="FlipEnabled" index="4"]
+[node name="WallCast" type="RayCast2D" parent="FlipEnabled" index="6"]
 position = Vector2(32, -40)
 target_position = Vector2(32, 2.08165e-12)
 collision_mask = 2
 
-[node name="DamageReceiver" parent="FlipEnabled" index="5" node_paths=PackedStringArray("colddown")]
+[node name="DamageReceiver" parent="FlipEnabled" index="7" node_paths=PackedStringArray("colddown")]
 colddown = NodePath("DamageColddown")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FlipEnabled/DamageReceiver" index="1"]
 position = Vector2(0, -32)
 shape = SubResource("CircleShape2D_wnvhm")
 
-[node name="PlayerDetector" parent="FlipEnabled" index="6" node_paths=PackedStringArray("external_origin_point") instance=ExtResource("5_0f2kb")]
+[node name="PlayerDetector" parent="FlipEnabled" index="8" node_paths=PackedStringArray("external_origin_point") instance=ExtResource("5_0f2kb")]
 external_origin_point = NodePath("../..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FlipEnabled/PlayerDetector" index="0"]
 position = Vector2(288, -32)
 shape = SubResource("RectangleShape2D_wre42")
 
-[node name="DamageInflictor" type="Area2D" parent="FlipEnabled" index="7"]
+[node name="DamageInflictor" type="Area2D" parent="FlipEnabled" index="9"]
 script = ExtResource("7_wbbg8")
 dmg_generator = SubResource("Resource_rj3yl")
 active = false
@@ -323,7 +353,7 @@ damage_receiver = NodePath("../../FlipEnabled/DamageReceiver")
 enemy = NodePath("../..")
 
 [node name="IdleDuration" type="Timer" parent="StateMachine/Idle" index="0"]
-wait_time = 3.0
+wait_time = 6.0
 one_shot = true
 
 [node name="Wander" type="Node2D" parent="StateMachine" index="3" node_paths=PackedStringArray("damage_receiver", "floor_raycast", "wall_raycast", "next_state", "delay_timer", "enemy")]
@@ -358,36 +388,5 @@ libraries = {
 position = Vector2(0, -32)
 shape = SubResource("RectangleShape2D_dunbs")
 
-[node name="STATE" type="Label" parent="." index="4"]
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -48.0
-offset_top = -96.0
-offset_right = 48.0
-offset_bottom = -73.0
-grow_horizontal = 2
-grow_vertical = 0
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="NAME" type="Label" parent="." index="5"]
-auto_translate_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_top = -24.0
-offset_right = 32.0
-offset_bottom = -1.0
-grow_horizontal = 2
-grow_vertical = 0
-text = "WA"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="EnterShockDelay" type="Timer" parent="." index="6"]
+[node name="EnterShockDelay" type="Timer" parent="." index="4"]
 one_shot = true

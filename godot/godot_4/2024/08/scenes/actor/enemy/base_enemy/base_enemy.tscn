@@ -7,6 +7,8 @@
 [ext_resource type="Script" path="res://scenes/actor/enemy/enemy_states/enemy_death.gd" id="5_d10tx"]
 
 [node name="BaseEnemy" node_paths=PackedStringArray("hit_state", "death_state") instance=ExtResource("1_p2e0t")]
+collision_layer = 4
+collision_mask = 2
 script = ExtResource("2_i8n8a")
 max_hp = 10
 hp = 10

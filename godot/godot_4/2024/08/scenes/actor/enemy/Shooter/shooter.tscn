@@ -37,6 +37,18 @@ tracks/0/keys = {
 "update": 1,
 "values": [0, 1, 2, 3]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FlipEnabled/STATE:text")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["Death"]
+}
 
 [sub_resource type="Animation" id="Animation_q5uuj"]
 resource_name = "Hit"
@@ -52,6 +64,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FlipEnabled/STATE:text")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["Hit"]
 }
 
 [sub_resource type="Animation" id="Animation_0yf6x"]
@@ -69,6 +93,18 @@ tracks/0/keys = {
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FlipEnabled/STATE:text")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["Idle"]
+}
 
 [sub_resource type="Animation" id="Animation_n2ded"]
 length = 0.001
@@ -84,10 +120,21 @@ tracks/0/keys = {
 "update": 1,
 "values": [0]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FlipEnabled/STATE:text")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [""]
+}
 
 [sub_resource type="Animation" id="Animation_c77d8"]
 resource_name = "Shoot"
-loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -99,6 +146,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FlipEnabled/STATE:text")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["Shot"]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_updri"]
@@ -142,6 +201,36 @@ shape = SubResource("RectangleShape2D_a7gx6")
 [node name="ShotPosition" type="Marker2D" parent="FlipEnabled" index="4"]
 position = Vector2(64, -40)
 
+[node name="NAME" type="Label" parent="FlipEnabled" index="5"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_top = -23.0
+offset_right = 32.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "SH"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="STATE" type="Label" parent="FlipEnabled" index="6"]
+auto_translate_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -72.0
+offset_top = -103.0
+offset_right = 72.0
+offset_bottom = -80.0
+grow_horizontal = 2
+grow_vertical = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="StateMachine" parent="." index="1" node_paths=PackedStringArray("initial_state")]
 initial_state = NodePath("Idle")
 
@@ -163,15 +252,15 @@ damage_receiver = NodePath("../../FlipEnabled/DamageReceiver")
 enemy = NodePath("../..")
 
 [node name="IdleDuration" type="Timer" parent="StateMachine/Idle" index="0"]
-wait_time = 0.5
+wait_time = 5.0
 one_shot = true
 
-[node name="Shoot" type="Node2D" parent="StateMachine" index="3" node_paths=PackedStringArray("anim_player", "next_state", "shot_pos", "enemy")]
+[node name="Shoot" type="Node2D" parent="StateMachine" index="3" node_paths=PackedStringArray("anim_player", "next_state", "shoot_pos", "enemy")]
 script = ExtResource("6_4n5lm")
 anim_player = NodePath("../../AnimationPlayer")
-next_state = NodePath("../Hit")
+next_state = NodePath("../Idle")
 shoot_scene = ExtResource("7_msfei")
-shot_pos = NodePath("../../FlipEnabled/ShotPosition")
+shoot_pos = NodePath("../../FlipEnabled/ShotPosition")
 enemy = NodePath("../..")
 
 [node name="AnimationPlayer" parent="." index="2"]
@@ -179,20 +268,6 @@ libraries = {
 "": SubResource("AnimationLibrary_updri")
 }
 
-[node name="NAME" type="Label" parent="." index="3"]
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_top = -23.0
-offset_right = 32.0
-grow_horizontal = 2
-grow_vertical = 0
-text = "SH"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="4"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="3"]
 position = Vector2(0, -32)
 shape = SubResource("RectangleShape2D_vmy6n")
