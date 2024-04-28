@@ -15,4 +15,5 @@ variation_impact = 0.1
 [node name="EnemyShoot" instance=ExtResource("1_tar3b")]
 
 [node name="DamageInflictor" parent="Movable" index="3"]
+collision_mask = 1
 dmg_generator = SubResource("Resource_fxtt4")

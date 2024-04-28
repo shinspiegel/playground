@@ -270,7 +270,7 @@ texture = ExtResource("3_j7rpk")
 hframes = 10
 
 [node name="FloorCast" type="RayCast2D" parent="FlipEnabled" index="3"]
-position = Vector2(64, 0)
+position = Vector2(48, -8)
 target_position = Vector2(2.08165e-12, 32)
 collision_mask = 2
 

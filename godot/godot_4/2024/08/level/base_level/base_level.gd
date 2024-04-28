@@ -23,6 +23,7 @@ func _ready() -> void:
 	for child in segments_list.get_children():
 		if child is LevelSegment:
 			child.player_entered.connect(on_player_change_segment.bind(child))
+			child.disable()
 			__seg_map[child.name] = child
 
 			if current_segment == null:
@@ -34,36 +35,32 @@ func _ready() -> void:
 	if not game_settings.saved_segment.is_empty():
 		current_segment = __seg_map.get(game_settings.saved_segment)
 
+	current_segment.enable()
+
 	game_camera.set_limit_list(current_segment.get_limit_list())
-	GameManager.spawn_player(current_segment.middle, current_segment.respawn_point.global_position, game_camera)
+	GameManager.spawn_player(foreground_nodes, current_segment.respawn_point.global_position, game_camera)
 	game_settings.saved_stats = GameManager.player.stats.duplicate(true)
 
 
-func spawn_background(node: Node) -> void:
+func add_to_background(node: Node) -> void:
 	background_nodes.add_child(node)
 
 
-func spawn_foreground(node: Node) -> void:
+func add_to_foreground(node: Node) -> void:
 	foreground_nodes.add_child(node)
 
 
-func spawn(node: Node, layer: int = 1) -> void:
-	var target: Node2D
-	var _node_name = node.name
-	var _name = current_segment.name
-
-	match layer:
-		0: target = current_segment.back
-		1: target = current_segment.middle
-		2: target = current_segment.front
-		_: target = current_segment.middle
-
-	target.add_child(node)
+func add_to_segment(node: Node) -> void:
+	current_segment.update_nodes.add_child(node)
 
 
 func on_player_change_segment(segment: LevelSegment) -> void:
 	game_camera.set_limit_list(segment.get_limit_list())
+
+	current_segment.disable()
 	current_segment = segment
+	current_segment.enable()
+
 	GameManager.player.reparent.call_deferred(segment)
 
 	game_settings.saved_segment = current_segment.name

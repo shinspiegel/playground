@@ -31,5 +31,5 @@ func shoot() -> void:
 	var shot: Projectile = shoot_scene.instantiate()
 	shot.global_position = shot_pos.global_position
 	shot.dir = clampi(int(enemy.direction), -1, 1)
-	GameManager.spawn_foreground(shot)
+	GameManager.add_child_to_foreground(shot)
 

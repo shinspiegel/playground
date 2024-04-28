@@ -37,7 +37,7 @@ func on_anim_finished(anim: String) -> void:
 func spawn_block() -> void:
 	var block: Node2D = scene.instantiate()
 	block.global_position = player.block_pos.global_position
-	GameManager.spawn_background(block)
+	GameManager.add_child_to_background(block)
 	blocks.append(block)
 
 	if blocks.size() > max_blocks:

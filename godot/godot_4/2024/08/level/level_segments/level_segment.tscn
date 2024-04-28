@@ -20,29 +20,13 @@ position = Vector2(-192, -192)
 unique_name_in_owner = true
 position = Vector2(2240, 1344)
 
-[node name="Back" type="Node2D" parent="."]
-unique_name_in_owner = true
-
-[node name="BackTilemap" type="TileMap" parent="Back"]
-scale = Vector2(4, 4)
-tile_set = ExtResource("2_d5wu7")
-format = 2
-
-[node name="Middle" type="Node2D" parent="."]
-unique_name_in_owner = true
-
-[node name="MiddleTilemap" type="TileMap" parent="Middle"]
-scale = Vector2(4, 4)
-tile_set = ExtResource("2_d5wu7")
-format = 2
-
-[node name="Front" type="Node2D" parent="."]
-unique_name_in_owner = true
-
-[node name="FrontTilemap" type="TileMap" parent="Front"]
-scale = Vector2(4, 4)
-tile_set = ExtResource("2_d5wu7")
-format = 2
-
 [node name="EntryDetection" type="Area2D" parent="."]
 unique_name_in_owner = true
+
+[node name="UpdateNode" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="MapTilemap" type="TileMap" parent="UpdateNode"]
+scale = Vector2(4, 4)
+tile_set = ExtResource("2_d5wu7")
+format = 2

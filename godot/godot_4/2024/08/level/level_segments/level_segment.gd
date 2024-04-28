@@ -6,13 +6,23 @@ signal player_entered()
 @onready var entry_detection: Area2D = %EntryDetection
 @onready var top_left: Node2D = %TopLeft
 @onready var bottom_right: Node2D = %BottomRight
-@onready var back: Node2D = %Back
-@onready var middle: Node2D = %Middle
-@onready var front: Node2D = %Front
+@onready var update_nodes: Node2D = %UpdateNode
 
 
 func _ready() -> void:
 	entry_detection.body_entered.connect(on_body_enter)
+
+
+func is_enabled() -> bool:
+	return not update_nodes.process_mode == Node.PROCESS_MODE_DISABLED
+
+
+func enable() -> void:
+	update_nodes.process_mode = Node.PROCESS_MODE_INHERIT
+
+
+func disable() -> void:
+	update_nodes.process_mode = Node.PROCESS_MODE_DISABLED
 
 
 ## Screen limits in array

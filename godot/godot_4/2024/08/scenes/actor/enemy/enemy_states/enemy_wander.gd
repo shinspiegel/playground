@@ -29,6 +29,7 @@ func update(delta: float) -> void:
 	if wall_raycast.is_colliding():
 		enemy.direction *= -1
 
-	if delay_timer.time_left <= 0.0 and not floor_raycast.is_colliding() or wall_raycast.is_colliding():
-		state_machine.change_by_state(next_state)
+	if delay_timer.time_left <= 0.0:
+		if not floor_raycast.is_colliding() or wall_raycast.is_colliding():
+			state_machine.change_by_state(next_state)
 
