@@ -62,7 +62,7 @@
 		- [x] Base files
 		- [ ] Tilemap
 		- [ ] Level design
-			- [x] Initial Design
+			- [x] Initial Design (5min map)
 			- [ ] Upgrade Ranged
 			- [ ] Upgrade Create
 			- [ ] Upgrade Dash
@@ -73,7 +73,7 @@
 		- [x] Base files
 		- [ ] Tilemap
 		- [ ] Level design
-			- [ ] Initial Design
+			- [ ] Initial Design (5min map)
 			- [ ] Upgrade Ranged
 			- [ ] Upgrade Create
 			- [ ] Upgrade Dash
@@ -84,7 +84,7 @@
 		- [x] Base files
 		- [ ] Tilemap
 		- [ ] Level design
-			- [ ] Initial Design
+			- [ ] Initial Design (5min map)
 			- [ ] Upgrade Ranged
 			- [ ] Upgrade Create
 			- [ ] Upgrade Dash
@@ -94,7 +94,7 @@
 		- [ ] Tilemap
 		- [x] Base files
 		- [ ] Level design
-			- [ ] Initial Design
+			- [ ] Initial Design (10min map)
 			- [ ] Upgrade Ranged
 			- [ ] Upgrade Create
 			- [ ] Upgrade Dash

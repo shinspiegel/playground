@@ -47,4 +47,4 @@ centered = false
 position = Vector2(3712, 0)
 
 [node name="ForestSegment3" parent="LevelSegments" index="2" instance=ExtResource("7_elfoc")]
-position = Vector2(10240, 768)
+position = Vector2(10240, 640)

@@ -173,8 +173,8 @@ _data = {
 size = Vector2(64, 64)
 
 [node name="Shooter" node_paths=PackedStringArray("hit_state", "death_state") instance=ExtResource("1_qov2b")]
-max_hp = 20
-hp = 20
+max_hp = 1000
+hp = 1000
 hit_state = NodePath("StateMachine/Hit")
 death_state = NodePath("StateMachine/Death")
 data = SubResource("Resource_5x72o")

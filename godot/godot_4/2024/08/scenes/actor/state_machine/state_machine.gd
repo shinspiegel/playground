@@ -29,13 +29,15 @@ func change_by_name(state: String) -> void:
 		push_warning("invalid state")
 		return
 
-	if not states.get(state) == current:
-		if not current == null:
-			current.exit()
+	if states.get(state) == current:
+		return
 
-		current = states.get(state)
-		current.enter()
-		state_changed.emit(state)
+	if not current == null:
+		current.exit()
+
+	current = states.get(state)
+	current.enter()
+	state_changed.emit(state)
 
 
 func change_initial() -> void:
