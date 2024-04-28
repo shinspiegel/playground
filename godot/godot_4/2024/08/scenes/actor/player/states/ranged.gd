@@ -1,6 +1,6 @@
 extends PlayerState
 
-const player_shoot_scene: Resource = preload("res://scenes/actor/player/player_shot/player_shot.tscn")
+const player_shoot_scene: Resource = preload("res://scenes/projectiles/player_shoot.tscn")
 
 @export var anim_player: AnimationPlayer
 
@@ -32,7 +32,7 @@ func on_anim_finished(anim: String) -> void:
 
 
 func spawn_shoot() -> void:
-	var shot: PlayerShoot = player_shoot_scene.instantiate()
+	var shot: Projectile = player_shoot_scene.instantiate()
 	shot.global_position = player.shoot_pos.global_position
 	shot.dir = clampi(int(player.input.last_direction), -1, 1)
 	GameManager.spawn_foreground(shot)

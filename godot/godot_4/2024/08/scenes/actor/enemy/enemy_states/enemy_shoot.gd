@@ -2,6 +2,8 @@ extends EnemyState
 
 @export var anim_player: AnimationPlayer
 @export var next_state: EnemyState
+@export var shoot_scene: PackedScene
+@export var shot_pos: Node2D
 
 
 func _ready() -> void:
@@ -25,6 +27,9 @@ func on_anim_finished(anim: String) -> void:
 			state_machine.change_initial()
 
 
-
-
+func shoot() -> void:
+	var shot: Projectile = shoot_scene.instantiate()
+	shot.global_position = shot_pos.global_position
+	shot.dir = clampi(int(enemy.direction), -1, 1)
+	GameManager.spawn_foreground(shot)
 

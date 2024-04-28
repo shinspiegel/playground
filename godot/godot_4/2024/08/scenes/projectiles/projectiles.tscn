@@ -1,31 +1,21 @@
-[gd_scene load_steps=9 format=3 uid="uid://f74ro42tsoby"]
+[gd_scene load_steps=7 format=3 uid="uid://dle2joh3jel60"]
 
-[ext_resource type="Script" path="res://scenes/actor/player/player_shot/player_shot.gd" id="1_51rmj"]
-[ext_resource type="Texture2D" uid="uid://dovewtuchy5a1" path="res://assets/graphics/template/size_template.png" id="1_ty7ef"]
-[ext_resource type="Script" path="res://scenes/damageables/damage_inflictor/damage_inflictor.gd" id="3_7ag81"]
-[ext_resource type="Script" path="res://scenes/damageables/damage_generator/damage_generator.gd" id="4_8gilh"]
+[ext_resource type="Script" path="res://scenes/projectiles/projectiles.gd" id="1_ttvvq"]
+[ext_resource type="Texture2D" uid="uid://dovewtuchy5a1" path="res://assets/graphics/template/size_template.png" id="2_x1t2w"]
+[ext_resource type="Script" path="res://scenes/damageables/damage_inflictor/damage_inflictor.gd" id="3_qjqjt"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fh5t8"]
-atlas = ExtResource("1_ty7ef")
+atlas = ExtResource("2_x1t2w")
 region = Rect2(51, 19, 10, 10)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7okxp"]
 size = Vector2(32, 32)
 
-[sub_resource type="Resource" id="Resource_mgore"]
-script = ExtResource("4_8gilh")
-amount = 10
-impact = 0.5
-critical_chance = 0.1
-critical_boost = 1.5
-variation_amount = 0.2
-variation_impact = 0.1
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_00mqk"]
 radius = 16.0312
 
-[node name="PlayerShot" type="Node2D"]
-script = ExtResource("1_51rmj")
+[node name="Projectile" type="Node2D"]
+script = ExtResource("1_ttvvq")
 metadata/_edit_group_ = true
 
 [node name="Movable" type="Node2D" parent="."]
@@ -51,8 +41,7 @@ shape = SubResource("RectangleShape2D_7okxp")
 unique_name_in_owner = true
 collision_layer = 0
 collision_mask = 4
-script = ExtResource("3_7ag81")
-dmg_generator = SubResource("Resource_mgore")
+script = ExtResource("3_qjqjt")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Movable/DamageInflictor"]
 shape = SubResource("CircleShape2D_00mqk")
