@@ -1,10 +1,18 @@
-[gd_scene load_steps=15 format=3 uid="uid://khse2wmgfq3w"]
+[gd_scene load_steps=17 format=3 uid="uid://khse2wmgfq3w"]
 
 [ext_resource type="PackedScene" uid="uid://do4arqmfus0eo" path="res://scenes/actor/enemy/base_enemy/base_enemy.tscn" id="1_qov2b"]
 [ext_resource type="Texture2D" uid="uid://dovewtuchy5a1" path="res://assets/graphics/template/size_template.png" id="2_158bd"]
 [ext_resource type="Script" path="res://scenes/actor/enemy/enemy_states/enemy_idle.gd" id="2_k0072"]
+[ext_resource type="Script" path="res://scenes/actor/actor_data/actor_data.gd" id="2_nwapt"]
 [ext_resource type="Texture2D" uid="uid://c2h2tebe12vje" path="res://assets/graphics/template/number_template.png" id="3_0gdh8"]
 [ext_resource type="Script" path="res://scenes/actor/enemy/enemy_states/enemy_state.gd" id="5_gurwg"]
+
+[sub_resource type="Resource" id="Resource_5x72o"]
+script = ExtResource("2_nwapt")
+speed = 800.0
+jump_velocity = 1328.0
+friction_land = 1.0
+friction_air = 0.5
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_d7lf4"]
 atlas = ExtResource("2_158bd")
@@ -13,8 +21,8 @@ region = Rect2(72, 8, 32, 32)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a7gx6"]
 size = Vector2(80, 80)
 
-[sub_resource type="Animation" id="Animation_q5uuj"]
-resource_name = "Hit"
+[sub_resource type="Animation" id="Animation_3u54r"]
+resource_name = "Death"
 length = 0.4
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -29,23 +37,8 @@ tracks/0/keys = {
 "values": [0, 1, 2, 3]
 }
 
-[sub_resource type="Animation" id="Animation_n2ded"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("FlipEnabled/Number:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-
-[sub_resource type="Animation" id="Animation_3u54r"]
-resource_name = "Death"
+[sub_resource type="Animation" id="Animation_q5uuj"]
+resource_name = "Hit"
 length = 0.4
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -74,6 +67,21 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+}
+
+[sub_resource type="Animation" id="Animation_n2ded"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FlipEnabled/Number:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
 }
 
 [sub_resource type="Animation" id="Animation_c77d8"]
@@ -105,8 +113,11 @@ _data = {
 size = Vector2(64, 64)
 
 [node name="Shooter" node_paths=PackedStringArray("hit_state", "death_state") instance=ExtResource("1_qov2b")]
+max_hp = 20
+hp = 20
 hit_state = NodePath("StateMachine/Hit")
 death_state = NodePath("StateMachine/Death")
+data = SubResource("Resource_5x72o")
 
 [node name="Sprite2D" parent="FlipEnabled" index="0"]
 position = Vector2(0, -32)

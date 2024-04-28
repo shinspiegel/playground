@@ -2,9 +2,9 @@
 
 [ext_resource type="PackedScene" uid="uid://glesdckbbcba" path="res://scenes/actor/base_actor/base_actor.tscn" id="1_p2e0t"]
 [ext_resource type="Script" path="res://scenes/actor/enemy/base_enemy/base_enemy.gd" id="2_i8n8a"]
-[ext_resource type="Script" path="res://scenes/actor/enemy/enemy_states/hit.gd" id="4_hxrvw"]
+[ext_resource type="Script" path="res://scenes/actor/enemy/enemy_states/enemy_hit.gd" id="4_hxrvw"]
 [ext_resource type="Script" path="res://scenes/damageables/damage_receiver/damage_reciever.gd" id="4_w7q1d"]
-[ext_resource type="Script" path="res://scenes/actor/enemy/enemy_states/death.gd" id="5_d10tx"]
+[ext_resource type="Script" path="res://scenes/actor/enemy/enemy_states/enemy_death.gd" id="5_d10tx"]
 
 [node name="BaseEnemy" node_paths=PackedStringArray("hit_state", "death_state") instance=ExtResource("1_p2e0t")]
 script = ExtResource("2_i8n8a")

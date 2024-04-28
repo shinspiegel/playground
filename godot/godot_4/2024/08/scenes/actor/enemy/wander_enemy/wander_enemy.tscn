@@ -10,7 +10,7 @@
 [ext_resource type="Script" path="res://scenes/actor/enemy/enemy_states/enemy_wander.gd" id="5_gqobw"]
 [ext_resource type="Script" path="res://scenes/damageables/damage_inflictor/damage_inflictor.gd" id="7_wbbg8"]
 [ext_resource type="Script" path="res://scenes/damageables/damage_generator/damage_generator.gd" id="8_h4uoe"]
-[ext_resource type="Script" path="res://scenes/actor/enemy/enemy_states/shock_around.gd" id="9_mw7mj"]
+[ext_resource type="Script" path="res://scenes/actor/enemy/enemy_states/enemy_shock_around.gd" id="9_mw7mj"]
 
 [sub_resource type="Resource" id="Resource_pnaxd"]
 script = ExtResource("2_8hbxm")
