@@ -20,7 +20,11 @@ func get_current_name() -> String:
 	return current.name
 
 
-func change_state(state: String) -> void:
+func change_by_state(state: BaseState) -> void:
+	change_by_name(state.name)
+
+
+func change_by_name(state: String) -> void:
 	if not states.has(state):
 		push_warning("invalid state")
 		return
@@ -40,10 +44,10 @@ func change_initial() -> void:
 		return
 
 	if initial_state:
-		change_state(initial_state.name)
+		change_by_name(initial_state.name)
 
 	else:
-		change_state(states.keys()[0])
+		change_by_name(states.keys()[0])
 
 
 func __load_child_states() -> void:

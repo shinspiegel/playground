@@ -25,6 +25,6 @@ func update(delta: float) -> void:
 
 
 func on_idle_end() -> void:
-	state_machine.change_state(next_state.name)
+	state_machine.change_by_state(next_state)
 
 

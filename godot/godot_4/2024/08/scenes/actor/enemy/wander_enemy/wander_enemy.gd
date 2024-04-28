@@ -23,7 +23,7 @@ func on_player_lost() -> void:
 
 
 func on_shock_timeout() -> void:
-	state_machine.change_state(shock_around_state.name)
+	state_machine.change_by_state(shock_around_state)
 
 
 func on_state_change(state_name: String) -> void:

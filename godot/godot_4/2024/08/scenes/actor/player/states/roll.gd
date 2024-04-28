@@ -33,7 +33,7 @@ func update(delta: float) -> void:
 func on_anim_finished(anim: String) -> void:
 	if anim == ROLL:
 		if player.input.direction == 0.0:
-			state_machine.change_state(IDLE)
+			state_machine.change_by_name(IDLE)
 		else:
-			state_machine.change_state(MOVE)
+			state_machine.change_by_name(MOVE)
 

@@ -33,4 +33,4 @@ func receive_damage(val: int) -> void:
 func on_receive_damage(dmg: Damage) -> void:
 	GameManager.spawn_damage_number(dmg, damage_position.global_position)
 	receive_damage(dmg.amount)
-	state_machine.change_state(hit_state.name)
+	state_machine.change_by_state(hit_state)

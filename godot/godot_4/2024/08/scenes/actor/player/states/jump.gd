@@ -10,7 +10,7 @@ func enter() -> void:
 
 func update(delta: float) -> void:
 	if player.can_dash() and player.input.dash:
-		state_machine.change_state(DASH)
+		state_machine.change_by_name(DASH)
 		return
 
 	if player.input.just_release_jump:
@@ -18,15 +18,15 @@ func update(delta: float) -> void:
 		return
 
 	if player.velocity.y > 0:
-		state_machine.change_state(FALLING)
+		state_machine.change_by_name(FALLING)
 		return
 
 	if player.is_on_floor():
 		if player.input.direction == 0.0:
-			state_machine.change_state(IDLE)
+			state_machine.change_by_name(IDLE)
 			return
 		else:
-			state_machine.change_state(MOVE)
+			state_machine.change_by_name(MOVE)
 			return
 
 	player.apply_gravity(delta)

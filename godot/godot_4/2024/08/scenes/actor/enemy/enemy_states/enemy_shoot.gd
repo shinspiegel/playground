@@ -20,7 +20,7 @@ func update(delta: float) -> void:
 func on_anim_finished(anim: String) -> void:
 	if anim == name:
 		if not next_state == null:
-			state_machine.change_state(next_state.name)
+			state_machine.change_by_state(next_state)
 		else:
 			state_machine.change_initial()
 

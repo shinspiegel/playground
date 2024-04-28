@@ -88,5 +88,5 @@ func on_damage_receive(dmg: Damage) -> void:
 	GameManager.spawn_damage_number(dmg, damage_position.global_position)
 	GameManager.game_camera.shake_damage(dmg)
 	stats.deal_damage(dmg.amount)
-	state_machine.change_state(PlayerState.HIT)
+	state_machine.change_by_name(PlayerState.HIT)
 

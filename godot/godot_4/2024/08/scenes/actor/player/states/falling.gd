@@ -13,21 +13,21 @@ func enter() -> void:
 func update(delta: float) -> void:
 	if player.is_on_floor():
 		if player.global_position.distance_to(start_pos) > dist_to_land:
-			state_machine.change_state(LAND)
+			state_machine.change_by_name(LAND)
 			return
 
 		if player.input.direction == 0.0:
-			state_machine.change_state(IDLE)
+			state_machine.change_by_name(IDLE)
 			return
 		else:
-			state_machine.change_state(MOVE)
+			state_machine.change_by_name(MOVE)
 			return
 
 	if player.can_dash() and player.input.dash:
-		state_machine.change_state(DASH)
+		state_machine.change_by_name(DASH)
 
 	if player.can_jump() and player.input.just_jump:
-		state_machine.change_state(JUMP)
+		state_machine.change_by_name(JUMP)
 		return
 
 	player.apply_gravity(delta)

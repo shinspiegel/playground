@@ -39,4 +39,4 @@ func on_anim_finished(anim: String) -> void:
 			repeat = false
 
 		else:
-			state_machine.change_state(IDLE)
+			state_machine.change_by_name(IDLE)

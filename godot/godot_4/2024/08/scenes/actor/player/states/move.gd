@@ -7,35 +7,35 @@ func enter() -> void:
 
 func update(delta: float) -> void:
 	if player.can_dash() and player.input.dash:
-		state_machine.change_state(DASH)
+		state_machine.change_by_name(DASH)
 		return
 
 	if player.can_roll()  and player.input.roll:
-		state_machine.change_state(ROLL)
+		state_machine.change_by_name(ROLL)
 		return
 
 	if player.can_create_block() and player.input.block:
-		state_machine.change_state(BLOCK)
+		state_machine.change_by_name(BLOCK)
 		return
 
 	if player.can_shoot() and player.input.ranged:
-		state_machine.change_state(RANGED)
+		state_machine.change_by_name(RANGED)
 		return
 
 	if player.is_on_floor() and player.input.attack:
-		state_machine.change_state(JAB)
+		state_machine.change_by_name(JAB)
 		return
 
 	if player.should_fall():
-		state_machine.change_state(FALLING)
+		state_machine.change_by_name(FALLING)
 		return
 
 	if player.input.just_jump and player.can_jump():
-		state_machine.change_state(JUMP)
+		state_machine.change_by_name(JUMP)
 		return
 
 	if player.input.direction == 0.0:
-		state_machine.change_state(IDLE)
+		state_machine.change_by_name(IDLE)
 		return
 
 	if player.should_fall():

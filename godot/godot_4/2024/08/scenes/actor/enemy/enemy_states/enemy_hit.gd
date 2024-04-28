@@ -24,7 +24,7 @@ func update(delta: float) -> void:
 func on_anim_finished(anim: String) -> void:
 	if anim == name:
 		if enemy.hp <= 0:
-			state_machine.change_state(enemy.death_state.name)
+			state_machine.change_by_state(enemy.death_state)
 		else:
 			state_machine.change_initial()
 

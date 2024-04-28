@@ -28,20 +28,20 @@ func update(delta: float) -> void:
 
 func on_timeout() -> void:
 	if player.can_roll() and player.input.roll:
-		state_machine.change_state(ROLL)
+		state_machine.change_by_name(ROLL)
 		return
 
 	if player.input.just_jump and player.can_jump():
-		state_machine.change_state(JUMP)
+		state_machine.change_by_name(JUMP)
 		return
 
 	if player.should_fall():
-		state_machine.change_state(FALLING)
+		state_machine.change_by_name(FALLING)
 		return
 
 	if player.input.direction == 0.0:
-		state_machine.change_state(IDLE)
+		state_machine.change_by_name(IDLE)
 		return
 
-	state_machine.change_state(MOVE)
+	state_machine.change_by_name(MOVE)
 
