@@ -800,7 +800,7 @@ shape = SubResource("RectangleShape2D_82qu1")
 
 [node name="RemoteCamera" type="RemoteTransform2D" parent="FlipEnabled" index="7"]
 unique_name_in_owner = true
-position = Vector2(64, 2.08165e-12)
+position = Vector2(256, 2.08165e-12)
 update_rotation = false
 update_scale = false
 

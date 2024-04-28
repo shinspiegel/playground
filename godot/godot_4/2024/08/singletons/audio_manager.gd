@@ -1,8 +1,8 @@
 extends Node2D
 
 const MUSIC_LIST = [
-	preload("res://assets/music/sample_music_1.ogg"),
-	preload("res://assets/music/sample_music_2.ogg"),
+	preload("res://assets/music/sample_music_1.ogg"), # 0
+	preload("res://assets/music/sample_music_2.ogg"), # 1
 ]
 
 @export var game_settings: SavedData
@@ -16,6 +16,7 @@ func _ready() -> void:
 
 func play_music(track_index: int, volume_adjust: float = 0.0, duration: float = 0.3) -> void:
 	if track_index < 0 or track_index >= MUSIC_LIST.size(): 
+		push_warning("invalid track index")
 		return
 	
 	var next_music = MUSIC_LIST[track_index]
