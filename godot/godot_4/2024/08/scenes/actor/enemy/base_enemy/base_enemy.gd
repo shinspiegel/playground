@@ -27,7 +27,7 @@ func is_on_death() -> bool:
 
 
 func turn_to(target_position: Vector2) -> void:
-	direction = clampi(int((global_position - target_position).x) * -1, -1, 1)
+	direction = clampi(int((target_position - global_position).x), -1, 1)
 
 
 func receive_damage(val: int) -> void:

@@ -175,7 +175,7 @@ _data = {
 size = Vector2(64, 64)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7uc3v"]
-radius = 320.4
+radius = 576.0
 
 [node name="Shooter" node_paths=PackedStringArray("shoot_delay", "shoot_state", "hit_state", "death_state") instance=ExtResource("1_qov2b")]
 script = ExtResource("2_memdj")

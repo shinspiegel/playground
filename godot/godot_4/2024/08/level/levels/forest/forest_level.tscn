@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://conurgiqgodb"]
+[gd_scene load_steps=11 format=3 uid="uid://conurgiqgodb"]
 
 [ext_resource type="PackedScene" uid="uid://b87cqyunlhsul" path="res://level/base_level/base_level.tscn" id="1_ba3dr"]
 [ext_resource type="PackedScene" uid="uid://cqfqw42vgda3x" path="res://level/levels/forest/forest_segments/forest_segment_00.tscn" id="2_bpe3u"]
@@ -8,9 +8,12 @@
 [ext_resource type="Texture2D" uid="uid://bkw84m7uctuw4" path="res://assets/graphics/parallax_forest_pack web/layers/parallax-forest-front-trees.png" id="6_cq046"]
 [ext_resource type="PackedScene" uid="uid://cvmnvbxuedca4" path="res://level/levels/forest/forest_segments/forest_segment_02.tscn" id="7_elfoc"]
 [ext_resource type="PackedScene" uid="uid://bvwhiymimugxd" path="res://level/levels/forest/forest_segments/forest_segment_03.tscn" id="8_cuos6"]
+[ext_resource type="PackedScene" uid="uid://b13av5d62w3qr" path="res://level/levels/forest/forest_segments/forest_segment_05.tscn" id="9_yu1as"]
+[ext_resource type="PackedScene" uid="uid://bx8fgc4e87wit" path="res://level/levels/forest/forest_segments/forest_segment_06.tscn" id="10_scvtg"]
 
 [node name="ForestLevel" node_paths=PackedStringArray("initial_segment") instance=ExtResource("1_ba3dr")]
 initial_segment = NodePath("LevelSegments/ForestSegment2")
+track_index = 2
 
 [node name="Parallax2D" type="Parallax2D" parent="ParallaxArea" index="0"]
 scroll_scale = Vector2(0.1, 0.2)
@@ -52,3 +55,9 @@ position = Vector2(10240, 640)
 
 [node name="ForestSegment4" parent="LevelSegments" index="3" instance=ExtResource("8_cuos6")]
 position = Vector2(21760, 9344)
+
+[node name="ForestSegment5" parent="LevelSegments" index="4" instance=ExtResource("9_yu1as")]
+position = Vector2(27776, 9344)
+
+[node name="ForestSegment6" parent="LevelSegments" index="5" instance=ExtResource("10_scvtg")]
+position = Vector2(35456, 1280)

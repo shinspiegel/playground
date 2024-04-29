@@ -18,7 +18,6 @@ func enter() -> void:
 
 func exit() -> void:
 	disconnect_damage_hit()
-	damage_receiver.receive_damage.disconnect(enemy.on_receive_damage)
 
 
 func update(delta: float) -> void:

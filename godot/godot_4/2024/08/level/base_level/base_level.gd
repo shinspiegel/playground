@@ -2,6 +2,7 @@ class_name BaseLevel extends Node2D
 
 @export var game_settings: SavedData
 @export var initial_segment: LevelSegment
+@export var track_index: int = 0
 
 @onready var game_camera: GameCamera = %GameCamera
 @onready var segments_list: Node2D = %LevelSegments
@@ -19,6 +20,7 @@ func _ready() -> void:
 	GameManager.current_level = self
 	GameManager.player.died.connect(on_player_died)
 	GameManager.game_camera = game_camera
+	AudioManager.play_music(track_index)
 
 	for child in segments_list.get_children():
 		if child is LevelSegment:

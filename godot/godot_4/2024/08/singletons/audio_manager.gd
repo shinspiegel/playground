@@ -1,8 +1,9 @@
 extends Node2D
 
 const MUSIC_LIST = [
-	preload("res://assets/music/sample_music_1.ogg"), # 0
-	preload("res://assets/music/sample_music_2.ogg"), # 1
+	preload("res://assets/music/sample_music_1.ogg"), 			# 0
+	preload("res://assets/music/sample_music_2.ogg"), 			# 1
+	preload("res://assets/music/suno/forest_background.mp3"),	# 2
 ]
 
 @export var game_settings: SavedData

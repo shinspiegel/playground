@@ -9,8 +9,10 @@ func play_anim() -> void:
 
 
 func connect_damage_hit() -> void:
-	damage_receiver.receive_damage.connect(enemy.on_receive_damage)
+	if not damage_receiver.receive_damage.is_connected(enemy.on_receive_damage):
+		damage_receiver.receive_damage.connect(enemy.on_receive_damage)
 
 
 func disconnect_damage_hit() -> void:
-	damage_receiver.receive_damage.disconnect(enemy.on_receive_damage)
+	if not damage_receiver.receive_damage.is_connected(enemy.on_receive_damage):
+		damage_receiver.receive_damage.disconnect(enemy.on_receive_damage)

@@ -18,17 +18,19 @@
 - [ ] Level selection screen
 - Main Character
 	- Artwork
-		- [ ] Idle (4 frames)
-		- [ ] Move / Run (8 frames)
-		- [ ] Jab (6 frames)
-		- [ ] Roll (6 frames)
-		- [ ] Landing (4 frames)
+		- [ ] Idle
+		- [ ] Move / Rum
+		- [ ] Jab (Air Jab)
+		- [ ] Roll
+		- [ ] Landing
 		- [ ] Hit
 		- [ ] Die
-		- [ ] Ranged
+		- [ ] Ranged (Air Ranged)
 		- [ ] Block
 		- [ ] Dash
 	- Mechanics
+		- [ ] Air Jab
+		- [ ] Air Ranged
 		- [x] Jump buffer
 		- [x] Coyote-time
 		- [x] Mana sytem
