@@ -1,7 +1,6 @@
 extends EnemyState
 
 @export var anim_player: AnimationPlayer
-@export var damage_receiver: DamageReceiver
 
 
 func _ready() -> void:

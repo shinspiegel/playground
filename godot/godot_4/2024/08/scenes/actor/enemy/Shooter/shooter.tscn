@@ -1,15 +1,17 @@
-[gd_scene load_steps=18 format=3 uid="uid://khse2wmgfq3w"]
+[gd_scene load_steps=21 format=3 uid="uid://khse2wmgfq3w"]
 
 [ext_resource type="PackedScene" uid="uid://do4arqmfus0eo" path="res://scenes/actor/enemy/base_enemy/base_enemy.tscn" id="1_qov2b"]
 [ext_resource type="Texture2D" uid="uid://dovewtuchy5a1" path="res://assets/graphics/template/size_template.png" id="2_158bd"]
 [ext_resource type="Script" path="res://scenes/actor/enemy/enemy_states/enemy_idle.gd" id="2_k0072"]
-[ext_resource type="Script" path="res://scenes/actor/actor_data/actor_data.gd" id="2_nwapt"]
+[ext_resource type="Script" path="res://scenes/actor/enemy/shooter/shooter.gd" id="2_memdj"]
 [ext_resource type="Texture2D" uid="uid://c2h2tebe12vje" path="res://assets/graphics/template/number_template.png" id="3_0gdh8"]
+[ext_resource type="Script" path="res://scenes/actor/actor_data/actor_data.gd" id="3_8sj5h"]
 [ext_resource type="Script" path="res://scenes/actor/enemy/enemy_states/enemy_shoot.gd" id="6_4n5lm"]
 [ext_resource type="PackedScene" uid="uid://b66y70dlna4hf" path="res://scenes/projectiles/enemy_shoot.tscn" id="7_msfei"]
+[ext_resource type="PackedScene" uid="uid://bdna7yrgtgcjj" path="res://scenes/player_detector/player_detector.tscn" id="8_rehkf"]
 
-[sub_resource type="Resource" id="Resource_5x72o"]
-script = ExtResource("2_nwapt")
+[sub_resource type="Resource" id="Resource_nu1r0"]
+script = ExtResource("3_8sj5h")
 speed = 800.0
 jump_velocity = 1328.0
 friction_land = 1.0
@@ -172,10 +174,16 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vmy6n"]
 size = Vector2(64, 64)
 
-[node name="Shooter" node_paths=PackedStringArray("hit_state", "death_state") instance=ExtResource("1_qov2b")]
+[sub_resource type="CircleShape2D" id="CircleShape2D_7uc3v"]
+radius = 320.4
+
+[node name="Shooter" node_paths=PackedStringArray("shoot_delay", "shoot_state", "hit_state", "death_state") instance=ExtResource("1_qov2b")]
+script = ExtResource("2_memdj")
+shoot_delay = NodePath("PlayerDetector/ShootDelay")
+shoot_state = NodePath("StateMachine/Shoot")
 hit_state = NodePath("StateMachine/Hit")
 death_state = NodePath("StateMachine/Death")
-data = SubResource("Resource_5x72o")
+data = SubResource("Resource_nu1r0")
 
 [node name="Sprite2D" parent="FlipEnabled" index="0"]
 position = Vector2(0, -32)
@@ -232,34 +240,29 @@ vertical_alignment = 1
 [node name="StateMachine" parent="." index="1" node_paths=PackedStringArray("initial_state")]
 initial_state = NodePath("Idle")
 
-[node name="Hit" parent="StateMachine" index="0" node_paths=PackedStringArray("anim_player", "dmg_receiver", "enemy")]
+[node name="Hit" parent="StateMachine" index="0" node_paths=PackedStringArray("anim_player", "enemy", "damage_receiver")]
 anim_player = NodePath("../../AnimationPlayer")
-dmg_receiver = NodePath("../../FlipEnabled/DamageReceiver")
 enemy = NodePath("../..")
-
-[node name="Death" parent="StateMachine" index="1" node_paths=PackedStringArray("anim_player", "damage_receiver", "enemy")]
-anim_player = NodePath("../../AnimationPlayer")
 damage_receiver = NodePath("../../FlipEnabled/DamageReceiver")
-enemy = NodePath("../..")
 
-[node name="Idle" type="Node2D" parent="StateMachine" index="2" node_paths=PackedStringArray("idle_duration", "next_state", "damage_receiver", "enemy")]
+[node name="Death" parent="StateMachine" index="1" node_paths=PackedStringArray("anim_player", "enemy", "damage_receiver")]
+anim_player = NodePath("../../AnimationPlayer")
+enemy = NodePath("../..")
+damage_receiver = NodePath("../../FlipEnabled/DamageReceiver")
+
+[node name="Idle" type="Node2D" parent="StateMachine" index="2" node_paths=PackedStringArray("enemy", "damage_receiver")]
 script = ExtResource("2_k0072")
-idle_duration = NodePath("IdleDuration")
-next_state = NodePath("../Shoot")
-damage_receiver = NodePath("../../FlipEnabled/DamageReceiver")
 enemy = NodePath("../..")
+damage_receiver = NodePath("../../FlipEnabled/DamageReceiver")
 
-[node name="IdleDuration" type="Timer" parent="StateMachine/Idle" index="0"]
-wait_time = 5.0
-one_shot = true
-
-[node name="Shoot" type="Node2D" parent="StateMachine" index="3" node_paths=PackedStringArray("anim_player", "next_state", "shoot_pos", "enemy")]
+[node name="Shoot" type="Node2D" parent="StateMachine" index="3" node_paths=PackedStringArray("anim_player", "next_state", "shoot_pos", "enemy", "damage_receiver")]
 script = ExtResource("6_4n5lm")
 anim_player = NodePath("../../AnimationPlayer")
 next_state = NodePath("../Idle")
 shoot_scene = ExtResource("7_msfei")
 shoot_pos = NodePath("../../FlipEnabled/ShotPosition")
 enemy = NodePath("../..")
+damage_receiver = NodePath("../../FlipEnabled/DamageReceiver")
 
 [node name="AnimationPlayer" parent="." index="2"]
 libraries = {
@@ -269,3 +272,15 @@ libraries = {
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="3"]
 position = Vector2(0, -32)
 shape = SubResource("RectangleShape2D_vmy6n")
+
+[node name="PlayerDetector" parent="." index="4" node_paths=PackedStringArray("external_origin_point") instance=ExtResource("8_rehkf")]
+unique_name_in_owner = true
+external_origin_point = NodePath("..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetector" index="0"]
+position = Vector2(0, -32)
+shape = SubResource("CircleShape2D_7uc3v")
+
+[node name="ShootDelay" type="Timer" parent="PlayerDetector" index="1"]
+wait_time = 3.0
+one_shot = true

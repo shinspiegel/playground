@@ -1,13 +1,12 @@
 extends EnemyState
 
 @export var anim_player: AnimationPlayer
-@export var dmg_receiver: DamageReceiver
 
 var last_damage: Damage
 
 
 func _ready() -> void:
-	dmg_receiver.receive_damage.connect(on_damage_receive)
+	damage_receiver.receive_damage.connect(on_damage_receive)
 	anim_player.animation_finished.connect(on_anim_finished)
 
 

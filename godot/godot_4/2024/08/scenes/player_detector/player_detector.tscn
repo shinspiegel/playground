@@ -4,4 +4,5 @@
 
 [node name="PlayerDetector" type="Area2D"]
 collision_layer = 0
+collision_mask = 3
 script = ExtResource("1_2dmx1")

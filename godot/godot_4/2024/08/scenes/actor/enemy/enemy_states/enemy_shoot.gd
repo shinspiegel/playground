@@ -12,7 +12,12 @@ func _ready() -> void:
 
 func enter() -> void:
 	play_anim()
+	connect_damage_hit()
 	shoot()
+
+
+func exit() -> void:
+	disconnect_damage_hit()
 
 
 func update(delta: float) -> void:

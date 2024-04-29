@@ -28,17 +28,18 @@ func _physics_process(_delta: float) -> void:
 		from_pos = external_origin_point.global_position
 
 	var space = get_world_2d().direct_space_state
-	var params = PhysicsRayQueryParameters2D.create(
-		from_pos,
-		__player.global_position,
-		get_collision_mask(),
-		__excluded
-	)
+	var params = PhysicsRayQueryParameters2D.create(from_pos, __player.global_position, collision_mask, __excluded)
 	var line_of_sight_obstacle = space.intersect_ray(params)
 
 	if line_of_sight_obstacle.has("collider") and line_of_sight_obstacle.collider == __player and not __signed_emited:
 		player_sighted.emit()
 		__signed_emited = true
+
+
+func has_player() -> bool:
+	if __signed_emited:
+		return true
+	return false
 
 
 func get_player() -> Player:

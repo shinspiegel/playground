@@ -335,45 +335,46 @@ shape = SubResource("CircleShape2D_2c11x")
 [node name="StateMachine" parent="." index="1" node_paths=PackedStringArray("initial_state")]
 initial_state = NodePath("Idle")
 
-[node name="Hit" parent="StateMachine" index="0" node_paths=PackedStringArray("anim_player", "dmg_receiver", "enemy")]
+[node name="Hit" parent="StateMachine" index="0" node_paths=PackedStringArray("anim_player", "enemy", "damage_receiver")]
 anim_player = NodePath("../../AnimationPlayer")
-dmg_receiver = NodePath("../../FlipEnabled/DamageReceiver")
 enemy = NodePath("../..")
-
-[node name="Death" parent="StateMachine" index="1" node_paths=PackedStringArray("anim_player", "damage_receiver", "enemy")]
-anim_player = NodePath("../../AnimationPlayer")
 damage_receiver = NodePath("../../FlipEnabled/DamageReceiver")
-enemy = NodePath("../..")
 
-[node name="Idle" type="Node2D" parent="StateMachine" index="2" node_paths=PackedStringArray("idle_duration", "next_state", "damage_receiver", "enemy")]
+[node name="Death" parent="StateMachine" index="1" node_paths=PackedStringArray("anim_player", "enemy", "damage_receiver")]
+anim_player = NodePath("../../AnimationPlayer")
+enemy = NodePath("../..")
+damage_receiver = NodePath("../../FlipEnabled/DamageReceiver")
+
+[node name="Idle" type="Node2D" parent="StateMachine" index="2" node_paths=PackedStringArray("idle_duration", "next_state", "enemy", "damage_receiver")]
 script = ExtResource("4_cr0dk")
 idle_duration = NodePath("IdleDuration")
 next_state = NodePath("../Wander")
-damage_receiver = NodePath("../../FlipEnabled/DamageReceiver")
 enemy = NodePath("../..")
+damage_receiver = NodePath("../../FlipEnabled/DamageReceiver")
 
 [node name="IdleDuration" type="Timer" parent="StateMachine/Idle" index="0"]
 wait_time = 6.0
 one_shot = true
 
-[node name="Wander" type="Node2D" parent="StateMachine" index="3" node_paths=PackedStringArray("damage_receiver", "floor_raycast", "wall_raycast", "next_state", "delay_timer", "enemy")]
+[node name="Wander" type="Node2D" parent="StateMachine" index="3" node_paths=PackedStringArray("floor_raycast", "wall_raycast", "next_state", "delay_timer", "enemy", "damage_receiver")]
 script = ExtResource("5_gqobw")
-damage_receiver = NodePath("../../FlipEnabled/DamageReceiver")
 floor_raycast = NodePath("../../FlipEnabled/FloorCast")
 wall_raycast = NodePath("../../FlipEnabled/WallCast")
 next_state = NodePath("../Idle")
 delay_timer = NodePath("DelayTimer")
 enemy = NodePath("../..")
+damage_receiver = NodePath("../../FlipEnabled/DamageReceiver")
 
 [node name="DelayTimer" type="Timer" parent="StateMachine/Wander" index="0"]
 wait_time = 0.3
 one_shot = true
 
-[node name="ShockAround" type="Node2D" parent="StateMachine" index="4" node_paths=PackedStringArray("shock_duration", "damage_inflictor", "enemy")]
+[node name="ShockAround" type="Node2D" parent="StateMachine" index="4" node_paths=PackedStringArray("shock_duration", "damage_inflictor", "enemy", "damage_receiver")]
 script = ExtResource("9_mw7mj")
 shock_duration = NodePath("ShockDuration")
 damage_inflictor = NodePath("../../FlipEnabled/DamageInflictor")
 enemy = NodePath("../..")
+damage_receiver = NodePath("../../FlipEnabled/DamageReceiver")
 
 [node name="ShockDuration" type="Timer" parent="StateMachine/ShockAround" index="0"]
 wait_time = 2.0

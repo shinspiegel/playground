@@ -1,6 +1,5 @@
 extends EnemyState
 
-@export var damage_receiver: DamageReceiver
 @export var floor_raycast: RayCast2D
 @export var wall_raycast: RayCast2D
 @export var next_state: EnemyState
@@ -9,14 +8,16 @@ extends EnemyState
 
 func enter() -> void:
 	play_anim()
+	connect_damage_hit()
+
 	delay_timer.start()
-	damage_receiver.receive_damage.connect(enemy.on_receive_damage)
 
 	if not floor_raycast.is_colliding() or wall_raycast.is_colliding():
 		enemy.direction *= -1
 
 
 func exit() -> void:
+	disconnect_damage_hit()
 	damage_receiver.receive_damage.disconnect(enemy.on_receive_damage)
 
 

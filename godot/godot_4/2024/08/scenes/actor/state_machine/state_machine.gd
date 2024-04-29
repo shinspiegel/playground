@@ -20,6 +20,16 @@ func get_current_name() -> String:
 	return current.name
 
 
+func is_on_state(state: BaseState) -> bool:
+	if state == current:
+		return true
+
+	if state.name == current.name:
+		return true
+	
+	return false
+
+
 func change_by_state(state: BaseState) -> void:
 	change_by_name(state.name)
 

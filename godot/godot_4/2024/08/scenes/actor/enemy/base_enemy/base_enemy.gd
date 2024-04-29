@@ -26,6 +26,10 @@ func is_on_death() -> bool:
 	return state_machine.get_current_name() == death_state.name
 
 
+func turn_to(target_position: Vector2) -> void:
+	direction = clampi(int((global_position - target_position).x) * -1, -1, 1)
+
+
 func receive_damage(val: int) -> void:
 	hp = clampi(hp - val, 0, max_hp)
 
