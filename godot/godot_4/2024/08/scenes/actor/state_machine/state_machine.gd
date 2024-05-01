@@ -26,12 +26,8 @@ func is_on_state(state: BaseState) -> bool:
 
 	if state.name == current.name:
 		return true
-	
+
 	return false
-
-
-func change_by_state(state: BaseState) -> void:
-	change_by_name(state.name)
 
 
 func change_by_name(state: String) -> void:
@@ -40,6 +36,7 @@ func change_by_name(state: String) -> void:
 		return
 
 	if states.get(state) == current:
+		push_warning("attempt to change on the same state: [%s]" % [state])
 		return
 
 	if not current == null:
@@ -48,6 +45,10 @@ func change_by_name(state: String) -> void:
 	current = states.get(state)
 	current.enter()
 	state_changed.emit(state)
+
+
+func change_by_state(state: BaseState) -> void:
+	change_by_name(state.name)
 
 
 func change_initial() -> void:

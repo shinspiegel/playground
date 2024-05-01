@@ -11,13 +11,17 @@ class_name BaseEnemy extends BaseActor
 
 
 func _ready() -> void:
-	hp = max_hp
-	state_machine.state_changed.connect(on_state_change)
+	reset_hp()
 	state_machine.change_initial()
+	state_machine.state_changed.connect(on_state_change)
 
 
 func _physics_process(delta: float) -> void:
 	state_machine.update(delta)
+
+
+func reset_hp() -> void:
+	hp = max_hp
 
 
 func is_on_hit() -> bool:

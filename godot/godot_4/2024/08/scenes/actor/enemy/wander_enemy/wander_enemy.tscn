@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://bxkot377yyeju"]
+[gd_scene load_steps=28 format=3 uid="uid://bxkot377yyeju"]
 
 [ext_resource type="PackedScene" uid="uid://do4arqmfus0eo" path="res://scenes/actor/enemy/base_enemy/base_enemy.tscn" id="1_vtri4"]
 [ext_resource type="Texture2D" uid="uid://dovewtuchy5a1" path="res://assets/graphics/template/size_template.png" id="2_3vf71"]
@@ -249,6 +249,9 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dunbs"]
 size = Vector2(64, 64)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f5xfm"]
+size = Vector2(32, 32)
+
 [node name="WanderEnemy" node_paths=PackedStringArray("shock_around_state", "hit_state", "death_state", "touch_inflictor") instance=ExtResource("1_vtri4")]
 collision_mask = 10
 script = ExtResource("2_8nut0")
@@ -392,3 +395,7 @@ shape = SubResource("RectangleShape2D_dunbs")
 
 [node name="EnterShockDelay" type="Timer" parent="." index="4"]
 one_shot = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TouchInflictor" index="0"]
+position = Vector2(0, -32)
+shape = SubResource("RectangleShape2D_f5xfm")

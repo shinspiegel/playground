@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://khse2wmgfq3w"]
+[gd_scene load_steps=22 format=3 uid="uid://khse2wmgfq3w"]
 
 [ext_resource type="PackedScene" uid="uid://do4arqmfus0eo" path="res://scenes/actor/enemy/base_enemy/base_enemy.tscn" id="1_qov2b"]
 [ext_resource type="Texture2D" uid="uid://dovewtuchy5a1" path="res://assets/graphics/template/size_template.png" id="2_158bd"]
@@ -171,6 +171,9 @@ _data = {
 "Shoot": SubResource("Animation_c77d8")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_coudu"]
+size = Vector2(48, 48)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vmy6n"]
 size = Vector2(64, 64)
 
@@ -269,6 +272,10 @@ damage_receiver = NodePath("../../FlipEnabled/DamageReceiver")
 libraries = {
 "": SubResource("AnimationLibrary_updri")
 }
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TouchInflictor" index="0"]
+position = Vector2(0, -32)
+shape = SubResource("RectangleShape2D_coudu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="4"]
 position = Vector2(0, -32)

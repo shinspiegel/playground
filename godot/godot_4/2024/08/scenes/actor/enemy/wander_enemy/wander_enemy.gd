@@ -25,6 +25,8 @@ func on_shock_timeout() -> void:
 	state_machine.change_by_state(shock_around_state)
 
 
-func on_state_change(state_name: String) -> void:
-	if state_name == hit_state.name or state_name == death_state.name:
+func on_state_change(state: String) -> void:
+	super.on_state_change(state)
+
+	if state == hit_state.name or state == death_state.name:
 		enter_shock_delay.stop()
