@@ -17,6 +17,7 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	state_machine.update(delta)
+	check_death()
 
 
 func initialize_state_machine() -> void:
@@ -44,6 +45,12 @@ func receive_damage(val: int) -> void:
 	hp = clampi(hp - val, 0, max_hp)
 
 
+func check_death() -> void:
+	if hp <= 0 and not state_machine.is_on_state(death_state):
+		state_machine.change_by_state(death_state)
+
+
+
 func on_receive_damage(dmg: Damage) -> void:
 	if not is_on_hit() or is_on_death():
 		GameManager.spawn_damage_number(dmg, damage_position.global_position)
@@ -54,3 +61,4 @@ func on_receive_damage(dmg: Damage) -> void:
 func on_state_change(state: String) -> void:
 	if state == death_state.name:
 		touch_inflictor.active = false
+

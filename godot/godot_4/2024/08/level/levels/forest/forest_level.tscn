@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://conurgiqgodb"]
+[gd_scene load_steps=12 format=3 uid="uid://conurgiqgodb"]
 
 [ext_resource type="PackedScene" uid="uid://b87cqyunlhsul" path="res://level/base_level/base_level.tscn" id="1_ba3dr"]
 [ext_resource type="PackedScene" uid="uid://cqfqw42vgda3x" path="res://level/levels/forest/forest_segments/forest_segment_00.tscn" id="2_bpe3u"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://bvwhiymimugxd" path="res://level/levels/forest/forest_segments/forest_segment_03.tscn" id="8_cuos6"]
 [ext_resource type="PackedScene" uid="uid://b13av5d62w3qr" path="res://level/levels/forest/forest_segments/forest_segment_05.tscn" id="9_yu1as"]
 [ext_resource type="PackedScene" uid="uid://bx8fgc4e87wit" path="res://level/levels/forest/forest_segments/forest_segment_06.tscn" id="10_scvtg"]
+[ext_resource type="PackedScene" uid="uid://o472au4r0a32" path="res://level/levels/forest/forest_segments/forest_segment_07.tscn" id="11_mkogs"]
 
 [node name="ForestLevel" node_paths=PackedStringArray("initial_segment") instance=ExtResource("1_ba3dr")]
 initial_segment = NodePath("LevelSegments/ForestSegment")
@@ -61,3 +62,6 @@ position = Vector2(27776, 9344)
 
 [node name="ForestSegment6" parent="LevelSegments" index="5" instance=ExtResource("10_scvtg")]
 position = Vector2(35456, 1280)
+
+[node name="ForestSegment" parent="LevelSegments/ForestSegment6" index="4" instance=ExtResource("11_mkogs")]
+position = Vector2(3712, -1920)
