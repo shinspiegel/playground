@@ -7,10 +7,11 @@ extends BaseEnemy
 
 
 func _ready() -> void:
+	super._ready()
+
 	player_detector.player_sighted.connect(on_player_sight)
 	player_detector.player_lost.connect(on_player_lost)
 	enter_shock_delay.timeout.connect(on_shock_timeout)
-	super._ready()
 
 
 func on_player_sight() -> void:

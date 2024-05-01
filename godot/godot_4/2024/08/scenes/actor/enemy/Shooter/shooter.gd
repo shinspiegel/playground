@@ -2,14 +2,16 @@ extends BaseEnemy
 
 @export var shoot_delay: Timer
 @export var shoot_state: EnemyState
+
 @onready var player_detector: PlayerDetector = %PlayerDetector
 
 
 func _ready() -> void:
+	super._ready()
+
 	player_detector.player_sighted.connect(on_player_sight)
 	player_detector.player_lost.connect(on_player_lost)
 	shoot_delay.timeout.connect(on_shoot_timeout)
-	super._ready()
 
 
 func _physics_process(delta: float) -> void:

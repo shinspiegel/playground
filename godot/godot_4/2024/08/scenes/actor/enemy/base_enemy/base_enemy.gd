@@ -12,12 +12,16 @@ class_name BaseEnemy extends BaseActor
 
 func _ready() -> void:
 	reset_hp()
-	state_machine.change_initial()
-	state_machine.state_changed.connect(on_state_change)
+	initialize_state_machine()
 
 
 func _physics_process(delta: float) -> void:
 	state_machine.update(delta)
+
+
+func initialize_state_machine() -> void:
+	state_machine.change_initial()
+	state_machine.state_changed.connect(on_state_change)
 
 
 func reset_hp() -> void:
