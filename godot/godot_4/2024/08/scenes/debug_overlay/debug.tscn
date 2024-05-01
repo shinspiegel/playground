@@ -3,11 +3,12 @@
 [ext_resource type="Script" path="res://scenes/debug_overlay/debug.gd" id="1_jyjfj"]
 [ext_resource type="Theme" uid="uid://x61ckk74bynv" path="res://screens/theme/base_theme.tres" id="2_34n7v"]
 
-[node name="DEBUG" type="CanvasLayer" node_paths=PackedStringArray("state_label", "hp_label", "mp_label")]
+[node name="DEBUG" type="CanvasLayer" node_paths=PackedStringArray("state_label", "hp_label", "mp_label", "level_label")]
 script = ExtResource("1_jyjfj")
 state_label = NodePath("Control/VBoxContainer/State")
 hp_label = NodePath("Control/VBoxContainer/HP")
 mp_label = NodePath("Control/VBoxContainer/MP")
+level_label = NodePath("Control/VBoxContainer/Level")
 
 [node name="Control" type="Control" parent="."]
 auto_translate_mode = 1
@@ -25,6 +26,11 @@ anchors_preset = 9
 anchor_bottom = 1.0
 offset_right = 144.0
 grow_vertical = 2
+
+[node name="Level" type="Label" parent="Control/VBoxContainer"]
+auto_translate_mode = 1
+layout_mode = 2
+text = "NULL @ NULL"
 
 [node name="HP" type="Label" parent="Control/VBoxContainer"]
 auto_translate_mode = 1

@@ -1,5 +1,7 @@
 extends Node
 
+signal level_changed()
+
 const damage_number: Resource = preload("res://scenes/damageables/damage_number/damage_number.tscn")
 const player_scene: Resource = preload("res://scenes/actor/player/player.tscn")
 
@@ -12,6 +14,11 @@ var current_level: BaseLevel
 
 func _ready() -> void:
 	player = player_scene.instantiate()
+
+
+func set_level(level: BaseLevel) -> void:
+	current_level = level
+	level_changed.emit()
 
 
 func spawn_damage_number(damage: Damage, pos: Vector2 = Vector2.ZERO, pos_variation: Vector2 = Vector2(20,20),parent: Node = null) -> void:

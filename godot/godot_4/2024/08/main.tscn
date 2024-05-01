@@ -5,10 +5,11 @@
 
 [node name="Main" type="Node2D"]
 
-[node name="DEBUG" parent="." node_paths=PackedStringArray("state_label", "hp_label", "mp_label") instance=ExtResource("2_vei06")]
+[node name="ForestLevel" parent="." node_paths=PackedStringArray("initial_segment") instance=ExtResource("2_evaer")]
+initial_segment = NodePath("LevelSegments/ForestSegment")
+
+[node name="DEBUG" parent="." node_paths=PackedStringArray("state_label", "hp_label", "mp_label", "level_label") instance=ExtResource("2_vei06")]
 state_label = NodePath("Control/VBoxContainer/State")
 hp_label = NodePath("Control/VBoxContainer/HP")
 mp_label = NodePath("Control/VBoxContainer/MP")
-
-[node name="ForestLevel" parent="." node_paths=PackedStringArray("initial_segment") instance=ExtResource("2_evaer")]
-initial_segment = NodePath("LevelSegments/ForestSegment")
+level_label = NodePath("Control/VBoxContainer/Level")

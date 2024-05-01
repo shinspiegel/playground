@@ -249,7 +249,7 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dunbs"]
 size = Vector2(64, 64)
 
-[node name="WanderEnemy" node_paths=PackedStringArray("shock_around_state", "hit_state", "death_state") instance=ExtResource("1_vtri4")]
+[node name="WanderEnemy" node_paths=PackedStringArray("shock_around_state", "hit_state", "death_state", "touch_inflictor") instance=ExtResource("1_vtri4")]
 collision_mask = 10
 script = ExtResource("2_8nut0")
 shock_around_state = NodePath("StateMachine/ShockAround")
@@ -257,6 +257,7 @@ max_hp = 5
 hp = 5
 hit_state = NodePath("StateMachine/Hit")
 death_state = NodePath("StateMachine/Death")
+touch_inflictor = NodePath("TouchInflictor")
 data = SubResource("Resource_pnaxd")
 
 [node name="STATE" type="Label" parent="FlipEnabled" index="0"]

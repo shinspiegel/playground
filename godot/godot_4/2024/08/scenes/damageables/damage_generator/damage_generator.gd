@@ -1,11 +1,11 @@
 class_name DamageGenerator extends Resource
 
 @export var amount: int = 10
-@export_range(0.0, 3.0, 0.1) var impact: float = 0.5
-@export_range(0.0, 1.0, 0.1) var critical_chance: float = 0.1
-@export_range(1.0, 3.0, 0.1) var critical_boost: float = 1.5
-@export_range(0.0, 1.0, 0.1) var variation_amount: float = 0.2
-@export_range(0.0, 1.0, 0.1) var variation_impact: float = 0.1
+@export_range(0.0, 3.0, 0.05) var impact: float = 0.5
+@export_range(0.0, 1.0, 0.05) var critical_chance: float = 0.1
+@export_range(1.0, 3.0, 0.05) var critical_boost: float = 1.5
+@export_range(0.0, 1.0, 0.05) var variation_amount: float = 0.2
+@export_range(0.0, 1.0, 0.05) var variation_impact: float = 0.1
 
 
 func generate(source: Vector2 = Vector2.ZERO) -> Damage:

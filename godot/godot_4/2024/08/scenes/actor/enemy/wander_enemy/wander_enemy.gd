@@ -1,4 +1,4 @@
-class_name WanderEnemy extends BaseEnemy
+extends BaseEnemy
 
 @export var shock_around_state: EnemyState
 
@@ -10,7 +10,6 @@ func _ready() -> void:
 	player_detector.player_sighted.connect(on_player_sight)
 	player_detector.player_lost.connect(on_player_lost)
 	enter_shock_delay.timeout.connect(on_shock_timeout)
-	state_machine.state_changed.connect(on_state_change)
 	super._ready()
 
 

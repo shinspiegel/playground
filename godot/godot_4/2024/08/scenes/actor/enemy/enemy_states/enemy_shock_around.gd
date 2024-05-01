@@ -9,12 +9,14 @@ func enter() -> void:
 	shock_duration.timeout.connect(on_shock_end)
 	shock_duration.start()
 	enemy.velocity = Vector2.ZERO
+	connect_damage_hit()
 	play_anim()
 
 
 func exit() -> void:
 	damage_inflictor.active = false
 	shock_duration.timeout.disconnect(on_shock_end)
+	disconnect_damage_hit()
 
 
 func update(delta: float) -> void:
@@ -25,6 +27,5 @@ func update(delta: float) -> void:
 
 
 func on_shock_end() -> void:
-	print("timeout")
 	state_machine.change_initial()
 

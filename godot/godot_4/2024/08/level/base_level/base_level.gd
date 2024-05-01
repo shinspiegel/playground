@@ -1,5 +1,7 @@
 class_name BaseLevel extends Node2D
 
+signal segment_changed()
+
 @export var game_settings: SavedData
 @export var initial_segment: LevelSegment
 @export var track_index: int = 0
@@ -10,14 +12,12 @@ class_name BaseLevel extends Node2D
 @onready var background_nodes: Node2D = %BackgroundNodes
 @onready var foreground_nodes: Node2D = %ForegroundNodes
 
-
 var current_segment: LevelSegment
 
 var __seg_map: Dictionary = {}
 
 
 func _ready() -> void:
-	GameManager.current_level = self
 	GameManager.player.died.connect(on_player_died)
 	GameManager.game_camera = game_camera
 	AudioManager.play_music(track_index)
@@ -38,9 +38,11 @@ func _ready() -> void:
 		current_segment = __seg_map.get(game_settings.saved_segment)
 
 	current_segment.enable()
-
 	game_camera.set_limit_list(current_segment.get_limit_list())
+
+	GameManager.set_level(self)
 	GameManager.spawn_player(foreground_nodes, current_segment.respawn_point.global_position, game_camera)
+
 	game_settings.saved_stats = GameManager.player.stats.duplicate(true)
 
 
@@ -67,6 +69,7 @@ func on_player_change_segment(segment: LevelSegment) -> void:
 
 	game_settings.saved_segment = current_segment.name
 	game_settings.saved_stats = GameManager.player.stats.duplicate(true)
+	segment_changed.emit()
 
 
 func on_player_died() -> void:

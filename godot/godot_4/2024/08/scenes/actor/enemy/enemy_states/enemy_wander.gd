@@ -7,10 +7,10 @@ extends EnemyState
 
 
 func enter() -> void:
+	delay_timer.start()
+
 	play_anim()
 	connect_damage_hit()
-
-	delay_timer.start()
 
 	if not floor_raycast.is_colliding() or wall_raycast.is_colliding():
 		enemy.direction *= -1

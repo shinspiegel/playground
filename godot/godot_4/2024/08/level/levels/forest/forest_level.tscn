@@ -12,7 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://bx8fgc4e87wit" path="res://level/levels/forest/forest_segments/forest_segment_06.tscn" id="10_scvtg"]
 
 [node name="ForestLevel" node_paths=PackedStringArray("initial_segment") instance=ExtResource("1_ba3dr")]
-initial_segment = NodePath("LevelSegments/ForestSegment2")
+initial_segment = NodePath("LevelSegments/ForestSegment")
 track_index = 2
 
 [node name="Parallax2D" type="Parallax2D" parent="ParallaxArea" index="0"]
