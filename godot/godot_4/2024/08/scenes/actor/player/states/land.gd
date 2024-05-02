@@ -3,12 +3,13 @@ extends PlayerState
 @export var anim_player: AnimationPlayer
 
 
-func _ready() -> void:
+func enter() -> void:
+	player.change_animation(LAND)
 	anim_player.animation_finished.connect(on_anim_finished)
 
 
-func enter() -> void:
-	player.change_animation(LAND)
+func exit() -> void:
+	anim_player.animation_finished.disconnect(on_anim_finished)
 
 
 func update(delta: float) -> void:
@@ -18,7 +19,6 @@ func update(delta: float) -> void:
 	player.check_flip(player.input.last_direction)
 
 
-func on_anim_finished(anim: String) -> void:
-	if anim == LAND:
-		state_machine.change_by_name(IDLE)
+func on_anim_finished(_anim: String) -> void:
+	state_machine.change_by_name(IDLE)
 

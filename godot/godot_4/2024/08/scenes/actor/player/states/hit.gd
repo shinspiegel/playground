@@ -6,14 +6,16 @@ extends PlayerState
 var last_damage: Damage
 
 
-func _ready() -> void:
+func enter() -> void:
 	dmg_receiver.receive_damage.connect(on_damage_receive)
 	anim_player.animation_finished.connect(on_anim_finished)
-
-
-func enter() -> void:
 	player.change_animation(HIT)
 	__apply_damage()
+
+
+func exit() -> void:
+	dmg_receiver.receive_damage.disconnect(on_damage_receive)
+	anim_player.animation_finished.disconnect(on_anim_finished)
 
 
 func update(delta: float) -> void:

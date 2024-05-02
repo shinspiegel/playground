@@ -3,23 +3,28 @@ extends PlayerState
 @export var duration: Timer
 
 var direction: float = 0.0
-
-
-func _ready() -> void:
-	duration.timeout.connect(on_timeout)
+var speed_weight: float = 1.5
 
 
 func enter() -> void:
 	direction = player.input.last_direction
+
 	player.change_animation(ROLL)
 	player.velocity = Vector2.ZERO
 	player.stats.consume_mana()
 	player.dash_used = true
+
+	duration.timeout.connect(on_timeout)
 	duration.start()
 
 
+func exit() -> void:
+	duration.timeout.disconnect(on_timeout)
+	duration.stop()
+
+
 func update(delta: float) -> void:
-	direction = lerpf(direction, 0, delta * 1.5)
+	direction = lerpf(direction, 0, delta * speed_weight)
 
 	player.apply_direction(direction, 1.0, 1.0, 3.0)
 	player.move_and_slide()

@@ -4,17 +4,15 @@ extends PlayerState
 @export var damage_inflictor: DamageInflictor
 
 
-func _ready() -> void:
-	anim_player.animation_finished.connect(on_anim_finished)
-
-
 func enter() -> void:
 	player.change_animation(JAB)
 	damage_inflictor.active = true
+	anim_player.animation_finished.connect(on_anim_finished)
 
 
 func exit() -> void:
 	damage_inflictor.active = false
+	anim_player.animation_finished.disconnect(on_anim_finished)
 
 
 func update(delta: float) -> void:
@@ -27,6 +25,5 @@ func update(delta: float) -> void:
 		damage_inflictor.active = false
 
 
-func on_anim_finished(anim: String) -> void:
-	if anim == JAB:
-		state_machine.change_by_name(IDLE)
+func on_anim_finished(_anim: String) -> void:
+	state_machine.change_by_name(IDLE)

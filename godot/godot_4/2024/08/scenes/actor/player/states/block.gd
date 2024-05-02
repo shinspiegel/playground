@@ -8,15 +8,16 @@ var blocks: Array[Node2D] = []
 var max_blocks: int = 1
 
 
-func _ready() -> void:
-	anim_player.animation_finished.connect(on_anim_finished)
-
-
 func enter() -> void:
+	anim_player.animation_finished.connect(on_anim_finished)
 	player.change_animation(BLOCK)
 	player.stats.consume_mana()
 	player.velocity = Vector2.ZERO
 	spawn_block()
+
+
+func exit() -> void:
+	anim_player.animation_finished.disconnect(on_anim_finished)
 
 
 func update(_delta: float) -> void:
@@ -26,12 +27,11 @@ func update(_delta: float) -> void:
 	player.check_flip(player.input.last_direction)
 
 
-func on_anim_finished(anim: String) -> void:
-	if anim == BLOCK:
-		if player.input.direction > 0:
-			state_machine.change_by_name(MOVE)
-		else:
-			state_machine.change_by_name(IDLE)
+func on_anim_finished(_anim: String) -> void:
+	if player.input.direction > 0:
+		state_machine.change_by_name(MOVE)
+	else:
+		state_machine.change_by_name(IDLE)
 
 
 func spawn_block() -> void:

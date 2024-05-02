@@ -5,15 +5,16 @@ const player_shoot_scene: Resource = preload("res://scenes/projectiles/player_sh
 @export var anim_player: AnimationPlayer
 
 
-func _ready() -> void:
-	anim_player.animation_finished.connect(on_anim_finished)
-
-
 func enter() -> void:
 	player.change_animation(RANGED)
 	player.stats.consume_mana()
 	player.velocity = Vector2.ZERO
+	anim_player.animation_finished.connect(on_anim_finished)
 	spawn_shoot()
+
+
+func exit() -> void:
+	anim_player.animation_finished.disconnect(on_anim_finished)
 
 
 func update(delta: float) -> void:
@@ -23,12 +24,11 @@ func update(delta: float) -> void:
 	player.check_flip(player.input.last_direction)
 
 
-func on_anim_finished(anim: String) -> void:
-	if anim == RANGED:
-		if player.input.direction > 0:
-			state_machine.change_by_name(MOVE)
-		else:
-			state_machine.change_by_name(IDLE)
+func on_anim_finished(_anim: String) -> void:
+	if player.input.direction > 0:
+		state_machine.change_by_name(MOVE)
+	else:
+		state_machine.change_by_name(IDLE)
 
 
 func spawn_shoot() -> void:
