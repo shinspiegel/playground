@@ -16,6 +16,7 @@
 - [x] Damageables
 - [x] DamageNumbers
 - [ ] Level selection screen
+- [ ] Power Up Selection (Post level)
 - Main Character
 	- Artwork
 		- [ ] Idle

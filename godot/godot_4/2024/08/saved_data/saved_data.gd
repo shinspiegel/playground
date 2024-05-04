@@ -20,5 +20,11 @@ signal sound_changed
 		sound_changed.emit()
 		emit_changed()
 
+
 @export var saved_stats: PlayerStats = PlayerStats.new()
 @export var saved_segment: String = ""
+
+@export var forest_level_copleted: bool = false
+@export var beach_level_copleted: bool = false
+@export var vulcano_level_copleted: bool = false
+

@@ -1,5 +1,7 @@
 class_name DamageInflictor extends Area2D
 
+signal target_hit(target: DamageReceiver)
+
 @export var source: Node
 @export var dmg_generator: DamageGenerator
 @export var active: bool = true
@@ -19,6 +21,7 @@ func _physics_process(_delta: float) -> void:
 		for area: DamageReceiver in __areas_map.values():
 			if area.can_hit():
 				area.hit(dmg_generator.generate(source))
+				target_hit.emit(area)
 
 
 func on_area_enter(area: Area2D) -> void:

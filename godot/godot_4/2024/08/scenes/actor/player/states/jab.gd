@@ -8,6 +8,7 @@ extends PlayerState
 func enter() -> void:
 	player.change_animation(JAB)
 	damage_inflictor.active = true
+	damage_inflictor.target_hit.connect(on_target_hit)
 	anim_player.animation_finished.connect(on_anim_finished)
 	AudioManager.create_sfx(jab_audio, randf_range(0.8, 1.4))
 
@@ -29,3 +30,7 @@ func update(delta: float) -> void:
 
 func on_anim_finished(_anim: String) -> void:
 	state_machine.change_by_name(IDLE)
+
+
+func on_target_hit(_target: DamageReceiver) -> void:
+	damage_inflictor.active = false

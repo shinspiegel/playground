@@ -8,11 +8,16 @@ const COLOR_OUT = Color(1,1,1,0)
 const FADE_DELAY = 0.2
 
 const SCENES = {
-	"main": "res://main.tscn",
 	"start": "res://screens/start_screen.tscn",
+	"level_selection": "res://screens/level_selection.tscn",
 	"options": "res://screens/options.tscn",
 	"credits": "res://screens/credits.tscn",
 	"game_over": "res://screens/game_over.tscn",
+
+	"forest": "res://level/levels/forest/forest_level.tscn",
+	"vulcano": "res://level/levels/vulcano/vulcano_level.tscn",
+	"beach": "res://level/levels/beach/beach_level.tscn",
+	"castle": "res://level/levels/castle/castle_level.tscn",
 }
 
 @onready var control: Control = $Control

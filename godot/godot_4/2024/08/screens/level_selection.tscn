@@ -1,0 +1,104 @@
+[gd_scene load_steps=6 format=3 uid="uid://dx754x8nb3tu2"]
+
+[ext_resource type="Theme" uid="uid://x61ckk74bynv" path="res://screens/theme/base_theme.tres" id="1_w4flp"]
+[ext_resource type="Script" path="res://screens/level_selection.gd" id="2_1ifkq"]
+[ext_resource type="Script" path="res://scenes/actor/player/inputs/player_input.gd" id="3_bxvto"]
+[ext_resource type="Resource" uid="uid://dyfg2qodnx83r" path="res://saved_data/saved_data.tres" id="3_dxsip"]
+[ext_resource type="Texture2D" uid="uid://n7bn5hsjq3fs" path="res://assets/graphics/TEMP/cfp+cQ.png" id="4_a3cut"]
+
+[node name="LevelSelection" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_w4flp")
+script = ExtResource("2_1ifkq")
+saved_data = ExtResource("3_dxsip")
+
+[node name="Background" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="ColorRect" type="ColorRect" parent="Background"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.592157, 0.490196, 0.309804, 1)
+
+[node name="PlayerInput" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("3_bxvto")
+
+[node name="LevelCamera" type="Camera2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(960, 544)
+zoom = Vector2(0.8, 0.8)
+position_smoothing_enabled = true
+drag_left_margin = 0.0
+drag_top_margin = 0.0
+drag_right_margin = 0.0
+drag_bottom_margin = 0.0
+editor_draw_limits = true
+editor_draw_drag_margin = true
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_a3cut")
+
+[node name="ForestButton" type="Button" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -192.0
+offset_top = -476.0
+offset_right = 192.0
+offset_bottom = -348.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Forest"
+
+[node name="BeachButton" type="Button" parent="."]
+unique_name_in_owner = true
+auto_translate_mode = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 448.0
+offset_top = 228.0
+offset_right = 832.0
+offset_bottom = 356.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Beach"
+
+[node name="VuldanoButton" type="Button" parent="."]
+unique_name_in_owner = true
+auto_translate_mode = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -800.0
+offset_top = -92.0
+offset_right = -411.0
+offset_bottom = 36.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Vulcano"
