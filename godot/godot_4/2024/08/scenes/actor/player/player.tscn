@@ -959,10 +959,11 @@ position = Vector2(256, 2.08165e-12)
 update_rotation = false
 update_scale = false
 
-[node name="JabDamageInflictor" type="Area2D" parent="FlipEnabled" index="8"]
+[node name="JabDamageInflictor" type="Area2D" parent="FlipEnabled" index="8" node_paths=PackedStringArray("source")]
 unique_name_in_owner = true
 collision_mask = 4
 script = ExtResource("8_yx3wq")
+source = NodePath("../..")
 dmg_generator = SubResource("Resource_hecd8")
 active = false
 

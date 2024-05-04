@@ -37,11 +37,12 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Movable/WallDetector"]
 shape = SubResource("RectangleShape2D_7okxp")
 
-[node name="DamageInflictor" type="Area2D" parent="Movable"]
+[node name="DamageInflictor" type="Area2D" parent="Movable" node_paths=PackedStringArray("source")]
 unique_name_in_owner = true
 collision_layer = 0
 collision_mask = 4
 script = ExtResource("3_qjqjt")
+source = NodePath("../..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Movable/DamageInflictor"]
 shape = SubResource("CircleShape2D_00mqk")

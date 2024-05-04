@@ -17,6 +17,7 @@ variation_impact = 0.1
 [node name="WallDetector" parent="Movable" index="2"]
 collision_mask = 3
 
-[node name="DamageInflictor" parent="Movable" index="3"]
+[node name="DamageInflictor" parent="Movable" index="3" node_paths=PackedStringArray("source")]
 collision_mask = 1
+source = NodePath("../..")
 dmg_generator = SubResource("Resource_fxtt4")

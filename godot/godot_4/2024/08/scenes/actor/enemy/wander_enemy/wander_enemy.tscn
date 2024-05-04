@@ -322,8 +322,9 @@ external_origin_point = NodePath("../..")
 position = Vector2(288, -32)
 shape = SubResource("RectangleShape2D_wre42")
 
-[node name="DamageInflictor" type="Area2D" parent="FlipEnabled" index="7"]
+[node name="DamageInflictor" type="Area2D" parent="FlipEnabled" index="7" node_paths=PackedStringArray("source")]
 script = ExtResource("7_wbbg8")
+source = NodePath("../..")
 dmg_generator = SubResource("Resource_rj3yl")
 active = false
 

@@ -61,7 +61,8 @@ damage_receiver = NodePath("../../FlipEnabled/DamageReceiver")
 [node name="AnimationPlayer" parent="." index="2"]
 unique_name_in_owner = false
 
-[node name="TouchInflictor" type="Area2D" parent="." index="3"]
+[node name="TouchInflictor" type="Area2D" parent="." index="3" node_paths=PackedStringArray("source")]
 collision_layer = 4
 script = ExtResource("6_4emd8")
+source = NodePath("..")
 dmg_generator = SubResource("Resource_x5pyg")

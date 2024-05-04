@@ -8,10 +8,10 @@ class_name DamageGenerator extends Resource
 @export_range(0.0, 1.0, 0.05) var variation_impact: float = 0.1
 
 
-func generate(source: Vector2 = Vector2.ZERO) -> Damage:
+func generate(source: Node2D) -> Damage:
 	var damage: Damage = Damage.new()
 
-	damage.source_position = source
+	damage.source_node = source
 	damage.amount = randi_range(int(amount - (amount * variation_amount)), int(amount + (amount * variation_amount)))
 	damage.impact = randf_range(impact - (impact * variation_impact), impact + (impact * variation_impact))
 
