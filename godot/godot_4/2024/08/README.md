@@ -104,7 +104,7 @@
 - Enemies
 	- [x] Walker (just walk from side to side and idle in between)
 	- [x] Shooter (does not move, shoot on invervals)
-	- [ ] Defender / Tank (holds something to protect, avoids damage)
+	- [x] Defender / Tank (holds something to protect, avoids damage)
 	- [ ] Sniper (wanders, if player in sight, shoot)
 	- [ ] Medusa head (floats on screen, ignore tilemap)
 	- [ ] Hovering (hovers and drops bombs)

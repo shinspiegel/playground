@@ -50,8 +50,8 @@ func check_death() -> void:
 		state_machine.change_by_state(death_state)
 
 
-
 func on_receive_damage(dmg: Damage) -> void:
+	print("BaseEnemy")
 	if not is_on_hit() or is_on_death():
 		GameManager.spawn_damage_number(dmg, damage_position.global_position)
 		receive_damage(dmg.amount)

@@ -5,3 +5,4 @@ class_name Damage extends Resource
 @export var is_critical: bool = false
 @export var source_position: Vector2 = Vector2.ZERO
 
+var source_node: Node2D = null 

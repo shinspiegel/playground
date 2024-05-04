@@ -1,52 +1,29 @@
-[gd_scene load_steps=28 format=3 uid="uid://bxkot377yyeju"]
+[gd_scene load_steps=20 format=3 uid="uid://be704c17u6432"]
 
-[ext_resource type="PackedScene" uid="uid://do4arqmfus0eo" path="res://scenes/actor/enemy/base_enemy/base_enemy.tscn" id="1_vtri4"]
-[ext_resource type="Texture2D" uid="uid://dovewtuchy5a1" path="res://assets/graphics/template/size_template.png" id="2_3vf71"]
-[ext_resource type="Script" path="res://scenes/actor/actor_data/actor_data.gd" id="2_8hbxm"]
-[ext_resource type="Script" path="res://scenes/actor/enemy/wander_enemy/wander_enemy.gd" id="2_8nut0"]
-[ext_resource type="Texture2D" uid="uid://c2h2tebe12vje" path="res://assets/graphics/template/number_template.png" id="3_j7rpk"]
-[ext_resource type="Script" path="res://scenes/actor/enemy/enemy_states/enemy_idle.gd" id="4_cr0dk"]
-[ext_resource type="PackedScene" uid="uid://bdna7yrgtgcjj" path="res://scenes/player_detector/player_detector.tscn" id="5_0f2kb"]
-[ext_resource type="Script" path="res://scenes/actor/enemy/enemy_states/enemy_wander.gd" id="5_gqobw"]
-[ext_resource type="Script" path="res://scenes/damageables/damage_inflictor/damage_inflictor.gd" id="7_wbbg8"]
-[ext_resource type="Script" path="res://scenes/damageables/damage_generator/damage_generator.gd" id="8_h4uoe"]
-[ext_resource type="Script" path="res://scenes/actor/enemy/enemy_states/enemy_shock_around.gd" id="9_mw7mj"]
-
-[sub_resource type="Resource" id="Resource_pnaxd"]
-script = ExtResource("2_8hbxm")
-speed = 400.0
-jump_velocity = 1328.0
-friction_land = 0.9
-friction_air = 0.7
+[ext_resource type="PackedScene" uid="uid://do4arqmfus0eo" path="res://scenes/actor/enemy/base_enemy/base_enemy.tscn" id="1_rostn"]
+[ext_resource type="Script" path="res://scenes/actor/enemy/defender_enemy/defender_enemy.gd" id="2_4i0uy"]
+[ext_resource type="Texture2D" uid="uid://dovewtuchy5a1" path="res://assets/graphics/template/size_template.png" id="4_rnw3s"]
+[ext_resource type="Texture2D" uid="uid://c2h2tebe12vje" path="res://assets/graphics/template/number_template.png" id="5_jf44c"]
+[ext_resource type="Script" path="res://scenes/actor/enemy/enemy_states/enemy_idle.gd" id="9_w0l7b"]
+[ext_resource type="Script" path="res://scenes/actor/enemy/enemy_states/enemy_wander.gd" id="10_isndp"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tcvr4"]
-atlas = ExtResource("2_3vf71")
-region = Rect2(72, 8, 32, 32)
+atlas = ExtResource("4_rnw3s")
+region = Rect2(232, 8, 48, 64)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_wnvhm"]
-radius = 56.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v1fch"]
+size = Vector2(160, 224)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_wre42"]
-size = Vector2(576, 320)
-
-[sub_resource type="Resource" id="Resource_rj3yl"]
-script = ExtResource("8_h4uoe")
-amount = 10
-impact = 1.0
-critical_chance = 0.2
-critical_boost = 1.3
-variation_amount = 0.1
-variation_impact = 0.1
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_2c11x"]
-radius = 144.0
+[sub_resource type="AtlasTexture" id="AtlasTexture_3ywss"]
+atlas = ExtResource("4_rnw3s")
+region = Rect2(152, 8, 32, 48)
 
 [sub_resource type="Animation" id="Animation_qbrfk"]
 resource_name = "Death"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("FlipEnabled/Sprite2D2:frame")
+tracks/0/path = NodePath("FlipEnabled/Counter:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -74,7 +51,7 @@ length = 0.3
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("FlipEnabled/Sprite2D2:frame")
+tracks/0/path = NodePath("FlipEnabled/Counter:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -102,7 +79,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("FlipEnabled/Sprite2D2:frame")
+tracks/0/path = NodePath("FlipEnabled/Counter:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -129,7 +106,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("FlipEnabled/Sprite2D2:frame")
+tracks/0/path = NodePath("FlipEnabled/Counter:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -150,25 +127,13 @@ tracks/1/keys = {
 "update": 1,
 "values": [""]
 }
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("FlipEnabled/Polygon2D:modulate")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
-}
 
 [sub_resource type="Animation" id="Animation_7qf58"]
 resource_name = "ShockAround"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("FlipEnabled/Sprite2D2:frame")
+tracks/0/path = NodePath("FlipEnabled/Counter:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -189,18 +154,6 @@ tracks/1/keys = {
 "update": 1,
 "values": ["ShockAround"]
 }
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("FlipEnabled/Polygon2D:modulate")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
 
 [sub_resource type="Animation" id="Animation_ph3ax"]
 resource_name = "Turn"
@@ -208,7 +161,7 @@ length = 0.4
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("FlipEnabled/Sprite2D2:frame")
+tracks/0/path = NodePath("FlipEnabled/Counter:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -236,7 +189,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("FlipEnabled/Sprite2D2:frame")
+tracks/0/path = NodePath("FlipEnabled/Counter:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -269,104 +222,81 @@ _data = {
 "Wander": SubResource("Animation_lbbjl")
 }
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_dunbs"]
-size = Vector2(64, 64)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f5xfm"]
-size = Vector2(32, 32)
+size = Vector2(96, 160)
 
-[node name="WanderEnemy" node_paths=PackedStringArray("shock_around_state", "hit_state", "death_state", "touch_inflictor") instance=ExtResource("1_vtri4")]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dunbs"]
+size = Vector2(128, 192)
+
+[node name="DefenderEnemy" instance=ExtResource("1_rostn")]
 collision_mask = 10
-script = ExtResource("2_8nut0")
-shock_around_state = NodePath("StateMachine/ShockAround")
-max_hp = 5
-hp = 5
-hit_state = NodePath("StateMachine/Hit")
-death_state = NodePath("StateMachine/Death")
-touch_inflictor = NodePath("TouchInflictor")
-data = SubResource("Resource_pnaxd")
+script = ExtResource("2_4i0uy")
 
-[node name="Sprite2D" parent="FlipEnabled" index="0"]
-position = Vector2(0, -32)
-texture = SubResource("AtlasTexture_tcvr4")
-
-[node name="Sprite2D2" type="Sprite2D" parent="FlipEnabled" index="1"]
-position = Vector2(-16, -16)
-texture = ExtResource("3_j7rpk")
-hframes = 10
-
-[node name="DamagePos" parent="FlipEnabled" index="2"]
-position = Vector2(2.08165e-12, -96)
-
-[node name="FloorCast" type="RayCast2D" parent="FlipEnabled" index="3"]
-position = Vector2(48, -8)
-target_position = Vector2(2.08165e-12, 32)
-collision_mask = 2
-
-[node name="WallCast" type="RayCast2D" parent="FlipEnabled" index="4"]
-position = Vector2(32, -40)
-target_position = Vector2(32, 2.08165e-12)
-collision_mask = 2
-
-[node name="DamageReceiver" parent="FlipEnabled" index="5" node_paths=PackedStringArray("colddown")]
-colddown = NodePath("DamageColddown")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="FlipEnabled/DamageReceiver" index="1"]
-position = Vector2(0, -32)
-shape = SubResource("CircleShape2D_wnvhm")
-
-[node name="PlayerDetector" parent="FlipEnabled" index="6" node_paths=PackedStringArray("external_origin_point") instance=ExtResource("5_0f2kb")]
-external_origin_point = NodePath("../..")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="FlipEnabled/PlayerDetector" index="0"]
-position = Vector2(288, -32)
-shape = SubResource("RectangleShape2D_wre42")
-
-[node name="DamageInflictor" type="Area2D" parent="FlipEnabled" index="7"]
-script = ExtResource("7_wbbg8")
-dmg_generator = SubResource("Resource_rj3yl")
-active = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="FlipEnabled/DamageInflictor" index="0"]
-position = Vector2(0, -32)
-shape = SubResource("CircleShape2D_2c11x")
-
-[node name="Polygon2D" type="Polygon2D" parent="FlipEnabled" index="8"]
-modulate = Color(1, 1, 1, 0)
-position = Vector2(-112, 80)
-scale = Vector2(1.7, 1.7)
-polygon = PackedVector2Array(0, 0, 64, 32, 128, 0, 160, -64, 128, -128, 64, -160, 0, -128, -32, -64)
-
-[node name="STATE" type="Label" parent="FlipEnabled" index="9"]
+[node name="STATE" type="Label" parent="FlipEnabled" index="0"]
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -48.0
-offset_top = -96.0
+offset_top = -224.0
 offset_right = 48.0
-offset_bottom = -73.0
+offset_bottom = -201.0
 grow_horizontal = 2
 grow_vertical = 0
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="NAME" type="Label" parent="FlipEnabled" index="10"]
+[node name="Sprite2D" parent="FlipEnabled" index="1"]
+position = Vector2(0, -96)
+texture = SubResource("AtlasTexture_tcvr4")
+
+[node name="DamagePos" parent="FlipEnabled" index="2"]
+position = Vector2(2.08165e-12, -208)
+
+[node name="DamageReceiver" parent="FlipEnabled" index="3" node_paths=PackedStringArray("colddown")]
+colddown = NodePath("DamageColddown")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FlipEnabled/DamageReceiver" index="1"]
+position = Vector2(0, -96)
+shape = SubResource("RectangleShape2D_v1fch")
+
+[node name="Counter" type="Sprite2D" parent="FlipEnabled" index="4"]
+position = Vector2(-48, -16)
+texture = ExtResource("5_jf44c")
+hframes = 10
+
+[node name="FloorCast" type="RayCast2D" parent="FlipEnabled" index="5"]
+position = Vector2(96, -8)
+target_position = Vector2(2.08165e-12, 32)
+collision_mask = 2
+
+[node name="WallCast" type="RayCast2D" parent="FlipEnabled" index="6"]
+position = Vector2(64, -64)
+target_position = Vector2(32, 2.08165e-12)
+collision_mask = 2
+
+[node name="NAME" type="Label" parent="FlipEnabled" index="7"]
 auto_translate_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
+offset_left = 32.0
 offset_top = -24.0
-offset_right = 32.0
+offset_right = 64.0
 offset_bottom = -1.0
 grow_horizontal = 2
 grow_vertical = 0
-text = "WA"
+text = "DE"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Shield" type="Sprite2D" parent="FlipEnabled" index="8"]
+position = Vector2(80, -112)
+scale = Vector2(4, 4)
+texture = SubResource("AtlasTexture_3ywss")
 
 [node name="StateMachine" parent="." index="1" node_paths=PackedStringArray("initial_state")]
 initial_state = NodePath("Idle")
@@ -382,7 +312,7 @@ enemy = NodePath("../..")
 damage_receiver = NodePath("../../FlipEnabled/DamageReceiver")
 
 [node name="Idle" type="Node2D" parent="StateMachine" index="2" node_paths=PackedStringArray("idle_duration", "next_state", "enemy", "damage_receiver")]
-script = ExtResource("4_cr0dk")
+script = ExtResource("9_w0l7b")
 idle_duration = NodePath("IdleDuration")
 next_state = NodePath("../Wander")
 enemy = NodePath("../..")
@@ -393,7 +323,7 @@ wait_time = 6.0
 one_shot = true
 
 [node name="Wander" type="Node2D" parent="StateMachine" index="3" node_paths=PackedStringArray("floor_raycast", "wall_raycast", "next_state", "delay_timer", "enemy", "damage_receiver")]
-script = ExtResource("5_gqobw")
+script = ExtResource("10_isndp")
 floor_raycast = NodePath("../../FlipEnabled/FloorCast")
 wall_raycast = NodePath("../../FlipEnabled/WallCast")
 next_state = NodePath("../Idle")
@@ -405,29 +335,15 @@ damage_receiver = NodePath("../../FlipEnabled/DamageReceiver")
 wait_time = 0.3
 one_shot = true
 
-[node name="ShockAround" type="Node2D" parent="StateMachine" index="4" node_paths=PackedStringArray("shock_duration", "damage_inflictor", "enemy", "damage_receiver")]
-script = ExtResource("9_mw7mj")
-shock_duration = NodePath("ShockDuration")
-damage_inflictor = NodePath("../../FlipEnabled/DamageInflictor")
-enemy = NodePath("../..")
-damage_receiver = NodePath("../../FlipEnabled/DamageReceiver")
-
-[node name="ShockDuration" type="Timer" parent="StateMachine/ShockAround" index="0"]
-wait_time = 2.0
-one_shot = true
-
 [node name="AnimationPlayer" parent="." index="2"]
 libraries = {
 "": SubResource("AnimationLibrary_1vwqw")
 }
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="3"]
-position = Vector2(0, -32)
-shape = SubResource("RectangleShape2D_dunbs")
-
-[node name="EnterShockDelay" type="Timer" parent="." index="4"]
-one_shot = true
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TouchInflictor" index="0"]
-position = Vector2(0, -32)
+position = Vector2(0, -96)
 shape = SubResource("RectangleShape2D_f5xfm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="4"]
+position = Vector2(0, -96)
+shape = SubResource("RectangleShape2D_dunbs")
