@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://cpl5hkuemkr3r" path="res://level/level_segments/level_segment.tscn" id="1_oi6nu"]
 
-[node name="ForestSegment" instance=ExtResource("1_oi6nu")]
+[node name="ForestSegment09" instance=ExtResource("1_oi6nu")]
 
 [node name="RespawnPoint" parent="." index="0"]
 position = Vector2(256, 256)

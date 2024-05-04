@@ -10,7 +10,7 @@ size = Vector2(128, 512)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bow4o"]
 size = Vector2(128, 384)
 
-[node name="ForestSegment" instance=ExtResource("1_6w2yr")]
+[node name="ForestSegment05" instance=ExtResource("1_6w2yr")]
 
 [node name="RespawnPoint" parent="." index="0"]
 position = Vector2(128, 512)

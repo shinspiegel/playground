@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://xerb74oi1gpq"]
+[gd_scene load_steps=6 format=3 uid="uid://xerb74oi1gpq"]
 
 [ext_resource type="PackedScene" uid="uid://cpl5hkuemkr3r" path="res://level/level_segments/level_segment.tscn" id="1_eu03q"]
 [ext_resource type="PackedScene" uid="uid://bxkot377yyeju" path="res://scenes/actor/enemy/wander_enemy/wander_enemy.tscn" id="2_8611c"]
+[ext_resource type="PackedScene" uid="uid://be704c17u6432" path="res://scenes/actor/enemy/defender_enemy/defender_enemy.tscn" id="3_i1vdd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8f2bm"]
 size = Vector2(128, 1920)
@@ -9,7 +10,7 @@ size = Vector2(128, 1920)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_53yjs"]
 size = Vector2(128, 1152)
 
-[node name="ForestSegment" instance=ExtResource("1_eu03q")]
+[node name="ForestSegment01" instance=ExtResource("1_eu03q")]
 
 [node name="RespawnPoint" parent="." index="0"]
 position = Vector2(128, 768)
@@ -45,9 +46,8 @@ hit_state = NodePath("StateMachine/Hit")
 death_state = NodePath("StateMachine/Death")
 touch_inflictor = NodePath("TouchInflictor")
 
-[node name="WanderEnemy6" parent="UpdateNode" index="3" node_paths=PackedStringArray("shock_around_state", "hit_state", "death_state", "touch_inflictor") instance=ExtResource("2_8611c")]
+[node name="DefenderEnemy" parent="UpdateNode" index="3" node_paths=PackedStringArray("hit_state", "death_state", "touch_inflictor") instance=ExtResource("3_i1vdd")]
 position = Vector2(2560, 1024)
-shock_around_state = NodePath("StateMachine/ShockAround")
 hit_state = NodePath("StateMachine/Hit")
 death_state = NodePath("StateMachine/Death")
 touch_inflictor = NodePath("TouchInflictor")

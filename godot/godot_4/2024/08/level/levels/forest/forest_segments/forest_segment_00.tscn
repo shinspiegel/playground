@@ -5,7 +5,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nlq8i"]
 size = Vector2(128, 1408)
 
-[node name="ForestSegment" instance=ExtResource("1_eu03q")]
+[node name="ForestSegment00" instance=ExtResource("1_eu03q")]
 
 [node name="RespawnPoint" parent="." index="0"]
 position = Vector2(128, 1024)

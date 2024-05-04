@@ -40,15 +40,7 @@ hit_state = NodePath("StateMachine/Hit")
 death_state = NodePath("StateMachine/Death")
 touch_inflictor = NodePath("TouchInflictor")
 
-[node name="Shooter2" parent="UpdateNode" index="2" node_paths=PackedStringArray("shoot_delay", "shoot_state", "hit_state", "death_state", "touch_inflictor") instance=ExtResource("2_3inn4")]
-position = Vector2(576, 1664)
-shoot_delay = NodePath("PlayerDetector/ShootDelay")
-shoot_state = NodePath("StateMachine/Shoot")
-hit_state = NodePath("StateMachine/Hit")
-death_state = NodePath("StateMachine/Death")
-touch_inflictor = NodePath("TouchInflictor")
-
-[node name="Shooter3" parent="UpdateNode" index="3" node_paths=PackedStringArray("shoot_delay", "shoot_state", "hit_state", "death_state", "touch_inflictor") instance=ExtResource("2_3inn4")]
+[node name="Shooter3" parent="UpdateNode" index="2" node_paths=PackedStringArray("shoot_delay", "shoot_state", "hit_state", "death_state", "touch_inflictor") instance=ExtResource("2_3inn4")]
 position = Vector2(64, 1536)
 shoot_delay = NodePath("PlayerDetector/ShootDelay")
 shoot_state = NodePath("StateMachine/Shoot")
@@ -57,23 +49,22 @@ hit_state = NodePath("StateMachine/Hit")
 death_state = NodePath("StateMachine/Death")
 touch_inflictor = NodePath("TouchInflictor")
 
-[node name="Shooter4" parent="UpdateNode" index="4" node_paths=PackedStringArray("shoot_delay", "shoot_state", "hit_state", "death_state", "touch_inflictor") instance=ExtResource("2_3inn4")]
-position = Vector2(192, 2176)
+[node name="Shooter4" parent="UpdateNode" index="3" node_paths=PackedStringArray("shoot_delay", "shoot_state", "hit_state", "death_state", "touch_inflictor") instance=ExtResource("2_3inn4")]
+position = Vector2(1088, 2048)
 shoot_delay = NodePath("PlayerDetector/ShootDelay")
 shoot_state = NodePath("StateMachine/Shoot")
-direction = 1
 hit_state = NodePath("StateMachine/Hit")
 death_state = NodePath("StateMachine/Death")
 touch_inflictor = NodePath("TouchInflictor")
 
-[node name="WanderEnemy" parent="UpdateNode" index="5" node_paths=PackedStringArray("shock_around_state", "hit_state", "death_state", "touch_inflictor") instance=ExtResource("3_0pjap")]
+[node name="WanderEnemy" parent="UpdateNode" index="4" node_paths=PackedStringArray("shock_around_state", "hit_state", "death_state", "touch_inflictor") instance=ExtResource("3_0pjap")]
 position = Vector2(2368, 1408)
 shock_around_state = NodePath("StateMachine/ShockAround")
 hit_state = NodePath("StateMachine/Hit")
 death_state = NodePath("StateMachine/Death")
 touch_inflictor = NodePath("TouchInflictor")
 
-[node name="WanderEnemy2" parent="UpdateNode" index="6" node_paths=PackedStringArray("shock_around_state", "hit_state", "death_state", "touch_inflictor") instance=ExtResource("3_0pjap")]
+[node name="WanderEnemy2" parent="UpdateNode" index="5" node_paths=PackedStringArray("shock_around_state", "hit_state", "death_state", "touch_inflictor") instance=ExtResource("3_0pjap")]
 position = Vector2(2912, 1408)
 shock_around_state = NodePath("StateMachine/ShockAround")
 direction = 1
@@ -81,7 +72,7 @@ hit_state = NodePath("StateMachine/Hit")
 death_state = NodePath("StateMachine/Death")
 touch_inflictor = NodePath("TouchInflictor")
 
-[node name="Shooter5" parent="UpdateNode" index="7" node_paths=PackedStringArray("shoot_delay", "shoot_state", "hit_state", "death_state", "touch_inflictor") instance=ExtResource("2_3inn4")]
+[node name="Shooter5" parent="UpdateNode" index="6" node_paths=PackedStringArray("shoot_delay", "shoot_state", "hit_state", "death_state", "touch_inflictor") instance=ExtResource("2_3inn4")]
 position = Vector2(5312, 1408)
 shoot_delay = NodePath("PlayerDetector/ShootDelay")
 shoot_state = NodePath("StateMachine/Shoot")
@@ -89,7 +80,7 @@ hit_state = NodePath("StateMachine/Hit")
 death_state = NodePath("StateMachine/Death")
 touch_inflictor = NodePath("TouchInflictor")
 
-[node name="Shooter6" parent="UpdateNode" index="8" node_paths=PackedStringArray("shoot_delay", "shoot_state", "hit_state", "death_state", "touch_inflictor") instance=ExtResource("2_3inn4")]
+[node name="Shooter6" parent="UpdateNode" index="7" node_paths=PackedStringArray("shoot_delay", "shoot_state", "hit_state", "death_state", "touch_inflictor") instance=ExtResource("2_3inn4")]
 position = Vector2(4160, 1536)
 shoot_delay = NodePath("PlayerDetector/ShootDelay")
 shoot_state = NodePath("StateMachine/Shoot")
@@ -98,7 +89,7 @@ hit_state = NodePath("StateMachine/Hit")
 death_state = NodePath("StateMachine/Death")
 touch_inflictor = NodePath("TouchInflictor")
 
-[node name="Shooter7" parent="UpdateNode" index="9" node_paths=PackedStringArray("shoot_delay", "shoot_state", "hit_state", "death_state", "touch_inflictor") instance=ExtResource("2_3inn4")]
+[node name="Shooter7" parent="UpdateNode" index="8" node_paths=PackedStringArray("shoot_delay", "shoot_state", "hit_state", "death_state", "touch_inflictor") instance=ExtResource("2_3inn4")]
 position = Vector2(4032, 1408)
 shoot_delay = NodePath("PlayerDetector/ShootDelay")
 shoot_state = NodePath("StateMachine/Shoot")
