@@ -23,8 +23,17 @@ func update(delta: float) -> void:
 			state_machine.change_by_name(MOVE)
 			return
 
+	if player.input.attack:
+		state_machine.change_by_name(AIR_JAB)
+		return
+
+	if player.can_shoot() and player.input.ranged:
+		state_machine.change_by_name(AIR_RANGED)
+		return
+
 	if player.can_dash() and player.input.dash:
 		state_machine.change_by_name(DASH)
+		return
 
 	if player.can_jump() and player.input.just_jump:
 		state_machine.change_by_name(JUMP)

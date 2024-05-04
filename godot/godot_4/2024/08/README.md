@@ -1,4 +1,4 @@
-# Summary 
+#t Summary 
 
 - [Todo List](#todo-list)
 - [Controls](#controls)
@@ -29,10 +29,8 @@
 		- [ ] Block
 		- [ ] Dash
 	- Mechanics
-		<!-- Next: -->
-		- [ ] Air Jab
-		<!-- Next: -->
-		- [ ] Air Ranged
+		- [x] Air Jab
+		- [x] Air Ranged
 		- [x] Jump buffer
 		- [x] Coyote-time
 		- [x] Mana sytem

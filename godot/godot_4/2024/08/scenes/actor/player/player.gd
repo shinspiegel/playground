@@ -67,7 +67,7 @@ func can_roll() -> bool:
 
 
 func can_shoot() -> bool:
-	if power_ups.ranged_enabled and can_jump() and stats.can_use_mana():
+	if power_ups.ranged_enabled and stats.can_use_mana():
 		return true
 	return false
 

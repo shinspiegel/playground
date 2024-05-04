@@ -3,6 +3,7 @@ extends Node
 signal level_changed()
 
 const damage_number: Resource = preload("res://scenes/damageables/damage_number/damage_number.tscn")
+const damage_text: Resource = preload("res://scenes/damageables/damage_number/damage_text.tscn")
 const player_scene: Resource = preload("res://scenes/actor/player/player.tscn")
 
 @export var game_setting: SavedData
@@ -21,19 +22,26 @@ func set_level(level: BaseLevel) -> void:
 	level_changed.emit()
 
 
-func spawn_damage_number(damage: Damage, pos: Vector2 = Vector2.ZERO, pos_variation: Vector2 = Vector2(20,20),parent: Node = null) -> void:
+func spawn_damage_number(damage: Damage, pos: Vector2 = Vector2.ZERO) -> void:
 	var instance: DamageNumber = damage_number.instantiate()
 	instance.damage = damage
-
-	if parent == null:
-		parent = get_tree().root
-
-	parent.add_child(instance)
-
-	pos.x += randf_range(-pos_variation.x, pos_variation.x)
-	pos.y += randf_range(-pos_variation.y, pos_variation.y)
-
 	instance.global_position = pos
+	instance = randomize_node_pos(instance)
+	add_child_to_foreground(instance)
+
+
+func spawn_damage_text(pos: Vector2 = Vector2.ZERO, text: String = "Blocked") -> void:
+	var instance: DamageText = damage_text.instantiate()
+	instance.text = text
+	instance.global_position = pos
+	instance = randomize_node_pos(instance)
+	add_child_to_foreground(instance)
+
+
+func randomize_node_pos(node: Node2D, pos_variation: Vector2 = Vector2(20,20)) -> Node2D:
+	node.global_position.x += randf_range(-pos_variation.x, pos_variation.x)
+	node.global_position.y += randf_range(-pos_variation.y, pos_variation.y)
+	return node
 
 
 func spawn_player(node: Node, pos: Vector2 = Vector2.ZERO, camera: GameCamera = null) -> void:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=3 uid="uid://b3y4ayg4a3myn"]
+[gd_scene load_steps=60 format=3 uid="uid://b3y4ayg4a3myn"]
 
 [ext_resource type="PackedScene" uid="uid://glesdckbbcba" path="res://scenes/actor/base_actor/base_actor.tscn" id="1_chlu2"]
 [ext_resource type="Script" path="res://scenes/actor/player/player.gd" id="2_7sqgf"]
@@ -22,13 +22,23 @@
 [ext_resource type="Texture2D" uid="uid://bo8ev2yncu7p4" path="res://assets/graphics/Asset Packs 1-5 2/Asset Pack-V4/Player Punch Jab/Player Jab 48x48.png" id="12_h0vda"]
 [ext_resource type="Script" path="res://scenes/actor/player/states/die.gd" id="13_eg56f"]
 [ext_resource type="Script" path="res://scenes/actor/player/states/hit.gd" id="13_onoyn"]
+[ext_resource type="AudioStream" uid="uid://dy86uvlodgey3" path="res://assets/sfx/player/jump.wav" id="13_utu7t"]
 [ext_resource type="Texture2D" uid="uid://bvm7fdslgx4b7" path="res://assets/graphics/Asset Packs 1-5 2/Asset Pack-V2/Player Roll/Player Roll 48x48.png" id="14_75iv5"]
 [ext_resource type="Script" path="res://scenes/actor/player/states/ranged.gd" id="15_rmp7x"]
+[ext_resource type="Script" path="res://scenes/actor/player/states/air_jab.gd" id="16_8g8q4"]
+[ext_resource type="AudioStream" uid="uid://bm3bmorxkwwyc" path="res://assets/sfx/player/jab.wav" id="16_33yg1"]
 [ext_resource type="Script" path="res://scenes/actor/player/states/block.gd" id="17_u3pm1"]
 [ext_resource type="Script" path="res://scenes/actor/player/states/dash.gd" id="18_y7mo5"]
+[ext_resource type="AudioStream" uid="uid://d3vixhkum4kq4" path="res://assets/sfx/player/roll.wav" id="20_caf6t"]
 [ext_resource type="Texture2D" uid="uid://b36smuq2dp4vw" path="res://assets/graphics/Asset Packs 1-5 2/Asset Pack-V3/Player Hurt-Damaged/Player Hurt 48x48.png" id="20_cs0ph"]
 [ext_resource type="Script" path="res://scenes/damageables/damage_receiver/damage_reciever.gd" id="20_y54df"]
+[ext_resource type="AudioStream" uid="uid://i3dkjvrsegaf" path="res://assets/sfx/player/hurt.wav" id="21_hlfmm"]
+[ext_resource type="Script" path="res://scenes/actor/player/states/air_ranged.gd" id="21_o7ng7"]
 [ext_resource type="Texture2D" uid="uid://unni7uw7oc7p" path="res://assets/graphics/Asset Packs 1-5 2/Asset Pack-V3/Player Death/Player Death 64x64.png" id="22_h2gw3"]
+[ext_resource type="AudioStream" uid="uid://blwv402a5ng5v" path="res://assets/sfx/player/death.wav" id="24_ji28j"]
+[ext_resource type="AudioStream" uid="uid://c6y5hjkbu8dx3" path="res://assets/sfx/player/ranged.wav" id="26_hvxhw"]
+[ext_resource type="AudioStream" uid="uid://dmcnwfq765c7h" path="res://assets/sfx/player/block.wav" id="29_dotm1"]
+[ext_resource type="AudioStream" uid="uid://co0qp3wv6epj7" path="res://assets/sfx/player/dash.wav" id="31_uri1o"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_82qu1"]
 size = Vector2(48, 128)
@@ -45,6 +55,124 @@ variation_impact = 0.1
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_smar4"]
 radius = 32.0
 height = 112.0
+
+[sub_resource type="Animation" id="Animation_f754h"]
+resource_name = "AirJab"
+length = 0.5
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FlipEnabled/Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("12_h0vda")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FlipEnabled/Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [10]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("FlipEnabled/Sprite2D:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("FlipEnabled/Sprite2D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("FlipEnabled/Polygon2D:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_4afg3"]
+resource_name = "AirRanged"
+length = 0.5
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FlipEnabled/Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("12_h0vda")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FlipEnabled/Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [10]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("FlipEnabled/Sprite2D:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("FlipEnabled/Sprite2D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+}
 
 [sub_resource type="Animation" id="Animation_ujab5"]
 resource_name = "Block"
@@ -752,6 +880,8 @@ tracks/3/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lkjk6"]
 _data = {
+"AirJab": SubResource("Animation_f754h"),
+"AirRanged": SubResource("Animation_4afg3"),
 "Block": SubResource("Animation_ujab5"),
 "Dash": SubResource("Animation_jef2r"),
 "Die": SubResource("Animation_0xmk4"),
@@ -812,6 +942,7 @@ collision_mask = 2
 [node name="DamageReceiver" type="Area2D" parent="FlipEnabled" index="6" node_paths=PackedStringArray("colddown")]
 unique_name_in_owner = true
 position = Vector2(0, -64)
+collision_mask = 4
 script = ExtResource("20_y54df")
 colddown = NodePath("DamageColddown")
 
@@ -858,6 +989,7 @@ player = NodePath("../..")
 
 [node name="Jump" type="Node2D" parent="StateMachine" index="2" node_paths=PackedStringArray("player")]
 script = ExtResource("6_4yecm")
+jump_audio = ExtResource("13_utu7t")
 player = NodePath("../..")
 
 [node name="Falling" type="Node2D" parent="StateMachine" index="3" node_paths=PackedStringArray("player")]
@@ -873,38 +1005,58 @@ player = NodePath("../..")
 script = ExtResource("9_2aao3")
 anim_player = NodePath("../../AnimationPlayer")
 damage_inflictor = NodePath("../../FlipEnabled/JabDamageInflictor")
+jab_audio = ExtResource("16_33yg1")
 player = NodePath("../..")
 
-[node name="Roll" type="Node2D" parent="StateMachine" index="6" node_paths=PackedStringArray("anim_player", "damage_receiver", "player")]
+[node name="AirJab" type="Node2D" parent="StateMachine" index="6" node_paths=PackedStringArray("anim_player", "damage_inflictor", "player")]
+script = ExtResource("16_8g8q4")
+anim_player = NodePath("../../AnimationPlayer")
+damage_inflictor = NodePath("../../FlipEnabled/JabDamageInflictor")
+jab_audio = ExtResource("16_33yg1")
+player = NodePath("../..")
+
+[node name="Roll" type="Node2D" parent="StateMachine" index="7" node_paths=PackedStringArray("anim_player", "damage_receiver", "player")]
 script = ExtResource("10_eo2x5")
 anim_player = NodePath("../../AnimationPlayer")
 damage_receiver = NodePath("../../FlipEnabled/DamageReceiver")
+roll_audio = ExtResource("20_caf6t")
 player = NodePath("../..")
 
-[node name="Hit" type="Node2D" parent="StateMachine" index="7" node_paths=PackedStringArray("anim_player", "dmg_receiver", "player")]
+[node name="Hit" type="Node2D" parent="StateMachine" index="8" node_paths=PackedStringArray("anim_player", "dmg_receiver", "player")]
 script = ExtResource("13_onoyn")
 anim_player = NodePath("../../AnimationPlayer")
 dmg_receiver = NodePath("../../FlipEnabled/DamageReceiver")
+hit_sound = ExtResource("21_hlfmm")
 player = NodePath("../..")
 
-[node name="Die" type="Node2D" parent="StateMachine" index="8" node_paths=PackedStringArray("anim_player", "player")]
+[node name="Die" type="Node2D" parent="StateMachine" index="9" node_paths=PackedStringArray("anim_player", "player")]
 script = ExtResource("13_eg56f")
 anim_player = NodePath("../../AnimationPlayer")
+die_sound = ExtResource("24_ji28j")
 player = NodePath("../..")
 
-[node name="Ranged" type="Node2D" parent="StateMachine" index="9" node_paths=PackedStringArray("anim_player", "player")]
+[node name="Ranged" type="Node2D" parent="StateMachine" index="10" node_paths=PackedStringArray("anim_player", "player")]
 script = ExtResource("15_rmp7x")
 anim_player = NodePath("../../AnimationPlayer")
+ranged_sound = ExtResource("26_hvxhw")
 player = NodePath("../..")
 
-[node name="Block" type="Node2D" parent="StateMachine" index="10" node_paths=PackedStringArray("anim_player", "player")]
+[node name="AirRanged" type="Node2D" parent="StateMachine" index="11" node_paths=PackedStringArray("anim_player", "player")]
+script = ExtResource("21_o7ng7")
+anim_player = NodePath("../../AnimationPlayer")
+ranged_sound = ExtResource("26_hvxhw")
+player = NodePath("../..")
+
+[node name="Block" type="Node2D" parent="StateMachine" index="12" node_paths=PackedStringArray("anim_player", "player")]
 script = ExtResource("17_u3pm1")
 anim_player = NodePath("../../AnimationPlayer")
+block_sound = ExtResource("29_dotm1")
 player = NodePath("../..")
 
-[node name="Dash" type="Node2D" parent="StateMachine" index="11" node_paths=PackedStringArray("duration", "player")]
+[node name="Dash" type="Node2D" parent="StateMachine" index="13" node_paths=PackedStringArray("duration", "player")]
 script = ExtResource("18_y7mo5")
 duration = NodePath("DashDuration")
+dash_audio = ExtResource("31_uri1o")
 player = NodePath("../..")
 
 [node name="DashDuration" type="Timer" parent="StateMachine/Dash" index="0"]

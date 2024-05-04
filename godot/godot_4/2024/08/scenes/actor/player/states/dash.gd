@@ -1,13 +1,14 @@
 extends PlayerState
 
 @export var duration: Timer
+@export var dash_audio: AudioStream
 
-var direction: float = 0.0
-var speed_weight: float = 1.5
+var __direction: float = 0.0
+var __speed_weight: float = 1.5
 
 
 func enter() -> void:
-	direction = player.input.last_direction
+	__direction = player.input.last_direction
 
 	player.change_animation(ROLL)
 	player.velocity = Vector2.ZERO
@@ -17,6 +18,8 @@ func enter() -> void:
 	duration.timeout.connect(on_timeout)
 	duration.start()
 
+	AudioManager.create_sfx(dash_audio, randf_range(0.9, 1.2))
+
 
 func exit() -> void:
 	duration.timeout.disconnect(on_timeout)
@@ -24,11 +27,11 @@ func exit() -> void:
 
 
 func update(delta: float) -> void:
-	direction = lerpf(direction, 0, delta * speed_weight)
+	__direction = lerpf(__direction, 0, delta * __speed_weight)
 
-	player.apply_direction(direction, 1.0, 1.0, 3.0)
+	player.apply_direction(__direction, 1.0, 1.0, 3.0)
 	player.move_and_slide()
-	player.check_flip(direction)
+	player.check_flip(__direction)
 
 
 func on_timeout() -> void:

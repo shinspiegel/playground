@@ -2,19 +2,28 @@ extends PlayerState
 
 @export var anim_player: AnimationPlayer
 @export var dmg_receiver: DamageReceiver
+@export var hit_sound: AudioStream
 
-var last_damage: Damage
+var __last_damage: Damage
+
+
+func _ready() -> void:
+	super._ready()
+	dmg_receiver.receive_damage.connect(on_damage_receive)
 
 
 func enter() -> void:
-	dmg_receiver.receive_damage.connect(on_damage_receive)
+	AudioManager.create_sfx(hit_sound, randf_range(0.8, 1.4))
 	anim_player.animation_finished.connect(on_anim_finished)
 	player.change_animation(HIT)
-	__apply_damage()
+
+	if __last_damage:
+		var direction := clampi(int(player.global_position.x - __last_damage.source_position.x), -1, 1)
+		player.velocity.y = (__last_damage.impact * 500) * -1
+		player.apply_direction(direction, __last_damage.impact, 0.9)
 
 
 func exit() -> void:
-	dmg_receiver.receive_damage.disconnect(on_damage_receive)
 	anim_player.animation_finished.disconnect(on_anim_finished)
 
 
@@ -32,12 +41,5 @@ func on_anim_finished(anim: String) -> void:
 
 
 func on_damage_receive(dmg: Damage) -> void:
-	last_damage = dmg
-
-
-func __apply_damage() -> void:
-	if last_damage == null: return
-	var direction := clampi(int(player.global_position.x - last_damage.source_position.x), -1, 1)
-	player.velocity.y = (last_damage.impact * 500) * -1
-	player.apply_direction(direction, last_damage.impact, 0.9)
+	__last_damage = dmg
 

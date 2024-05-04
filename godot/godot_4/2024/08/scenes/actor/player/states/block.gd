@@ -3,9 +3,10 @@ extends PlayerState
 const scene: Resource = preload("res://scenes/actor/player/player_block/player_block.tscn")
 
 @export var anim_player: AnimationPlayer
+@export var block_sound: AudioStream 
 
-var blocks: Array[Node2D] = []
-var max_blocks: int = 1
+var __blocks: Array[Node2D] = []
+var __max_blocks: int = 1
 
 
 func enter() -> void:
@@ -14,6 +15,7 @@ func enter() -> void:
 	player.stats.consume_mana()
 	player.velocity = Vector2.ZERO
 	spawn_block()
+	AudioManager.create_sfx(block_sound, randf_range(0.9, 1.1))
 
 
 func exit() -> void:
@@ -38,8 +40,8 @@ func spawn_block() -> void:
 	var block: Node2D = scene.instantiate()
 	block.global_position = player.block_pos.global_position
 	GameManager.add_child_to_background(block)
-	blocks.append(block)
+	__blocks.append(block)
 
-	if blocks.size() > max_blocks:
-		blocks[0].queue_free()
-		blocks.pop_front()
+	if __blocks.size() > __max_blocks:
+		__blocks[0].queue_free()
+		__blocks.pop_front()

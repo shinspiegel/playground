@@ -11,7 +11,7 @@
 [sub_resource type="Resource" id="Resource_x5pyg"]
 script = ExtResource("7_tjo8g")
 amount = 5
-impact = 1.5
+impact = 1.0
 critical_chance = 0.05
 critical_boost = 2.0
 variation_amount = 0.2
@@ -62,5 +62,6 @@ damage_receiver = NodePath("../../FlipEnabled/DamageReceiver")
 unique_name_in_owner = false
 
 [node name="TouchInflictor" type="Area2D" parent="." index="3"]
+collision_layer = 4
 script = ExtResource("6_4emd8")
 dmg_generator = SubResource("Resource_x5pyg")

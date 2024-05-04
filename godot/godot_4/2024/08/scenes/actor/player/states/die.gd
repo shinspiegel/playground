@@ -1,6 +1,7 @@
 extends PlayerState
 
 @export var anim_player: AnimationPlayer
+@export var die_sound: AudioStream
 
 
 func enter() -> void:
@@ -8,6 +9,7 @@ func enter() -> void:
 	player.velocity = Vector2.ZERO
 	player.dmg_receiver.active = false
 	anim_player.animation_finished.connect(on_anim_finished)
+	AudioManager.create_sfx(die_sound)
 
 
 func exit() -> void:

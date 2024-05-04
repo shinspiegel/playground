@@ -16,31 +16,31 @@ func _ready() -> void:
 
 
 func play_music(track_index: int, volume_adjust: float = 0.0, duration: float = 0.3) -> void:
-	if track_index < 0 or track_index >= MUSIC_LIST.size(): 
+	if track_index < 0 or track_index >= MUSIC_LIST.size():
 		push_warning("invalid track index")
 		return
-	
+
 	var next_music = MUSIC_LIST[track_index]
-	
+
 	if not next_music == background_music.stream:
 		var tw = create_tween()
 		tw.tween_property(background_music, "volume_db", -80, duration)
 		tw.play()
 		await tw.finished
-		
+
 		background_music.stop()
 		background_music.stream = next_music
 		background_music.play()
-		
+
 		tw = create_tween()
 		tw.tween_property(background_music, "volume_db", __convert_float_to_db(game_settings.music_volume + volume_adjust), duration)
 		tw.play()
 
 
-func create_sfx(audio: AudioStream, volume_adjust: float = 0.0) -> void:
-	var sfx = AudioStreamPlayer.new()
-	__background_adjust = volume_adjust
-	sfx.volume_db = __convert_float_to_db(game_settings.sound_volume + __background_adjust)
+func create_sfx(audio: AudioStream, pitch: float = 1.0, volume_adjust: float = 0.0) -> void:
+	var sfx: AudioStreamPlayer = AudioStreamPlayer.new()
+	sfx.pitch_scale = pitch
+	sfx.volume_db = __convert_float_to_db(game_settings.sound_volume + volume_adjust)
 	sfx.stream = audio
 	sfx.finished.connect(func(): sfx.queue_free())
 	add_child(sfx)

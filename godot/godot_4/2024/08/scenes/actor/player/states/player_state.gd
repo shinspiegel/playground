@@ -8,12 +8,14 @@ const FALLING = "Falling"
 const LAND = "Land"
 
 const JAB = "Jab"
+const AIR_JAB = "AirJab"
 const ROLL = "Roll"
 
 const HIT = "Hit"
 const DIE = "Die"
 
 const RANGED = "Ranged"
+const AIR_RANGED = "AirRanged"
 const BLOCK = "Block"
 const DASH = "Dash"
 

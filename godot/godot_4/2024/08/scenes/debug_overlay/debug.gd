@@ -39,5 +39,5 @@ func on_mp_change() -> void:
 
 
 func on_segment_change() -> void:
-	level_label.text = "%s @ %s" % [GameManager.current_level.name, GameManager.current_level.current_segment.name]
+	level_label.text = "%s @ %s" % [GameManager.current_level.name, GameManager.current_level.__current_segment.name]
 

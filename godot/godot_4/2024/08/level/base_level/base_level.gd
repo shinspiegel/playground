@@ -12,9 +12,8 @@ signal segment_changed()
 @onready var background_nodes: Node2D = %BackgroundNodes
 @onready var foreground_nodes: Node2D = %ForegroundNodes
 
-var current_segment: LevelSegment
-
-var __seg_map: Dictionary = {}
+var __current_segment: LevelSegment
+var __segments_map: Dictionary = {}
 
 
 func _ready() -> void:
@@ -26,22 +25,22 @@ func _ready() -> void:
 		if child is LevelSegment:
 			child.player_entered.connect(on_player_change_segment.bind(child))
 			child.disable()
-			__seg_map[child.name] = child
+			__segments_map[child.name] = child
 
-			if current_segment == null:
-				current_segment = child
+			if __current_segment == null:
+				__current_segment = child
 
 	if initial_segment:
-		current_segment = initial_segment
+		__current_segment = initial_segment
 
 	if not game_settings.saved_segment.is_empty():
-		current_segment = __seg_map.get(game_settings.saved_segment)
+		__current_segment = __segments_map.get(game_settings.saved_segment)
 
-	current_segment.enable()
-	game_camera.set_limit_list(current_segment.get_limit_list())
+	__current_segment.enable()
+	game_camera.set_limit_list(__current_segment.get_limit_list())
 
 	GameManager.set_level(self)
-	GameManager.spawn_player(foreground_nodes, current_segment.respawn_point.global_position, game_camera)
+	GameManager.spawn_player(foreground_nodes, __current_segment.respawn_point.global_position, game_camera)
 
 	game_settings.saved_stats = GameManager.player.stats.duplicate(true)
 
@@ -55,19 +54,19 @@ func add_to_foreground(node: Node) -> void:
 
 
 func add_to_segment(node: Node) -> void:
-	current_segment.update_nodes.add_child(node)
+	__current_segment.update_nodes.add_child(node)
 
 
 func on_player_change_segment(segment: LevelSegment) -> void:
 	game_camera.set_limit_list(segment.get_limit_list())
 
-	current_segment.disable()
-	current_segment = segment
-	current_segment.enable()
+	__current_segment.disable()
+	__current_segment = segment
+	__current_segment.enable()
 
 	GameManager.player.reparent.call_deferred(segment)
 
-	game_settings.saved_segment = current_segment.name
+	game_settings.saved_segment = __current_segment.name
 	game_settings.saved_stats = GameManager.player.stats.duplicate(true)
 	segment_changed.emit()
 
