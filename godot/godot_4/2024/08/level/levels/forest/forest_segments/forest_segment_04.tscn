@@ -17,7 +17,7 @@ size = Vector2(128, 768)
 position = Vector2(256, 256)
 
 [node name="TopLeft" parent="MapLimits" index="0"]
-position = Vector2(-128, -128)
+position = Vector2(-128, -768)
 
 [node name="BottomRight" parent="MapLimits" index="1"]
 position = Vector2(7168, 1920)
