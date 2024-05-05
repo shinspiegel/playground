@@ -86,7 +86,7 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Beach"
 
-[node name="VuldanoButton" type="Button" parent="."]
+[node name="VulcanoButton" type="Button" parent="."]
 unique_name_in_owner = true
 auto_translate_mode = 1
 layout_mode = 1

@@ -5,7 +5,7 @@ extends Control
 @onready var camera: Camera2D = %LevelCamera
 @onready var beach_button: Button = %BeachButton
 @onready var forest_button: Button = %ForestButton
-@onready var vulcano_button: Button = %VuldanoButton
+@onready var vulcano_button: Button = %VulcanoButton
 
 var __first_selection: bool = true
 var __is_moving: bool = false

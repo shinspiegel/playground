@@ -5,13 +5,6 @@
 
 [node name="TestLevel" instance=ExtResource("1_vpqn5")]
 
-[node name="TestSegment" parent="LevelSegments" index="0" node_paths=PackedStringArray("respawn_point") instance=ExtResource("2_fyp2i")]
-respawn_point = NodePath("RespawnPoint")
-
-[node name="TestSegment2" parent="LevelSegments" index="1" node_paths=PackedStringArray("respawn_point") instance=ExtResource("2_fyp2i")]
-position = Vector2(14592, 0)
-respawn_point = NodePath("RespawnPoint")
-
 [node name="CanvasLayer" type="CanvasLayer" parent="." index="3"]
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer" index="0"]
@@ -44,3 +37,8 @@ Width:: 6 Block (32)
 Block Jump:: 5 Block (32)"
 horizontal_alignment = 2
 vertical_alignment = 1
+
+[node name="TestSegment" parent="LevelSegments" index="0" instance=ExtResource("2_fyp2i")]
+
+[node name="TestSegment2" parent="LevelSegments" index="1" instance=ExtResource("2_fyp2i")]
+position = Vector2(14592, 0)
