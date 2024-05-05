@@ -15,8 +15,9 @@
 - [x] Controls
 - [x] Damageables
 - [x] DamageNumbers
-- [ ] Level selection screen
-- [ ] Power Up Selection (Post level)
+- [x] Level selection screen
+- [x] Power Up Selection (Post level)
+- [x] Base level ui
 - Main Character
 	- Artwork
 		- [ ] Idle

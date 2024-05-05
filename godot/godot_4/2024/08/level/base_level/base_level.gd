@@ -11,6 +11,7 @@ signal segment_changed()
 @onready var parallax_area: Node2D = %ParallaxArea
 @onready var background_nodes: Node2D = %BackgroundNodes
 @onready var foreground_nodes: Node2D = %ForegroundNodes
+@onready var level_ui: GameUI = %GameUI
 
 var __current_segment: LevelSegment
 var __segments_map: Dictionary = {}
@@ -41,6 +42,8 @@ func _ready() -> void:
 	GameManager.game_camera = game_camera
 	GameManager.spawn_player(foreground_nodes, __current_segment.respawn_point.global_position, game_camera)
 	GameManager.player.died.connect(on_player_died)
+
+	level_ui.set_player(GameManager.player)
 
 	game_settings.saved_stats = GameManager.player.stats.duplicate(true)
 
