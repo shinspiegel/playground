@@ -12,7 +12,7 @@ var current_level: BaseLevel
 
 
 func _ready() -> void:
-	player = player_scene.instantiate()
+	prepare_player()
 
 
 func set_level(level: BaseLevel) -> void:
@@ -68,8 +68,12 @@ func add_child_to_segment(node: Node) -> void:
 
 
 func reload_current() -> void:
+	prepare_player()
+	get_tree().reload_current_scene()
+
+
+func prepare_player() -> void:
 	player = player_scene.instantiate()
 	player.stats = saved_data.saved_stats.duplicate(true)
 	player.power_ups = saved_data.saved_power_ups.duplicate(true)
 	player.stats.reset_mp()
-	get_tree().reload_current_scene()

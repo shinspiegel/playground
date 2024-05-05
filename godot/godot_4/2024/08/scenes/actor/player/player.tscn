@@ -1,10 +1,8 @@
-[gd_scene load_steps=60 format=3 uid="uid://b3y4ayg4a3myn"]
+[gd_scene load_steps=58 format=3 uid="uid://b3y4ayg4a3myn"]
 
 [ext_resource type="PackedScene" uid="uid://glesdckbbcba" path="res://scenes/actor/base_actor/base_actor.tscn" id="1_chlu2"]
 [ext_resource type="Script" path="res://scenes/actor/player/player.gd" id="2_7sqgf"]
-[ext_resource type="Resource" uid="uid://6qjvv1i7ejxj" path="res://scenes/actor/player/power_ups/power_ups_resource.tres" id="3_75gay"]
 [ext_resource type="Texture2D" uid="uid://bhvx2mut3gocl" path="res://assets/graphics/Asset Packs 1-5 2/Asset Pack-V1/Player Idle/Player Idle 48x48.png" id="3_kq0ku"]
-[ext_resource type="Resource" uid="uid://b5il2dq7d8iem" path="res://scenes/actor/player/player_stats/player_stats.tres" id="3_qir03"]
 [ext_resource type="Script" path="res://scenes/actor/player/inputs/player_input.gd" id="3_tobpv"]
 [ext_resource type="Script" path="res://scenes/actor/player/states/idle.gd" id="4_cis2p"]
 [ext_resource type="Script" path="res://scenes/actor/player/states/move.gd" id="5_eblpi"]
@@ -903,8 +901,8 @@ size = Vector2(48, 128)
 [node name="Player" instance=ExtResource("1_chlu2")]
 collision_mask = 2
 script = ExtResource("2_7sqgf")
-stats = ExtResource("3_qir03")
-power_ups = ExtResource("3_75gay")
+stats = null
+power_ups = null
 data = ExtResource("5_l7rxu")
 
 [node name="Sprite2D" parent="FlipEnabled" index="0"]
