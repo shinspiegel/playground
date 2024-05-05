@@ -1,0 +1,118 @@
+[gd_scene load_steps=3 format=3 uid="uid://bi7usbn1an3gx"]
+
+[ext_resource type="Theme" uid="uid://x61ckk74bynv" path="res://screens/theme/base_theme.tres" id="1_1psya"]
+[ext_resource type="Script" path="res://screens/power_up_selection.gd" id="2_mtepo"]
+
+[node name="PowerUpSelection" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_1psya")
+script = ExtResource("2_mtepo")
+
+[node name="BackgroundColor" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="ColorRect" type="ColorRect" parent="BackgroundColor"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.151276, 0.151276, 0.151276, 1)
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -840.0
+offset_top = -213.0
+offset_right = 840.0
+offset_bottom = -107.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 80
+text = "Convert the energy into?"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 120
+alignment = 1
+
+[node name="Creation" type="Button" parent="HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(500, 120)
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "Creation"
+
+[node name="Evocation" type="Button" parent="HBoxContainer"]
+unique_name_in_owner = true
+auto_translate_mode = 1
+custom_minimum_size = Vector2(500, 120)
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "Evocation"
+
+[node name="Transmutation" type="Button" parent="HBoxContainer"]
+unique_name_in_owner = true
+auto_translate_mode = 1
+custom_minimum_size = Vector2(500, 120)
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "Transmutation"
+
+[node name="DescriptionPanel" type="Panel" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -416.0
+offset_top = 100.0
+offset_right = 434.0
+offset_bottom = 350.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="DescriptionPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Description" type="Label" parent="DescriptionPanel/MarginContainer"]
+unique_name_in_owner = true
+auto_translate_mode = 1
+custom_minimum_size = Vector2(800, 2.08165e-12)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 50
+text = "Line1
+Line2
+Line3
+Line4"
+autowrap_mode = 3
