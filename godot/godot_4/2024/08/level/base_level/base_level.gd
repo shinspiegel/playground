@@ -17,8 +17,6 @@ var __segments_map: Dictionary = {}
 
 
 func _ready() -> void:
-	GameManager.player.died.connect(on_player_died)
-	GameManager.game_camera = game_camera
 	AudioManager.play_music(track_index)
 
 	for child in segments_list.get_children():
@@ -40,7 +38,9 @@ func _ready() -> void:
 	game_camera.set_limit_list(__current_segment.get_limit_list())
 
 	GameManager.set_level(self)
+	GameManager.game_camera = game_camera
 	GameManager.spawn_player(foreground_nodes, __current_segment.respawn_point.global_position, game_camera)
+	GameManager.player.died.connect(on_player_died)
 
 	game_settings.saved_stats = GameManager.player.stats.duplicate(true)
 

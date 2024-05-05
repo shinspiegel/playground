@@ -10,6 +10,7 @@ const FADE_DELAY = 0.2
 const SCENES = {
 	"start": "res://screens/start_screen.tscn",
 	"level_selection": "res://screens/level_selection.tscn",
+	"power_up_selection": "res://screens/power_up_selection.tscn",
 	"options": "res://screens/options.tscn",
 	"credits": "res://screens/credits.tscn",
 	"game_over": "res://screens/game_over.tscn",
@@ -57,6 +58,7 @@ func change_to_file(filepath: String, delay: float = 0.3) -> void:
 
 func change_to_start() -> void: change_to_file(SCENES.start)
 func change_to_level_selection() -> void: change_to_file(SCENES.level_selection)
+func change_to_power_up() -> void: change_to_file(SCENES.power_up_selection)
 func change_to_options() -> void: change_to_file(SCENES.options)
 func change_to_credits() -> void: change_to_file(SCENES.credits)
 func change_to_game_over() -> void: change_to_file(SCENES.game_over)

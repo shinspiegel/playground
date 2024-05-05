@@ -55,7 +55,15 @@ func on_focus_enter(button: Button) -> void:
 
 
 func on_press(button: Button) -> void:
-	print(button.name)
+	match button.name:
+		"Creation":
+			GameManager.saved_data.saved_power_ups.create_block_enabled = true
+		"Evocation":
+			GameManager.saved_data.saved_power_ups.ranged_enabled = true
+		"Transmutation":
+			GameManager.saved_data.saved_power_ups.forward_dash = true
+
+	SceneManager.change_to_level_selection()
 
 
 func __grab_first_direction() -> void:

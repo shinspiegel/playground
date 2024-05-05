@@ -11,10 +11,6 @@ var game_camera: GameCamera
 var current_level: BaseLevel
 
 
-func _ready() -> void:
-	prepare_player()
-
-
 func set_level(level: BaseLevel) -> void:
 	current_level = level
 
@@ -42,6 +38,8 @@ func randomize_node_pos(node: Node2D, pos_variation: Vector2 = Vector2(20,20)) -
 
 
 func spawn_player(node: Node, pos: Vector2 = Vector2.ZERO, camera: GameCamera = null) -> void:
+	prepare_player()
+
 	node.add_child(player)
 	player.global_position = pos
 
