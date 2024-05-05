@@ -13,11 +13,16 @@ class_name Projectile extends Node2D
 func _ready() -> void:
 	notifier.screen_exited.connect(on_exit_screen)
 	wall_detection.body_entered.connect(on_wall_hit)
+	damage_inflictor.target_hit.connect(on_target_hit)
 	rotation_degrees = angle
 
 
 func _physics_process(delta: float) -> void:
 	movable.position.x += speed * delta * dir
+
+
+func on_target_hit(_target: DamageReceiver) -> void:
+	queue_free()
 
 
 func on_wall_hit(_body: Node2D) -> void:

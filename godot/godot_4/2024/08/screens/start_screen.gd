@@ -22,7 +22,7 @@ func _ready() -> void:
 
 
 func on_start() -> void:
-	SceneManager.change_to_level_selection()
+	SceneManager.change_to_power_up()
 
 
 func on_options() -> void:

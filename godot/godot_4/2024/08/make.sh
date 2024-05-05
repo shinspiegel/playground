@@ -30,7 +30,7 @@ godot_build() {
 }
 
 godot_build		"web"		"index.html"
-godot_build		"linux"		"$NAME.x86_64"
-godot_build		"mac"		"$NAME.dmg"
-godot_build		"win"		"$NAME.exe"
+# godot_build		"linux"		"$NAME.x86_64"
+# godot_build		"mac"		"$NAME.dmg"
+# godot_build		"win"		"$NAME.exe"
 

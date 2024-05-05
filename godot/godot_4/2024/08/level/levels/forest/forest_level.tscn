@@ -71,5 +71,5 @@ position = Vector2(43008, 1792)
 [node name="ForestSegment07" parent="LevelSegments" index="7" instance=ExtResource("11_mkogs")]
 position = Vector2(46720, -128)
 
-[node name="ForestSegment08" parent="LevelSegments/ForestSegment07" index="4" instance=ExtResource("13_q5ndy")]
-position = Vector2(12288, 1280)
+[node name="ForestSegment08" parent="LevelSegments" index="8" instance=ExtResource("13_q5ndy")]
+position = Vector2(59008, 1152)
