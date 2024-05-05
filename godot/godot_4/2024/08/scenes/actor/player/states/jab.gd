@@ -15,6 +15,7 @@ func enter() -> void:
 
 func exit() -> void:
 	damage_inflictor.active = false
+	damage_inflictor.target_hit.disconnect(on_target_hit)
 	anim_player.animation_finished.disconnect(on_anim_finished)
 
 
