@@ -1,7 +1,23 @@
-[gd_resource type="Resource" script_class="SavedData" load_steps=4 format=3 uid="uid://dyfg2qodnx83r"]
+[gd_resource type="Resource" script_class="SavedData" load_steps=6 format=3 uid="uid://dyfg2qodnx83r"]
 
+[ext_resource type="Script" path="res://scenes/actor/player/power_ups/power_ups.gd" id="1_7yixi"]
 [ext_resource type="Script" path="res://saved_data/saved_data.gd" id="1_80ngi"]
 [ext_resource type="Script" path="res://scenes/actor/player/player_stats/player_stats.gd" id="1_b2m65"]
+
+[sub_resource type="Resource" id="Resource_wqsrw"]
+script = ExtResource("1_7yixi")
+ranged_enabled = false
+create_block_enabled = false
+forward_dash = false
+ranged_extra_range = false
+ranged_extra_damage = false
+ranged_multiple_projectile = false
+block_extra_life = false
+block_deas_damage = false
+block_additional = false
+forward_invulnerable = false
+forward_deal_damage = false
+forward_reduced_colddown = false
 
 [sub_resource type="Resource" id="Resource_58r2i"]
 script = ExtResource("1_b2m65")
@@ -17,6 +33,7 @@ script = ExtResource("1_80ngi")
 music_volume = 2.08165e-12
 sound_volume = 0.1
 saved_stats = SubResource("Resource_58r2i")
+saved_power_ups = SubResource("Resource_wqsrw")
 saved_segment = ""
 forest_level_copleted = false
 beach_level_copleted = false

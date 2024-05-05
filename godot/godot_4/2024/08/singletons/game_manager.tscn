@@ -5,4 +5,4 @@
 
 [node name="GameManager" type="Node"]
 script = ExtResource("1_dhhkr")
-game_setting = ExtResource("2_orflu")
+saved_data = ExtResource("2_orflu")

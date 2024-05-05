@@ -1,12 +1,10 @@
 extends Node
 
-signal level_changed()
-
 const damage_number: Resource = preload("res://scenes/damageables/damage_number/damage_number.tscn")
 const damage_text: Resource = preload("res://scenes/damageables/damage_number/damage_text.tscn")
 const player_scene: Resource = preload("res://scenes/actor/player/player.tscn")
 
-@export var game_setting: SavedData
+@export var saved_data: SavedData
 
 var player: Player
 var game_camera: GameCamera
@@ -19,7 +17,6 @@ func _ready() -> void:
 
 func set_level(level: BaseLevel) -> void:
 	current_level = level
-	level_changed.emit()
 
 
 func spawn_damage_number(damage: Damage, pos: Vector2 = Vector2.ZERO) -> void:
@@ -72,6 +69,7 @@ func add_child_to_segment(node: Node) -> void:
 
 func reload_current() -> void:
 	player = player_scene.instantiate()
-	player.stats = game_setting.saved_stats.duplicate(true)
+	player.stats = saved_data.saved_stats.duplicate(true)
+	player.power_ups = saved_data.saved_power_ups.duplicate(true)
 	player.stats.reset_mp()
 	get_tree().reload_current_scene()

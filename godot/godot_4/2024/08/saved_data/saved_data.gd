@@ -22,6 +22,7 @@ signal sound_changed
 
 
 @export var saved_stats: PlayerStats = PlayerStats.new()
+@export var saved_power_ups: PowerUps = PowerUps.new()
 @export var saved_segment: String = ""
 
 @export var forest_level_copleted: bool = false
