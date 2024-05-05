@@ -2,22 +2,18 @@
 
 [ext_resource type="Texture2D" uid="uid://dovewtuchy5a1" path="res://assets/graphics/template/size_template.png" id="1_0ga4k"]
 [ext_resource type="Script" path="res://scenes/actor/player/player_block/player_block.gd" id="1_nq6cv"]
-[ext_resource type="Script" path="res://scenes/actor/actor_data/actor_data.gd" id="2_bjwg4"]
 [ext_resource type="Script" path="res://level/level_objects/one_way_block/one_way_block.gd" id="4_k2rd0"]
 [ext_resource type="Script" path="res://scenes/actor/player/inputs/player_input.gd" id="5_fnu5g"]
-
-[sub_resource type="Resource" id="Resource_rwm5x"]
-script = ExtResource("2_bjwg4")
-speed = 800.0
-jump_velocity = 1248.0
-friction_land = 1.0
-friction_air = 1.0
+[ext_resource type="Script" path="res://scenes/damageables/damage_receiver/damage_reciever.gd" id="6_xvo72"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ojb6s"]
 atlas = ExtResource("1_0ga4k")
 region = Rect2(240, 16, 32, 48)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7pkms"]
+size = Vector2(128, 192)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ccuql"]
 size = Vector2(128, 192)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nf1pg"]
@@ -29,7 +25,6 @@ size = Vector2(128, 32)
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("1_nq6cv")
-actor = SubResource("Resource_rwm5x")
 
 [node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
 position = Vector2(0, -96)
@@ -41,18 +36,36 @@ position = Vector2(0, -96)
 shape = SubResource("RectangleShape2D_7pkms")
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="CharacterBody2D"]
-remote_path = NodePath("../../StaticBody2D")
+remote_path = NodePath("../../OneWayBlock")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="." node_paths=PackedStringArray("player_input", "shape")]
+[node name="DamageReceiver" type="Area2D" parent="CharacterBody2D" node_paths=PackedStringArray("colddown")]
+unique_name_in_owner = true
+collision_mask = 12
+script = ExtResource("6_xvo72")
+colddown = NodePath("DamageColdown")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/DamageReceiver"]
+position = Vector2(0, -96)
+shape = SubResource("RectangleShape2D_ccuql")
+
+[node name="DamageColdown" type="Timer" parent="CharacterBody2D/DamageReceiver"]
+wait_time = 0.2
+one_shot = true
+
+[node name="DamagePos" type="Marker2D" parent="CharacterBody2D"]
+unique_name_in_owner = true
+position = Vector2(0, -224)
+
+[node name="OneWayBlock" type="StaticBody2D" parent="." node_paths=PackedStringArray("player_input", "shape")]
 collision_layer = 2
 script = ExtResource("4_k2rd0")
 player_input = NodePath("PlayerInput")
 shape = NodePath("CollisionShape2D")
 
-[node name="PlayerInput" type="Node" parent="StaticBody2D"]
+[node name="PlayerInput" type="Node" parent="OneWayBlock"]
 script = ExtResource("5_fnu5g")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OneWayBlock"]
 position = Vector2(0, -176)
 shape = SubResource("RectangleShape2D_nf1pg")
 one_way_collision = true
