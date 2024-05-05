@@ -18,3 +18,6 @@ music_volume = 2.08165e-12
 sound_volume = 0.1
 saved_stats = SubResource("Resource_58r2i")
 saved_segment = ""
+forest_level_copleted = false
+beach_level_copleted = false
+vulcano_level_copleted = false

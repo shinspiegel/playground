@@ -22,15 +22,15 @@ func _ready() -> void:
 
 
 func on_start() -> void:
-	SceneManager.change_to_file(SceneManager.SCENES.level_selection)
+	SceneManager.change_to_level_selection()
 
 
 func on_options() -> void:
-	SceneManager.change_to_file(SceneManager.SCENES.options)
+	SceneManager.change_to_options()
 
 
 func on_credits() -> void:
-	SceneManager.change_to_file(SceneManager.SCENES.credits)
+	SceneManager.change_to_credits()
 
 
 func on_quit() -> void:

@@ -11,4 +11,4 @@ func _ready() -> void:
 
 
 func on_back() -> void:
-	SceneManager.change_to_file(SceneManager.SCENES.start)
+	SceneManager.change_to_start()

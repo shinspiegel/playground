@@ -32,15 +32,9 @@ func _physics_process(_delta: float) -> void:
 
 func on_press(button: Button) -> void:
 	match button.name:
-		"ForestButton":
-			SceneManager.change_to_file(SceneManager.SCENES.forest)
-
-		"VulcanoButton":
-			SceneManager.change_to_file(SceneManager.SCENES.forest)
-
-		"BeachButton":
-			SceneManager.change_to_file(SceneManager.SCENES.forest)
-
+		"ForestButton": SceneManager.change_to_forest()
+		"VulcanoButton": SceneManager.change_to_forest()
+		"BeachButton": SceneManager.change_to_forest()
 
 
 func on_focus(button: Button) -> void:
@@ -72,11 +66,8 @@ func __grab_first_direction() -> void:
 
 func __initial_move_to(button: Button) -> void:
 	if not __is_moving:
-		button.grab_focus()
 		__first_selection = false
-		__is_moving = true
-		await __tween_zoom(Vector2(1,1), 0.5).finished
-		__is_moving = false
+		button.grab_focus()
 
 
 func __tween_zoom(zoom: Vector2 = Vector2(1,1), duration: float = 1.0) -> Tween:

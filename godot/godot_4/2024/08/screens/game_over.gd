@@ -15,11 +15,11 @@ func _ready() -> void:
 
 
 func on_start() -> void:
-	SceneManager.change_to_file(SceneManager.SCENES.main)
+	SceneManager.change_to_level_selection()
 
 
 func on_credits() -> void:
-	SceneManager.change_to_file(SceneManager.SCENES.credits)
+	SceneManager.change_to_credits()
 
 
 func on_quit() -> void:

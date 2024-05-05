@@ -55,6 +55,17 @@ func change_to_file(filepath: String, delay: float = 0.3) -> void:
 	ResourceLoader.load_threaded_request(filepath)
 	__loading_scene_status = ResourceLoader.THREAD_LOAD_IN_PROGRESS
 
+func change_to_start() -> void: change_to_file(SCENES.start)
+func change_to_level_selection() -> void: change_to_file(SCENES.level_selection)
+func change_to_options() -> void: change_to_file(SCENES.options)
+func change_to_credits() -> void: change_to_file(SCENES.credits)
+func change_to_game_over() -> void: change_to_file(SCENES.game_over)
+func change_to_forest() -> void: change_to_file(SCENES.forest)
+func change_to_vulcano() -> void: change_to_file(SCENES.vulcano)
+func change_to_beach() -> void: change_to_file(SCENES.beach)
+func change_to_castle() -> void: change_to_file(SCENES.castle)
+
+
 
 func show_loading() -> void:
 	if not __is_loading_visible:
