@@ -30,7 +30,7 @@ mp_refil_ratio = 0.7
 
 [resource]
 script = ExtResource("1_80ngi")
-music_volume = 0.2
+music_volume = 0.5
 sound_volume = 0.5
 saved_stats = SubResource("Resource_58r2i")
 saved_power_ups = SubResource("Resource_wqsrw")

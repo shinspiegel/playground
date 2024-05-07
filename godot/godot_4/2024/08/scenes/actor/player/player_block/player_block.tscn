@@ -22,7 +22,7 @@ size = Vector2(128, 32)
 [node name="PlayerBlock" type="Node2D"]
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
-collision_layer = 0
+collision_layer = 32
 collision_mask = 2
 script = ExtResource("1_nq6cv")
 

@@ -11,9 +11,13 @@ var __max_blocks: int = 1
 
 func enter() -> void:
 	anim_player.animation_finished.connect(on_anim_finished)
+
+	if player.velocity.y < 0:
+		player.velocity.y = 0
+
 	player.change_animation(BLOCK)
 	player.stats.consume_mana()
-	player.velocity = Vector2.ZERO
+
 	spawn_block()
 	AudioManager.create_sfx(block_sound, randf_range(0.9, 1.1))
 

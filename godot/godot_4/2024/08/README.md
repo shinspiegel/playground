@@ -34,14 +34,15 @@
 	- Mechanics
 		- [x] Air Jab
 		- [x] Air Ranged
+		- [x] Create block from Air
+		- [x] Create block on the character instead of ahead
+		- [x] Block can't be passed by enemies
 		- [x] Jump buffer
 		- [x] Coyote-time
 		- [x] Mana sytem
 			- [x] Rolling consume mana
 		- [x] Health / damage
 		- [x] Roll from Air
-		- [x] Create block from Air
-		- [x] Create block on the character instead of ahead
 - Power Ups
 	- [x] Ranged Attack
 		- [ ] Increase speed #Forest
@@ -71,8 +72,8 @@
 		- [ ] Tilemap
 		- [ ] Level design
 			- [x] Initial Design (5min map)
-			- [ ] Add options to use the roll in phew places [NEXT:]
-			- [ ] Remove cheap damage [NEXT:]
+			- [ ] Add options to use the roll in phew places [:nx]
+			- [ ] Remove cheap damage [:nx]
 			- [ ] Upgrade Ranged (Speed)
 			- [ ] Upgrade Create (Extra life?)
 			- [ ] Upgrade Dash (Inv on Dash?)
@@ -111,11 +112,11 @@
 		- [ ] Enemies idea
 - Enemies
 	- [x] Walker (just walk from side to side and idle in between)
-		- [ ] Reduce time for the explosion [NEXT:]
-		- [ ] Use different sprite for it [NEXT:]
+		- [ ] Reduce time for the explosion [:nx]
+		- [ ] Use different sprite for it [:nx]
 	- [x] Shooter (does not move, shoot on invervals)
-		- [ ] Make the area for shooting level dependent [NEXT:]
-		- [ ] Add a charge before the shooting [NEXT:]
+		- [ ] Make the area for shooting level dependent [:nx]
+		- [ ] Add a charge before the shooting [:nx]
 	- [x] Defender / Tank (holds something to protect, avoids damage)
 	- [ ] Sniper (wanders, if player in sight, shoot)
 	- [ ] Medusa head (floats on screen, ignore tilemap)
@@ -124,7 +125,7 @@
 	- [ ] Spike (ground damage)
 	- [ ] Moving platform
 	- [ ] Mana hurt
-	- [ ] Vertical Laser [NEXT:]
+	- [ ] Vertical Laser [:nx]
 - Pickables
 	- [ ] Heart Recover
 	- [ ] Mana Recover

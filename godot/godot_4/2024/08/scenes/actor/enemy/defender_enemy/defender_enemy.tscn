@@ -228,9 +228,11 @@ size = Vector2(96, 160)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dunbs"]
 size = Vector2(128, 192)
 
-[node name="DefenderEnemy" instance=ExtResource("1_rostn")]
-collision_mask = 10
+[node name="DefenderEnemy" node_paths=PackedStringArray("hit_state", "death_state", "touch_inflictor") instance=ExtResource("1_rostn")]
 script = ExtResource("2_4i0uy")
+hit_state = NodePath("StateMachine/Hit")
+death_state = NodePath("StateMachine/Death")
+touch_inflictor = NodePath("TouchInflictor")
 
 [node name="STATE" type="Label" parent="FlipEnabled" index="0"]
 anchors_preset = 7
@@ -269,12 +271,12 @@ hframes = 10
 [node name="FloorCast" type="RayCast2D" parent="FlipEnabled" index="5"]
 position = Vector2(96, -8)
 target_position = Vector2(2.08165e-12, 32)
-collision_mask = 2
+collision_mask = 34
 
 [node name="WallCast" type="RayCast2D" parent="FlipEnabled" index="6"]
 position = Vector2(64, -64)
 target_position = Vector2(32, 2.08165e-12)
-collision_mask = 2
+collision_mask = 34
 
 [node name="NAME" type="Label" parent="FlipEnabled" index="7"]
 auto_translate_mode = 1
@@ -339,6 +341,9 @@ one_shot = true
 libraries = {
 "": SubResource("AnimationLibrary_1vwqw")
 }
+
+[node name="TouchInflictor" parent="." index="3" node_paths=PackedStringArray("source")]
+source = NodePath("..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TouchInflictor" index="0"]
 position = Vector2(0, -96)

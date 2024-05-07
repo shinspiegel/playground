@@ -301,12 +301,12 @@ position = Vector2(2.08165e-12, -96)
 [node name="FloorCast" type="RayCast2D" parent="FlipEnabled" index="3"]
 position = Vector2(48, -8)
 target_position = Vector2(2.08165e-12, 32)
-collision_mask = 2
+collision_mask = 34
 
 [node name="WallCast" type="RayCast2D" parent="FlipEnabled" index="4"]
 position = Vector2(32, -40)
 target_position = Vector2(32, 2.08165e-12)
-collision_mask = 2
+collision_mask = 34
 
 [node name="DamageReceiver" parent="FlipEnabled" index="5" node_paths=PackedStringArray("colddown")]
 colddown = NodePath("DamageColddown")
@@ -428,6 +428,9 @@ shape = SubResource("RectangleShape2D_dunbs")
 
 [node name="EnterShockDelay" type="Timer" parent="." index="4"]
 one_shot = true
+
+[node name="TouchInflictor" parent="." index="5" node_paths=PackedStringArray("source")]
+source = NodePath("..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TouchInflictor" index="0"]
 position = Vector2(0, -32)

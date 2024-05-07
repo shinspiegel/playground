@@ -273,6 +273,9 @@ libraries = {
 "": SubResource("AnimationLibrary_updri")
 }
 
+[node name="TouchInflictor" parent="." index="3" node_paths=PackedStringArray("source")]
+source = NodePath("..")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TouchInflictor" index="0"]
 position = Vector2(0, -32)
 shape = SubResource("RectangleShape2D_coudu")
