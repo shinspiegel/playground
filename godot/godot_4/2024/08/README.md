@@ -12,7 +12,7 @@
 
 # Todo List
 - [x] Controls
-	- [ ] Clean up the controls, focus on WASD + options [NEXT:]
+	- [x] Clean up the controls, focus on WASD + options [NEXT:]
 - [x] Damageables
 	- [ ] Review critical damage [NEXT:]
 - [x] DamageNumbers
@@ -150,7 +150,7 @@
 - **Roll**: Circle
 - **Jump**: Cross
 - **Jab**: Square
-- **Ranged Attack**: R1/L2ot
+- **Ranged Attack**: R1/L2
 - **Create Block**: Triangle
 - **Forward Dash**: L1/L2 
 
@@ -158,45 +158,15 @@
 
 All mapped keys, to be used with Arrows or VIM movement or WASD.
 
-- **Movement**: Arrows, HJKL (Vim), WASD
-- **Jump**: Space, Up on movement
-- **Roll**: C or P (qwerty or equivalent in other layouts)
-- **Jab**: Z or I (qwerty or equivalent in other layouts)
-- **Ranged Attack**: Shift to shoot
-- **Create Block**: X or O (qwerty or equivalent in other layouts)
-- **Forward Dash**: V or U (qwerty or equivalent in other layouts) 
+- **Movement**: Arrows or WASD
+- **Jump**: Up or J
+- **Roll**: K
+- **Jab**: U
+- **Ranged Attack**: I
+- **Create Block**: Y
+- **Forward Dash**: H
 
 <small>Letter keys are position on the QUERTY, same position applies for other latouts</small>
-
-### Keyboard (Arrows)
-
-- **Movement**: Arrows
-- **Jump**: Space, Arrow Up
-- **Roll**: C
-- **Jab**: Z
-- **Ranged Attack**: Shift
-- **Create Block**: X
-- **Forward Dash**: V
-
-### Keyboard (VIM)
-
-- **Movement**: HJKL
-- **Jump**: Space, K
-- **Roll**: C
-- **Jab**: Z
-- **Ranged Attack**: Shift
-- **Create Block**: X
-- **Forward Dash**: V
-
-### Keyboard (WASD)
-
-- **Movement**: WASD
-- **Jump**: Space, W
-- **Roll**: P
-- **Jab**: I
-- **Ranged Attack**: Shift
-- **Create Block**: O
-- **Forward Dash**: U
 
 # Main Character
 
