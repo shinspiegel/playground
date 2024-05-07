@@ -12,7 +12,6 @@ class_name StartScreen extends Control
 func _ready() -> void:
 	title.text = ProjectSettings.get("application/config/name")
 	version.text = "Version.%s" % ProjectSettings.get("application/config/version")
-	print("aaaa") 
 
 	if not Engine.is_editor_hint():
 		AudioManager.play_music(0)
