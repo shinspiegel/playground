@@ -4,15 +4,24 @@ extends PlayerState
 @export var damage_receiver: DamageReceiver
 @export var roll_audio: AudioStream
 
-var __direction: float = 0.0
+var __start_dir: float = 0.0
+var __direction_ratio: float = 1.0
 
 
 func enter() -> void:
 	player.change_animation(ROLL)
 	damage_receiver.active = false
-	__direction = player.input.last_direction
-	player.stats.consume_mana()
 	anim_player.animation_finished.connect(on_anim_finished)
+
+	__start_dir = player.input.last_direction
+	__direction_ratio = 1.0
+
+	if player.velocity.y < 0:
+		player.velocity.y = 0
+
+	player.stats.consume_mana()
+	player.dash_used = true
+
 	AudioManager.create_sfx(roll_audio, randf_range(0.8, 1.2))
 
 
@@ -22,12 +31,12 @@ func exit() -> void:
 
 
 func update(delta: float) -> void:
-	__direction = lerpf(__direction, 0, delta * 1.5)
+	__direction_ratio = lerpf(__direction_ratio, 0, delta * 1.5)
 
 	player.apply_gravity(delta)
-	player.apply_direction(__direction, player.data.friction_land, 0.9)
+	player.apply_direction(__start_dir, player.data.friction_land, 0.9, __direction_ratio)
 	player.move_and_slide()
-	player.check_flip(__direction)
+	player.check_flip(__start_dir)
 
 
 func on_anim_finished(_anim: String) -> void:

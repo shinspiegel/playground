@@ -18,6 +18,7 @@ signal died()
 
 var __is_coyoting: bool = false
 var dash_used: bool = false
+var roll_used: bool = false
 
 
 func _ready() -> void:
@@ -35,6 +36,7 @@ func _physics_process(delta: float) -> void:
 		coyote_timer.stop()
 		__is_coyoting = false
 		dash_used = false
+		roll_used = false
 
 	state_machine.update(delta)
 	stats.tick_mp(delta)
@@ -61,7 +63,7 @@ func can_jump() -> bool:
 
 
 func can_roll() -> bool:
-	if can_jump() and stats.can_use_mana():
+	if stats.can_use_mana():
 		return true
 	return false
 

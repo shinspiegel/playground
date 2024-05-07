@@ -23,6 +23,10 @@ func update(delta: float) -> void:
 		state_machine.change_by_name(AIR_RANGED)
 		return
 
+	if player.can_roll() and player.input.roll:
+		state_machine.change_by_name(ROLL)
+		return
+
 	if player.can_dash() and player.input.dash:
 		state_machine.change_by_name(DASH)
 		return

@@ -40,7 +40,7 @@
 		- [x] Mana sytem
 			- [x] Rolling consume mana
 		- [x] Health / damage
-		- [ ] Roll from Air [NEXT:]
+		- [x] Roll from Air
 		- [ ] Create block from Air [NEXT:]
 		- [ ] Create block on the character instead of ahead [NEXT:]
 - Power Ups
