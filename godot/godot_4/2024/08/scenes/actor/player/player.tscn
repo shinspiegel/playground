@@ -46,7 +46,7 @@ script = ExtResource("9_j3drc")
 amount = 10
 impact = 0.3
 critical_chance = 0.1
-critical_boost = 2.0
+critical_boost = 1.5
 variation_amount = 0.4
 variation_impact = 0.1
 

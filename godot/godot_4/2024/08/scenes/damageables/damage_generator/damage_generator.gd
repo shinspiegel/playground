@@ -10,15 +10,22 @@ class_name DamageGenerator extends Resource
 
 func generate(source: Node2D) -> Damage:
 	var damage: Damage = Damage.new()
-
 	damage.source_node = source
-	damage.amount = randi_range(int(amount - (amount * variation_amount)), int(amount + (amount * variation_amount)))
-	damage.impact = randf_range(impact - (impact * variation_impact), impact + (impact * variation_impact))
 
 	if randf() < critical_chance:
 		damage.is_critical = true
-		damage.amount += int(damage.amount * critical_boost)
-		damage.impact = damage.impact * critical_boost
+		damage.amount = randi_range(
+				int((amount * critical_boost) - (amount * variation_amount)), 
+				int((amount * critical_boost) + (amount * variation_amount)),
+		)
+		damage.impact = critical_boost * randf_range(
+				impact - (impact * variation_impact), 
+				impact + (impact * variation_impact),
+		)
+	else:
+		damage.amount = randi_range(int(amount - (amount * variation_amount)), int(amount + (amount * variation_amount)))
+		damage.impact = randf_range(impact - (impact * variation_impact), impact + (impact * variation_impact))
+
 
 	return damage
 

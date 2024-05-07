@@ -12,9 +12,9 @@
 
 # Todo List
 - [x] Controls
-	- [x] Clean up the controls, focus on WASD + options [NEXT:]
+	- [x] Clean up the controls, focus on WASD + options
 - [x] Damageables
-	- [ ] Review critical damage [NEXT:]
+	- [x] Review critical damage
 - [x] DamageNumbers
 - [x] Level selection screen
 - [x] Power Up Selection (Post level)
