@@ -19,7 +19,6 @@
 - [x] Level selection screen
 - [x] Power Up Selection (Post level)
 - [x] Base level ui
-- [ ] Create hazard for rolling [NEXT:]
 - Main Character
 	- Artwork
 		- [ ] Idle
