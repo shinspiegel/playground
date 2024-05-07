@@ -10,15 +10,18 @@ class_name StartScreen extends Control
 
 
 func _ready() -> void:
-	AudioManager.play_music(0)
-
 	title.text = ProjectSettings.get("application/config/name")
 	version.text = "Version.%s" % ProjectSettings.get("application/config/version")
-	start.grab_focus()
-	start.pressed.connect(on_start)
-	options.pressed.connect(on_options)
-	credits.pressed.connect(on_credits)
-	quit.pressed.connect(on_quit)
+	print("aaaa") 
+
+	if not Engine.is_editor_hint():
+		AudioManager.play_music(0)
+
+		start.grab_focus()
+		start.pressed.connect(on_start)
+		options.pressed.connect(on_options)
+		credits.pressed.connect(on_credits)
+		quit.pressed.connect(on_quit)
 
 
 func on_start() -> void:

@@ -4,7 +4,6 @@
 - [Controls](#controls)
 - [Main Character](#main-character)
 - [Power ups](#power-ups)
-- [Power Ups][(#power-ups)
 - [Levels](#levels)
 - [Enemies](#enemies)
 - [Game Flow Overview](#game-flow-overview)
@@ -13,11 +12,14 @@
 
 # Todo List
 - [x] Controls
+	- [ ] Clean up the controls, focus on WASD + options [NEXT:]
 - [x] Damageables
+	- [ ] Review critical damage [NEXT:]
 - [x] DamageNumbers
 - [x] Level selection screen
 - [x] Power Up Selection (Post level)
 - [x] Base level ui
+- [ ] Create hazard for rolling [NEXT:]
 - Main Character
 	- Artwork
 		- [ ] Idle
@@ -38,9 +40,12 @@
 		- [x] Mana sytem
 			- [x] Rolling consume mana
 		- [x] Health / damage
+		- [ ] Roll from Air [NEXT:]
+		- [ ] Create block from Air [NEXT:]
+		- [ ] Create block on the character instead of ahead [NEXT:]
 - Power Ups
 	- [x] Ranged Attack
-		- [ ] Increase distance (whole screen) #Forest
+		- [ ] Increase speed #Forest
 		- [ ] Shoot increase damage (more than Jab) # Beach
 		- [ ] Shot 3 projectiles #Vulcano
 	- [x] Create Block
@@ -67,9 +72,11 @@
 		- [ ] Tilemap
 		- [ ] Level design
 			- [x] Initial Design (5min map)
-			- [ ] Upgrade Ranged
-			- [ ] Upgrade Create
-			- [ ] Upgrade Dash
+			- [ ] Add options to use the roll in phew places [NEXT:]
+			- [ ] Remove cheap damage [NEXT:]
+			- [ ] Upgrade Ranged (Speed)
+			- [ ] Upgrade Create (Extra life?)
+			- [ ] Upgrade Dash (Inv on Dash?)
 		- [ ] Enemies idea
 	- Beach
 		- [x] Story
@@ -105,7 +112,11 @@
 		- [ ] Enemies idea
 - Enemies
 	- [x] Walker (just walk from side to side and idle in between)
+		- [ ] Reduce time for the explosion [NEXT:]
+		- [ ] Use different sprite for it [NEXT:]
 	- [x] Shooter (does not move, shoot on invervals)
+		- [ ] Make the area for shooting level dependent [NEXT:]
+		- [ ] Add a charge before the shooting [NEXT:]
 	- [x] Defender / Tank (holds something to protect, avoids damage)
 	- [ ] Sniper (wanders, if player in sight, shoot)
 	- [ ] Medusa head (floats on screen, ignore tilemap)
@@ -114,6 +125,7 @@
 	- [ ] Spike (ground damage)
 	- [ ] Moving platform
 	- [ ] Mana hurt
+	- [ ] Vertical Laser [NEXT:]
 - Pickables
 	- [ ] Heart Recover
 	- [ ] Mana Recover
@@ -188,9 +200,9 @@ All mapped keys, to be used with Arrows or VIM movement or WASD.
 
 # Main Character
 
-<!-- TODO: Create description -->
-<!-- TODO: Artwork -->
-<!-- TODO: Extra gameplay mechanics -->
+[TODO: Create description]
+[TODO: Artwork]
+[TODO: Extra gameplay mechanics]
 
 ## Jump buffer
 

@@ -10,8 +10,8 @@ config_version=5
 
 [application]
 
-config/name="Template"
-config/version="0.0.0"
+config/name="Ether Wave"
+config/version="0.0.1"
 run/main_scene="res://screens/start_screen.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
