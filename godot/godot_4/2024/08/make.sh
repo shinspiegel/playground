@@ -1,14 +1,16 @@
-NAME=$(grep "config/name" "./project.godot" | sed 's/^.*=//' | sed 's/"//g')
-VERSION=$(grep "config/version" "./project.godot" | sed 's/^.*=//' | sed 's/"//g')
-DATE="$(date +%s)"
-FULL_HASH="$(git log -n 1 --pretty=format:"%H")"
-HASH=${FULL_HASH:0:6}
+# Global variables for project
+GODOT_PRROJECT_NAME=$(grep "config/name" "./project.godot" | sed 's/^.*=//' | sed 's/"//g')
+GODOT_PROJECT_VERSION=$(grep "config/version" "./project.godot" | sed 's/^.*=//' | sed 's/"//g')
+GODOT_PROJECT_DATE="$(date +%s)"
 
+# Helper function to generate the build process
+# $1: Name in the export.cfg needs to match
+# $2: Filename for the generation
 godot_build() {
 	local TYPE=$1
 	local GODOT_PATH_CREATION=$2
-	local BUILD_PATH="./dist/$DATE/$TYPE"
-	local ZIP_FILENAME="$NAME ($VERSION) $TYPE.zip"
+	local BUILD_PATH="./dist/$GODOT_PROJECT_DATE/$TYPE"
+	local ZIP_FILENAME="$GODOT_PRROJECT_NAME ($GODOT_PROJECT_VERSION) $TYPE.zip"
 
 	# Create path for the build
 	mkdir -p "$BUILD_PATH"
@@ -22,7 +24,7 @@ godot_build() {
 	cd $BUILD_PATH
 	zip -q -r "$ZIP_FILENAME" ./
 	cd -
-	mv "$BUILD_PATH/$ZIP_FILENAME" "./dist/$DATE"
+	mv "$BUILD_PATH/$ZIP_FILENAME" "./dist/$GODOT_PROJECT_DATE"
 
 	Remove folder with unzip
 	echo "INFO:: Cleaning files \n\n"
@@ -30,7 +32,7 @@ godot_build() {
 }
 
 godot_build		"web"		"index.html"
-# godot_build		"linux"		"$NAME.x86_64"
-# godot_build		"mac"		"$NAME.dmg"
-# godot_build		"win"		"$NAME.exe"
+# godot_build		"linux"		"$GODOT_PRROJECT_NAME.x86_64"
+# godot_build		"mac"		"$GODOT_PRROJECT_NAME.dmg"
+# godot_build		"win"		"$GODOT_PRROJECT_NAME.exe"
 
