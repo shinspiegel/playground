@@ -1,0 +1,58 @@
+[gd_scene load_steps=5 format=3 uid="uid://rt1blhayy57e"]
+
+[ext_resource type="Script" path="res://scenes/next_segment_arrow/next_segment_arrow.gd" id="1_ftbo0"]
+
+[sub_resource type="Animation" id="Animation_1upn4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Movable:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_vqis4"]
+resource_name = "anim"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Movable:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(2, 1),
+"update": 0,
+"values": [Vector2(-128, 2.08165e-12), Vector2(2.08165e-12, 2.08165e-12)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_exksx"]
+_data = {
+"RESET": SubResource("Animation_1upn4"),
+"anim": SubResource("Animation_vqis4")
+}
+
+[node name="NextSegmentArrow" type="Area2D"]
+collision_layer = 0
+script = ExtResource("1_ftbo0")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_exksx")
+}
+
+[node name="Movable" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="Polygon2D" type="Polygon2D" parent="Movable"]
+modulate = Color(1, 1, 1, 0.5)
+scale = Vector2(0.5, 0.5)
+polygon = PackedVector2Array(-224, -64, -128, -64, -128, -128, 0, 0, -128, 128, -128, 64, -224, 64)

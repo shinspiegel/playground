@@ -1,15 +1,19 @@
-[gd_scene load_steps=7 format=3 uid="uid://elawlxxarxtl"]
+[gd_scene load_steps=9 format=3 uid="uid://elawlxxarxtl"]
 
 [ext_resource type="PackedScene" uid="uid://cpl5hkuemkr3r" path="res://level/level_segments/level_segment.tscn" id="1_1t583"]
 [ext_resource type="PackedScene" uid="uid://be704c17u6432" path="res://scenes/actor/enemy/defender_enemy/defender_enemy.tscn" id="2_k5w65"]
 [ext_resource type="PackedScene" uid="uid://khse2wmgfq3w" path="res://scenes/actor/enemy/shooter/shooter.tscn" id="3_k0xp1"]
 [ext_resource type="PackedScene" uid="uid://bxkot377yyeju" path="res://scenes/actor/enemy/wander_enemy/wander_enemy.tscn" id="4_nfhha"]
+[ext_resource type="PackedScene" uid="uid://rt1blhayy57e" path="res://scenes/next_segment_arrow/next_segment_arrow.tscn" id="5_0je22"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cq0nc"]
 size = Vector2(128, 512)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y85md"]
 size = Vector2(128, 512)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b63ia"]
+size = Vector2(576, 1280)
 
 [node name="ForestSegment04" instance=ExtResource("1_1t583")]
 
@@ -105,3 +109,20 @@ shoot_state = NodePath("StateMachine/Shoot")
 hit_state = NodePath("StateMachine/Hit")
 death_state = NodePath("StateMachine/Death")
 touch_inflictor = NodePath("TouchInflictor")
+
+[node name="NextSegmentArrow" parent="." index="4" instance=ExtResource("5_0je22")]
+position = Vector2(-64, 384)
+scale = Vector2(-1, -1)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NextSegmentArrow" index="2"]
+position = Vector2(-160, 192)
+shape = SubResource("RectangleShape2D_b63ia")
+
+[node name="NextSegmentArrow2" parent="." index="5" instance=ExtResource("5_0je22")]
+position = Vector2(7104, 896)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NextSegmentArrow2" index="2"]
+position = Vector2(-288, 0)
+shape = SubResource("RectangleShape2D_b63ia")

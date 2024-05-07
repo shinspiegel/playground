@@ -1,10 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://d663j0rc0hyq"]
+[gd_scene load_steps=6 format=3 uid="uid://d663j0rc0hyq"]
 
 [ext_resource type="PackedScene" uid="uid://cpl5hkuemkr3r" path="res://level/level_segments/level_segment.tscn" id="1_407ho"]
 [ext_resource type="Theme" uid="uid://x61ckk74bynv" path="res://screens/theme/base_theme.tres" id="2_xsxj4"]
+[ext_resource type="PackedScene" uid="uid://rt1blhayy57e" path="res://scenes/next_segment_arrow/next_segment_arrow.tscn" id="3_vt56a"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y52x8"]
 size = Vector2(128, 1664)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_16d0y"]
+size = Vector2(448, 1024)
 
 [node name="ForestSegment08" instance=ExtResource("1_407ho")]
 
@@ -42,3 +46,12 @@ text = "Thank you for
 playing the demo."
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="NextSegmentArrow" parent="UpdateNode/Label" index="0" instance=ExtResource("3_vt56a")]
+position = Vector2(-1470.5, -929)
+scale = Vector2(-1, -1)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="UpdateNode/Label/NextSegmentArrow" index="2"]
+position = Vector2(-224, 384)
+shape = SubResource("RectangleShape2D_16d0y")

@@ -56,11 +56,11 @@ position = Vector2(3712, 0)
 [node name="ForestSegment02" parent="LevelSegments" index="2" instance=ExtResource("7_elfoc")]
 position = Vector2(10240, 640)
 
-[node name="ForestSegment04" parent="LevelSegments" index="3" instance=ExtResource("8_v76dr")]
-position = Vector2(27776, 9344)
-
-[node name="ForestSegment03" parent="LevelSegments" index="4" instance=ExtResource("8_cuos6")]
+[node name="ForestSegment03" parent="LevelSegments" index="3" instance=ExtResource("8_cuos6")]
 position = Vector2(21760, 9344)
+
+[node name="ForestSegment04" parent="LevelSegments" index="4" instance=ExtResource("8_v76dr")]
+position = Vector2(27776, 9344)
 
 [node name="ForestSegment05" parent="LevelSegments" index="5" instance=ExtResource("9_yu1as")]
 position = Vector2(35328, 9856)

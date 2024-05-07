@@ -1,14 +1,18 @@
-[gd_scene load_steps=6 format=3 uid="uid://o472au4r0a32"]
+[gd_scene load_steps=8 format=3 uid="uid://o472au4r0a32"]
 
 [ext_resource type="PackedScene" uid="uid://cpl5hkuemkr3r" path="res://level/level_segments/level_segment.tscn" id="1_flweu"]
 [ext_resource type="PackedScene" uid="uid://khse2wmgfq3w" path="res://scenes/actor/enemy/shooter/shooter.tscn" id="2_l8rns"]
 [ext_resource type="PackedScene" uid="uid://bxkot377yyeju" path="res://scenes/actor/enemy/wander_enemy/wander_enemy.tscn" id="3_jqihf"]
+[ext_resource type="PackedScene" uid="uid://rt1blhayy57e" path="res://scenes/next_segment_arrow/next_segment_arrow.tscn" id="4_f73dp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fwwhp"]
 size = Vector2(128, 384)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bt055"]
 size = Vector2(128, 2064)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_th282"]
+size = Vector2(736, 2048)
 
 [node name="ForestSegment07" instance=ExtResource("1_flweu")]
 
@@ -103,3 +107,20 @@ shock_around_state = NodePath("StateMachine/ShockAround")
 hit_state = NodePath("StateMachine/Hit")
 death_state = NodePath("StateMachine/Death")
 touch_inflictor = NodePath("TouchInflictor")
+
+[node name="NextSegmentArrow" parent="." index="4" instance=ExtResource("4_f73dp")]
+position = Vector2(-64, 2432)
+scale = Vector2(-1, -1)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NextSegmentArrow" index="2"]
+position = Vector2(-160, 64)
+shape = SubResource("RectangleShape2D_th282")
+
+[node name="NextSegmentArrow2" parent="." index="5" instance=ExtResource("4_f73dp")]
+position = Vector2(11840, 2048)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NextSegmentArrow2" index="2"]
+position = Vector2(-368, -768)
+shape = SubResource("RectangleShape2D_th282")
