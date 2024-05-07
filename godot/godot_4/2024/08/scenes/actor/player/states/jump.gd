@@ -31,6 +31,10 @@ func update(delta: float) -> void:
 		state_machine.change_by_name(DASH)
 		return
 
+	if player.can_create_block() and player.input.block:
+		state_machine.change_by_name(BLOCK)
+		return
+
 	if player.velocity.y > 0:
 		state_machine.change_by_name(FALLING)
 		return

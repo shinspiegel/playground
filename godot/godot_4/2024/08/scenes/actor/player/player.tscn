@@ -914,30 +914,12 @@ hframes = 10
 unique_name_in_owner = true
 position = Vector2(56, -64)
 
-[node name="BlockPosition" type="Marker2D" parent="FlipEnabled" index="3"]
-unique_name_in_owner = true
-position = Vector2(128, 2.08165e-12)
-
-[node name="BlockPlacementCast" type="Node2D" parent="FlipEnabled" index="4"]
-
-[node name="BlockTop" type="RayCast2D" parent="FlipEnabled/BlockPlacementCast" index="0"]
-unique_name_in_owner = true
-position = Vector2(2.08165e-12, -192)
-target_position = Vector2(192, 2.08165e-12)
-collision_mask = 2
-
-[node name="BlockBottom" type="RayCast2D" parent="FlipEnabled/BlockPlacementCast" index="1"]
-unique_name_in_owner = true
-position = Vector2(2.08165e-12, -8)
-target_position = Vector2(192, 2.08165e-12)
-collision_mask = 2
-
-[node name="JumpBufferRaycast2D" type="RayCast2D" parent="FlipEnabled" index="5"]
+[node name="JumpBufferRaycast2D" type="RayCast2D" parent="FlipEnabled" index="3"]
 unique_name_in_owner = true
 target_position = Vector2(2.08165e-12, 64)
 collision_mask = 2
 
-[node name="DamageReceiver" type="Area2D" parent="FlipEnabled" index="6" node_paths=PackedStringArray("colddown")]
+[node name="DamageReceiver" type="Area2D" parent="FlipEnabled" index="4" node_paths=PackedStringArray("colddown")]
 unique_name_in_owner = true
 position = Vector2(0, -64)
 collision_mask = 4
@@ -951,13 +933,13 @@ one_shot = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FlipEnabled/DamageReceiver" index="1"]
 shape = SubResource("RectangleShape2D_82qu1")
 
-[node name="RemoteCamera" type="RemoteTransform2D" parent="FlipEnabled" index="7"]
+[node name="RemoteCamera" type="RemoteTransform2D" parent="FlipEnabled" index="5"]
 unique_name_in_owner = true
 position = Vector2(256, 2.08165e-12)
 update_rotation = false
 update_scale = false
 
-[node name="JabDamageInflictor" type="Area2D" parent="FlipEnabled" index="8" node_paths=PackedStringArray("source")]
+[node name="JabDamageInflictor" type="Area2D" parent="FlipEnabled" index="6" node_paths=PackedStringArray("source")]
 unique_name_in_owner = true
 collision_mask = 4
 script = ExtResource("8_yx3wq")
@@ -970,7 +952,7 @@ position = Vector2(80, -64)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_smar4")
 
-[node name="Polygon2D" type="Polygon2D" parent="FlipEnabled" index="9"]
+[node name="Polygon2D" type="Polygon2D" parent="FlipEnabled" index="7"]
 modulate = Color(1, 1, 1, 0)
 position = Vector2(24, -32)
 polygon = PackedVector2Array(0, 0, 104, 0, 128, -32, 104, -64, 0, -64)

@@ -35,6 +35,10 @@ func update(delta: float) -> void:
 		state_machine.change_by_name(ROLL)
 		return
 
+	if player.can_create_block() and player.input.block:
+		state_machine.change_by_name(BLOCK)
+		return
+
 	if player.can_dash() and player.input.dash:
 		state_machine.change_by_name(DASH)
 		return

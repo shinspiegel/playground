@@ -41,8 +41,8 @@
 			- [x] Rolling consume mana
 		- [x] Health / damage
 		- [x] Roll from Air
-		- [ ] Create block from Air [NEXT:]
-		- [ ] Create block on the character instead of ahead [NEXT:]
+		- [x] Create block from Air
+		- [x] Create block on the character instead of ahead
 - Power Ups
 	- [x] Ranged Attack
 		- [ ] Increase speed #Forest

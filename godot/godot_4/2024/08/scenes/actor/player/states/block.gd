@@ -22,8 +22,8 @@ func exit() -> void:
 	anim_player.animation_finished.disconnect(on_anim_finished)
 
 
-func update(_delta: float) -> void:
-	player.apply_gravity(_delta)
+func update(delta: float) -> void:
+	player.apply_gravity(delta, 0.8)
 	player.apply_direction(0, player.data.friction_land, 1)
 	player.move_and_slide()
 	player.check_flip(player.input.last_direction)

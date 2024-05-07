@@ -12,8 +12,7 @@ signal died()
 @onready var jump_buffer_cast: RayCast2D = %JumpBufferRaycast2D
 @onready var remote_camera: RemoteTransform2D = %RemoteCamera
 @onready var shoot_pos: Node2D = %ShotPosition
-@onready var block_pos: Node2D = %BlockPosition
-@onready var placements: Array[RayCast2D] = [%BlockTop, %BlockBottom]
+@onready var block_pos: Node2D = %FlipEnabled
 @onready var jab_damage_inflictor: DamageInflictor = %JabDamageInflictor
 
 var __is_coyoting: bool = false
@@ -75,7 +74,7 @@ func can_shoot() -> bool:
 
 
 func can_create_block() -> bool:
-	if power_ups.create_block_enabled and stats.can_use_mana() and not placements[0].is_colliding() and not placements[1].is_colliding():
+	if power_ups.create_block_enabled and stats.can_use_mana():
 		return true
 	return false
 
