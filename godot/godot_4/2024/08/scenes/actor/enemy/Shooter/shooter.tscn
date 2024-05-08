@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://khse2wmgfq3w"]
+[gd_scene load_steps=20 format=3 uid="uid://khse2wmgfq3w"]
 
 [ext_resource type="PackedScene" uid="uid://do4arqmfus0eo" path="res://scenes/actor/enemy/base_enemy/base_enemy.tscn" id="1_qov2b"]
 [ext_resource type="Texture2D" uid="uid://dovewtuchy5a1" path="res://assets/graphics/template/size_template.png" id="2_158bd"]
@@ -8,7 +8,6 @@
 [ext_resource type="Script" path="res://scenes/actor/actor_data/actor_data.gd" id="3_8sj5h"]
 [ext_resource type="Script" path="res://scenes/actor/enemy/enemy_states/enemy_shoot.gd" id="6_4n5lm"]
 [ext_resource type="PackedScene" uid="uid://b66y70dlna4hf" path="res://scenes/projectiles/enemy_shoot.tscn" id="7_msfei"]
-[ext_resource type="PackedScene" uid="uid://bdna7yrgtgcjj" path="res://scenes/player_detector/player_detector.tscn" id="8_rehkf"]
 
 [sub_resource type="Resource" id="Resource_nu1r0"]
 script = ExtResource("3_8sj5h")
@@ -177,12 +176,9 @@ size = Vector2(48, 48)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vmy6n"]
 size = Vector2(64, 64)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_7uc3v"]
-radius = 576.0
-
 [node name="Shooter" node_paths=PackedStringArray("shoot_delay", "shoot_state", "hit_state", "death_state", "touch_inflictor") instance=ExtResource("1_qov2b")]
 script = ExtResource("2_memdj")
-shoot_delay = NodePath("PlayerDetector/ShootDelay")
+shoot_delay = NodePath("ShootDelay")
 shoot_state = NodePath("StateMachine/Shoot")
 hit_state = NodePath("StateMachine/Hit")
 death_state = NodePath("StateMachine/Death")
@@ -284,14 +280,6 @@ shape = SubResource("RectangleShape2D_coudu")
 position = Vector2(0, -32)
 shape = SubResource("RectangleShape2D_vmy6n")
 
-[node name="PlayerDetector" parent="." index="5" node_paths=PackedStringArray("external_origin_point") instance=ExtResource("8_rehkf")]
-unique_name_in_owner = true
-external_origin_point = NodePath("..")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetector" index="0"]
-position = Vector2(0, -32)
-shape = SubResource("CircleShape2D_7uc3v")
-
-[node name="ShootDelay" type="Timer" parent="PlayerDetector" index="1"]
+[node name="ShootDelay" type="Timer" parent="." index="5"]
 wait_time = 3.0
 one_shot = true

@@ -2,8 +2,7 @@ extends BaseEnemy
 
 @export var shoot_delay: Timer
 @export var shoot_state: EnemyState
-
-@onready var player_detector: PlayerDetector = %PlayerDetector
+@export var player_detector: PlayerDetector
 
 
 func _ready() -> void:

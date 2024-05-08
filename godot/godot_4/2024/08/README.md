@@ -72,8 +72,8 @@
 		- [ ] Tilemap
 		- [ ] Level design
 			- [x] Initial Design (5min map)
-			- [ ] Add options to use the roll in phew places [:nx]
-			- [ ] Remove cheap damage [:nx]
+			- [ ] Add options to use the roll in phew places
+			- [x] Remove cheap damage
 			- [ ] Upgrade Ranged (Speed)
 			- [ ] Upgrade Create (Extra life?)
 			- [ ] Upgrade Dash (Inv on Dash?)
@@ -115,8 +115,8 @@
 		- [x] Reduce time for the explosion
 		- [x] Use different sprite for it
 	- [x] Shooter (does not move, shoot on invervals)
-		- [ ] Make the area for shooting level dependent [:nx]
-		- [ ] Add a charge before the shooting [:nx]
+		- [x] Make the area for shooting level dependent
+		- [ ] Add a charge before the shooting
 	- [x] Defender / Tank (holds something to protect, avoids damage)
 	- [ ] Sniper (wanders, if player in sight, shoot)
 	- [ ] Medusa head (floats on screen, ignore tilemap)
@@ -125,7 +125,7 @@
 	- [ ] Spike (ground damage)
 	- [ ] Moving platform
 	- [ ] Mana hurt
-	- [ ] Vertical Laser [:nx]
+	- [ ] Vertical Laser
 - Pickables
 	- [ ] Heart Recover
 	- [ ] Mana Recover
