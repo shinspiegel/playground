@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://c2x3p8m82seig"]
+
+[ext_resource type="PackedScene" uid="uid://b7ib6x1v2qhde" path="res://level/level_objects/one_way_block/one_way_block.tscn" id="1_dkrtv"]
+[ext_resource type="Texture2D" uid="uid://b8okahv737gw8" path="res://assets/graphics/downloaded/Legacy_Adventure_Pack/Assets/Assets.png" id="2_e60yy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f4vh2"]
+size = Vector2(512, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jd8wo"]
+atlas = ExtResource("2_e60yy")
+region = Rect2(288, 224, 64, 48)
+
+[node name="WoodenPortal" instance=ExtResource("1_dkrtv")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Body" index="0"]
+position = Vector2(0, -352)
+shape = SubResource("RectangleShape2D_f4vh2")
+one_way_collision = true
+
+[node name="Sprite2D" type="Sprite2D" parent="." index="2"]
+position = Vector2(0, -192)
+scale = Vector2(8, 8)
+texture = SubResource("AtlasTexture_jd8wo")

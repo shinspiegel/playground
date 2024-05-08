@@ -1,30 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://b7ib6x1v2qhde"]
+[gd_scene load_steps=3 format=3 uid="uid://b7ib6x1v2qhde"]
 
 [ext_resource type="Script" path="res://level/level_objects/one_way_block/one_way_block.gd" id="1_6ffvi"]
-[ext_resource type="Texture2D" uid="uid://xwgu0hgnpv3p" path="res://icon.svg" id="1_82lu1"]
 [ext_resource type="Script" path="res://scenes/actor/player/inputs/player_input.gd" id="2_l5c38"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_o0i7b"]
-size = Vector2(128, 128)
-
-[node name="OneWayBlock" type="Node2D" node_paths=PackedStringArray("player_input", "shape")]
+[node name="OneWayBlock" type="Node2D"]
 script = ExtResource("1_6ffvi")
-player_input = NodePath("PlayerInput")
-shape = NodePath("StaticBody2D/CollisionShape2D")
 
 [node name="PlayerInput" type="Node" parent="."]
 script = ExtResource("2_l5c38")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, -64)
-scale = Vector2(4, 4)
-texture = ExtResource("1_82lu1")
-
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
+[node name="Body" type="StaticBody2D" parent="."]
 collision_layer = 2
 collision_mask = 5
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(0, -64)
-shape = SubResource("RectangleShape2D_o0i7b")
-one_way_collision = true

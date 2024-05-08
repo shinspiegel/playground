@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://screens/level_selection.gd" id="2_1ifkq"]
 [ext_resource type="Script" path="res://scenes/actor/player/inputs/player_input.gd" id="3_bxvto"]
 [ext_resource type="Resource" uid="uid://dyfg2qodnx83r" path="res://saved_data/saved_data.tres" id="3_dxsip"]
-[ext_resource type="Texture2D" uid="uid://n7bn5hsjq3fs" path="res://assets/graphics/TEMP/cfp+cQ.png" id="4_a3cut"]
+[ext_resource type="Texture2D" uid="uid://n7bn5hsjq3fs" path="res://assets/graphics/downloaded/TEMP/cfp+cQ.png" id="4_a3cut"]
 
 [node name="LevelSelection" type="Control"]
 layout_mode = 3

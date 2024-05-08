@@ -1,10 +1,10 @@
 [gd_scene load_steps=28 format=3 uid="uid://bxkot377yyeju"]
 
 [ext_resource type="PackedScene" uid="uid://do4arqmfus0eo" path="res://scenes/actor/enemy/base_enemy/base_enemy.tscn" id="1_vtri4"]
-[ext_resource type="Texture2D" uid="uid://dovewtuchy5a1" path="res://assets/graphics/template/size_template.png" id="2_3vf71"]
+[ext_resource type="Texture2D" uid="uid://dovewtuchy5a1" path="res://assets/graphics/templates/size_template/size_template.png" id="2_3vf71"]
 [ext_resource type="Script" path="res://scenes/actor/actor_data/actor_data.gd" id="2_8hbxm"]
 [ext_resource type="Script" path="res://scenes/actor/enemy/wander_enemy/wander_enemy.gd" id="2_8nut0"]
-[ext_resource type="Texture2D" uid="uid://c2h2tebe12vje" path="res://assets/graphics/template/number_template.png" id="3_j7rpk"]
+[ext_resource type="Texture2D" uid="uid://c2h2tebe12vje" path="res://assets/graphics/templates/size_template/number_template.png" id="3_j7rpk"]
 [ext_resource type="Script" path="res://scenes/actor/enemy/enemy_states/enemy_idle.gd" id="4_cr0dk"]
 [ext_resource type="PackedScene" uid="uid://bdna7yrgtgcjj" path="res://scenes/player_detector/player_detector.tscn" id="5_0f2kb"]
 [ext_resource type="Script" path="res://scenes/actor/enemy/enemy_states/enemy_wander.gd" id="5_gqobw"]

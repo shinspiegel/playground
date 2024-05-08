@@ -1,0 +1,47 @@
+[gd_scene load_steps=7 format=3 uid="uid://bg4xs5nmko4pd"]
+
+[ext_resource type="PackedScene" uid="uid://b7ib6x1v2qhde" path="res://level/level_objects/one_way_block/one_way_block.tscn" id="1_5gke3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ehvre"]
+size = Vector2(192, 128)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_7frmv"]
+load_path = "res://.godot/imported/forest_32x32.png-b40899811e043587825cf7ef44fdccc8.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8yb4c"]
+atlas = SubResource("CompressedTexture2D_7frmv")
+region = Rect2(592, 448, 32, 16)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ral3j"]
+load_path = "res://.godot/imported/forest_32x32.png-b40899811e043587825cf7ef44fdccc8.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_whvvw"]
+atlas = SubResource("CompressedTexture2D_ral3j")
+region = Rect2(680, 512, 16, 32)
+
+[node name="Box" instance=ExtResource("1_5gke3")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Body" index="0"]
+position = Vector2(0, -64)
+shape = SubResource("RectangleShape2D_ehvre")
+one_way_collision = true
+
+[node name="Sprite2D2" type="Sprite2D" parent="." index="2"]
+position = Vector2(0, -32)
+scale = Vector2(4, 4)
+texture = SubResource("AtlasTexture_8yb4c")
+
+[node name="Sprite2D3" type="Sprite2D" parent="." index="3"]
+position = Vector2(0, -96)
+scale = Vector2(4, 4)
+texture = SubResource("AtlasTexture_8yb4c")
+
+[node name="Sprite2D" type="Sprite2D" parent="." index="4"]
+position = Vector2(-80, -64)
+scale = Vector2(4, 4)
+texture = SubResource("AtlasTexture_whvvw")
+
+[node name="Sprite2D4" type="Sprite2D" parent="." index="5"]
+position = Vector2(80, -64)
+scale = Vector2(4, 4)
+texture = SubResource("AtlasTexture_whvvw")

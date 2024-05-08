@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://b74ry8m0rpvf4"]
+
+[ext_resource type="PackedScene" uid="uid://b7ib6x1v2qhde" path="res://level/level_objects/one_way_block/one_way_block.tscn" id="1_15psy"]
+[ext_resource type="Texture2D" uid="uid://tj6v5cli28y6" path="res://assets/graphics/downloaded/Legacy_Adventure_Pack/Assets/forest_32x32.png" id="2_74srm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lw0eh"]
+atlas = ExtResource("2_74srm")
+region = Rect2(448, 128, 128, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8x1qn"]
+size = Vector2(480, 64)
+
+[node name="TreeBranchLeft" instance=ExtResource("1_15psy")]
+
+[node name="Sprite2D" type="Sprite2D" parent="." index="1"]
+scale = Vector2(4, 4)
+texture = SubResource("AtlasTexture_lw0eh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Body" index="0"]
+position = Vector2(16, -32)
+shape = SubResource("RectangleShape2D_8x1qn")
+one_way_collision = true
