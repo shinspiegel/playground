@@ -21,7 +21,7 @@
 - [x] Base level ui
 - Main Character
 	- Artwork
-		- [ ] Idle
+		- [x] Idle
 		- [ ] Move / Rum
 		- [ ] Jab (Air Jab)
 		- [ ] Roll
