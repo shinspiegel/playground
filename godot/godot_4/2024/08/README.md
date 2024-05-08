@@ -112,8 +112,8 @@
 		- [ ] Enemies idea
 - Enemies
 	- [x] Walker (just walk from side to side and idle in between)
-		- [ ] Reduce time for the explosion [:nx]
-		- [ ] Use different sprite for it [:nx]
+		- [x] Reduce time for the explosion
+		- [x] Use different sprite for it
 	- [x] Shooter (does not move, shoot on invervals)
 		- [ ] Make the area for shooting level dependent [:nx]
 		- [ ] Add a charge before the shooting [:nx]

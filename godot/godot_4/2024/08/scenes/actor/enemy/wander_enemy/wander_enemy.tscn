@@ -21,13 +21,13 @@ friction_air = 0.7
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tcvr4"]
 atlas = ExtResource("2_3vf71")
-region = Rect2(72, 8, 32, 32)
+region = Rect2(184, 8, 48, 48)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_wnvhm"]
-radius = 56.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_64k36"]
+size = Vector2(160, 160)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wre42"]
-size = Vector2(576, 320)
+size = Vector2(768, 320)
 
 [sub_resource type="Resource" id="Resource_rj3yl"]
 script = ExtResource("8_h4uoe")
@@ -153,7 +153,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("FlipEnabled/Polygon2D:modulate")
+tracks/2/path = NodePath("FlipEnabled/DamageInflictor/Polygon2D:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -165,6 +165,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_7qf58"]
 resource_name = "ShockAround"
+length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -192,11 +193,11 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("FlipEnabled/Polygon2D:modulate")
+tracks/2/path = NodePath("FlipEnabled/DamageInflictor/Polygon2D:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 1),
+"times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
@@ -270,10 +271,10 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dunbs"]
-size = Vector2(64, 64)
+size = Vector2(128, 128)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f5xfm"]
-size = Vector2(32, 32)
+size = Vector2(96, 96)
 
 [node name="WanderEnemy" node_paths=PackedStringArray("shock_around_state", "hit_state", "death_state", "touch_inflictor") instance=ExtResource("1_vtri4")]
 collision_mask = 10
@@ -287,11 +288,11 @@ touch_inflictor = NodePath("TouchInflictor")
 data = SubResource("Resource_pnaxd")
 
 [node name="Sprite2D" parent="FlipEnabled" index="0"]
-position = Vector2(0, -32)
+position = Vector2(0, -64)
 texture = SubResource("AtlasTexture_tcvr4")
 
 [node name="Sprite2D2" type="Sprite2D" parent="FlipEnabled" index="1"]
-position = Vector2(-16, -16)
+position = Vector2(-48, -16)
 texture = ExtResource("3_j7rpk")
 hframes = 10
 
@@ -299,12 +300,12 @@ hframes = 10
 position = Vector2(2.08165e-12, -96)
 
 [node name="FloorCast" type="RayCast2D" parent="FlipEnabled" index="3"]
-position = Vector2(48, -8)
+position = Vector2(80, -8)
 target_position = Vector2(2.08165e-12, 32)
 collision_mask = 34
 
 [node name="WallCast" type="RayCast2D" parent="FlipEnabled" index="4"]
-position = Vector2(32, -40)
+position = Vector2(64, -40)
 target_position = Vector2(32, 2.08165e-12)
 collision_mask = 34
 
@@ -312,56 +313,58 @@ collision_mask = 34
 colddown = NodePath("DamageColddown")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FlipEnabled/DamageReceiver" index="1"]
-position = Vector2(0, -32)
-shape = SubResource("CircleShape2D_wnvhm")
+position = Vector2(0, -64)
+shape = SubResource("RectangleShape2D_64k36")
 
 [node name="PlayerDetector" parent="FlipEnabled" index="6" node_paths=PackedStringArray("external_origin_point") instance=ExtResource("5_0f2kb")]
 external_origin_point = NodePath("../..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FlipEnabled/PlayerDetector" index="0"]
-position = Vector2(288, -32)
+position = Vector2(384, -96)
 shape = SubResource("RectangleShape2D_wre42")
 
 [node name="DamageInflictor" type="Area2D" parent="FlipEnabled" index="7" node_paths=PackedStringArray("source")]
+position = Vector2(0, -112)
 script = ExtResource("7_wbbg8")
 source = NodePath("../..")
 dmg_generator = SubResource("Resource_rj3yl")
 active = false
+metadata/_edit_group_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="FlipEnabled/DamageInflictor" index="0"]
-position = Vector2(0, -32)
-shape = SubResource("CircleShape2D_2c11x")
-
-[node name="Polygon2D" type="Polygon2D" parent="FlipEnabled" index="8"]
+[node name="Polygon2D" type="Polygon2D" parent="FlipEnabled/DamageInflictor" index="0"]
 modulate = Color(1, 1, 1, 0)
-position = Vector2(-112, 80)
-scale = Vector2(1.7, 1.7)
+position = Vector2(-106.667, 106.667)
+scale = Vector2(1.66667, 1.66667)
 polygon = PackedVector2Array(0, 0, 64, 32, 128, 0, 160, -64, 128, -128, 64, -160, 0, -128, -32, -64)
 
-[node name="STATE" type="Label" parent="FlipEnabled" index="9"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FlipEnabled/DamageInflictor" index="1"]
+shape = SubResource("CircleShape2D_2c11x")
+
+[node name="STATE" type="Label" parent="FlipEnabled" index="8"]
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -48.0
-offset_top = -96.0
+offset_top = -160.0
 offset_right = 48.0
-offset_bottom = -73.0
+offset_bottom = -137.0
 grow_horizontal = 2
 grow_vertical = 0
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="NAME" type="Label" parent="FlipEnabled" index="10"]
+[node name="NAME" type="Label" parent="FlipEnabled" index="9"]
 auto_translate_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
+offset_left = 32.0
 offset_top = -24.0
-offset_right = 32.0
+offset_right = 64.0
 offset_bottom = -1.0
 grow_horizontal = 2
 grow_vertical = 0
@@ -414,7 +417,7 @@ enemy = NodePath("../..")
 damage_receiver = NodePath("../../FlipEnabled/DamageReceiver")
 
 [node name="ShockDuration" type="Timer" parent="StateMachine/ShockAround" index="0"]
-wait_time = 2.0
+wait_time = 0.5
 one_shot = true
 
 [node name="AnimationPlayer" parent="." index="2"]
@@ -423,7 +426,7 @@ libraries = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="3"]
-position = Vector2(0, -32)
+position = Vector2(0, -64)
 shape = SubResource("RectangleShape2D_dunbs")
 
 [node name="EnterShockDelay" type="Timer" parent="." index="4"]
@@ -433,5 +436,5 @@ one_shot = true
 source = NodePath("..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TouchInflictor" index="0"]
-position = Vector2(0, -32)
+position = Vector2(0, -64)
 shape = SubResource("RectangleShape2D_f5xfm")
