@@ -16,7 +16,7 @@
 
 [node name="ForestLevel" node_paths=PackedStringArray("initial_segment") instance=ExtResource("1_ba3dr")]
 initial_segment = NodePath("LevelSegments/ForestSegment00")
-track_index = 2
+track_name = "forest"
 
 [node name="Parallax2D" type="Parallax2D" parent="ParallaxArea" index="0"]
 scroll_scale = Vector2(0.1, 0.2)

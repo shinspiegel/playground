@@ -6,7 +6,7 @@ class_name GameOverScreen extends Control
 
 
 func _ready() -> void:
-	AudioManager.play_music(1)
+	AudioManager.play_music_intro()
 	start.pressed.connect(on_start)
 	credits.pressed.connect(on_credits)
 	quit.pressed.connect(on_quit)

@@ -4,7 +4,7 @@ signal segment_changed()
 
 @export var game_settings: SavedData
 @export var initial_segment: LevelSegment
-@export var track_index: int = 0
+@export var track_name: String = "music"
 
 @onready var game_camera: GameCamera = %GameCamera
 @onready var segments_list: Node2D = %LevelSegments
@@ -18,7 +18,7 @@ var __segments_map: Dictionary = {}
 
 
 func _ready() -> void:
-	AudioManager.play_music(track_index)
+	AudioManager.play_music(track_name)
 
 	for child in segments_list.get_children():
 		if child is LevelSegment:

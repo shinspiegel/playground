@@ -1,10 +1,10 @@
 extends Node2D
 
-const MUSIC_LIST = [
-	preload("res://assets/music/sample_music_1.ogg"), 		# 0
-	preload("res://assets/music/sample_music_2.ogg"), 		# 1
-	preload("res://assets/music/composed/forest.mp3"),		# 2
-]
+const MUSIC_LIST = {
+	"intro": preload("res://assets/music/composed/intro.mp3"),
+	"forest": preload("res://assets/music/composed/forest.mp3"),
+}
+
 
 @export var game_settings: SavedData
 @onready var background_music: AudioStreamPlayer = $BackgroundMusic
@@ -15,12 +15,14 @@ func _ready() -> void:
 	game_settings.music_changed.connect(on_music_change)
 
 
-func play_music(track_index: int, volume_adjust: float = 0.0, duration: float = 0.3) -> void:
-	if track_index < 0 or track_index >= MUSIC_LIST.size():
-		push_warning("invalid track index")
+func play_music_intro() -> void: play_music("intro")
+func play_music_forest() -> void: play_music("forest")
+func play_music(track_name: String, volume_adjust: float = 0.0, duration: float = 0.3) -> void:
+	if not MUSIC_LIST.has(track_name):
+		push_error("invalid track name")
 		return
 
-	var next_music = MUSIC_LIST[track_index]
+	var next_music = MUSIC_LIST.get(track_name)
 
 	if not next_music == background_music.stream:
 		var tw = create_tween()
@@ -35,6 +37,7 @@ func play_music(track_index: int, volume_adjust: float = 0.0, duration: float = 
 		tw = create_tween()
 		tw.tween_property(background_music, "volume_db", __convert_float_to_db(game_settings.music_volume + volume_adjust), duration)
 		tw.play()
+
 
 
 func create_sfx(audio: AudioStream, pitch: float = 1.0, volume_adjust: float = 0.0) -> void:

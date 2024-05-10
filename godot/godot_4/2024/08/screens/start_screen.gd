@@ -14,7 +14,7 @@ func _ready() -> void:
 	version.text = "Version.%s" % ProjectSettings.get("application/config/version")
 
 	if not Engine.is_editor_hint():
-		AudioManager.play_music(0)
+		AudioManager.play_music_intro()
 
 		start.grab_focus()
 		start.pressed.connect(on_start)

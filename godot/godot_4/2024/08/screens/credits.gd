@@ -4,7 +4,7 @@ class_name CreditsScreen extends Control
 
 
 func _ready() -> void:
-	AudioManager.play_music(0)
+	AudioManager.play_music_intro()
 	back.pressed.connect(on_back)
 	await get_tree().create_timer(0.5).timeout
 	back.grab_focus()

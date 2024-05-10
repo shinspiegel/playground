@@ -8,7 +8,7 @@ class_name OptionsScreen extends Control
 
 
 func _ready() -> void:
-	AudioManager.play_music(0)
+	AudioManager.play_music_intro()
 	back.pressed.connect(on_back)
 
 	sound_slider.value = game_setting.sound_volume
