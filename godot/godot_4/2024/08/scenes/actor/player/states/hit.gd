@@ -1,11 +1,12 @@
 extends PlayerState
 
-@export var anim_player: AnimationPlayer
+@export_range(0.1, 1.0, 0.1) var duration: float = 0.4
 @export var dmg_receiver: DamageReceiver
 @export var hit_sound: AudioStream
 
 var __last_damage: Damage
 var __next_roll: bool = false
+var __timer: SceneTreeTimer
 
 
 func _ready() -> void:
@@ -15,9 +16,10 @@ func _ready() -> void:
 
 func enter() -> void:
 	AudioManager.create_sfx(hit_sound, randf_range(0.8, 1.4))
-	anim_player.animation_finished.connect(on_anim_finished)
 	player.change_animation(HIT)
 	__next_roll = false
+	__timer = get_tree().create_timer(duration)
+	__timer.timeout.connect(on_timeout)
 
 	if __last_damage:
 		var direction := clampi(int(player.global_position.x - __last_damage.source_position.x), -1, 1)
@@ -26,7 +28,7 @@ func enter() -> void:
 
 
 func exit() -> void:
-	anim_player.animation_finished.disconnect(on_anim_finished)
+	__timer.timeout.disconnect(on_timeout)
 	__next_roll = false
 
 
@@ -38,15 +40,14 @@ func update(delta: float) -> void:
 	player.move_and_slide()
 
 
-func on_anim_finished(anim: String) -> void:
-	if anim == HIT:
-		if player.stats.hp_curr <= 0:
-			state_machine.change_by_name(DIE)
+func on_timeout() -> void:
+	if player.stats.hp_curr <= 0:
+		state_machine.change_by_name(DIE)
+	else:
+		if __next_roll:
+			state_machine.change_by_name(ROLL)
 		else:
-			if __next_roll:
-				state_machine.change_by_name(ROLL)
-			else:
-				state_machine.change_by_name(IDLE)
+			state_machine.change_by_name(IDLE)
 
 
 func on_damage_receive(dmg: Damage) -> void:

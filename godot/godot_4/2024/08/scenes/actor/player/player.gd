@@ -13,7 +13,7 @@ signal died()
 @onready var remote_camera: RemoteTransform2D = %RemoteCamera
 @onready var shoot_pos: Node2D = %ShotPosition
 @onready var block_pos: Node2D = %FlipEnabled
-@onready var jab_damage_inflictor: DamageInflictor = %JabDamageInflictor
+@onready var jab_damage_inflictor: DamageInflictor = %MeleeDamageInflictor
 
 var __is_coyoting: bool = false
 var dash_used: bool = false

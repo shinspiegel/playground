@@ -1,17 +1,22 @@
 extends PlayerState
 
-@export var anim_player: AnimationPlayer
+@export_range(0.1, 1.0, 0.1) var duration: float = 0.4
+@export var sprite: Sprite2D
 @export var damage_receiver: DamageReceiver
 @export var roll_audio: AudioStream
 
 var __start_dir: float = 0.0
 var __direction_ratio: float = 1.0
+var __timer: SceneTreeTimer
 
 
 func enter() -> void:
 	player.change_animation(ROLL)
 	damage_receiver.active = false
-	anim_player.animation_finished.connect(on_anim_finished)
+
+	sprite.material.set_shader_parameter("line_thickness", 0.0)
+	__timer = get_tree().create_timer(duration)
+	__timer.timeout.connect(on_timeout)
 
 	__start_dir = player.input.last_direction
 	__direction_ratio = 1.0
@@ -27,7 +32,8 @@ func enter() -> void:
 
 func exit() -> void:
 	damage_receiver.active = true
-	anim_player.animation_finished.disconnect(on_anim_finished)
+	sprite.material.set_shader_parameter("line_thickness", 1.0)
+	__timer.timeout.disconnect(on_timeout)
 
 
 func update(delta: float) -> void:
@@ -39,7 +45,7 @@ func update(delta: float) -> void:
 	player.check_flip(__start_dir)
 
 
-func on_anim_finished(_anim: String) -> void:
+func on_timeout() -> void:
 	if player.input.direction == 0.0:
 		state_machine.change_by_name(IDLE)
 	else:

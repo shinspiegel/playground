@@ -22,15 +22,17 @@
 - Main Character
 	- Artwork
 		- [x] Idle
-		- [ ] Move / Rum
-		- [ ] Jab (Air Jab)
-		- [ ] Roll
-		- [ ] Landing
-		- [ ] Hit
-		- [ ] Die
-		- [ ] Ranged (Air Ranged)
-		- [ ] Block
-		- [ ] Dash
+		- [x] Move / Rum
+		- [x] Jump
+		- [x] Fall
+		- [x] Landing
+		- [x] Melee
+		- [x] Roll
+		- [x] Hit
+		- [x] Die
+		- [x] Ranged (Air Ranged)
+		- [x] Block
+		- [x] Dash
 	- Mechanics
 		- [x] Air Jab
 		- [x] Air Ranged

@@ -1,29 +1,29 @@
 extends PlayerState
 
-@export var duration: Timer
+@export_range(0.1, 2.0, 0.1) var duration: float = 0.4
 @export var dash_audio: AudioStream
 
 var __direction: float = 0.0
 var __speed_weight: float = 1.5
+var __timer: SceneTreeTimer
 
 
 func enter() -> void:
 	__direction = player.input.last_direction
+	__timer = get_tree().create_timer(duration)
+	__timer.timeout.connect(on_timeout)
 
 	player.change_animation(ROLL)
 	player.velocity = Vector2.ZERO
 	player.stats.consume_mana()
 	player.dash_used = true
 
-	duration.timeout.connect(on_timeout)
-	duration.start()
 
 	AudioManager.create_sfx(dash_audio, randf_range(0.9, 1.2))
 
 
 func exit() -> void:
-	duration.timeout.disconnect(on_timeout)
-	duration.stop()
+	__timer.timeout.disconnect(on_timeout)
 
 
 func update(delta: float) -> void:

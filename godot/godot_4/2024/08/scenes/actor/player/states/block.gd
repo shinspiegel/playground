@@ -2,15 +2,18 @@ extends PlayerState
 
 const scene: Resource = preload("res://scenes/actor/player/player_block/player_block.tscn")
 
+@export_range(0.1, 1.0, 0.1) var duration: float = 0.4
 @export var anim_player: AnimationPlayer
 @export var block_sound: AudioStream 
 
 var __blocks: Array[Node2D] = []
 var __max_blocks: int = 1
+var __timer: SceneTreeTimer
 
 
 func enter() -> void:
-	anim_player.animation_finished.connect(on_anim_finished)
+	__timer = get_tree().create_timer(duration)
+	__timer.timeout.connect(on_timeout)
 
 	if player.velocity.y < 0:
 		player.velocity.y = 0
@@ -23,7 +26,7 @@ func enter() -> void:
 
 
 func exit() -> void:
-	anim_player.animation_finished.disconnect(on_anim_finished)
+	__timer.timeout.disconnect(on_timeout)
 
 
 func update(delta: float) -> void:
@@ -33,7 +36,7 @@ func update(delta: float) -> void:
 	player.check_flip(player.input.last_direction)
 
 
-func on_anim_finished(_anim: String) -> void:
+func on_timeout() -> void:
 	if player.input.direction > 0:
 		state_machine.change_by_name(MOVE)
 	else:

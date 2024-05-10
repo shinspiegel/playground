@@ -2,24 +2,26 @@ extends PlayerState
 
 const player_shoot_scene: Resource = preload("res://scenes/projectiles/player_shoot.tscn")
 
-@export var anim_player: AnimationPlayer
+@export_range(0.1, 1.0, 0.1) var duration: float = 0.4
 @export var ranged_sound: AudioStream
 
 var __gravity_ratio: float = 0.0
 var __gravity_weight: float = 5.0
+var __timer: SceneTreeTimer
 
 func enter() -> void:
 	__gravity_ratio = 0.1
 	player.change_animation(RANGED)
 	player.stats.consume_mana()
 	player.velocity = Vector2.ZERO
-	anim_player.animation_finished.connect(on_anim_finished)
+	__timer = get_tree().create_timer(duration)
+	__timer.timeout.connect(on_timeout)
 	spawn_shoot()
 	AudioManager.create_sfx(ranged_sound, randf_range(0.9, 1.5))
 
 
 func exit() -> void:
-	anim_player.animation_finished.disconnect(on_anim_finished)
+	__timer.timeout.disconnect(on_timeout)
 
 
 func update(delta: float) -> void:
@@ -39,7 +41,7 @@ func update(delta: float) -> void:
 	player.check_flip(player.input.last_direction)
 
 
-func on_anim_finished(_anim: String) -> void:
+func on_timeout() -> void:
 	if player.input.direction > 0:
 		state_machine.change_by_name(MOVE)
 	else:
